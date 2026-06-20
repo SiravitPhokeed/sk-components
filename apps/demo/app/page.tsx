@@ -55,10 +55,8 @@ export default function Home() {
         </section>
 
         {/* Dark Theme */}
-        <section className="theme-dark flex flex-col items-center gap-4 rounded-xl bg-[var(--sk-color-surface)] p-8">
-          <h2 className="text-lg font-medium" style={{ color: "var(--sk-color-on-surface)" }}>
-            Dark Theme
-          </h2>
+        <section className="theme-dark flex flex-col items-center gap-4 rounded-md bg-surface p-8">
+          <h2 className="text-lg font-medium text-on-surface">Dark Theme</h2>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Button variant="primary">Primary</Button>
             <Button variant="secondary">Secondary</Button>
