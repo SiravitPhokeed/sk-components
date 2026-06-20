@@ -1,17 +1,17 @@
 /* SK Components — Design Tokens */
 :root {
   /* Primary */
-  --sk-color-primary: #1a56db;
-  --sk-color-primary-hover: #1e40af;
-  --sk-color-on-primary: #ffffff;
+  --primary: #1a56db;
+  --primary-hover: #1e40af;
+  --on-primary: #ffffff;
 
   /* Surface */
-  --sk-color-surface: #ffffff;
-  --sk-color-surface-hover: #f3f4f6;
-  --sk-color-on-surface: #111827;
+  --surface: #ffffff;
+  --surface-hover: #f3f4f6;
+  --on-surface: #111827;
 
   /* Border */
-  --sk-color-border: #d1d5db;
+  --border: #d1d5db;
 
   /* Radius */
   --sk-radius-md: 0.5rem;
@@ -22,13 +22,13 @@
 
 /* Dark theme */
 .theme-dark {
-  --sk-color-primary: #3b82f6;
-  --sk-color-primary-hover: #2563eb;
-  --sk-color-on-primary: #ffffff;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --on-primary: #ffffff;
 
-  --sk-color-surface: #1f2937;
-  --sk-color-surface-hover: #374151;
-  --sk-color-on-surface: #f9fafb;
+  --surface: #1f2937;
+  --surface-hover: #374151;
+  --on-surface: #f9fafb;
 
-  --sk-color-border: #4b5563;
+  --border: #4b5563;
 }

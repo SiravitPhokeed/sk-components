@@ -6,7 +6,7 @@
   justify-content: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  border: 1px solid var(--sk-color-border);
+  border: 1px solid var(--border);
   border-radius: var(--sk-radius-md);
 
   /* Typography */
@@ -16,8 +16,8 @@
   line-height: 1.25;
 
   /* Visual */
-  background-color: var(--sk-color-surface);
-  color: var(--sk-color-on-surface);
+  background-color: var(--surface);
+  color: var(--on-surface);
   cursor: pointer;
 
   /* Misc */
@@ -42,48 +42,48 @@
 
 /* Button — Variant: Primary */
 .btn--primary {
-  background-color: var(--sk-color-primary);
-  border-color: var(--sk-color-primary);
-  color: var(--sk-color-on-primary);
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
 }
 
 .btn--primary:hover:not(:disabled):not(.btn--loading) {
-  background-color: var(--sk-color-primary-hover);
-  border-color: var(--sk-color-primary-hover);
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
 }
 
 /* Button — Variant: Secondary */
 .btn--secondary {
   background-color: transparent;
-  border-color: var(--sk-color-primary);
-  color: var(--sk-color-primary);
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 .btn--secondary:hover:not(:disabled):not(.btn--loading) {
-  background-color: var(--sk-color-primary);
-  color: var(--sk-color-on-primary);
+  background-color: var(--primary);
+  color: var(--on-primary);
 }
 
 /* Button — Variant: Outline */
 .btn--outline {
   background-color: transparent;
-  border-color: var(--sk-color-border);
-  color: var(--sk-color-on-surface);
+  border-color: var(--border);
+  color: var(--on-surface);
 }
 
 .btn--outline:hover:not(:disabled):not(.btn--loading) {
-  background-color: var(--sk-color-surface-hover);
+  background-color: var(--surface-hover);
 }
 
 /* Button — Variant: Text */
 .btn--text {
   background-color: transparent;
   border-color: transparent;
-  color: var(--sk-color-primary);
+  color: var(--primary);
 }
 
 .btn--text:hover:not(:disabled):not(.btn--loading) {
-  background-color: var(--sk-color-surface-hover);
+  background-color: var(--surface-hover);
 }
 
 /* Button — Size: Small */
