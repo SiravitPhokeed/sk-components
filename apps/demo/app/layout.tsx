@@ -1,16 +1,38 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import cn from "@/lib/helpers/cn";
 import "@suankularb-components/css/tokens.css";
+import type { Metadata } from "next";
+import {
+  Fira_Code,
+  IBM_Plex_Sans_Thai,
+  Inter,
+  Sarabun,
+  Space_Grotesk,
+} from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+// English fonts
+const bodyFontEN = Inter({ subsets: ["latin"] });
+const displayFontEN = Space_Grotesk({ subsets: ["latin"] });
+
+// Thai fonts
+const bodyFontTH = Sarabun({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["thai"],
+});
+const displayFontTH = IBM_Plex_Sans_Thai({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["thai"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+// Mono font
+const monoFont = Fira_Code({ subsets: ["latin"] });
+
+// Icon font
+const iconFont = localFont({
+  src: "../public/fonts/material-symbols.woff2",
+  weight: "100 700",
+  style: "normal",
 });
 
 export const metadata: Metadata = {
@@ -26,7 +48,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={cn(
+        bodyFontEN.className,
+        displayFontEN.className,
+        bodyFontTH.className,
+        displayFontTH.className,
+        monoFont.className,
+        iconFont.className,
+        "h-full antialiased",
+      )}
     >
       <body className="flex min-h-full flex-col">{children}</body>
     </html>

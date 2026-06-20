@@ -8,7 +8,8 @@
   ],
   "exports": {
     "./tokens.css": "./dist/tokens.css",
-    "./button.css": "./dist/button.css"
+    "./button.css": "./dist/button.css",
+    "./text.css": "./dist/text.css"
   },
   "scripts": {
     "build": "postcss src/**/*.css --dir dist/ --base src/",

@@ -1,104 +1,108 @@
-/* Button — Block */
-.btn {
-  display: inline-flex;
+/**
+ * **Button**
+ * Button helps users take action, whether it’s logging in, liking a post, or
+ * going to a page.
+ */
+
+.skc-button {
+  display: flex;
+  position: relative;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  transition-duration: 0.15s;
-  transition-property: background-color, border-color, color, opacity;
-  transition-timing-function: ease;
   cursor: pointer;
-  border: 1px solid var(--border);
-  border-radius: var(--sk-radius-md);
-  background-color: var(--surface);
-  padding: 0.5rem 1rem;
-  color: var(--on-surface);
-  font-weight: 500;
-  font-size: 0.875rem;
-  line-height: 1.25;
-  font-family: var(--sk-font-family);
+  border-radius: var(--rounded-full);
+  padding: 0.625rem 1.5rem;
+  overflow: hidden;
+  font-family: var(--font-display);
+  -webkit-tap-highlight-color: transparent;
+
+  &::before {
+    background-color: var(--state-layer-color);
+  }
 }
 
-/* Button — Disabled */
-.btn:disabled,
-.btn--disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.skc-button > .skc-button__label {
+  color: var(--state-layer-color);
+  font-family: var(--font-display);
+  text-align: center;
 }
 
-/* Button — Loading */
-.btn--loading {
-  position: relative;
-  opacity: 0.7;
-  cursor: wait;
+.skc-button--disabled {
+  cursor: default;
+
+  &:hover {
+    box-shadow: none;
+  }
 }
 
-/* Button — Variant: Primary */
-.btn--primary {
-  border-color: var(--primary);
+.skc-button--filled {
+  --state-layer-color: var(--on-primary);
+  transition: box-shadow var(--motion-short-4) var(--easing-standard);
   background-color: var(--primary);
-  color: var(--on-primary);
+
+  &:hover {
+    box-shadow: var(--shadow-1);
+  }
+
+  &.skc-button--disabled {
+    --state-layer-color: color-mix(in srgb, var(--on-surface) 38%, transparent);
+    background-color: color-mix(in srgb, var(--on-surface) 12%, transparent);
+  }
+  &.skc-button--dangerous {
+    --state-layer-color: var(--on-error);
+    background-color: var(--error);
+  }
 }
 
-.btn--primary:hover:not(:disabled):not(.btn--loading) {
-  border-color: var(--primary-hover);
-  background-color: var(--primary-hover);
+.skc-button--tonal {
+  --state-layer-color: var(--on-secondary-container);
+  transition: box-shadow var(--motion-short-4) var(--easing-standard);
+  background-color: var(--secondary-container);
+
+  &:hover {
+    box-shadow: var(--shadow-1);
+  }
+
+  &.skc-button--disabled {
+    --state-layer-color: color-mix(in srgb, var(--on-surface) 38%, transparent);
+    background-color: color-mix(in srgb, var(--on-surface) 12%, transparent);
+  }
+  &.skc-button--dangerous {
+    --state-layer-color: var(--on-error-container);
+    background-color: var(--error-container);
+  }
 }
 
-/* Button — Variant: Secondary */
-.btn--secondary {
-  border-color: var(--primary);
-  background-color: transparent;
-  color: var(--primary);
+.skc-button--outlined {
+  --state-layer-color: var(--primary);
+  border: 1px solid var(--outline);
+
+  &:focus-visible {
+    border-color: var(--state-layer-color);
+  }
+
+  &.skc-button--disabled {
+    --state-layer-color: color-mix(in srgb, var(--on-surface) 38%, transparent);
+    border-color: color-mix(in srgb, var(--on-surface) 12%, transparent);
+  }
+  &.skc-button--selected {
+    --state-layer-color: var(--on-secondary-container);
+    background-color: var(--secondary-container);
+  }
+  &.skc-button--dangerous {
+    --state-layer-color: var(--error);
+  }
 }
 
-.btn--secondary:hover:not(:disabled):not(.btn--loading) {
-  background-color: var(--primary);
-  color: var(--on-primary);
-}
+.skc-button--text {
+  --state-layer-color: var(--primary);
 
-/* Button — Variant: Outline */
-.btn--outline {
-  border-color: var(--border);
-  background-color: transparent;
-  color: var(--on-surface);
-}
-
-.btn--outline:hover:not(:disabled):not(.btn--loading) {
-  background-color: var(--surface-hover);
-}
-
-/* Button — Variant: Text */
-.btn--text {
-  border-color: transparent;
-  background-color: transparent;
-  color: var(--primary);
-}
-
-.btn--text:hover:not(:disabled):not(.btn--loading) {
-  background-color: var(--surface-hover);
-}
-
-/* Button — Size: Small */
-.btn--sm {
-  gap: 0.375rem;
-  border-radius: calc(var(--sk-radius-md) * 0.75);
-  padding: 0.25rem 0.5rem;
-  font-size: 0.75rem;
-}
-
-/* Button — Size: Medium */
-.btn--md {
-  gap: 0.5rem;
-  border-radius: var(--sk-radius-md);
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-}
-
-/* Button — Size: Large */
-.btn--lg {
-  gap: 0.625rem;
-  border-radius: calc(var(--sk-radius-md) * 1.25);
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
+  &.skc-button--disabled {
+    --state-layer-color: color-mix(in srgb, var(--on-surface) 38%, transparent);
+  }
+  &.skc-button--dangerous {
+    --state-layer-color: var(--error);
+  }
 }
