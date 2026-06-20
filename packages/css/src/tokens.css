@@ -1,0 +1,34 @@
+/* SK Components — Design Tokens */
+:root {
+  /* Primary */
+  --sk-color-primary: #1a56db;
+  --sk-color-primary-hover: #1e40af;
+  --sk-color-on-primary: #ffffff;
+
+  /* Surface */
+  --sk-color-surface: #ffffff;
+  --sk-color-surface-hover: #f3f4f6;
+  --sk-color-on-surface: #111827;
+
+  /* Border */
+  --sk-color-border: #d1d5db;
+
+  /* Radius */
+  --sk-radius-md: 0.5rem;
+
+  /* Typography */
+  --sk-font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Dark theme */
+.theme-dark {
+  --sk-color-primary: #3b82f6;
+  --sk-color-primary-hover: #2563eb;
+  --sk-color-on-primary: #ffffff;
+
+  --sk-color-surface: #1f2937;
+  --sk-color-surface-hover: #374151;
+  --sk-color-on-surface: #f9fafb;
+
+  --sk-color-border: #4b5563;
+}

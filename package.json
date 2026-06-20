@@ -1,28 +1,8 @@
 {
-  "name": "sk-components",
-  "version": "3.3.2",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "name": "sk-components",
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint",
-    "format": "csscomb packages && csscomb apps && prettier --write \"**/*.{scss,ts,tsx,md}\""
-  },
-  "devDependencies": {
-    "@types/react": "^18.2.67",
-    "csscomb": "^3.1.8",
-    "eslint-config-custom": "^0.0.0",
-    "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.2.8",
-    "react": "^18.2.0",
-    "turbo": "^1.12.5"
-  },
-  "engines": {
-    "node": ">=14.0.0"
-  },
-  "packageManager": "npm@8.19.3"
+    "build": "pnpm -r build",
+    "dev": "pnpm -r --parallel dev"
+  }
 }

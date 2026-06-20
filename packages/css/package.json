@@ -1,0 +1,22 @@
+{
+  "name": "@suankularb-components/css",
+  "version": "3.3.2",
+  "description": "Styling for Suankularb Components, the base of all Suankularb Components implementations",
+  "license": "ISC",
+  "files": [
+    "dist/"
+  ],
+  "exports": {
+    "./tokens.css": "./dist/tokens.css",
+    "./button.css": "./dist/button.css"
+  },
+  "scripts": {
+    "build": "postcss src/**/*.css --dir dist/ --base src/",
+    "prepublishOnly": "pnpm build"
+  },
+  "devDependencies": {
+    "css-declaration-sorter": "^7.2.0",
+    "postcss": "^8.5.0",
+    "postcss-cli": "^11.0.0"
+  }
+}
