@@ -12,6 +12,7 @@
   },
   "scripts": {
     "build": "postcss src/**/*.css --dir dist/ --base src/",
+    "format": "postcss src/**/*.css --replace",
     "prepublishOnly": "pnpm build"
   },
   "devDependencies": {
