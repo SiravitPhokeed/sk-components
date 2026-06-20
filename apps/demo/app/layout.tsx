@@ -1,3 +1,4 @@
+import "@/app/globals.css";
 import cn from "@/lib/helpers/cn";
 import "@suankularb-components/css/tokens.css";
 import type { Metadata } from "next";
@@ -9,7 +10,7 @@ import {
   Space_Grotesk,
 } from "next/font/google";
 import localFont from "next/font/local";
-import "./globals.css";
+import type { FC, ReactNode } from "react";
 
 // English fonts
 const bodyFontEN = Inter({ subsets: ["latin"] });
@@ -36,15 +37,14 @@ const iconFont = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "SK Components Demo",
+  title: {
+    default: "SK Components",
+    template: "%s - SK Components",
+  },
   description: "Demo of @suankularb-components/react",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <html
       lang="en"
@@ -55,10 +55,12 @@ export default function RootLayout({
         displayFontTH.className,
         monoFont.className,
         iconFont.className,
-        "h-full antialiased",
+        "antialiased",
       )}
     >
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="bg-background font-body">{children}</body>
     </html>
   );
-}
+};
+
+export default RootLayout;

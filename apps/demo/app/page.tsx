@@ -1,41 +1,23 @@
-import { Button, MaterialIcon } from "@suankularb-components/react";
+import AboutSection from "@/app/components/AboutSection";
+import DemoSection from "@/app/components/DemoSection";
+import ResourcesSection from "@/app/components/ResourcesSection";
+import { ContentLayout } from "@suankularb-components/react";
+import type { Metadata } from "next";
+import { FC } from "react";
 
-export default function Home() {
-  return (
-    <main className="p-4">
-      <div className="flex flex-wrap gap-2">
-        <Button appearance="filled">Button</Button>
-        <Button appearance="filled" icon={<MaterialIcon icon="add" />}>
-          Button
-        </Button>
-        <Button appearance="filled" dangerous>
-          Button
-        </Button>
-        <Button appearance="filled" disabled>
-          Button
-        </Button>
-        <Button appearance="tonal">Button</Button>
-        <Button appearance="tonal" dangerous>
-          Button
-        </Button>
-        <Button appearance="tonal" disabled>
-          Button
-        </Button>
-        <Button appearance="outlined">Button</Button>
-        <Button appearance="outlined" dangerous>
-          Button
-        </Button>
-        <Button appearance="outlined" disabled>
-          Button
-        </Button>
-        <Button appearance="text">Button</Button>
-        <Button appearance="text" dangerous>
-          Button
-        </Button>
-        <Button appearance="text" disabled>
-          Button
-        </Button>
-      </div>
-    </main>
-  );
-}
+export const metadata: Metadata = {
+  title: "About",
+};
+
+const AboutPage: FC = () => (
+  <>
+    {/* <PageHeader>About</PageHeader> */}
+    <ContentLayout>
+      <AboutSection />
+      <ResourcesSection />
+      <DemoSection />
+    </ContentLayout>
+  </>
+);
+
+export default AboutPage;
