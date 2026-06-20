@@ -1,0 +1,90 @@
+/* Base Card */
+.skc-card {
+  display: flex;
+  text-align: start;
+  color: var(--on-surface);
+  border-radius: var(--rounded-md);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Appearance */
+.skc-card--outlined {
+  border: 1px solid var(--outline-variant);
+  background-color: var(--surface);
+}
+
+.skc-card--elevated {
+  background-color: var(--surface-container-low);
+  box-shadow: var(--shadow-2);
+}
+
+.skc-card--filled {
+  background-color: var(--surface-variant);
+
+  &.skc-card--row {
+    border: 1px solid var(--outline-variant);
+  }
+}
+
+/* Direction */
+.skc-card,
+.skc-card--column {
+  flex-direction: column;
+}
+
+.skc-card--row {
+  flex-direction: row;
+}
+
+/* State layer effect */
+.skc-card.skc-interactive {
+  --state-layer-color: var(--primary);
+
+  &.skc-card--outlined {
+    transition: border-color var(--motion-short-4) var(--easing-standard);
+
+    &:focus {
+      border-color: var(--primary);
+    }
+  }
+}
+
+/* Shadow effect */
+.skc-interactive--shadow {
+  &.skc-card--outlined {
+    transition:
+      border-color var(--motion-short-4) var(--easing-standard),
+      box-shadow var(--motion-short-4) var(--easing-standard);
+
+    &:hover {
+      border-color: var(--primary);
+    }
+    &:active {
+      border-color: var(--primary);
+    }
+  }
+
+  &.skc-card--elevated.skc-card--shadow {
+    &:hover {
+      box-shadow: var(--shadow-3);
+    }
+    &:active {
+      box-shadow: var(--shadow-2);
+    }
+  }
+}
+
+/* Contextual adaptations */
+.skc-dialog,
+.skc-page-header,
+.skc-card--filled {
+  .skc-card--filled {
+    background-color: var(--surface);
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .skc-fullscreen-dialog .skc-card--filled {
+    background-color: var(--surface);
+  }
+}

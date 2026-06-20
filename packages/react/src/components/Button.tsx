@@ -1,12 +1,15 @@
 "use client";
 
-import "@suankularb-components/css/button.css";
-import type { ReactNode } from "react";
-import type { JSX } from "react/jsx-runtime";
-import type { StyleableFC } from "@/lib/types";
+import { Interactive } from "@/components/Interactive";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
+import type { StyleableFC } from "@/lib/types";
+import "@suankularb-components/css/button.css";
+import type { JSX, ReactNode } from "react";
 
+/**
+ * Props for {@link Button}.
+ */
 export interface ButtonProps {
   /**
    * The text displayed inside the Button.
@@ -126,8 +129,19 @@ export const Button: StyleableFC<ButtonProps> = ({
   className,
   style,
 }) => {
+  const loadingBool = typeof loading === "number" ? true : loading;
+  const isFunctional = !(disabled || loadingBool);
+
   return (
-    <button
+    <Interactive
+      stateLayerEffect={!disabled}
+      rippleEffect={!disabled}
+      aria-label={alt}
+      aria-disabled={!isFunctional}
+      title={tooltip}
+      onClick={isFunctional ? onClick : undefined}
+      href={isFunctional ? href : undefined}
+      element={href ? "a" : "button"}
       className={cn(
         "skc-button",
         `skc-button--${appearance}`,
@@ -138,15 +152,11 @@ export const Button: StyleableFC<ButtonProps> = ({
         className,
       )}
       style={style}
-      aria-label={alt}
-      title={tooltip}
-      onClick={onClick}
-      disabled={disabled || typeof loading === "number" || loading === true}
     >
       {icon}
       <Text type="label-large" className="skc-button__label">
         {children}
       </Text>
-    </button>
+    </Interactive>
   );
 };

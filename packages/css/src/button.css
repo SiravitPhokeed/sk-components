@@ -17,10 +17,6 @@
   overflow: hidden;
   font-family: var(--font-display);
   -webkit-tap-highlight-color: transparent;
-
-  &::before {
-    background-color: var(--state-layer-color);
-  }
 }
 
 .skc-button > .skc-material-icon {

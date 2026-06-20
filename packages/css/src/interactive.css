@@ -1,0 +1,60 @@
+.skc-interactive {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  touch-action: manipulation;
+
+  &:hover::before {
+    opacity: 0.08;
+  }
+  &:is(:focus-visible, :active)::before {
+    opacity: 0.12;
+  }
+}
+
+.skc-interactive--no-state-layer::before {
+  display: none;
+}
+
+.skc-interactive--shadow {
+  transition: box-shadow var(--motion-short-4) var(--easing-standard);
+
+  &:hover {
+    box-shadow: var(--shadow-elevation-1);
+  }
+  &:active {
+    box-shadow: none;
+  }
+}
+
+.skc-interactive::before {
+  position: absolute;
+  opacity: 0;
+  transition: opacity var(--motion-short-3);
+  background-color: var(--state-layer-color);
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  content: "";
+}
+
+.skc-interactive__ripple-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+  filter: blur(0.25rem);
+}
+
+.skc-interactive__ripple {
+  position: absolute;
+  transform: scale(0);
+  opacity: 0.25;
+  transition:
+    transform var(--motion-long-2),
+    opacity var(--motion-long-2);
+  border-radius: var(--rounded-full);
+  background-color: var(--state-layer-color);
+  aspect-ratio: 1 / 1;
+}

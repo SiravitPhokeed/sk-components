@@ -8,8 +8,17 @@
   ],
   "exports": {
     "./tokens.css": "./dist/tokens.css",
+    "./actions.css": "./dist/actions.css",
     "./button.css": "./dist/button.css",
+    "./card.css": "./dist/card.css",
+    "./card-content.css": "./dist/card-content.css",
+    "./card-header.css": "./dist/card-header.css",
+    "./columns.css": "./dist/columns.css",
+    "./content-layout.css": "./dist/content-layout.css",
+    "./header.css": "./dist/header.css",
+    "./interactive.css": "./dist/interactive.css",
     "./material-icon.css": "./dist/material-icon.css",
+    "./section.css": "./dist/section.css",
     "./text.css": "./dist/text.css"
   },
   "scripts": {

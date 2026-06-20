@@ -1,8 +1,8 @@
 import "@suankularb-components/css/text.css";
 
-import type { ReactNode } from "react";
-import type { StyleableFC } from "@/lib/types";
 import cn from "@/lib/helpers/cn";
+import type { StyleableFC } from "@/lib/types";
+import type { ElementType, ReactNode } from "react";
 
 /**
  * Props for {@link Text}.
@@ -20,6 +20,13 @@ export interface TextProps {
     | "large"
     | "medium"
     | "small"}`;
+
+  /**
+   * The element of the most relevant underlying element.
+   *
+   * - Optional.
+   */
+  element?: ElementType;
 }
 
 /**
@@ -28,12 +35,16 @@ export interface TextProps {
 export const Text: StyleableFC<TextProps> = ({
   children,
   type,
+  element: Element = "p",
   className,
   style,
 }) => {
   return (
-    <p className={cn(`skc-text skc-text--${type}`, className)} style={style}>
+    <Element
+      className={cn(`skc-text skc-text--${type}`, className)}
+      style={style}
+    >
       {children}
-    </p>
+    </Element>
   );
 };

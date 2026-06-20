@@ -1,0 +1,48 @@
+.skc-columns {
+  display: grid;
+  align-items: start;
+  gap: 0.5rem 1.5rem;
+  grid-template-columns: repeat(var(--column-count), minmax(0, 1fr));
+}
+
+.skc-columns--2,
+.skc-columns--3,
+.skc-columns--4 {
+  --column-count: 1;
+}
+.skc-columns--6,
+.skc-columns--12 {
+  --column-count: 2;
+}
+
+@media only screen and (min-width: 600px) {
+  .skc-columns--2,
+  .skc-columns--3,
+  .skc-columns--4 {
+    --column-count: 2;
+  }
+  .skc-columns--6 {
+    --column-count: 4;
+  }
+  .skc-columns--12 {
+    --column-count: 8;
+  }
+}
+
+@media only screen and (min-width: 905px) {
+  .skc-columns--2 {
+    --column-count: 2;
+  }
+  .skc-columns--3 {
+    --column-count: 3;
+  }
+  .skc-columns--4 {
+    --column-count: 4;
+  }
+  .skc-columns--6 {
+    --column-count: 6;
+  }
+  .skc-columns--12 {
+    --column-count: 12;
+  }
+}
