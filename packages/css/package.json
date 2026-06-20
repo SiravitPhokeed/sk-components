@@ -9,6 +9,7 @@
   "exports": {
     "./tokens.css": "./dist/tokens.css",
     "./button.css": "./dist/button.css",
+    "./material-icon.css": "./dist/material-icon.css",
     "./text.css": "./dist/text.css"
   },
   "scripts": {

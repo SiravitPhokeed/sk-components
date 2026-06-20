@@ -23,6 +23,11 @@
   }
 }
 
+.skc-button > .skc-material-icon {
+  margin-left: -0.5rem;
+  color: var(--state-layer-color);
+}
+
 .skc-button > .skc-button__label {
   color: var(--state-layer-color);
   font-family: var(--font-display);

@@ -1,0 +1,29 @@
+/**
+ * **Material Icon**
+ * Icons are essential to any web design. They orient the users, help user
+ * navigate, and save space.
+ * Material Icon uses the “Material Symbol” icon font from Google.
+ */
+
+.skc-material-icon {
+  display: block;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.5rem;
+  line-height: 1;
+  font-family: "Material Symbols Outlined";
+  letter-spacing: normal;
+  user-select: none;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-color-scheme: dark) {
+  .skc-material-icon {
+    font-variation-settings: "GRAD" -25;
+  }
+}

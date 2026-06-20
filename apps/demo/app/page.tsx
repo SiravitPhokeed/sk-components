@@ -1,13 +1,13 @@
-import { Button } from "@suankularb-components/react";
+import { Button, MaterialIcon } from "@suankularb-components/react";
 
 export default function Home() {
   return (
     <main className="p-4">
       <div className="flex flex-wrap gap-2">
         <Button appearance="filled">Button</Button>
-        {/* <Button appearance="filled" icon={<MaterialIcon icon="add" />}>
+        <Button appearance="filled" icon={<MaterialIcon icon="add" />}>
           Button
-        </Button> */}
+        </Button>
         <Button appearance="filled" dangerous>
           Button
         </Button>
