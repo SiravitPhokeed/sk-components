@@ -14,6 +14,7 @@
   },
   "scripts": {
     "build": "postcss src/**/*.css --dir dist/ --base src/",
+    "dev": "postcss src/**/*.css --dir dist/ --base src/ --watch",
     "format": "postcss src/**/*.css --replace",
     "prepublishOnly": "pnpm build"
   },

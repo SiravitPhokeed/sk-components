@@ -18,6 +18,7 @@
   ],
   "scripts": {
     "build": "tsup",
+    "dev": "tsup --watch",
     "prepublishOnly": "pnpm build"
   },
   "peerDependencies": {
