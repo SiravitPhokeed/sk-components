@@ -25,7 +25,8 @@
     "react-dom": "^18.0.0 || ^19.0.0"
   },
   "dependencies": {
-    "@suankularb-components/css": "workspace:*"
+    "@suankularb-components/css": "workspace:*",
+    "radash": "^12.1.1"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",

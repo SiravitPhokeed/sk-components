@@ -12,6 +12,7 @@
     "@suankularb-components/css": "workspace:*",
     "@suankularb-components/react": "workspace:*",
     "next": "16.2.9",
+    "radash": "^12.1.1",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
