@@ -1,5 +1,6 @@
 export { Actions, type ActionsProps } from "./Actions";
 export { AppDrawer, type AppDrawerProps } from "./AppDrawer";
+export { Avatar, type AvatarProps } from "./Avatar";
 export { AppDrawerItem, type AppDrawerItemProps } from "./AppDrawerItem";
 export {
   AppDrawerSegment,
@@ -11,6 +12,8 @@ export { CardContent, type CardContentProps } from "./CardContent";
 export { CardHeader, type CardHeaderProps } from "./CardHeader";
 export { Columns, type ColumnsProps } from "./Columns";
 export { ContentLayout, type ContentLayoutProps } from "./ContentLayout";
+export { Divider, type DividerProps } from "./Divider";
+export { FormGroup, type FormGroupProps } from "./FormGroup";
 export { Header, type HeaderProps } from "./Header";
 export { Interactive, type InteractiveProps } from "./Interactive";
 export { MaterialIcon, type MaterialIconProps } from "./MaterialIcon";

@@ -1,0 +1,50 @@
+/**
+ * **Avatar**
+ * An avatar represents the user, whether by their initials or their picture.
+ */
+
+.skc-avatar {
+  position: relative;
+  display: grid;
+  place-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--primary);
+  border-radius: 50%;
+  background-color: var(--primary-container);
+
+  &:has(img) {
+    background-color: var(--surface-container);
+  }
+
+  img,
+  svg {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+  }
+}
+
+/* Contextual adaptations */
+.skc-dialog .skc-avatar:has(img),
+.skc-page-header .skc-avatar:has(img),
+.skc-card--filled .skc-avatar:has(img) {
+  background-color: var(--surface);
+}
+
+@media (min-width: 600px) {
+  .skc-fullscreen-dialog .skc-avatar:has(img) {
+    background-color: var(--surface);
+  }
+}
+
+@media (prefers-contrast: more) {
+  .skc-avatar {
+    color: var(--on-primary-container);
+  }
+}
+
+.skc-avatar__initials {
+  user-select: none;
+}

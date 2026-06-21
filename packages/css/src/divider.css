@@ -1,0 +1,10 @@
+/**
+ * **Divider**
+ * A Divider separates items in a list with a thin line. This is used when
+ * separation cannot be accomplished with Cards or white space.
+ */
+
+.skc-divider {
+  border: none;
+  border-top: 1px solid var(--outline-variant);
+}
