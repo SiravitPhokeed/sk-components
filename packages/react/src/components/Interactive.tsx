@@ -180,7 +180,7 @@ export const Interactive: StyleableFC<
       <span
         aria-hidden
         ref={rippleContainerRef}
-        className="skc-interactive__ripple-container"
+        className="skc-interactive__ripple-layer"
       />
       {children}
     </Element>

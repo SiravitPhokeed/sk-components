@@ -39,12 +39,12 @@
   content: "";
 }
 
-.skc-interactive__ripple-container {
+.skc-interactive__ripple-layer {
   position: absolute;
   inset: 0;
   pointer-events: none;
   user-select: none;
-  filter: blur(0.25rem);
+  filter: blur(0.5rem);
 }
 
 .skc-interactive__ripple {
