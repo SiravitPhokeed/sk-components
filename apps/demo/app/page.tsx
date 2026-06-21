@@ -1,7 +1,7 @@
-import AboutSection from "@/app/components/AboutSection";
-import DemoSection from "@/app/components/DemoSection";
-import ResourcesSection from "@/app/components/ResourcesSection";
+import AboutSection from "@/components/AboutSection";
+import DemoSection from "@/components/DemoSection";
 import PageHeader from "@/components/PageHeader";
+import ResourcesSection from "@/components/ResourcesSection";
 import { ContentLayout } from "@suankularb-components/react";
 import type { Metadata } from "next";
 import { FC } from "react";
