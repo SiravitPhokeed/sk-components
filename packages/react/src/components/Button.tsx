@@ -1,6 +1,8 @@
 "use client";
 
 import { Interactive } from "@/components/Interactive";
+import { MaterialIcon } from "@/components/MaterialIcon";
+import { Progress } from "@/components/Progress";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
@@ -58,7 +60,15 @@ export interface ButtonProps {
    */
   tooltip?: string;
 
-  /** @private */
+  /**
+   * If the Button is selected. `icon` is replaced with a checkmark if this is
+   * true.
+   *
+   * - **Important**: this is intended to be used only when the Button is
+   *   inside a Segmented Button. This prop will still be functional otherwise,
+   *   but it is against Material guidelines.
+   * - Required when inside a Segmented Button.
+   */
   selected?: boolean;
 
   /**
@@ -116,6 +126,15 @@ export interface ButtonProps {
   element?: ElementType;
 }
 
+const STRINGS = {
+  "en-US": {
+    loading: "Loading…",
+  },
+  th: {
+    loading: "กำลังโหลด",
+  },
+};
+
 /**
  * Button helps users take action, whether it’s logging in, liking a post, or
  * going to a page.
@@ -145,7 +164,7 @@ export const Button: StyleableFC<ButtonProps> = ({
   dangerous,
   loading,
   disabled,
-  locale,
+  locale = "en-US",
   onClick,
   href,
   element = href ? "a" : "button",
@@ -176,7 +195,13 @@ export const Button: StyleableFC<ButtonProps> = ({
       )}
       style={style}
     >
-      {icon}
+      <Progress
+        appearance="circular"
+        alt={STRINGS[locale].loading}
+        value={typeof loading === "number" ? loading : undefined}
+        visible={loadingBool}
+      />
+      {selected ? <MaterialIcon icon="done" /> : icon}
       {children && (
         <Text type="label-large" className="skc-button__label" element="span">
           {children}

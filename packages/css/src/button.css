@@ -20,6 +20,13 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+.skc-button {
+  > .skc-material-icon,
+  > .skc-button__label {
+    transition: opacity var(--motion-short-4) var(--easing-standard);
+  }
+}
+
 .skc-button > .skc-material-icon {
   margin-left: -0.25rem;
   color: var(--state-layer-color);
@@ -60,6 +67,25 @@
 
   &:hover {
     box-shadow: none;
+  }
+}
+
+.skc-button .skc-progress {
+  --_indicator-color: var(--state-layer-color);
+  --_remainder-color: transparent;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.skc-button--loading {
+  > .skc-material-icon,
+  > .skc-button__label {
+    opacity: 0;
   }
 }
 
@@ -116,6 +142,9 @@
   &.skc-button--selected {
     --state-layer-color: var(--on-secondary-container);
     background-color: var(--secondary-container);
+    &:focus-visible {
+      border-color: var(--secondary);
+    }
   }
   &.skc-button--dangerous {
     --state-layer-color: var(--error);
