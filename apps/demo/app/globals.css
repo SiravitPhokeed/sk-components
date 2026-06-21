@@ -15,11 +15,11 @@
   --text-8xl: var(--text-8xl);
   --text-9xl: var(--text-9xl);
 
-  --font-thin: var(--font-thin);
-  --font-light: var(--font-light);
-  --font-regular: var(--font-regular);
-  --font-medium: var(--font-medium);
-  --font-bold: var(--font-bold);
+  --font-weight-thin: var(--font-thin);
+  --font-weight-light: var(--font-light);
+  --font-weight-regular: var(--font-regular);
+  --font-weight-medium: var(--font-medium);
+  --font-weight-bold: var(--font-bold);
 
   --font-body: var(--font-body);
   --font-display: var(--font-display);
