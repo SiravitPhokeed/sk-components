@@ -10,3 +10,4 @@ export { Interactive, type InteractiveProps } from "./Interactive";
 export { MaterialIcon, type MaterialIconProps } from "./MaterialIcon";
 export { Section, type SectionProps } from "./Section";
 export { Text, type TextProps } from "./Text";
+export { ThemeProvider } from "./ThemeProvider";

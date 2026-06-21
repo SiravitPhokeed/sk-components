@@ -1,6 +1,6 @@
 import "@/app/globals.css";
 import cn from "@/lib/helpers/cn";
-import "@suankularb-components/css/tokens.css";
+import { ThemeProvider } from "@suankularb-components/react";
 import type { Metadata } from "next";
 import {
   Fira_Code,
@@ -58,6 +58,9 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
         "antialiased",
       )}
     >
+      <head>
+        <ThemeProvider />
+      </head>
       <body className="bg-background font-body">{children}</body>
     </html>
   );
