@@ -147,6 +147,7 @@ export const PageHeader: StyleableFC<PageHeaderProps> = ({
             }
             alt={STRINGS[locale][isTopLevel ? "nav" : "back"]}
             onClick={isTopLevel ? onNavToggle : undefined}
+            href={parentURL}
             element={!isTopLevel ? buttonElement : undefined}
           />
 
