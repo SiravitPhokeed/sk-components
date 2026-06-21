@@ -4,7 +4,7 @@
  */
 
 .skc-app-drawer__toggle {
-  anchor-name: --app-drawer-toggle;
+  anchor-name: --_app-drawer-toggle;
 }
 
 .skc-app-drawer__modal {
@@ -13,7 +13,7 @@
   --padding: 0.5rem;
 
   position: absolute;
-  position-anchor: --app-drawer-toggle;
+  position-anchor: --_app-drawer-toggle;
   top: calc(anchor(bottom) + 0.5rem);
   right: anchor(right);
   bottom: auto;
