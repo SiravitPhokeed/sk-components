@@ -1,3 +1,8 @@
+/**
+ * **Component**
+ * Section is a way to group content under one Header.
+ */
+
 .skc-section {
   display: flex;
   flex-direction: column;

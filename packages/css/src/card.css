@@ -1,3 +1,13 @@
+/**
+ * **Card**
+ *
+ * Card is a container for information and actions about a subject. It can be
+ * in a list, on its own, or as a link to another page; Card is extremely versatile.
+ *
+ * To quote Material Design 3, there is no right way to make a Card. However,
+ * we have provided some useful props and components to get you started.
+ */
+
 /* Base Card */
 .skc-card {
   display: flex;

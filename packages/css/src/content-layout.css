@@ -1,3 +1,8 @@
+/**
+ * **Content Layout**
+ * A simple width-clamped vertical flow of content with minimal default styling.
+ */
+
 .skc-content-layout {
   padding: 1rem 0;
 }

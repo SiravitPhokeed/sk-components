@@ -1,3 +1,8 @@
+/**
+ * **Interactive**
+ * Indicates interactivity with a state layer and a ripple effect.
+ */
+
 .skc-interactive {
   display: block;
   position: relative;

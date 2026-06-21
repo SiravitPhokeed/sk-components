@@ -1,3 +1,8 @@
+/**
+ * **Card Header**
+ * The header of a Card. Sometimes all a Card needs is a Card Header.
+ */
+
 .skc-card-header {
   display: flex;
   align-items: center;
