@@ -19,14 +19,17 @@
     "./card-header.css": "./dist/card-header.css",
     "./columns.css": "./dist/columns.css",
     "./content-layout.css": "./dist/content-layout.css",
+    "./dialog-header.css": "./dist/dialog-header.css",
     "./divider.css": "./dist/divider.css",
     "./form-group.css": "./dist/form-group.css",
     "./header.css": "./dist/header.css",
     "./interactive.css": "./dist/interactive.css",
+    "./list.css": "./dist/list.css",
     "./material-icon.css": "./dist/material-icon.css",
     "./page-header.css": "./dist/page-header.css",
     "./progress.css": "./dist/progress.css",
     "./section.css": "./dist/section.css",
+    "./segmented-button.css": "./dist/segmented-button.css",
     "./text.css": "./dist/text.css"
   },
   "scripts": {

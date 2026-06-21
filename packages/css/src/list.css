@@ -1,0 +1,23 @@
+/**
+ * **List**
+ * A vertical index of texts or images.
+ */
+
+.skc-list {
+  display: grid;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Divided List */
+.skc-list--divided > :not(:last-child) {
+  border-bottom: 1px solid var(--outline-variant);
+}
+
+/* Edge-to-edge on mobile inside a Content Layout section */
+.skc-content-layout__content > .skc-section > .skc-list {
+  margin-inline: 0;
+}
