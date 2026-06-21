@@ -78,7 +78,6 @@ export const MaterialIcon: StyleableFC<MaterialIconProps> = ({
   className,
   style,
 }) => {
-  const sizeRem = `${(size ?? 24) / 16}rem`;
   return (
     <i
       // Hide the icon name from screen readers because sometimes the name
@@ -88,10 +87,7 @@ export const MaterialIcon: StyleableFC<MaterialIconProps> = ({
       aria-hidden
       style={{
         ...style,
-        // Explicitly setting the size prevents cumulative shifts.
-        width: sizeRem,
-        height: sizeRem,
-        fontSize: sizeRem,
+        fontSize: size ? `${size / 16}rem` : undefined,
         // Only include specified font variation settings.
         fontVariationSettings: Object.entries(
           shake({ fill, weight, grade, size }),

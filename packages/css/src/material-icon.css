@@ -17,6 +17,8 @@
   text-transform: none;
   white-space: nowrap;
   word-wrap: normal;
+  width: 1em;
+  height: 1em;
   direction: ltr;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

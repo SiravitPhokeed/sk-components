@@ -1,0 +1,90 @@
+/**
+ * **App Drawer**
+ * A drawer of related apps.
+ */
+
+.skc-app-drawer__toggle {
+  anchor-name: --app-drawer-toggle;
+}
+
+.skc-app-drawer__modal {
+  --easing: var(--easing-emphasized-decelerate);
+  --duration: var(--motion-medium-2);
+  --padding: 0.5rem;
+
+  position: absolute;
+  position-anchor: --app-drawer-toggle;
+  top: calc(anchor(bottom) + 0.5rem);
+  right: anchor(right);
+  bottom: auto;
+  left: auto;
+  flex-direction: column;
+  gap: 0.25rem;
+  transform-origin: top;
+  z-index: 85;
+  transition:
+    opacity var(--duration) var(--easing),
+    transform var(--duration) var(--easing);
+  box-shadow: var(--shadow-1);
+  border-radius: calc(var(--rounded-md) + var(--padding));
+  background-color: var(--surface-variant);
+  padding: var(--padding);
+  width: 20.25rem;
+  overflow: hidden;
+  color: var(--on-surface);
+
+  > * {
+    transition:
+      opacity var(--duration) var(--easing),
+      transform var(--duration) var(--easing);
+  }
+
+  &::backdrop {
+    transition: opacity var(--duration) var(--easing);
+    background-color: var(--scrim);
+  }
+
+  &:popover-open {
+    display: flex;
+    transform: translateY(0) scaleY(1);
+    opacity: 1;
+
+    > * {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+
+    &::backdrop {
+      opacity: 0.5;
+    }
+
+    @starting-style {
+      & {
+        transform: translateY(-1rem) scaleY(0);
+        opacity: 0;
+
+        > * {
+          transform: scaleY(2);
+          opacity: 0;
+        }
+
+        &::backdrop {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
+
+.skc-app-drawer__modal--exiting {
+  transform: scaleY(0);
+  opacity: 0;
+
+  > * {
+    opacity: 0;
+  }
+
+  &::backdrop {
+    opacity: 0;
+  }
+}

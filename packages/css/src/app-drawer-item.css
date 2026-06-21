@@ -1,0 +1,37 @@
+/**
+ * **App Drawer Item**
+ * An app inside the App Drawer. A child of App Drawer Segment.
+ */
+
+.skc-app-drawer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.125rem;
+  width: 4rem;
+}
+
+.skc-app-drawer-item__logo {
+  --state-layer-color: var(--on-surface-variant);
+
+  display: grid;
+  place-content: center;
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--rounded-lg);
+  background-color: var(--surface);
+  aspect-ratio: 1;
+  color-scheme: light;
+
+  &:focus-visible {
+    border-color: var(--primary);
+  }
+
+  > img {
+    max-width: 100%;
+  }
+}
+
+.skc-app-drawer-item__name {
+  color: var(--on-surface);
+  text-align: center;
+}

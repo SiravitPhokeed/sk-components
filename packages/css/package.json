@@ -9,6 +9,9 @@
   "exports": {
     "./theme.css": "./dist/_theme.css",
     "./actions.css": "./dist/actions.css",
+    "./app-drawer.css": "./dist/app-drawer.css",
+    "./app-drawer-item.css": "./dist/app-drawer-item.css",
+    "./app-drawer-segment.css": "./dist/app-drawer-segment.css",
     "./button.css": "./dist/button.css",
     "./card.css": "./dist/card.css",
     "./card-content.css": "./dist/card-content.css",
@@ -18,6 +21,7 @@
     "./header.css": "./dist/header.css",
     "./interactive.css": "./dist/interactive.css",
     "./material-icon.css": "./dist/material-icon.css",
+    "./page-header.css": "./dist/page-header.css",
     "./section.css": "./dist/section.css",
     "./text.css": "./dist/text.css"
   },

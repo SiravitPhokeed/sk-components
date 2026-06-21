@@ -12,16 +12,18 @@
   align-items: center;
   gap: 0.5rem;
   cursor: pointer;
+  border: none;
   border-radius: var(--rounded-full);
-  padding: 0.625rem 1.5rem;
+  padding: 0.625rem 1rem;
   overflow: hidden;
   font-family: var(--font-display);
   -webkit-tap-highlight-color: transparent;
 }
 
 .skc-button > .skc-material-icon {
-  margin-left: -0.5rem;
+  margin-left: -0.25rem;
   color: var(--state-layer-color);
+  font-size: 1.25rem;
 }
 
 .skc-button > .skc-button__label {
@@ -30,11 +32,26 @@
   text-align: center;
 }
 
-.skc-button:not(:has(> span:nth-child(2))) {
+.skc-button:not(:has(> .skc-button__label)) {
   padding-inline: 0.625rem;
 
   > .skc-material-icon {
+    transition: font-weight var(--motion-short-4) var(--easing-standard);
     margin-left: 0;
+    font-size: 1.5rem;
+  }
+
+  &:not(.skc-button--disabled) {
+    &:hover {
+      > .skc-material-icon {
+        font-weight: 600;
+      }
+    }
+    &:active {
+      > .skc-material-icon {
+        font-weight: 300;
+      }
+    }
   }
 }
 
@@ -107,6 +124,7 @@
 
 .skc-button--text {
   --state-layer-color: var(--primary);
+  background-color: transparent;
 
   &.skc-button--disabled {
     --state-layer-color: color-mix(in srgb, var(--on-surface) 38%, transparent);

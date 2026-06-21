@@ -1,0 +1,63 @@
+/**
+ * **Page Header**
+ * There’s exactly one Page Header on every page. It displays the title (in
+ * the only `<h1>` on the page), the back Button for navigating up, and
+ * the App Drawer.
+ */
+
+.skc-page-header {
+  padding: 1rem 0;
+}
+
+.skc-page-header__content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0 0.25rem;
+  margin: 0 auto;
+  padding-inline: 0.5rem 1rem;
+  max-width: 70.5rem;
+}
+
+.skc-page-header__text {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.skc-page-header__blobs {
+  position: absolute;
+  bottom: auto;
+  z-index: -10;
+  inset: 0;
+  pointer-events: none;
+}
+
+.skc-page-header__blob--primary {
+  fill: light-dark(var(--primary-95), var(--primary-20));
+}
+
+.skc-page-header__blob--secondary {
+  fill: light-dark(var(--secondary-90), var(--secondary-20));
+}
+
+.skc-page-header__fade {
+  fill: var(--background);
+}
+
+@media only screen and (min-width: 600px) {
+  .skc-page-header {
+    padding: 1.25rem 2rem 0.5rem;
+  }
+
+  .skc-page-header__content {
+    column-gap: 0.5rem;
+    padding-inline: 0;
+    width: calc(100% - (10rem));
+
+    > .skc-button:first-child {
+      margin-left: -0.5rem;
+    }
+  }
+}

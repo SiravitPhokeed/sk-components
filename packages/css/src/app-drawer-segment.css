@@ -1,0 +1,20 @@
+/**
+ * **App Drawer Segment**
+ * A group of apps in the App Drawer.
+ */
+
+.skc-app-drawer-segment {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: var(--rounded-md);
+  background-color: var(--surface-bright);
+  padding: 1rem;
+}
+
+.skc-app-drawer-segment__content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.75rem;
+}

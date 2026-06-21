@@ -5,7 +5,7 @@ import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/button.css";
-import type { JSX, ReactNode } from "react";
+import type { ElementType, JSX, ReactNode } from "react";
 
 /**
  * Props for {@link Button}.
@@ -107,6 +107,13 @@ export interface ButtonProps {
    * The URL of the page this Button leads to, similar to `href` on `<a>`.
    */
   href?: string;
+
+  /**
+   * The element of the most relevant underlying element.
+   *
+   * - Optional.
+   */
+  element?: ElementType;
 }
 
 /**
@@ -125,7 +132,7 @@ export interface ButtonProps {
  * @param locale Allows for translation of the accessibility labels.
  * @param onClick The function called when the user interacts with the Button.
  * @param href The URL of the page this Button leads to.
- * 
+ *
  * @todo
  */
 export const Button: StyleableFC<ButtonProps> = ({
@@ -141,6 +148,7 @@ export const Button: StyleableFC<ButtonProps> = ({
   locale,
   onClick,
   href,
+  element = href ? "a" : "button",
   className,
   style,
 }) => {
@@ -156,7 +164,7 @@ export const Button: StyleableFC<ButtonProps> = ({
       title={tooltip}
       onClick={isFunctional ? onClick : undefined}
       href={isFunctional ? href : undefined}
-      element={href ? "a" : "button"}
+      element={element}
       className={cn(
         "skc-button",
         `skc-button--${appearance}`,
@@ -169,9 +177,11 @@ export const Button: StyleableFC<ButtonProps> = ({
       style={style}
     >
       {icon}
-      <Text type="label-large" className="skc-button__label">
-        {children}
-      </Text>
+      {children && (
+        <Text type="label-large" className="skc-button__label" element="span">
+          {children}
+        </Text>
+      )}
     </Interactive>
   );
 };

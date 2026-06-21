@@ -1,0 +1,60 @@
+import { Text } from "@/components/Text";
+import cn from "@/lib/helpers/cn";
+import type { StyleableFC } from "@/lib/types";
+import "@suankularb-components/css/app-drawer-segment.css";
+import { useId, type ElementType, type ReactNode } from "react";
+
+/**
+ * Props for {@link AppDrawerSegment App Drawer Segment}.
+ */
+export interface AppDrawerSegmentProps {
+  /**
+   * The apps in this segment.
+   */
+  children: ReactNode;
+
+  /**
+   * The title of the group.
+   */
+  title: string;
+
+  /**
+   * The element of the most relevant underlying element.
+   *
+   * - Optional.
+   */
+  element?: ElementType;
+}
+
+/**
+ * A group of apps in the App Drawer.
+ *
+ * @param children The apps in this segment.
+ * @param title The title of the group.
+ */
+export const AppDrawerSegment: StyleableFC<AppDrawerSegmentProps> = ({
+  children,
+  title,
+  element: Element = "section",
+  style,
+  className,
+}) => {
+  const id = `app-${useId()}`;
+
+  return (
+    <Element
+      aria-labelledby={id}
+      style={style}
+      className={cn("skc-app-drawer-segment", className)}
+    >
+      <Text
+        type="title-medium"
+        className="skc-app-drawer-segment__title"
+        element={(props) => <h3 {...props} id={id} />}
+      >
+        {title}
+      </Text>
+      <ul className="skc-app-drawer-segment__content">{children}</ul>
+    </Element>
+  );
+};
