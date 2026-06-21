@@ -1,3 +1,4 @@
+import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/card-header.css";
@@ -65,8 +66,18 @@ export const CardHeader: StyleableFC<CardHeaderProps> = ({
     <Element className={cn("skc-card-header", className)} style={style}>
       {avatar || icon}
       <div className="skc-card-header__content">
-        <h2 className="skc-card-header__title">{title}</h2>
-        {subtitle && <p className="skc-card-header__subtitle">{subtitle}</p>}
+        <Text
+          type="title-medium"
+          className="skc-card-header__title"
+          element="h2"
+        >
+          {title}
+        </Text>
+        {subtitle && (
+          <Text type="body-medium" className="skc-card-header__subtitle">
+            {subtitle}
+          </Text>
+        )}
       </div>
     </Element>
   );
