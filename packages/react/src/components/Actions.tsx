@@ -34,6 +34,9 @@ export interface ActionsProps {
 
 /**
  * A row of Buttons. Actions handles spacing and overflow.
+ *
+ * @param children Actions contains Buttons; the recommended limit is 3.
+ * @param align How the Buttons should be positioned.
  */
 export const Actions: StyleableFC<ActionsProps> = ({
   children,

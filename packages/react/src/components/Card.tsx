@@ -75,7 +75,19 @@ export interface CardProps {
 }
 
 /**
- * A row of Buttons. Card handles spacing and overflow.
+ * Card is a container for information and actions about a subject. It can be
+ * in a list, on its own, or as a link to another page; Card is extremely versatile.
+ *
+ * To quote Material Design 3, there is no right way to make a Card. However,
+ * we have provided some useful props and components to get you started.
+ *
+ * @param children Card must contain at least 1 JSX element.
+ * @param appearance The appearance of the Card. Each appearance puts different amounts of emphasis on the subject.
+ * @param direction The flow of the Card’s content, like the CSS property `flex-direction`.
+ * @param stateLayerEffect The state layer reacts to changes to the state to signify its interactivity. This effect can be enabled on Card as well.
+ * @param shadowEffect Elevates Card on hover and focus to signify its interactivity.
+ * @param onClick The function called when the user interacts with the Card, similar to `onClick` on `<button>`.
+ * @param href The URL of the page this Card leads to, similar to `href` on `<a>`.
  */
 export const Card: StyleableFC<CardProps> = ({
   children,

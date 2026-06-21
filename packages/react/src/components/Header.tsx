@@ -1,4 +1,7 @@
+"use client";
+
 import { Text } from "@/components/Text";
+import { useSectionId } from "@/components/Section";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/header.css";
@@ -56,6 +59,10 @@ const HEADER_TYPE_BY_LEVEL = {
  *
  * When used in conjunction with Section, the Section can be labeled with the
  * Header for screen readers.
+ *
+ * @param children The text of the Header.
+ * @param level The level of the Header. The number corresponds to an HTML header element.
+ * @param icon An icon can appear before the text (`children`) in a Header.
  */
 export const Header: StyleableFC<HeaderProps> = ({
   children,
@@ -65,10 +72,15 @@ export const Header: StyleableFC<HeaderProps> = ({
   className,
   style,
 }) => {
+  const sectionId = useSectionId();
   const Element = element ?? (`h${level}` as ElementType);
 
   return (
-    <Element className={cn("skc-header", className)} style={style}>
+    <Element
+      id={sectionId ?? undefined}
+      className={cn("skc-header", className)}
+      style={style}
+    >
       {icon}
       <Text type={HEADER_TYPE_BY_LEVEL[level]} element="span">
         {children}

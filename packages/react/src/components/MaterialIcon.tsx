@@ -62,6 +62,12 @@ const FONT_VARIATION_KEYS = {
 /**
  * Icons are essential to any web design. They orient the users, help user navigate, and save space.
  * Material Icon uses the “Material Symbol” icon font from Google.
+ *
+ * @param icon Material Icon uses the “Material Symbol” font, where each icon has its own corresponding text string. You can find the list of all icons at {@link https://fonts.google.com/icons Google Fonts}.
+ * @param fill If the icon is filled or not.
+ * @param weight How thick the strokes are.
+ * @param grade `grade` also adjusts the icon’s thickness, but more subtly.
+ * @param size How large/small the icon is.
  */
 export const MaterialIcon: StyleableFC<MaterialIconProps> = ({
   icon,

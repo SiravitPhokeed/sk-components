@@ -52,6 +52,11 @@ export interface CardHeaderProps {
 
 /**
  * The header of a Card. Sometimes all a Card needs is a Card Header.
+ *
+ * @param avatar An avatar is placed before all content in a Card Header.
+ * @param icon An icon can appear before all content in a Card Header.
+ * @param title The most predominant text inside a Card.
+ * @param subtitle A short text complementing the title text.
  */
 export const CardHeader: StyleableFC<CardHeaderProps> = ({
   avatar,

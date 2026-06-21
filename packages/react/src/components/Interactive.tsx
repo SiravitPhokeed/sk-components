@@ -20,6 +20,8 @@ export interface InteractiveProps {
    *
    * - Enabled by default.
    * - Optional.
+   *
+   * @default true
    */
   stateLayerEffect?: boolean;
 
@@ -29,6 +31,8 @@ export interface InteractiveProps {
    *
    * - Enabled by default.
    * - Optional.
+   *
+   * @default true
    */
   rippleEffect?: boolean;
 
@@ -36,6 +40,8 @@ export interface InteractiveProps {
    * Elevates the content on hover and focus to signify its interactivity.
    *
    * - Optional.
+   *
+   * @default false
    */
   shadowEffect?: boolean;
 
@@ -49,6 +55,8 @@ export interface InteractiveProps {
 
   /**
    * The URL of the page the content leads to, similar to `href` on `<a>`.
+   *
+   * - Optional.
    */
   href?: string;
 
@@ -61,7 +69,15 @@ export interface InteractiveProps {
 }
 
 /**
- * @todo
+ * Indicates interactivity with a state layer and a ripple effect.
+ *
+ * @param children The content to make interactive.
+ * @param stateLayerEffect Show a state layer on top of the content that reacts in color to hover and focus to signify its interactivity.
+ * @param rippleEffect Show an ink ripple effect, a soft-edge translucent circle, radiating out of the click/tap position every click/tap to signify interactivity.
+ * @param shadowEffect Elevates the content on hover and focus to signify its interactivity.
+ * @param onClick The function called when the user interacts with the content, similar to `onClick` on `<button>`.
+ * @param href The URL of the page the content leads to, similar to `href` on `<a>`.
+ * @param element The element of the container.
  */
 export const Interactive: StyleableFC<
   InteractiveProps & ComponentProps<"button" | "a">

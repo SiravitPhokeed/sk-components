@@ -31,6 +31,9 @@ export interface TextProps {
 
 /**
  * A piece of text with a typographic style applied.
+ *
+ * @param children The text to apply the typographic styling to.
+ * @param type The token of the typescale to apply.
  */
 export const Text: StyleableFC<TextProps> = ({
   children,

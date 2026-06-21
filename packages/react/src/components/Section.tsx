@@ -1,7 +1,22 @@
+"use client";
+
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/section.css";
+import { createContext, useContext, useId } from "react";
 import type { ElementType, ReactNode } from "react";
+
+/**
+ * Context that allows a Header inside a Section to pick up the Sectionʼs
+ * generated ID for `aria-labelledby`.
+ */
+const SectionContext = createContext<string | null>(null);
+
+/**
+ * Returns the Section ID if the component is inside a Section, or `null`
+ * otherwise.
+ */
+export const useSectionId = (): string | null => useContext(SectionContext);
 
 export interface SectionProps {
   /**
@@ -20,15 +35,28 @@ export interface SectionProps {
   element?: ElementType;
 }
 
+/**
+ * Section is a way to group content under one Header.
+ *
+ * @param children Section must have exactly 1 Header as the first direct descendent. After that, it can include anything.
+ */
 export const Section: StyleableFC<SectionProps> = ({
   children,
   element: Element = `section`,
   className,
   style,
 }) => {
+  const id = `section-${useId()}`;
+
   return (
-    <Element className={cn("skc-section", className)} style={style}>
-      {children}
-    </Element>
+    <SectionContext.Provider value={id}>
+      <Element
+        aria-labelledby={id}
+        className={cn("skc-section", className)}
+        style={style}
+      >
+        {children}
+      </Element>
+    </SectionContext.Provider>
   );
 };

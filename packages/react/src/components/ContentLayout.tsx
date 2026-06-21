@@ -26,6 +26,8 @@ export interface ContentLayoutProps {
 
 /**
  * A simple width-clamped vertical flow of content with minimal default styling.
+ *
+ * @param children The main content of a page is grouped into Sections inside of a Content Layout.
  */
 export const ContentLayout: StyleableFC<ContentLayoutProps> = ({
   children,

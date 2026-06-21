@@ -24,6 +24,8 @@ export interface CardContentProps {
 
 /**
  * A section of content inside Card.
+ *
+ * @param children Card Content can contain anything, from supporting text to Actions.
  */
 export const CardContent: StyleableFC<CardContentProps> = ({
   children,
