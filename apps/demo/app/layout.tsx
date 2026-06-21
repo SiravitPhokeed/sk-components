@@ -34,6 +34,7 @@ const iconFont = localFont({
   src: "../public/fonts/material-symbols.woff2",
   weight: "100 700",
   style: "normal",
+  variable: "--font-icon",
 });
 
 export const metadata: Metadata = {
@@ -54,14 +55,16 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
         bodyFontTH.className,
         displayFontTH.className,
         monoFont.className,
-        iconFont.className,
+        iconFont.variable,
         "antialiased",
       )}
     >
       <head>
         <ThemeProvider />
       </head>
-      <body className="bg-background font-body">{children}</body>
+      <body className="bg-background font-body text-on-background">
+        {children}
+      </body>
     </html>
   );
 };

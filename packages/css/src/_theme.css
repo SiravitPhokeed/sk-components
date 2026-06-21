@@ -27,6 +27,7 @@
   /* Font family */
   --font-body: "Inter", "Sarabun", sans-serif;
   --font-display: "Space Grotesk", "IBM Plex Sans Thai", sans-serif;
+  --font-icon: "Material Symbols Outlined";
 
   /* Animation duration */
   --motion-short-1: 50ms;
