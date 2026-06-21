@@ -30,6 +30,14 @@
   text-align: center;
 }
 
+.skc-button:not(:has(> span:nth-child(2))) {
+  padding-inline: 0.625rem;
+
+  > .skc-material-icon {
+    margin-left: 0;
+  }
+}
+
 .skc-button--disabled {
   cursor: default;
 
