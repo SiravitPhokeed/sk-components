@@ -101,14 +101,18 @@ export const Card: StyleableFC<CardProps> = ({
   style,
   className,
 }) => {
+  const isInteractive =
+    onClick !== undefined ||
+    href !== undefined ||
+    stateLayerEffect ||
+    shadowEffect;
+  const Element = isInteractive ? Interactive : element || "div";
+
   return (
-    <Interactive
-      stateLayerEffect={stateLayerEffect}
-      rippleEffect={stateLayerEffect}
-      shadowEffect={shadowEffect}
-      href={href}
-      onClick={onClick}
-      element={element}
+    <Element
+      {...(isInteractive
+        ? { stateLayerEffect, shadowEffect, onClick, href, element }
+        : {})}
       style={style}
       className={cn(
         "skc-card",
@@ -124,6 +128,6 @@ export const Card: StyleableFC<CardProps> = ({
       )}
     >
       {children}
-    </Interactive>
+    </Element>
   );
 };
