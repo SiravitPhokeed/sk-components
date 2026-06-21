@@ -37,19 +37,19 @@
   position: absolute;
   opacity: 0;
   transition: opacity var(--motion-short-3);
-  background-color: var(--state-layer-color);
   inset: 0;
   border-radius: inherit;
+  background-color: var(--state-layer-color);
   pointer-events: none;
   content: "";
 }
 
 .skc-interactive__ripple-layer {
   position: absolute;
+  filter: blur(0.5rem);
   inset: 0;
   pointer-events: none;
   user-select: none;
-  filter: blur(0.5rem);
 }
 
 .skc-interactive__ripple {

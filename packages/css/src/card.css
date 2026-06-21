@@ -11,9 +11,9 @@
 /* Base Card */
 .skc-card {
   display: flex;
-  text-align: start;
-  color: var(--on-surface);
   border-radius: var(--rounded-md);
+  color: var(--on-surface);
+  text-align: start;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -24,8 +24,8 @@
 }
 
 .skc-card--elevated {
-  background-color: var(--surface-container-low);
   box-shadow: var(--shadow-2);
+  background-color: var(--surface-container-low);
 }
 
 .skc-card--filled {

@@ -11,8 +11,8 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  max-width: 70.5rem;
   margin: 0 auto;
+  max-width: 70.5rem;
 
   &,
   > .skc-columns {
