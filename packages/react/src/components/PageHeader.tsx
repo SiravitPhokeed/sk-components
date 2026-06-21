@@ -113,7 +113,7 @@ const STRINGS = {
  * @param children The title text: the biggest text on a page and the only within a `<h1>` tag.
  * @param parentURL The link the back Button navigates to.
  * @param locale Allows for translation of the accessibility labels.
- * @param buttonElement Change the underlying element from `<a>` to a custom element.
+ * @param buttonElement Change the underlying element of the back Button from `<a>` to a custom element.
  * @param onBack The function triggered when the back Button is clicked.
  * @param onNavToggle The function called when the user clicks on the navigation Button.
  */
