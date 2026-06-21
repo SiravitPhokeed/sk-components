@@ -24,7 +24,9 @@
   z-index: 85;
   transition:
     opacity var(--duration) var(--easing),
-    transform var(--duration) var(--easing);
+    transform var(--duration) var(--easing),
+    display var(--duration) var(--easing) allow-discrete,
+    overlay var(--duration) var(--easing) allow-discrete;
   box-shadow: var(--shadow-1);
   border-radius: calc(var(--rounded-md) + var(--padding));
   background-color: var(--surface-variant);
@@ -33,58 +35,107 @@
   overflow: hidden;
   color: var(--on-surface);
 
+  /* Closed state — base values for exit transition where supported */
+  opacity: 0;
+  transform: translateY(-1rem) scaleY(0);
+
   > * {
     transition:
       opacity var(--duration) var(--easing),
       transform var(--duration) var(--easing);
+    opacity: 0;
+    transform: scaleY(2);
   }
 
   &::backdrop {
-    transition: opacity var(--duration) var(--easing);
+    transition:
+      opacity var(--duration) var(--easing),
+      display var(--duration) var(--easing) allow-discrete,
+      overlay var(--duration) var(--easing) allow-discrete;
     background-color: var(--scrim);
+    opacity: 0;
   }
 
   &:popover-open {
     display: flex;
-    transform: translateY(0) scaleY(1);
     opacity: 1;
+    transform: translateY(0) scaleY(1);
 
     > * {
-      transform: scaleY(1);
       opacity: 1;
+      transform: scaleY(1);
     }
 
     &::backdrop {
       opacity: 0.5;
+      animation: skc-app-drawer-enter-backdrop var(--duration) var(--easing)
+        backwards;
     }
 
     @starting-style {
-      & {
-        transform: translateY(-1rem) scaleY(0);
+      opacity: 0;
+      transform: translateY(-1rem) scaleY(0);
+
+      > * {
         opacity: 0;
-
-        > * {
-          transform: scaleY(2);
-          opacity: 0;
-        }
-
-        &::backdrop {
-          opacity: 0;
-        }
+        transform: scaleY(2);
       }
     }
   }
 }
 
-.skc-app-drawer__modal--exiting {
-  transform: scaleY(0);
-  opacity: 0;
+/* ── Entry animation for ::backdrop (Safari can't @starting-style it) ── */
 
-  > * {
+@keyframes skc-app-drawer-enter-backdrop {
+  from {
     opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
+/* ── Exit animations (triggered via --exiting class) ── */
+
+@keyframes skc-app-drawer-exit {
+  /* No `translateY` here to make the exit less distracting */
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes skc-app-drawer-exit-children {
+  from {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  to {
+    transform: scaleY(2);
+    opacity: 0;
+  }
+}
+@keyframes skc-app-drawer-exit-backdrop {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.skc-app-drawer__modal.skc-app-drawer__modal--exiting {
+  & {
+    animation: var(--duration) var(--easing) forwards skc-app-drawer-exit;
+  }
+  > * {
+    animation: var(--duration) var(--easing) forwards
+      skc-app-drawer-exit-children;
   }
 
   &::backdrop {
-    opacity: 0;
+    animation: var(--duration) var(--easing) forwards
+      skc-app-drawer-exit-backdrop;
   }
 }

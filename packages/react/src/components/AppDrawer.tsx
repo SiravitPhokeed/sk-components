@@ -2,10 +2,12 @@
 
 import { Button } from "@/components/Button";
 import { MaterialIcon } from "@/components/MaterialIcon";
+import { useAnimatedPopover } from "@/hooks/useAnimatedPopover";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/app-drawer.css";
 import type { ReactNode } from "react";
+import { useRef } from "react";
 
 /**
  * Props for {@link AppDrawer App Drawer}.
@@ -40,6 +42,9 @@ const STRINGS = {
   },
 };
 
+const EXITING_CLASS = "skc-app-drawer__modal--exiting";
+const EXIT_ANIMATION_NAME = "skc-app-drawer-exit";
+
 /**
  * A drawer of related apps.
  *
@@ -54,21 +59,51 @@ export const AppDrawer: StyleableFC<AppDrawerProps> = ({
   style,
   className,
 }) => {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
+
+  const { close, cancelExit, popoverProps } = useAnimatedPopover(drawerRef, {
+    exitingClass: EXITING_CLASS,
+    exitAnimationName: EXIT_ANIMATION_NAME,
+    wrapperRef,
+  });
+
   return (
-    <>
+    <div
+      ref={wrapperRef}
+      className={cn("skc-app-drawer", className)}
+      style={style}
+    >
       <Button
         appearance="text"
         icon={<MaterialIcon icon="apps" />}
-        onClick={onOpen}
-        style={style}
-        className={cn("skc-app-drawer__toggle", className)}
-        element={(props) => <button {...props} popoverTarget="app-drawer" />}
+        onClick={() => {
+          const drawer = drawerRef.current;
+          if (!drawer) return;
+          // If the drawer is already open, toggle close: start exit, or cancel
+          // if already exiting.
+          if (drawer.matches(":popover-open")) {
+            if (drawer.classList.contains(EXITING_CLASS)) cancelExit();
+            else close();
+          }
+          // If the drawer is closed, open it and call `onOpen`.
+          else {
+            onOpen?.();
+            drawer.showPopover();
+          }
+        }}
+        className="skc-app-drawer__toggle"
       >
         {STRINGS[locale].toggle}
       </Button>
-      <div id="app-drawer" className="skc-app-drawer__modal" popover="auto">
+      <div
+        ref={drawerRef}
+        {...popoverProps}
+        className="skc-app-drawer__modal"
+        popover="manual"
+      >
         {children}
       </div>
-    </>
+    </div>
   );
 };
