@@ -22,6 +22,7 @@
     "./interactive.css": "./dist/interactive.css",
     "./material-icon.css": "./dist/material-icon.css",
     "./page-header.css": "./dist/page-header.css",
+    "./progress.css": "./dist/progress.css",
     "./section.css": "./dist/section.css",
     "./text.css": "./dist/text.css"
   },

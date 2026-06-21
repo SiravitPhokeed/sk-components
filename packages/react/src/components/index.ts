@@ -15,6 +15,7 @@ export { Header, type HeaderProps } from "./Header";
 export { Interactive, type InteractiveProps } from "./Interactive";
 export { MaterialIcon, type MaterialIconProps } from "./MaterialIcon";
 export { PageHeader, type PageHeaderProps } from "./PageHeader";
+export { Progress, type ProgressProps } from "./Progress";
 export { Section, type SectionProps } from "./Section";
 export { Text, type TextProps } from "./Text";
 export { ThemeProvider } from "./ThemeProvider";

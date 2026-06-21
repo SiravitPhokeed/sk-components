@@ -1,0 +1,154 @@
+/**
+ * **Progress**
+ * A Progress indicates that something is ongoing. It can also indicate how
+ * much of that something has been done.
+ */
+
+.skc-progress {
+  --_indicator-color: var(--primary);
+  --_remainder-color: var(--primary-container);
+}
+
+/* Linear determinate */
+.skc-progress--linear {
+  .skc-progress__track {
+    position: relative;
+    display: flex;
+    gap: 0.25rem;
+    height: 0.25rem;
+
+    &,
+    > * {
+      border-radius: var(--rounded-full);
+    }
+  }
+
+  .skc-progress__indicator {
+    transition: width var(--motion-short-3) var(--easing-standard);
+    background-color: var(--_indicator-color);
+  }
+
+  .skc-progress__remainder {
+    flex-grow: 1;
+    background-color: var(--_remainder-color);
+  }
+
+  .skc-progress__stop {
+    position: absolute;
+    inset: 0 0 0 auto;
+    aspect-ratio: 1;
+    background-color: var(--_indicator-color);
+  }
+}
+
+@media (prefers-contrast: more) {
+  .skc-progress--linear .skc-progress__remainder {
+    box-sizing: border-box;
+    border: 1px solid var(--_remainder-color);
+    background-color: var(--surface);
+  }
+}
+
+/* Linear indeterminate */
+.skc-progress--indeterminate.skc-progress--linear {
+  .skc-progress__track {
+    overflow-x: hidden;
+
+    > * {
+      position: absolute;
+      inset: 0;
+    }
+  }
+
+  .skc-progress__indicator {
+    z-index: 10;
+    transform: translateX(-100%);
+    animation: skc-progress-linear-dash 1s ease-in-out infinite;
+  }
+  .skc-progress__stop {
+    display: none;
+  }
+}
+
+@keyframes skc-progress-linear-dash {
+  100% {
+    transform: scaleX(0.5) translateX(150%);
+  }
+}
+
+/* Circular determinate */
+.skc-progress--circular {
+  width: 3rem;
+  height: 3rem;
+
+  .skc-progress__track {
+    width: 100%;
+    height: 100%;
+    transform: rotate(270deg);
+
+    > * {
+      stroke-dasharray: 200;
+      stroke-linecap: round;
+      stroke-width: 0;
+      transition:
+        stroke-width var(--motion-short-2) var(--easing-standard),
+        stroke-dashoffset var(--motion-short-2) var(--easing-standard);
+    }
+  }
+
+  .skc-progress__indicator {
+    stroke: var(--_indicator-color);
+  }
+
+  .skc-progress__remainder {
+    stroke: var(--_remainder-color);
+  }
+}
+.skc-progress--visible.skc-progress--circular .skc-progress__track > * {
+  stroke-width: 4px;
+}
+
+@media (prefers-contrast: more) {
+  .skc-progress--circular .skc-progress__remainder {
+    display: none;
+  }
+}
+
+/* Circular indeterminate */
+.skc-progress--indeterminate.skc-progress--circular {
+  .skc-progress__track {
+    transform: rotate(0deg);
+    animation: skc-progress-circular-rotate 2s linear infinite;
+  }
+
+  .skc-progress__indicator {
+    animation: skc-progress-circular-dash 1.5s ease-in-out infinite;
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+
+  .skc-progress__remainder {
+    display: none;
+  }
+}
+
+@keyframes skc-progress-circular-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes skc-progress-circular-dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -135;
+  }
+}
