@@ -176,8 +176,6 @@ export const Button: StyleableFC<ButtonProps> = ({
 
   return (
     <Interactive
-      stateLayerEffect={!disabled}
-      rippleEffect={!disabled}
       aria-label={alt}
       aria-disabled={!isFunctional}
       title={tooltip}
