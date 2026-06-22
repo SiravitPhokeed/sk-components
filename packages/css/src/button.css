@@ -14,7 +14,7 @@
   cursor: pointer;
   border: none;
   border-radius: var(--rounded-full);
-  padding: 0.625rem 1rem;
+  padding: 0.625rem 1.5rem;
   overflow: hidden;
   font-family: var(--font-display);
   -webkit-tap-highlight-color: transparent;
@@ -28,7 +28,7 @@
 }
 
 .skc-button > .skc-material-icon {
-  margin-left: -0.25rem;
+  margin-left: -0.5rem;
   color: var(--state-layer-color);
   font-size: 1.25rem;
 }
@@ -154,6 +154,11 @@
 .skc-button--text {
   --state-layer-color: var(--primary);
   background-color: transparent;
+  padding-inline: 0.75rem;
+
+  > .skc-material-icon {
+    margin-left: -0.25rem;
+  }
 
   &.skc-button--disabled {
     --state-layer-color: color-mix(in srgb, var(--on-surface) 38%, transparent);

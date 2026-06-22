@@ -2,6 +2,7 @@
 
 import { Interactive } from "@/components/Interactive";
 import { MaterialIcon } from "@/components/MaterialIcon";
+import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/chip.css";
@@ -30,6 +31,13 @@ export interface ChipProps {
   icon?: JSX.Element;
 
   /**
+   * Content placed after the label, typically a trailing icon or button.
+   *
+   * - Optional.
+   */
+  trailing?: ReactNode;
+
+  /**
    * A message shown in a tooltip when the user hovers over the Chip.
    *
    * - Optional.
@@ -53,6 +61,22 @@ export interface ChipProps {
    * - Optional.
    */
   selected?: boolean;
+
+  /**
+   * If the action the Chip accomplishes is dangerous, like deleting your
+   * account. If it is, the Chip turns red (defined as `error` in the palette).
+   *
+   * - Optional.
+   */
+  dangerous?: boolean;
+
+  /**
+   * Disable the Chip and signify loading status. `onClick` and `href` will
+   * have no effect.
+   *
+   * - Optional.
+   */
+  loading?: boolean;
 
   /**
    * Turns the Chip gray and blocks any action associated with it. `onClick`
@@ -79,13 +103,6 @@ export interface ChipProps {
    * - Optional.
    */
   element?: ElementType;
-
-  /**
-   * Content placed after the label, typically a trailing icon or button.
-   *
-   * - Optional.
-   */
-  trailing?: ReactNode;
 }
 
 /**
@@ -97,41 +114,46 @@ export interface ChipProps {
 export const Chip: StyleableFC<ChipProps> = ({
   children,
   icon,
+  trailing,
   tooltip,
   elevated,
   selected,
+  dangerous,
+  loading,
   disabled,
   onClick,
   href,
   element = onClick || href ? "button" : "div",
-  trailing,
   style,
   className,
-}) => (
-  <Interactive
-    onClick={disabled ? undefined : onClick}
-    href={disabled ? undefined : href}
-    element={element}
-    aria-disabled={disabled}
-    title={tooltip}
-    className={cn(
-      "skc-chip",
-      elevated && "skc-chip--elevated",
-      selected && "skc-chip--selected",
-      className,
-    )}
-    style={style}
-  >
-    {/* Icon */}
-    {(icon || selected) && (
-      <div className="skc-chip__icon">
-        {selected ? <MaterialIcon icon="done" /> : icon}
-      </div>
-    )}
+}) => {
+  const isFunctional = !(disabled || loading);
 
-    {/* Label */}
-    <span className="skc-chip__label">{children}</span>
+  return (
+    <Interactive
+      onClick={isFunctional ? onClick : undefined}
+      href={isFunctional ? href : undefined}
+      element={element}
+      aria-disabled={!isFunctional}
+      title={tooltip}
+      className={cn(
+        "skc-chip",
+        elevated && "skc-chip--elevated",
+        selected && "skc-chip--selected",
+        dangerous && "skc-chip--dangerous",
+        className,
+      )}
+      style={style}
+    >
+      {/* Icon */}
+      {selected ? <MaterialIcon icon="done" /> : icon}
 
-    {trailing}
-  </Interactive>
-);
+      {/* Label */}
+      <Text type="label-large" className="skc-chip__label" element="span">
+        {children}
+      </Text>
+
+      {trailing}
+    </Interactive>
+  );
+};

@@ -12,6 +12,7 @@
     "./app-drawer.css": "./dist/app-drawer.css",
     "./app-drawer-item.css": "./dist/app-drawer-item.css",
     "./app-drawer-segment.css": "./dist/app-drawer-segment.css",
+    "./assist-chip.css": "./dist/assist-chip.css",
     "./avatar.css": "./dist/avatar.css",
     "./button.css": "./dist/button.css",
     "./card.css": "./dist/card.css",

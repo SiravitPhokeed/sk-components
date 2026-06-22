@@ -6,6 +6,7 @@ export {
   AppDrawerSegment,
   type AppDrawerSegmentProps,
 } from "./AppDrawerSegment";
+export { AssistChip, type AssistChipProps } from "./AssistChip";
 export { Button, type ButtonProps } from "./Button";
 export { Card, type CardProps } from "./Card";
 export { ChipSet, type ChipSetProps } from "./ChipSet";
