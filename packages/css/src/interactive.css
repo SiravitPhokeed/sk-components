@@ -53,6 +53,7 @@
   position: absolute;
   filter: blur(0.5rem);
   inset: 0;
+  overflow: visible;
   pointer-events: none;
   user-select: none;
 
