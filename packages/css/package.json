@@ -56,11 +56,9 @@
   "scripts": {
     "build": "postcss src/**/*.css --dir dist/ --base src/",
     "dev": "postcss src/**/*.css --dir dist/ --base src/ --watch",
-    "format": "postcss src/**/*.css --replace",
     "prepublishOnly": "pnpm build"
   },
   "devDependencies": {
-    "css-declaration-sorter": "^7.2.0",
     "postcss": "^8.5.0",
     "postcss-cli": "^11.0.0"
   }
