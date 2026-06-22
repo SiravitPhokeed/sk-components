@@ -1,15 +1,30 @@
+import AssistChipSection from "@/app/components/actions/components/AssistChipSection";
 import ButtonsSection from "@/app/components/actions/components/ButtonsSection";
+import FilterChipSection from "@/app/components/actions/components/FilterChipSection";
 import SegmentedButtonSection from "@/app/components/actions/components/SegmentedButtonSection";
+import SuggestionChipSection from "@/app/components/actions/components/SuggestionChipSection";
 import PageHeader from "@/components/PageHeader";
-import { ContentLayout } from "@suankularb-components/react";
+import { ContentLayout, Header, Section } from "@suankularb-components/react";
 import type { FC } from "react";
 
 const ActionsPage: FC = () => (
   <>
     <PageHeader parentURL="/components">Actions</PageHeader>
     <ContentLayout>
-      <ButtonsSection />
-      <SegmentedButtonSection />
+      <Section>
+        <Header>Button</Header>
+        <ButtonsSection />
+        <SegmentedButtonSection />
+        {/* <ToggleButtonsSection /> */}
+        {/* <FABsSection /> */}
+      </Section>
+      <Section>
+        <Header>Chips</Header>
+        {/* <InputChipSection /> */}
+        <AssistChipSection />
+        <FilterChipSection />
+        <SuggestionChipSection />
+      </Section>
     </ContentLayout>
   </>
 );
