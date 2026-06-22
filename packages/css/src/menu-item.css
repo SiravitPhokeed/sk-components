@@ -30,16 +30,6 @@
   text-align: right;
 }
 
-.skc-menu-item__ripple {
-  position: absolute;
-  transform: scale(0);
-  opacity: 0.36;
-  filter: blur(16px);
-  border-radius: 50%;
-  background-color: var(--on-surface);
-  pointer-events: none;
-}
-
 .skc-menu-item--selected {
   background-color: var(--surface-container-highest);
 }
