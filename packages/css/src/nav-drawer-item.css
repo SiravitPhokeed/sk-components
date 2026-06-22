@@ -1,0 +1,71 @@
+/**
+ * Navigation Drawer Item
+ * A destination in a Navigation Drawer. Should be a child of a Navigation
+ * Drawer Section.
+ */
+
+.skc-nav-drawer-item {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: var(--rounded-full);
+  padding: 1rem 1.5rem 1rem 1rem;
+  width: 100%;
+  overflow: hidden;
+  color: var(--on-surface);
+  text-align: start;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.skc-nav-drawer-item::before {
+  background-color: var(--on-surface);
+}
+
+.skc-nav-drawer-item:hover::before {
+  opacity: 0.08;
+}
+
+.skc-nav-drawer-item:focus-visible::before,
+.skc-nav-drawer-item:active::before {
+  opacity: 0.12;
+}
+
+.skc-nav-drawer-item.skc-nav-drawer-item--selected {
+  background-color: var(--secondary-container);
+  color: var(--on-secondary-container);
+}
+
+.skc-nav-drawer-item.skc-nav-drawer-item--selected::before,
+.skc-nav-drawer-item.skc-nav-drawer-item--selected
+  .skc-nav-drawer-item__ripple {
+  background-color: var(--on-secondary-container);
+}
+
+.skc-nav-drawer-item.skc-nav-drawer-item--selected .skc-nav-drawer-item__label {
+  font-weight: var(--font-bold);
+}
+
+.skc-nav-drawer-item__icon .skc-icon {
+  /* icon sizing handled by MaterialIcon component */
+}
+
+.skc-nav-drawer-item.skc-nav-drawer-item--selected
+  .skc-nav-drawer-item__icon
+  .skc-icon {
+  /* icon sizing handled by MaterialIcon component */
+}
+
+.skc-nav-drawer-item__label {
+  flex-grow: 1;
+}
+
+.skc-nav-drawer-item__metadata {
+  /* typography handled by <Text> component */
+}
+
+.skc-nav-drawer-item__ripple {
+  background-color: var(--on-surface);
+}

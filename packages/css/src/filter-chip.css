@@ -1,0 +1,9 @@
+/**
+ * **Filter Chip**
+ * A set of Filter Chips provide product-authored options to narrow down
+ * content. A Filter Chip should never appear alone and should be a child of
+ * Chip Set.
+ */
+
+/* No additional styles are needed for the Filter Chip component.
+   It is a variant of the Chip component and inherits all styles from it. */

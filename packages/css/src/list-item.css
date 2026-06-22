@@ -1,0 +1,54 @@
+/**
+ * **List Item**
+ * A vertical index of texts or images.
+ */
+
+/* Base List Item */
+.skc-list-item {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  box-sizing: border-box;
+  border: 0;
+  background-color: transparent;
+  padding: 0.5rem 2rem 0.5rem 1rem;
+  width: 100%;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+/* Alignment */
+.skc-list-item.skc-list-item--top {
+  align-items: flex-start;
+}
+
+.skc-list-item.skc-list-item--center {
+  align-items: center;
+}
+
+.skc-list-item.skc-list-item--bottom {
+  align-items: flex-end;
+}
+
+/* Lines */
+.skc-list-item.skc-list-item--3-lines {
+  padding-block: 0.75rem;
+}
+
+/* State layer */
+.skc-list-item.skc-list-item--state-layer {
+  --state-layer-color: var(--on-surface);
+}
+
+/* Image */
+.skc-list-item > img {
+  background-color: var(--surface-variant);
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+@media (min-width: 600px) {
+  .skc-columns > .skc-list-item.skc-list-item--state-layer {
+    border-radius: var(--rounded-md);
+  }
+}

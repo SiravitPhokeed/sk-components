@@ -77,7 +77,6 @@ export interface InteractiveProps {
  * @param shadowEffect Elevates the content on hover and focus to signify its interactivity.
  * @param onClick The function called when the user interacts with the content, similar to `onClick` on `<button>`.
  * @param href The URL of the page the content leads to, similar to `href` on `<a>`.
- * @param element The element of the container.
  */
 export const Interactive: StyleableFC<
   InteractiveProps & ComponentProps<"button" | "a">

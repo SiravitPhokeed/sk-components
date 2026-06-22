@@ -116,14 +116,8 @@ export const Card: StyleableFC<CardProps> = ({
       style={style}
       className={cn(
         "skc-card",
-        appearance === "outlined"
-          ? "skc-card--outlined"
-          : appearance === "elevated"
-            ? "skc-card--elevated"
-            : appearance === "filled"
-              ? "skc-card--filled"
-              : undefined,
-        direction === "row" ? "skc-card--row" : "skc-card--column",
+        `skc-card--${appearance}`,
+        `skc-card--${direction}`,
         className,
       )}
     >

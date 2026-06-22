@@ -65,7 +65,7 @@ export const DialogHeader: StyleableFC<DialogHeaderProps> = ({
   const dialogID = `dialog-${useId()}`;
 
   return (
-    <Element style={style} className={cn("skc-dialog-header", className)}>
+    <Element className={cn("skc-dialog-header", className)} style={style}>
       {icon}
       {title && (
         <Text id={`${dialogID}-title`} type="headline-small" element="h2">

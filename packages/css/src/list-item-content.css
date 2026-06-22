@@ -1,0 +1,24 @@
+/**
+ * **List Item Content**
+ * The text content of a List Item.
+ */
+
+.skc-list-item-content {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  text-align: left;
+}
+
+.skc-list-item-content__overline {
+  color: var(--on-surface-variant);
+  font-family: var(--font-display);
+}
+
+.skc-list-item-content__title {
+  color: var(--on-surface);
+}
+
+.skc-list-item-content__desc {
+  color: var(--on-surface-variant);
+}

@@ -1,0 +1,77 @@
+/**
+ * Root Layout
+ *
+ * The container of everything inside an application. Components which must
+ * appear only once in like Navigation Drawer, Navigation Bar, FAB, and Page
+ * Header only work optimally as direct descendants of Root Layout.
+ *
+ * Root Layout handles positioning of components and responsiveness.
+ */
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.skc-root-layout {
+  padding-bottom: 5rem;
+  font-size: var(--text-base);
+}
+
+.skc-root-layout > .skc-nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 70;
+
+  .skc-fab {
+    position: fixed;
+    right: 1rem;
+    bottom: 5rem + 1rem;
+  }
+}
+
+.skc-root-layout > .skc-nav-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 90;
+}
+
+.skc-root-layout > .skc-progress {
+  position: fixed;
+  bottom: auto;
+  inset: 0;
+}
+
+.skc-scrim {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.5;
+  z-index: 90;
+  background-color: var(--black);
+}
+
+@media (min-width: 600px) {
+  .skc-root-layout {
+    padding-bottom: 0;
+  }
+
+  .skc-root-layout > .skc-nav-bar {
+    top: 0;
+    bottom: initial;
+
+    ~ .skc-progress {
+      left: 5rem;
+    }
+
+    .skc-fab {
+      position: relative;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}

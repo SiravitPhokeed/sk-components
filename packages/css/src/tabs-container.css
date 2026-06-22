@@ -1,0 +1,30 @@
+/**
+ * Tabs Container
+ * A group of Tabs. Tabs allow the user to switch between pages on the same
+ * level of a page hierarchy. For example, an Overview, Students, and Teachers
+ * page of a class.
+ */
+
+.skc-tabs-container {
+  border-bottom: 1px solid var(--surface-variant);
+}
+
+.skc-tabs-container__content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin: 0;
+  margin-inline: auto;
+  padding: 0;
+  width: 100%;
+  max-width: 32rem;
+  list-style: none;
+
+  > li {
+    width: 100%;
+  }
+}
+
+.skc-section .skc-tabs-container {
+  margin-inline: 0;
+}

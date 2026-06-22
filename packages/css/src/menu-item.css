@@ -1,0 +1,67 @@
+/**
+ * **Menu item**
+ * An action/option inside a temporary list.
+ */
+
+.skc-menu-item {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 1.5rem 0.5rem 1rem;
+  width: 100%;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.skc-menu-item::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity var(--motion-short-4) var(--easing-standard);
+  border-radius: inherit;
+  background-color: var(--on-surface);
+  pointer-events: none;
+  content: "";
+}
+
+.skc-menu-item:hover::before {
+  opacity: 0.08;
+}
+
+.skc-menu-item:focus::before,
+.skc-menu-item:active::before {
+  opacity: 0.12;
+}
+
+.skc-menu-item.skc-menu-item--selected {
+  background-color: var(--surface-container-highest);
+}
+
+.skc-menu-item__label {
+  flex-grow: 1;
+  margin-block: 0.5rem;
+  color: var(--on-surface);
+  text-align: left;
+}
+
+.skc-menu-item__metadata {
+  color: var(--on-surface-variant);
+  text-align: right;
+}
+
+.skc-menu-item__ripple {
+  position: absolute;
+  transform: scale(0);
+  opacity: 0.36;
+  filter: blur(16px);
+  border-radius: 50%;
+  background-color: var(--on-surface);
+  pointer-events: none;
+  content: "";
+}

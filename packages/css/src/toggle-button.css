@@ -1,0 +1,216 @@
+/**
+ * **Toggle Button**
+ * A Button with just an icon that can be toggled on and off.
+ */
+
+/* Base Toggle Button */
+.skc-toggle-button {
+  display: grid;
+  position: relative;
+  place-content: center;
+  cursor: pointer;
+  border: 0;
+  border-radius: var(--rounded-full);
+  background-color: var(--_background-color);
+  padding: 0.5rem;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--motion-short-4) var(--easing-standard),
+    color var(--motion-short-4) var(--easing-standard);
+}
+
+/* State layer */
+.skc-toggle-button::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity var(--motion-short-4) var(--easing-standard);
+  border-radius: inherit;
+  background-color: var(--_foreground-color);
+  pointer-events: none;
+  content: "";
+}
+
+.skc-toggle-button:hover::before {
+  opacity: 0.08;
+}
+
+.skc-toggle-button:is(:focus, :active)::before {
+  opacity: 0.12;
+}
+
+/* Disabled */
+.skc-toggle-button[aria-disabled="true"] {
+  cursor: default;
+}
+
+.skc-toggle-button[aria-disabled="true"]:is(:hover, :focus, :active)::before {
+  opacity: 0;
+}
+
+.skc-toggle-button[aria-disabled="true"]:is(:hover, :focus, :active)
+  > .skc-interactive__ripple {
+  background-color: transparent !important;
+}
+
+/* Icon */
+.skc-toggle-button .skc-icon {
+  color: var(--_foreground-color);
+}
+
+/* Ripple */
+.skc-toggle-button > .skc-interactive__ripple {
+  position: absolute;
+  transform: scale(0);
+  opacity: 0.36;
+  filter: blur(16px);
+  border-radius: 50%;
+  background-color: var(--_foreground-color);
+  pointer-events: none;
+  content: "";
+}
+
+/* Filled Toggle Button */
+.skc-toggle-button.skc-toggle-button--filled {
+  --_foreground-color: var(--primary);
+  --_background-color: var(--surface-variant);
+}
+
+.skc-toggle-button.skc-toggle-button--filled.skc-toggle-button--selected {
+  --_foreground-color: var(--on-primary);
+  --_background-color: var(--primary);
+}
+
+.skc-toggle-button.skc-toggle-button--filled.skc-toggle-button--dangerous {
+  --_foreground-color: var(--error);
+  --_background-color: var(--error-container);
+}
+
+.contrast-medium
+  .skc-toggle-button.skc-toggle-button--filled.skc-toggle-button--dangerous,
+.contrast-high
+  .skc-toggle-button.skc-toggle-button--filled.skc-toggle-button--dangerous {
+  --_foreground-color: var(--on-error-container);
+  --_background-color: var(--error-container);
+}
+
+.skc-toggle-button.skc-toggle-button--filled.skc-toggle-button--dangerous.skc-toggle-button--selected {
+  --_foreground-color: var(--on-error);
+  --_background-color: var(--error);
+}
+
+.skc-toggle-button.skc-toggle-button--filled[aria-disabled="true"] {
+  opacity: 0.38;
+  background-color: transparent;
+  color: var(--on-surface);
+}
+
+.skc-toggle-button.skc-toggle-button--filled[aria-disabled="true"]::before {
+  opacity: 0.316;
+  background-color: var(--on-surface);
+}
+
+/* Tonal Toggle Button */
+.skc-toggle-button.skc-toggle-button--tonal {
+  --_foreground-color: var(--on-surface-variant);
+  --_background-color: var(--surface-variant);
+}
+
+.skc-toggle-button.skc-toggle-button--tonal.skc-toggle-button--selected {
+  --_foreground-color: var(--on-secondary-container);
+  --_background-color: var(--secondary-container);
+}
+
+.skc-toggle-button.skc-toggle-button--tonal.skc-toggle-button--dangerous {
+  --_foreground-color: var(--error);
+  --_background-color: var(--error-container);
+}
+
+.contrast-medium
+  .skc-toggle-button.skc-toggle-button--tonal.skc-toggle-button--dangerous,
+.contrast-high
+  .skc-toggle-button.skc-toggle-button--tonal.skc-toggle-button--dangerous {
+  --_foreground-color: var(--on-error-container);
+  --_background-color: var(--error-container);
+}
+
+.skc-toggle-button.skc-toggle-button--tonal.skc-toggle-button--dangerous.skc-toggle-button--selected {
+  --_foreground-color: var(--on-error);
+  --_background-color: var(--error);
+}
+
+.skc-toggle-button.skc-toggle-button--tonal[aria-disabled="true"] {
+  opacity: 0.38;
+  background-color: transparent;
+  color: var(--on-surface);
+}
+
+.skc-toggle-button.skc-toggle-button--tonal[aria-disabled="true"]::before {
+  opacity: 0.316;
+  background-color: var(--on-surface);
+}
+
+/* Outlined Toggle Button */
+.skc-toggle-button.skc-toggle-button--outlined {
+  --_foreground-color: var(--on-surface);
+  --_background-color: transparent;
+  border: 1px solid var(--outline);
+}
+
+.skc-toggle-button.skc-toggle-button--outlined.skc-toggle-button--selected {
+  --_foreground-color: var(--inverse-on-surface);
+  --_background-color: var(--inverse-surface);
+  border-color: var(--inverse-surface);
+}
+
+.skc-toggle-button.skc-toggle-button--outlined.skc-toggle-button--dangerous {
+  --_foreground-color: var(--error);
+}
+
+.skc-toggle-button.skc-toggle-button--outlined.skc-toggle-button--dangerous.skc-toggle-button--selected {
+  --_foreground-color: var(--error-container);
+}
+
+.skc-toggle-button.skc-toggle-button--outlined[aria-disabled="true"] {
+  opacity: 0.38;
+  border-color: transparent;
+  color: var(--on-surface);
+}
+
+.skc-toggle-button.skc-toggle-button--outlined[aria-disabled="true"]::before {
+  opacity: 0.316;
+  border: 1px solid var(--on-surface);
+  background-color: transparent;
+}
+
+.skc-toggle-button.skc-toggle-button--outlined[aria-disabled="true"].skc-toggle-button--selected {
+  background-color: transparent;
+}
+
+.skc-toggle-button.skc-toggle-button--outlined[aria-disabled="true"].skc-toggle-button--selected::before {
+  border-color: transparent;
+  background-color: var(--on-surface);
+}
+
+/* Standard Toggle Button */
+.skc-toggle-button.skc-toggle-button--standard {
+  --_foreground-color: var(--on-surface);
+  --_background-color: transparent;
+}
+
+.skc-toggle-button.skc-toggle-button--standard.skc-toggle-button--selected {
+  --_foreground-color: var(--primary);
+}
+
+.skc-toggle-button.skc-toggle-button--standard.skc-toggle-button--dangerous {
+  --_foreground-color: var(--error);
+}
+
+.skc-toggle-button.skc-toggle-button--standard[aria-disabled="true"] {
+  opacity: 0.38;
+  color: var(--on-surface);
+}

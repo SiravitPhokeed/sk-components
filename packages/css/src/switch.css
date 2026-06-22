@@ -1,0 +1,161 @@
+/**
+ * **Switch**
+ * A Switch toggles something on and off. It is usually in a Form Item. Unlike
+ * Checkbox and Radio, a Switch is independent.
+ * {@link https://m3.material.io/components/switch/guidelines#4f51b236-583e-4caa-9ae6-c8079325ef6b Learn the differences.}
+ */
+
+/* Base Switch */
+.skc-switch {
+  position: relative;
+  transition:
+    background-color var(--motion-short-4) var(--easing-standard),
+    border-color var(--motion-short-4) var(--easing-standard);
+  cursor: pointer;
+  outline: none;
+  border: 2px solid var(--outline);
+  border-radius: var(--rounded-full);
+  background-color: var(--surface-variant);
+  width: 3.25rem;
+  height: 2rem;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.skc-switch:not([aria-disabled="true"]):active > .skc-switch__handle {
+  inset: 0 auto auto 0;
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.skc-switch:not([aria-disabled="true"]):hover > .skc-switch__handle,
+.skc-switch:not([aria-disabled="true"]):focus > .skc-switch__handle,
+.skc-switch:not([aria-disabled="true"]):active > .skc-switch__handle {
+  background-color: var(--on-surface-variant);
+}
+
+/* Disabled */
+.skc-switch[aria-disabled="true"] {
+  opacity: 0.38;
+  cursor: default;
+  border-color: transparent;
+  background-color: transparent;
+  color: var(--on-surface);
+}
+
+.skc-switch[aria-disabled="true"]::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.3158;
+  transition: opacity var(--motion-short-4) var(--easing-standard);
+  border: 2px solid var(--on-surface);
+  border-radius: inherit;
+  pointer-events: none;
+  content: "";
+}
+
+/* Selected Switch */
+.skc-switch--selected {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.skc-switch--selected > .skc-switch__handle {
+  fill: var(--on-primary-container);
+  stroke: var(--on-primary-container);
+  inset: calc(0.25rem - 2px) auto auto calc(1.5rem - 2px);
+  background-color: var(--on-primary);
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--on-primary-container);
+}
+
+.skc-switch--selected:not([aria-disabled="true"])
+  > .skc-switch__handle::before {
+  background-color: var(--primary);
+}
+
+.skc-switch--selected:not([aria-disabled="true"]):active > .skc-switch__handle {
+  inset: 0 auto auto 1.25rem;
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.skc-switch--selected:not([aria-disabled="true"]):hover > .skc-switch__handle,
+.skc-switch--selected:not([aria-disabled="true"]):focus > .skc-switch__handle,
+.skc-switch--selected:not([aria-disabled="true"]):active > .skc-switch__handle {
+  background-color: var(--primary-container);
+}
+
+/* Disabled selected */
+.skc-switch--selected[aria-disabled="true"] {
+  opacity: 0.12;
+  cursor: default;
+  border-color: var(--on-surface);
+  background-color: var(--on-surface);
+}
+
+.skc-switch--selected[aria-disabled="true"]::before {
+  display: none;
+}
+
+.skc-switch--selected[aria-disabled="true"] > .skc-switch__handle {
+  background-color: var(--surface);
+  color: var(--on-surface);
+}
+
+/* Switch handle */
+.skc-switch__handle {
+  display: grid;
+  position: absolute;
+  place-content: center;
+  transition:
+    inset var(--motion-short-4) var(--easing-standard),
+    width var(--motion-short-4) var(--easing-standard),
+    height var(--motion-short-4) var(--easing-standard),
+    background-color var(--motion-short-4) var(--easing-standard);
+  fill: var(--surface-variant);
+  stroke: var(--surface-variant);
+  inset: calc(0.5rem - 2px) auto auto calc(0.5rem - 2px);
+  outline: none;
+  border-radius: var(--rounded-full);
+  background-color: var(--outline);
+  width: 1rem;
+  height: 1rem;
+  color: var(--surface-variant);
+}
+
+.skc-switch__handle:has(*) {
+  inset: calc(0.25rem - 2px) auto auto calc(0.25rem - 2px);
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.skc-switch__handle::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity var(--motion-short-4) var(--easing-standard);
+  inset: 50% auto auto 50%;
+  border-radius: inherit;
+  background-color: var(--on-surface);
+  width: 2.5rem;
+  height: 2.5rem;
+  pointer-events: none;
+  content: "";
+}
+
+.skc-switch:not([aria-disabled="true"]):hover .skc-switch__handle::before {
+  opacity: 0.08;
+}
+
+.skc-switch:not([aria-disabled="true"]):focus .skc-switch__handle::before,
+.skc-switch:not([aria-disabled="true"]):active .skc-switch__handle::before {
+  opacity: 0.12;
+}

@@ -1,0 +1,23 @@
+/**
+ * **Dialog Content**
+ * Additional content that supplements the Dialog Header. This is where the
+ * user can see more details about a decision or a space for the user to enter
+ * information.
+ */
+
+/* Match List Item padding with the Dialog's */
+.skc-dialog-content > .skc-list > .skc-list-item {
+  padding-inline: 1.5rem 2rem;
+}
+
+/* Add padding to Dialog Header when Dialog Content is present */
+.skc-dialog:has(.skc-dialog-content) .skc-dialog-header {
+  padding-bottom: 1.5rem;
+}
+
+/* Scrollable variant */
+.skc-dialog-content.skc-dialog-content--scrollable {
+  border-top: 1px solid var(--outline);
+  border-bottom: 1px solid var(--outline);
+  overflow-y: auto;
+}

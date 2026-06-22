@@ -57,7 +57,7 @@ export const AppDrawerItem: StyleableFC<AppDrawerItemProps> = ({
   const id = `app-${useId()}`;
 
   return (
-    <Element style={style} className={cn("skc-app-drawer-item", className)}>
+    <Element className={cn("skc-app-drawer-item", className)} style={style}>
       <Interactive
         onClick={onClick}
         href={href}

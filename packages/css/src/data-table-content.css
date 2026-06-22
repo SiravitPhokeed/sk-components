@@ -1,0 +1,25 @@
+/**
+ * **Data Table Content**
+ * The main part of a Data Table.
+ */
+
+.skc-data-table-content {
+  background-color: var(--surface);
+  width: 100%;
+  /* On mobile, allow horizontal scroll. Disabled at md+ because overflow-x
+     forces overflow-y: auto per the CSS spec, which interferes with Menus. */
+  overflow-x: auto;
+}
+
+.skc-data-table-content__content {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  text-indent: 0;
+}
+
+@media (min-width: 900px) {
+  .skc-data-table-content {
+    overflow-x: visible;
+  }
+}

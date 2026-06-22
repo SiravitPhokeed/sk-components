@@ -23,4 +23,4 @@ export const Divider: StyleableFC<DividerProps> = ({
   element: Element = "hr",
   style,
   className,
-}) => <Element style={style} className={cn("skc-divider", className)} />;
+}) => <Element className={cn("skc-divider", className)} style={style} />;

@@ -1,0 +1,20 @@
+/**
+ * **Table**
+ * A Table displays information in columns and rows, each row representing a
+ * set of data in each aspect, represented by columns.
+ */
+
+.skc-table {
+  border: 2px solid var(--outline-variant);
+  border-radius: 1.25rem;
+  background-color: var(--surface-container-low);
+  overflow: auto;
+}
+
+.skc-table__content {
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: var(--surface);
+  width: 100%;
+  text-indent: 0;
+}
