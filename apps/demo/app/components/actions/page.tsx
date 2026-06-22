@@ -3,6 +3,7 @@ import ButtonsSection from "@/app/components/actions/components/ButtonsSection";
 import FilterChipSection from "@/app/components/actions/components/FilterChipSection";
 import SegmentedButtonSection from "@/app/components/actions/components/SegmentedButtonSection";
 import SuggestionChipSection from "@/app/components/actions/components/SuggestionChipSection";
+import ToggleButtonsSection from "@/app/components/actions/components/ToggleButtonsSection";
 import PageHeader from "@/components/PageHeader";
 import { ContentLayout, Header, Section } from "@suankularb-components/react";
 import type { FC } from "react";
@@ -15,7 +16,7 @@ const ActionsPage: FC = () => (
         <Header>Button</Header>
         <ButtonsSection />
         <SegmentedButtonSection />
-        {/* <ToggleButtonsSection /> */}
+        <ToggleButtonsSection />
         {/* <FABsSection /> */}
       </Section>
       <Section>
