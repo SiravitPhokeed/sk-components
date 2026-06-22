@@ -1,9 +1,11 @@
 /**
- * **Menu item**
+ * **Menu Item**
  * An action/option inside a temporary list.
  */
 
 .skc-menu-item {
+  --state-layer-color: var(--on-surface);
+
   display: flex;
   position: relative;
   flex-direction: row;
@@ -14,33 +16,6 @@
   width: 100%;
   overflow: hidden;
   -webkit-tap-highlight-color: transparent;
-}
-
-.skc-menu-item::before {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity var(--motion-short-4) var(--easing-standard);
-  border-radius: inherit;
-  background-color: var(--on-surface);
-  pointer-events: none;
-  content: "";
-}
-
-.skc-menu-item:hover::before {
-  opacity: 0.08;
-}
-
-.skc-menu-item:focus::before,
-.skc-menu-item:active::before {
-  opacity: 0.12;
-}
-
-.skc-menu-item.skc-menu-item--selected {
-  background-color: var(--surface-container-highest);
 }
 
 .skc-menu-item__label {
@@ -63,5 +38,8 @@
   border-radius: 50%;
   background-color: var(--on-surface);
   pointer-events: none;
-  content: "";
+}
+
+.skc-menu-item--selected {
+  background-color: var(--surface-container-highest);
 }

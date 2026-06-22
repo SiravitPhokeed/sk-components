@@ -1,20 +1,4 @@
 /**
  * **Suggestion Chip**
- *
  * Dynamically generated suggestions, like quick-reply options, for instance.
  */
-
-.skc-suggestion-chip {
-  &:has(.skc-suggestion-chip__icon:first-child) {
-    padding-left: 0.5rem;
-  }
-}
-
-.skc-suggestion-chip--elevated {
-}
-
-.skc-suggestion-chip__label {
-}
-
-.skc-suggestion-chip__icon {
-}

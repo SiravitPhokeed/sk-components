@@ -3,7 +3,8 @@
  * A Button with just an icon that can be toggled on and off.
  */
 
-/* Base Toggle Button */
+/* ── Block ── */
+
 .skc-toggle-button {
   --duration: var(--motion-short-4);
   --easing: var(--easing-standard);
@@ -16,154 +17,133 @@
   transition:
     background-color var(--duration) var(--easing),
     color var(--duration) var(--easing);
+
+  .skc-material-icon {
+    color: var(--state-layer-color);
+    transition:
+      font-variation-settings var(--motion-short-4) var(--easing-standard),
+      color var(--motion-short-4) var(--easing-standard);
+  }
+
+  /* Disabled */
+  &[aria-disabled="true"] {
+    opacity: 0.38;
+    background-color: transparent;
+    color: var(--on-surface);
+  }
 }
 
-/* Icon */
-.skc-toggle-button .skc-material-icon {
-  color: var(--state-layer-color);
-  transition:
-    font-variation-settings var(--motion-short-4) var(--easing-standard),
-    color var(--motion-short-4) var(--easing-standard);
-}
+/* ── Modifiers ── */
 
+/* Selected */
 .skc-toggle-button--selected .skc-material-icon {
   font-variation-settings: "FILL" 1;
 }
 
-/* Filled Toggle Button */
-.skc-toggle-button.skc-toggle-button--filled {
+/* Filled */
+.skc-toggle-button--filled {
   --state-layer-color: var(--primary);
   background-color: var(--surface-variant);
+
+  &.skc-toggle-button--selected {
+    --state-layer-color: var(--on-primary);
+    background-color: var(--primary);
+  }
+
+  &.skc-toggle-button--dangerous {
+    --state-layer-color: var(--error);
+    background-color: var(--error-container);
+
+    @media (prefers-contrast: more) {
+      --state-layer-color: var(--on-error-container);
+    }
+
+    &.skc-toggle-button--selected {
+      --state-layer-color: var(--on-error);
+      background-color: var(--error);
+    }
+  }
 }
 
-.skc-toggle-button.skc-toggle-button--filled.skc-toggle-button--selected {
-  --state-layer-color: var(--on-primary);
-  background-color: var(--primary);
-}
-
-.skc-toggle-button.skc-toggle-button--filled.skc-toggle-button--dangerous {
-  --state-layer-color: var(--error);
-  background-color: var(--error-container);
-}
-
-.contrast-medium
-  .skc-toggle-button.skc-toggle-button--filled.skc-toggle-button--dangerous,
-.contrast-high
-  .skc-toggle-button.skc-toggle-button--filled.skc-toggle-button--dangerous {
-  --state-layer-color: var(--on-error-container);
-  background-color: var(--error-container);
-}
-
-.skc-toggle-button.skc-toggle-button--filled.skc-toggle-button--dangerous.skc-toggle-button--selected {
-  --state-layer-color: var(--on-error);
-  background-color: var(--error);
-}
-
-.skc-toggle-button.skc-toggle-button--filled[aria-disabled="true"] {
-  opacity: 0.38;
-  background-color: transparent;
-  color: var(--on-surface);
-}
-
-.skc-toggle-button.skc-toggle-button--filled[aria-disabled="true"]::before {
-  opacity: 0.316;
-  background-color: var(--on-surface);
-}
-
-/* Tonal Toggle Button */
-.skc-toggle-button.skc-toggle-button--tonal {
+/* Tonal */
+.skc-toggle-button--tonal {
   --state-layer-color: var(--on-surface-variant);
   background-color: var(--surface-variant);
+
+  &.skc-toggle-button--selected {
+    --state-layer-color: var(--on-secondary-container);
+    background-color: var(--secondary-container);
+  }
+
+  &.skc-toggle-button--dangerous {
+    --state-layer-color: var(--error);
+    background-color: var(--error-container);
+
+    @media (prefers-contrast: more) {
+      --state-layer-color: var(--on-error-container);
+    }
+
+    &.skc-toggle-button--selected {
+      --state-layer-color: var(--on-error);
+      background-color: var(--error);
+    }
+  }
 }
 
-.skc-toggle-button.skc-toggle-button--tonal.skc-toggle-button--selected {
-  --state-layer-color: var(--on-secondary-container);
-  background-color: var(--secondary-container);
-}
-
-.skc-toggle-button.skc-toggle-button--tonal.skc-toggle-button--dangerous {
-  --state-layer-color: var(--error);
-  background-color: var(--error-container);
-}
-
-.contrast-medium
-  .skc-toggle-button.skc-toggle-button--tonal.skc-toggle-button--dangerous,
-.contrast-high
-  .skc-toggle-button.skc-toggle-button--tonal.skc-toggle-button--dangerous {
-  --state-layer-color: var(--on-error-container);
-  background-color: var(--error-container);
-}
-
-.skc-toggle-button.skc-toggle-button--tonal.skc-toggle-button--dangerous.skc-toggle-button--selected {
-  --state-layer-color: var(--on-error);
-  background-color: var(--error);
-}
-
-.skc-toggle-button.skc-toggle-button--tonal[aria-disabled="true"] {
-  opacity: 0.38;
-  background-color: transparent;
-  color: var(--on-surface);
-}
-
-.skc-toggle-button.skc-toggle-button--tonal[aria-disabled="true"]::before {
-  opacity: 0.316;
-  background-color: var(--on-surface);
-}
-
-/* Outlined Toggle Button */
-.skc-toggle-button.skc-toggle-button--outlined {
+/* Outlined */
+.skc-toggle-button--outlined {
   --state-layer-color: var(--on-surface);
   background-color: transparent;
   border: 1px solid var(--outline);
+
+  &.skc-toggle-button--selected {
+    --state-layer-color: var(--inverse-on-surface);
+    background-color: var(--inverse-surface);
+    border-color: var(--inverse-surface);
+  }
+
+  &.skc-toggle-button--dangerous {
+    --state-layer-color: var(--error);
+
+    &.skc-toggle-button--selected {
+      --state-layer-color: var(--error-container);
+    }
+  }
+
+  &[aria-disabled="true"] {
+    border-color: transparent;
+    color: color-mix(in srgb, var(--on-surface) 38%, transparent);
+
+    &::before {
+      border: 1px solid color-mix(in srgb, var(--on-surface) 12%, transparent);
+      background-color: transparent;
+    }
+
+    &.skc-toggle-button--selected {
+      background-color: transparent;
+
+      &::before {
+        border-color: transparent;
+        background-color: var(--on-surface);
+      }
+    }
+  }
 }
 
-.skc-toggle-button.skc-toggle-button--outlined.skc-toggle-button--selected {
-  --state-layer-color: var(--inverse-on-surface);
-  background-color: var(--inverse-surface);
-  border-color: var(--inverse-surface);
-}
-
-.skc-toggle-button.skc-toggle-button--outlined.skc-toggle-button--dangerous {
-  --state-layer-color: var(--error);
-}
-
-.skc-toggle-button.skc-toggle-button--outlined.skc-toggle-button--dangerous.skc-toggle-button--selected {
-  --state-layer-color: var(--error-container);
-}
-
-.skc-toggle-button.skc-toggle-button--outlined[aria-disabled="true"] {
-  border-color: transparent;
-  color: color-mix(in srgb, var(--on-surface) 38%, transparent);
-}
-
-.skc-toggle-button.skc-toggle-button--outlined[aria-disabled="true"]::before {
-  border: 1px solid color-mix(in srgb, var(--on-surface) 12%, transparent);
-  background-color: transparent;
-}
-
-.skc-toggle-button.skc-toggle-button--outlined[aria-disabled="true"].skc-toggle-button--selected {
-  background-color: transparent;
-}
-
-.skc-toggle-button.skc-toggle-button--outlined[aria-disabled="true"].skc-toggle-button--selected::before {
-  border-color: transparent;
-  background-color: var(--on-surface);
-}
-
-/* Standard Toggle Button */
-.skc-toggle-button.skc-toggle-button--standard {
+/* Standard */
+.skc-toggle-button--standard {
   --state-layer-color: var(--on-surface);
   background-color: transparent;
-}
 
-.skc-toggle-button.skc-toggle-button--standard.skc-toggle-button--selected {
-  --state-layer-color: var(--primary);
-}
+  &.skc-toggle-button--selected {
+    --state-layer-color: var(--primary);
+  }
 
-.skc-toggle-button.skc-toggle-button--standard.skc-toggle-button--dangerous {
-  --state-layer-color: var(--error);
-}
+  &.skc-toggle-button--dangerous {
+    --state-layer-color: var(--error);
+  }
 
-.skc-toggle-button.skc-toggle-button--standard[aria-disabled="true"] {
-  color: color-mix(in srgb, var(--on-surface) 38%, transparent);
+  &[aria-disabled="true"] {
+    color: color-mix(in srgb, var(--on-surface) 38%, transparent);
+  }
 }
