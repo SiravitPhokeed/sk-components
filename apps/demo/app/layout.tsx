@@ -62,7 +62,7 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
       <head>
         <ThemeProvider />
       </head>
-      <body className="bg-background font-body text-on-background text-base">
+      <body className="bg-background font-body text-on-background text-base leading-5 tracking-[0.25px]">
         {children}
       </body>
     </html>
