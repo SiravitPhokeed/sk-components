@@ -26,7 +26,6 @@
   flex-grow: 1;
 }
 
-
 .skc-nav-drawer-item--selected {
   --state-layer-color: var(--on-secondary-container);
   background-color: var(--secondary-container);
