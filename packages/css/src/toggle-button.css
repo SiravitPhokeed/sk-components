@@ -11,18 +11,18 @@
 
   display: grid;
   place-content: center;
-  border: 0;
-  border-radius: var(--rounded-full);
-  padding: 0.5rem;
   transition:
     background-color var(--duration) var(--easing),
     color var(--duration) var(--easing);
+  border: 0;
+  border-radius: var(--rounded-full);
+  padding: 0.5rem;
 
   .skc-material-icon {
-    color: var(--state-layer-color);
     transition:
       font-variation-settings var(--motion-short-4) var(--easing-standard),
       color var(--motion-short-4) var(--easing-standard);
+    color: var(--state-layer-color);
   }
 
   /* Disabled */
@@ -93,13 +93,13 @@
 /* Outlined */
 .skc-toggle-button--outlined {
   --state-layer-color: var(--on-surface);
-  background-color: transparent;
   border: 1px solid var(--outline);
+  background-color: transparent;
 
   &.skc-toggle-button--selected {
     --state-layer-color: var(--inverse-on-surface);
-    background-color: var(--inverse-surface);
     border-color: var(--inverse-surface);
+    background-color: var(--inverse-surface);
   }
 
   &.skc-toggle-button--dangerous {
