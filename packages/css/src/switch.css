@@ -32,7 +32,7 @@
 }
 
 .skc-switch:not([aria-disabled="true"]):hover > .skc-switch__handle,
-.skc-switch:not([aria-disabled="true"]):focus > .skc-switch__handle,
+.skc-switch:not([aria-disabled="true"]):focus-visible > .skc-switch__handle,
 .skc-switch:not([aria-disabled="true"]):active > .skc-switch__handle {
   background-color: var(--on-surface-variant);
 }
@@ -88,7 +88,7 @@
 }
 
 .skc-switch--selected:not([aria-disabled="true"]):hover > .skc-switch__handle,
-.skc-switch--selected:not([aria-disabled="true"]):focus > .skc-switch__handle,
+.skc-switch--selected:not([aria-disabled="true"]):focus-visible > .skc-switch__handle,
 .skc-switch--selected:not([aria-disabled="true"]):active > .skc-switch__handle {
   background-color: var(--primary-container);
 }
@@ -159,7 +159,7 @@
   opacity: 0.08;
 }
 
-.skc-switch:not([aria-disabled="true"]):focus .skc-switch__handle::before,
+.skc-switch:not([aria-disabled="true"]):focus-visible .skc-switch__handle::before,
 .skc-switch:not([aria-disabled="true"]):active .skc-switch__handle::before {
   opacity: 0.12;
 }
