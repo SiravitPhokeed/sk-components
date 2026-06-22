@@ -4,14 +4,14 @@
  */
 
 .skc-avatar {
-  position: relative;
   display: grid;
+  position: relative;
   place-content: center;
+  border-radius: 50%;
+  background-color: var(--primary-container);
   width: 2.5rem;
   height: 2.5rem;
   color: var(--primary);
-  border-radius: 50%;
-  background-color: var(--primary-container);
 
   &:has(img) {
     background-color: var(--surface-container);
@@ -19,9 +19,9 @@
 
   img,
   svg {
+    border-radius: inherit;
     width: 100%;
     height: 100%;
-    border-radius: inherit;
     object-fit: cover;
   }
 }

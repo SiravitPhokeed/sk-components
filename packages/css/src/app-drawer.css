@@ -7,6 +7,7 @@
   anchor-name: --_app-drawer-toggle;
 }
 
+/* Exit state */
 .skc-app-drawer__modal {
   --easing: var(--easing-emphasized-decelerate);
   --duration: var(--motion-medium-2);
@@ -20,7 +21,9 @@
   left: auto;
   flex-direction: column;
   gap: 0.25rem;
+  transform: translateY(-1rem) scaleY(0);
   transform-origin: top;
+  opacity: 0;
   z-index: 85;
   transition:
     opacity var(--duration) var(--easing),
@@ -35,35 +38,32 @@
   overflow: hidden;
   color: var(--on-surface);
 
-  /* Closed state — base values for exit transition where supported */
-  opacity: 0;
-  transform: translateY(-1rem) scaleY(0);
-
   > * {
+    transform: scaleY(2);
+    opacity: 0;
     transition:
       opacity var(--duration) var(--easing),
       transform var(--duration) var(--easing);
-    opacity: 0;
-    transform: scaleY(2);
   }
 
   &::backdrop {
+    opacity: 0;
     transition:
       opacity var(--duration) var(--easing),
       display var(--duration) var(--easing) allow-discrete,
       overlay var(--duration) var(--easing) allow-discrete;
     background-color: var(--scrim);
-    opacity: 0;
   }
 
+  /* Open state */
   &:popover-open {
     display: flex;
-    opacity: 1;
     transform: translateY(0) scaleY(1);
+    opacity: 1;
 
     > * {
-      opacity: 1;
       transform: scaleY(1);
+      opacity: 1;
     }
 
     &::backdrop {
@@ -72,13 +72,14 @@
         backwards;
     }
 
+    /* Entry state */
     @starting-style {
-      opacity: 0;
       transform: translateY(-1rem) scaleY(0);
+      opacity: 0;
 
       > * {
-        opacity: 0;
         transform: scaleY(2);
+        opacity: 0;
       }
     }
   }
