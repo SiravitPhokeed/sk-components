@@ -76,7 +76,7 @@ export const Progress: StyleableFC<ProgressProps> = ({
       className={cn(
         "skc-progress",
         `skc-progress--${appearance}`,
-        visible && "skc-progress--visible",
+        visible === false && "skc-progress--visible",
         value === undefined && "skc-progress--indeterminate",
         className,
       )}
@@ -84,7 +84,7 @@ export const Progress: StyleableFC<ProgressProps> = ({
     >
       {appearance === "linear" ? (
         // Linear Progress
-        <div className="skc-progress__track">
+        <div role="presentation" className="skc-progress__track">
           <div
             className="skc-progress__indicator"
             style={{ width: value !== undefined ? `${value}%` : undefined }}
@@ -97,7 +97,7 @@ export const Progress: StyleableFC<ProgressProps> = ({
       ) : (
         // Circular Progress
         // prettier-ignore
-        <svg className="skc-progress__track" viewBox="0 0 48 48">
+        <svg role="presentation" viewBox="0 0 48 48" className="skc-progress__track">
           <circle cx={24} cy={24} r={22} strokeWidth={4} fill="none"
             className="skc-progress__remainder" />
           <circle cx={24} cy={24} r={22} strokeWidth={4}
