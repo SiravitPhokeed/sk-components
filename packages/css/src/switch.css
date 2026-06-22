@@ -21,6 +21,10 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+.skc-switch__handle .skc-material-icon {
+  font-size: 1rem;
+}
+
 .skc-switch:not([aria-disabled="true"]):active > .skc-switch__handle {
   inset: 0 auto auto 0;
   width: 1.75rem;
