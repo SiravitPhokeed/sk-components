@@ -118,18 +118,16 @@ export const ListItem: StyleableFC<ListItemProps> = ({
   style,
   className,
 }) => {
-  const isInteractive = Boolean(href || onClick || stateLayerEffect);
   const id = `list-item-${useId()}`;
+
+  const isInteractive = Boolean(href || onClick || stateLayerEffect);
+  const Element = isInteractive ? Interactive : element;
 
   return (
     <ListItemContext.Provider value={id}>
       <li aria-labelledby={id}>
-        <Interactive
-          stateLayerEffect={isInteractive}
-          rippleEffect={isInteractive}
-          href={href}
-          onClick={onClick}
-          element={element}
+        <Element
+          {...(isInteractive && { href, onClick, element })}
           className={cn(
             "skc-list-item",
             `skc-list-item--${align}`,
@@ -140,7 +138,7 @@ export const ListItem: StyleableFC<ListItemProps> = ({
           style={style}
         >
           {children}
-        </Interactive>
+        </Element>
       </li>
     </ListItemContext.Provider>
   );
