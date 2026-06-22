@@ -1,3 +1,4 @@
+import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/dialog-header.css";
@@ -65,18 +66,15 @@ export const DialogHeader: StyleableFC<DialogHeaderProps> = ({
 
   return (
     <Element style={style} className={cn("skc-dialog-header", className)}>
-      {icon && <div className="skc-dialog-header__icon">{icon}</div>}
+      {icon}
       {title && (
-        <h2
-          id={`${dialogID}-title`}
-          className="skc-text skc-text--headline-small"
-        >
+        <Text id={`${dialogID}-title`} type="headline-small" element="h2">
           {title}
-        </h2>
+        </Text>
       )}
-      <p id={`${dialogID}-desc`} className="skc-text skc-text--body-medium">
+      <Text id={`${dialogID}-desc`} type="body-medium">
         {desc}
-      </p>
+      </Text>
     </Element>
   );
 };
