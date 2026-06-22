@@ -14,6 +14,13 @@ export interface TextProps {
   children: ReactNode;
 
   /**
+   * The unique identifier of the Text, similar to `id` on any HTML element.
+   *
+   * - Optional.
+   */
+  id?: string;
+
+  /**
    * The typographic style to apply.
    */
   type: `${"display" | "headline" | "title" | "label" | "body"}-${
@@ -32,11 +39,13 @@ export interface TextProps {
 /**
  * A piece of text with a typographic style applied.
  *
+ * @param id The unique identifier of the Text, similar to `id` on any HTML element.
  * @param children The text to apply the typographic styling to.
  * @param type The token of the typescale to apply.
  */
 export const Text: StyleableFC<TextProps> = ({
   children,
+  id,
   type,
   element: Element = "p",
   className,
@@ -44,6 +53,7 @@ export const Text: StyleableFC<TextProps> = ({
 }) => {
   return (
     <Element
+      id={id}
       className={cn(`skc-text skc-text--${type}`, className)}
       style={style}
     >
