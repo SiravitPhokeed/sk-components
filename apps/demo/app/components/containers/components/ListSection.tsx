@@ -1,5 +1,6 @@
 // "use client";
 
+import Burger from "@/public/images/example/burger.jpg";
 import {
   Header,
   List,
@@ -40,7 +41,7 @@ const ListSection: FC = () => {
 
         {/* Menu */}
         <ListItem align="center" lines={3}>
-          <Image src="/images/burger.png" width={56} height={56} alt="" />
+          <Image src={Burger} alt="" />
           <ListItemContent
             overline="Meal of the day"
             title="Fish Burger"
@@ -53,7 +54,7 @@ const ListSection: FC = () => {
           /> */}
         </ListItem>
         <ListItem align="center" lines={2}>
-          <Image src="/images/burger.png" width={56} height={56} alt="" />
+          <Image src={Burger} alt="" />
           <ListItemContent title="Pork Burger" desc="฿50.00" />
           {/* <Checkbox
             value={cart.includes("pork-burger")}
@@ -62,7 +63,7 @@ const ListSection: FC = () => {
           /> */}
         </ListItem>
         <ListItem align="center" lines={2}>
-          <Image src="/images/burger.png" width={56} height={56} alt="" />
+          <Image src={Burger} alt="" />
           <ListItemContent title="Beef Burger" desc="฿50.00 • Contains beef" />
           {/* <Checkbox
             value={cart.includes("beef-burger")}
