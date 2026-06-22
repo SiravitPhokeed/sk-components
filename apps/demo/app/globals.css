@@ -250,3 +250,7 @@
   --breakpoint-md: 56.5625rem; /* 905px */
   --breakpoint-lg: 90rem; /* 1440px */
 }
+
+@utility state-layer-* {
+  --state-layer-color: --value(--color-*);
+}
