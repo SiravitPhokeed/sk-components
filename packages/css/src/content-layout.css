@@ -30,7 +30,7 @@
 
 @media only screen and (min-width: 600px) {
   .skc-content-layout {
-    --_content-layout-gutter: 10rem;
+    --_content-layout-gutter: 5rem;
     padding: 1.5rem 2rem 2.25rem;
   }
 }
