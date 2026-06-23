@@ -171,7 +171,7 @@ export const Button: StyleableFC<ButtonProps> = ({
   className,
   style,
 }) => {
-  const loadingBool = typeof loading === "number" ? true : loading;
+  const loadingBool = typeof loading === "number" || loading || false;
   const isFunctional = !(disabled || loadingBool);
 
   return (
