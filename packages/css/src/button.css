@@ -40,7 +40,7 @@
 }
 
 .skc-button:not(:has(> .skc-button__label)) {
-  padding-inline: 0.625rem;
+  padding: 0.5rem;
 
   > .skc-material-icon {
     transition: font-weight var(--motion-short-4) var(--easing-standard);
