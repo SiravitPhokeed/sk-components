@@ -177,7 +177,7 @@ export const Button: StyleableFC<ButtonProps> = ({
   return (
     <Interactive
       aria-label={alt}
-      aria-disabled={!isFunctional}
+      aria-disabled={disabled}
       title={tooltip}
       onClick={isFunctional ? onClick : undefined}
       href={isFunctional ? href : undefined}
