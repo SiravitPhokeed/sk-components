@@ -166,9 +166,13 @@
 
 /* Prevent interaction with other elements when the drawer is open
    See https://stackoverflow.com/a/78995645/10462121 */
-body:has(.skc-app-drawer__modal:popover-open)
+body:has(.skc-app-drawer__modal:popover-open) {
   :is(button, a, input, select, textarea, [tabindex]):not(
     .skc-app-drawer__toggle
   ) {
-  pointer-events: none;
+    pointer-events: none;
+  }
+  .skc-app-drawer__modal:popover-open * {
+    pointer-events: auto;
+  }
 }
