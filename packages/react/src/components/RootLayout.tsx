@@ -35,7 +35,7 @@ export interface RootLayoutProps {
  */
 export const RootLayout: StyleableFC<RootLayoutProps> = ({
   children,
-  element: Element = "div",
+  element: Element = "body",
   className,
   style,
 }) => (
