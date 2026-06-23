@@ -92,7 +92,7 @@
   .skc-page-header__content {
     column-gap: 0.5rem;
     padding-inline: 0;
-    width: calc(100% - (10rem));
+    width: calc(100% - 10rem);
 
     > .skc-button:first-child {
       margin-left: -0.5rem;

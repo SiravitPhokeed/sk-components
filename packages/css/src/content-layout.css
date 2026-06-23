@@ -4,7 +4,6 @@
  */
 
 .skc-content-layout {
-  --_content-layout-gutter: 1rem;
   padding: 1rem 0;
 }
 
@@ -14,23 +13,28 @@
   gap: 2rem;
   margin: 0 auto;
   max-width: 70.5rem;
-  width: calc(100% - (2 * var(--_content-layout-gutter)));
-}
 
-/* @media only screen and (max-width: 600px) {
-  .skc-content-layout__content {
-    &,
-    > .skc-columns {
-      > .skc-section > :not(.skc-list) {
-        margin-inline: 1rem;
-      }
+  &,
+  > .skc-columns {
+    > .skc-section > * {
+      margin-inline: 1rem;
     }
   }
-} */
+}
 
 @media only screen and (min-width: 600px) {
   .skc-content-layout {
-    --_content-layout-gutter: 5rem;
     padding: 1.5rem 2rem 2.25rem;
+  }
+
+  .skc-content-layout__content {
+    width: calc(100% - 10rem);
+
+    &,
+    > .skc-columns {
+      > .skc-section > * {
+        margin-inline: 0;
+      }
+    }
   }
 }
