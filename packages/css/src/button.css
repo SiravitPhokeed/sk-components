@@ -65,7 +65,7 @@
 .skc-button--disabled {
   cursor: default;
 
-  &:hover {
+  &:is(.skc-button--filled, .skc-button--tonal):hover {
     box-shadow: none;
   }
 }
