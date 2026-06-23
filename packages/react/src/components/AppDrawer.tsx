@@ -36,9 +36,11 @@ export interface AppDrawerProps {
 const STRINGS = {
   "en-US": {
     toggle: "Apps",
+    header: "Apps",
   },
   th: {
     toggle: "ตัวเลือกแอพ",
+    header: "รายการแอพ",
   },
 };
 
@@ -102,6 +104,7 @@ export const AppDrawer: StyleableFC<AppDrawerProps> = ({
         className="skc-app-drawer__modal"
         popover="manual"
       >
+        <h2 className="skc-app-drawer__header">{STRINGS[locale].header}</h2>
         {children}
       </div>
     </div>

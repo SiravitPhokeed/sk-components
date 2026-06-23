@@ -155,3 +155,11 @@
       skc-app-drawer-exit-backdrop;
   }
 }
+
+/* Screen reader-only modal header */
+.skc-app-drawer__header {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
