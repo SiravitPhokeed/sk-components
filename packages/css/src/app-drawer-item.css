@@ -12,7 +12,7 @@
 }
 
 .skc-app-drawer-item__logo {
-  --state-layer-color: var(--on-surface-variant);
+  --state-layer-color: var(--neutral-variant-30); /* on-surface-variant (light) */
 
   display: grid;
   place-content: center;
@@ -20,7 +20,6 @@
   border-radius: var(--rounded-lg);
   background-color: var(--surface);
   aspect-ratio: 1;
-  color-scheme: light;
 
   &:focus-visible {
     border-color: var(--primary);
