@@ -131,25 +131,31 @@ export const PageHeader: StyleableFC<PageHeaderProps> = ({
 }) => {
   const isTopLevel = !parentURL && !onBack;
 
+  const action = (
+    <Button
+      appearance="text"
+      icon={
+        isTopLevel ? (
+          <MaterialIcon icon="menu" />
+        ) : (
+          <MaterialIcon icon="arrow_back" />
+        )
+      }
+      alt={STRINGS[locale][isTopLevel ? "nav" : "back"]}
+      onClick={isTopLevel ? onNavToggle : undefined}
+      href={parentURL}
+      element={!isTopLevel ? buttonElement : undefined}
+    />
+  );
+
   return (
     <>
       <PageHeaderBlobs />
+      <div aria-hidden className="skc-page-header__fade" />
       <Element className={cn("skc-page-header", className)} style={style}>
         <div className="skc-page-header__content">
-          <Button
-            appearance="text"
-            icon={
-              isTopLevel ? (
-                <MaterialIcon icon="menu" />
-              ) : (
-                <MaterialIcon icon="arrow_back" />
-              )
-            }
-            alt={STRINGS[locale][isTopLevel ? "nav" : "back"]}
-            onClick={isTopLevel ? onNavToggle : undefined}
-            href={parentURL}
-            element={!isTopLevel ? buttonElement : undefined}
-          />
+          {/* Nav toggle / Back Button */}
+          {/* {action} */}
 
           {/* Header text */}
           <Text
@@ -162,6 +168,10 @@ export const PageHeader: StyleableFC<PageHeaderProps> = ({
 
           {/* App Drawer */}
           {appDrawer}
+        </div>
+
+        <div aria-hidden className="skc-page-header__minimized">
+          {action}
         </div>
       </Element>
     </>
