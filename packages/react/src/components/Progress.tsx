@@ -76,7 +76,7 @@ export const Progress: StyleableFC<ProgressProps> = ({
       className={cn(
         "skc-progress",
         `skc-progress--${appearance}`,
-        visible === false && "skc-progress--visible",
+        visible && "skc-progress--visible",
         value === undefined && "skc-progress--indeterminate",
         className,
       )}
