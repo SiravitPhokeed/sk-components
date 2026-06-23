@@ -46,6 +46,7 @@
     "./switch.css": "./dist/switch.css",
     "./table.css": "./dist/table.css",
     "./table-body.css": "./dist/table-body.css",
+    "./table-cell.css": "./dist/table-cell.css",
     "./table-foot.css": "./dist/table-foot.css",
     "./table-head.css": "./dist/table-head.css",
     "./table-row.css": "./dist/table-row.css",

@@ -1,0 +1,39 @@
+/**
+ * **Table Cell**
+ * A cell of a Table.
+ */
+
+.skc-table-cell {
+  position: relative;
+  display: table-cell;
+  border: 1px solid var(--outline-variant);
+}
+
+/* Cell content */
+.skc-table-cell__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+  text-align: center;
+
+  .skc-chip {
+    margin-inline: -0.375rem;
+  }
+}
+
+/* Alignment */
+.skc-table-cell--left .skc-table-cell__content {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.skc-table-cell--center .skc-table-cell__content {
+  justify-content: center;
+  text-align: center;
+}
+
+.skc-table-cell--right .skc-table-cell__content {
+  justify-content: flex-end;
+  text-align: right;
+}

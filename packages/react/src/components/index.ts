@@ -44,6 +44,7 @@ export { SuggestionChip, type SuggestionChipProps } from "./SuggestionChip";
 export { Switch, type SwitchProps } from "./Switch";
 export { Table, type TableProps } from "./Table";
 export { TableBody, type TableBodyProps } from "./TableBody";
+export { TableCell, type TableCellProps } from "./TableCell";
 export { TableFoot, type TableFootProps } from "./TableFoot";
 export { TableHead, type TableHeadProps } from "./TableHead";
 export { TableRow, type TableRowProps } from "./TableRow";
