@@ -4,6 +4,7 @@ import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import { PageHeaderBlobs } from "@/svg/PageHeaderBlobs";
+import PageHeaderMinimizedBlobs from "@/svg/PageHeaderMinimizedBlob";
 import "@suankularb-components/css/page-header.css";
 import type { ElementType, JSX, ReactNode } from "react";
 
@@ -155,7 +156,7 @@ export const PageHeader: StyleableFC<PageHeaderProps> = ({
       <Element className={cn("skc-page-header", className)} style={style}>
         <div className="skc-page-header__content">
           {/* Nav toggle / Back Button */}
-          {/* {action} */}
+          {action}
 
           {/* Header text */}
           <Text
@@ -171,6 +172,7 @@ export const PageHeader: StyleableFC<PageHeaderProps> = ({
         </div>
 
         <div aria-hidden className="skc-page-header__minimized">
+          <PageHeaderMinimizedBlobs />
           {action}
         </div>
       </Element>

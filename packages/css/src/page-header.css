@@ -6,7 +6,13 @@
  */
 
 .skc-page-header {
-  padding: 1rem 0;
+  /* How much the user has to scroll after the Page Header visually exits for
+     the minimized version to fully appear */
+  --_botton-animation-runway-height: 12rem;
+
+  view-timeline: --_page-header-timeline;
+  margin-bottom: calc(var(--_botton-animation-runway-height) * -1);
+  padding: 1rem 0 calc(var(--_botton-animation-runway-height) + 1rem);
 }
 
 .skc-page-header__content {
@@ -15,8 +21,7 @@
   align-items: flex-start;
   gap: 0 0.25rem;
   margin: 0 auto;
-  /* padding-inline: 0.5rem 1rem; */
-  padding-inline: 3.25rem 1rem;
+  padding-inline: 0.5rem 1rem;
   max-width: 70.5rem;
 }
 
@@ -45,9 +50,9 @@
   position: absolute;
   inset: 0;
   bottom: auto;
-  height: 5rem;
   z-index: -10;
   background-image: linear-gradient(to bottom, var(--background), transparent);
+  height: 5rem;
 }
 
 .skc-page-header__blobs-group--desktop {
@@ -58,14 +63,29 @@
 }
 
 .skc-page-header__minimized {
+  display: none;
   position: fixed;
-  z-index: 80;
   top: 1rem;
   left: 0.5rem;
+  z-index: 80;
+  animation: skc-page-header-minimized-entry var(--easing-standard) backwards;
+  animation-timeline: --_page-header-timeline;
+  animation-range: exit 20%;
+}
+@supports (view-timeline: --_page-header-timeline) {
+  .skc-page-header__minimized {
+    display: block;
+  }
+}
+
+.skc-page-header__minimized-blobs {
+  position: absolute;
+  inset: -2.25rem;
 }
 
 @media only screen and (min-width: 600px) {
   .skc-page-header {
+    margin-bottom: 0;
     padding: 1.25rem 2rem 0.5rem;
   }
 
@@ -85,5 +105,18 @@
   .skc-page-header__minimized,
   .skc-page-header__blobs-group--mobile {
     display: none;
+  }
+}
+
+@keyframes skc-page-header-minimized-entry {
+  from {
+    transform: translateY(3rem);
+    opacity: 0;
+    pointer-events: none;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
   }
 }
