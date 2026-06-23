@@ -88,7 +88,7 @@
 
     > * {
       transition:
-        stroke-width var(--motion-short-2) var(--easing-standard),
+        stroke-width var(--motion-short-4) var(--easing-standard),
         stroke-dashoffset var(--motion-short-2) var(--easing-standard);
       stroke-dasharray: 200;
       stroke-linecap: round;
