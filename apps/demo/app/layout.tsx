@@ -1,6 +1,9 @@
 import "@/app/globals.css";
 import cn from "@/lib/helpers/cn";
-import { ThemeProvider } from "@suankularb-components/react";
+import {
+  RootLayout as SKCRootLayout,
+  ThemeProvider,
+} from "@suankularb-components/react";
 import type { Metadata } from "next";
 import {
   Fira_Code,
@@ -62,9 +65,9 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
       <head>
         <ThemeProvider />
       </head>
-      <body className="bg-background font-body text-on-background text-base leading-5 tracking-[0.25px]">
+      <SKCRootLayout className="bg-background font-body text-on-background leading-5 tracking-[0.25px]">
         {children}
-      </body>
+      </SKCRootLayout>
     </html>
   );
 };
