@@ -3,14 +3,24 @@
  * A drawer of related apps.
  */
 
+.skc-app-drawer {
+  --entry-easing: var(--easing-emphasized-decelerate);
+  --entry-duration: var(--motion-medium-2);
+
+  --exit-easing: var(--easing-emphasized-accelerate);
+  --exit-duration: var(--motion-short-2);
+
+  --backdrop-easing: var(--easing-standard);
+}
+
 .skc-app-drawer__toggle {
   anchor-name: --_app-drawer-toggle;
 }
 
 /* Exit state */
 .skc-app-drawer__modal {
-  --easing: var(--easing-emphasized-decelerate);
-  --duration: var(--motion-medium-2);
+  --duration: var(--entry-duration);
+  --easing: var(--entry-easing);
   --padding: 0.5rem;
 
   position: absolute;
@@ -49,9 +59,9 @@
   &::backdrop {
     opacity: 0;
     transition:
-      opacity var(--duration) var(--easing),
-      display var(--duration) var(--easing) allow-discrete,
-      overlay var(--duration) var(--easing) allow-discrete;
+      opacity var(--duration) var(--backdrop-easing),
+      display var(--duration) var(--backdrop-easing) allow-discrete,
+      overlay var(--duration) var(--backdrop-easing) allow-discrete;
     background-color: var(--scrim);
   }
 
@@ -68,8 +78,8 @@
 
     &::backdrop {
       opacity: 0.5;
-      animation: skc-app-drawer-enter-backdrop var(--duration) var(--easing)
-        backwards;
+      animation: skc-app-drawer-enter-backdrop var(--duration)
+        var(--backdrop-easing) backwards;
     }
 
     /* Entry state */
@@ -129,6 +139,9 @@
 }
 
 .skc-app-drawer__modal.skc-app-drawer__modal--exiting {
+  --duration: var(--exit-duration);
+  --easing: var(--exit-easing);
+
   & {
     animation: var(--duration) var(--easing) forwards skc-app-drawer-exit;
   }
@@ -138,7 +151,7 @@
   }
 
   &::backdrop {
-    animation: var(--duration) var(--easing) forwards
+    animation: var(--duration) var(--backdrop-easing) forwards
       skc-app-drawer-exit-backdrop;
   }
 }
