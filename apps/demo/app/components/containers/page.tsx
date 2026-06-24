@@ -4,6 +4,7 @@ import ColumnsSection from "@/app/components/containers/components/ColumnsSectio
 import HeaderSection from "@/app/components/containers/components/HeaderSection";
 import InteractiveSection from "@/app/components/containers/components/InteractiveSection";
 import ListSection from "@/app/components/containers/components/ListSection";
+import SplitLayoutSection from "@/app/components/containers/components/SplitLayoutSection";
 import TableSection from "@/app/components/containers/components/TableSection";
 import PageHeader from "@/components/PageHeader";
 import { ContentLayout } from "@suankularb-components/react";
@@ -19,7 +20,7 @@ const ContainersPage: FC = () => (
       {/* <DataTableSection /> */}
       <HeaderSection />
       <InteractiveSection />
-      {/* <SplitLayoutSection /> */}
+      <SplitLayoutSection />
       <ListSection />
       <TableSection />
       {/* <TabSection /> */}
