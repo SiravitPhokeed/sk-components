@@ -1,6 +1,7 @@
 "use client";
 
 import RemoveStudentsDialog from "@/app/components/communication/components/RemoveStudentsDialog";
+import ReportIssueDialog from "@/app/components/communication/components/ReportIssueDialog";
 import {
   Actions,
   Button,
@@ -31,10 +32,11 @@ const DialogSection: FC = () => {
           appearance="outlined"
           icon={<MaterialIcon icon="bug_report" />}
           command="show-modal"
-          commandfor="report-dialog"
+          commandfor="report-issue-dialog"
         >
           Report issue
         </Button>
+        <ReportIssueDialog />
       </Actions>
     </Section>
   );
