@@ -67,7 +67,7 @@ export const AppDrawer: StyleableFC<AppDrawerProps> = ({
   const wrapperRef = useRef<HTMLDivElement>(null);
   const drawerRef = useRef<HTMLDialogElement>(null);
 
-  const { close, dialogProps } = useAnimatedDialog(drawerRef, {
+  const { dialogProps } = useAnimatedDialog(drawerRef, {
     exitingClass: EXITING_CLASS,
     exitAnimationName: EXIT_ANIMATION_NAME,
   });
