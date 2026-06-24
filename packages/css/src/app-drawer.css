@@ -1,6 +1,9 @@
 /**
  * **App Drawer**
  * A drawer of related apps.
+ *
+ * Implemented with `<dialog>` and `showModal()` for native inertness,
+ * focus trapping, and `::backdrop` management.
  */
 
 .skc-app-drawer {
@@ -17,7 +20,7 @@
   anchor-name: --_app-drawer-toggle;
 }
 
-/* Exit state */
+/* Entry state */
 .skc-app-drawer__modal {
   --duration: var(--entry-duration);
   --easing: var(--entry-easing);
@@ -37,10 +40,10 @@
   z-index: 85;
   transition:
     opacity var(--duration) var(--easing),
-    transform var(--duration) var(--easing),
-    display var(--duration) var(--easing) allow-discrete,
-    overlay var(--duration) var(--easing) allow-discrete;
+    transform var(--duration) var(--easing);
   box-shadow: var(--shadow-1);
+  border: none;
+  margin: 0;
   border-radius: calc(var(--rounded-md) + var(--padding));
   background-color: var(--surface-variant);
   padding: var(--padding);
@@ -57,16 +60,14 @@
   }
 
   &::backdrop {
-    opacity: 0;
-    transition:
-      opacity var(--duration) var(--backdrop-easing),
-      display var(--duration) var(--backdrop-easing) allow-discrete,
-      overlay var(--duration) var(--backdrop-easing) allow-discrete;
+    opacity: 0.5;
+    animation: skc-app-drawer-enter-backdrop var(--duration)
+      var(--backdrop-easing) backwards;
     background-color: var(--scrim);
   }
 
   /* Open state */
-  &:popover-open {
+  &[open] {
     display: flex;
     transform: translateY(0) scaleY(1);
     opacity: 1;
@@ -76,13 +77,7 @@
       opacity: 1;
     }
 
-    &::backdrop {
-      opacity: 0.5;
-      animation: skc-app-drawer-enter-backdrop var(--duration)
-        var(--backdrop-easing) backwards;
-    }
-
-    /* Entry state */
+    /* Entry starting style */
     @starting-style {
       transform: translateY(-1rem) scaleY(0);
       opacity: 0;
@@ -95,7 +90,7 @@
   }
 }
 
-/* ── Entry animation for ::backdrop (Safari can't @starting-style it) ── */
+/* ── Backdrop entry animation (Safari can't @starting-style ::backdrop) ── */
 
 @keyframes skc-app-drawer-enter-backdrop {
   from {
@@ -162,17 +157,4 @@
   width: 1px;
   height: 1px;
   overflow: hidden;
-}
-
-/* Prevent interaction with other elements when the drawer is open
-   See https://stackoverflow.com/a/78995645/10462121 */
-body:has(.skc-app-drawer__modal:popover-open) {
-  :is(button, a, input, select, textarea, [tabindex]):not(
-    .skc-app-drawer__toggle
-  ) {
-    pointer-events: none;
-  }
-  .skc-app-drawer__modal:popover-open * {
-    pointer-events: auto;
-  }
 }
