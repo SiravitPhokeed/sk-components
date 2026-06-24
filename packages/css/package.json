@@ -45,6 +45,7 @@
     "./root-layout.css": "./dist/root-layout.css",
     "./section.css": "./dist/section.css",
     "./segmented-button.css": "./dist/segmented-button.css",
+    "./split-layout.css": "./dist/split-layout.css",
     "./suggestion-chip.css": "./dist/suggestion-chip.css",
     "./switch.css": "./dist/switch.css",
     "./table.css": "./dist/table.css",

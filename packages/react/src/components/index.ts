@@ -46,6 +46,7 @@ export { Progress, type ProgressProps } from "./Progress";
 export { RootLayout, type RootLayoutProps } from "./RootLayout";
 export { Section, type SectionProps } from "./Section";
 export { SegmentedButton, type SegmentedButtonProps } from "./SegmentedButton";
+export { SplitLayout, type SplitLayoutProps } from "./SplitLayout";
 export { SuggestionChip, type SuggestionChipProps } from "./SuggestionChip";
 export { Switch, type SwitchProps } from "./Switch";
 export { Table, type TableProps } from "./Table";
