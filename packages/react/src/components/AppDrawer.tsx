@@ -50,9 +50,6 @@ const EXIT_ANIMATION_NAME = "skc-app-drawer-exit";
 /**
  * A drawer of related apps.
  *
- * Implemented with `<dialog>` and `showModal()` for native inertness,
- * focus trapping, and backdrop management.
- *
  * @param children App Drawer Segments.
  * @param locale Allows for translation of the accessibility labels.
  * @param onOpen Triggers when the toggle Button opens the drawer.

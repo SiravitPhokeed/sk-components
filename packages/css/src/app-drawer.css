@@ -1,9 +1,6 @@
 /**
  * **App Drawer**
  * A drawer of related apps.
- *
- * Implemented with `<dialog>` and `showModal()` for native inertness,
- * focus trapping, and `::backdrop` management.
  */
 
 .skc-app-drawer {
