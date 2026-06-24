@@ -56,7 +56,8 @@ export interface InteractiveProps {
     | "request-close"
     | "show-popover"
     | "hide-popover"
-    | "toggle-popover";
+    | "toggle-popover"
+    | `--${string}`;
 
   /**
    * The element to send the command specified in {@link command `command`} to.
