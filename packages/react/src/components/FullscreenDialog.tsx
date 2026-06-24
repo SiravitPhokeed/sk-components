@@ -123,6 +123,7 @@ export const FullscreenDialog: StyleableFC<FullscreenDialogProps> = ({
   const { close, dialogProps } = useAnimatedDialog(dialogRef, {
     exitingClass: EXITING_CLASS,
     exitAnimationName: EXIT_ANIMATION_NAME,
+    onClose,
   });
 
   // Controlled mode: open is provided, so we need to open/close the dialog when
@@ -150,9 +151,8 @@ export const FullscreenDialog: StyleableFC<FullscreenDialogProps> = ({
           appearance="text"
           icon={<MaterialIcon icon="close" />}
           alt={STRINGS[locale || "en-US"].close}
-          command="close"
+          command="request-close"
           commandfor={dialogID}
-          onClick={onClose}
         />
         <Text id={`${dialogID}-title`} type="title-large" element="h2">
           {title}

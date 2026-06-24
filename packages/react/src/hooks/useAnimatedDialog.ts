@@ -102,40 +102,6 @@ export function useAnimatedDialog(
     return () => dialog.removeEventListener("cancel", handleCancel);
   }, [close, onClose]);
 
-  // ── command="close" → close event (not cancelable) ─────────────────
-  // When a button with command="close" commandfor="<id>" is clicked, the
-  // browser calls dialog.close() which fires the non-cancelable "close"
-  // event. We can't preventDefault(), so we let the browser close the
-  // dialog, then immediately re-open it in a microtask to play the exit
-  // animation before the next paint.
-
-  const handleClose = () => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-
-    // If we're already mid-exit-animation, this close event came from
-    // our own dialog.close() call in handleAnimationEnd — let it through.
-    if (dialog.classList.contains(exitingClass)) return;
-
-    onClose?.();
-
-    queueMicrotask(() => {
-      const el = dialogRef.current;
-      if (!el || el.open) return;
-
-      // Suppress the entry transition so the re-open is invisible
-      const prevTransition = el.style.transition;
-      el.style.transition = "none";
-      el.showModal();
-      // Force style recalculation so "transition: none" takes effect
-      el.getBoundingClientRect();
-      el.style.transition = prevTransition;
-
-      // Now play the exit animation
-      el.classList.add(exitingClass);
-    });
-  };
-
   // ── animationend handler ───────────────────────────────────────────
   // Spread onto the <dialog> via dialogProps.onAnimationEnd.
 
@@ -169,7 +135,6 @@ export function useAnimatedDialog(
     dialogProps: {
       onAnimationEnd: handleAnimationEnd,
       onClick: handleBackdropClick,
-      onClose: handleClose,
     },
   };
 }

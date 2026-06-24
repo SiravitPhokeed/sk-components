@@ -24,7 +24,7 @@ const ReportIssueDialog: FC = () => {
       action={
         <Button
           appearance="text"
-          command="close"
+          command="request-close"
           commandfor="report-issue-dialog"
         >
           Submit

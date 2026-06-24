@@ -31,7 +31,7 @@ const RemoveStudentsDialog = () => (
     <Actions>
       <Button
         appearance="text"
-        command="close"
+        command="request-close"
         commandfor="remove-students-dialog"
       >
         Cancel
@@ -39,7 +39,7 @@ const RemoveStudentsDialog = () => (
       <Button
         appearance="text"
         autoFocus
-        command="close"
+        command="request-close"
         commandfor="remove-students-dialog"
       >
         Remove
