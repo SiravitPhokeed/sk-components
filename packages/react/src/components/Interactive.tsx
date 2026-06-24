@@ -46,6 +46,26 @@ export interface InteractiveProps {
   shadowEffect?: boolean;
 
   /**
+   * The command to send to the element specified in {@link commandfor `commandfor`}.
+   *
+   * - Optional.
+   */
+  command?:
+    | "show-modal"
+    | "close"
+    | "request-close"
+    | "show-popover"
+    | "hide-popover"
+    | "toggle-popover";
+
+  /**
+   * The element to send the command specified in {@link command `command`} to.
+   *
+   * - Optional.
+   */
+  commandfor?: string;
+
+  /**
    * The function called when the user interacts with the content, similar to
    * `onClick` on `<button>`.
    *
@@ -75,6 +95,8 @@ export interface InteractiveProps {
  * @param stateLayerEffect Show a state layer on top of the content that reacts in color to hover and focus to signify its interactivity.
  * @param rippleEffect Show an ink ripple effect, a soft-edge translucent circle, radiating out of the click/tap position every click/tap to signify interactivity.
  * @param shadowEffect Elevates the content on hover and focus to signify its interactivity.
+ * @param command The command to send to the element specified in `commandfor`.
+ * @param commandfor The element to send the command specified in `command` to.
  * @param onClick The function called when the user interacts with the content, similar to `onClick` on `<button>`.
  * @param href The URL of the page the content leads to, similar to `href` on `<a>`.
  */

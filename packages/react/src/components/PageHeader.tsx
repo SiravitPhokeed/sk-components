@@ -132,26 +132,23 @@ export const PageHeader: StyleableFC<PageHeaderProps> = ({
 }) => {
   const isTopLevel = !parentURL && !onBack;
 
-  const action = (
+  const action = isTopLevel ? (
     <Button
       appearance="text"
-      icon={
-        isTopLevel ? (
-          <MaterialIcon icon="menu" />
-        ) : (
-          <MaterialIcon icon="arrow_back" />
-        )
-      }
-      alt={STRINGS[locale][isTopLevel ? "nav" : "back"]}
-      onClick={isTopLevel ? onNavToggle : undefined}
+      icon={<MaterialIcon icon="menu" />}
+      alt={STRINGS[locale].nav}
+      onClick={onNavToggle}
+      command="show-modal"
+      commandfor="nav-drawer"
+    />
+  ) : (
+    <Button
+      appearance="text"
+      icon={<MaterialIcon icon="arrow_back" />}
+      alt={STRINGS[locale].back}
+      onClick={onBack}
       href={parentURL}
-      element={
-        isTopLevel
-          ? (props) => (
-              <button command="show-modal" commandfor="nav-drawer" {...props} />
-            )
-          : buttonElement
-      }
+      element={buttonElement}
     />
   );
 

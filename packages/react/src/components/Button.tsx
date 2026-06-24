@@ -108,6 +108,26 @@ export interface ButtonProps {
   locale?: "en-US" | "th";
 
   /**
+   * The command to send to the element specified in {@link commandfor `commandfor`}.
+   *
+   * - Optional.
+   */
+  command?:
+    | "show-modal"
+    | "close"
+    | "request-close"
+    | "show-popover"
+    | "hide-popover"
+    | "toggle-popover";
+
+  /**
+   * The element to send the command specified in {@link command `command`} to.
+   *
+   * - Optional.
+   */
+  commandfor?: string;
+
+  /**
    * The function called when the user interacts with the Button, similar to
    * `onClick` on `<button>`.
    */
@@ -163,6 +183,8 @@ export const Button: StyleableFC<ButtonProps> = ({
   loading,
   disabled,
   locale = "en-US",
+  command,
+  commandfor,
   onClick,
   href,
   element = href ? "a" : "button",
@@ -179,6 +201,8 @@ export const Button: StyleableFC<ButtonProps> = ({
       title={tooltip}
       onClick={isFunctional ? onClick : undefined}
       href={isFunctional ? href : undefined}
+      command={command}
+      commandfor={commandfor}
       element={element}
       className={cn(
         "skc-button",
