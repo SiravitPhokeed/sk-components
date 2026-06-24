@@ -24,6 +24,10 @@ export { DialogHeader, type DialogHeaderProps } from "./DialogHeader";
 export { Divider, type DividerProps } from "./Divider";
 export { FilterChip, type FilterChipProps } from "./FilterChip";
 export { FormGroup, type FormGroupProps } from "./FormGroup";
+export {
+  FullscreenDialog,
+  type FullscreenDialogProps,
+} from "./FullscreenDialog";
 export { Header, type HeaderProps } from "./Header";
 export { Interactive, type InteractiveProps } from "./Interactive";
 export { List, type ListProps } from "./List";
