@@ -48,16 +48,12 @@
     font-size: 1.5rem;
   }
 
-  &:not(.skc-button--disabled) {
-    &:hover {
-      > .skc-material-icon {
-        font-weight: 600;
-      }
+  &:not([aria-disabled="true"]) {
+    &:hover > .skc-material-icon {
+      font-weight: 600;
     }
-    &:active {
-      > .skc-material-icon {
-        font-weight: 300;
-      }
+    &:active > .skc-material-icon {
+      font-weight: 300;
     }
   }
 }
