@@ -149,7 +149,7 @@ export const Chip: StyleableFC<ChipProps> = ({
       {selected ? <MaterialIcon icon="done" /> : icon}
 
       {/* Label */}
-      <Text type="label-large" className="skc-chip__label" element="span">
+      <Text type="label-large" className="skc-chip__label">
         {children}
       </Text>
 

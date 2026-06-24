@@ -199,7 +199,7 @@ export const Button: StyleableFC<ButtonProps> = ({
       />
       {selected ? <MaterialIcon icon="done" /> : icon}
       {children && (
-        <Text type="label-large" className="skc-button__label" element="span">
+        <Text type="label-large" className="skc-button__label">
           {children}
         </Text>
       )}

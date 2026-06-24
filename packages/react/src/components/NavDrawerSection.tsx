@@ -52,9 +52,10 @@ export const NavDrawerSection: StyleableFC<NavDrawerSectionProps> = ({
   return (
     <Element className={cn("skc-nav-drawer-section", className)} style={style}>
       <Text
+        id={id}
         type="title-small"
         className="skc-nav-drawer-section__header"
-        element={(props) => <h2 {...props} id={id} />}
+        element="h2"
       >
         {header}
       </Text>

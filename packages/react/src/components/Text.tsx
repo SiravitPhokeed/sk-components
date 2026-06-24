@@ -47,7 +47,7 @@ export const Text: StyleableFC<TextProps> = ({
   children,
   id,
   type,
-  element: Element = "p",
+  element: Element = "span",
   className,
   style,
 }) => {

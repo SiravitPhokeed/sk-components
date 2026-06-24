@@ -70,11 +70,7 @@ export const AppDrawerItem: StyleableFC<AppDrawerItemProps> = ({
       >
         {logo}
       </Interactive>
-      <Text
-        type="body-small"
-        className="skc-app-drawer-item__name"
-        element={(props) => <span {...props} id={id} />}
-      >
+      <Text id={id} type="body-small" className="skc-app-drawer-item__name">
         {name}
       </Text>
     </Element>

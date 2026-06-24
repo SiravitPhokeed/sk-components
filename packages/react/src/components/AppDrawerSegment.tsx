@@ -48,9 +48,10 @@ export const AppDrawerSegment: StyleableFC<AppDrawerSegmentProps> = ({
       className={cn("skc-app-drawer-segment", className)}
     >
       <Text
+        id={id}
         type="title-medium"
         className="skc-app-drawer-segment__title"
-        element={(props) => <h3 {...props} id={id} />}
+        element="h3"
       >
         {title}
       </Text>

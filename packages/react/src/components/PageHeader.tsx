@@ -167,8 +167,8 @@ export const PageHeader: StyleableFC<PageHeaderProps> = ({
           {/* Header text */}
           <Text
             type="headline-large"
-            element="h1"
             className="skc-page-header__text"
+            element="h1"
           >
             {children}
           </Text>

@@ -111,19 +111,11 @@ export const NavDrawerItem: StyleableFC<NavDrawerItemProps> = ({
         style={style}
       >
         {icon}
-        <Text
-          type="label-large"
-          className="skc-nav-drawer-item__label"
-          element="span"
-        >
+        <Text type="label-large" className="skc-nav-drawer-item__label">
           {label}
         </Text>
         {metadata && (
-          <Text
-            type="label-large"
-            className="skc-nav-drawer-item__metadata"
-            element="span"
-          >
+          <Text type="label-large" className="skc-nav-drawer-item__metadata">
             {metadata}
           </Text>
         )}

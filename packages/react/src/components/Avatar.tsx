@@ -44,7 +44,7 @@ export const Avatar: StyleableFC<AvatarProps> = ({
   <Element className={cn("skc-avatar", className)} style={style}>
     {typeof children === "string" ? (
       // User initials
-      <Text type="title-medium" className="skc-avatar__initials" element="span">
+      <Text type="title-medium" className="skc-avatar__initials">
         {children}
       </Text>
     ) : children ? (

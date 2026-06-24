@@ -82,9 +82,7 @@ export const Header: StyleableFC<HeaderProps> = ({
       style={style}
     >
       {icon}
-      <Text type={HEADER_TYPE_BY_LEVEL[level]} element="span">
-        {children}
-      </Text>
+      <Text type={HEADER_TYPE_BY_LEVEL[level]}>{children}</Text>
     </Element>
   );
 };

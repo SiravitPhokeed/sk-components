@@ -61,11 +61,7 @@ export const ListItemContent: StyleableFC<ListItemContentProps> = ({
     <Element className={cn("skc-list-item-content", className)} style={style}>
       {/* Overline */}
       {overline && (
-        <Text
-          type="label-small"
-          element="span"
-          className="skc-list-item-content__overline"
-        >
+        <Text type="label-small" className="skc-list-item-content__overline">
           {overline}
         </Text>
       )}
@@ -73,7 +69,6 @@ export const ListItemContent: StyleableFC<ListItemContentProps> = ({
       {/* Title */}
       <Text
         id={id ?? undefined}
-        element="span"
         type="body-large"
         className="skc-list-item-content__title"
       >
@@ -82,11 +77,7 @@ export const ListItemContent: StyleableFC<ListItemContentProps> = ({
 
       {/* Description */}
       {desc && (
-        <Text
-          type="body-medium"
-          element="span"
-          className="skc-list-item-content__desc"
-        >
+        <Text type="body-medium" className="skc-list-item-content__desc">
           {desc}
         </Text>
       )}
