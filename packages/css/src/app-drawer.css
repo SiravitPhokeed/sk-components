@@ -14,6 +14,8 @@
   --exit-duration: var(--motion-short-2);
 
   --backdrop-easing: var(--easing-standard);
+
+  --delay: 100ms;
 }
 
 .skc-app-drawer__toggle {
@@ -41,9 +43,10 @@
   transition:
     opacity var(--duration) var(--easing),
     transform var(--duration) var(--easing);
+  transition-delay: var(--delay);
+  margin: 0;
   box-shadow: var(--shadow-1);
   border: none;
-  margin: 0;
   border-radius: calc(var(--rounded-md) + var(--padding));
   background-color: var(--surface-variant);
   padding: var(--padding);
@@ -63,6 +66,7 @@
     opacity: 0.5;
     animation: skc-app-drawer-enter-backdrop var(--duration)
       var(--backdrop-easing) backwards;
+    animation-delay: var(--delay);
     background-color: var(--scrim);
   }
 
