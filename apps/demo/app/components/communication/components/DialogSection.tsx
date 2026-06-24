@@ -14,11 +14,9 @@ import {
   MaterialIcon,
   Section,
 } from "@suankularb-components/react";
-import { useState, type FC } from "react";
+import type { FC } from "react";
 
 const DialogSection: FC = () => {
-  const [showRemoveStudents, setShowRemoveStudents] = useState(false);
-
   return (
     <Section>
       <Header>Dialog</Header>
@@ -29,24 +27,23 @@ const DialogSection: FC = () => {
           appearance="filled"
           icon={<MaterialIcon icon="delete" />}
           dangerous
-          onClick={() => setShowRemoveStudents(true)}
+          command="show-modal"
+          commandfor="remove-students-dialog"
         >
           Remove students
         </Button>
         <Button
           appearance="outlined"
           icon={<MaterialIcon icon="bug_report" />}
-          // onClick={() => setShowReport(true)}
+          command="show-modal"
+          commandfor="report-dialog"
         >
           Report issue
         </Button>
       </Actions>
 
       {/* Remove students Dialog */}
-      <Dialog
-        open={showRemoveStudents}
-        onClose={() => setShowRemoveStudents(false)}
-      >
+      <Dialog id="remove-students-dialog">
         <DialogHeader
           title="Remove students?"
           desc="The following students will no longer have access to the
@@ -67,13 +64,15 @@ const DialogSection: FC = () => {
         <Actions>
           <Button
             appearance="text"
-            onClick={() => setShowRemoveStudents(false)}
+            command="close"
+            commandfor="remove-students-dialog"
           >
             Cancel
           </Button>
           <Button
             appearance="text"
-            onClick={() => setShowRemoveStudents(false)}
+            command="close"
+            commandfor="remove-students-dialog"
           >
             Remove
           </Button>

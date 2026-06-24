@@ -1,6 +1,6 @@
 "use client";
 
-import type { RefObject } from "react";
+import type { DialogHTMLAttributes, HTMLProps, RefObject } from "react";
 import { useCallback, useEffect } from "react";
 
 /**
@@ -22,6 +22,12 @@ export interface UseAnimatedDialogOptions {
    * on the dialog element) from accidentally triggering the close.
    */
   exitAnimationName: string;
+
+  /**
+   * Optional callback called when the dialog is closed via ESC key or
+   * backdrop click. This is called before the exit animation starts.
+   */
+  onClose?: () => void;
 }
 
 /**
@@ -44,10 +50,7 @@ export interface UseAnimatedDialogReturn {
    * - `onClick` — detects clicks on the `::backdrop` (not spec-mandated for
    *   `<dialog>`) by checking `e.target === e.currentTarget`.
    */
-  dialogProps: {
-    onAnimationEnd: (e: React.AnimationEvent<HTMLDialogElement>) => void;
-    onClick: (e: React.MouseEvent<HTMLDialogElement>) => void;
-  };
+  dialogProps: DialogHTMLAttributes<HTMLDialogElement>;
 }
 
 /**
@@ -68,12 +71,13 @@ export interface UseAnimatedDialogReturn {
  * @param dialogRef Ref attached to the `<dialog>` element.
  * @param options.exitingClass CSS class that triggers the exit animation.
  * @param options.exitAnimationName `animationName` to filter `animationend` for.
+ * @param options.onClose Optional callback called when the dialog is closed.
  */
 export function useAnimatedDialog(
   dialogRef: RefObject<HTMLDialogElement | null>,
   options: UseAnimatedDialogOptions,
 ): UseAnimatedDialogReturn {
-  const { exitingClass, exitAnimationName } = options;
+  const { exitingClass, exitAnimationName, onClose } = options;
 
   // ── Imperative close ───────────────────────────────────────────────
 
@@ -90,12 +94,47 @@ export function useAnimatedDialog(
 
     const handleCancel = (e: Event) => {
       e.preventDefault();
+      onClose?.();
       close();
     };
 
     dialog.addEventListener("cancel", handleCancel);
     return () => dialog.removeEventListener("cancel", handleCancel);
-  }, [close]);
+  }, [close, onClose]);
+
+  // ── command="close" → close event (not cancelable) ─────────────────
+  // When a button with command="close" commandfor="<id>" is clicked, the
+  // browser calls dialog.close() which fires the non-cancelable "close"
+  // event. We can't preventDefault(), so we let the browser close the
+  // dialog, then immediately re-open it in a microtask to play the exit
+  // animation before the next paint.
+
+  const handleClose = () => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+
+    // If we're already mid-exit-animation, this close event came from
+    // our own dialog.close() call in handleAnimationEnd — let it through.
+    if (dialog.classList.contains(exitingClass)) return;
+
+    onClose?.();
+
+    queueMicrotask(() => {
+      const el = dialogRef.current;
+      if (!el || el.open) return;
+
+      // Suppress the entry transition so the re-open is invisible
+      const prevTransition = el.style.transition;
+      el.style.transition = "none";
+      el.showModal();
+      // Force style recalculation so "transition: none" takes effect
+      el.getBoundingClientRect();
+      el.style.transition = prevTransition;
+
+      // Now play the exit animation
+      el.classList.add(exitingClass);
+    });
+  };
 
   // ── animationend handler ───────────────────────────────────────────
   // Spread onto the <dialog> via dialogProps.onAnimationEnd.
@@ -105,8 +144,13 @@ export function useAnimatedDialog(
     if (!dialog) return;
     if (e.target !== dialog) return;
     if (e.animationName !== exitAnimationName) return;
-    dialog.classList.remove(exitingClass);
+    // Remove the exiting class slightly after the animation ends so the
+    // mid-exit-animation protection prevents an infinite loop of
+    // close → animationend → close.
     dialog.close();
+    setTimeout(() => {
+      dialog.classList.remove(exitingClass);
+    }, 100);
   };
 
   // ── Backdrop-click handler ─────────────────────────────────────────
@@ -114,7 +158,10 @@ export function useAnimatedDialog(
   // owning <dialog> with e.target === dialog.
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDialogElement>) => {
-    if (e.target === e.currentTarget && e.currentTarget.open) close();
+    if (e.target === e.currentTarget && e.currentTarget.open) {
+      onClose?.();
+      close();
+    }
   };
 
   return {
@@ -122,6 +169,7 @@ export function useAnimatedDialog(
     dialogProps: {
       onAnimationEnd: handleAnimationEnd,
       onClick: handleBackdropClick,
+      onClose: handleClose,
     },
   };
 }

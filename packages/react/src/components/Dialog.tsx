@@ -100,6 +100,7 @@ export const Dialog: StyleableFC<DialogProps> = ({
   const { close, dialogProps } = useAnimatedDialog(dialogRef, {
     exitingClass: EXITING_CLASS,
     exitAnimationName: EXIT_ANIMATION_NAME,
+    onClose,
   });
 
   // ── Controlled mode (open / onClose) ─────────────────────────────────
@@ -113,37 +114,6 @@ export const Dialog: StyleableFC<DialogProps> = ({
     else if (!open && dialog.open) close();
   }, [open, close]);
 
-  // ── Backdrop click ───────────────────────────────────────────────────
-
-  // Override useAnimatedDialog's backdrop handler to also call onClose
-  // before starting the exit animation, so the consumer can set open={false}.
-  const handleClick = useCallback(
-    (e: React.MouseEvent<HTMLDialogElement>) => {
-      if (e.target === e.currentTarget && e.currentTarget.open) {
-        onClose?.();
-        close();
-      }
-    },
-    [onClose, close],
-  );
-
-  // ── Escape key (cancel event) ────────────────────────────────────────
-
-  // useAnimatedDialog hooks into the native "cancel" event (fires on ESC
-  // when the dialog is open). We add our own listener to call onClose first,
-  // so the consumer can set open={false} before the exit animation starts.
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog || !onClose) return;
-
-    const handleCancel = () => onClose();
-    // useAnimatedDialog registers its own "cancel" listener which calls
-    // e.preventDefault() then close(). Ours fires first, letting the
-    // consumer update state before the animation kicks off.
-    dialog.addEventListener("cancel", handleCancel);
-    return () => dialog.removeEventListener("cancel", handleCancel);
-  }, [onClose]);
-
   return (
     <DialogContext.Provider value={{ dialogID, onClose }}>
       <dialog
@@ -154,7 +124,6 @@ export const Dialog: StyleableFC<DialogProps> = ({
         aria-labelledby={`${dialogID}-title`}
         aria-describedby={`${dialogID}-desc`}
         {...dialogProps}
-        onClick={handleClick}
         className={cn("skc-dialog", className)}
         style={{ ...style, width }}
       >
