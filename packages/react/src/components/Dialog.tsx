@@ -34,7 +34,8 @@ export interface DialogProps {
    * The ID of the `<dialog>` element, for Invoker Commands API support.
    *
    * - Optional. Use with `command="show-modal" and `commandfor={id}` on a
-   *   trigger button to open the dialog declaratively via the Invoker Commands API.
+   *   trigger button to open the Dialog declaratively via the Invoker Commands
+   *   API.
    * - Defaults to an auto-generated ID.
    */
   id?: string;
@@ -96,10 +97,8 @@ export const Dialog: StyleableFC<DialogProps> = ({
     onClose,
   });
 
-  // ── Controlled mode (open / onClose) ─────────────────────────────────
-
-  // When open transitions to true → showModal()
-  // When open transitions to false → trigger exit animation
+  // Controlled mode: open is provided, so we need to open/close the dialog when
+  // it changes.
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog || open === undefined) return;
