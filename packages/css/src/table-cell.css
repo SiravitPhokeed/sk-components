@@ -4,16 +4,16 @@
  */
 
 .skc-table-cell {
-  position: relative;
   display: table-cell;
+  position: relative;
   border: 1px solid var(--outline-variant);
 }
 
 /* Cell content */
 .skc-table-cell__content {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   padding: 1rem 1.5rem;
   text-align: center;
 
