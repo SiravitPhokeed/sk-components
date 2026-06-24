@@ -1,4 +1,5 @@
 import "@/app/globals.css";
+import NavDrawer from "@/components/NavDrawer";
 import cn from "@/lib/helpers/cn";
 import {
   RootLayout as SKCRootLayout,
@@ -66,6 +67,7 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
         <ThemeProvider />
       </head>
       <SKCRootLayout className="bg-background font-body text-on-background leading-5 tracking-[0.25px]">
+        <NavDrawer />
         {children}
       </SKCRootLayout>
     </html>
