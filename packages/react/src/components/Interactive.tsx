@@ -94,6 +94,7 @@ export const Interactive: StyleableFC<
 }) => {
   const rippleContainerRef = useRef<HTMLSpanElement>(null);
   const [touched, setTouched] = useState(false);
+  const isLink = href !== undefined || Element === "a";
 
   /**
    * Get the position of the ripple relative to the ripple container.
@@ -177,7 +178,10 @@ export const Interactive: StyleableFC<
       onMouseUp={endRipple}
       onMouseLeave={endRipple}
       onKeyDown={(event: React.KeyboardEvent) => {
-        if (![`Enter`, ` `].includes(event.key) || touched) return;
+        // Disallow ripple effect on spacebar for links, since it scrolls the
+        // page instead of activating the link.
+        const allowedKeys = [`Enter`, ...(!isLink ? [` `] : [])];
+        if (!allowedKeys.includes(event.key) || touched) return;
         if (!rippleContainerRef?.current) return;
         const rect = rippleContainerRef.current.getBoundingClientRect();
         startRipple(rect.width / 2, rect.height / 2);
