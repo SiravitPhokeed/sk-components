@@ -1,0 +1,141 @@
+/**
+ * **Dialog**
+ * A Dialog interrupts the user to have them make an immediately significant
+ * decision or prompts a user to enter important information.
+ */
+
+.skc-dialog {
+  --_entry-easing: var(--easing-emphasized-decelerate);
+  --_entry-duration: var(--motion-medium-4);
+
+  --_exit-easing: var(--easing-emphasized-accelerate);
+  --_exit-duration: var(--motion-short-2);
+
+  --_backdrop-easing: var(--easing-standard);
+
+  --_delay: 100ms;
+  --_offset-y: 5rem;
+}
+
+.skc-dialog {
+  --_duration: var(--_entry-duration);
+  --_easing: var(--_entry-easing);
+
+  position: fixed;
+  transform: translate(-50%, calc(-50% - var(--_offset-y))) scaleY(0);
+  transform-origin: center top;
+  opacity: 0;
+  z-index: 90;
+  transition:
+    transform var(--_duration) var(--_easing),
+    opacity var(--_duration) var(--_easing);
+  transition-delay: var(--_delay);
+  margin: 0;
+  inset: 50% auto auto 50%;
+  border: none;
+  border-radius: var(--rounded-xl);
+  background-color: var(--surface-container-high);
+  padding: 0;
+  width: 22.5rem;
+  max-width: calc(100vw - 3rem);
+  overflow: hidden;
+  color: var(--on-surface);
+
+  &::backdrop {
+    opacity: 0.5;
+    animation: skc-dialog-enter-backdrop var(--_duration)
+      var(--_backdrop-easing) backwards;
+    animation-delay: var(--_delay);
+    background-color: var(--scrim);
+  }
+
+  > * {
+    transform: scaleY(5);
+    transition: transform var(--_duration) var(--_easing);
+
+    > * {
+      opacity: 0;
+      transition: opacity calc(var(--_duration) * (2 / 3)) var(--_easing);
+      transition-delay: calc(var(--_delay) + var(--_duration) / 2);
+    }
+  }
+
+  /* Open state */
+  &[open] {
+    transform: translate(-50%, -50%) scaleY(1);
+    opacity: 1;
+
+    > * {
+      transform: scaleY(1);
+
+      > * {
+        opacity: 1;
+      }
+    }
+
+    @starting-style {
+      transform: translate(-50%, calc(-50% - var(--_offset-y))) scaleY(0);
+      opacity: 0;
+
+      > * {
+        transform: scaleY(5);
+
+        > * {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
+
+.skc-dialog > .skc-actions {
+  padding: 1.5rem;
+  padding-left: 1rem;
+}
+
+/* ── Backdrop entry animation (Safari can't @starting-style ::backdrop) ── */
+
+@keyframes skc-dialog-enter-backdrop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
+/* ── Exit animations (triggered via --exiting class) ── */
+
+@keyframes skc-dialog-exit {
+  from {
+    transform: translate(-50%, -50%) scaleY(1);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, calc(-50% - var(--_offset-y) / 4)) scaleY(0);
+    opacity: 0;
+  }
+}
+
+@keyframes skc-dialog-exit-backdrop {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.skc-dialog.skc-dialog--exiting {
+  --_duration: var(--_exit-duration);
+  --_easing: var(--_exit-easing);
+
+  & {
+    animation: var(--_duration) var(--_easing) forwards skc-dialog-exit;
+  }
+
+  &::backdrop {
+    animation: var(--_duration) var(--_backdrop-easing) forwards
+      skc-dialog-exit-backdrop;
+  }
+}

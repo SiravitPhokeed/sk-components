@@ -18,6 +18,7 @@ export {
   DataTableContent,
   type DataTableContentProps,
 } from "./DataTableContent";
+export { Dialog, type DialogProps } from "./Dialog";
 export { DialogContent, type DialogContentProps } from "./DialogContent";
 export { DialogHeader, type DialogHeaderProps } from "./DialogHeader";
 export { Divider, type DividerProps } from "./Divider";

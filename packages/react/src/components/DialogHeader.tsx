@@ -1,9 +1,9 @@
+import { useDialogContext } from "@/components/Dialog";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/dialog-header.css";
 import type { ElementType, JSX } from "react";
-import { useId } from "react";
 
 /**
  * Props for {@link DialogHeader Dialog Header}.
@@ -61,18 +61,22 @@ export const DialogHeader: StyleableFC<DialogHeaderProps> = ({
   style,
   className,
 }) => {
-  // TODO: Consume this from Dialog
-  const dialogID = `dialog-${useId()}`;
+  const dialogContext = useDialogContext();
+  const dialogID = dialogContext?.dialogID;
 
   return (
     <Element className={cn("skc-dialog-header", className)} style={style}>
       {icon}
       {title && (
-        <Text id={`${dialogID}-title`} type="headline-small" element="h2">
+        <Text
+          id={dialogID ? `${dialogID}-title` : undefined}
+          type="headline-small"
+          element="h2"
+        >
           {title}
         </Text>
       )}
-      <Text id={`${dialogID}-desc`} type="body-medium">
+      <Text id={dialogID ? `${dialogID}-desc` : undefined} type="body-medium">
         {desc}
       </Text>
     </Element>

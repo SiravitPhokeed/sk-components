@@ -1,9 +1,6 @@
 /**
  * **Nav Drawer**
  * A navigation drawer that slides in from the left.
- *
- * Implemented with `<dialog>` and `showModal()` for native inertness,
- * focus trapping, and `::backdrop` management.
  */
 
 .skc-nav-drawer {
@@ -59,9 +56,6 @@
       opacity: 0;
       transition-delay: calc(var(--_delay) + var(--_duration) / 2);
       transition-duration: calc(var(--_duration) * (2 / 3));
-      /* transition:
-        transform var(--_duration) var(--_easing),
-        opacity var(--_duration) var(--_easing); */
       transition-property: transform, opacity;
       transition-timing-function: var(--_easing);
     }

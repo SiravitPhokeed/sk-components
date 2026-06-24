@@ -23,6 +23,7 @@
     "./columns.css": "./dist/columns.css",
     "./content-layout.css": "./dist/content-layout.css",
     "./data-table-content.css": "./dist/data-table-content.css",
+    "./dialog.css": "./dist/dialog.css",
     "./dialog-content.css": "./dist/dialog-content.css",
     "./dialog-header.css": "./dist/dialog-header.css",
     "./divider.css": "./dist/divider.css",
