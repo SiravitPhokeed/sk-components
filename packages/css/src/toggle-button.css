@@ -19,10 +19,11 @@
   padding: 0.5rem;
 
   .skc-material-icon {
-    transition:
-      font-variation-settings var(--motion-short-4) var(--easing-standard),
-      color var(--motion-short-4) var(--easing-standard);
+    transition-duration: var(--motion-short-4);
+    transition-property: font-weight, font-variation-settings, color;
+    transition-timing-function: var(--easing-standard);
     color: var(--state-layer-color);
+    font-variation-settings: "FILL" 0;
   }
 
   /* Disabled */
@@ -30,6 +31,15 @@
     opacity: 0.38;
     background-color: transparent;
     color: var(--on-surface);
+  }
+}
+
+.skc-toggle-button:not([aria-disabled="true"]) {
+  &:hover > .skc-material-icon {
+    font-weight: 600;
+  }
+  &:active > .skc-material-icon {
+    font-weight: 300;
   }
 }
 
