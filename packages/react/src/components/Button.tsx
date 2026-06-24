@@ -151,8 +151,6 @@ const STRINGS = {
  * @param locale Allows for translation of the accessibility labels.
  * @param onClick The function called when the user interacts with the Button.
  * @param href The URL of the page this Button leads to.
- *
- * @todo
  */
 export const Button: StyleableFC<ButtonProps> = ({
   children,
