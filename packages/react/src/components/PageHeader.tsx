@@ -83,9 +83,9 @@ export interface PageHeaderProps {
   /**
    * The function called when the user clicks on the navigation Button.
    *
-   * - Always required.
+   * - Optional.
    */
-  onNavToggle: () => any;
+  onNavToggle?: () => any;
 
   /**
    * The element of the most relevant underlying element.
@@ -145,7 +145,13 @@ export const PageHeader: StyleableFC<PageHeaderProps> = ({
       alt={STRINGS[locale][isTopLevel ? "nav" : "back"]}
       onClick={isTopLevel ? onNavToggle : undefined}
       href={parentURL}
-      element={!isTopLevel ? buttonElement : undefined}
+      element={
+        isTopLevel
+          ? (props) => (
+              <button command="show-modal" commandfor="nav-drawer" {...props} />
+            )
+          : buttonElement
+      }
     />
   );
 
