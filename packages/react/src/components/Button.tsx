@@ -61,6 +61,13 @@ export interface ButtonProps {
   tooltip?: string;
 
   /**
+   * If the Button is focused when the page loads.
+   *
+   * - Optional.
+   */
+  autoFocus?: boolean;
+
+  /**
    * If the Button is selected. `icon` is replaced with a checkmark if this is
    * true.
    *
@@ -165,6 +172,7 @@ const STRINGS = {
  * @param icon An icon can appear before the text (`children`) in a Button.
  * @param alt A description of the Button for screen readers, similar to `alt`on `<img>`.
  * @param tooltip A message shown in a tooltip when the user hovers over the Button.
+ * @param autoFocus If the Button is focused when the page loads.
  * @param selected If the Button is selected. `icon` is replaced with a checkmark if this is true.
  * @param dangerous If the action the Button accomplishes is dangerous, like deleting your account.
  * @param loading Disable the Button and add a Progress spinner in front of the text to signify loading status.
@@ -179,6 +187,7 @@ export const Button: StyleableFC<ButtonProps> = ({
   icon,
   alt,
   tooltip,
+  autoFocus,
   selected,
   dangerous,
   loading,
@@ -200,6 +209,7 @@ export const Button: StyleableFC<ButtonProps> = ({
       aria-label={alt}
       aria-disabled={disabled}
       title={tooltip}
+      autoFocus={autoFocus}
       onClick={isFunctional ? onClick : undefined}
       href={isFunctional ? href : undefined}
       command={command}
