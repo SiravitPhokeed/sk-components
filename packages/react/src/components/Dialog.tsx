@@ -4,15 +4,8 @@ import { useAnimatedDialog } from "@/hooks/useAnimatedDialog";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/dialog.css";
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useId,
-  useRef,
-} from "react";
 import type { CSSProperties, ReactNode } from "react";
+import { createContext, useContext, useEffect, useId, useRef } from "react";
 
 const DialogContext = createContext<{
   dialogID: string;
