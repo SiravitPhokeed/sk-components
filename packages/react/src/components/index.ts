@@ -30,6 +30,7 @@ export { ListItem, type ListItemProps } from "./ListItem";
 export { ListItemContent, type ListItemContentProps } from "./ListItemContent";
 export { MaterialIcon, type MaterialIconProps } from "./MaterialIcon";
 export { MenuItem, type MenuItemProps } from "./MenuItem";
+export { NavDrawer, type NavDrawerProps } from "./NavDrawer";
 export { NavDrawerItem, type NavDrawerItemProps } from "./NavDrawerItem";
 export {
   NavDrawerSection,

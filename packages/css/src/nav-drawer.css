@@ -1,0 +1,150 @@
+/**
+ * **Nav Drawer**
+ * A navigation drawer that slides in from the left.
+ *
+ * Implemented with `<dialog>` and `showModal()` for native inertness,
+ * focus trapping, and `::backdrop` management.
+ */
+
+.skc-nav-drawer {
+  --_entry-easing: var(--easing-emphasized-decelerate);
+  --_entry-duration: var(--motion-medium-4);
+
+  --_exit-easing: var(--easing-emphasized-accelerate);
+  --_exit-duration: var(--motion-short-4);
+
+  --_backdrop-easing: var(--easing-standard);
+
+  --_delay: 100ms;
+}
+
+.skc-nav-drawer {
+  --_duration: var(--_entry-duration);
+  --_easing: var(--_entry-easing);
+
+  position: fixed;
+  inset: 0;
+  right: auto;
+  transform: translateX(-100%) scaleX(0.2);
+  transform-origin: left;
+  z-index: 90;
+  transition: transform var(--_duration) var(--_easing);
+  transition-delay: var(--_delay);
+  margin: 0;
+  border: none;
+  border-radius: 0 var(--rounded-lg) var(--rounded-lg) 0;
+  background-color: var(--surface-container-low);
+  padding: 0.75rem;
+  width: calc(100% - 4rem);
+  max-width: 22.5rem;
+  height: 100dvh;
+  max-height: none;
+  overflow-y: auto;
+  color: var(--on-surface);
+
+  &::backdrop {
+    opacity: 0.5;
+    animation: skc-nav-drawer-enter-backdrop var(--_duration)
+      var(--_backdrop-easing) backwards;
+    animation-delay: var(--_delay);
+    background-color: var(--scrim);
+  }
+
+  .skc-nav-drawer__content {
+    transform: scaleX(2);
+    transition: transform var(--_duration) var(--_easing);
+
+    > * {
+      transform: translateX(-3rem);
+      opacity: 0;
+      transition-delay: calc(var(--_delay) + var(--_duration) / 2);
+      transition-duration: calc(var(--_duration) * (2 / 3));
+      /* transition:
+        transform var(--_duration) var(--_easing),
+        opacity var(--_duration) var(--_easing); */
+      transition-property: transform, opacity;
+      transition-timing-function: var(--_easing);
+    }
+  }
+
+  /* Open state */
+  &[open] {
+    display: block;
+    transform: translateX(0) scaleX(1);
+
+    .skc-nav-drawer__content {
+      transform: scaleX(1);
+
+      > * {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    /* Entry starting style */
+    @starting-style {
+      transform: translateX(-100%) scaleX(0.2);
+
+      .skc-nav-drawer__content {
+        transform: scaleX(2);
+
+        > * {
+          transform: translateX(-3rem);
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
+
+.skc-nav-drawer__content > :not(:last-child)::after {
+  display: block;
+  margin-inline: 1rem;
+  background-color: var(--outline-variant);
+  height: 1px;
+  content: "";
+}
+
+/* ── Backdrop entry animation (Safari can't @starting-style ::backdrop) ── */
+
+@keyframes skc-nav-drawer-enter-backdrop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
+/* ── Exit animations (triggered via --exiting class) ── */
+
+@keyframes skc-nav-drawer-exit {
+  from {
+    transform: translateX(0) scaleX(1);
+  }
+  to {
+    transform: translateX(-100%) scaleX(0.2);
+  }
+}
+@keyframes skc-nav-drawer-exit-backdrop {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.skc-nav-drawer.skc-nav-drawer--exiting {
+  --_duration: var(--_exit-duration);
+  --_easing: var(--_exit-easing);
+
+  & {
+    animation: var(--_duration) var(--_easing) forwards skc-nav-drawer-exit;
+  }
+
+  &::backdrop {
+    animation: var(--_duration) var(--_backdrop-easing) forwards
+      skc-nav-drawer-exit-backdrop;
+  }
+}

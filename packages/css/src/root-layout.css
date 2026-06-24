@@ -27,13 +27,6 @@ body {
     }
   }
 
-  > .skc-nav-drawer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 90;
-  }
-
   > .skc-progress {
     position: fixed;
     inset: 0;

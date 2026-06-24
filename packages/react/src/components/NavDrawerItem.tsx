@@ -1,4 +1,5 @@
 import { Interactive } from "@/components/Interactive";
+import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/nav-drawer-item.css";
@@ -90,31 +91,43 @@ export const NavDrawerItem: StyleableFC<NavDrawerItemProps> = ({
   selected,
   onClick,
   href,
-  element: Element = "li",
+  element = "a",
   style,
   className,
 }) => {
   return (
-    <Element
-      style={style}
-      className={cn(
-        "skc-nav-drawer-item",
-        selected && "skc-nav-drawer-item--selected",
-        className,
-      )}
-    >
+    <li>
       <Interactive
         href={href}
-        onClick={onClick}
         aria-current={selected ? "page" : undefined}
         title={tooltip}
+        onClick={onClick}
+        element={element}
+        className={cn(
+          "skc-nav-drawer-item",
+          selected && "skc-nav-drawer-item--selected",
+          className,
+        )}
+        style={style}
       >
-        <div className="skc-nav-drawer-item__icon">{icon}</div>
-        <span className="skc-nav-drawer-item__label">{label}</span>
+        {icon}
+        <Text
+          type="label-large"
+          className="skc-nav-drawer-item__label"
+          element="span"
+        >
+          {label}
+        </Text>
         {metadata && (
-          <span className="skc-nav-drawer-item__metadata">{metadata}</span>
+          <Text
+            type="label-large"
+            className="skc-nav-drawer-item__metadata"
+            element="span"
+          >
+            {metadata}
+          </Text>
         )}
       </Interactive>
-    </Element>
+    </li>
   );
 };

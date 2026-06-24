@@ -27,15 +27,6 @@ export interface NavDrawerSectionProps {
   header?: string | JSX.Element;
 
   /**
-   * A description of the Navigation Drawer Section for screen readers,
-   * similar to `alt` on `<img>`.
-   *
-   * - Required if `header` is a JSX Element, as it is used to generate the ID
-   *   crucial for accessibility.
-   */
-  alt?: string;
-
-  /**
    * The element of the most relevant underlying element.
    *
    * - Optional.
@@ -48,24 +39,22 @@ export interface NavDrawerSectionProps {
  *
  * @param children Destinations grouped into this section.
  * @param header The header of the section.
- * @param alt A description of the Navigation Drawer Section for screen readers, similar to `alt` on `<img>`.
  */
 export const NavDrawerSection: StyleableFC<NavDrawerSectionProps> = ({
   children,
   header,
-  alt,
   element: Element = "section",
   style,
   className,
 }) => {
-  const sectionID = `nav-section-${useId()}`;
+  const id = `nav-section-${useId()}`;
 
   return (
-    <Element style={style} className={cn("skc-nav-drawer-section", className)}>
+    <Element className={cn("skc-nav-drawer-section", className)} style={style}>
       <Text
-        type="title-medium"
+        type="title-small"
         className="skc-nav-drawer-section__header"
-        element={(props) => <h2 {...props} id={sectionID} aria-label={alt} />}
+        element={(props) => <h2 {...props} id={id} />}
       >
         {header}
       </Text>

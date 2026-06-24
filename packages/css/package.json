@@ -35,6 +35,7 @@
     "./list.css": "./dist/list.css",
     "./material-icon.css": "./dist/material-icon.css",
     "./menu-item.css": "./dist/menu-item.css",
+    "./nav-drawer.css": "./dist/nav-drawer.css",
     "./nav-drawer-item.css": "./dist/nav-drawer-item.css",
     "./nav-drawer-section.css": "./dist/nav-drawer-section.css",
     "./page-header.css": "./dist/page-header.css",
