@@ -1,0 +1,36 @@
+/**
+ * **Data Table Filters**
+ * Allows the user to filter the Data Table's content by selecting from a list
+ * of filters.
+ */
+
+.skc-data-table-filters {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  transition: border-color var(--motion-short-4) var(--easing-standard);
+  border-bottom: 1px solid var(--outline-variant);
+  background-color: var(--surface);
+}
+
+.skc-data-table-filters::before {
+  position: absolute;
+  opacity: 0;
+  transition: opacity var(--motion-short-4) var(--easing-standard);
+  inset: 0;
+  border-radius: inherit;
+  background-color: var(--on-surface);
+  pointer-events: none;
+  content: "";
+}
+
+.skc-data-table-filters .skc-chip-set {
+  flex-grow: 1;
+  padding-block: 0.625rem;
+}
+
+.skc-data-table-filters > .skc-material-icon {
+  margin-left: 1.5rem;
+}

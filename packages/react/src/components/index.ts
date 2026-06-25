@@ -14,10 +14,23 @@ export { CardContent, type CardContentProps } from "./CardContent";
 export { CardHeader, type CardHeaderProps } from "./CardHeader";
 export { Columns, type ColumnsProps } from "./Columns";
 export { ContentLayout, type ContentLayoutProps } from "./ContentLayout";
+export { DataTable, type DataTableProps } from "./DataTable";
+export { DataTableBody, type DataTableBodyProps } from "./DataTableBody";
+export { DataTableCell, type DataTableCellProps } from "./DataTableCell";
 export {
   DataTableContent,
   type DataTableContentProps,
 } from "./DataTableContent";
+export {
+  DataTableFilters,
+  type DataTableFiltersProps,
+} from "./DataTableFilters";
+export { DataTableHead, type DataTableHeadProps } from "./DataTableHead";
+export {
+  DataTablePagination,
+  type DataTablePaginationProps,
+} from "./DataTablePagination";
+export { DataTableSearch, type DataTableSearchProps } from "./DataTableSearch";
 export { Dialog, type DialogProps } from "./Dialog";
 export { DialogContent, type DialogContentProps } from "./DialogContent";
 export { DialogHeader, type DialogHeaderProps } from "./DialogHeader";

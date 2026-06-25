@@ -1,0 +1,60 @@
+/**
+ * **Data Table Search**
+ * Allows the user to filter the Data Table's content using a text query.
+ */
+
+.skc-data-table-search {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  transition: border-color var(--motion-short-4) var(--easing-standard);
+  border-bottom: 1px solid var(--outline-variant);
+  background-color: var(--surface);
+}
+
+.skc-data-table-search::before {
+  position: absolute;
+  opacity: 0;
+  transition: opacity var(--motion-short-4) var(--easing-standard);
+  inset: 0;
+  border-radius: inherit;
+  background-color: var(--on-surface);
+  pointer-events: none;
+  content: "";
+}
+
+.skc-data-table-search:has(.skc-data-table-search__input:hover)::before {
+  opacity: 0.08;
+}
+
+.skc-data-table-search:has(.skc-data-table-search__input:focus) {
+  margin-bottom: -1px;
+  border-bottom: 2px solid var(--primary);
+}
+
+.skc-data-table-search > .skc-material-icon {
+  margin-left: 1.5rem;
+}
+
+.skc-data-table-search__input {
+  flex-grow: 1;
+  appearance: textfield;
+  outline-offset: -2px;
+  border: 0;
+  background-color: transparent;
+  padding-block: 1rem;
+  font-weight: var(--font-regular);
+  font-size: var(--text-lg);
+  line-height: 1.5;
+}
+
+.skc-data-table-search__input:focus {
+  outline: none;
+}
+
+.skc-data-table-search__input::placeholder {
+  color: var(--on-surface-variant);
+  font-family: var(--font-display);
+}

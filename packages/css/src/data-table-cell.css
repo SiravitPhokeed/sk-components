@@ -1,0 +1,110 @@
+/**
+ * **Data Table Cell**
+ * A cell of a Data Table. Acts like a regular Table Cell, but header cells
+ * can be made sortable with a state layer, ripple effect, and sort indicator.
+ */
+
+.skc-data-table-cell {
+  display: table-cell;
+  position: relative;
+  border: 1px solid var(--outline-variant);
+}
+
+.skc-data-table-cell__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  width: 100%;
+  text-align: center;
+
+  .skc-chip {
+    margin-inline: -0.375rem;
+  }
+
+  :not(:is(.skc-data-table-cell__arrow, .skc-interactive__ripple)) {
+    transition: transform var(--motion-short-4) var(--easing-standard);
+  }
+}
+
+/* Sortable header */
+.skc-data-table-cell--sortable {
+  --state-layer-color: var(--on-surface);
+}
+
+/* Sort indicator */
+.skc-data-table-cell__arrow {
+  /* Exit */
+  --_rotate: 360deg;
+
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%) rotate(var(--_rotate));
+  opacity: 0;
+  transition-duration: var(--motion-short-4);
+  transition-property: opacity, transform;
+  transition-timing-function: var(--easing-standard);
+  color: var(--secondary);
+}
+
+.skc-data-table-cell__arrow--asc,
+.skc-data-table-cell__arrow--desc {
+  opacity: 1;
+}
+
+.skc-data-table-cell__arrow--asc {
+  --_rotate: 0deg;
+  animation: skc-data-table-cell-arrow-entry var(--motion-short-4)
+    var(--easing-standard);
+}
+.skc-data-table-cell__arrow--desc {
+  --_rotate: 180deg;
+}
+
+/* Entry */
+@keyframes skc-data-table-cell-arrow-entry {
+  from {
+    transform: translateY(-50%) rotate(-180deg);
+  }
+  to {
+    transform: translateY(-50%) rotate(0deg);
+  }
+}
+
+/* Alignment */
+.skc-data-table-cell__content {
+  .skc-data-table-cell--left & {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .skc-data-table-cell--center & {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .skc-data-table-cell--right & {
+    justify-content: flex-end;
+    text-align: right;
+  }
+}
+
+/* Make space for sort indicator */
+.skc-data-table-cell__content:has(
+  .skc-data-table-cell__arrow--asc,
+  .skc-data-table-cell__arrow--desc
+) {
+  .skc-data-table-cell--left & {
+    padding-right: 2.5rem;
+    > :not(:is(.skc-data-table-cell__arrow, .skc-interactive__ripple)) {
+      transform: translateX(1rem);
+    }
+  }
+  .skc-data-table-cell--center & {
+    padding-inline: 2.5rem;
+  }
+  .skc-data-table-cell--right & {
+    padding-left: 2.5rem;
+  }
+}
