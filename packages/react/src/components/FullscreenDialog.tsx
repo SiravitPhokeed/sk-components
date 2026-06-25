@@ -112,7 +112,7 @@ export const FullscreenDialog: StyleableFC<FullscreenDialogProps> = ({
   title,
   action,
   width,
-  locale,
+  locale = "en-US",
   onClose,
   style,
   className,
@@ -152,7 +152,7 @@ export const FullscreenDialog: StyleableFC<FullscreenDialogProps> = ({
         <Button
           appearance="text"
           icon={<MaterialIcon icon="close" />}
-          alt={STRINGS[locale || "en-US"].close}
+          alt={STRINGS[locale].close}
           command="request-close"
           commandfor={dialogID}
         />
