@@ -22,11 +22,13 @@ export interface FullscreenDialogProps {
   children?: ReactNode;
 
   /**
-   * The ID of the `<dialog>` element. Use with `command="show-modal"`
-   * and `commandfor={id}` on a trigger button to open the Full-screen Dialog
-   * declaratively via the Invoker Commands API.
+   * The ID of the `<dialog>` element, for Invoker Commands API support.
    *
-   * - Optional. Defaults to an auto-generated ID.
+   * - Optional. Use with `command="show-modal" and `commandfor={id}` on a
+   *   trigger button to open the Dialog declaratively via the Invoker Commands
+   *   API.
+   * - Use `command="request-close"` to close, not `command="close"`.
+   * - Defaults to an auto-generated ID.
    */
   id?: string;
 
@@ -95,7 +97,7 @@ const STRINGS = {
  * on larger screens. A Dialog can appear above a Full-screen Dialog.
  *
  * @param children The content.
- * @param id The ID of the dialog element, for Invoker Commands API support.
+ * @param id TThe ID of the `<dialog>` element, for Invoker Commands API support.
  * @param open If the Full-screen Dialog is open and shown.
  * @param title The title text.
  * @param action The submission Button.
