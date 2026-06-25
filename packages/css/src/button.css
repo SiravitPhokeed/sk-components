@@ -4,7 +4,12 @@
  * going to a page.
  */
 
+/* --_button-foreground-color and --_button-background-color does not affect
+   disabled state. */
+
 .skc-button {
+  --state-layer-color: var(--_button-foreground-color);
+
   display: flex;
   position: relative;
   flex-direction: row;
@@ -14,6 +19,7 @@
   cursor: pointer;
   border: none;
   border-radius: var(--rounded-full);
+  background-color: var(--_button-background-color, transparent);
   padding: 0.625rem 1.5rem;
   overflow: hidden;
   font-family: var(--font-display);
@@ -87,9 +93,9 @@
 }
 
 .skc-button--filled {
-  --state-layer-color: var(--on-primary);
+  --_button-foreground-color: var(--on-primary);
+  --_button-background-color: var(--primary);
   transition: box-shadow var(--motion-short-4) var(--easing-standard);
-  background-color: var(--primary);
 
   &:hover {
     box-shadow: var(--shadow-1);
@@ -106,9 +112,9 @@
 }
 
 .skc-button--tonal {
-  --state-layer-color: var(--on-secondary-container);
+  --_button-foreground-color: var(--on-secondary-container);
+  --_button-background-color: var(--secondary-container);
   transition: box-shadow var(--motion-short-4) var(--easing-standard);
-  background-color: var(--secondary-container);
 
   &:hover {
     box-shadow: var(--shadow-1);
@@ -125,7 +131,7 @@
 }
 
 .skc-button--outlined {
-  --state-layer-color: var(--primary);
+  --_button-foreground-color: var(--primary);
   border: 1px solid var(--outline);
 
   &:focus-visible {
@@ -149,7 +155,7 @@
 }
 
 .skc-button--text {
-  --state-layer-color: var(--primary);
+  --_button-foreground-color: var(--primary);
   background-color: transparent;
   padding-inline: 0.75rem;
 
