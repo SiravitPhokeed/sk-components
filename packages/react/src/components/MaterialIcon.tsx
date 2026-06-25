@@ -14,6 +14,14 @@ export interface MaterialIconProps {
   icon: string;
 
   /**
+   * A description of the Material Icon for screen readers, similar to `alt` on
+   * `<img>`.
+   *
+   * - Required if the Material Icon is used alone and conveys meaning.
+   */
+  alt?: string;
+
+  /**
    * If the icon is filled or not.
    *
    * - An icon should be outlined by default, filling it should have a specific
@@ -64,6 +72,7 @@ const FONT_VARIATION_KEYS = {
  * Material Icon uses the “Material Symbol” icon font from Google.
  *
  * @param icon Material Icon uses the “Material Symbol” font, where each icon has its own corresponding text string. You can find the list of all icons at {@link https://fonts.google.com/icons Google Fonts}.
+ * @param alt A description of the Material Icon for screen readers, similar to `alt` on `<img>`.
  * @param fill If the icon is filled or not.
  * @param weight How thick the strokes are.
  * @param grade `grade` also adjusts the icon’s thickness, but more subtly.
@@ -71,6 +80,7 @@ const FONT_VARIATION_KEYS = {
  */
 export const MaterialIcon: StyleableFC<MaterialIconProps> = ({
   icon,
+  alt,
   fill,
   weight,
   grade,
@@ -80,11 +90,7 @@ export const MaterialIcon: StyleableFC<MaterialIconProps> = ({
 }) => {
   return (
     <i
-      // Hide the icon name from screen readers because sometimes the name
-      // doesn't really make sense. In most cases, icons are just a visual aid,
-      // except for notably an icon-only button where the screen reader label
-      // should already be set from the button itself.
-      aria-hidden
+      {...(alt ? { role: "img", "aria-label": alt } : { "aria-hidden": true })}
       style={{
         ...style,
         fontSize: size ? `${size / 16}rem` : undefined,

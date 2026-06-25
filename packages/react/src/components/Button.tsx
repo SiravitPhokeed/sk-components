@@ -170,7 +170,7 @@ const STRINGS = {
  * @param children The text displayed inside the Button.
  * @param appearance The appearance of the Button.
  * @param icon An icon can appear before the text (`children`) in a Button.
- * @param alt A description of the Button for screen readers, similar to `alt`on `<img>`.
+ * @param alt A description of the Button for screen readers, similar to `alt` on `<img>`.
  * @param tooltip A message shown in a tooltip when the user hovers over the Button.
  * @param autoFocus If the Button is focused when the page loads.
  * @param selected If the Button is selected. `icon` is replaced with a checkmark if this is true.
