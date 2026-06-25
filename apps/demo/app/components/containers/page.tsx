@@ -1,6 +1,7 @@
 import AvatarSection from "@/app/components/containers/components/AvatarSection";
 import CardSection from "@/app/components/containers/components/CardSection";
 import ColumnsSection from "@/app/components/containers/components/ColumnsSection";
+import DataTableSection from "@/app/components/containers/components/DataTableSection";
 import HeaderSection from "@/app/components/containers/components/HeaderSection";
 import InteractiveSection from "@/app/components/containers/components/InteractiveSection";
 import ListSection from "@/app/components/containers/components/ListSection";
@@ -17,7 +18,7 @@ const ContainersPage: FC = () => (
       <AvatarSection />
       <CardSection />
       <ColumnsSection />
-      {/* <DataTableSection /> */}
+      <DataTableSection />
       <HeaderSection />
       <InteractiveSection />
       <SplitLayoutSection />
