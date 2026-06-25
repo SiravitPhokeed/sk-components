@@ -15,5 +15,6 @@
     "prettier": "^3.4.0",
     "prettier-plugin-css-order": "^2.2.0",
     "prettier-plugin-tailwindcss": "^0.8.0"
-  }
+  },
+  "packageManager": "pnpm@11.9.0"
 }
