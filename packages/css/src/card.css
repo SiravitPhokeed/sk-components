@@ -48,39 +48,16 @@
 
 /* State layer effect */
 .skc-card.skc-interactive {
-  --state-layer-color: var(--primary);
-
-  &.skc-card--outlined {
-    transition: border-color var(--motion-short-4) var(--easing-standard);
-
-    &:focus {
-      border-color: var(--primary);
-    }
-  }
+  --state-layer-color: var(--on-surface-variant);
 }
 
 /* Shadow effect */
-.skc-interactive--shadow {
-  &.skc-card--outlined {
-    transition:
-      border-color var(--motion-short-4) var(--easing-standard),
-      box-shadow var(--motion-short-4) var(--easing-standard);
-
-    &:hover {
-      border-color: var(--primary);
-    }
-    &:active {
-      border-color: var(--primary);
-    }
+.skc-card--elevated.skc-interactive--shadow {
+  &:hover {
+    box-shadow: var(--shadow-3);
   }
-
-  &.skc-card--elevated.skc-card--shadow {
-    &:hover {
-      box-shadow: var(--shadow-3);
-    }
-    &:active {
-      box-shadow: var(--shadow-2);
-    }
+  &:active {
+    box-shadow: var(--shadow-2);
   }
 }
 
