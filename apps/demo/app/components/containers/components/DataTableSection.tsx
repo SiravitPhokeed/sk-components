@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  Avatar,
   DataTable,
   DataTableBody,
   DataTableContent,
@@ -8,6 +9,7 @@ import {
   DataTablePagination,
   DataTableSearch,
   Header,
+  InputChip,
   MaterialIcon,
   Section,
 } from "@suankularb-components/react";
@@ -117,7 +119,10 @@ const COLUMNS = [
   }),
   columnHelper.accessor("assignee", {
     header: "Assignee",
-    cell: (info) => info.getValue(),
+    cell: (info) =>
+      info.getValue() && (
+        <InputChip avatar={<Avatar />}>{info.getValue()}</InputChip>
+      ),
     enableSorting: true,
   }),
   columnHelper.accessor("progress", {
