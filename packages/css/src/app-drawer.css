@@ -50,8 +50,8 @@
 
   &::backdrop {
     opacity: 0.5;
-    animation: skc-app-drawer-enter-backdrop var(--_duration)
-      var(--_backdrop-easing) backwards;
+    animation: skc-app-drawer-enter-backdrop var(--_duration) var(--_easing)
+      backwards;
     animation-delay: var(--_delay);
     background-color: var(--scrim);
   }
