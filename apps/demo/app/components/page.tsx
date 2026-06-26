@@ -6,7 +6,12 @@ import {
   MaterialIcon,
   Section,
 } from "@suankularb-components/react";
+import type { Metadata } from "next";
 import type { FC } from "react";
+
+export const metadata: Metadata = {
+  title: "Components",
+};
 
 const ComponentsPage: FC = () => (
   <>
