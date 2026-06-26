@@ -1,5 +1,6 @@
 import DialogSection from "@/app/components/communication/components/DialogSection";
 import ProgressSection from "@/app/components/communication/components/ProgressSection";
+import SnackbarSection from "@/app/components/communication/components/SnackbarSection";
 import PageHeader from "@/components/PageHeader";
 import { ContentLayout } from "@suankularb-components/react";
 import type { Metadata } from "next";
@@ -9,14 +10,13 @@ export const metadata: Metadata = {
   title: "Communication",
 };
 
-
 const CommunicationPage: FC = () => (
   <>
     <PageHeader parentURL="/components">Communication</PageHeader>
     <ContentLayout>
       <DialogSection />
       <ProgressSection />
-      {/* <SnackbarSection /> */}
+      <SnackbarSection />
     </ContentLayout>
   </>
 );
