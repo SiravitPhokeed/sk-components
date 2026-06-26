@@ -1,2 +1,2 @@
 export { snackbar } from "./snackbar";
-export { type PushSnackbarOptions } from "./snackbar/pushSnackbar";
+export { type PushSnackbarOptions } from "./snackbar/push";

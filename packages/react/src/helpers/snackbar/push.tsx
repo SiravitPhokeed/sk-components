@@ -11,7 +11,7 @@ let activeDismiss: (() => void) | null = null;
 /** Counter for generating unique Snackbar IDs. */
 let nextId = 0;
 
-/** Options for {@link pushSnackbar}. */
+/** Options for {@link snackbarPush}. */
 export type PushSnackbarOptions = Pick<
   SnackbarProps,
   "stacked" | "persistent" | "autoDismissDurationMs"
@@ -24,18 +24,11 @@ export type PushSnackbarOptions = Pick<
  *
  * @param message The message inside the Snackbar.
  * @param action A Snackbar can contain 1 action.
- * @param options Options.
+ * @param options Options for the Snackbar.
  *
  * @returns A function to programmatically dismiss the Snackbar with its exit animation.
- *
- * @example
- * ```tsx
- * pushSnackbar("Students removed", <Button appearance="text">Undo</Button>);
- * ```
- *
- * @private Consumers should use `snackbar.push` instead.
  */
-export function pushSnackbar(
+export default function snackbarPush(
   message: ReactNode,
   action?: ReactNode,
   options?: PushSnackbarOptions,
@@ -48,7 +41,6 @@ export function pushSnackbar(
   const id = `snackbar-${nextId++}`;
 
   const container = document.createElement("div");
-  container.className = "skc-snackbar-container";
   document.body.appendChild(container);
 
   const root = createRoot(container);
@@ -79,23 +71,17 @@ export function pushSnackbar(
     if (dismissed) return;
 
     const snackbarEl = document.getElementById(id) as HTMLDivElement | null;
-    if (!snackbarEl) {
-      console.error(`Snackbar element with ID ${id} not found in DOM.`);
-      return;
-    }
+    if (!snackbarEl) return;
 
     const handleToggle = (e: ToggleEvent) => {
-      console.log(`Snackbar with ID ${id} toggled to state: ${e.newState}`);
       if (e.newState === "closed") {
         resetActiveDismiss();
         snackbarEl.removeEventListener("toggle", handleToggle);
         root.unmount();
-        console.log(`Removing Snackbar container with ID ${id}`);
         container.remove();
       }
     };
     snackbarEl.addEventListener("toggle", handleToggle);
-    console.log(`Event listener added for Snackbar with ID ${id}`);
   });
 
   const dismiss = () => {
