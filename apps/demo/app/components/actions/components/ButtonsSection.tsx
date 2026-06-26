@@ -60,7 +60,10 @@ const ButtonsSection: FC = () => {
               await new Promise((resolve) => setTimeout(resolve, 2000));
               setLoading(false);
             });
-            snackbar.push("Task failed successfully");
+            snackbar.push(
+              "Task failed successfully",
+              <Button appearance="text">Undo</Button>,
+            );
           }}
           loading={loading}
         >
