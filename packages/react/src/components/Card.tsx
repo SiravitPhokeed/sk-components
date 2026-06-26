@@ -1,6 +1,10 @@
 import { Interactive } from "@/components/Interactive";
 import cn from "@/lib/helpers/cn";
-import type { ActionableProps, ElementCustomizableProps, StyleableFC } from "@/lib/types";
+import type {
+  ActionableProps,
+  ElementCustomizableProps,
+  StyleableFC,
+} from "@/lib/types";
 import "@suankularb-components/css/card.css";
 import type { ReactNode } from "react";
 

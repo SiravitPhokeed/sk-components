@@ -1,12 +1,17 @@
 "use client";
 
 import cn from "@/lib/helpers/cn";
-import type { ActionableProps, ElementCustomizableProps, StyleableFC } from "@/lib/types";
+import type {
+  ActionableProps,
+  ElementCustomizableProps,
+  StyleableFC,
+} from "@/lib/types";
 import "@suankularb-components/css/interactive.css";
 import type { ComponentProps, ReactNode } from "react";
 import { useRef, useState } from "react";
 
-export interface InteractiveProps extends ActionableProps, ElementCustomizableProps {
+export interface InteractiveProps
+  extends ActionableProps, ElementCustomizableProps {
   /**
    * The content to make interactive.
    *

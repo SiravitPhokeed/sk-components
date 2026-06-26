@@ -3,14 +3,19 @@
 import { Chip } from "@/components/Chip";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import type { ActionableProps, ElementCustomizableProps, StyleableFC } from "@/lib/types";
+import type {
+  ActionableProps,
+  ElementCustomizableProps,
+  StyleableFC,
+} from "@/lib/types";
 import "@suankularb-components/css/assist-chip.css";
 import type { JSX } from "react";
 
 /**
  * Props for {@link AssistChip Assist Chip}.
  */
-export interface AssistChipProps extends ActionableProps, ElementCustomizableProps {
+export interface AssistChipProps
+  extends ActionableProps, ElementCustomizableProps {
   /**
    * The text shown inside the Assist Chip.
    *

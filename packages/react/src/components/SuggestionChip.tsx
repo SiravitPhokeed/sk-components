@@ -4,14 +4,19 @@ import { Chip } from "@/components/Chip";
 import { MaterialIcon } from "@/components/MaterialIcon";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import type { ActionableProps, ElementCustomizableProps, StyleableFC } from "@/lib/types";
+import type {
+  ActionableProps,
+  ElementCustomizableProps,
+  StyleableFC,
+} from "@/lib/types";
 import "@suankularb-components/css/suggestion-chip.css";
 import type { JSX } from "react";
 
 /**
  * Props for {@link SuggestionChip Suggestion Chip}.
  */
-export interface SuggestionChipProps extends ActionableProps, ElementCustomizableProps {
+export interface SuggestionChipProps
+  extends ActionableProps, ElementCustomizableProps {
   /**
    * The text shown inside the Suggestion Chip.
    *

@@ -2,7 +2,11 @@
 
 import { Interactive } from "@/components/Interactive";
 import cn from "@/lib/helpers/cn";
-import type { ActionableProps, ElementCustomizableProps, StyleableFC } from "@/lib/types";
+import type {
+  ActionableProps,
+  ElementCustomizableProps,
+  StyleableFC,
+} from "@/lib/types";
 import "@suankularb-components/css/chip.css";
 import type { ElementType, ReactNode } from "react";
 
@@ -97,7 +101,9 @@ export const Chip: StyleableFC<ChipProps> = ({
 }) => {
   const isFunctional = !(disabled || loading);
   const isInteractive =
-    onClick || href || (["button", "a"] as ElementType[]).includes(element) ||
+    onClick ||
+    href ||
+    (["button", "a"] as ElementType[]).includes(element) ||
     command !== undefined;
   const Element = isInteractive ? Interactive : element;
 

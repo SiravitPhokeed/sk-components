@@ -5,14 +5,19 @@ import { Chip } from "@/components/Chip";
 import { MaterialIcon } from "@/components/MaterialIcon";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import type { ActionableProps, ElementCustomizableProps, StyleableFC } from "@/lib/types";
+import type {
+  ActionableProps,
+  ElementCustomizableProps,
+  StyleableFC,
+} from "@/lib/types";
 import "@suankularb-components/css/input-chip.css";
 import type { JSX, ReactNode } from "react";
 
 /**
  * Props for {@link InputChip Input Chip}.
  */
-export interface InputChipProps extends ActionableProps, ElementCustomizableProps {
+export interface InputChipProps
+  extends ActionableProps, ElementCustomizableProps {
   /**
    * The text displayed inside the chip.
    *

@@ -12,9 +12,9 @@ const EXITING_CLASS = "skc-snackbar--exiting";
  * @param stacked Put the {@link message} above the {@link action}.
  *
  * @returns A function to programmatically dismiss the Snackbar with its exit animation.
- * 
+ *
  * @see {@link Snackbar}
- * 
+ *
  * @example
  * ```tsx
  * pushSnackbar("Students removed", <Button appearance="text">Undo</Button>);

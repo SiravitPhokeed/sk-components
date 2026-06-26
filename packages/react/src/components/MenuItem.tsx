@@ -1,13 +1,18 @@
 import { Interactive } from "@/components/Interactive";
 import cn from "@/lib/helpers/cn";
-import type { ActionableProps, ElementCustomizableProps, StyleableFC } from "@/lib/types";
+import type {
+  ActionableProps,
+  ElementCustomizableProps,
+  StyleableFC,
+} from "@/lib/types";
 import "@suankularb-components/css/menu-item.css";
 import type { JSX, ReactNode } from "react";
 
 /**
  * Props for {@link MenuItem Menu Item}.
  */
-export interface MenuItemProps extends ActionableProps, ElementCustomizableProps {
+export interface MenuItemProps
+  extends ActionableProps, ElementCustomizableProps {
   /**
    * The text displayed inside the Menu Item.
    *

@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  Actions,
-  Button,
-  Header,
-  Section,
-} from "@suankularb-components/react";
+import { Actions, Button, Header, Section } from "@suankularb-components/react";
 import { pushSnackbar } from "@suankularb-components/react/helpers";
 import type { FC } from "react";
 

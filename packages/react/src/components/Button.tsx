@@ -5,7 +5,11 @@ import { MaterialIcon } from "@/components/MaterialIcon";
 import { Progress } from "@/components/Progress";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import type { ActionableProps, ElementCustomizableProps, StyleableFC } from "@/lib/types";
+import type {
+  ActionableProps,
+  ElementCustomizableProps,
+  StyleableFC,
+} from "@/lib/types";
 import "@suankularb-components/css/button.css";
 import type { JSX, ReactNode } from "react";
 

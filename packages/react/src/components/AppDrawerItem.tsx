@@ -1,14 +1,19 @@
 import { Interactive } from "@/components/Interactive";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import type { ActionableProps, ElementCustomizableProps, StyleableFC } from "@/lib/types";
+import type {
+  ActionableProps,
+  ElementCustomizableProps,
+  StyleableFC,
+} from "@/lib/types";
 import "@suankularb-components/css/app-drawer-item.css";
 import { useId, type JSX } from "react";
 
 /**
  * Props for {@link AppDrawerItem App Drawer Item}.
  */
-export interface AppDrawerItemProps extends ActionableProps, ElementCustomizableProps {
+export interface AppDrawerItemProps
+  extends ActionableProps, ElementCustomizableProps {
   /**
    * The logo image of the app.
    */

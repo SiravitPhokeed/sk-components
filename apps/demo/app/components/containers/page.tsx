@@ -16,7 +16,6 @@ export const metadata: Metadata = {
   title: "Containers",
 };
 
-
 const ContainersPage: FC = () => (
   <>
     <PageHeader parentURL="/components">Containers</PageHeader>

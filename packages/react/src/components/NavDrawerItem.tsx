@@ -1,14 +1,19 @@
 import { Interactive } from "@/components/Interactive";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import type { ActionableProps, ElementCustomizableProps, StyleableFC } from "@/lib/types";
+import type {
+  ActionableProps,
+  ElementCustomizableProps,
+  StyleableFC,
+} from "@/lib/types";
 import "@suankularb-components/css/nav-drawer-item.css";
 import type { JSX } from "react";
 
 /**
  * Props for {@link NavDrawerItem Navigation Drawer Item}.
  */
-export interface NavDrawerItemProps extends ActionableProps, ElementCustomizableProps {
+export interface NavDrawerItemProps
+  extends ActionableProps, ElementCustomizableProps {
   /**
    * Icons help users identify pages more quickly.
    *
