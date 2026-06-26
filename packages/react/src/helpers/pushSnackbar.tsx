@@ -11,7 +11,7 @@ let activeDismiss: (() => void) | null = null;
 /**
  * Options for {@link pushSnackbar}.
  */
-type PushSnackbarOptions = Pick<
+export type PushSnackbarOptions = Pick<
   SnackbarProps,
   "stacked" | "persistent" | "autoDismissDurationMs"
 >;

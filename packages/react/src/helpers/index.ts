@@ -1,1 +1,1 @@
-export { pushSnackbar } from "./pushSnackbar";
+export { pushSnackbar, type PushSnackbarOptions } from "./pushSnackbar";
