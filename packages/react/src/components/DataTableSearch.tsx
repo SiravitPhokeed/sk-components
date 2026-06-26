@@ -1,8 +1,8 @@
+import { MaterialIcon } from "@/components/MaterialIcon";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/data-table-search.css";
 import type { ComponentProps, ElementType } from "react";
-import { MaterialIcon } from "./MaterialIcon";
 
 /**
  * Props for {@link DataTableSearch Data Table Search}.

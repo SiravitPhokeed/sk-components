@@ -1,12 +1,12 @@
 "use client";
 
+import { Button } from "@/components/Button";
+import { MaterialIcon } from "@/components/MaterialIcon";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/data-table-pagination.css";
 import type { ElementType } from "react";
 import { useEffect, useState } from "react";
-import { Button } from "./Button";
-import { MaterialIcon } from "./MaterialIcon";
 
 /**
  * Props for {@link DataTablePagination Data Table Pagination}.

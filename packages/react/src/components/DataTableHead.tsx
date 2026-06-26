@@ -1,13 +1,13 @@
 "use client";
 
+import { DataTableCell } from "@/components/DataTableCell";
+import { TableRow } from "@/components/TableRow";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/table-head.css";
 import { flexRender, type HeaderGroup } from "@tanstack/react-table";
-import type { ElementType } from "react";
-import { DataTableCell } from "./DataTableCell";
-import { TableRow } from "./TableRow";
 import { sum } from "radash";
+import type { ElementType } from "react";
 
 /**
  * Props for {@link DataTableHead Data Table Head}.

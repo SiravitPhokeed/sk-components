@@ -2,7 +2,7 @@ import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/data-table-filters.css";
 import type { ElementType, ReactNode } from "react";
-import { MaterialIcon } from "./MaterialIcon";
+import { MaterialIcon } from "@/components/MaterialIcon";
 
 /**
  * Props for {@link DataTableFilters Data Table Filters}.
