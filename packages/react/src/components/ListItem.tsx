@@ -2,14 +2,14 @@
 
 import { Interactive } from "@/components/Interactive";
 import cn from "@/lib/helpers/cn";
-import type { ActionableProps, ElementCustomizableProps, StyleableFC } from "@/lib/types";
+import type {
+  ActionableProps,
+  ElementCustomizableProps,
+  StyleableFC,
+} from "@/lib/types";
 import "@suankularb-components/css/list-item.css";
-import {
-  createContext,
-  useContext,
-  useId,
-  type ReactNode,
-} from "react";
+import { createContext, useContext, useId } from "react";
+import type { ElementType, ReactNode } from "react";
 
 /**
  * Context that allows a ListItemContent inside a ListItem to pick up the
@@ -31,7 +31,8 @@ type ListItemLines = 1 | 2 | 3;
 /**
  * Props for {@link ListItem List Item}.
  */
-export interface ListItemProps extends ActionableProps, ElementCustomizableProps {
+export interface ListItemProps
+  extends ActionableProps, ElementCustomizableProps {
   /**
    * The content of a List Item consists of the leading section, the content
    * section, and the trailing section.
@@ -70,6 +71,16 @@ export interface ListItemProps extends ActionableProps, ElementCustomizableProps
    * - Optional.
    */
   stateLayerEffect?: boolean;
+
+  /**
+   * The element to use as the container of the List Item.
+   *
+   * - Defaults to `<li>`.
+   * - Optional.
+   *
+   * @default "li"
+   */
+  containerElement?: ElementType;
 }
 
 /**
@@ -79,12 +90,14 @@ export interface ListItemProps extends ActionableProps, ElementCustomizableProps
  * @param align The vertical alignment of the List Item's content.
  * @param lines The number of lines contained by the List Item.
  * @param stateLayerEffect The state layer reacts to changes to the state to signify its interactivity. This effect can be enabled on List Item as well.
+ * @param containerElement The element to use as the container of the List Item.
  */
 export const ListItem: StyleableFC<ListItemProps> = ({
   children,
   align,
   lines,
   stateLayerEffect,
+  containerElement: ContainerElement = "li",
   command,
   commandfor,
   onClick,
@@ -99,14 +112,12 @@ export const ListItem: StyleableFC<ListItemProps> = ({
 }) => {
   const id = `list-item-${useId()}`;
 
-  const isInteractive = Boolean(
-    href || onClick || stateLayerEffect || command,
-  );
+  const isInteractive = Boolean(href || onClick || stateLayerEffect || command);
   const Element = isInteractive ? Interactive : element;
 
   return (
     <ListItemContext.Provider value={id}>
-      <li aria-labelledby={id}>
+      <ContainerElement aria-labelledby={id}>
         <Element
           {...(isInteractive && {
             href,
@@ -126,7 +137,7 @@ export const ListItem: StyleableFC<ListItemProps> = ({
         >
           {children}
         </Element>
-      </li>
+      </ContainerElement>
     </ListItemContext.Provider>
   );
 };
