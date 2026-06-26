@@ -1,14 +1,14 @@
 import { Text } from "@/components/Text";
-import { AvatarPlaceholder } from "@/svg/AvatarPlaceholder";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
+import { AvatarPlaceholder } from "@/svg/AvatarPlaceholder";
 import "@suankularb-components/css/avatar.css";
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link Avatar}.
  */
-export interface AvatarProps {
+export interface AvatarProps extends ElementCustomizableProps {
   /**
    * A user’s initials or their profile image.
    *
@@ -21,13 +21,6 @@ export interface AvatarProps {
    * - Optional.
    */
   children?: ReactNode;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

@@ -1,13 +1,13 @@
 import "@suankularb-components/css/text.css";
 
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
-import type { ElementType, ReactNode } from "react";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link Text}.
  */
-export interface TextProps {
+export interface TextProps extends ElementCustomizableProps {
   /**
    * The text to apply the typographic styling to.
    */
@@ -27,13 +27,6 @@ export interface TextProps {
     | "large"
     | "medium"
     | "small"}`;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

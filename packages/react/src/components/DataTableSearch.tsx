@@ -1,13 +1,13 @@
 import { MaterialIcon } from "@/components/MaterialIcon";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/data-table-search.css";
-import type { ComponentProps, ElementType } from "react";
+import type { ComponentProps } from "react";
 
 /**
  * Props for {@link DataTableSearch Data Table Search}.
  */
-export interface DataTableSearchProps {
+export interface DataTableSearchProps extends ElementCustomizableProps {
   /**
    * The value inside the search field. This is useful if you want a
    * controlled input.
@@ -52,13 +52,6 @@ export interface DataTableSearchProps {
    * - Optional.
    */
   inputAttr?: ComponentProps<"input">;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 const STRINGS = {

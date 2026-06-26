@@ -1,13 +1,13 @@
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/table-cell.css";
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link TableCell Table Cell}.
  */
-export interface TableCellProps {
+export interface TableCellProps extends ElementCustomizableProps {
   /**
    * The content of the cell.
    *
@@ -30,13 +30,6 @@ export interface TableCellProps {
    * - Optional.
    */
   align?: "left" | "center" | "right";
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

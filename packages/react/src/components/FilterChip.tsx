@@ -4,14 +4,19 @@ import { Chip } from "@/components/Chip";
 import { MaterialIcon } from "@/components/MaterialIcon";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import type { CommandProps, StyleableFC } from "@/lib/types";
+import type {
+  CommandProps,
+  ElementCustomizableProps,
+  StyleableFC,
+} from "@/lib/types";
 import "@suankularb-components/css/filter-chip.css";
-import type { ElementType, JSX } from "react";
+import type { JSX } from "react";
 
 /**
  * Props for {@link FilterChip Filter Chip}.
  */
-export interface FilterChipProps extends CommandProps {
+export interface FilterChipProps
+  extends CommandProps, ElementCustomizableProps {
   /**
    * The text displayed inside the chip.
    *
@@ -75,13 +80,6 @@ export interface FilterChipProps extends CommandProps {
    * - Optional.
    */
   href?: string;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

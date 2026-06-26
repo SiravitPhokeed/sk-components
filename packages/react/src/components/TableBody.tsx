@@ -1,12 +1,12 @@
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/table-body.css";
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link TableBody Table Body}.
  */
-export interface TableBodyProps {
+export interface TableBodyProps extends ElementCustomizableProps {
   /**
    * Table Body has the same behaviour as `<tbody>`.
    *
@@ -14,13 +14,6 @@ export interface TableBodyProps {
    * - Always required.
    */
   children: ReactNode;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

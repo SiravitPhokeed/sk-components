@@ -1,12 +1,12 @@
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/split-layout.css";
-import type { CSSProperties, ElementType, ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 /**
  * Props for {@link SplitLayout Split Layout}.
  */
-export interface SplitLayoutProps {
+export interface SplitLayoutProps extends ElementCustomizableProps {
   /**
    * The content should have 2 sides; each element entered corresponds to a
    * side.
@@ -37,13 +37,6 @@ export interface SplitLayoutProps {
    * - Optional.
    */
   showRightOnMobile?: boolean;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

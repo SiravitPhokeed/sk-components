@@ -1,10 +1,10 @@
 "use client";
 
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/section.css";
+import type { ReactNode } from "react";
 import { createContext, useContext, useId } from "react";
-import type { ElementType, ReactNode } from "react";
 
 /**
  * Context that allows a Header inside a Section to pick up the Sectionʼs
@@ -18,7 +18,7 @@ const SectionContext = createContext<string | null>(null);
  */
 export const useSectionId = (): string | null => useContext(SectionContext);
 
-export interface SectionProps {
+export interface SectionProps extends ElementCustomizableProps {
   /**
    * Section must have exactly 1 Header as the first direct descendent. After
    * that, it can include anything.
@@ -26,13 +26,6 @@ export interface SectionProps {
    * - Always required.
    */
   children: ReactNode;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

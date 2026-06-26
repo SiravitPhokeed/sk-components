@@ -1,12 +1,12 @@
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/data-table-content.css";
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link DataTableContent Data Table Content}.
  */
-export interface DataTableContentProps {
+export interface DataTableContentProps extends ElementCustomizableProps {
   /**
    * A Data Table Content's content depends on if you decide to use Tanstack
    * Table or not.
@@ -27,13 +27,6 @@ export interface DataTableContentProps {
    * - Optional.
    */
   contentWidth?: number;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

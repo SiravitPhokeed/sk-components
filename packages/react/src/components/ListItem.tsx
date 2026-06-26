@@ -8,8 +8,8 @@ import type {
   StyleableFC,
 } from "@/lib/types";
 import "@suankularb-components/css/list-item.css";
-import { createContext, useContext, useId } from "react";
 import type { ElementType, ReactNode } from "react";
+import { createContext, useContext, useId } from "react";
 
 /**
  * Context that allows a ListItemContent inside a ListItem to pick up the

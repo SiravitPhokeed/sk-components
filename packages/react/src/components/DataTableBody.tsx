@@ -1,15 +1,17 @@
 import { TableBody } from "@/components/TableBody";
 import { TableCell } from "@/components/TableCell";
 import { TableRow } from "@/components/TableRow";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/table-body.css";
-import { flexRender, type RowModel } from "@tanstack/react-table";
-import type { ElementType } from "react";
+import type { RowModel } from "@tanstack/react-table";
+import { flexRender } from "@tanstack/react-table";
 
 /**
  * Props for {@link DataTableBody Data Table Body}.
  */
-export interface DataTableBodyProps<RowShape extends {} = any> {
+export interface DataTableBodyProps<
+  RowShape extends {} = any,
+> extends ElementCustomizableProps {
   /**
    * The return of `getRowModel`, one of the functions of the Tanstack Table
    * instance.
@@ -28,13 +30,6 @@ export interface DataTableBodyProps<RowShape extends {} = any> {
    * @default "center"
    */
   align?: "left" | "center" | "right";
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

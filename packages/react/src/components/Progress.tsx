@@ -1,12 +1,11 @@
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/progress.css";
-import type { ElementType } from "react";
 
 /**
  * Props for {@link Progress}.
  */
-export interface ProgressProps {
+export interface ProgressProps extends ElementCustomizableProps {
   /**
    * Progress can be either a loading spinner or a linear loading bar.
    *
@@ -40,13 +39,6 @@ export interface ProgressProps {
    * - Optional.
    */
   visible?: boolean;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

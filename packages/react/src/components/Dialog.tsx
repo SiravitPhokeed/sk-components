@@ -2,7 +2,7 @@
 
 import { useAnimatedDialog } from "@/hooks/useAnimatedDialog";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/dialog.css";
 import type { CSSProperties, ReactNode } from "react";
 import { createContext, useContext, useEffect, useId, useRef } from "react";
@@ -20,7 +20,7 @@ export const useDialogContext = () => useContext(DialogContext);
 const EXITING_CLASS = "skc-dialog--exiting";
 const EXIT_ANIMATION_NAME = "skc-dialog-exit";
 
-export interface DialogProps {
+export interface DialogProps extends ElementCustomizableProps {
   /**
    * Parts of a Dialog.
    *
@@ -84,6 +84,7 @@ export const Dialog: StyleableFC<DialogProps> = ({
   open,
   onClose,
   width,
+  element: Element = "dialog",
   style,
   className,
 }) => {
@@ -109,7 +110,7 @@ export const Dialog: StyleableFC<DialogProps> = ({
 
   return (
     <DialogContext.Provider value={{ dialogID, onClose }}>
-      <dialog
+      <Element
         id={dialogID}
         ref={dialogRef}
         role="alertdialog"
@@ -121,7 +122,7 @@ export const Dialog: StyleableFC<DialogProps> = ({
         style={{ ...style, width }}
       >
         {children}
-      </dialog>
+      </Element>
     </DialogContext.Provider>
   );
 };

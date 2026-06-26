@@ -1,12 +1,12 @@
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/table.css";
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link Table}.
  */
-export interface TableProps {
+export interface TableProps extends ElementCustomizableProps {
   /**
    * The content of the Table.
    *
@@ -32,13 +32,6 @@ export interface TableProps {
    * - Optional.
    */
   height?: number;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

@@ -1,12 +1,12 @@
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/actions.css";
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link Actions}.
  */
-export interface ActionsProps {
+export interface ActionsProps extends ElementCustomizableProps {
   /**
    * Actions contains Buttons. You can put as many Buttons inside Actions as
    * needed, but the recommended limit is 3.
@@ -23,13 +23,6 @@ export interface ActionsProps {
    * - Optional.
    */
   align?: "left" | "center" | "right" | "full";
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

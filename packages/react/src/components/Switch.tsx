@@ -1,14 +1,14 @@
 "use client";
 
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/switch.css";
-import type { ElementType, JSX } from "react";
+import type { JSX } from "react";
 
 /**
  * Props for {@link Switch}.
  */
-export interface SwitchProps {
+export interface SwitchProps extends ElementCustomizableProps {
   /**
    * The state of the Switch. This is useful if you want a controlled input.
    *
@@ -46,13 +46,6 @@ export interface SwitchProps {
    * - Optional.
    */
   disabled?: boolean;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

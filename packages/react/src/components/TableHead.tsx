@@ -1,12 +1,12 @@
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/table-head.css";
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link TableHead Table Head}.
  */
-export interface TableHeadProps {
+export interface TableHeadProps extends ElementCustomizableProps {
   /**
    * Table Head has the same behaviour as `<thead>`.
    *
@@ -24,13 +24,6 @@ export interface TableHeadProps {
    * - Optional.
    */
   fixed?: boolean;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

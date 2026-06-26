@@ -1,14 +1,14 @@
 import { useDialogContext } from "@/components/Dialog";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/dialog-header.css";
-import type { ElementType, JSX } from "react";
+import type { JSX } from "react";
 
 /**
  * Props for {@link DialogHeader Dialog Header}.
  */
-export interface DialogHeaderProps {
+export interface DialogHeaderProps extends ElementCustomizableProps {
   /**
    * The hero icon shown above the title text (`title`).
    *
@@ -35,13 +35,6 @@ export interface DialogHeaderProps {
    * - Always required.
    */
   desc: string | JSX.Element;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

@@ -1,25 +1,18 @@
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/card-content.css";
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link CardContent Card Content}.
  */
-export interface CardContentProps {
+export interface CardContentProps extends ElementCustomizableProps {
   /**
    * Card Content can contain anything, from supporting text to Actions.
    *
    * - Always required.
    */
   children: ReactNode;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

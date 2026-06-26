@@ -3,14 +3,14 @@
 import { Interactive } from "@/components/Interactive";
 import { MaterialIcon } from "@/components/MaterialIcon";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/toggle-button.css";
-import type { ElementType, JSX } from "react";
+import type { JSX } from "react";
 
 /**
  * Props for {@link ToggleButton Toggle Button}.
  */
-export interface ToggleButtonProps {
+export interface ToggleButtonProps extends ElementCustomizableProps {
   /**
    * The appearance of the Toggle Button.
    *
@@ -86,13 +86,6 @@ export interface ToggleButtonProps {
    * @param state Whether the Toggle Button is toggled on or off.
    */
   onChange?: (state: boolean) => void;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

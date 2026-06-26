@@ -1,9 +1,9 @@
 "use client";
 
+import { Text } from "@/components/Text";
 import { useAnimatedPopover } from "@/hooks/useAnimatedPopover";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
-import { Text } from "@/components/Text";
 import "@suankularb-components/css/snackbar.css";
 import type { ReactNode } from "react";
 import { useEffect, useId, useRef } from "react";

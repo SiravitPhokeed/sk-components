@@ -1,13 +1,14 @@
-import { Columns, type ColumnsProps } from "@/components/Columns";
+import type { ColumnsProps } from "@/components/Columns";
+import { Columns } from "@/components/Columns";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/list.css";
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link List}.
  */
-export interface ListProps {
+export interface ListProps extends ElementCustomizableProps {
   /**
    * List contains List Items, Buttons, or Cards. You can put as many items
    * inside List as needed, but the recommended limit is 3.
@@ -30,13 +31,6 @@ export interface ListProps {
    * - Optional.
    */
   divided?: boolean;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

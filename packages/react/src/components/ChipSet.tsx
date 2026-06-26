@@ -1,12 +1,11 @@
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/chip-set.css";
-import type { ElementType } from "react";
 
 /**
  * Props for {@link ChipSet}.
  */
-export interface ChipSetProps {
+export interface ChipSetProps extends ElementCustomizableProps {
   /**
    * Chips.
    *
@@ -23,13 +22,6 @@ export interface ChipSetProps {
    * - Optional.
    */
   scrollable?: boolean;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

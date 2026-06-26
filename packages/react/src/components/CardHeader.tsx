@@ -1,13 +1,13 @@
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/card-header.css";
-import type { ElementType, JSX } from "react";
+import type { JSX } from "react";
 
 /**
  * Props for {@link CardHeader Card Header}.
  */
-export interface CardHeaderProps {
+export interface CardHeaderProps extends ElementCustomizableProps {
   /**
    * An avatar is placed before all content in a Card Header. A use case would
    * be the profile picture of a user.
@@ -41,13 +41,6 @@ export interface CardHeaderProps {
    * - Optional.
    */
   subtitle?: string | JSX.Element;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

@@ -1,15 +1,9 @@
 "use client";
 
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/tabs-container.css";
-import {
-  createContext,
-  useContext,
-  useId,
-  type ElementType,
-  type ReactNode,
-} from "react";
+import { createContext, useContext, useId, type ReactNode } from "react";
 
 /**
  * Context that allows a Tab inside a Tabs Container to pick up the containerʼs
@@ -27,7 +21,7 @@ export const useTabsContainerId = (): string | null =>
 /**
  * Props for {@link TabsContainer Tabs Container}.
  */
-export interface TabsContainerProps {
+export interface TabsContainerProps extends ElementCustomizableProps {
   /**
    * Tabs to select from.
    */
@@ -50,13 +44,6 @@ export interface TabsContainerProps {
    * - Always required.
    */
   alt: string;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

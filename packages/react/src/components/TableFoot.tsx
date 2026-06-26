@@ -1,12 +1,12 @@
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/table-foot.css";
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link TableFoot Table Foot}.
  */
-export interface TableFootProps {
+export interface TableFootProps extends ElementCustomizableProps {
   /**
    * Table Foot has the same behaviour as `<tfoot>`.
    *
@@ -14,13 +14,6 @@ export interface TableFootProps {
    * - Always required.
    */
   children: ReactNode;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

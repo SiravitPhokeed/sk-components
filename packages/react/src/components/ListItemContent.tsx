@@ -3,14 +3,14 @@
 import { useListItemId } from "@/components/ListItem";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/list-item-content.css";
-import { type ElementType, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
 /**
  * Props for {@link ListItemContent List Item Content}.
  */
-export interface ListItemContentProps {
+export interface ListItemContentProps extends ElementCustomizableProps {
   /**
    * Small text on top of the title text.
    *
@@ -31,13 +31,6 @@ export interface ListItemContentProps {
    * - Optional.
    */
   desc?: string | ReactNode;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

@@ -1,12 +1,12 @@
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/root-layout.css";
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link RootLayout Root Layout}.
  */
-export interface RootLayoutProps {
+export interface RootLayoutProps extends ElementCustomizableProps {
   /**
    * Root Layout positions Navigation Drawer, Navigation Bar, and FAB. It can
    * contain Navigation Drawer, Navigation Bar, FAB, Page Header, Content
@@ -15,13 +15,6 @@ export interface RootLayoutProps {
    * - Always required.
    */
   children: ReactNode;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

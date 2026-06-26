@@ -1,12 +1,12 @@
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/segmented-button.css";
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link SegmentedButton Segmented Button}.
  */
-export interface SegmentedButtonProps {
+export interface SegmentedButtonProps extends ElementCustomizableProps {
   /**
    * 2-5 Buttons.
    *
@@ -36,13 +36,6 @@ export interface SegmentedButtonProps {
    * - Optional.
    */
   full?: boolean;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

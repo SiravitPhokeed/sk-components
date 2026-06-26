@@ -1,12 +1,12 @@
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/table-row.css";
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link TableRow Table Row}.
  */
-export interface TableRowProps {
+export interface TableRowProps extends ElementCustomizableProps {
   /**
    * Table Row has the same behaviour as `<tr>`.
    *
@@ -14,13 +14,6 @@ export interface TableRowProps {
    * - Always required.
    */
   children: ReactNode;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

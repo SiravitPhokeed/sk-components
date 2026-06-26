@@ -1,12 +1,12 @@
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/columns.css";
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link Columns}.
  */
-export interface ColumnsProps {
+export interface ColumnsProps extends ElementCustomizableProps {
   /**
    * The content to be divided.
    *
@@ -21,13 +21,6 @@ export interface ColumnsProps {
    * - Always required.
    */
   columns: 2 | 3 | 4 | 6 | 12;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

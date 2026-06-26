@@ -1,12 +1,12 @@
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/data-table.css";
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link DataTable Data Table}.
  */
-export interface DataTableProps {
+export interface DataTableProps extends ElementCustomizableProps {
   /**
    * There is a set of components especially designed to be used here: Data
    * Table Search, Data Table Filters, Data Table Content, and Data Table
@@ -20,13 +20,6 @@ export interface DataTableProps {
    * - Always required.
    */
   children: ReactNode;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

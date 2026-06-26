@@ -1,12 +1,12 @@
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/content-layout.css";
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link ContentLayout Content Layout}.
  */
-export interface ContentLayoutProps {
+export interface ContentLayoutProps extends ElementCustomizableProps {
   /**
    * The main content of a page is grouped into Sections inside of a Content
    * Layout.
@@ -15,13 +15,6 @@ export interface ContentLayoutProps {
    * - Always required.
    */
   children: ReactNode;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

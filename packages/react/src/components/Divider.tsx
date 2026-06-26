@@ -1,19 +1,11 @@
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/divider.css";
-import type { ElementType } from "react";
 
 /**
  * Props for {@link Divider}.
  */
-export interface DividerProps {
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
-}
+export interface DividerProps extends ElementCustomizableProps {}
 
 /**
  * A Divider separates items in a list with a thin line. This is used when

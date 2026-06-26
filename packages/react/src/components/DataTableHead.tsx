@@ -3,16 +3,15 @@
 import { DataTableCell } from "@/components/DataTableCell";
 import { TableRow } from "@/components/TableRow";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/table-head.css";
 import { flexRender, type HeaderGroup } from "@tanstack/react-table";
 import { sum } from "radash";
-import type { ElementType } from "react";
 
 /**
  * Props for {@link DataTableHead Data Table Head}.
  */
-export interface DataTableHeadProps {
+export interface DataTableHeadProps extends ElementCustomizableProps {
   /**
    * The return of `getHeaderGroups`, one of the functions of the Tanstack Table
    * instance.
@@ -52,13 +51,6 @@ export interface DataTableHeadProps {
    * @default "en-US"
    */
   locale?: "en-US" | "th";
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 const STRINGS = {

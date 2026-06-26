@@ -2,14 +2,15 @@
 
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/nav-drawer-section.css";
-import { useId, type ElementType, type JSX, type ReactNode } from "react";
+import type { JSX, ReactNode } from "react";
+import { useId } from "react";
 
 /**
  * Props for {@link NavDrawerSection Navigation Drawer Section}.
  */
-export interface NavDrawerSectionProps {
+export interface NavDrawerSectionProps extends ElementCustomizableProps {
   /**
    * Destinations grouped into this section.
    *
@@ -25,13 +26,6 @@ export interface NavDrawerSectionProps {
    *   Section in a Navigation Drawer. In this case, it'd be the name of the app.
    */
   header?: string | JSX.Element;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

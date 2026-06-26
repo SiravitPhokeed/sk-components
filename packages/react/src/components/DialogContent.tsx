@@ -1,12 +1,12 @@
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/dialog-content.css";
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link DialogContent Dialog Content}.
  */
-export interface DialogContentProps {
+export interface DialogContentProps extends ElementCustomizableProps {
   /**
    * A Dialog Content can include anything. A common use case is List.
    *
@@ -22,13 +22,6 @@ export interface DialogContentProps {
    * - Optional.
    */
   height?: number;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

@@ -3,15 +3,14 @@
 import { Button } from "@/components/Button";
 import { MaterialIcon } from "@/components/MaterialIcon";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/data-table-pagination.css";
-import type { ElementType } from "react";
 import { useEffect, useState } from "react";
 
 /**
  * Props for {@link DataTablePagination Data Table Pagination}.
  */
-export interface DataTablePaginationProps {
+export interface DataTablePaginationProps extends ElementCustomizableProps {
   /**
    * The maximum number of rows shown on the Data Table at a time.
    *
@@ -50,13 +49,6 @@ export interface DataTablePaginationProps {
    * @param end The end index of the range of data to pull from for this page.
    */
   onChange?: (page: number, start: number, end: number) => any;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 type FormattedPaginationNumbers = {

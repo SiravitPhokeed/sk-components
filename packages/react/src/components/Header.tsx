@@ -1,16 +1,16 @@
 "use client";
 
-import { Text } from "@/components/Text";
 import { useSectionId } from "@/components/Section";
+import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/header.css";
 import type { ElementType, JSX, ReactNode } from "react";
 
 /**
  * Props for {@link Header}.
  */
-export interface HeaderProps {
+export interface HeaderProps extends ElementCustomizableProps {
   /**
    * Header contains Buttons. You can put as many Buttons inside Header as
    * needed, but the recommended limit is 3.
@@ -37,13 +37,6 @@ export interface HeaderProps {
    * - Optional.
    */
   icon?: JSX.Element;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 const HEADER_TYPE_BY_LEVEL = {

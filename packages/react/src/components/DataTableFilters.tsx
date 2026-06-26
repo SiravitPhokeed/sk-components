@@ -1,13 +1,13 @@
-import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
-import "@suankularb-components/css/data-table-filters.css";
-import type { ElementType, ReactNode } from "react";
 import { MaterialIcon } from "@/components/MaterialIcon";
+import cn from "@/lib/helpers/cn";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
+import "@suankularb-components/css/data-table-filters.css";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link DataTableFilters Data Table Filters}.
  */
-export interface DataTableFiltersProps {
+export interface DataTableFiltersProps extends ElementCustomizableProps {
   /**
    * A set of Filter Chips responsible for filtering the Data Table.
    *
@@ -15,13 +15,6 @@ export interface DataTableFiltersProps {
    * - Always required.
    */
   children: ReactNode;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

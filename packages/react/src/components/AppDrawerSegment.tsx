@@ -1,13 +1,13 @@
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/app-drawer-segment.css";
-import { useId, type ElementType, type ReactNode } from "react";
+import { useId, type ReactNode } from "react";
 
 /**
  * Props for {@link AppDrawerSegment App Drawer Segment}.
  */
-export interface AppDrawerSegmentProps {
+export interface AppDrawerSegmentProps extends ElementCustomizableProps {
   /**
    * The apps in this segment.
    */
@@ -17,13 +17,6 @@ export interface AppDrawerSegmentProps {
    * The title of the group.
    */
   title: string;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**

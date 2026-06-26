@@ -1,17 +1,18 @@
-import { Button, type ButtonProps } from "@/components/Button";
+import type { ButtonProps } from "@/components/Button";
+import { Button } from "@/components/Button";
 import { MaterialIcon } from "@/components/MaterialIcon";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import { PageHeaderBlobs } from "@/svg/PageHeaderBlobs";
 import PageHeaderMinimizedBlobs from "@/svg/PageHeaderMinimizedBlob";
 import "@suankularb-components/css/page-header.css";
-import type { ElementType, JSX, ReactNode } from "react";
+import type { JSX, ReactNode } from "react";
 
 /**
  * Props for {@link PageHeader Page Header}.
  */
-export interface PageHeaderProps {
+export interface PageHeaderProps extends ElementCustomizableProps {
   /**
    * The title text: the biggest text on a page and the only within a `<h1>`
    * tag.
@@ -86,13 +87,6 @@ export interface PageHeaderProps {
    * - Optional.
    */
   onNavToggle?: () => any;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 const STRINGS = {

@@ -1,13 +1,13 @@
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/form-group.css";
 import type { ElementType, JSX, ReactNode } from "react";
 
 /**
  * Props for {@link FormGroup Form Group}.
  */
-export interface FormGroupProps {
+export interface FormGroupProps extends ElementCustomizableProps {
   /**
    * Form Items within this group, be it a set of options to choose from or
    * related settings in a preferences page.
@@ -39,13 +39,6 @@ export interface FormGroupProps {
    * - Optional.
    */
   legendElement?: ElementType;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**
