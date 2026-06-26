@@ -32,8 +32,7 @@ const SnackbarSection: FC = () => {
               <Button appearance="text" onClick={() => dismiss()}>
                 Try again
               </Button>,
-              true,
-              // { stacked: true }
+              { stacked: true },
             );
           }}
         >

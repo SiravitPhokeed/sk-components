@@ -5,8 +5,8 @@ import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import { Text } from "@/components/Text";
 import "@suankularb-components/css/snackbar.css";
-import type { ReactNode } from "react";
-import { useId, useRef } from "react";
+import type { ReactNode, Ref } from "react";
+import { useCallback, useEffect, useId, useRef } from "react";
 
 const EXITING_CLASS = "skc-snackbar--exiting";
 const EXIT_ANIMATION_NAME = "skc-snackbar-exit";
@@ -43,6 +43,28 @@ export interface SnackbarProps {
    * - Optional.
    */
   stacked?: boolean;
+
+  /**
+   * If `true`, the Snackbar will not auto-dismiss.
+   *
+   * - Optional. Defaults to `false`.
+   */
+  persistent?: boolean;
+
+  /**
+   * Time in milliseconds until the Snackbar exits automatically.
+   *
+   * - Optional. Defaults to `6000` (6 seconds).
+   * - Ignored when {@link persistent} is `true`.
+   */
+  autoDismissDurationMs?: number;
+
+  /**
+   * A ref to the underlying popover element.
+   *
+   * - Optional. Useful for imperative access to the DOM element.
+   */
+  ref?: Ref<HTMLDivElement>;
 }
 
 /**
@@ -54,29 +76,64 @@ export interface SnackbarProps {
  * @param id The ID of the popover element, for Imperative API access.
  * @param action A Snackbar can contain 1 action. Pressing this action closes the Snackbar.
  * @param stacked Put the message (`children`) above the action (`action`).
+ * @param persistent If `true`, the Snackbar will not auto-dismiss.
+ * @param autoDismissDurationMs Time in milliseconds until the Snackbar exits automatically.
  */
 export const Snackbar: StyleableFC<SnackbarProps> = ({
   children,
   id: requestedId,
   action,
   stacked,
+  persistent = false,
+  autoDismissDurationMs = 6000,
   className,
   style,
+  ref,
 }) => {
   const generatedId = useId();
   const snackbarID = requestedId ?? `snackbar-${generatedId}`;
 
-  const snackbarRef = useRef<HTMLDivElement>(null);
+  const internalRef = useRef<HTMLDivElement>(null);
 
-  const { popoverProps } = useAnimatedPopover(snackbarRef, {
+  // Merge the prop ref with the internal ref so both the consumer
+  // (pushSnackbar) and the useAnimatedPopover hook have access.
+  const mergedRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      internalRef.current = node;
+      if (typeof ref === "function") ref(node);
+      else if (ref)
+        (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
+    },
+    [ref],
+  );
+
+  const { popoverProps } = useAnimatedPopover(internalRef, {
     exitingClass: EXITING_CLASS,
     exitAnimationName: EXIT_ANIMATION_NAME,
   });
 
+  // Auto-show on mount. Using useEffect guarantees the DOM is committed.
+  useEffect(() => {
+    internalRef.current?.showPopover();
+  }, []);
+
+  // Auto-dismiss after the configured duration (unless persistent).
+  useEffect(() => {
+    if (persistent) return;
+    const el = internalRef.current;
+    if (!el) return;
+
+    const timer = setTimeout(() => {
+      el.classList.add(EXITING_CLASS);
+    }, autoDismissDurationMs);
+
+    return () => clearTimeout(timer);
+  }, [persistent, autoDismissDurationMs]);
+
   return (
     <div
       id={snackbarID}
-      ref={snackbarRef}
+      ref={mergedRef}
       popover="manual"
       role="status"
       aria-live="polite"
