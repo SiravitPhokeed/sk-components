@@ -1,6 +1,12 @@
 "use client";
 
-import { Actions, Button, Header, Section } from "@suankularb-components/react";
+import {
+  Actions,
+  Button,
+  Header,
+  MaterialIcon,
+  Section,
+} from "@suankularb-components/react";
 import { snackbar } from "@suankularb-components/react/helpers";
 import type { FC } from "react";
 
@@ -12,6 +18,7 @@ const SnackbarSection: FC = () => {
       <Actions align="left">
         <Button
           appearance="filled"
+          icon={<MaterialIcon icon="info" />}
           onClick={() => {
             const dismiss = snackbar.push(
               "Task failed successfully",
@@ -26,6 +33,7 @@ const SnackbarSection: FC = () => {
 
         <Button
           appearance="outlined"
+          icon={<MaterialIcon icon="article" />}
           onClick={() => {
             const dismiss = snackbar.push(
               "Task appeared more complicated to fail than expected, failed to fail task",
