@@ -83,6 +83,10 @@
   }
 }
 
+.skc-snackbar :is(a, button, [tabindex]) {
+  --_focus-ring-color: var(--inverse-primary);
+}
+
 @keyframes skc-snackbar-exit {
   from {
     transform: translateY(0) scaleY(1);
