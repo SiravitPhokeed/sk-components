@@ -5,14 +5,14 @@ import { Chip } from "@/components/Chip";
 import { MaterialIcon } from "@/components/MaterialIcon";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ActionableProps, ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/input-chip.css";
-import type { ElementType, JSX, ReactNode } from "react";
+import type { JSX, ReactNode } from "react";
 
 /**
  * Props for {@link InputChip Input Chip}.
  */
-export interface InputChipProps {
+export interface InputChipProps extends ActionableProps, ElementCustomizableProps {
   /**
    * The text displayed inside the chip.
    *
@@ -104,34 +104,11 @@ export interface InputChipProps {
   disabled?: boolean;
 
   /**
-   * The function called when the user interacts with the Input Chip, similar
-   * to `onClick` on `<button>`.
-   *
-   * - This does not fire when clicking the delete button.
-   * - Optional.
-   */
-  onClick?: () => any;
-
-  /**
-   * The URL of the page this Input Chip leads to, similar to `href` on `<a>`.
-   *
-   * - Optional.
-   */
-  href?: string;
-
-  /**
    * Triggers when the user clicks the delete button.
    *
    * - Optional.
    */
   onDelete?: () => any;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 const STRINGS = {
@@ -160,10 +137,7 @@ const STRINGS = {
  * @param loading Disable the Input Chip and signify loading status.
  * @param disabled Turns the Input Chip gray and blocks any action associated with it.
  * @param locale Allows for translation of the accessibility labels.
- * @param onClick The function called when the user interacts with the Input Chip.
- * @param href The URL of the page this Input Chip leads to.
  * @param onDelete Triggers when the user clicks the delete button.
- * @param element The element of the most relevant underlying element.
  */
 export const InputChip: StyleableFC<InputChipProps> = ({
   children,
@@ -176,6 +150,8 @@ export const InputChip: StyleableFC<InputChipProps> = ({
   loading,
   disabled,
   locale = "en-US",
+  command,
+  commandfor,
   onClick,
   href,
   onDelete,
@@ -190,6 +166,8 @@ export const InputChip: StyleableFC<InputChipProps> = ({
     dangerous={dangerous}
     loading={loading}
     disabled={disabled}
+    command={command}
+    commandfor={commandfor}
     onClick={onClick}
     href={href}
     element={element}

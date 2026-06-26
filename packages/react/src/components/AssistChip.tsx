@@ -3,14 +3,14 @@
 import { Chip } from "@/components/Chip";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ActionableProps, ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/assist-chip.css";
-import type { ElementType, JSX } from "react";
+import type { JSX } from "react";
 
 /**
  * Props for {@link AssistChip Assist Chip}.
  */
-export interface AssistChipProps {
+export interface AssistChipProps extends ActionableProps, ElementCustomizableProps {
   /**
    * The text shown inside the Assist Chip.
    *
@@ -71,24 +71,6 @@ export interface AssistChipProps {
    * - Optional.
    */
   disabled?: boolean;
-
-  /**
-   * The function called when the user interacts with the Assist Chip, similar
-   * to `onClick` on `<button>`.
-   */
-  onClick?: () => any;
-
-  /**
-   * The URL of the page this Assist Chip leads to, similar to `href` on `<a>`.
-   */
-  href?: string;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**
@@ -106,9 +88,6 @@ export interface AssistChipProps {
  * @param dangerous If the action the Assist Chip accomplishes is dangerous, like deleting your account.
  * @param loading Disable the Assist Chip to signify loading status.
  * @param disabled Turns the Assist Chip gray and block any action associated with it.
- * @param onClick The function called when the user interacts with the Assist Chip, similar to `onClick` on `<button>`.
- * @param href The URL of the page this Assist Chip leads to, similar to `href` on `<a>`.
- * @param element The element of the most relevant underlying element.
  */
 export const AssistChip: StyleableFC<AssistChipProps> = ({
   children,
@@ -118,6 +97,8 @@ export const AssistChip: StyleableFC<AssistChipProps> = ({
   dangerous,
   loading,
   disabled,
+  command,
+  commandfor,
   onClick,
   href,
   element = "button",
@@ -130,6 +111,8 @@ export const AssistChip: StyleableFC<AssistChipProps> = ({
     dangerous={dangerous}
     loading={loading}
     disabled={disabled}
+    command={command}
+    commandfor={commandfor}
     onClick={onClick}
     href={href}
     element={element}

@@ -5,14 +5,14 @@ import { MaterialIcon } from "@/components/MaterialIcon";
 import { Progress } from "@/components/Progress";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ActionableProps, ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/button.css";
-import type { ElementType, JSX, ReactNode } from "react";
+import type { JSX, ReactNode } from "react";
 
 /**
  * Props for {@link Button}.
  */
-export interface ButtonProps {
+export interface ButtonProps extends ActionableProps, ElementCustomizableProps {
   /**
    * The text displayed inside the Button.
    *
@@ -113,45 +113,6 @@ export interface ButtonProps {
    * - Optional.
    */
   locale?: "en-US" | "th";
-
-  /**
-   * The command to send to the element specified in {@link commandfor `commandfor`}.
-   *
-   * - Optional.
-   */
-  command?:
-    | "show-modal"
-    | "close"
-    | "request-close"
-    | "show-popover"
-    | "hide-popover"
-    | "toggle-popover"
-    | `--${string}`;
-
-  /**
-   * The element to send the command specified in {@link command `command`} to.
-   *
-   * - Optional.
-   */
-  commandfor?: string;
-
-  /**
-   * The function called when the user interacts with the Button, similar to
-   * `onClick` on `<button>`.
-   */
-  onClick?: () => any;
-
-  /**
-   * The URL of the page this Button leads to, similar to `href` on `<a>`.
-   */
-  href?: string;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 const STRINGS = {
@@ -178,8 +139,6 @@ const STRINGS = {
  * @param loading Disable the Button and add a Progress spinner in front of the text to signify loading status.
  * @param disabled Turns the Button gray and block any action associated with it.
  * @param locale Allows for translation of the accessibility labels.
- * @param onClick The function called when the user interacts with the Button.
- * @param href The URL of the page this Button leads to.
  */
 export const Button: StyleableFC<ButtonProps> = ({
   children,

@@ -1,14 +1,14 @@
 import { Interactive } from "@/components/Interactive";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ActionableProps, ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/nav-drawer-item.css";
-import type { ElementType, JSX } from "react";
+import type { JSX } from "react";
 
 /**
  * Props for {@link NavDrawerItem Navigation Drawer Item}.
  */
-export interface NavDrawerItemProps {
+export interface NavDrawerItemProps extends ActionableProps, ElementCustomizableProps {
   /**
    * Icons help users identify pages more quickly.
    *
@@ -46,29 +46,6 @@ export interface NavDrawerItemProps {
    * - Optional.
    */
   selected?: boolean;
-
-  /**
-   * The function called when the user interacts with the Navigation Drawer
-   * Item, similar to `onClick` on `<button>`.
-   *
-   * - Required if `href` is not defined.
-   */
-  onClick?: () => any;
-
-  /**
-   * The URL of the page this Navigation Drawer Item leads to, similar to
-   * `href` on `<a>`.
-   *
-   * - Required if `onClick` is not defined.
-   */
-  href?: string;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**
@@ -80,8 +57,6 @@ export interface NavDrawerItemProps {
  * @param metadata Some text aligned to the right of a Navigation Drawer Item.
  * @param tooltip A message shown in a tooltip when the user hovers over the Navigation Drawer Item.
  * @param selected Highlights the Navigation Drawer Item.
- * @param onClick The function called when the user interacts with the Navigation Drawer Item.
- * @param href The URL of the page this Navigation Drawer Item leads to, similar to `href` on `<a>`.
  */
 export const NavDrawerItem: StyleableFC<NavDrawerItemProps> = ({
   icon,
@@ -89,6 +64,8 @@ export const NavDrawerItem: StyleableFC<NavDrawerItemProps> = ({
   metadata,
   tooltip,
   selected,
+  command,
+  commandfor,
   onClick,
   href,
   element = "a",
@@ -102,6 +79,8 @@ export const NavDrawerItem: StyleableFC<NavDrawerItemProps> = ({
         aria-current={selected ? "page" : undefined}
         title={tooltip}
         onClick={onClick}
+        command={command}
+        commandfor={commandfor}
         element={element}
         className={cn(
           "skc-nav-drawer-item",

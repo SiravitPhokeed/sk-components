@@ -1,13 +1,13 @@
 import { Interactive } from "@/components/Interactive";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ActionableProps, ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/card.css";
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link Card}.
  */
-export interface CardProps {
+export interface CardProps extends ActionableProps, ElementCustomizableProps {
   /**
    * Card must contain at least 1 JSX element; here is a list of SKCom
    * components that work well with Card: Card Header, Card Media, Card
@@ -54,24 +54,6 @@ export interface CardProps {
    * - Optional.
    */
   shadowEffect?: boolean;
-
-  /**
-   * The function called when the user interacts with the Card, similar to
-   * `onClick` on `<button>`.
-   */
-  onClick?: () => any;
-
-  /**
-   * The URL of the page this Card leads to, similar to `href` on `<a>`.
-   */
-  href?: string;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**
@@ -86,8 +68,6 @@ export interface CardProps {
  * @param direction The flow of the Card’s content, like the CSS property `flex-direction`.
  * @param stateLayerEffect The state layer reacts to changes to the state to signify its interactivity. This effect can be enabled on Card as well.
  * @param shadowEffect Elevates Card on hover and focus to signify its interactivity.
- * @param onClick The function called when the user interacts with the Card, similar to `onClick` on `<button>`.
- * @param href The URL of the page this Card leads to, similar to `href` on `<a>`.
  */
 export const Card: StyleableFC<CardProps> = ({
   children,
@@ -95,6 +75,8 @@ export const Card: StyleableFC<CardProps> = ({
   direction = "column",
   stateLayerEffect = false,
   shadowEffect,
+  command,
+  commandfor,
   onClick,
   href,
   element,
@@ -105,13 +87,22 @@ export const Card: StyleableFC<CardProps> = ({
     onClick !== undefined ||
     href !== undefined ||
     stateLayerEffect ||
-    shadowEffect;
+    shadowEffect ||
+    command !== undefined;
   const Element = isInteractive ? Interactive : element || "div";
 
   return (
     <Element
       {...(isInteractive
-        ? { stateLayerEffect, shadowEffect, onClick, href, element }
+        ? {
+            stateLayerEffect,
+            shadowEffect,
+            onClick,
+            href,
+            element,
+            command,
+            commandfor,
+          }
         : {})}
       style={style}
       className={cn(

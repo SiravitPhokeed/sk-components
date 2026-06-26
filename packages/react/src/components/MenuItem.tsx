@@ -1,13 +1,13 @@
 import { Interactive } from "@/components/Interactive";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ActionableProps, ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/menu-item.css";
-import type { ElementType, JSX, ReactNode } from "react";
+import type { JSX, ReactNode } from "react";
 
 /**
  * Props for {@link MenuItem Menu Item}.
  */
-export interface MenuItemProps {
+export interface MenuItemProps extends ActionableProps, ElementCustomizableProps {
   /**
    * The text displayed inside the Menu Item.
    *
@@ -56,24 +56,6 @@ export interface MenuItemProps {
    * - Optional.
    */
   value?: any;
-
-  /**
-   * The function called when the user interacts with the Menu Item, similar
-   * to `onClick` on `<button>`.
-   */
-  onClick?: () => any;
-
-  /**
-   * The URL of the page this Menu Item leads to, similar to `href` on `<a>`.
-   */
-  href?: string;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**
@@ -85,8 +67,6 @@ export interface MenuItemProps {
  * @param selected If this Menu Item is selected in a dropdown Menu.
  * @param disabled Turns the Menu Item text gray and block any action associated with it.
  * @param value The value of a Select item, similar to `value` on `<option>`.
- * @param onClick The function called when the user interacts with the Menu Item, similar to `onClick` on `<button>`.
- * @param href The URL of the page this Menu Item leads to, similar to `href` on `<a>`.
  */
 export const MenuItem: StyleableFC<MenuItemProps> = ({
   children,
@@ -94,6 +74,8 @@ export const MenuItem: StyleableFC<MenuItemProps> = ({
   metadata,
   selected,
   disabled,
+  command,
+  commandfor,
   onClick,
   href,
   element: Element = "li",
@@ -112,6 +94,8 @@ export const MenuItem: StyleableFC<MenuItemProps> = ({
     <Interactive
       href={href}
       onClick={onClick}
+      command={command}
+      commandfor={commandfor}
       role="menuitem"
       aria-selected={selected}
       aria-disabled={disabled}

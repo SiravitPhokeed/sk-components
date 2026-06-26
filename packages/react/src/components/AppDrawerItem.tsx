@@ -1,14 +1,14 @@
 import { Interactive } from "@/components/Interactive";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ActionableProps, ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/app-drawer-item.css";
-import { useId, type ElementType, type JSX } from "react";
+import { useId, type JSX } from "react";
 
 /**
  * Props for {@link AppDrawerItem App Drawer Item}.
  */
-export interface AppDrawerItemProps {
+export interface AppDrawerItemProps extends ActionableProps, ElementCustomizableProps {
   /**
    * The logo image of the app.
    */
@@ -18,23 +18,6 @@ export interface AppDrawerItemProps {
    * The name of the app.
    */
   name: string;
-
-  /**
-   * Triggers when the App Drawer Item is pressed.
-   */
-  onClick?: () => any;
-
-  /**
-   * The link to the app or the app’s install page.
-   */
-  href?: string;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**
@@ -42,12 +25,12 @@ export interface AppDrawerItemProps {
  *
  * @param logo The logo image of the app.
  * @param name The name of the app.
- * @param onClick Triggers when the App Drawer Item is pressed.
- * @param href The link to the app or the app’s install page.
  */
 export const AppDrawerItem: StyleableFC<AppDrawerItemProps> = ({
   logo,
   name,
+  command,
+  commandfor,
   onClick,
   href,
   element: Element = "li",
@@ -61,6 +44,8 @@ export const AppDrawerItem: StyleableFC<AppDrawerItemProps> = ({
       <Interactive
         onClick={onClick}
         href={href}
+        command={command}
+        commandfor={commandfor}
         element={
           href
             ? (props) => <a {...props} aria-labelledby={id} target="_blank" />

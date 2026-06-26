@@ -4,14 +4,14 @@ import { Chip } from "@/components/Chip";
 import { MaterialIcon } from "@/components/MaterialIcon";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ActionableProps, ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/suggestion-chip.css";
-import type { ElementType, JSX } from "react";
+import type { JSX } from "react";
 
 /**
  * Props for {@link SuggestionChip Suggestion Chip}.
  */
-export interface SuggestionChipProps {
+export interface SuggestionChipProps extends ActionableProps, ElementCustomizableProps {
   /**
    * The text shown inside the Suggestion Chip.
    *
@@ -62,25 +62,6 @@ export interface SuggestionChipProps {
    * - Optional.
    */
   disabled?: boolean;
-
-  /**
-   * The function called when the user interacts with the Suggestion Chip,
-   * similar to `onClick` on `<button>`.
-   */
-  onClick?: () => any;
-
-  /**
-   * The URL of the page this Suggestion Chip leads to, similar to `href` on
-   * `<a>`.
-   */
-  href?: string;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**
@@ -92,8 +73,6 @@ export interface SuggestionChipProps {
  * @param elevated Use elevation instead of an outline to signify the Suggestion Chip's boundary.
  * @param selected If the Suggestion Chip is selected.
  * @param disabled Turns the Suggestion Chip gray and block any action associated with it.
- * @param onClick The function called when the user interacts with the Suggestion Chip, similar to `onClick` on `<button>`.
- * @param href The URL of the page this Suggestion Chip leads to, similar to `href` on `<a>`.
  */
 export const SuggestionChip: StyleableFC<SuggestionChipProps> = ({
   children,
@@ -102,6 +81,8 @@ export const SuggestionChip: StyleableFC<SuggestionChipProps> = ({
   elevated,
   selected,
   disabled,
+  command,
+  commandfor,
   onClick,
   href,
   element = "button",
@@ -113,6 +94,8 @@ export const SuggestionChip: StyleableFC<SuggestionChipProps> = ({
     elevated={elevated}
     selected={selected}
     disabled={disabled}
+    command={command}
+    commandfor={commandfor}
     onClick={onClick}
     href={href}
     element={element}

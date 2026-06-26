@@ -2,7 +2,7 @@
 
 import { Interactive } from "@/components/Interactive";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ActionableProps, ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/chip.css";
 import type { ElementType, ReactNode } from "react";
 
@@ -11,7 +11,7 @@ import type { ElementType, ReactNode } from "react";
  *
  * @private
  */
-export interface ChipProps {
+export interface ChipProps extends ActionableProps, ElementCustomizableProps {
   /**
    * The full content of the Chip — leading elements, label, and trailing
    * elements.
@@ -67,24 +67,6 @@ export interface ChipProps {
    * - Optional.
    */
   disabled?: boolean;
-
-  /**
-   * The function called when the user interacts with the Chip, similar to
-   * `onClick` on `<button>`.
-   */
-  onClick?: () => any;
-
-  /**
-   * The URL of the page this Chip leads to, similar to `href` on `<a>`.
-   */
-  href?: string;
-
-  /**
-   * The element of the most relevant underlying element.
-   *
-   * - Optional.
-   */
-  element?: ElementType;
 }
 
 /**
@@ -105,21 +87,24 @@ export const Chip: StyleableFC<ChipProps> = ({
   dangerous,
   loading,
   disabled,
+  command,
+  commandfor,
   onClick,
   href,
-  element = onClick || href ? "button" : "div",
+  element = onClick || href || command ? "button" : "div",
   style,
   className,
 }) => {
   const isFunctional = !(disabled || loading);
   const isInteractive =
-    onClick || href || (["button", "a"] as ElementType[]).includes(element);
+    onClick || href || (["button", "a"] as ElementType[]).includes(element) ||
+    command !== undefined;
   const Element = isInteractive ? Interactive : element;
 
   return (
     <Element
       {...(isFunctional && { onClick, href })}
-      {...(isInteractive && { element })}
+      {...(isInteractive && { element, command, commandfor })}
       aria-disabled={!isFunctional}
       title={tooltip}
       className={cn(

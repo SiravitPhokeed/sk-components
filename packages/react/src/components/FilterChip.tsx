@@ -4,14 +4,14 @@ import { Chip } from "@/components/Chip";
 import { MaterialIcon } from "@/components/MaterialIcon";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { CommandProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/filter-chip.css";
 import type { ElementType, JSX } from "react";
 
 /**
  * Props for {@link FilterChip Filter Chip}.
  */
-export interface FilterChipProps {
+export interface FilterChipProps extends CommandProps {
   /**
    * The text displayed inside the chip.
    *
@@ -70,6 +70,13 @@ export interface FilterChipProps {
   onClick?: (state: boolean) => any;
 
   /**
+   * The URL of the page this Filter Chip leads to, similar to `href` on `<a>`.
+   *
+   * - Optional.
+   */
+  href?: string;
+
+  /**
    * The element of the most relevant underlying element.
    *
    * - Optional.
@@ -97,7 +104,10 @@ export const FilterChip: StyleableFC<FilterChipProps> = ({
   elevated,
   selected,
   disabled,
+  command,
+  commandfor,
   onClick,
+  href,
   element = "button",
   style,
   className,
@@ -107,7 +117,10 @@ export const FilterChip: StyleableFC<FilterChipProps> = ({
     elevated={elevated}
     selected={selected}
     disabled={disabled}
+    command={command}
+    commandfor={commandfor}
     onClick={onClick ? () => onClick(!selected) : undefined}
+    href={href}
     element={element}
     className={cn("skc-filter-chip", className)}
     style={style}
