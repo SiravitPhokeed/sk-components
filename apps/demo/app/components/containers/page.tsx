@@ -9,7 +9,13 @@ import SplitLayoutSection from "@/app/components/containers/components/SplitLayo
 import TableSection from "@/app/components/containers/components/TableSection";
 import PageHeader from "@/components/PageHeader";
 import { ContentLayout } from "@suankularb-components/react";
+import type { Metadata } from "next";
 import type { FC } from "react";
+
+export const metadata: Metadata = {
+  title: "Containers",
+};
+
 
 const ContainersPage: FC = () => (
   <>

@@ -7,7 +7,12 @@ import SuggestionChipSection from "@/app/components/actions/components/Suggestio
 import ToggleButtonsSection from "@/app/components/actions/components/ToggleButtonsSection";
 import PageHeader from "@/components/PageHeader";
 import { ContentLayout, Header, Section } from "@suankularb-components/react";
+import type { Metadata } from "next";
 import type { FC } from "react";
+
+export const metadata: Metadata = {
+  title: "Actions",
+};
 
 const ActionsPage: FC = () => (
   <>
