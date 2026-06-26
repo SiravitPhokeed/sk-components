@@ -61,6 +61,17 @@ export interface DataTableSearchProps {
   element?: ElementType;
 }
 
+const STRINGS = {
+  "en-US": {
+    alt: "Search",
+    placeholder: "Search",
+  },
+  th: {
+    alt: "ค้นหา",
+    placeholder: "ค้นหา",
+  },
+};
+
 /**
  * Allows the user to filter the Data Table's content using a text query.
  *
@@ -72,7 +83,7 @@ export interface DataTableSearchProps {
  */
 export const DataTableSearch: StyleableFC<DataTableSearchProps> = ({
   value,
-  locale,
+  locale = "en-US",
   onChange,
   placeholder,
   inputAttr,
@@ -87,11 +98,11 @@ export const DataTableSearch: StyleableFC<DataTableSearchProps> = ({
       {/* Search field */}
       <input
         type="search"
-        aria-label={locale === "th" ? "ค้นหา" : "Search"}
+        aria-label={STRINGS[locale].alt}
         className="skc-data-table-search__input"
         value={value}
         onChange={(event) => onChange?.(event.target.value)}
-        placeholder={placeholder || (locale === "th" ? "ค้นหา" : "Search")}
+        placeholder={placeholder || STRINGS[locale].placeholder}
         {...inputAttr}
       />
     </Element>

@@ -59,6 +59,39 @@ export interface DataTablePaginationProps {
   element?: ElementType;
 }
 
+type FormattedPaginationNumbers = {
+  start: string;
+  end: string;
+  total: string;
+};
+
+const STRINGS = {
+  "en-US": {
+    alt: ({ start, end, total }: FormattedPaginationNumbers) =>
+      `Rows ${start} to ${end}, from a total of ${total} rows`,
+    label: ({ start, end, total }: FormattedPaginationNumbers) =>
+      `${start}-${end} of ${total}`,
+    action: {
+      first: "Go to first page",
+      previous: "Previous page",
+      next: "Next page",
+      last: "Go to last page",
+    },
+  },
+  th: {
+    alt: ({ start, end, total }: FormattedPaginationNumbers) =>
+      `แถวที่ ${start} ถึง ${end} จากทั้งหมด ${total} แถว`,
+    label: ({ start, end, total }: FormattedPaginationNumbers) =>
+      `${start}-${end} จาก ${total}`,
+    action: {
+      first: "ไปหน้าแรก",
+      previous: "หน้าที่แล้ว",
+      next: "หน้าต่อไป",
+      last: "ไปหน้าสุดท้าย",
+    },
+  },
+};
+
 /**
  * At the footer of a Data Table, Data Table Pagination provides controls for
  * paginating the Data Table data, including the current rows and navigating to
@@ -72,7 +105,7 @@ export interface DataTablePaginationProps {
 export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
   rowsPerPage,
   totalRows,
-  locale,
+  locale = "en-US",
   onChange,
   element: Element = "div",
   style,
@@ -93,7 +126,7 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
     end: Math.min(rowsPerPage * page, totalRows),
   };
 
-  const strings = {
+  const formattedNumbers: FormattedPaginationNumbers = {
     start: range.start.toLocaleString(locale),
     end: range.end.toLocaleString(locale),
     total: totalRows.toLocaleString(locale),
@@ -107,23 +140,17 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
       className={cn("skc-data-table-pagination", className)}
     >
       <span
-        aria-label={
-          locale === "th"
-            ? `แถวที่ ${strings.start} ถึง ${strings.end} จากทั้งหมด ${strings.total} แถว`
-            : `Rows ${strings.start} to ${strings.end}, from a total of ${strings.total} rows`
-        }
+        aria-label={STRINGS[locale].alt(formattedNumbers)}
         className="skc-data-table-pagination__label"
       >
-        {locale === "th"
-          ? `${strings.start}-${strings.end} จาก ${strings.total}`
-          : `${strings.start}-${strings.end} of ${strings.total}`}
+        {STRINGS[locale].label(formattedNumbers)}
       </span>
       <div className="skc-data-table-pagination__controls">
         {/* Skip to first */}
         <Button
           appearance="text"
           icon={<MaterialIcon icon="first_page" />}
-          alt={locale === "th" ? "ไปหน้าแรก" : "Go to first page"}
+          alt={STRINGS[locale].action.first}
           disabled={page === 1}
           onClick={() => setPage(1)}
         />
@@ -131,7 +158,7 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
         <Button
           appearance="text"
           icon={<MaterialIcon icon="chevron_left" />}
-          alt={locale === "th" ? "หน้าที่แล้ว" : "Previous page"}
+          alt={STRINGS[locale].action.previous}
           disabled={page === 1}
           onClick={() => setPage(page - 1)}
         />
@@ -139,7 +166,7 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
         <Button
           appearance="text"
           icon={<MaterialIcon icon="chevron_right" />}
-          alt={locale === "th" ? "หน้าต่อไป" : "Next page"}
+          alt={STRINGS[locale].action.next}
           disabled={page === maxPage}
           onClick={() => setPage(page + 1)}
         />
@@ -147,7 +174,7 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
         <Button
           appearance="text"
           icon={<MaterialIcon icon="last_page" />}
-          alt={locale === "th" ? "ไปหน้าสุดท้าย" : "Go to last page"}
+          alt={STRINGS[locale].action.last}
           disabled={page === maxPage}
           onClick={() => setPage(maxPage)}
         />
