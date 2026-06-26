@@ -68,12 +68,13 @@ export interface SnackbarProps {
 }
 
 /**
- * Snackbar briefly shows low priority information that does not require
- * action, as opposed to Dialog. It can inform the user about ongoing processes
- * or an event that has just been completed.
- * 
+ * Snackbar briefly shows low priority information that does not require action,
+ * as opposed to Dialog. It can inform the user about ongoing processes or an
+ * event that has just been completed.
+ *
  * Users frequently leave Snackbars unread, so check if other components like
- * Dialog or `loading` in Button are more appropriate for your use case.
+ * Dialog, `loading` in Button, or inline banners are more appropriate for your
+ * use case.
  *
  * @param children The message inside the Snackbar.
  * @param id The ID of the popover element, for Imperative API access.
