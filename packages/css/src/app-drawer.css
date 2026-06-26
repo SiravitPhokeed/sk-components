@@ -4,12 +4,10 @@
  */
 
 .skc-app-drawer {
-  --_entry-easing: var(--easing-emphasized-decelerate);
-  --_entry-duration: var(--motion-medium-2);
+  --_entry-duration: var(--motion-long-2);
+  --_exit-duration: var(--motion-medium-4);
 
-  --_exit-easing: var(--easing-emphasized-accelerate);
-  --_exit-duration: var(--motion-short-2);
-
+  --_easing: var(--easing-emphasized);
   --_backdrop-easing: var(--easing-standard);
 
   --_delay: 100ms;
@@ -22,7 +20,6 @@
 /* Entry state */
 .skc-app-drawer__modal {
   --_duration: var(--_entry-duration);
-  --_easing: var(--_entry-easing);
   --_padding: 0.5rem;
 
   position: absolute;
@@ -136,7 +133,6 @@
 
 .skc-app-drawer__modal.skc-app-drawer__modal--exiting {
   --_duration: var(--_exit-duration);
-  --_easing: var(--_exit-easing);
 
   & {
     animation: var(--_duration) var(--_easing) forwards skc-app-drawer-exit;

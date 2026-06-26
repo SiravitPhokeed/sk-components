@@ -4,12 +4,10 @@
  */
 
 .skc-nav-drawer {
-  --_entry-easing: var(--easing-emphasized-decelerate);
-  --_entry-duration: var(--motion-medium-4);
+  --_entry-duration: var(--motion-long-4);
+  --_exit-duration: var(--motion-long-4);
 
-  --_exit-easing: var(--easing-emphasized-accelerate);
-  --_exit-duration: var(--motion-short-4);
-
+  --_easing: var(--easing-emphasized);
   --_backdrop-easing: var(--easing-standard);
 
   --_delay: 100ms;
@@ -17,12 +15,11 @@
 
 .skc-nav-drawer {
   --_duration: var(--_entry-duration);
-  --_easing: var(--_entry-easing);
 
   position: fixed;
   inset: 0;
   right: auto;
-  transform: translateX(-100%) scaleX(0.2);
+  transform: scaleX(0);
   transform-origin: left;
   z-index: 90;
   transition: transform var(--_duration) var(--_easing);
@@ -64,7 +61,7 @@
   /* Open state */
   &[open] {
     display: block;
-    transform: translateX(0) scaleX(1);
+    transform: scaleX(1);
 
     .skc-nav-drawer__content {
       transform: scaleX(1);
@@ -77,7 +74,7 @@
 
     /* Entry starting style */
     @starting-style {
-      transform: translateX(-100%) scaleX(0.2);
+      transform: scaleX(0);
 
       .skc-nav-drawer__content {
         transform: scaleX(2);
@@ -117,7 +114,7 @@
     transform: translateX(0) scaleX(1);
   }
   to {
-    transform: translateX(-100%) scaleX(0.2);
+    transform: translateX(-3rem) scaleX(0);
   }
 }
 @keyframes skc-nav-drawer-exit-backdrop {
@@ -131,14 +128,13 @@
 
 .skc-nav-drawer.skc-nav-drawer--exiting {
   --_duration: var(--_exit-duration);
-  --_easing: var(--_exit-easing);
 
   & {
-    animation: var(--_duration) var(--_easing) forwards skc-nav-drawer-exit;
+    animation: skc-nav-drawer-exit var(--_duration) var(--_easing) forwards;
   }
 
   &::backdrop {
-    animation: var(--_duration) var(--_backdrop-easing) forwards
-      skc-nav-drawer-exit-backdrop;
+    animation: skc-nav-drawer-exit-backdrop var(--_duration)
+      var(--_backdrop-easing) forwards;
   }
 }
