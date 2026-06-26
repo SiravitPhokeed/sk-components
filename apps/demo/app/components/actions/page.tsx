@@ -1,6 +1,7 @@
 import AssistChipSection from "@/app/components/actions/components/AssistChipSection";
 import ButtonsSection from "@/app/components/actions/components/ButtonsSection";
 import FilterChipSection from "@/app/components/actions/components/FilterChipSection";
+import InputChipSection from "@/app/components/actions/components/InputChipSection";
 import SegmentedButtonSection from "@/app/components/actions/components/SegmentedButtonSection";
 import SuggestionChipSection from "@/app/components/actions/components/SuggestionChipSection";
 import ToggleButtonsSection from "@/app/components/actions/components/ToggleButtonsSection";
@@ -21,7 +22,7 @@ const ActionsPage: FC = () => (
       </Section>
       <Section>
         <Header>Chips</Header>
-        {/* <InputChipSection /> */}
+        <InputChipSection />
         <AssistChipSection />
         <FilterChipSection />
         <SuggestionChipSection />
