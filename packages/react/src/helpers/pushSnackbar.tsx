@@ -1,5 +1,5 @@
-import { Snackbar } from "@/components/Snackbar";
 import type { SnackbarProps } from "@/components/Snackbar";
+import { Snackbar } from "@/components/Snackbar";
 import type { ReactNode } from "react";
 import { createRoot } from "react-dom/client";
 
@@ -7,6 +7,9 @@ const EXITING_CLASS = "skc-snackbar--exiting";
 
 /** The dismiss function of the currently-visible Snackbar, if any. */
 let activeDismiss: (() => void) | null = null;
+
+/** Counter for generating unique Snackbar IDs. */
+let nextId = 0;
 
 /**
  * Options for {@link pushSnackbar}.
@@ -23,9 +26,7 @@ export type PushSnackbarOptions = Pick<
  *
  * @param message The message inside the Snackbar.
  * @param action A Snackbar can contain 1 action.
- * @param options.stacked Put the message above the action.
- * @param options.persistent If `true`, the Snackbar will not auto-dismiss.
- * @param options.autoDismissDurationMs Time in milliseconds until the Snackbar exits automatically.
+ * @param options Options.
  *
  * @returns A function to programmatically dismiss the Snackbar with its exit animation.
  *
@@ -41,10 +42,12 @@ export function pushSnackbar(
   action?: ReactNode,
   options?: PushSnackbarOptions,
 ): () => void {
+  const { stacked, persistent, autoDismissDurationMs } = options ?? {};
+
   // Dismiss any currently-visible Snackbar so only one is shown at a time.
   activeDismiss?.();
 
-  const { stacked, persistent, autoDismissDurationMs } = options ?? {};
+  const id = `snackbar-${nextId++}`;
 
   const container = document.createElement("div");
   document.body.appendChild(container);
@@ -52,21 +55,18 @@ export function pushSnackbar(
   const root = createRoot(container);
 
   let dismissed = false;
-  let snackbarEl: HTMLDivElement | null = null;
 
-  const cleanup = () => {
+  /** Reset the active dismiss function. */
+  const resetActiveDismiss = () => {
     if (activeDismiss === dismiss) activeDismiss = null;
   };
 
-  // Callback ref — fires during React's commit phase, so the element is
-  // guaranteed to be available before the next rAF.
-  const captureRef = (el: HTMLDivElement | null) => {
-    snackbarEl = el;
-  };
-
+  // Render the Snackbar into the container.
+  // The Snackbar auto-shows via `useEffect` (post-commit), so the element is
+  // always in the DOM by the time this `requestAnimationFrame` fires.
   root.render(
     <Snackbar
-      ref={captureRef}
+      id={id}
       persistent={persistent}
       autoDismissDurationMs={autoDismissDurationMs}
       action={action}
@@ -76,15 +76,16 @@ export function pushSnackbar(
     </Snackbar>,
   );
 
-  // After React commits the DOM, attach the toggle listener for cleanup.
-  // The callback ref has already set snackbarEl by this point.
   requestAnimationFrame(() => {
-    if (dismissed || !snackbarEl) return;
+    if (dismissed) return;
+
+    const snackbarEl = document.getElementById(id) as HTMLDivElement | null;
+    if (!snackbarEl) return;
 
     const handleToggle = (e: ToggleEvent) => {
       if (e.newState === "closed") {
-        cleanup();
-        snackbarEl!.removeEventListener("toggle", handleToggle);
+        resetActiveDismiss();
+        snackbarEl.removeEventListener("toggle", handleToggle);
         root.unmount();
         container.remove();
       }
@@ -94,10 +95,13 @@ export function pushSnackbar(
 
   const dismiss = () => {
     dismissed = true;
-    cleanup();
-    snackbarEl?.classList.add(EXITING_CLASS);
+    resetActiveDismiss();
+    const el = document.getElementById(id) as HTMLDivElement | null;
+    el?.classList.add(EXITING_CLASS);
   };
 
+  // Set the active dismiss function so that future calls to `pushSnackbar` will
+  // dismiss this Snackbar before showing the new one.
   activeDismiss = dismiss;
 
   return dismiss;

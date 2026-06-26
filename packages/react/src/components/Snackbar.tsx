@@ -5,8 +5,8 @@ import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import { Text } from "@/components/Text";
 import "@suankularb-components/css/snackbar.css";
-import type { ReactNode, Ref } from "react";
-import { useCallback, useEffect, useId, useRef } from "react";
+import type { ReactNode } from "react";
+import { useEffect, useId, useRef } from "react";
 
 const EXITING_CLASS = "skc-snackbar--exiting";
 const EXIT_ANIMATION_NAME = "skc-snackbar-exit";
@@ -58,13 +58,6 @@ export interface SnackbarProps {
    * - Ignored when {@link persistent} is `true`.
    */
   autoDismissDurationMs?: number;
-
-  /**
-   * A ref to the underlying popover element.
-   *
-   * - Optional. Useful for imperative access to the DOM element.
-   */
-  ref?: Ref<HTMLDivElement>;
 }
 
 /**
@@ -88,39 +81,26 @@ export const Snackbar: StyleableFC<SnackbarProps> = ({
   autoDismissDurationMs = 6000,
   className,
   style,
-  ref,
 }) => {
   const generatedId = useId();
   const snackbarID = requestedId ?? `snackbar-${generatedId}`;
 
-  const internalRef = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
-  // Merge the prop ref with the internal ref so both the consumer
-  // (pushSnackbar) and the useAnimatedPopover hook have access.
-  const mergedRef = useCallback(
-    (node: HTMLDivElement | null) => {
-      internalRef.current = node;
-      if (typeof ref === "function") ref(node);
-      else if (ref)
-        (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
-    },
-    [ref],
-  );
-
-  const { popoverProps } = useAnimatedPopover(internalRef, {
+  const { popoverProps } = useAnimatedPopover(ref, {
     exitingClass: EXITING_CLASS,
     exitAnimationName: EXIT_ANIMATION_NAME,
   });
 
   // Auto-show on mount. Using useEffect guarantees the DOM is committed.
   useEffect(() => {
-    internalRef.current?.showPopover();
+    ref.current?.showPopover();
   }, []);
 
   // Auto-dismiss after the configured duration (unless persistent).
   useEffect(() => {
     if (persistent) return;
-    const el = internalRef.current;
+    const el = ref.current;
     if (!el) return;
 
     const timer = setTimeout(() => {
@@ -133,7 +113,7 @@ export const Snackbar: StyleableFC<SnackbarProps> = ({
   return (
     <div
       id={snackbarID}
-      ref={mergedRef}
+      ref={ref}
       popover="manual"
       role="status"
       aria-live="polite"
@@ -152,5 +132,3 @@ export const Snackbar: StyleableFC<SnackbarProps> = ({
     </div>
   );
 };
-
-Snackbar.displayName = "Snackbar";
