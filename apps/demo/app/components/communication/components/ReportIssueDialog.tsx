@@ -4,6 +4,7 @@ import {
   Columns,
   SegmentedButton,
 } from "@suankularb-components/react";
+import { snackbar } from "@suankularb-components/react/helpers";
 import { useState, type FC } from "react";
 
 const ReportIssueDialog: FC = () => {
@@ -26,6 +27,12 @@ const ReportIssueDialog: FC = () => {
           appearance="text"
           command="request-close"
           commandfor="report-issue-dialog"
+          onClick={() => {
+            snackbar.push(
+              "Report submitted",
+              <Button appearance="text">View</Button>,
+            );
+          }}
         >
           Submit
         </Button>
