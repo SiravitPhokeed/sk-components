@@ -1,18 +1,11 @@
-"use client";
-
+import PageCard from "@/app/components/components/PageCard";
 import PageHeader from "@/components/PageHeader";
 import {
-  Actions,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
   Columns,
   ContentLayout,
   MaterialIcon,
   Section,
 } from "@suankularb-components/react";
-import Link from "next/link";
 import type { FC } from "react";
 
 const ComponentsPage: FC = () => (
@@ -22,93 +15,83 @@ const ComponentsPage: FC = () => (
       <Section>
         <Columns columns={4}>
           {/* Actions */}
-          <Card appearance="outlined">
-            <CardHeader
-              icon={<MaterialIcon icon="touch_app" />}
-              title="Actions"
-            />
-            <CardContent>
-              <p>
-                Actions, Button, Segmented Button, Toggle Button, Input Chip,
-                Assist Chip, Filter Chip, Suggestion Chip, Chip Set, FAB
-              </p>
-              <Actions align="full">
-                <Button
-                  appearance="tonal"
-                  href="/components/actions"
-                  element={Link}
-                >
-                  View showcase
-                </Button>
-              </Actions>
-            </CardContent>
-          </Card>
+          <PageCard
+            icon={<MaterialIcon icon="touch_app" />}
+            title="Actions"
+            href="/components/actions"
+            components={[
+              "Actions",
+              "Button",
+              "Segmented Button",
+              "Toggle Button",
+              "Input Chip",
+              "Assist Chip",
+              "Filter Chip",
+              "Suggestion Chip",
+              "Chip Set",
+              "FAB",
+            ]}
+          />
 
           {/* Input */}
-          <Card appearance="outlined">
-            <CardHeader icon={<MaterialIcon icon="input" />} title="Input" />
-            <CardContent>
-              <p>Form Group, Form Item, Search, Select, Switch, Text Field</p>
-              <Actions align="full">
-                <Button
-                  appearance="tonal"
-                  href="/components/input"
-                  element={Link}
-                >
-                  View showcase
-                </Button>
-              </Actions>
-            </CardContent>
-          </Card>
+          <PageCard
+            icon={<MaterialIcon icon="input" />}
+            title="Input"
+            href="/components/input"
+            components={[
+              "Form Group",
+              "Form Item",
+              "Search",
+              "Select",
+              "Switch",
+              "Text Field",
+            ]}
+          />
 
           {/* Communication */}
-          <Card appearance="outlined">
-            <CardHeader
-              icon={<MaterialIcon icon="swap_horiz" />}
-              title="Communication"
-            />
-            <CardContent>
-              <p>
-                Dialog, Dialog Header, Dialog Content, Full-screen Dialog,
-                Progress, Snackbar
-              </p>
-              <Actions align="full">
-                <Button
-                  appearance="tonal"
-                  href="/components/communication"
-                  element={Link}
-                >
-                  View showcase
-                </Button>
-              </Actions>
-            </CardContent>
-          </Card>
+          <PageCard
+            icon={<MaterialIcon icon="swap_horiz" />}
+            title="Communication"
+            href="/components/communication"
+            components={[
+              "Dialog",
+              "Dialog Header",
+              "Dialog Content",
+              "Full-screen Dialog",
+              "Progress",
+              "Snackbar",
+            ]}
+          />
 
           {/* Dashboard */}
-          <Card appearance="outlined">
-            <CardHeader
-              icon={<MaterialIcon icon="dashboard" />}
-              title="Containers"
-            />
-            <CardContent>
-              <p>
-                Card, Card Header, Card Content, Columns, Data Table, Data Table
-                Search, Data Table Filters, Data Table Content, Data Table Head,
-                Data Table Body, Data Table Pagination, Divider, List, List
-                Item, List Item Content, Table, Table Head, Table Body, Table
-                Foot, Table Row, Table Cell
-              </p>
-              <Actions align="full">
-                <Button
-                  appearance="tonal"
-                  href="/components/containers"
-                  element={Link}
-                >
-                  View showcase
-                </Button>
-              </Actions>
-            </CardContent>
-          </Card>
+          <PageCard
+            icon={<MaterialIcon icon="dashboard" />}
+            title="Containers"
+            href="/components/containers"
+            components={[
+              "Card",
+              "Card Header",
+              "Card Content",
+              "Columns",
+              "Data Table",
+              "Data Table Search",
+              "Data Table Filters",
+              "Data Table Content",
+              "Data Table Head",
+              "Data Table Body",
+              "Data Table Pagination",
+              "Divider",
+              "List",
+              "List Item",
+              "List Item Content",
+              "Table",
+              "Table Head",
+              "Table Body",
+              "Table Foot",
+              "Table Row",
+              "Table Cell",
+            ]}
+          />
         </Columns>
       </Section>
     </ContentLayout>
