@@ -9,6 +9,7 @@ import {
   ListItem,
   ListItemContent,
 } from "@suankularb-components/react";
+import { snackbar } from "@suankularb-components/react/helpers";
 
 const RemoveStudentsDialog = () => (
   <Dialog id="remove-students-dialog">
@@ -41,6 +42,7 @@ const RemoveStudentsDialog = () => (
         autoFocus
         command="request-close"
         commandfor="remove-students-dialog"
+        onClick={() => snackbar.push("Students removed")}
       >
         Remove
       </Button>

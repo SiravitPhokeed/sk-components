@@ -7,6 +7,7 @@ import {
   MaterialIcon,
   Section,
 } from "@suankularb-components/react";
+import { snackbar } from "@suankularb-components/react/helpers";
 import { useState, type FC } from "react";
 
 const ButtonsSection: FC = () => {
@@ -52,9 +53,14 @@ const ButtonsSection: FC = () => {
         <Button
           appearance="filled"
           icon={<MaterialIcon icon="add" />}
-          onClick={() => {
-            setLoading(true);
-            setTimeout(() => setLoading(false), 2000);
+          onClick={async () => {
+            await snackbar.promise("Failing task…", async () => {
+              setLoading(true);
+              // Fetch
+              await new Promise((resolve) => setTimeout(resolve, 2000));
+              setLoading(false);
+            });
+            snackbar.push("Task failed successfully");
           }}
           loading={loading}
         >
