@@ -1,6 +1,8 @@
 "use client";
 
 import { Chip } from "@/components/Chip";
+import { MaterialIcon } from "@/components/MaterialIcon";
+import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/filter-chip.css";
@@ -101,7 +103,6 @@ export const FilterChip: StyleableFC<FilterChipProps> = ({
   className,
 }) => (
   <Chip
-    icon={icon}
     tooltip={tooltip}
     elevated={elevated}
     selected={selected}
@@ -111,6 +112,9 @@ export const FilterChip: StyleableFC<FilterChipProps> = ({
     className={cn("skc-filter-chip", className)}
     style={style}
   >
-    {children}
+    {selected ? <MaterialIcon icon="done" /> : icon}
+    <Text type="label-large" className="skc-chip__label">
+      {children}
+    </Text>
   </Chip>
 );

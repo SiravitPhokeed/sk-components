@@ -1,6 +1,7 @@
 "use client";
 
 import { Chip } from "@/components/Chip";
+import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/assist-chip.css";
@@ -124,7 +125,6 @@ export const AssistChip: StyleableFC<AssistChipProps> = ({
   className,
 }) => (
   <Chip
-    icon={icon}
     tooltip={tooltip}
     elevated={elevated}
     dangerous={dangerous}
@@ -136,6 +136,9 @@ export const AssistChip: StyleableFC<AssistChipProps> = ({
     className={cn("skc-assist-chip", className)}
     style={style}
   >
-    {children}
+    {icon}
+    <Text type="label-large" className="skc-chip__label">
+      {children}
+    </Text>
   </Chip>
 );

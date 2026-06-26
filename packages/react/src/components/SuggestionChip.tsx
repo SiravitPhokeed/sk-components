@@ -1,6 +1,8 @@
 "use client";
 
 import { Chip } from "@/components/Chip";
+import { MaterialIcon } from "@/components/MaterialIcon";
+import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/suggestion-chip.css";
@@ -107,7 +109,6 @@ export const SuggestionChip: StyleableFC<SuggestionChipProps> = ({
   className,
 }) => (
   <Chip
-    icon={icon}
     tooltip={tooltip}
     elevated={elevated}
     selected={selected}
@@ -118,6 +119,9 @@ export const SuggestionChip: StyleableFC<SuggestionChipProps> = ({
     className={cn("skc-suggestion-chip", className)}
     style={style}
   >
-    {children}
+    {selected ? <MaterialIcon icon="done" /> : icon}
+    <Text type="label-large" className="skc-chip__label">
+      {children}
+    </Text>
   </Chip>
 );

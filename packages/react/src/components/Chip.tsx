@@ -1,12 +1,10 @@
 "use client";
 
 import { Interactive } from "@/components/Interactive";
-import { MaterialIcon } from "@/components/MaterialIcon";
-import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/chip.css";
-import type { ElementType, JSX, ReactNode } from "react";
+import type { ElementType, ReactNode } from "react";
 
 /**
  * Props shared by all chip types.
@@ -15,27 +13,12 @@ import type { ElementType, JSX, ReactNode } from "react";
  */
 export interface ChipProps {
   /**
-   * The text displayed inside the chip.
+   * The full content of the Chip — leading elements, label, and trailing
+   * elements.
    *
    * - Always required.
    */
   children: ReactNode;
-
-  /**
-   * An icon can appear before the text in a Chip. In a Chip Set with many
-   * chips, an icon can help the user find the right one more quickly.
-   *
-   * - You are encouraged to use Material Icons as the value for `icon`.
-   * - Optional.
-   */
-  icon?: JSX.Element;
-
-  /**
-   * Content placed after the label, typically a trailing icon or button.
-   *
-   * - Optional.
-   */
-  trailing?: ReactNode;
 
   /**
    * A message shown in a tooltip when the user hovers over the Chip.
@@ -55,8 +38,7 @@ export interface ChipProps {
   elevated?: boolean;
 
   /**
-   * If the Chip is selected. `icon` is replaced with a checkmark if this is
-   * `true`.
+   * If the Chip is selected.
    *
    * - Optional.
    */
@@ -106,15 +88,17 @@ export interface ChipProps {
 }
 
 /**
- * The base Chip component shared by all chip types. Not exported — use Filter
- * Chip, Suggestion Chip, Assist Chip, or Input Chip instead.
+ * The base Chip component shared by all chip types. Provides the Interactive
+ * shell, BEM classes, and state management. Consumers compose their own
+ * leading content, label, and trailing content via {@link children `children`}.
+ *
+ * Not exported — use Filter Chip, Suggestion Chip, Assist Chip, or Input Chip
+ * instead.
  *
  * @private
  */
 export const Chip: StyleableFC<ChipProps> = ({
   children,
-  icon,
-  trailing,
   tooltip,
   elevated,
   selected,
@@ -128,12 +112,14 @@ export const Chip: StyleableFC<ChipProps> = ({
   className,
 }) => {
   const isFunctional = !(disabled || loading);
+  const isInteractive =
+    onClick || href || (["button", "a"] as ElementType[]).includes(element);
+  const Element = isInteractive ? Interactive : element;
 
   return (
-    <Interactive
-      onClick={isFunctional ? onClick : undefined}
-      href={isFunctional ? href : undefined}
-      element={element}
+    <Element
+      {...(isFunctional && { onClick, href })}
+      {...(isInteractive && { element })}
       aria-disabled={!isFunctional}
       title={tooltip}
       className={cn(
@@ -145,15 +131,7 @@ export const Chip: StyleableFC<ChipProps> = ({
       )}
       style={style}
     >
-      {/* Icon */}
-      {selected ? <MaterialIcon icon="done" /> : icon}
-
-      {/* Label */}
-      <Text type="label-large" className="skc-chip__label">
-        {children}
-      </Text>
-
-      {trailing}
-    </Interactive>
+      {children}
+    </Element>
   );
 };

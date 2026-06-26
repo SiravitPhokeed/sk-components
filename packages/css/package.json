@@ -36,6 +36,7 @@
     "./form-group.css": "./dist/form-group.css",
     "./fullscreen-dialog.css": "./dist/fullscreen-dialog.css",
     "./header.css": "./dist/header.css",
+    "./input-chip.css": "./dist/input-chip.css",
     "./interactive.css": "./dist/interactive.css",
     "./list-item.css": "./dist/list-item.css",
     "./list-item-content.css": "./dist/list-item-content.css",

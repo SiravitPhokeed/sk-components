@@ -42,6 +42,7 @@ export {
   type FullscreenDialogProps,
 } from "./FullscreenDialog";
 export { Header, type HeaderProps } from "./Header";
+export { InputChip, type InputChipProps } from "./InputChip";
 export { Interactive, type InteractiveProps } from "./Interactive";
 export { List, type ListProps } from "./List";
 export { ListItem, type ListItemProps } from "./ListItem";

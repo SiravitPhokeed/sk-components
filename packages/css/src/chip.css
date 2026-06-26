@@ -19,7 +19,6 @@
     border-color var(--duration) var(--easing),
     background-color var(--duration) var(--easing),
     color var(--duration) var(--easing);
-  cursor: pointer;
   border: 1px solid var(--outline);
   border-radius: 0.5rem;
   background-color: transparent;
@@ -46,7 +45,6 @@
 
   /* Disabled */
   &[aria-disabled="true"] {
-    cursor: default;
     border-color: transparent;
     border-color: color-mix(in srgb, var(--on-surface) 12%, transparent);
     overflow: visible;
@@ -119,20 +117,34 @@
 }
 
 /* Trailing button */
-.skc-chip__trailing-button {
+.skc-chip .skc-chip__trailing-button {
   --state-layer-color: var(--on-surface);
+  margin-block: -0.125rem;
+  margin-right: -0.75rem;
 
   padding: 0.1875rem;
   color: var(--on-surface);
 
-  .skc-button__icon {
+  .skc-material-icon {
     width: 1.125rem;
     height: 1.125rem;
-  }
-
-  .skc-button__icon .skc-icon,
-  &:hover .skc-button__icon .skc-icon,
-  &:active .skc-button__icon .skc-icon {
     font-size: 1.125rem;
   }
+}
+
+/* Hide Chip state layer when Button state layer is visible */
+.skc-chip__trailing-button {
+  .skc-chip:has(&:hover),
+  .skc-chip:has(&:focus-visible) {
+    &::before,
+    > .skc-interactive__ripple-layer {
+      opacity: 0;
+      opacity: 0;
+    }
+  }
+}
+
+/* Hide leading icon when Chip has a trailing Button */
+.skc-chip:has(.skc-chip__trailing-button:last-child) > .skc-material-icon {
+  display: none;
 }

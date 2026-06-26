@@ -1,0 +1,53 @@
+/**
+ * **Input Chip**
+ * A Chip displaying a piece of information entered by the user. This type of
+ * Chip can be added and deleted by the user.
+ *
+ * Like all Chips, an Input Chip appears alongside other Input Chips, but
+ * these can also appear inside a text field like in Chip Field.
+ */
+
+.skc-input-chip {
+  &:has(.skc-input-chip__avatar) {
+    border-radius: var(--rounded-full);
+  }
+}
+
+/* Avatar container */
+.skc-input-chip__avatar {
+  margin-left: -0.75rem;
+  margin-block: -0.125rem;
+  width: 1.5rem;
+  height: 1.5rem;
+
+  .skc-avatar {
+    width: 100%;
+    height: 100%;
+
+    &:not(:has(img)) {
+      background-color: var(--on-surface-variant);
+      color: var(--surface);
+    }
+  }
+}
+
+/* Selected state — avatar gets a colored background behind the checkmark */
+.skc-chip--selected .skc-input-chip__avatar {
+  border-radius: var(--rounded-full);
+  background-color: var(--on-secondary-container);
+
+  .skc-material-icon {
+    color: var(--on-secondary);
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: more) {
+  .skc-chip--selected .skc-input-chip__avatar {
+    color: var(--secondary-container);
+  }
+
+  .skc-chip--selected .skc-chip__trailing-button {
+    color: var(--on-secondary);
+  }
+}
