@@ -15,6 +15,9 @@ export interface SnackbarProps {
   /**
    * The message inside the Snackbar.
    *
+   * - The Material Design style guide
+   *   {@link https://m3.material.io/foundations/content-design/style-guide/grammar-and-punctuation recommend omitting periods}
+   *   at the end of Snackbar messages.
    * - Always required.
    */
   children: ReactNode;
@@ -45,17 +48,21 @@ export interface SnackbarProps {
   stacked?: boolean;
 
   /**
-   * If `true`, the Snackbar will not auto-dismiss.
+   * Prevent the Snackbar from auto-dismissing after a certain duration.
    *
-   * - Optional. Defaults to `false`.
+   * - Incompatible with {@link autoDismissDurationMs `autoDismissDurationMs`}.
+   * - Optional.
    */
   persistent?: boolean;
 
   /**
    * Time in milliseconds until the Snackbar exits automatically.
    *
-   * - Optional. Defaults to `6000` (6 seconds).
-   * - Ignored when {@link persistent} is `true`.
+   * - Incompatible with {@link persistent `persistent`}.
+   * - Defaults to 6000 (6 seconds).
+   * - Optional.
+   *
+   * @default 6000
    */
   autoDismissDurationMs?: number;
 }
@@ -64,12 +71,15 @@ export interface SnackbarProps {
  * Snackbar briefly shows low priority information that does not require
  * action, as opposed to Dialog. It can inform the user about ongoing processes
  * or an event that has just been completed.
+ * 
+ * Users frequently leave Snackbars unread, so check if other components like
+ * Dialog or `loading` in Button are more appropriate for your use case.
  *
  * @param children The message inside the Snackbar.
  * @param id The ID of the popover element, for Imperative API access.
  * @param action A Snackbar can contain 1 action. Pressing this action closes the Snackbar.
  * @param stacked Put the message (`children`) above the action (`action`).
- * @param persistent If `true`, the Snackbar will not auto-dismiss.
+ * @param persistent Prevent the Snackbar from auto-dismissing after a certain duration.
  * @param autoDismissDurationMs Time in milliseconds until the Snackbar exits automatically.
  */
 export const Snackbar: StyleableFC<SnackbarProps> = ({
