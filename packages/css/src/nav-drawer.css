@@ -111,10 +111,18 @@
 
 @keyframes skc-nav-drawer-exit {
   from {
-    transform: translateX(0) scaleX(1);
+    transform: scaleX(1);
   }
   to {
-    transform: translateX(-3rem) scaleX(0);
+    transform: scaleX(0);
+  }
+}
+@keyframes skc-nav-drawer-exit-children {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 @keyframes skc-nav-drawer-exit-backdrop {
@@ -136,5 +144,10 @@
   &::backdrop {
     animation: skc-nav-drawer-exit-backdrop var(--_duration)
       var(--_backdrop-easing) forwards;
+  }
+
+  .skc-nav-drawer__content > * {
+    animation: calc(var(--_duration) / 3) var(--_easing) forwards
+      skc-nav-drawer-exit-children;
   }
 }

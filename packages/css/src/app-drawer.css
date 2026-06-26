@@ -4,11 +4,8 @@
  */
 
 .skc-app-drawer {
-  --_entry-duration: var(--motion-long-2);
-  --_exit-duration: var(--motion-medium-4);
-
+  --_duration: var(--motion-long-2);
   --_easing: var(--easing-emphasized);
-  --_backdrop-easing: var(--easing-standard);
 
   --_delay: 100ms;
 }
@@ -19,7 +16,6 @@
 
 /* Entry state */
 .skc-app-drawer__modal {
-  --_duration: var(--_entry-duration);
   --_padding: 0.5rem;
 
   position: absolute;
@@ -32,8 +28,6 @@
   gap: 0.25rem;
   transform: translateY(-1rem) scaleY(0);
   transform-origin: top;
-  opacity: 0;
-  z-index: 85;
   transition:
     opacity var(--_duration) var(--_easing),
     transform var(--_duration) var(--_easing);
@@ -48,12 +42,10 @@
   overflow: hidden;
   color: var(--on-surface);
 
-  > * {
-    transform: scaleY(2);
+  .skc-app-drawer-segment > * {
     opacity: 0;
-    transition:
-      opacity var(--_duration) var(--_easing),
-      transform var(--_duration) var(--_easing);
+    transition: opacity var(--_duration) var(--_easing);
+    transition-delay: calc(var(--_duration) / 2);
   }
 
   &::backdrop {
@@ -68,20 +60,16 @@
   &[open] {
     display: flex;
     transform: translateY(0) scaleY(1);
-    opacity: 1;
 
-    > * {
-      transform: scaleY(1);
+    .skc-app-drawer-segment > * {
       opacity: 1;
     }
 
     /* Entry starting style */
     @starting-style {
       transform: translateY(-1rem) scaleY(0);
-      opacity: 0;
 
-      > * {
-        transform: scaleY(2);
+      .skc-app-drawer-segment > * {
         opacity: 0;
       }
     }
@@ -104,21 +92,19 @@
 @keyframes skc-app-drawer-exit {
   /* No `translateY` here to make the exit less distracting */
   from {
-    transform: scaleY(1);
+    transform: translateY(0) scaleY(1);
     opacity: 1;
   }
   to {
-    transform: scaleY(0);
+    transform: translateY(-0.5rem) scaleY(0);
     opacity: 0;
   }
 }
 @keyframes skc-app-drawer-exit-children {
   from {
-    transform: scaleY(1);
     opacity: 1;
   }
   to {
-    transform: scaleY(2);
     opacity: 0;
   }
 }
@@ -132,19 +118,16 @@
 }
 
 .skc-app-drawer__modal.skc-app-drawer__modal--exiting {
-  --_duration: var(--_exit-duration);
-
   & {
-    animation: var(--_duration) var(--_easing) forwards skc-app-drawer-exit;
+    animation: skc-app-drawer-exit var(--_duration) var(--_easing) forwards;
   }
-  > * {
-    animation: var(--_duration) var(--_easing) forwards
-      skc-app-drawer-exit-children;
+  .skc-app-drawer-segment > * {
+    animation: skc-app-drawer-exit-children calc(var(--_duration) / 4)
+      var(--_easing) forwards;
   }
-
   &::backdrop {
-    animation: var(--_duration) var(--_backdrop-easing) forwards
-      skc-app-drawer-exit-backdrop;
+    animation: skc-app-drawer-exit-backdrop var(--_duration) var(--_easing)
+      forwards;
   }
 }
 
