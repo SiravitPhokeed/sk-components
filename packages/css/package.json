@@ -35,6 +35,7 @@
     "./divider.css": "./dist/divider.css",
     "./filter-chip.css": "./dist/filter-chip.css",
     "./form-group.css": "./dist/form-group.css",
+    "./form-item.css": "./dist/form-item.css",
     "./fullscreen-dialog.css": "./dist/fullscreen-dialog.css",
     "./header.css": "./dist/header.css",
     "./input-chip.css": "./dist/input-chip.css",

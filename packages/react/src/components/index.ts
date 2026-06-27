@@ -38,6 +38,7 @@ export { DialogHeader, type DialogHeaderProps } from "./DialogHeader";
 export { Divider, type DividerProps } from "./Divider";
 export { FilterChip, type FilterChipProps } from "./FilterChip";
 export { FormGroup, type FormGroupProps } from "./FormGroup";
+export { FormItem, type FormItemProps } from "./FormItem";
 export {
   FullscreenDialog,
   type FullscreenDialogProps,

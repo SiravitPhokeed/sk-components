@@ -1,0 +1,28 @@
+.skc-form-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
+
+  &:has(> .skc-chip-set) {
+    flex-direction: column-reverse;
+    gap: 0.5rem;
+  }
+
+  &:has(> .skc-switch) {
+    flex-direction: row-reverse;
+
+    .skc-form-item__label {
+      margin-block: 0.375rem;
+    }
+  }
+
+  > :not(.skc-form-item__label) {
+    flex-shrink: 0;
+  }
+}
+
+.skc-form-item__label {
+  flex-grow: 1;
+  cursor: pointer;
+}
