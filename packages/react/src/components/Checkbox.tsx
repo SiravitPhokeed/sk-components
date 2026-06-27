@@ -5,7 +5,7 @@ import { MaterialIcon } from "@/components/MaterialIcon";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/checkbox.css";
-import { useId, useState } from "react";
+import { useState } from "react";
 
 /**
  * Props for {@link Checkbox}.
@@ -77,8 +77,7 @@ export const Checkbox: StyleableFC<CheckboxProps> = ({
       aria-checked={mergedValue === null ? "mixed" : mergedValue}
       aria-disabled={disabled}
       onClick={() => {
-        if (disabled) return;
-        mergedOnChange(!mergedValue);
+        if (!disabled) mergedOnChange(!mergedValue);
       }}
       element={element}
       className={cn(
