@@ -1,0 +1,74 @@
+/**
+ * **Radio**
+ * A choice from a single-select set of choices. Unlike Checkbox and Switch,
+ * Radio always appear in a group.
+ */
+
+.skc-radio {
+  --state-layer-color: var(--on-surface);
+  --_target-size: 2.5rem;
+  --_circle-size: 1.125rem;
+  --_marker-size: 0.625rem;
+
+  --_padding: calc((var(--_target-size) - var(--_circle-size)) / 2);
+  margin: calc(var(--_padding) * -1);
+  border-radius: var(--rounded-full);
+  padding: var(--_padding);
+}
+
+.skc-radio__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.skc-radio__circle {
+  display: grid;
+  place-content: center;
+  transition: border-color var(--motion-short-2) var(--easing-standard);
+  box-sizing: border-box;
+  border: 2px solid var(--on-surface-variant);
+  border-radius: var(--rounded-full);
+  background-color: transparent;
+  width: var(--_circle-size);
+  height: var(--_circle-size);
+  pointer-events: none;
+}
+
+.skc-radio__marker {
+  transform: scale(0);
+  transition: transform var(--motion-short-2) var(--easing-standard);
+  border-radius: inherit;
+  background-color: var(--primary);
+  width: var(--_marker-size);
+  height: var(--_marker-size);
+}
+
+.skc-radio--selected {
+  --state-layer-color: var(--primary);
+
+  .skc-radio__circle {
+    border-color: var(--primary);
+  }
+
+  .skc-radio__marker {
+    transform: scale(1);
+  }
+}
+
+.skc-radio--disabled {
+  --state-layer-color: transparent;
+
+  .skc-radio__circle {
+    opacity: 0.38;
+    border-color: var(--on-surface);
+  }
+
+  .skc-radio__marker {
+    background-color: var(--on-surface);
+  }
+}
+.skc-radio.skc-radio--disabled {
+  cursor: default;
+}

@@ -12,15 +12,7 @@
 
   .skc-form-item {
     padding-left: 0.55rem;
-
-    .skc-checkbox,
-    .skc-radio {
-      padding-block: 0.5rem;
-    }
-
-    .skc-form-item__label {
-      padding-block: 0.4375rem;
-    }
+    padding-block: 0.4375rem;
   }
 }
 

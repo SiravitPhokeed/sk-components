@@ -22,6 +22,16 @@
   }
 }
 
+.skc-form-item {
+  &:has(> :hover) ::before {
+    opacity: 0.08;
+  }
+  &:has(> :active) ::before,
+  &:has(> :focus-visible) ::before {
+    opacity: 0.12;
+  }
+}
+
 .skc-form-item__label {
   flex-grow: 1;
   cursor: pointer;
