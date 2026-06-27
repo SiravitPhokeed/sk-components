@@ -68,7 +68,7 @@ export const FormGroup: StyleableFC<FormGroupProps> = ({
     >
       {label}
     </Text>
-    <FormGroupContext.Provider value={{ name: useId() }}>
+    <FormGroupContext.Provider value={{ name: `form-group-${useId()}` }}>
       {children}
     </FormGroupContext.Provider>
   </Element>
