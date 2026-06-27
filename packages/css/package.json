@@ -52,6 +52,7 @@
     "./progress.css": "./dist/progress.css",
     "./radio.css": "./dist/radio.css",
     "./root-layout.css": "./dist/root-layout.css",
+    "./search.css": "./dist/search.css",
     "./section.css": "./dist/section.css",
     "./segmented-button.css": "./dist/segmented-button.css",
     "./split-layout.css": "./dist/split-layout.css",

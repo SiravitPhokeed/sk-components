@@ -1,0 +1,63 @@
+/**
+ * **Search**
+ * Search allows the user to quickly find something using a query.
+ */
+
+.skc-search {
+  position: relative;
+  border-radius: var(--rounded-xl);
+  background-color: var(--surface-container-high);
+}
+
+.skc-search::before {
+  position: absolute;
+  opacity: 0;
+  transition: opacity var(--motion-short-4) var(--easing-standard);
+  inset: 0;
+  border-radius: inherit;
+  background-color: var(--on-surface);
+  pointer-events: none;
+  content: "";
+}
+
+.skc-search__button {
+  --_button-foreground-color: var(--on-surface);
+
+  position: absolute;
+  top: 50%;
+  left: 0.5rem;
+  transform: translateY(-50%);
+}
+
+.skc-search__input {
+  --_state-layer-opacity: 0%;
+
+  transition-duration: var(--motion-short-4);
+  transition-property: background-color, outline-color;
+  transition-timing-function: var(--easing-standard);
+  box-sizing: border-box;
+  outline: 2px solid transparent;
+  outline-offset: 0;
+  border: 0;
+  border-radius: inherit;
+  background-color: color-mix(
+    in srgb,
+    var(--on-surface) var(--_state-layer-opacity),
+    transparent
+  );
+  padding: 1rem;
+  padding-inline: 3.25rem 0;
+  width: 100%;
+
+  &::placeholder {
+    font-family: var(--font-display);
+  }
+
+  &:hover {
+    --_state-layer-opacity: 8%;
+  }
+  &:focus-visible {
+    --_state-layer-opacity: 0%;
+    outline-color: var(--primary);
+  }
+}
