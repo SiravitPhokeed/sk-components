@@ -21,7 +21,7 @@ const SwitchSection: FC = () => {
     <Section>
       <Header>Switch</Header>
       <Columns columns={3}>
-        <Card appearance="outlined" className="p-4 min-w-60">
+        <Card appearance="outlined" className="min-w-60 px-4 py-3">
           <FormItem label="Allow notifications">
             <Switch value={allow} onChange={setAllow} />
           </FormItem>
