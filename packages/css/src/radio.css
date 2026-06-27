@@ -16,6 +16,10 @@
   padding: var(--_padding);
 }
 
+.skc-radio:has(:focus-visible) {
+  animation: skc-focus var(--motion-long-4) var(--easing-standard) forwards;
+}
+
 .skc-radio__input {
   position: absolute;
   opacity: 0;
