@@ -6,12 +6,13 @@
 .skc-interactive {
   display: block;
   position: relative;
-  cursor: pointer;
   overflow: hidden;
   touch-action: manipulation;
   text-decoration: none;
 
   &:not([aria-disabled="true"]) {
+    cursor: pointer;
+
     &:hover::before {
       opacity: 0.08;
     }
