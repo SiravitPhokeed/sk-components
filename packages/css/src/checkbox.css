@@ -7,9 +7,13 @@
 
 .skc-checkbox {
   --state-layer-color: var(--on-surface);
-  margin: -0.6875rem;
+  --_target-size: 2.5rem;
+  --_box-size: 1.125rem;
+
+  --_padding: calc((var(--_target-size) - var(--_box-size)) / 2);
+  margin: calc(var(--_padding) * -1);
   border-radius: var(--rounded-full);
-  padding: 0.6875rem;
+  padding: var(--_padding);
 }
 
 .skc-checkbox__box {
@@ -22,8 +26,9 @@
   border: 2px solid var(--on-surface-variant);
   border-radius: 0.125rem;
   background-color: transparent;
-  width: 1.125rem;
-  height: 1.125rem;
+  width: var(--_box-size);
+  height: var(--_box-size);
+  pointer-events: none;
 }
 
 .skc-checkbox--selected,
