@@ -2,7 +2,8 @@
 
 import {
   Checkbox,
-  // FormItem,
+  Columns,
+  FormItem,
   Header,
   Section,
 } from "@suankularb-components/react";
@@ -18,9 +19,11 @@ const CheckboxSection: FC = () => {
   return (
     <Section>
       <Header>Checkbox</Header>
-      {/* <FormItem label="I agree to the terms and conditions">
-        <Checkbox value={termsAgreed} onChange={setTermsAgreed} />
-      </FormItem> */}
+      <Columns columns={2}>
+        <FormItem label="I agree to the terms and conditions">
+          <Checkbox value={termsAgreed} onChange={setTermsAgreed} />
+        </FormItem>
+      </Columns>
       <div className="flex flex-row flex-wrap gap-4">
         <Checkbox value={checked} onChange={setChecked} />
         <Checkbox
