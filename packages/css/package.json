@@ -18,6 +18,7 @@
     "./card.css": "./dist/card.css",
     "./card-content.css": "./dist/card-content.css",
     "./card-header.css": "./dist/card-header.css",
+    "./checkbox.css": "./dist/checkbox.css",
     "./chip.css": "./dist/chip.css",
     "./chip-set.css": "./dist/chip-set.css",
     "./columns.css": "./dist/columns.css",

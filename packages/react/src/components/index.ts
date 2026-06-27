@@ -9,6 +9,7 @@ export {
 export { AssistChip, type AssistChipProps } from "./AssistChip";
 export { Button, type ButtonProps } from "./Button";
 export { Card, type CardProps } from "./Card";
+export { Checkbox, type CheckboxProps } from "./Checkbox";
 export { ChipSet, type ChipSetProps } from "./ChipSet";
 export { CardContent, type CardContentProps } from "./CardContent";
 export { CardHeader, type CardHeaderProps } from "./CardHeader";

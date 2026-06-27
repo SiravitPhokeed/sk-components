@@ -1,0 +1,56 @@
+/**
+ * **Checkbox**
+ * A choice from a multi-select set of choices. When alone, a Checkbox is
+ * usually used for acknowledgement of or agreement to something, like a terms
+ * and conditions.
+ */
+
+.skc-checkbox {
+  --state-layer-color: var(--on-surface);
+  margin: -0.6875rem;
+  border-radius: var(--rounded-full);
+  padding: 0.6875rem;
+}
+
+.skc-checkbox__box {
+  display: grid;
+  place-content: center;
+  transition-duration: var(--motion-short-2);
+  transition-property: background-color, transform;
+  transition-timing-function: var(--easing-standard);
+  box-sizing: border-box;
+  border: 2px solid var(--on-surface-variant);
+  border-radius: 0.125rem;
+  background-color: transparent;
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.skc-checkbox--selected,
+.skc-checkbox--indeterminate {
+  --state-layer-color: var(--primary);
+
+  .skc-checkbox__box {
+    border-color: var(--primary);
+    background-color: var(--primary);
+  }
+}
+
+.skc-checkbox__icon {
+  color: var(--on-primary);
+}
+
+.skc-checkbox[aria-disabled="true"] {
+  .skc-checkbox__box {
+    opacity: 0.38;
+    border-color: var(--on-surface);
+  }
+  &:is(.skc-checkbox--selected, .skc-checkbox--indeterminate)
+    .skc-checkbox__box {
+    background-color: var(--on-surface);
+  }
+
+  .skc-checkbox__icon {
+    color: var(--surface);
+  }
+}
