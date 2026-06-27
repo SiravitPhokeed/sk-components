@@ -78,6 +78,10 @@
   background-color: var(--surface);
   padding: 0.75rem 0.5rem;
 
+  > .skc-button:first-child {
+    --_button-foreground-color: var(--on-surface);
+  }
+
   > h2 {
     flex-grow: 1;
     margin-block: 0;

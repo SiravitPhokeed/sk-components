@@ -6,6 +6,8 @@
 .skc-interactive {
   display: block;
   position: relative;
+  border: 0;
+  background-color: transparent;
   overflow: hidden;
   touch-action: manipulation;
   text-decoration: none;

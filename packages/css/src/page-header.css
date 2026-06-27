@@ -27,6 +27,7 @@
 
 .skc-page-header__text {
   flex-grow: 1;
+  margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

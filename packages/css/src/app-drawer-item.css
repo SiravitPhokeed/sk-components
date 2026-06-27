@@ -21,6 +21,7 @@
   border: 1px solid var(--outline-variant);
   border-radius: var(--rounded-lg);
   background-color: var(--surface);
+  padding: 0;
   aspect-ratio: 1;
 
   &:focus-visible {

@@ -32,6 +32,7 @@
   transition-duration: var(--_duration);
   transition-property: transform, opacity;
   transition-timing-function: var(--_easing);
+  box-sizing: border-box;
   margin: 0;
   inset: auto auto var(--_inset) var(--_inset);
   box-shadow: var(--shadow-3);
