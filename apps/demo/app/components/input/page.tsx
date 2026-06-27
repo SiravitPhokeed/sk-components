@@ -1,5 +1,6 @@
 import CheckboxSection from "@/app/components/input/components/CheckboxSection";
 import RadioSection from "@/app/components/input/components/RadioSection";
+import SearchSection from "@/app/components/input/components/SearchSection";
 import SwitchSection from "@/app/components/input/components/SwitchSection";
 import PageHeader from "@/components/PageHeader";
 import { ContentLayout } from "@suankularb-components/react";
@@ -16,7 +17,7 @@ const InputPage: FC = () => (
     <ContentLayout>
       <CheckboxSection />
       {/* <ChipFieldSection /> */}
-      {/* <SearchSection /> */}
+      <SearchSection />
       {/* <SelectSection /> */}
       {/* <TextFieldSection /> */}
       <RadioSection />
