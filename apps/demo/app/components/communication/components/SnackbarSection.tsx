@@ -28,7 +28,7 @@ const SnackbarSection: FC = () => {
             );
           }}
         >
-          Show snackbar
+          Show Snackbar
         </Button>
 
         <Button
@@ -44,7 +44,7 @@ const SnackbarSection: FC = () => {
             );
           }}
         >
-          Show stacked snackbar
+          Show stacked Snackbar
         </Button>
       </Actions>
     </Section>
