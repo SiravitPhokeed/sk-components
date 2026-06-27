@@ -1,14 +1,16 @@
 import {
-  FullscreenDialog,
   Button,
+  Checkbox,
   Columns,
+  FormItem,
+  FullscreenDialog,
   SegmentedButton,
 } from "@suankularb-components/react";
 import { snackbar } from "@suankularb-components/react/helpers";
 import { useState, type FC } from "react";
 
 const ReportIssueDialog: FC = () => {
-  // const [understood, setUnderstood] = useState(false);
+  const [understood, setUnderstood] = useState(false);
 
   const [view, setView] = useState<"bug-report" | "feature-request">(
     "bug-report",
@@ -47,18 +49,18 @@ const ReportIssueDialog: FC = () => {
             <a
               href="https://github.com/suankularb-wittayalai-school/mysk-frontend"
               target="_blank"
-              rel="noreferrer"
+              className="text-primary font-bold underline"
             >
               GitHub repository
             </a>
             . Thank you!
           </p>
-          {/* <FormItem
+          <FormItem
             label="I have already queried the issues page and cannot find my
                 issue."
           >
             <Checkbox value={understood} onChange={setUnderstood} />
-          </FormItem> */}
+          </FormItem>
           <SegmentedButton alt="View" full className="pb-4">
             <Button
               appearance="outlined"
