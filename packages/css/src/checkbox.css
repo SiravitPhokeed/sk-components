@@ -19,9 +19,7 @@
 .skc-checkbox__box {
   display: grid;
   place-content: center;
-  transition-duration: var(--motion-short-2);
-  transition-property: background-color, transform;
-  transition-timing-function: var(--easing-standard);
+  transition: background-color var(--motion-short-2) var(--easing-standard);
   box-sizing: border-box;
   border: 2px solid var(--on-surface-variant);
   border-radius: 0.125rem;
