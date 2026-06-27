@@ -379,14 +379,16 @@
   }
 }
 
-*,
-:focus-visible {
-  --_focus-ring-color: var(--primary);
-  outline: 0 solid var(--_focus-ring-color);
-  outline-offset: 2px;
-}
-:focus-visible {
-  animation: skc-focus var(--motion-long-4) var(--easing-standard) forwards;
+:not(input, textarea) {
+  &,
+  &:focus-visible {
+    --_focus-ring-color: var(--primary);
+    outline: 0 solid var(--_focus-ring-color);
+    outline-offset: 2px;
+  }
+  &:focus-visible {
+    animation: skc-focus var(--motion-long-4) var(--easing-standard) forwards;
+  }
 }
 
 @keyframes skc-focus {
