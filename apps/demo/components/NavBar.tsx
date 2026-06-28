@@ -33,8 +33,8 @@ const NavBar: FC = () => {
       <NavBarItem
         icon={<MaterialIcon icon="capture" />}
         label="Examples"
-        selected={pathname.startsWith("/example")}
-        href="/example"
+        selected={pathname.startsWith("/examples")}
+        href="/examples"
         element={Link}
       />
       <NavBarItem
