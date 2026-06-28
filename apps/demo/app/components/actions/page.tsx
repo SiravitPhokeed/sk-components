@@ -26,7 +26,6 @@ const ActionsPage: FC = () => (
         <ToggleButtonsSection />
         {/* <FABsSection /> */}
       </Section>
-      <MenuSection />
       <Section>
         <Header>Chips</Header>
         <InputChipSection />
@@ -34,6 +33,7 @@ const ActionsPage: FC = () => (
         <FilterChipSection />
         <SuggestionChipSection />
       </Section>
+      <MenuSection />
     </ContentLayout>
   </>
 );
