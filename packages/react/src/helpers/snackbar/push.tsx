@@ -1,6 +1,7 @@
 import type { SnackbarProps } from "@/components/Snackbar";
 import { Snackbar } from "@/components/Snackbar";
 import type { ReactNode } from "react";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
 const EXITING_CLASS = "skc-snackbar--exiting";
@@ -56,15 +57,17 @@ export default function snackbarPush(
   // The Snackbar auto-shows via `useEffect` (post-commit), so the element is
   // always in the DOM by the time this `requestAnimationFrame` fires.
   root.render(
-    <Snackbar
-      id={id}
-      persistent={persistent}
-      autoDismissDurationMs={autoDismissDurationMs}
-      action={action}
-      stacked={stacked}
-    >
-      {message}
-    </Snackbar>,
+    <StrictMode>
+      <Snackbar
+        id={id}
+        persistent={persistent}
+        autoDismissDurationMs={autoDismissDurationMs}
+        action={action}
+        stacked={stacked}
+      >
+        {message}
+      </Snackbar>
+    </StrictMode>,
   );
 
   requestAnimationFrame(() => {
