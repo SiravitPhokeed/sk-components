@@ -8,6 +8,10 @@
   --_easing: var(--easing-emphasized);
 
   display: flex;
+  position-try-fallbacks:
+    flip-block,
+    flip-inline,
+    flip-block flip-inline;
   inset: auto;
   top: calc(anchor(bottom) + 0.5rem);
   left: anchor(left);
@@ -16,7 +20,6 @@
   transform-origin: top;
   transition-property: transform, opacity;
   transition: var(--_duration) var(--_easing);
-  position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
   box-sizing: border-box;
   margin: 0;
   box-shadow: var(--shadow-3);
