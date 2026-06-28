@@ -1,4 +1,5 @@
 import { Interactive } from "@/components/Interactive";
+import { useMenuContext } from "@/components/Menu";
 import cn from "@/lib/helpers/cn";
 import type {
   ActionableProps,
@@ -86,28 +87,53 @@ export const MenuItem: StyleableFC<MenuItemProps> = ({
   element: Element = "li",
   style,
   className,
-}) => (
-  <Element
-    role="presentation"
-    style={style}
-    className={cn(
-      "skc-menu-item",
-      selected && "skc-menu-item--selected",
-      className,
-    )}
-  >
-    <Interactive
-      href={href}
-      onClick={onClick}
-      command={command}
-      commandfor={commandfor}
-      role="menuitem"
-      aria-selected={selected}
-      aria-disabled={disabled}
-    >
-      {icon && <div className="skc-menu-item__icon">{icon}</div>}
-      <span className="skc-menu-item__label">{children}</span>
-      {metadata && <span className="skc-menu-item__metadata">{metadata}</span>}
-    </Interactive>
-  </Element>
-);
+}) => {
+  const menuContext = useMenuContext();
+
+  // Auto-resolve commandfor from parent Menu context, and use animated
+  // close for hide-popover (instead of calling hidePopover() directly,
+  // which would skip the exit animation).
+  let resolvedCommand = command;
+  let resolvedCommandFor = commandfor;
+  let resolvedOnClick = onClick;
+
+  if (menuContext && command && !commandfor) {
+    if (command === "hide-popover") {
+      // Use the context's close() for animated exit. Chain with the
+      // consumer's onClick if provided.
+      resolvedCommand = undefined;
+      resolvedCommandFor = undefined;
+      resolvedOnClick = () => {
+        onClick?.();
+        menuContext.close();
+      };
+    } else {
+      // Auto-fill commandfor for other commands (e.g. show-modal,
+      // show-popover targeting an element inside the Menu trigger area).
+      resolvedCommandFor = menuContext.menuID;
+    }
+  }
+
+  return (
+    <Element style={style}>
+      <Interactive
+        role="menuitem"
+        aria-selected={selected}
+        aria-disabled={disabled}
+        href={href}
+        onClick={resolvedOnClick}
+        command={resolvedCommand}
+        commandfor={resolvedCommandFor}
+        className={cn(
+          "skc-menu-item",
+          selected && "skc-menu-item--selected",
+          className,
+        )}
+      >
+        {icon && <div className="skc-menu-item__icon">{icon}</div>}
+        <span className="skc-menu-item__label">{children}</span>
+        {metadata && <span className="skc-menu-item__metadata">{metadata}</span>}
+      </Interactive>
+    </Element>
+  );
+};

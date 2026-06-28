@@ -1,4 +1,5 @@
 export { Actions, type ActionsProps } from "./Actions";
+export { Anchor, type AnchorProps } from "./Anchor";
 export { AppDrawer, type AppDrawerProps } from "./AppDrawer";
 export { Avatar, type AvatarProps } from "./Avatar";
 export { AppDrawerItem, type AppDrawerItemProps } from "./AppDrawerItem";
@@ -50,6 +51,7 @@ export { List, type ListProps } from "./List";
 export { ListItem, type ListItemProps } from "./ListItem";
 export { ListItemContent, type ListItemContentProps } from "./ListItemContent";
 export { MaterialIcon, type MaterialIconProps } from "./MaterialIcon";
+export { Menu, type MenuProps } from "./Menu";
 export { MenuItem, type MenuItemProps } from "./MenuItem";
 export { NavDrawer, type NavDrawerProps } from "./NavDrawer";
 export { NavDrawerItem, type NavDrawerItemProps } from "./NavDrawerItem";

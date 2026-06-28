@@ -1,0 +1,80 @@
+/**
+ * **Menu**
+ * Menus display a list of choices on temporary surfaces.
+ */
+
+.skc-menu {
+  --_duration: var(--motion-long-2);
+  --_easing: var(--easing-emphasized);
+
+  display: flex;
+  inset: auto;
+  top: calc(anchor(bottom) + 0.5rem);
+  left: anchor(left);
+  flex-direction: column;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition-property: transform, opacity;
+  transition: var(--_duration) var(--_easing);
+  box-sizing: border-box;
+  margin: 0;
+  box-shadow: var(--shadow-3);
+  border: none;
+  border-radius: var(--rounded-xs);
+  background-color: var(--surface-container);
+  padding: 0.5rem 0;
+  min-width: 12rem;
+  list-style: none;
+
+  > * {
+    opacity: 0;
+    transition: opacity calc(var(--_duration) / 3) var(--_easing)
+      calc(var(--_duration) / 3);
+  }
+
+  /* Open state */
+  &:popover-open {
+    transform: scaleY(1);
+    opacity: 1;
+
+    > * {
+      opacity: 1;
+    }
+
+    @starting-style {
+      transform: scaleY(0);
+
+      > * {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+@keyframes skc-menu-exit {
+  from {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  to {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+}
+@keyframes skc-menu-exit-content {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.skc-menu--exiting {
+  animation: var(--_duration) var(--_easing) forwards skc-menu-exit;
+
+  > * {
+    animation: calc(var(--_duration) / 3) var(--_easing) forwards
+      skc-menu-exit-content;
+  }
+}

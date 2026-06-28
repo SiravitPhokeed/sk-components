@@ -1,0 +1,7 @@
+/**
+ * **Anchor**
+ * Associates elements for CSS Anchor Positioning via the `anchor-name`
+ * CSS property, and passes the generated name through React context so
+ * child popover components (e.g. Menu) can auto-resolve their
+ * `position-anchor`.
+ */
