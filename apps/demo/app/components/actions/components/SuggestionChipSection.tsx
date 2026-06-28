@@ -9,7 +9,7 @@ import type { FC } from "react";
 
 const SuggestionChipSection: FC = () => (
   <Section>
-    <Header>Suggestion Chip</Header>
+    <Header level={3}>Suggestion Chip</Header>
     <ChipSet>
       <SuggestionChip>Looks good to me</SuggestionChip>
       <SuggestionChip icon={<MaterialIcon icon="thumb_up" />}>

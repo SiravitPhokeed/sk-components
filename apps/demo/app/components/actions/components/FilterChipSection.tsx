@@ -23,7 +23,7 @@ const FilterChipSection: FC = () => {
 
   return (
     <Section>
-      <Header>Filter Chip</Header>
+      <Header level={3}>Filter Chip</Header>
       <ChipSet>
         <FilterChip
           selected={filters.includes("students")}
