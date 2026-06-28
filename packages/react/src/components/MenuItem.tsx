@@ -46,6 +46,15 @@ export interface MenuItemProps
   selected?: boolean;
 
   /**
+   * If the action the Menu Item accomplishes is dangerous, like deleting your
+   * account. If it is, the Menu Item turns red (defined as `error` in the
+   * palette).
+   *
+   * - Optional.
+   */
+  dangerous?: boolean;
+
+  /**
    * Turns the Menu Item text gray and block any action associated with it.
    * `onClick` and `href` will have no effect.
    * {@link https://codium.one/index.php/en/blog/77-disabled-buttons-don-t-have-to-suck Learn when to disable something.}
@@ -71,6 +80,7 @@ export interface MenuItemProps
  * @param icon An icon can appear before the text (`children`) in a Menu Item.
  * @param metadata A message shown in a tooltip when the user hovers over the Menu Item.
  * @param selected If this Menu Item is selected in a dropdown Menu.
+ * @param dangerous If the action the Menu Item accomplishes is dangerous, like deleting your account.
  * @param disabled Turns the Menu Item text gray and block any action associated with it.
  * @param value The value of a Select item, similar to `value` on `<option>`.
  */
@@ -79,6 +89,7 @@ export const MenuItem: StyleableFC<MenuItemProps> = ({
   icon,
   metadata,
   selected,
+  dangerous,
   disabled,
   command,
   commandfor,
@@ -127,6 +138,7 @@ export const MenuItem: StyleableFC<MenuItemProps> = ({
         className={cn(
           "skc-menu-item",
           selected && "skc-menu-item--selected",
+          dangerous && "skc-menu-item--dangerous",
           className,
         )}
       >
