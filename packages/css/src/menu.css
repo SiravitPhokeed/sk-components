@@ -16,6 +16,7 @@
   transform-origin: top;
   transition-property: transform, opacity;
   transition: var(--_duration) var(--_easing);
+  position-try-fallbacks: flip-block;
   box-sizing: border-box;
   margin: 0;
   box-shadow: var(--shadow-3);
