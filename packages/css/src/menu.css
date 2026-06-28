@@ -4,7 +4,7 @@
  */
 
 .skc-menu {
-  --_duration: var(--motion-long-2);
+  --_duration: var(--motion-medium-4);
   --_easing: var(--easing-emphasized);
 
   display: flex;
