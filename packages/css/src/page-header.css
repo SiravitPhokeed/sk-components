@@ -103,6 +103,7 @@
   .skc-page-header__blobs-group--desktop {
     display: block;
   }
+  .skc-page-header__nav-toggle,
   .skc-page-header__minimized,
   .skc-page-header__blobs-group--mobile {
     display: none;

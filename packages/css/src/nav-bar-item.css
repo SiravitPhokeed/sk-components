@@ -1,0 +1,133 @@
+/**
+ * **Navigation Bar Item**
+ * One of the destinations in a Navigation Bar/Rail.
+ */
+
+.skc-nav-bar-item {
+  --_duration: var(--motion-short-4);
+  --_easing: var(--easing-standard);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+  border: 0;
+  background-color: transparent;
+  color: var(--on-surface);
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+
+  /* Show the focus ring on the pill instead of the whole item */
+  &:focus-visible {
+    animation: none;
+  }
+
+  &:hover .skc-nav-bar-item__pill::before {
+    opacity: 0.08;
+  }
+  &:active,
+  &:focus-visible {
+    .skc-nav-bar-item__pill::before {
+      opacity: 0.12;
+    }
+  }
+}
+
+.skc-nav-bar-item__pill {
+  --state-layer-color: var(--on-surface);
+
+  transition: color var(--_duration) var(--_easing);
+  border-radius: var(--rounded-full);
+  padding: 0.25rem 1rem;
+
+  .skc-material-icon {
+    transition-property: font-weight, font-variation-settings;
+    transition: var(--_duration) var(--_easing);
+    font-size: 1.5rem;
+    font-variation-settings: "FILL" 0;
+
+    .skc-nav-bar-item:hover & {
+      font-weight: var(--font-medium);
+    }
+    .skc-nav-bar-item:active & {
+      font-weight: var(--font-light);
+    }
+  }
+
+  &::after {
+    position: absolute;
+    transform: scaleX(0);
+    opacity: 0;
+    z-index: -10;
+    transition-property: opacity, transform;
+    transition: var(--_duration) var(--_easing);
+    inset: 0;
+    border-radius: inherit;
+    background-color: var(--secondary-container);
+    pointer-events: none;
+    content: "";
+  }
+
+  .skc-nav-bar-item:focus-visible & {
+    animation: skc-focus var(--motion-long-4) var(--easing-standard) forwards;
+  }
+}
+
+.skc-nav-bar-item__label {
+  transition-property: font-weight, letter-spacing;
+  transition: var(--_duration) var(--_easing);
+  font-family: var(--font-display);
+  text-align: center;
+
+  .skc-nav-bar-item:hover & {
+    font-weight: var(--font-bold);
+    letter-spacing: 0.75px;
+  }
+
+  .skc-nav-bar-item:active & {
+    font-weight: var(--font-regular);
+    letter-spacing: 0.375px;
+  }
+
+  .skc-nav-bar-item.skc-nav-bar-item--selected & {
+    font-weight: var(--font-bold);
+  }
+}
+
+.skc-nav-bar-item--selected {
+  .skc-nav-bar-item__pill {
+    --state-layer-color: var(--on-secondary-container);
+    color: var(--on-secondary-container);
+
+    &::after {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+  }
+
+  .skc-material-icon {
+    font-variation-settings: "FILL" 1;
+  }
+
+  .skc-nav-bar-item__label {
+    font-weight: var(--font-bold);
+  }
+}
+
+@media only screen and (width < 600px) {
+  .skc-nav-bar-item {
+    padding: 0.75rem 0 1rem;
+  }
+
+  .skc-nav-bar-item--rail-only {
+    display: none;
+  }
+}
+
+@media only screen and (width >= 600px) {
+  .skc-nav-bar-item {
+    padding: 0 0 0.25rem;
+  }
+}

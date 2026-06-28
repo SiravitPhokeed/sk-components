@@ -134,6 +134,7 @@ export const PageHeader: StyleableFC<PageHeaderProps> = ({
       onClick={onNavToggle}
       command="show-modal"
       commandfor="nav-drawer"
+      className="skc-page-header__nav-toggle"
     />
   ) : (
     <Button
@@ -143,6 +144,7 @@ export const PageHeader: StyleableFC<PageHeaderProps> = ({
       onClick={onBack}
       href={parentURL}
       element={buttonElement}
+      className="skc-page-header__back"
     />
   );
 

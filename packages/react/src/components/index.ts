@@ -53,6 +53,8 @@ export { ListItemContent, type ListItemContentProps } from "./ListItemContent";
 export { MaterialIcon, type MaterialIconProps } from "./MaterialIcon";
 export { Menu, type MenuProps } from "./Menu";
 export { MenuItem, type MenuItemProps } from "./MenuItem";
+export { NavBar, type NavBarProps } from "./NavBar";
+export { NavBarItem, type NavBarItemProps } from "./NavBarItem";
 export { NavDrawer, type NavDrawerProps } from "./NavDrawer";
 export { NavDrawerItem, type NavDrawerItemProps } from "./NavDrawerItem";
 export {

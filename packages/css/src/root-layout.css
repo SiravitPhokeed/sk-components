@@ -11,14 +11,12 @@ body {
 }
 
 .skc-root-layout {
-  padding-bottom: 5rem;
   font-size: var(--text-base);
 
   > .skc-nav-bar {
     position: fixed;
-    bottom: 0;
-    left: 0;
     z-index: 70;
+    inset: 0;
 
     .skc-fab {
       position: fixed;
@@ -33,13 +31,26 @@ body {
   }
 }
 
-@media (min-width: 600px) {
+@media only screen and (width < 600px) {
+  .skc-root-layout {
+    padding-bottom: 5rem;
+
+    > .skc-nav-bar {
+      top: auto;
+    }
+  }
+
+  .skc-root-layout:has(> .skc-nav-bar) .skc-snackbar {
+    --_bottom-offset: 5rem;
+  }
+}
+
+@media only screen and (width >= 600px) {
   .skc-root-layout {
     padding-bottom: 0;
 
     > .skc-nav-bar {
-      top: 0;
-      bottom: initial;
+      right: auto;
 
       ~ .skc-progress {
         left: 5rem;

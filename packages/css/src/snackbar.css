@@ -16,6 +16,7 @@
   --_exit-translate: 0.25rem;
 
   --_inset: 0.5rem;
+  --_bottom-offset: 0;
 
   display: flex;
   position: fixed;
@@ -34,7 +35,9 @@
   transition-timing-function: var(--_easing);
   box-sizing: border-box;
   margin: 0;
-  inset: auto auto var(--_inset) var(--_inset);
+  inset: auto;
+  bottom: calc(var(--_bottom-offset) + var(--_inset));
+  left: var(--_inset);
   box-shadow: var(--shadow-3);
   border: none;
   border-radius: var(--rounded-xs);

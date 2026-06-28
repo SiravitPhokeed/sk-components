@@ -47,6 +47,8 @@
     "./material-icon.css": "./dist/material-icon.css",
     "./menu.css": "./dist/menu.css",
     "./menu-item.css": "./dist/menu-item.css",
+    "./nav-bar.css": "./dist/nav-bar.css",
+    "./nav-bar-item.css": "./dist/nav-bar-item.css",
     "./nav-drawer.css": "./dist/nav-drawer.css",
     "./nav-drawer-item.css": "./dist/nav-drawer-item.css",
     "./nav-drawer-section.css": "./dist/nav-drawer-section.css",
