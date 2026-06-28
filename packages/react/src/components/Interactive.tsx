@@ -66,9 +66,15 @@ export const Interactive: StyleableFC<
   stateLayerEffect,
   rippleEffect,
   shadowEffect,
+  command,
+  commandfor,
   onClick,
   href,
-  element: Element = href ? "a" : onClick ? "button" : "div",
+  element: Element = href
+    ? "a"
+    : onClick || command || commandfor
+      ? "button"
+      : "div",
   style,
   className,
   ...props
@@ -141,7 +147,6 @@ export const Interactive: StyleableFC<
   return (
     <Element
       tabIndex={0}
-      onClick={onClick}
       onTouchStart={(event: React.TouchEvent) => {
         setTouched(true);
         const touch = event.touches[0];
@@ -175,7 +180,7 @@ export const Interactive: StyleableFC<
         className,
       )}
       style={style}
-      {...({ onClick, href, ...props } as object)}
+      {...({ onClick, href, command, commandfor, ...props } as object)}
     >
       <span
         aria-hidden
