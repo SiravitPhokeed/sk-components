@@ -17,7 +17,7 @@ const MenuSection: FC = () => {
       <Actions align="left">
         <Anchor>
           <Button
-            appearance="filled"
+            appearance="outlined"
             icon={<MaterialIcon icon="more_vert" />}
             command="show-popover"
             commandfor="menu"
