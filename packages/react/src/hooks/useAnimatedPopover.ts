@@ -114,16 +114,10 @@ export function useAnimatedPopover(
     // Click outside the popover → start exit animation.
     const handleClick = (e: MouseEvent) => {
       // Only start if (1) the popover is open, and (2) the click is not on
-      // the popover, and (3) the click is not on the wrapper (toggle area),
-      // and (4) the click is not on an element whose commandfor targets this
-      // popover (e.g. a trigger button).
+      // the popover, and (3) the click is not on the wrapper (toggle area).
       if (!popover.matches(":popover-open")) return; // (1)
       if (popover.contains(e.target as Node)) return; // (2)
       if (wrapper?.contains(e.target as Node)) return; // (3)
-      const trigger = (e.target as HTMLElement)?.closest(
-        `[commandfor="${popover.id}"]`,
-      );
-      if (trigger) return; // (4)
       // Step 2 (see above).
       onClose?.();
       popover.classList.add(exitingClass);
