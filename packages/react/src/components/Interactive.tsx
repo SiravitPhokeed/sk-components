@@ -7,7 +7,7 @@ import type {
   StyleableFC,
 } from "@/lib/types";
 import "@suankularb-components/css/interactive.css";
-import type { ComponentProps, ReactNode } from "react";
+import type { ComponentProps, ReactNode, RefObject } from "react";
 import { useRef, useState } from "react";
 
 export interface InteractiveProps
@@ -60,7 +60,10 @@ export interface InteractiveProps
  * @param shadowEffect Elevates the content on hover and focus to signify its interactivity.
  */
 export const Interactive: StyleableFC<
-  InteractiveProps & ComponentProps<"button" | "a">
+  InteractiveProps &
+    Omit<ComponentProps<"button" | "a">, "ref"> & {
+      ref?: RefObject<HTMLDivElement | null>;
+    }
 > = ({
   children,
   stateLayerEffect,
