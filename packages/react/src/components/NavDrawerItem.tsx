@@ -1,3 +1,5 @@
+"use client";
+
 import { Interactive } from "@/components/Interactive";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";

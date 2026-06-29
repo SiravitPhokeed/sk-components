@@ -19,13 +19,18 @@
     "./hooks": {
       "import": "./dist/hooks/index.js",
       "types": "./dist/hooks/index.d.ts"
+    },
+    "./*": {
+      "import": "./dist/*.js",
+      "types": "./dist/*.d.ts"
     }
   },
   "files": [
-    "dist/"
+    "dist/",
+    "dist/components/"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsup && node scripts/generate-barrels.mjs",
     "dev": "tsup --watch",
     "prepublishOnly": "pnpm build"
   },

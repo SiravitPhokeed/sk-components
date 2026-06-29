@@ -1,3 +1,5 @@
+"use client";
+
 import { Interactive } from "@/components/Interactive";
 import { useMenuContext } from "@/components/Menu";
 import cn from "@/lib/helpers/cn";

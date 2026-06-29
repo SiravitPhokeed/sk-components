@@ -1,3 +1,5 @@
+"use client";
+
 import { Interactive } from "@/components/Interactive";
 import { MaterialIcon } from "@/components/MaterialIcon";
 import { TableCell } from "@/components/TableCell";

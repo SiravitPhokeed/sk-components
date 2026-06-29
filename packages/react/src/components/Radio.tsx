@@ -1,3 +1,5 @@
+"use client";
+
 import { useFormgroupContext } from "@/components/FormGroup";
 import { Interactive } from "@/components/Interactive";
 import cn from "@/lib/helpers/cn";
