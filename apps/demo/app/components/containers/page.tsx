@@ -7,6 +7,7 @@ import InteractiveSection from "@/app/components/containers/components/Interacti
 import ListSection from "@/app/components/containers/components/ListSection";
 import SplitLayoutSection from "@/app/components/containers/components/SplitLayoutSection";
 import TableSection from "@/app/components/containers/components/TableSection";
+import TabSection from "@/app/components/containers/components/TabSection";
 import PageHeader from "@/components/PageHeader";
 import { ContentLayout } from "@suankularb-components/react";
 import type { Metadata } from "next";
@@ -29,7 +30,7 @@ const ContainersPage: FC = () => (
       <SplitLayoutSection />
       <ListSection />
       <TableSection />
-      {/* <TabSection /> */}
+      <TabSection />
     </ContentLayout>
   </>
 );
