@@ -31,7 +31,7 @@
   ],
   "scripts": {
     "build": "tsup && node scripts/generate-barrels.mjs",
-    "dev": "tsup --watch",
+    "dev": "tsup --config tsup.dev.config.ts --watch",
     "prepublishOnly": "pnpm build"
   },
   "peerDependencies": {
