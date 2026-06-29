@@ -3,20 +3,16 @@
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/tabs-container.css";
-import { createContext, useContext, useId, type ReactNode } from "react";
+import { createContext, useContext, useId, useRef } from "react";
+import type { ReactNode, RefObject } from "react";
 
-/**
- * Context that allows a Tab inside a Tabs Container to pick up the containerʼs
- * generated ID for coordinated animation.
- */
-const TabsContainerContext = createContext<string | null>(null);
+const TabsContainerContext = createContext<{
+  id: string;
+  appearance: TabsContainerProps["appearance"];
+  indicatorRef: RefObject<HTMLDivElement | null>;
+} | null>(null);
 
-/**
- * Returns the Tabs Container ID if the component is inside a Tabs Container,
- * or `null` otherwise.
- */
-export const useTabsContainerId = (): string | null =>
-  useContext(TabsContainerContext);
+export const useTabsContainerContext = () => useContext(TabsContainerContext);
 
 /**
  * Props for {@link TabsContainer Tabs Container}.
@@ -36,14 +32,6 @@ export interface TabsContainerProps extends ElementCustomizableProps {
    * - Always required.
    */
   appearance: "primary" | "secondary";
-
-  /**
-   * A description of the Tabs Container for screen readers, similar to `alt`
-   * on `<img>`.
-   *
-   * - Always required.
-   */
-  alt: string;
 }
 
 /**
@@ -53,20 +41,19 @@ export interface TabsContainerProps extends ElementCustomizableProps {
  *
  * @param children Tabs to select from.
  * @param appearance Where Tabs Container is placed affects its appearance. A Tabs Container responsible for the entire content pane (`primary`) has a different appearance as that for only a section (`secondary`).
- * @param alt A description of the Tabs Container for screen readers, similar to `alt` on `<img>`.
  */
 export const TabsContainer: StyleableFC<TabsContainerProps> = ({
   children,
   appearance,
-  alt,
   element: Element = "div",
   style,
   className,
 }) => {
   const id = `tabs-container-${useId()}`;
+  const indicatorRef = useRef<HTMLDivElement>(null);
 
   return (
-    <TabsContainerContext.Provider value={id}>
+    <TabsContainerContext.Provider value={{ id, appearance, indicatorRef }}>
       <Element
         style={style}
         className={cn(
@@ -76,12 +63,18 @@ export const TabsContainer: StyleableFC<TabsContainerProps> = ({
       >
         <div
           role="tablist"
-          aria-label={alt}
           style={style}
           className={cn("skc-tabs-container__content", className)}
         >
           {children}
         </div>
+        <div
+          ref={indicatorRef}
+          // Selected tab is already indicated by `aria-selected` on the Tab
+          // itself, so this indicator is purely decorative.
+          aria-hidden
+          className="skc-tabs-container__indicator"
+        />
       </Element>
     </TabsContainerContext.Provider>
   );

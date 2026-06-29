@@ -1,12 +1,17 @@
 /**
- * Tabs Container
+ * **Tabs Container**
  * A group of Tabs. Tabs allow the user to switch between pages on the same
  * level of a page hierarchy. For example, an Overview, Students, and Teachers
  * page of a class.
  */
 
 .skc-tabs-container {
+  position: relative;
   border-bottom: 1px solid var(--surface-variant);
+
+  .skc-tab {
+    width: 100%;
+  }
 }
 
 .skc-tabs-container__content {
@@ -23,6 +28,34 @@
   > li {
     width: 100%;
   }
+}
+
+.skc-tabs-container__indicator {
+  display: none;
+  position: absolute;
+  transform: translateX(0);
+  transition-property: transform, width;
+  transition: var(--motion-medium-4) var(--easing-standard);
+  inset: 0;
+  top: auto;
+  height: 0.1875rem;
+
+  &::before {
+    position: absolute;
+    inset: 0;
+    background-color: var(--primary);
+    height: 100%;
+    content: "";
+  }
+
+  .skc-tabs-container:has(> .skc-tab--selected:hover) &::before {
+    transform: scaleX(1.5);
+  }
+}
+
+.skc-tabs-container--primary .skc-tabs-container__indicator::before {
+  inset-inline: 0.125rem;
+  border-radius: var(--rounded-xs) var(--rounded-xs) 0 0;
 }
 
 .skc-section .skc-tabs-container {

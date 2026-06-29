@@ -72,6 +72,7 @@ export { Snackbar, type SnackbarProps } from "./Snackbar";
 export { SplitLayout, type SplitLayoutProps } from "./SplitLayout";
 export { SuggestionChip, type SuggestionChipProps } from "./SuggestionChip";
 export { Switch, type SwitchProps } from "./Switch";
+export { Tab, type TabProps } from "./Tab";
 export { Table, type TableProps } from "./Table";
 export { TableBody, type TableBodyProps } from "./TableBody";
 export { TableCell, type TableCellProps } from "./TableCell";

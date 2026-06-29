@@ -63,6 +63,7 @@
     "./snackbar.css": "./dist/snackbar.css",
     "./suggestion-chip.css": "./dist/suggestion-chip.css",
     "./switch.css": "./dist/switch.css",
+    "./tab.css": "./dist/tab.css",
     "./table.css": "./dist/table.css",
     "./table-body.css": "./dist/table-body.css",
     "./table-cell.css": "./dist/table-cell.css",
