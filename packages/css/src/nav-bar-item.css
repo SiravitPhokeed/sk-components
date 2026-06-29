@@ -76,20 +76,10 @@
 }
 
 .skc-nav-bar-item__label {
-  transition-property: font-weight, letter-spacing;
+  transition-property: font-weight;
   transition: var(--_duration) var(--_easing);
   font-family: var(--font-display);
   text-align: center;
-
-  .skc-nav-bar-item:hover & {
-    font-weight: var(--font-bold);
-    letter-spacing: 0.75px;
-  }
-
-  .skc-nav-bar-item:active & {
-    font-weight: var(--font-regular);
-    letter-spacing: 0.375px;
-  }
 
   .skc-nav-bar-item.skc-nav-bar-item--selected & {
     font-weight: var(--font-bold);
@@ -123,6 +113,20 @@
 
   .skc-nav-bar-item--rail-only {
     display: none;
+  }
+
+  .skc-nav-bar-item__label {
+    transition-property: font-weight, letter-spacing;
+
+    .skc-nav-bar-item:hover & {
+      font-weight: var(--font-bold);
+      letter-spacing: 0.75px;
+    }
+
+    .skc-nav-bar-item:active & {
+      font-weight: var(--font-regular);
+      letter-spacing: 0.375px;
+    }
   }
 }
 
