@@ -1,8 +1,8 @@
-import type { ElementType, FC } from "react";
+import type { CSSProperties, ElementType, FC } from "react";
 
 /** A function component stylable through `className` and `style`. */
 export type StyleableFC<Props extends object = object> = FC<
-  Props & Partial<{ className: string; style: React.CSSProperties }>
+  Props & Partial<{ className: string; style: CSSProperties }>
 >;
 
 /** Props for the HTML Invoker Commands API (`command` and `commandfor` attributes). */
