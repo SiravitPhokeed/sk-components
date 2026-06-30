@@ -24,9 +24,7 @@ export interface TextProps extends ElementCustomizableProps {
    * The typographic style to apply.
    */
   type: `${"display" | "headline" | "title" | "label" | "body"}-${
-    | "large"
-    | "medium"
-    | "small"}`;
+    "large" | "medium" | "small"}`;
 }
 
 /**

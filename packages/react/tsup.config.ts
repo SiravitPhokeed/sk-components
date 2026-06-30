@@ -32,7 +32,10 @@ export default defineConfig({
             // Compute relative path from the importer's output directory
             // to dist/components/ where all built components live.
             let relativePrefix = "./";
-            if (importer.includes("/helpers/") || importer.includes("/hooks/")) {
+            if (
+              importer.includes("/helpers/") ||
+              importer.includes("/hooks/")
+            ) {
               relativePrefix = "../components/";
             }
             return {

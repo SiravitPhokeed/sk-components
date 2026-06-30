@@ -138,8 +138,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .skc-nav-bar-item__pill::after {
-    transition-property: opacity;
     transform: none;
+    transition-property: opacity;
   }
 
   .skc-nav-bar-item--selected .skc-nav-bar-item__pill::after {

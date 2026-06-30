@@ -140,8 +140,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .skc-app-drawer__modal {
-    transition-property: opacity;
     transform: none;
+    transition-property: opacity;
   }
 
   .skc-app-drawer__modal[open] {
@@ -156,8 +156,8 @@
   }
 
   .skc-app-drawer__modal .skc-app-drawer-segment > * {
-    transition: none;
     opacity: 1;
+    transition: none;
   }
 
   .skc-app-drawer__modal.skc-app-drawer__modal--exiting {
@@ -167,7 +167,7 @@
   .skc-app-drawer__modal.skc-app-drawer__modal--exiting
     .skc-app-drawer-segment
     > * {
-    animation: none;
     opacity: 0;
+    animation: none;
   }
 }

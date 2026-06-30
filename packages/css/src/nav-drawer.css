@@ -143,8 +143,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .skc-nav-drawer {
-    transition-property: opacity;
     transform: none;
+    transition-property: opacity;
   }
 
   .skc-nav-drawer[open] {
@@ -159,9 +159,9 @@
   }
 
   .skc-nav-drawer .skc-nav-drawer__content {
-    transition: none;
     transform: none;
     opacity: 1;
+    transition: none;
   }
 
   .skc-nav-drawer.skc-nav-drawer--exiting {
@@ -169,7 +169,7 @@
   }
 
   .skc-nav-drawer.skc-nav-drawer--exiting .skc-nav-drawer__content > * {
-    animation: none;
     opacity: 0;
+    animation: none;
   }
 }

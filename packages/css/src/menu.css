@@ -102,8 +102,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .skc-menu {
-    transition-property: opacity;
     transform: none;
+    transition-property: opacity;
   }
 
   .skc-menu:popover-open {
@@ -118,8 +118,8 @@
   }
 
   .skc-menu > * {
-    transition: none;
     opacity: 1;
+    transition: none;
   }
 
   .skc-menu--exiting {
@@ -127,7 +127,7 @@
   }
 
   .skc-menu--exiting > * {
-    animation: none;
     opacity: 0;
+    animation: none;
   }
 }
