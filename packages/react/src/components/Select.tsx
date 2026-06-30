@@ -222,11 +222,7 @@ export const Select = <Value extends string = string>({
           element="button"
           className="skc-select__box"
         >
-          <Text
-            key={displayedValue?.toString()}
-            type="body-large"
-            className="skc-select__value"
-          >
+          <Text type="body-large" className="skc-select__value">
             {displayedValue}
           </Text>
 
