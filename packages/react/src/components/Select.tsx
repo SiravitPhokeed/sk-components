@@ -238,7 +238,7 @@ export const Select = <Value extends string = string>({
         </Text>
       </div>
 
-      <Menu id={menuId} anchor={anchorName}>
+      <Menu id={menuId} anchor={anchorName} density={-2}>
         <SelectContext.Provider
           value={{
             value: resolvedValue,
