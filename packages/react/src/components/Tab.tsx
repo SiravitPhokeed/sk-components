@@ -10,6 +10,7 @@ import type {
   StyleableFC,
 } from "@/lib/types";
 import "@suankularb-components/css/tab.css";
+import { throttle } from "radash";
 import type { ReactNode } from "react";
 import { useEffect, useRef } from "react";
 
@@ -81,7 +82,9 @@ export const Tab: StyleableFC<TabProps> = ({
   const tabRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  const animateIndicator = () => {
+    console.log("Animating indicator");
+
     if (!selected) return;
 
     const tab = tabRef.current;
@@ -92,7 +95,9 @@ export const Tab: StyleableFC<TabProps> = ({
 
     const tabRect = tab.getBoundingClientRect();
     const labelRect = content?.getBoundingClientRect();
-    const containerRect = tab.parentElement?.getBoundingClientRect();
+    // .skc-tabs-container (positioned ancestor) > .skc-tabs-container__content > .skc-tab
+    const containerRect =
+      tab.parentElement?.parentElement?.getBoundingClientRect();
 
     if (!containerRect) return;
 
@@ -106,6 +111,15 @@ export const Tab: StyleableFC<TabProps> = ({
     indicator.style.display = "block";
     indicator.style.transform = `translateX(${left}px)`;
     indicator.style.width = `${width}px`;
+  };
+
+  useEffect(() => {
+    const throttledAnimate = throttle({ interval: 100 }, animateIndicator);
+    window.addEventListener("resize", throttledAnimate);
+    return () => window.removeEventListener("resize", throttledAnimate);
+  }, []);
+  useEffect(() => {
+    animateIndicator();
   }, [selected, label]); // Width of primary indicator depends on label width.
 
   return (
