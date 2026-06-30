@@ -52,6 +52,10 @@
     outline-offset: calc(var(--_outline-width) * -1);
   }
 
+  &:hover {
+    outline-color: var(--on-surface);
+  }
+
   &:focus,
   &:focus-visible {
     animation: none;
