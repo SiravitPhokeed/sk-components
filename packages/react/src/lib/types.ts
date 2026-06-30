@@ -2,7 +2,7 @@ import type { CSSProperties, ElementType, FC } from "react";
 
 /** A function component stylable through `className` and `style`. */
 export type StyleableFC<Props extends object = object> = FC<
-  Props & Partial<{ className: string; style: CSSProperties }>
+  Props & StyleableProps
 >;
 
 /** Props for the HTML Invoker Commands API (`command` and `commandfor` attributes). */
@@ -59,3 +59,9 @@ export type ElementCustomizableProps = {
    */
   element?: ElementType;
 };
+
+/** Props for styling the component through `className` and `style`. */
+export type StyleableProps = Partial<{
+  className: string;
+  style: CSSProperties;
+}>;
