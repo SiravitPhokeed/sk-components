@@ -149,6 +149,7 @@ export const Select = <Value extends string = string>({
   const resolvedValue = value ?? internalValue;
   const resolvedOnChange = onChange ?? setInternalValue;
 
+  const triggerRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLUListElement>(null);
   useEffect(() => {
     const menu = document.getElementById(menuId) as HTMLUListElement;
@@ -215,6 +216,7 @@ export const Select = <Value extends string = string>({
         </Text>
 
         <Interactive
+          ref={triggerRef}
           aria-labelledby={id}
           command="show-popover"
           commandfor={menuId}
@@ -243,6 +245,7 @@ export const Select = <Value extends string = string>({
             onChange: (newValue) => {
               resolvedOnChange?.(newValue as Value);
               updateDisplayedValue(newValue);
+              triggerRef.current?.focus();
             },
           }}
         >
