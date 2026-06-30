@@ -19,7 +19,7 @@ const SelectSection: FC = () => {
   return (
     <Section>
       <Header>Select</Header>
-      <Columns columns={3}>
+      <Columns columns={3} className="gap-y-8!">
         <Select<Frequency>
           appearance="outlined"
           label="Frequency"
@@ -39,6 +39,18 @@ const SelectSection: FC = () => {
             Annually
           </MenuItem>
         </Select>
+
+        <Select
+          appearance="outlined"
+          leading={<MaterialIcon icon="schedule" />}
+          label="Frequency"
+        />
+        <Select appearance="filled" label="Frequency" className="col-start-1" />
+        <Select
+          appearance="filled"
+          leading={<MaterialIcon icon="schedule" />}
+          label="Frequency"
+        />
       </Columns>
     </Section>
   );
