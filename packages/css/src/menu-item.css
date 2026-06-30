@@ -11,7 +11,6 @@
   flex-direction: row;
   align-items: center;
   gap: 1rem;
-  cursor: pointer;
   padding: 0.5rem 1.5rem 0.5rem 1rem;
   width: 100%;
   overflow: hidden;
@@ -34,11 +33,15 @@
   background-color: var(--surface-container-highest);
 }
 
-.skc-menu-item--dangerous {
+.skc-menu-item--dangerous:not([aria-disabled="true"]) {
   --state-layer-color: var(--error);
 
   &,
   > .skc-menu-item__metadata {
     color: var(--error);
   }
+}
+
+.skc-menu-item[aria-disabled="true"] {
+  opacity: 0.38;
 }
