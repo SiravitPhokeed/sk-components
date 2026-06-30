@@ -3,6 +3,7 @@ import RadioSection from "@/app/components/input/components/RadioSection";
 import SearchSection from "@/app/components/input/components/SearchSection";
 import SelectSection from "@/app/components/input/components/SelectSection";
 import SwitchSection from "@/app/components/input/components/SwitchSection";
+import TextFieldSection from "@/app/components/input/components/TextFieldSection";
 import PageHeader from "@/components/PageHeader";
 import { ContentLayout } from "@suankularb-components/react";
 import type { Metadata } from "next";
@@ -23,7 +24,7 @@ const InputPage: FC = () => (
       <SearchSection />
       <SelectSection />
       <SwitchSection />
-      {/* <TextFieldSection /> */}
+      <TextFieldSection />
     </ContentLayout>
   </>
 );
