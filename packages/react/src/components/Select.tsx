@@ -218,8 +218,8 @@ export const Select = <Value extends string = string>({
         <Interactive
           ref={triggerRef}
           aria-labelledby={id}
-          command="show-popover"
-          commandfor={menuId}
+          {...(children && { command: "show-popover", commandfor: menuId })}
+          element="button"
           className="skc-select__box"
         >
           <Text
