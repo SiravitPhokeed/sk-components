@@ -184,7 +184,7 @@ export const Select = <Value extends string = string>({
     // Otherwise, show the first option’s text, or the no options message if
     // there are no options.
     const firstItem = menuRef.current.querySelector(
-      "[data-value]",
+      '[data-value]:not([aria-disabled="true"])',
     ) as HTMLButtonElement | null;
     if (firstItem) {
       setDisplayedValue(getOptionText(firstItem));
