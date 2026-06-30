@@ -56,6 +56,18 @@
   }
 }
 
+.skc-menu-item {
+  .skc-menu--density-0 & {
+    padding-block: 0.5rem;
+  }
+  .skc-menu--density-\[-2\] & {
+    padding-block: 0.25rem;
+  }
+  .skc-menu--density-\[-4\] & {
+    padding-block: 0;
+  }
+}
+
 .skc-menu > .skc-divider {
   margin-block: 0.5rem;
 }

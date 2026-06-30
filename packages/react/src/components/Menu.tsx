@@ -43,6 +43,17 @@ export interface MenuProps extends ElementCustomizableProps {
   id?: string;
 
   /**
+   * The anchor name (dashed-ident) for CSS Anchor Positioning.
+   *
+   * - When inside an {@link Anchor `<Anchor>`}, this is auto-resolved from
+   *   context — no need to set it.
+   * - When outside an `<Anchor>`, set this to the same name used on the
+   *   Anchor element (e.g. `anchor="--menu-trigger"`).
+   * - Optional.
+   */
+  anchor?: string;
+
+  /**
    * If the Menu is open and shown.
    *
    * - Optional. When provided, the Menu is controlled: the consumer must
@@ -53,23 +64,20 @@ export interface MenuProps extends ElementCustomizableProps {
   open?: boolean;
 
   /**
+   * A lower number means a more dense interface. In this case, less height.
+   *
+   * - Must be an integer: 0, -2, or -4.
+   * - Optional.
+   */
+  density?: 0 | -2 | -4;
+
+  /**
    * The function triggered when the backdrop is clicked or Escape is pressed.
    *
    * - In controlled mode (`open` is provided), the consumer should set
    *   `open` to `false` in response.
    */
   onClose?: () => void;
-
-  /**
-   * The anchor name (dashed-ident) for CSS Anchor Positioning.
-   *
-   * - When inside an {@link Anchor `<Anchor>`}, this is auto-resolved from
-   *   context — no need to set it.
-   * - When outside an `<Anchor>`, set this to the same name used on the
-   *   Anchor element (e.g. `anchor="--menu-trigger"`).
-   * - Optional.
-   */
-  anchor?: string;
 }
 
 /**
@@ -77,16 +85,18 @@ export interface MenuProps extends ElementCustomizableProps {
  *
  * @param children Menu Items and other content inside the Menu.
  * @param id The ID of the popover element, for Invoker Commands API support.
- * @param open If the Menu is open and shown.
- * @param onClose The function triggered when the backdrop is clicked or Escape is pressed.
  * @param anchor The anchor name (dashed-ident) for CSS Anchor Positioning.
+ * @param open If the Menu is open and shown.
+ * @param density A lower number means a more dense interface. In this case, less height.
+ * @param onClose The function triggered when the backdrop is clicked or Escape is pressed.
  */
 export const Menu: StyleableFC<MenuProps> = ({
   children,
   id: requestedId,
-  open,
-  onClose,
   anchor,
+  open,
+  density,
+  onClose,
   element: Element = "ul",
   style,
   className,
@@ -99,8 +109,7 @@ export const Menu: StyleableFC<MenuProps> = ({
   const anchorContext = useAnchorContext();
 
   // Resolve position-anchor: explicit prop wins over context.
-  const positionAnchor =
-    anchor ?? anchorContext?.anchorName;
+  const positionAnchor = anchor ?? anchorContext?.anchorName;
 
   const { close, popoverProps } = useAnimatedPopover(ref, {
     exitingClass: EXITING_CLASS,
@@ -125,7 +134,14 @@ export const Menu: StyleableFC<MenuProps> = ({
         popover="manual"
         role="menu"
         {...popoverProps}
-        className={cn("skc-menu", className)}
+        className={cn(
+          "skc-menu",
+          density &&
+            (density < 0
+              ? `skc-menu--density-[${density}]`
+              : `skc-menu--density-${density}`),
+          className,
+        )}
         style={{
           positionAnchor: positionAnchor as CSSProperties["positionAnchor"],
           ...style,
