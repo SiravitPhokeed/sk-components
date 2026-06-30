@@ -36,8 +36,8 @@
   transition-property: background-color, outline-color;
   transition-timing-function: var(--easing-standard);
   box-sizing: border-box;
-  outline: 2px solid transparent;
-  outline-offset: 0;
+  outline: 3px solid transparent;
+  outline-offset: -3px;
   border: 0;
   border-radius: inherit;
   background-color: color-mix(

@@ -2,6 +2,8 @@
 
 import { Interactive } from "@/components/Interactive";
 import { useMenuContext } from "@/components/Menu";
+import { useSelectContext } from "@/components/Select";
+import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type {
   ActionableProps,
@@ -72,7 +74,7 @@ export interface MenuItemProps
    *   inside a Select. This prop is not functional otherwise.
    * - Optional.
    */
-  value?: any;
+  value?: string;
 }
 
 /**
@@ -93,6 +95,7 @@ export const MenuItem: StyleableFC<MenuItemProps> = ({
   selected,
   dangerous,
   disabled,
+  value,
   command,
   commandfor,
   onClick,
@@ -101,6 +104,7 @@ export const MenuItem: StyleableFC<MenuItemProps> = ({
   style,
   className,
 }) => {
+  const selectContext = useSelectContext();
   const menuContext = useMenuContext();
 
   // Auto-resolve commandfor from parent Menu context, and use animated
@@ -110,12 +114,16 @@ export const MenuItem: StyleableFC<MenuItemProps> = ({
   let resolvedCommandFor = commandfor;
   let resolvedOnClick = onClick;
 
+  const clearCommand = () => {
+    resolvedCommand = undefined;
+    resolvedCommandFor = undefined;
+  };
+
   if (menuContext && command && !commandfor) {
     if (command === "hide-popover") {
       // Use the context's close() for animated exit. Chain with the
       // consumer's onClick if provided.
-      resolvedCommand = undefined;
-      resolvedCommandFor = undefined;
+      clearCommand();
       resolvedOnClick = () => {
         onClick?.();
         menuContext.close();
@@ -127,26 +135,53 @@ export const MenuItem: StyleableFC<MenuItemProps> = ({
     }
   }
 
+  // If the Menu Item is an option in a Select, call the Select's onChange() and
+  // close the Menu when clicked.
+  if (selectContext && value && !(command || commandfor)) {
+    resolvedOnClick = () => {
+      onClick?.();
+      selectContext.onChange(value);
+      menuContext?.close();
+    };
+  }
+
+  // If the Menu Item is disabled, clear `command` and `onClick` to prevent any
+  // action.
+  if (disabled) {
+    clearCommand();
+    resolvedOnClick = undefined;
+  }
+
   return (
     <Element style={style}>
       <Interactive
         role="menuitem"
         aria-selected={selected}
         aria-disabled={disabled}
+        data-value={value}
         href={href}
         onClick={resolvedOnClick}
         command={resolvedCommand}
         commandfor={resolvedCommandFor}
+        element={href ? "a" : "button"}
         className={cn(
           "skc-menu-item",
-          selected && "skc-menu-item--selected",
+          (selected === undefined && value
+            ? value === selectContext?.value
+            : selected) && "skc-menu-item--selected",
           dangerous && "skc-menu-item--dangerous",
           className,
         )}
       >
         {icon && <div className="skc-menu-item__icon">{icon}</div>}
-        <span className="skc-menu-item__label">{children}</span>
-        {metadata && <span className="skc-menu-item__metadata">{metadata}</span>}
+        <Text type="body-large" className="skc-menu-item__label">
+          {children}
+        </Text>
+        {metadata && (
+          <Text type="body-large" className="skc-menu-item__metadata">
+            {metadata}
+          </Text>
+        )}
       </Interactive>
     </Element>
   );

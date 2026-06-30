@@ -68,6 +68,7 @@ export { RootLayout, type RootLayoutProps } from "./RootLayout";
 export { Search, type SearchProps } from "./Search";
 export { Section, type SectionProps } from "./Section";
 export { SegmentedButton, type SegmentedButtonProps } from "./SegmentedButton";
+export { Select, type SelectProps } from "./Select";
 export { Snackbar, type SnackbarProps } from "./Snackbar";
 export { SplitLayout, type SplitLayoutProps } from "./SplitLayout";
 export { SuggestionChip, type SuggestionChipProps } from "./SuggestionChip";

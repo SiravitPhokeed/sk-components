@@ -1,0 +1,86 @@
+/**
+ * **Select**
+ * Sometimes it’s impractical to show all options at a time with a radio group.
+ * Select allows the user to choose from options shown on a temporary surface.
+ */
+
+.skc-select {
+  --_outline-width: 1px;
+  --_duration: var(--motion-short-4);
+  --_easing: var(--easing-standard);
+
+  position: relative;
+
+  &:has(:focus) {
+    --_outline-width: 3px;
+  }
+}
+
+.skc-select__label {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  z-index: 10;
+  inset: 0 auto auto 0.75rem;
+  background-color: var(--background);
+  padding-inline: 0.25rem;
+  height: var(--_outline-width);
+  pointer-events: none;
+  font-family: var(--font-display);
+
+  > * {
+    transform: translateY(calc(var(--_outline-width) * (-1 / 2)));
+  }
+}
+
+.skc-select__box {
+  --state-layer-color: var(--on-surface);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: var(--rounded-xs);
+  padding-inline: 1rem;
+  width: 100%;
+  height: 3.5rem;
+  text-align: left;
+
+  &,
+  &:focus-visible {
+    outline: var(--_outline-width) solid var(--outline);
+    outline-offset: calc(var(--_outline-width) * -1);
+  }
+
+  &:focus,
+  &:focus-visible {
+    animation: none;
+    outline-color: var(--primary);
+  }
+}
+
+.skc-select__value {
+  flex-grow: 1;
+}
+
+.skc-select__icon {
+  transform: rotate(0deg);
+  transition: transform var(--_duration) var(--_easing);
+
+  /* Rotate the icon when the Menu is open */
+  .skc-select:has(+ .skc-menu:popover-open:not(.skc-menu--exiting)) & {
+    transform: rotate(180deg);
+  }
+}
+
+.skc-select__helper-msg {
+  position: absolute;
+  inset: auto 0 -2.25rem 1rem;
+  height: 2rem;
+  color: var(--on-surface-variant);
+}
+
+.skc-select + .skc-menu {
+  top: calc(anchor(bottom) + 1px);
+  right: anchor(right);
+  width: auto;
+}
