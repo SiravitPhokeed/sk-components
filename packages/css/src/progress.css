@@ -152,3 +152,19 @@
     stroke-dashoffset: -135;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .skc-progress--indeterminate.skc-progress--linear .skc-progress__indicator {
+    transform: none;
+    opacity: 0.5;
+  }
+  .skc-progress--indeterminate.skc-progress--circular .skc-progress__indicator {
+    opacity: 0.75;
+    stroke-dasharray: 0;
+  }
+
+  .skc-progress--indeterminate.skc-progress--linear .skc-progress__indicator,
+  .skc-progress--indeterminate.skc-progress--circular .skc-progress__indicator {
+    animation: skc-fade-in 1s ease-in-out alternate infinite;
+  }
+}

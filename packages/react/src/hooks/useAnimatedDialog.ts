@@ -1,6 +1,6 @@
 "use client";
 
-import type { DialogHTMLAttributes, HTMLProps, RefObject } from "react";
+import type { DialogHTMLAttributes, RefObject } from "react";
 import { useCallback, useEffect } from "react";
 
 /**
@@ -52,6 +52,8 @@ export interface UseAnimatedDialogReturn {
    */
   dialogProps: DialogHTMLAttributes<HTMLDialogElement>;
 }
+
+const REDUCED_MOTION_EXIT_ANIMATION_NAME = "skc-fade-out";
 
 /**
  * Manages exit animations for a `<dialog>` element opened via `showModal()`.
@@ -109,7 +111,11 @@ export function useAnimatedDialog(
     const dialog = dialogRef.current;
     if (!dialog) return;
     if (e.target !== dialog) return;
-    if (e.animationName !== exitAnimationName) return;
+    if (!(
+      e.animationName === exitAnimationName ||
+      e.animationName === REDUCED_MOTION_EXIT_ANIMATION_NAME
+    ))
+      return;
     // Remove the exiting class slightly after the animation ends so the
     // mid-exit-animation protection prevents an infinite loop of
     // close → animationend → close.

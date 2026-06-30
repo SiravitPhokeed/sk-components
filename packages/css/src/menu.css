@@ -87,3 +87,35 @@
       skc-menu-exit-content;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .skc-menu {
+    transition-property: opacity;
+    transform: none;
+  }
+
+  .skc-menu:popover-open {
+    transform: none;
+  }
+
+  @starting-style {
+    .skc-menu:popover-open {
+      transform: none;
+      opacity: 0;
+    }
+  }
+
+  .skc-menu > * {
+    transition: none;
+    opacity: 1;
+  }
+
+  .skc-menu--exiting {
+    animation: var(--_duration) var(--_easing) forwards skc-fade-out;
+  }
+
+  .skc-menu--exiting > * {
+    animation: none;
+    opacity: 0;
+  }
+}

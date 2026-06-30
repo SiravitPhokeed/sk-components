@@ -40,6 +40,8 @@ export interface UseAnimatedPopoverOptions {
   onClose?: () => void;
 }
 
+const REDUCED_MOTION_EXIT_ANIMATION_NAME = "skc-fade-out";
+
 /**
  * Return value of {@link useAnimatedPopover}.
  */
@@ -150,7 +152,11 @@ export function useAnimatedPopover(
     const popover = popoverRef.current;
     if (!popover) return;
     if (e.target !== popover) return;
-    if (e.animationName !== exitAnimationName) return;
+    if (!(
+      e.animationName === exitAnimationName ||
+      e.animationName === REDUCED_MOTION_EXIT_ANIMATION_NAME
+    ))
+      return;
     popover.classList.remove(exitingClass);
     popover.hidePopover();
   };

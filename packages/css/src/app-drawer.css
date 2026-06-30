@@ -28,9 +28,8 @@
   gap: 0.25rem;
   transform: translateY(-1rem) scaleY(0);
   transform-origin: top;
-  transition:
-    opacity var(--_duration) var(--_easing),
-    transform var(--_duration) var(--_easing);
+  transition-property: opacity, transform;
+  transition: var(--_duration) var(--_easing);
   transition-delay: var(--_delay);
   margin: 0;
   box-shadow: var(--shadow-1);
@@ -137,4 +136,38 @@
   width: 1px;
   height: 1px;
   overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skc-app-drawer__modal {
+    transition-property: opacity;
+    transform: none;
+  }
+
+  .skc-app-drawer__modal[open] {
+    transform: none;
+  }
+
+  @starting-style {
+    .skc-app-drawer__modal[open] {
+      transform: none;
+      opacity: 0;
+    }
+  }
+
+  .skc-app-drawer__modal .skc-app-drawer-segment > * {
+    transition: none;
+    opacity: 1;
+  }
+
+  .skc-app-drawer__modal.skc-app-drawer__modal--exiting {
+    animation: skc-fade-out var(--_duration) var(--_easing) forwards;
+  }
+
+  .skc-app-drawer__modal.skc-app-drawer__modal--exiting
+    .skc-app-drawer-segment
+    > * {
+    animation: none;
+    opacity: 0;
+  }
 }

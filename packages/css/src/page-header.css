@@ -9,6 +9,7 @@
   /* How much the user has to scroll after the Page Header visually exits for
      the minimized version to fully appear */
   --_botton-animation-runway-height: 12rem;
+  --_bottom-animation-starting-offset: 3rem;
 
   view-timeline: --_page-header-timeline;
   margin-bottom: calc(var(--_botton-animation-runway-height) * -1);
@@ -112,7 +113,7 @@
 
 @keyframes skc-page-header-minimized-entry {
   from {
-    transform: translateY(3rem);
+    transform: translateY(var(--_bottom-animation-starting-offset));
     opacity: 0;
     pointer-events: none;
   }
@@ -120,5 +121,11 @@
     transform: translateY(0);
     opacity: 1;
     pointer-events: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skc-page-header__minimized {
+    --_bottom-animation-starting-offset: 0;
   }
 }

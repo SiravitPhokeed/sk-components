@@ -222,3 +222,52 @@
       skc-fullscreen-dialog-exit-backdrop;
   }
 }
+
+/* ── Reduced motion ───────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .skc-fullscreen-dialog {
+    transform: none;
+    transition-property: opacity;
+  }
+
+  .skc-fullscreen-dialog[open] {
+    transform: none;
+  }
+
+  @starting-style {
+    .skc-fullscreen-dialog[open] {
+      transform: none;
+      opacity: 0;
+    }
+  }
+
+  .skc-fullscreen-dialog.skc-fullscreen-dialog--exiting {
+    animation: var(--_duration) var(--_easing) forwards skc-fade-out;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (min-width: 600px) {
+  .skc-fullscreen-dialog {
+    transform: translate(-50%, -50%);
+
+    > * {
+      transform: scaleY(1);
+      transition: none;
+
+      > * {
+        opacity: 1;
+        transition: none;
+      }
+    }
+
+    &[open] {
+      transform: translate(-50%, -50%);
+
+      @starting-style {
+        transform: translate(-50%, -50%);
+        opacity: 0;
+      }
+    }
+  }
+}

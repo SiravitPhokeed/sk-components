@@ -76,3 +76,16 @@
 .skc-radio.skc-radio--disabled {
   cursor: default;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .skc-radio__marker {
+    transform: none;
+    opacity: 0;
+    transition: opacity var(--motion-short-2) var(--easing-standard);
+  }
+
+  .skc-radio--selected .skc-radio__marker {
+    transform: none;
+    opacity: 1;
+  }
+}

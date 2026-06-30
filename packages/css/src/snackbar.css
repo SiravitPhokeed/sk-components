@@ -16,9 +16,8 @@
   --_exit-translate: 0.25rem;
 
   --_inset: 0.5rem;
-  --_bottom-offset: 0;
+  --_bottom-offset: 0rem;
 
-  display: flex;
   position: fixed;
   flex-direction: row;
   align-items: center;
@@ -54,6 +53,7 @@
 
   /* Open state */
   &:popover-open {
+    display: flex;
     transform: translateY(0) scaleY(1);
     opacity: 1;
 
@@ -112,6 +112,33 @@
 
 .skc-snackbar--exiting {
   animation: var(--_duration) var(--_easing) forwards skc-snackbar-exit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skc-snackbar {
+    transform: none;
+    transition-property: opacity;
+  }
+
+  .skc-snackbar:popover-open {
+    transform: none;
+  }
+
+  @starting-style {
+    .skc-snackbar:popover-open {
+      transform: none;
+      opacity: 0;
+    }
+  }
+
+  .skc-snackbar > * {
+    opacity: 1;
+    transition: none;
+  }
+
+  .skc-snackbar--exiting {
+    animation: var(--_duration) var(--_easing) forwards skc-fade-out;
+  }
 }
 
 @media (min-width: 600px) {

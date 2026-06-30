@@ -140,3 +140,36 @@
       skc-nav-drawer-exit-children;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .skc-nav-drawer {
+    transition-property: opacity;
+    transform: none;
+  }
+
+  .skc-nav-drawer[open] {
+    transform: none;
+  }
+
+  @starting-style {
+    .skc-nav-drawer[open] {
+      transform: none;
+      opacity: 0;
+    }
+  }
+
+  .skc-nav-drawer .skc-nav-drawer__content {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+
+  .skc-nav-drawer.skc-nav-drawer--exiting {
+    animation: skc-fade-out var(--_duration) var(--_easing) forwards;
+  }
+
+  .skc-nav-drawer.skc-nav-drawer--exiting .skc-nav-drawer__content > * {
+    animation: none;
+    opacity: 0;
+  }
+}

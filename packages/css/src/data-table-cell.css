@@ -72,6 +72,17 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .skc-data-table-cell__arrow--asc {
+    animation: none;
+  }
+
+  .skc-data-table-cell__content
+    :not(:is(.skc-data-table-cell__arrow, .skc-interactive__ripple)) {
+    transition: none;
+  }
+}
+
 /* Alignment */
 .skc-data-table-cell__content {
   .skc-data-table-cell--left & {

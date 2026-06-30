@@ -379,6 +379,7 @@
   }
 }
 
+/* Focus ring animation for non-input elements */
 :not(input, textarea) {
   &,
   &:focus-visible {
@@ -399,6 +400,32 @@
     outline-width: 8px;
   }
   100% {
+    outline-width: 3px;
+  }
+}
+
+/* Reduced motion */
+@keyframes skc-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes skc-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :not(input, textarea):focus-visible {
+    animation: none;
     outline-width: 3px;
   }
 }

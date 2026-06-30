@@ -139,3 +139,33 @@
       skc-dialog-exit-backdrop;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .skc-dialog {
+    transform: translate(-50%, -50%);
+    transition-property: opacity;
+
+    > * {
+      transform: scaleY(1);
+      transition: none;
+
+      > * {
+        opacity: 1;
+        transition: none;
+      }
+    }
+
+    &[open] {
+      transform: translate(-50%, -50%);
+
+      @starting-style {
+        transform: translate(-50%, -50%);
+        opacity: 0;
+      }
+    }
+  }
+
+  .skc-dialog.skc-dialog--exiting {
+    animation: var(--_duration) var(--_easing) forwards skc-fade-out;
+  }
+}

@@ -89,3 +89,9 @@
   right: anchor(right);
   width: auto;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .skc-select__icon {
+    transition: none;
+  }
+}

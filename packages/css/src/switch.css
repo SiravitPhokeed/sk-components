@@ -41,12 +41,6 @@
 
   /* Hover / focus / active state on handle */
   &:not([aria-disabled="true"]) {
-    &:active > .skc-switch__handle {
-      inset: 0 auto auto 0;
-      width: 1.75rem;
-      height: 1.75rem;
-    }
-
     &:hover > .skc-switch__handle,
     &:focus-visible > .skc-switch__handle,
     &:active > .skc-switch__handle {
@@ -87,7 +81,7 @@
     font-size: 1rem;
   }
 
-  &:has(*) {
+  &:not(:empty) {
     inset: calc(0.25rem - 2px) auto auto calc(0.25rem - 2px);
     width: 1.5rem;
     height: 1.5rem;
@@ -128,12 +122,6 @@
       background-color: var(--primary);
     }
 
-    &:active > .skc-switch__handle {
-      inset: 0 auto auto 1.25rem;
-      width: 1.75rem;
-      height: 1.75rem;
-    }
-
     &:hover > .skc-switch__handle,
     &:focus-visible > .skc-switch__handle,
     &:active > .skc-switch__handle {
@@ -155,5 +143,25 @@
       background-color: var(--surface);
       color: var(--on-surface);
     }
+  }
+}
+
+/* @media (prefers-reduced-motion: reduce) {
+  .skc-switch__handle {
+    transition-property: background-color;
+  }
+} */
+
+@media (prefers-reduced-motion: no-preference) {
+  .skc-switch:active > .skc-switch__handle {
+    inset: 0 auto auto 0;
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .skc-switch--selected:active > .skc-switch__handle {
+    inset: 0 auto auto 1.25rem;
+    width: 1.75rem;
+    height: 1.75rem;
   }
 }
