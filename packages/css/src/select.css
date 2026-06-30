@@ -116,6 +116,10 @@
     border-radius: var(--rounded-xs);
     padding-right: calc(1rem - var(--_border-width));
     padding-left: calc(var(--_padding-left) - var(--_border-width));
+
+    &::before {
+      display: none;
+    }
   }
 }
 
