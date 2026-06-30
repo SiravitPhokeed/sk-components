@@ -1,0 +1,266 @@
+/**
+ * **Text Field**
+ * A place for users to enter text.
+ */
+
+.skc-text-field {
+  --_border-width: 1px;
+  --_border-color: var(--outline);
+  --_label-offset: 1rem;
+
+  --_duration: var(--motion-short-4);
+  --_easing: var(--easing-standard);
+
+  position: relative;
+  color: var(--on-surface-variant);
+}
+
+.skc-text-field__label {
+  position: absolute;
+  top: 1rem;
+  left: var(--_label-offset);
+  transform-origin: left;
+  z-index: 10;
+  transition-property: color, transform;
+  transition: var(--_duration) var(--_easing);
+  pointer-events: none;
+  font-family: var(--font-display);
+
+  .skc-text-field:focus-within & {
+    color: var(--primary);
+  }
+}
+
+/* Add an asterisk to the label if the input is required,
+   and also add it to the clip so the length still matches */
+:is(.skc-text-field__clip, .skc-text-field__label):has(
+    ~ .skc-text-field__box > .skc-text-field__input:required
+  )::after {
+  content: " *";
+  color: var(--error);
+}
+
+.skc-text-field__box {
+  display: flex;
+  flex-direction: row;
+  transition: border-color var(--_duration) var(--_easing);
+  box-sizing: border-box;
+  width: 100%;
+
+  > :first-child {
+    padding-left: var(--_box-padding-inline);
+  }
+  > :last-child {
+    padding-right: var(--_box-padding-inline);
+  }
+}
+
+.skc-text-field__input {
+  flex-grow: 1;
+  width: 0;
+  min-height: 3.5rem;
+  color: var(--on-surface);
+  text-align: left;
+
+  &:focus {
+    outline: none;
+  }
+
+  /* Add gap between spinner and right edge / trailing content */
+  &[type="number"] {
+    padding-right: 1rem;
+  }
+  &[type="color"] {
+    padding-block: 0;
+  }
+}
+
+.skc-text-field__leading {
+  .skc-material-icon {
+    margin-right: 0.5rem;
+  }
+
+  .skc-text-field:has(> .skc-text-field__box > &) {
+    --_label-offset: 3rem;
+  }
+}
+
+.skc-text-field__no-files {
+  position: absolute;
+  left: var(--_label-offset);
+}
+
+.skc-text-field__trailing {
+  .skc-material-icon {
+    margin-left: 0.5rem;
+  }
+}
+
+.skc-text-field__helper-msg {
+  position: absolute;
+  inset: auto 0 -2.25rem 1rem;
+  height: 2rem;
+  color: var(--on-surface-variant);
+}
+
+.skc-text-field--outlined {
+  .skc-text-field__clip {
+    position: absolute;
+    transform: scaleX(0);
+    z-index: 10;
+    transition: transform var(--_duration) var(--_easing);
+    inset: 0 auto auto 0.75rem;
+    background-color: var(--background);
+    padding-inline: 0.25rem;
+    height: var(--_border-width);
+    overflow: hidden;
+    pointer-events: none;
+    font-family: var(--font-display);
+  }
+
+  &:has(
+    /* If the input is focused,
+       or if the input has text in it (placeholder is not shown),
+       or if animation is disabled through other means */
+      :is(
+        .skc-text-field__input:focus,
+        .skc-text-field__input:not(:placeholder-shown),.skc-text-field__input--static
+      )
+    ) {
+    /* Clip away part of the border to make space for the label */
+    .skc-text-field__clip {
+      transform: scaleX(1);
+    }
+    /* And move the label to the top left and scale it down */
+    .skc-text-field__label {
+      transform: translateX(calc(var(--_label-offset) * -1 + 1rem))
+        translateY(-1.75rem) scale(0.75);
+    }
+  }
+
+  .skc-text-field__box {
+    --_box-padding-inline: calc(1rem - var(--_border-width));
+    border: var(--_border-width) solid var(--_border-color);
+    border-radius: var(--rounded-xs);
+
+    > * {
+      margin-block: calc(-1 * var(--_border-width));
+      padding-block: 1rem;
+    }
+
+    > [type="color"] {
+      padding-block: 0.75rem;
+    }
+  }
+}
+
+.skc-text-field--filled {
+  &::before {
+    position: absolute;
+    opacity: 0;
+    transition: opacity var(--_duration) var(--_easing);
+    inset: 0;
+    background-color: var(--on-surface-variant);
+    content: "";
+  }
+  &:not(.skc-text-field--disabled):hover:not(:focus-within)::before {
+    opacity: 0.08;
+  }
+
+  .skc-text-field__clip {
+    display: none;
+  }
+
+  &:has(
+    /* See above for explanation */
+    :is(
+      .skc-text-field__input:focus,
+      .skc-text-field__input:not(:placeholder-shown),
+      .skc-text-field__input--static
+    )
+  ) .skc-text-field__label {
+    transform: translateX(0) translateY(-0.75rem) scale(0.75);
+  }
+
+  .skc-text-field__box {
+    --_box-padding-inline: 1rem;
+
+    border-bottom: var(--_border-width) solid var(--_border-color);
+    border-radius: var(--rounded-xs) var(--rounded-xs) 0 0;
+    background-color: var(--surface-variant);
+
+    > * {
+      transform: translateY(0);
+      transition: transform var(--_duration) var(--_easing);
+      margin-bottom: calc(-1 * var(--_border-width));
+      padding-block: 1rem;
+    }
+
+    &:focus-within > :not(:has(.skc-material-icon)),
+    > .skc-text-field__input:not(:placeholder-shown),
+    > .skc-text-field__input--static,
+    > .skc-text-field__no-files {
+      transform: translateY(0.5rem);
+    }
+  }
+}
+
+.skc-text-field:not(.skc-text-field--disabled) {
+  &:hover {
+    --_border-color: var(--on-surface);
+  }
+  &:focus-within {
+    --_border-width: 3px;
+    --_border-color: var(--primary);
+    outline: none;
+  }
+}
+
+.skc-text-field--disabled {
+  --_border-color: color-mix(in srgb, var(--outline) 12%, transparent);
+  color: color-mix(in srgb, var(--on-surface) 38%, transparent);
+
+  &:focus-within {
+    --_border-color: var(--primary);
+    --_border-width: 3px;
+  }
+
+  .skc-text-field__input {
+    opacity: 0.38;
+    color: var(--on-surface);
+  }
+
+  &.skc-text-field--filled .skc-text-field__box {
+    background-color: color-mix(in srgb, var(--on-surface) 4%, transparent);
+  }
+}
+
+.skc-text-field--error {
+  --_border-width: 3px;
+  --border-color: var(--error);
+}
+
+.skc-text-field--multi-line .skc-text-field__input {
+  field-sizing: content;
+  resize: none;
+}
+
+.skc-text-field__input--static {
+  height: 1.5rem;
+}
+
+/* No files: hide the input and show a message instead.
+   Has file: show the input. The message is hidden programmatically. */
+.skc-text-field__input[type="file"] {
+  opacity: 0;
+
+  &::file-selector-button {
+    opacity: 0;
+    margin: 0;
+    width: 0;
+  }
+
+  &.skc-text-field__input--has-file {
+    opacity: 1;
+  }
+}

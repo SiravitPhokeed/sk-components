@@ -81,6 +81,7 @@ export { TableFoot, type TableFootProps } from "./TableFoot";
 export { TableHead, type TableHeadProps } from "./TableHead";
 export { TableRow, type TableRowProps } from "./TableRow";
 export { TabsContainer, type TabsContainerProps } from "./TabsContainer";
+export { TextField, type TextFieldProps } from "./TextField";
 export { Text, type TextProps } from "./Text";
 export { ThemeProvider } from "./ThemeProvider";
 export { ToggleButton, type ToggleButtonProps } from "./ToggleButton";

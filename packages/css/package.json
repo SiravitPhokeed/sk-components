@@ -72,6 +72,7 @@
     "./table-head.css": "./dist/table-head.css",
     "./table-row.css": "./dist/table-row.css",
     "./tabs-container.css": "./dist/tabs-container.css",
+    "./text-field.css": "./dist/text-field.css",
     "./text.css": "./dist/text.css",
     "./toggle-button.css": "./dist/toggle-button.css"
   },
