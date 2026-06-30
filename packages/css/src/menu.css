@@ -27,7 +27,9 @@
   background-color: var(--surface-container);
   padding: 0.5rem 0;
   min-width: 12rem;
+  max-height: 70svh;
   overflow: visible;
+  overflow-y: auto;
   list-style: none;
 
   > * {
