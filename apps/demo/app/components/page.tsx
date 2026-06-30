@@ -44,8 +44,11 @@ const ComponentsPage: FC = () => (
             title="Input"
             href="/components/input"
             components={[
+              "Checkbox",
+              "File Input",
               "Form Group",
               "Form Item",
+              "Radio",
               "Search",
               "Select",
               "Switch",
