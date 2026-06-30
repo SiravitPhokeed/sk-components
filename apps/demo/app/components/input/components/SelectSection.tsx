@@ -35,7 +35,6 @@ const SelectSection: FC = () => {
             disabled
             icon={<MaterialIcon icon="lock" />}
             value="annually"
-            dangerous
           >
             Annually
           </MenuItem>
