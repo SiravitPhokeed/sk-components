@@ -18,11 +18,12 @@ const InputPage: FC = () => (
     <ContentLayout>
       <CheckboxSection />
       {/* <ChipFieldSection /> */}
+      {/* <FileInputSection /> */}
+      <RadioSection />
       <SearchSection />
       <SelectSection />
-      {/* <TextFieldSection /> */}
-      <RadioSection />
       <SwitchSection />
+      {/* <TextFieldSection /> */}
     </ContentLayout>
   </>
 );
