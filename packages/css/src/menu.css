@@ -7,7 +7,6 @@
   --_duration: var(--motion-medium-4);
   --_easing: var(--easing-emphasized);
 
-  display: flex;
   position-try-fallbacks:
     flip-block,
     flip-inline,
@@ -39,6 +38,7 @@
 
   /* Open state */
   &:popover-open {
+    display: flex;
     transform: scaleY(1);
     opacity: 1;
 
