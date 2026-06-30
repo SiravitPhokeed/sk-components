@@ -64,3 +64,17 @@ body {
     }
   }
 }
+
+@media print {
+  body {
+    --surface: var(--white);
+    --background: var(--white);
+  }
+
+  .skc-root-layout {
+    .skc-page-header__blobs,
+    > .skc-nav-bar {
+      display: none;
+    }
+  }
+}
