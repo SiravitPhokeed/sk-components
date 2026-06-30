@@ -72,7 +72,7 @@
   transition:
     transform var(--motion-long-2),
     opacity var(--motion-long-2);
-  border-radius: var(--rounded-full);
+  border-radius: 50%;
   background-color: var(--state-layer-color);
   aspect-ratio: 1 / 1;
 }
