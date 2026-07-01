@@ -13,6 +13,10 @@
     border-radius: 0;
   }
 
+  > .skc-button:focus-visible {
+    outline-offset: -3px;
+  }
+
   > .skc-button:first-child {
     border-radius: var(--rounded-full) 0 0 var(--rounded-full);
   }
