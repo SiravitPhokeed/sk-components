@@ -9,6 +9,7 @@ import InteractiveSection from "@/app/components/data/components/InteractiveSect
 import ListSection from "@/app/components/data/components/ListSection";
 import SuggestionChipSection from "@/app/components/data/components/SuggestionChipSection";
 import TableSection from "@/app/components/data/components/TableSection";
+import TextSection from "@/app/components/data/components/TextSection";
 import PageHeader from "@/components/PageHeader";
 import { ContentLayout, Header, Section } from "@suankularb-components/react";
 import type { Metadata } from "next";
@@ -34,6 +35,7 @@ const DataDisplayPage: FC = () => (
         <SuggestionChipSection />
       </Section>
       <HeaderSection />
+      <TextSection />
       <AvatarSection />
       <InteractiveSection />
     </ContentLayout>
