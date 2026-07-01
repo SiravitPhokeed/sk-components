@@ -18,49 +18,49 @@ const DemoSection: FC = () => (
       <Card
         appearance="outlined"
         stateLayerEffect
-        href="/components/actions"
+        href="/components/layout"
         element={Link}
       >
         <CardHeader
-          icon={<MaterialIcon icon="touch_app" />}
-          title="Actions"
-          subtitle="Buttons, chips"
+          icon={<MaterialIcon icon="view_quilt" />}
+          title="Layout & navigation"
+          subtitle="Layouts, drawers, tabs"
         />
       </Card>
       <Card
         appearance="outlined"
         stateLayerEffect
-        href="/components/input"
+        href="/components/inputs"
         element={Link}
       >
         <CardHeader
-          icon={<MaterialIcon icon="input" />}
-          title="Input"
-          subtitle="Form elements"
+          icon={<MaterialIcon icon="input" className="rtl:-scale-x-100" />}
+          title="Inputs"
+          subtitle="Buttons, form elements"
         />
       </Card>
       <Card
         appearance="outlined"
         stateLayerEffect
-        href="/components/communication"
+        href="/components/data"
         element={Link}
       >
         <CardHeader
-          icon={<MaterialIcon icon="swap_horiz" />}
-          title="Communication"
-          subtitle="Dialog, snackbar"
+          icon={<MaterialIcon icon="table_chart" />}
+          title="Data display"
+          subtitle="Tables, lists, cards"
         />
       </Card>
       <Card
         appearance="outlined"
         stateLayerEffect
-        href="/components/containers"
+        href="/components/overlays"
         element={Link}
       >
         <CardHeader
-          icon={<MaterialIcon icon="dashboard" />}
-          title="Containers"
-          subtitle="Cards, layouts"
+          icon={<MaterialIcon icon="picture_in_picture_center" />}
+          title="Overlays"
+          subtitle="Dialog, snackbar, menu"
         />
       </Card>
     </Columns>
