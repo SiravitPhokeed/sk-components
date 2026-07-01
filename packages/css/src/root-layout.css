@@ -6,6 +6,8 @@
  */
 
 body {
+  transition-property: background-color, color;
+  transition: var(--motion-short-4) var(--easing-standard);
   margin: 0;
   background-color: var(--background);
   overflow-x: hidden;

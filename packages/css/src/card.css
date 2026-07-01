@@ -11,6 +11,8 @@
 /* Base Card */
 .skc-card {
   display: flex;
+  transition: var(--motion-short-4) var(--easing-standard);
+  transition-property: background-color, border-color, color;
   border-radius: var(--rounded-md);
   color: var(--on-surface);
   text-align: start;
