@@ -296,3 +296,22 @@
     opacity: 1;
   }
 }
+
+/* Autofill */
+.skc-text-field:has(.skc-text-field__input:autofill) {
+  .skc-text-field__box {
+    background-color: var(--tertiary-container);
+  }
+  &:focus-within {
+    --_border-color: var(--tertiary);
+    .skc-text-field__label {
+      color: var(--tertiary);
+    }
+  }
+}
+.skc-text-field__input:autofill {
+  /* The user agent stylesheet sets an unoveridable yellow background color on
+     autofill. Delaying the transition for a LONG time allows the background
+     color to be overridden by the background-color property. */
+  transition: background-color 0s ease-in-out 5000s;
+}
