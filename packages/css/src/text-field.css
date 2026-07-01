@@ -207,6 +207,17 @@
       transform: translateY(0.5rem);
     }
   }
+
+  /* Prevent the resize handle from translating down beyond the bottom of the
+     box */
+  &.skc-text-field--textarea textarea.skc-text-field__input {
+    &:focus,
+    &:not(:placeholder-shown) {
+      transform: translateY(0);
+      padding-top: 1.5rem;
+      padding-bottom: 0.5rem;
+    }
+  }
 }
 
 .skc-text-field:not(.skc-text-field--disabled) {

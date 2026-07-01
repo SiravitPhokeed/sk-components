@@ -235,7 +235,7 @@ export const TextField = <Value extends string | File = string>({
         "skc-text-field",
         `skc-text-field--${appearance}`,
         align && `skc-text-field--${align}`,
-        behavior === "multi-line" && "skc-text-field--multi-line",
+        behavior !== "single-line" && `skc-text-field--${behavior}`,
         disabled && "skc-text-field--disabled",
         error && "skc-text-field--error",
         className,
