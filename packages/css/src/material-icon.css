@@ -22,10 +22,16 @@
   overflow: hidden;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  font-size: calc(var(--_size, 24) / 16 * 1rem);
+  font-variation-settings:
+    "FILL" var(--_fill, 0),
+    "wght" var(--_weight, 400),
+    "GRAD" var(--_grade, 0),
+    "opsz" var(--_size, 24);
 }
 
 @media (prefers-color-scheme: dark) {
   .skc-material-icon {
-    font-variation-settings: "GRAD" -25;
+    --_grade: -25;
   }
 }

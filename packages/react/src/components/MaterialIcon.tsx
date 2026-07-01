@@ -93,13 +93,12 @@ export const MaterialIcon: StyleableFC<MaterialIconProps> = ({
       {...(alt ? { role: "img", "aria-label": alt } : { "aria-hidden": true })}
       style={{
         ...style,
-        fontSize: size ? `${size / 16}rem` : undefined,
-        // Only include specified font variation settings.
-        fontVariationSettings: Object.entries(
-          shake({ fill, weight, grade, size }),
-        )
-          .map(([key, value]) => `"${FONT_VARIATION_KEYS[key]}" ${value}`)
-          .join(", "),
+        ...{
+          "--_fill": fill ? 1 : 0,
+          "--_weight": weight,
+          "--_grade": grade,
+          "--_size": size,
+        },
       }}
       className={cn(`skc-material-icon`, className)}
       translate="no"
