@@ -18,7 +18,7 @@ export interface FormItemProps extends ElementCustomizableProps {
   /**
    * The label for the input.
    *
-   * - Must be a string or JSX Element.
+   * - Must be a React Node, e.g., a string or an element.
    * - Always required.
    */
   label: ReactNode;

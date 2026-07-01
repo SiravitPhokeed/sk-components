@@ -11,7 +11,7 @@ import type {
   StyleableFC,
 } from "@/lib/types";
 import "@suankularb-components/css/button.css";
-import type { JSX, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link Button}.
@@ -20,7 +20,7 @@ export interface ButtonProps extends ActionableProps, ElementCustomizableProps {
   /**
    * The text displayed inside the Button.
    *
-   * - Must be a string or a JSX Element.
+   * - Must be a React Node, e.g., a string or an element.
    * - Required if `icon` is undefined, as a Button cannot be empty.
    */
   children?: ReactNode;
@@ -46,7 +46,7 @@ export interface ButtonProps extends ActionableProps, ElementCustomizableProps {
    * - Normally optional but required if `children` is undefined, as a Button
    *   cannot be empty.
    */
-  icon?: JSX.Element;
+  icon?: ReactNode;
 
   /**
    * A description of the Button for screen readers, similar to `alt` on

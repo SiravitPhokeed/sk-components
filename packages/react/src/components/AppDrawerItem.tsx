@@ -9,7 +9,8 @@ import type {
   StyleableFC,
 } from "@/lib/types";
 import "@suankularb-components/css/app-drawer-item.css";
-import { useId, type JSX } from "react";
+import type { ReactNode } from "react";
+import { useId } from "react";
 
 /**
  * Props for {@link AppDrawerItem App Drawer Item}.
@@ -19,7 +20,7 @@ export interface AppDrawerItemProps
   /**
    * The logo image of the app.
    */
-  logo: JSX.Element;
+  logo: ReactNode;
 
   /**
    * The name of the app.

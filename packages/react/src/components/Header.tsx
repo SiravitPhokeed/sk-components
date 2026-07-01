@@ -5,7 +5,7 @@ import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/header.css";
-import type { ElementType, JSX, ReactNode } from "react";
+import type { ElementType, ReactNode } from "react";
 
 /**
  * Props for {@link Header}.
@@ -36,7 +36,7 @@ export interface HeaderProps extends ElementCustomizableProps {
    * - You are encouraged to use Material Icons as the value for `icon`.
    * - Optional.
    */
-  icon?: JSX.Element;
+  icon?: ReactNode;
 }
 
 const HEADER_TYPE_BY_LEVEL = {

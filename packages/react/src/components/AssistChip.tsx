@@ -9,7 +9,7 @@ import type {
   StyleableFC,
 } from "@/lib/types";
 import "@suankularb-components/css/assist-chip.css";
-import type { JSX } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link AssistChip Assist Chip}.
@@ -23,7 +23,7 @@ export interface AssistChipProps
    *   "**Save** to favorites".
    * - Always required.
    */
-  children: string | JSX.Element;
+  children: ReactNode;
 
   /**
    * An icon can appear before the text in an Assist Chip. In a Chip Set with
@@ -33,7 +33,7 @@ export interface AssistChipProps
    * - Favicons and branded icons can also be used here.
    * - Optional.
    */
-  icon?: JSX.Element;
+  icon?: ReactNode;
 
   /**
    * A message shown in a tooltip when the user hovers over the Assist Chip.

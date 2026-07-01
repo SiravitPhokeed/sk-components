@@ -10,7 +10,7 @@ import type {
   StyleableFC,
 } from "@/lib/types";
 import "@suankularb-components/css/filter-chip.css";
-import type { JSX } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link FilterChip Filter Chip}.
@@ -20,10 +20,10 @@ export interface FilterChipProps
   /**
    * The text displayed inside the chip.
    *
-   * - Must be a string or a JSX Element.
+   * - Must be a React Node, e.g., a string or an element.
    * - Always required.
    */
-  children: string | JSX.Element;
+  children: ReactNode;
 
   /**
    * An icon can appear before all content in an Filter Chip. In a page with
@@ -32,7 +32,7 @@ export interface FilterChipProps
    * - You are encouraged to use Material Icons as the value for `icon`.
    * - Optional.
    */
-  icon?: JSX.Element;
+  icon?: ReactNode;
 
   /**
    * A message shown in a tooltip when the user hovers over the Filter Chip.

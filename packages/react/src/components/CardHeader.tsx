@@ -2,7 +2,7 @@ import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/card-header.css";
-import type { JSX } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link CardHeader Card Header}.
@@ -16,7 +16,7 @@ export interface CardHeaderProps extends ElementCustomizableProps {
    * - Incompatible with `icon`.
    * - Optional.
    */
-  avatar?: JSX.Element;
+  avatar?: ReactNode;
 
   /**
    * An icon can appear before all content in a Card Header. In a page with
@@ -26,21 +26,21 @@ export interface CardHeaderProps extends ElementCustomizableProps {
    * - Incompatible with `avatar`.
    * - Optional.
    */
-  icon?: JSX.Element;
+  icon?: ReactNode;
 
   /**
    * The most predominant text inside a Card.
    *
    * - Always required.
    */
-  title: string | JSX.Element;
+  title: ReactNode;
 
   /**
    * A short text complementing the title text.
    *
    * - Optional.
    */
-  subtitle?: string | JSX.Element;
+  subtitle?: ReactNode;
 }
 
 /**

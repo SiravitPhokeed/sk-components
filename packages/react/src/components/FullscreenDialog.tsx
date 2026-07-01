@@ -7,7 +7,7 @@ import { useAnimatedDialog } from "@/hooks/useAnimatedDialog";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/fullscreen-dialog.css";
-import type { CSSProperties, JSX, ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { useEffect, useId, useRef } from "react";
 
 const EXITING_CLASS = "skc-fullscreen-dialog--exiting";
@@ -47,7 +47,7 @@ export interface FullscreenDialogProps {
    *
    * - Always required.
    */
-  title: string | JSX.Element;
+  title: ReactNode;
 
   /**
    * The submission Button.
@@ -55,7 +55,7 @@ export interface FullscreenDialogProps {
    * - Should be a Button.
    * - Optional.
    */
-  action?: JSX.Element;
+  action?: ReactNode;
 
   /**
    * Full-screen Dialog transforms into a basic Dialog on larger screens. The

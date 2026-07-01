@@ -10,7 +10,7 @@ import type {
   StyleableFC,
 } from "@/lib/types";
 import "@suankularb-components/css/suggestion-chip.css";
-import type { JSX } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link SuggestionChip Suggestion Chip}.
@@ -22,7 +22,7 @@ export interface SuggestionChipProps
    *
    * - Always required.
    */
-  children: string | JSX.Element;
+  children: ReactNode;
 
   /**
    * An icon can appear before the text (`children`) in an Suggestion Chip. In
@@ -32,7 +32,7 @@ export interface SuggestionChipProps
    * - You are encouraged to use Material Icons as the value for `icon`.
    * - Optional.
    */
-  icon?: JSX.Element;
+  icon?: ReactNode;
 
   /**
    * A message shown in a tooltip when the user hovers over the Suggestion

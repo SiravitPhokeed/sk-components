@@ -5,7 +5,7 @@ import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/dialog-header.css";
-import type { JSX } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link DialogHeader Dialog Header}.
@@ -17,7 +17,7 @@ export interface DialogHeaderProps extends ElementCustomizableProps {
    * - You are encouraged to use Material Icons as the value for `icon`.
    * - Optional.
    */
-  icon?: JSX.Element;
+  icon?: ReactNode;
 
   /**
    * The title text. This is useful when the supporting text is long and needs
@@ -25,7 +25,7 @@ export interface DialogHeaderProps extends ElementCustomizableProps {
    *
    * - Optional.
    */
-  title?: string | JSX.Element;
+  title?: ReactNode;
 
   /**
    * With a title (`title`), the supporting text complements the title text
@@ -36,7 +36,7 @@ export interface DialogHeaderProps extends ElementCustomizableProps {
    *
    * - Always required.
    */
-  desc: string | JSX.Element;
+  desc: ReactNode;
 }
 
 /**

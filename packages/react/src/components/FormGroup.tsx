@@ -32,7 +32,7 @@ export interface FormGroupProps extends ElementCustomizableProps {
   /**
    * The legend for the entire group.
    *
-   * - Must be a string or JSX Element.
+   * - Must be a React Node, e.g., a string or an element.
    * - Always required.
    */
   label: ReactNode;

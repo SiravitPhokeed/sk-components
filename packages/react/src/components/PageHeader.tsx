@@ -7,7 +7,7 @@ import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import { PageHeaderBlobs } from "@/svg/PageHeaderBlobs";
 import PageHeaderMinimizedBlobs from "@/svg/PageHeaderMinimizedBlob";
 import "@suankularb-components/css/page-header.css";
-import type { JSX, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link PageHeader Page Header}.
@@ -51,7 +51,7 @@ export interface PageHeaderProps extends ElementCustomizableProps {
    * - Recommended if this app is part of a family of apps.
    * - Optional.
    */
-  appDrawer?: JSX.Element;
+  appDrawer?: ReactNode;
 
   /**
    * Allows for translation of the accessibility labels.

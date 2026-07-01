@@ -11,7 +11,7 @@ import type {
   StyleableFC,
 } from "@/lib/types";
 import "@suankularb-components/css/input-chip.css";
-import type { JSX, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link InputChip Input Chip}.
@@ -33,7 +33,7 @@ export interface InputChipProps
    * - Incompatible with {@link icon `icon`}.
    * - Optional.
    */
-  avatar?: JSX.Element;
+  avatar?: ReactNode;
 
   /**
    * An icon can appear before the text in an Input Chip. In a page with many
@@ -44,7 +44,7 @@ export interface InputChipProps
    * - Incompatible with {@link avatar `avatar`}.
    * - Optional.
    */
-  icon?: JSX.Element;
+  icon?: ReactNode;
 
   /**
    * A message shown in a tooltip when the user hovers over the Input Chip.

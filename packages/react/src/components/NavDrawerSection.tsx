@@ -4,7 +4,7 @@ import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/nav-drawer-section.css";
-import type { JSX, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { useId } from "react";
 
 /**
@@ -25,7 +25,7 @@ export interface NavDrawerSectionProps extends ElementCustomizableProps {
    * - Normally optional but required if this is the first Navigation Drawer
    *   Section in a Navigation Drawer. In this case, it'd be the name of the app.
    */
-  header?: string | JSX.Element;
+  header?: ReactNode;
 }
 
 /**

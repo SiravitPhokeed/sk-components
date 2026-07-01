@@ -9,7 +9,7 @@ import type {
   StyleableFC,
 } from "@/lib/types";
 import "@suankularb-components/css/nav-bar-item.css";
-import type { JSX, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { useId } from "react";
 
 /**

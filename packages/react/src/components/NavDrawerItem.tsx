@@ -9,7 +9,7 @@ import type {
   StyleableFC,
 } from "@/lib/types";
 import "@suankularb-components/css/nav-drawer-item.css";
-import type { JSX } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link NavDrawerItem Navigation Drawer Item}.
@@ -21,14 +21,14 @@ export interface NavDrawerItemProps
    *
    * - Always required.
    */
-  icon: JSX.Element;
+  icon: ReactNode;
 
   /**
    * The title of the destination page.
    *
    * - Always required.
    */
-  label?: string | JSX.Element;
+  label?: ReactNode;
 
   /**
    * Some text aligned to the right of a Navigation Drawer Item. This is useful
@@ -36,7 +36,7 @@ export interface NavDrawerItemProps
    *
    * - Optional.
    */
-  metadata?: string | JSX.Element;
+  metadata?: ReactNode;
 
   /**
    * A message shown in a tooltip when the user hovers over the Navigation

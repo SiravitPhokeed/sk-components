@@ -13,7 +13,7 @@ import type { ReactNode } from "react";
  */
 export interface CardProps extends ActionableProps, ElementCustomizableProps {
   /**
-   * Card must contain at least 1 JSX element; here is a list of SKCom
+   * Card must contain at least 1 element; here is a list of SKCom
    * components that work well with Card: Card Header, Card Media, Card
    * Content, Chip List, Actions.
    *
@@ -67,7 +67,7 @@ export interface CardProps extends ActionableProps, ElementCustomizableProps {
  * To quote Material Design 3, there is no right way to make a Card. However,
  * we have provided some useful props and components to get you started.
  *
- * @param children Card must contain at least 1 JSX element.
+ * @param children Card must contain at least 1 element.
  * @param appearance The appearance of the Card. Each appearance puts different amounts of emphasis on the subject.
  * @param direction The flow of the Card’s content, like the CSS property `flex-direction`.
  * @param stateLayerEffect The state layer reacts to changes to the state to signify its interactivity. This effect can be enabled on Card as well.

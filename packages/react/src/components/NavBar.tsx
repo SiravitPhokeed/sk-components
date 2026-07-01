@@ -5,7 +5,7 @@ import { MaterialIcon } from "@/components/MaterialIcon";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/nav-bar.css";
-import type { JSX, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link NavBar Navigation Bar}.

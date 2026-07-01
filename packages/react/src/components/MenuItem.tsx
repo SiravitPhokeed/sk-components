@@ -11,7 +11,7 @@ import type {
   StyleableFC,
 } from "@/lib/types";
 import "@suankularb-components/css/menu-item.css";
-import type { JSX, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link MenuItem Menu Item}.
@@ -33,14 +33,14 @@ export interface MenuItemProps
    * - You are encouraged to use Material Icons as the value for `icon`.
    * - Optional.
    */
-  icon?: JSX.Element;
+  icon?: ReactNode;
 
   /**
    * A message shown in a tooltip when the user hovers over the Menu Item.
    *
    * - Optional.
    */
-  metadata?: string | JSX.Element;
+  metadata?: ReactNode;
 
   /**
    * If this Menu Item is selected in a dropdown Menu.
