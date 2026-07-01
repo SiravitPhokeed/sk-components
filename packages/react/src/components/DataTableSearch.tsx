@@ -1,4 +1,5 @@
 import { MaterialIcon } from "@/components/MaterialIcon";
+import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/data-table-search.css";
@@ -80,12 +81,17 @@ export const DataTableSearch: StyleableFC<DataTableSearchProps> = ({
   onChange,
   placeholder,
   inputAttr,
-  element: Element = "div",
+  element = "div",
   style,
   className,
 }) => {
   return (
-    <Element style={style} className={cn("skc-data-table-search", className)}>
+    <Text
+      type="body-medium"
+      element={element}
+      className={cn("skc-data-table-search", className)}
+      style={style}
+    >
       <MaterialIcon icon="search" />
 
       {/* Search field */}
@@ -98,6 +104,6 @@ export const DataTableSearch: StyleableFC<DataTableSearchProps> = ({
         placeholder={placeholder || STRINGS[locale].placeholder}
         {...inputAttr}
       />
-    </Element>
+    </Text>
   );
 };
