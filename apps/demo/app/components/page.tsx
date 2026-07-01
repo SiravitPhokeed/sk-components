@@ -1,5 +1,13 @@
 import PageCard from "@/app/components/components/PageCard";
 import PageHeader from "@/components/PageHeader";
+import DataDark from "@/public/images/screenshots/data-dark.png";
+import DataLight from "@/public/images/screenshots/data-light.png";
+import InputsDark from "@/public/images/screenshots/inputs-dark.png";
+import InputsLight from "@/public/images/screenshots/inputs-light.png";
+import LayoutDark from "@/public/images/screenshots/layout-dark.png";
+import LayoutLight from "@/public/images/screenshots/layout-light.png";
+import OverlaysDark from "@/public/images/screenshots/overlays-dark.png";
+import OverlaysLight from "@/public/images/screenshots/overlays-light.png";
 import {
   Columns,
   ContentLayout,
@@ -22,6 +30,7 @@ const ComponentsPage: FC = () => (
           <PageCard
             title="Layout and navigation"
             icon={<MaterialIcon icon="view_quilt" />}
+            src={[LayoutLight, LayoutDark]}
             href="/components/layout"
           >
             <li>Root Layout</li>
@@ -40,6 +49,7 @@ const ComponentsPage: FC = () => (
           <PageCard
             title="Inputs"
             icon={<MaterialIcon icon="input" />}
+            src={[InputsLight, InputsDark]}
             href="/components/inputs"
           >
             <li>Button</li>
@@ -58,6 +68,7 @@ const ComponentsPage: FC = () => (
           <PageCard
             title="Data display"
             icon={<MaterialIcon icon="table_chart" />}
+            src={[DataLight, DataDark]}
             href="/components/data"
           >
             <li>Table</li>
@@ -80,6 +91,7 @@ const ComponentsPage: FC = () => (
           <PageCard
             title="Overlays"
             icon={<MaterialIcon icon="picture_in_picture_center" />}
+            src={[OverlaysLight, OverlaysDark]}
             href="/components/overlays"
           >
             <li>Dialog</li>
