@@ -16,7 +16,7 @@ const ResourcesSection: FC = () => (
     {/* Left side: text */}
     <Section className="mb-2 sm:col-span-2 md:mb-0">
       <Header>Resources</Header>
-      <p>
+      <Text type="body-medium" element="p">
         <strong>
           In addition to the demo website (which you’re on right now!), we also
           have a{" "}
@@ -39,7 +39,7 @@ const ResourcesSection: FC = () => (
           this repository
         </a>
         .
-      </p>
+      </Text>
     </Section>
 
     {/* Right side: links */}

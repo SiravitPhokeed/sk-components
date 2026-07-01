@@ -67,7 +67,7 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
       <head>
         <ThemeProvider />
       </head>
-      <SKCRootLayout className="bg-background font-body text-on-background leading-5 tracking-[0.25px]">
+      <SKCRootLayout>
         <NavBar />
         <NavDrawer />
         {children}

@@ -1,4 +1,4 @@
-import { Columns, Header, Section } from "@suankularb-components/react";
+import { Columns, Header, Section, Text } from "@suankularb-components/react";
 import Image from "next/image";
 import type { FC } from "react";
 
@@ -17,26 +17,26 @@ const AboutSection: FC = () => (
     {/* Right side: text */}
     <Section className="col-span-2 sm:col-span-3 md:col-span-5">
       <Header>What is SKCom?</Header>
-      <p>
+      <Text type="body-medium" element="p">
         <strong>SK Components (“SKCom”) is a design system</strong> consisting
         of tokens and components created with the goal of a{" "}
         <strong>
           consistent and harmonious experience across all Suankularb features
         </strong>{" "}
         and applications.
-      </p>
-      <p>
+      </Text>
+      <Text
+        type="body-medium"
+        element="p"
+        className="[&_code]:bg-surface-variant [&_code]:rounded-xs [&_code]:px-1 [&_code]:font-bold"
+      >
         There are currently 2 official SKCom libraries:{" "}
         <strong>SK Component Styles</strong> (
-        <code className="bg-surface-variant text-on-surface-variant rounded-xs px-1 font-mono">
-          @suankularb-components/css
-        </code>
-        ) and <strong>React SK Components</strong> (
-        <code className="bg-surface-variant text-on-surface-variant rounded-xs px-1 font-mono">
-          @suankularb-components/react
-        </code>
+        <code>@suankularb-components/css</code>) and{" "}
+        <strong>React SK Components</strong> (
+        <code>@suankularb-components/react</code>
         ).
-      </p>
+      </Text>
     </Section>
   </Columns>
 );
