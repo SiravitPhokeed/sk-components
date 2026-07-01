@@ -43,7 +43,7 @@
   box-sizing: border-box;
   width: 100%;
   height: 3.5rem;
-  text-align: left;
+  text-align: start;
 
   &,
   &:focus-visible {
@@ -64,8 +64,8 @@
 .skc-select__leading {
   position: absolute;
   top: 1rem;
-  left: 0.75rem;
   z-index: 10;
+  inset-inline-start: 0.75rem;
 
   .skc-select:has(> &) {
     --_padding-left: 3rem;
@@ -88,7 +88,8 @@
 
 .skc-select__helper-msg {
   position: absolute;
-  inset: auto 0 -2.25rem 1rem;
+  inset-block-end: -2.25rem;
+  inset-inline: 1rem 0;
   height: 2rem;
   color: var(--on-surface-variant);
 }
@@ -101,7 +102,8 @@
 
 .skc-select--outlined {
   .skc-select__label {
-    inset: 0 auto auto 0.75rem;
+    top: 0;
+    inset-inline-start: 0.75rem;
     background-color: var(--background);
     padding-inline: 0.25rem;
     height: var(--_border-width);
@@ -114,8 +116,8 @@
   .skc-select__box {
     border: var(--_border-width) solid var(--_border-color);
     border-radius: var(--rounded-xs);
-    padding-right: calc(1rem - var(--_border-width));
-    padding-left: calc(var(--_padding-left) - var(--_border-width));
+    padding-inline-start: calc(var(--_padding-left) - var(--_border-width));
+    padding-inline-end: calc(1rem - var(--_border-width));
 
     &::before {
       display: none;
@@ -126,7 +128,7 @@
 .skc-select--filled {
   .skc-select__label {
     top: 0.5rem;
-    left: var(--_padding-left);
+    inset-inline-start: var(--_padding-left);
   }
 
   .skc-select__box {
@@ -135,7 +137,7 @@
     background-color: var(--surface-variant);
     padding: 1rem;
     padding-bottom: calc(1rem - var(--_border-width));
-    padding-left: var(--_padding-left);
+    padding-inline-start: var(--_padding-left);
   }
 
   .skc-select__value {

@@ -15,7 +15,7 @@
 
 /* Avatar container */
 .skc-input-chip__avatar {
-  margin-left: -0.75rem;
+  margin-inline-start: -0.75rem;
   margin-block: -0.125rem;
   width: 1.5rem;
   height: 1.5rem;

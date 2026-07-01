@@ -19,7 +19,7 @@
   word-wrap: normal;
   width: 1em;
   height: 1em;
-  direction: ltr;
+  overflow: hidden;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }

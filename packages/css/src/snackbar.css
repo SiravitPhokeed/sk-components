@@ -36,7 +36,7 @@
   margin: 0;
   inset: auto;
   bottom: calc(var(--_bottom-offset) + var(--_inset));
-  left: var(--_inset);
+  inset-inline-start: var(--_inset);
   box-shadow: var(--shadow-3);
   border: none;
   border-radius: var(--rounded-xs);

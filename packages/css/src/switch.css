@@ -18,6 +18,14 @@
   height: 2rem;
   -webkit-tap-highlight-color: transparent;
 
+  [dir="rtl"] &,
+  &[dir="rtl"] {
+    transform: scaleX(-1);
+    .skc-switch__handle {
+      transform: scaleX(-1);
+    }
+  }
+
   /* Disabled */
   &[aria-disabled="true"] {
     cursor: default;

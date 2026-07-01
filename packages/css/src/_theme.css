@@ -388,6 +388,13 @@
   }
 }
 
+:root {
+  --inline-forward: 1;
+}
+[dir="rtl"] {
+  --inline-forward: -1;
+}
+
 /* Focus ring animation for non-input elements */
 :not(input, textarea) {
   &,

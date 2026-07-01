@@ -18,16 +18,17 @@
   }
 
   > .skc-button:first-child {
-    border-radius: var(--rounded-full) 0 0 var(--rounded-full);
+    border-start-start-radius: var(--rounded-full);
+    border-end-start-radius: var(--rounded-full);
   }
-
   > .skc-button:last-child {
-    border-radius: 0 var(--rounded-full) var(--rounded-full) 0;
+    border-start-end-radius: var(--rounded-full);
+    border-end-end-radius: var(--rounded-full);
   }
 
   /* Remove conflicting middle border on outlined buttons */
   > .skc-button:not(:first-child) {
-    border-left-width: 0;
+    border-inline-start-width: 0;
   }
 }
 

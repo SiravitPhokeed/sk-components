@@ -7,6 +7,8 @@
 .skc-progress {
   --_indicator-color: var(--primary);
   --_remainder-color: var(--primary-container);
+
+  transform: scaleX(var(--inline-forward));
 }
 
 /* Linear determinate */
@@ -16,6 +18,11 @@
     position: relative;
     gap: 0.25rem;
     height: 0.25rem;
+
+    /* Already flipped by parent */
+    [dir="rtl"] & {
+      flex-direction: row-reverse;
+    }
 
     &,
     > * {

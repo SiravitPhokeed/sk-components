@@ -26,6 +26,10 @@
   max-width: 70.5rem;
 }
 
+[dir="rtl"] .skc-page-header__back .skc-material-icon {
+  transform: scaleX(-1);
+}
+
 .skc-page-header__text {
   flex-grow: 1;
   margin: 0;
@@ -68,11 +72,11 @@
   display: none;
   position: fixed;
   top: 1rem;
-  left: 0.5rem;
   z-index: 80;
   animation: skc-page-header-minimized-entry var(--easing-standard) backwards;
   animation-timeline: --_page-header-timeline;
   animation-range: exit 20%;
+  inset-inline-start: 0.5rem;
 }
 @supports (view-timeline: --_page-header-timeline) {
   .skc-page-header__minimized {
@@ -97,7 +101,7 @@
     width: calc(100% - 10rem);
 
     > .skc-button:first-child {
-      margin-left: -0.5rem;
+      margin-inline-start: -0.5rem;
     }
   }
 

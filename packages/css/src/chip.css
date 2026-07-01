@@ -35,10 +35,10 @@
     font-size: 1.125rem;
 
     &:not(:last-child) {
-      margin-left: -0.5rem;
+      margin-inline-start: -0.5rem;
     }
     &:last-child {
-      margin-right: -0.5rem;
+      margin-inline-end: -0.5rem;
     }
   }
 
@@ -119,7 +119,7 @@
 .skc-chip .skc-chip__trailing-button {
   --state-layer-color: var(--on-surface);
   margin-block: -0.125rem;
-  margin-right: -0.75rem;
+  margin-inline-end: -0.75rem;
 
   padding: 0.1875rem;
   color: var(--on-surface);

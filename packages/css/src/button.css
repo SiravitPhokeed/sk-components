@@ -34,7 +34,7 @@
 }
 
 .skc-button > .skc-material-icon {
-  margin-left: -0.5rem;
+  margin-inline-start: -0.5rem;
   color: var(--state-layer-color);
   font-size: 1.25rem;
 }
@@ -50,7 +50,7 @@
 
   > .skc-material-icon {
     transition: font-weight var(--motion-short-4) var(--easing-standard);
-    margin-left: 0;
+    margin-inline-start: 0;
     font-size: 1.5rem;
   }
 
@@ -78,7 +78,7 @@
 
   position: absolute;
   top: 50%;
-  left: 50%;
+  inset-inline-start: 50%;
   transform: translate(-50%, -50%);
   width: 1.25rem;
   height: 1.25rem;
@@ -160,7 +160,7 @@
   padding-inline: 0.75rem;
 
   > .skc-material-icon {
-    margin-left: -0.25rem;
+    margin-inline-start: -0.25rem;
   }
 
   &.skc-button--disabled {

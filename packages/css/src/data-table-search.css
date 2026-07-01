@@ -35,7 +35,7 @@
 }
 
 .skc-data-table-search > .skc-material-icon {
-  margin-left: 1.5rem;
+  margin-inline-start: 1.5rem;
 }
 
 .skc-data-table-search__input {

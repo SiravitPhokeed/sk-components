@@ -25,7 +25,7 @@
 /* Alignment */
 .skc-table-cell--left .skc-table-cell__content {
   justify-content: flex-start;
-  text-align: left;
+  text-align: start;
 }
 
 .skc-table-cell--center .skc-table-cell__content {
@@ -35,5 +35,5 @@
 
 .skc-table-cell--right .skc-table-cell__content {
   justify-content: flex-end;
-  text-align: right;
+  text-align: end;
 }

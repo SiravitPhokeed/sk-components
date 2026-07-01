@@ -39,7 +39,7 @@
 
   position: absolute;
   top: 50%;
-  left: 1rem;
+  inset-inline-start: 1rem;
   transform: translateY(-50%) rotate(var(--_rotate));
   opacity: 0;
   transition-duration: var(--motion-short-4);
@@ -87,7 +87,7 @@
 .skc-data-table-cell__content {
   .skc-data-table-cell--left & {
     justify-content: flex-start;
-    text-align: left;
+    text-align: start;
   }
 
   .skc-data-table-cell--center & {
@@ -97,7 +97,7 @@
 
   .skc-data-table-cell--right & {
     justify-content: flex-end;
-    text-align: right;
+    text-align: end;
   }
 }
 
@@ -107,7 +107,7 @@
   .skc-data-table-cell__arrow--desc
 ) {
   .skc-data-table-cell--left & {
-    padding-right: 2.5rem;
+    padding-inline-end: 2.5rem;
     > :not(:is(.skc-data-table-cell__arrow, .skc-interactive__ripple)) {
       transform: translateX(1rem);
     }
@@ -116,6 +116,6 @@
     padding-inline: 2.5rem;
   }
   .skc-data-table-cell--right & {
-    padding-left: 2.5rem;
+    padding-inline-start: 2.5rem;
   }
 }

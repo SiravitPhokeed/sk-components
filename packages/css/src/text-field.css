@@ -18,13 +18,17 @@
 .skc-text-field__label {
   position: absolute;
   top: 1rem;
-  left: var(--_label-offset);
   transform-origin: left;
   z-index: 10;
   transition-property: color, transform;
   transition: var(--_duration) var(--_easing);
+  inset-inline-start: var(--_label-offset);
   pointer-events: none;
   font-family: var(--font-display);
+
+  [dir="rtl"] & {
+    transform-origin: right;
+  }
 
   .skc-text-field:focus-within & {
     color: var(--primary);
@@ -50,10 +54,10 @@
   width: 100%;
 
   > :first-child {
-    padding-left: var(--_box-padding-inline);
+    padding-inline-start: var(--_box-padding-inline);
   }
   > :last-child {
-    padding-right: var(--_box-padding-inline);
+    padding-inline-end: var(--_box-padding-inline);
   }
 }
 
@@ -67,7 +71,7 @@
   color: var(--on-surface);
   font: inherit;
   letter-spacing: inherit;
-  text-align: left;
+  text-align: start;
 
   &:focus {
     outline: none;
@@ -75,7 +79,12 @@
 
   /* Add gap between spinner and right edge / trailing content */
   &[type="number"] {
-    padding-right: 1rem;
+    padding-inline-end: 1rem;
+  }
+  /* tel inputs on Chrome are always left-to-right, so we add a non-logical left
+     padding */
+  [dir="rtl"] &[type="tel"] {
+    padding-left: 1rem;
   }
   &[type="color"] {
     padding-block: 0;
@@ -87,7 +96,7 @@
 
 .skc-text-field__leading {
   .skc-material-icon {
-    margin-right: 0.5rem;
+    margin-inline-end: 0.5rem;
   }
 
   .skc-text-field:has(> .skc-text-field__box > &) {
@@ -97,12 +106,12 @@
 
 .skc-text-field__no-files {
   position: absolute;
-  left: var(--_label-offset);
+  inset-inline-start: var(--_label-offset);
 }
 
 .skc-text-field__trailing {
   .skc-material-icon {
-    margin-left: 0.5rem;
+    margin-inline-start: 0.5rem;
   }
 }
 
@@ -117,10 +126,11 @@
 .skc-text-field--outlined {
   .skc-text-field__clip {
     position: absolute;
+    top: 0;
     transform: scaleX(0);
     z-index: 10;
     transition: transform var(--_duration) var(--_easing);
-    inset: 0 auto auto 0.75rem;
+    inset-inline-start: 0.75rem;
     background-color: var(--background);
     padding-inline: 0.25rem;
     height: var(--_border-width);
@@ -144,7 +154,9 @@
     }
     /* And move the label to the top left and scale it down */
     .skc-text-field__label {
-      transform: translateX(calc(var(--_label-offset) * -1 + 1rem))
+      transform: translateX(
+          calc((var(--_label-offset) * -1 + 1rem) * var(--inline-forward))
+        )
         translateY(-1.75rem) scale(0.75);
     }
   }
@@ -276,13 +288,13 @@
 /* ── Alignment ───────────────────────────────────────────────────────────── */
 
 .skc-text-field--left .skc-text-field__input {
-  text-align: left;
+  text-align: start;
 }
 .skc-text-field--center .skc-text-field__input {
   text-align: center;
 }
 .skc-text-field--right .skc-text-field__input {
-  text-align: right;
+  text-align: end;
 }
 
 /* ── Behavior ────────────────────────────────────────────────────────────── */

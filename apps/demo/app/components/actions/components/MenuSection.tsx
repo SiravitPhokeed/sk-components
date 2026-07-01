@@ -37,7 +37,12 @@ const MenuSection: FC = () => {
             </Button>
             <Menu id="menu-edit">
               <MenuItem
-                icon={<MaterialIcon icon="content_cut" />}
+                icon={
+                  <MaterialIcon
+                    icon="content_cut"
+                    className="rtl:-scale-x-100"
+                  />
+                }
                 metadata="⌘ X"
                 command="hide-popover"
               >

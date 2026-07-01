@@ -90,7 +90,7 @@
 
 .skc-dialog > .skc-actions {
   padding: 1.5rem;
-  padding-left: 1rem;
+  padding-inline-start: 1rem;
 }
 
 /* ── Backdrop entry animation (Safari can't @starting-style ::backdrop) ── */

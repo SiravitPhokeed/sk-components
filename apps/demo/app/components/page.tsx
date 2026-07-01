@@ -40,7 +40,7 @@ const ComponentsPage: FC = () => (
 
           {/* Input */}
           <PageCard
-            icon={<MaterialIcon icon="input" />}
+            icon={<MaterialIcon icon="input" className="rtl:-scale-x-100" />}
             title="Input"
             href="/components/input"
             components={[

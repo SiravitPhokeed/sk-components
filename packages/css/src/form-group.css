@@ -11,7 +11,7 @@
   padding: 0;
 
   .skc-form-item {
-    padding-left: 0.55rem;
+    padding-inline-start: 0.55rem;
     padding-block: 0.4375rem;
   }
 }

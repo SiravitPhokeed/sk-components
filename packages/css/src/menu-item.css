@@ -11,7 +11,8 @@
   flex-direction: row;
   align-items: center;
   gap: 1rem;
-  padding: 0.5rem 1.5rem 0.5rem 1rem;
+  padding-inline: 1rem 1.5rem;
+  padding-block: 0.5rem;
   width: 100%;
   overflow: hidden;
   color: var(--on-surface);
@@ -25,12 +26,12 @@
 .skc-menu-item__label {
   flex-grow: 1;
   margin-block: 0.5rem;
-  text-align: left;
+  text-align: start;
 }
 
 .skc-menu-item__metadata {
   color: var(--on-surface-variant);
-  text-align: right;
+  text-align: end;
 }
 
 .skc-menu-item--selected {

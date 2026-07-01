@@ -20,7 +20,7 @@ body {
 
     .skc-fab {
       position: fixed;
-      right: 1rem;
+      inset-inline-end: 1rem;
       bottom: calc(5rem + 1rem);
     }
   }
@@ -50,15 +50,15 @@ body {
     padding-bottom: 0;
 
     > .skc-nav-bar {
-      right: auto;
+      inset-inline-end: auto;
 
       ~ .skc-progress {
-        left: 5rem;
+        inset-inline-start: 5rem;
       }
 
       .skc-fab {
         position: relative;
-        right: 0;
+        inset-inline-end: 0;
         bottom: 0;
       }
     }

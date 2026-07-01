@@ -80,12 +80,12 @@
       }
 
       > :first-child {
-        padding-right: 0.75rem;
+        padding-inline-end: 0.75rem;
       }
 
       > :last-child {
         display: block;
-        padding-left: 0.75rem;
+        padding-inline-start: 0.75rem;
       }
     }
   }

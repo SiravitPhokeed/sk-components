@@ -20,6 +20,7 @@
 
   position: absolute;
   position-anchor: --_app-drawer-toggle;
+  position-try-fallbacks: flip-inline;
   top: calc(anchor(bottom) + 0.5rem);
   right: anchor(right);
   bottom: auto;
