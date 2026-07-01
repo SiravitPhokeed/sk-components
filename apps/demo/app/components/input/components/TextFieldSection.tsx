@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  Actions,
   Button,
   Columns,
   Header,
@@ -74,7 +75,7 @@ const TextFieldSection: FC = () => {
         </p>
       </section>
 
-      <Columns columns={3} className="gap-y-8! pb-8">
+      <Columns columns={3} element="form" className="gap-y-8! pb-8">
         <TextField<string>
           appearance={appearance}
           label="Candidate name"
@@ -87,15 +88,17 @@ const TextFieldSection: FC = () => {
         <TextField<string>
           appearance={appearance}
           label="Email"
-
           align="right"
           leading={<MaterialIcon icon="email" />}
           trailing="@student.sk.ac.th"
           required
-          error={email.includes("@")}
           value={email}
           onChange={(value) => setEmail(value.replace("@student.sk.ac.th", ""))}
-          inputAttr={{ autoCorrect: "off", autoCapitalize: "none" }}
+          inputAttr={{
+            autoCorrect: "off",
+            autoCapitalize: "none",
+            pattern: "^(?!.*@).*$", // Prevent user from typing @ in the input field
+          }}
         />
         <TextField<string>
           appearance={appearance}
@@ -104,6 +107,10 @@ const TextFieldSection: FC = () => {
           leading={<MaterialIcon icon="phone" />}
           value={phone}
           onChange={setPhone}
+          inputAttr={{
+            pattern: "^(\\+66|0)[0-9]{8,9}$",
+            inputMode: "numeric",
+          }}
         />
         <TextField<string>
           appearance={appearance}
@@ -117,7 +124,6 @@ const TextFieldSection: FC = () => {
           type="number"
           leading={<MaterialIcon icon="monitor_weight" />}
           trailing="kg"
-          error={Number.isNaN(Number(weight)) || Number(weight) < 0}
           value={weight}
           onChange={setWeight}
           inputAttr={{ step: 0.5, min: 0 }}
@@ -162,6 +168,25 @@ const TextFieldSection: FC = () => {
           onChange={setPolicies}
           className="sm:col-span-2"
         />
+        <Actions className="col-span-full">
+          <Button
+            appearance="outlined"
+            onClick={() => {
+              setName("");
+              setPartyList("");
+              setEmail("");
+              setPhone("");
+              setWeight("");
+              setDocument(undefined);
+              setBirthdate("");
+              setPolicies("");
+            }}
+            element={(props) => <button {...props} type="reset" />}
+          >
+            Reset
+          </Button>
+          <Button appearance="filled">Submit</Button>
+        </Actions>
       </Columns>
 
       <p className="mb-4 text-balance">
