@@ -31,7 +31,7 @@ body {
   }
 }
 
-@media only screen and (width < 600px) {
+@media (width < 600px) {
   .skc-root-layout {
     padding-bottom: 5rem;
 
@@ -45,7 +45,7 @@ body {
   }
 }
 
-@media only screen and (width >= 600px) {
+@media (width >= 600px) {
   .skc-root-layout {
     padding-bottom: 0;
 

@@ -100,7 +100,7 @@
   color: var(--on-surface);
 }
 
-@media (min-width: 600px) {
+@media (width >= 600px) {
   .skc-fullscreen-dialog .skc-chip--selected {
     --state-layer-color: var(--on-surface);
 

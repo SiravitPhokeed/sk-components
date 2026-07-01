@@ -16,17 +16,19 @@
   gap: 0.5rem 1.5rem;
 }
 
-.skc-columns--2,
-.skc-columns--3,
-.skc-columns--4 {
-  --column-count: 1;
-}
-.skc-columns--6,
-.skc-columns--12 {
-  --column-count: 2;
+@media (width < 600px) {
+  .skc-columns--2,
+  .skc-columns--3,
+  .skc-columns--4 {
+    --column-count: 1;
+  }
+  .skc-columns--6,
+  .skc-columns--12 {
+    --column-count: 2;
+  }
 }
 
-@media only screen and (min-width: 600px) {
+@media (600px <= width < 905px) {
   .skc-columns--2,
   .skc-columns--3,
   .skc-columns--4 {
@@ -40,7 +42,7 @@
   }
 }
 
-@media only screen and (min-width: 905px) {
+@media (width >= 905px) {
   .skc-columns--2 {
     --column-count: 2;
   }

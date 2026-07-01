@@ -100,7 +100,7 @@
   }
 }
 
-@media (min-width: 600px) {
+@media (width >= 600px) {
   .skc-fullscreen-dialog {
     --_exit-transform-from: translate(-50%, -50%) scaleY(1);
     --_exit-transform-to: translate(-50%, calc(-50% - var(--_offset-y) / 4))

@@ -141,7 +141,7 @@
   }
 }
 
-@media (min-width: 600px) {
+@media (width >= 600px) {
   .skc-snackbar {
     --_inset: 1rem;
     --_exit-translate: 0.5rem;
