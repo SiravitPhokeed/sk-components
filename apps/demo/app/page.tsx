@@ -1,5 +1,6 @@
 import AboutSection from "@/components/AboutSection";
 import DemoSection from "@/components/DemoSection";
+import FeaturesSection from "@/components/FeaturesSection";
 import PageHeader from "@/components/PageHeader";
 import ResourcesSection from "@/components/ResourcesSection";
 import { ContentLayout } from "@suankularb-components/react";
@@ -15,6 +16,7 @@ const AboutPage: FC = () => (
     <PageHeader>About</PageHeader>
     <ContentLayout>
       <AboutSection />
+      <FeaturesSection />
       <ResourcesSection />
       <DemoSection />
     </ContentLayout>
