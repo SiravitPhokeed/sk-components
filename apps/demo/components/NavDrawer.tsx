@@ -62,31 +62,31 @@ const NavDrawer: FC = () => {
       {/* Components */}
       <NavDrawerSection header="Components">
         <NavDrawerItem
-          icon={<MaterialIcon icon="touch_app" />}
-          label="Actions"
-          selected={pathname === "/components/actions"}
-          href="/components/actions"
+          icon={<MaterialIcon icon="view_quilt" />}
+          label="Layout and navigation"
+          selected={pathname === "/components/layout"}
+          href="/components/layout"
           element={Link}
         />
         <NavDrawerItem
           icon={<MaterialIcon icon="input" />}
-          label="Input"
-          selected={pathname === "/components/input"}
-          href="/components/input"
+          label="Inputs"
+          selected={pathname === "/components/inputs"}
+          href="/components/inputs"
           element={Link}
         />
         <NavDrawerItem
-          icon={<MaterialIcon icon="swap_horiz" />}
-          label="Communication"
-          selected={pathname === "/components/communication"}
-          href="/components/communication"
+          icon={<MaterialIcon icon="table_chart" />}
+          label="Data display"
+          selected={pathname === "/components/data"}
+          href="/components/data"
           element={Link}
         />
         <NavDrawerItem
-          icon={<MaterialIcon icon="dashboard" />}
-          label="Containers"
-          selected={pathname === "/components/containers"}
-          href="/components/containers"
+          icon={<MaterialIcon icon="picture_in_picture_center" />}
+          label="Overlays"
+          selected={pathname === "/components/overlays"}
+          href="/components/overlays"
           element={Link}
         />
       </NavDrawerSection>
