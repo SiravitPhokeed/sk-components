@@ -5,6 +5,7 @@ import {
   FormItem,
   FullscreenDialog,
   SegmentedButton,
+  TextField,
 } from "@suankularb-components/react";
 import { snackbar } from "@suankularb-components/react/helpers";
 import { useState, type FC } from "react";
@@ -15,10 +16,6 @@ const ReportIssueDialog: FC = () => {
   const [view, setView] = useState<"bug-report" | "feature-request">(
     "bug-report",
   );
-  // const [issueTitle, setIssueTitle] = useState("");
-  // const [issueDesc, setIssueDesc] = useState("");
-  // const [issueExpect, setIssueExpect] = useState("");
-  // const [showDiscard, setShowDiscard] = useState(false);
 
   return (
     <FullscreenDialog
@@ -43,7 +40,7 @@ const ReportIssueDialog: FC = () => {
     >
       <Columns columns={2}>
         <div className="flex flex-col gap-4">
-          <p id="dialog-report-an-issue">
+          <p>
             If you have a GitHub account, please consider reporting issues on
             our{" "}
             <a
@@ -79,31 +76,25 @@ const ReportIssueDialog: FC = () => {
           </SegmentedButton>
         </div>
         <div>
-          <div className="flex h-104 flex-col gap-12 pb-12">
-            {/* <TextField
+          <div className="flex flex-col gap-12 pb-12">
+            <TextField
               appearance="outlined"
               label="Title"
               behavior="single-line"
               helperMsg="What is your issue?"
-              value={issueTitle}
-              onChange={setIssueTitle}
             />
             <TextField
               appearance="outlined"
               label="Description"
               behavior="textarea"
               helperMsg="A clear and concise description."
-              value={issueDesc}
-              onChange={setIssueDesc}
             />
             <TextField
               appearance="outlined"
               label="Expectation"
               behavior="textarea"
               helperMsg="What you expected to have happened/think should be implemented."
-              value={issueExpect}
-              onChange={setIssueExpect}
-            /> */}
+            />
           </div>
         </div>
       </Columns>
