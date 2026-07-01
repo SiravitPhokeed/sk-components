@@ -7,6 +7,7 @@ import HeaderSection from "@/app/components/data/components/HeaderSection";
 import InputChipSection from "@/app/components/data/components/InputChipSection";
 import InteractiveSection from "@/app/components/data/components/InteractiveSection";
 import ListSection from "@/app/components/data/components/ListSection";
+import MaterialIconSection from "@/app/components/data/components/MaterialIconSection";
 import SuggestionChipSection from "@/app/components/data/components/SuggestionChipSection";
 import TableSection from "@/app/components/data/components/TableSection";
 import TextSection from "@/app/components/data/components/TextSection";
@@ -37,6 +38,7 @@ const DataDisplayPage: FC = () => (
       <HeaderSection />
       <TextSection />
       <AvatarSection />
+      <MaterialIconSection />
       <InteractiveSection />
     </ContentLayout>
   </>
