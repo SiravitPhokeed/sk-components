@@ -242,9 +242,18 @@ export const TextField = <Value extends string | File = string>({
       )}
       style={style}
     >
-      <Text type="body-small" aria-hidden className="skc-text-field__clip">
-        {label /* For measurement */}
-      </Text>
+      {/* Hide a portion of the box border to make space for the label */}
+      {appearance === "outlined" && (
+        <Text
+          type="body-small"
+          className="skc-text-field__clip"
+          element={(props) => <span {...props} aria-hidden />}
+        >
+          {label /* For measurement */}
+        </Text>
+      )}
+
+      {/* Label */}
       <Text
         id={`${id}-label`}
         type="body-large"
@@ -253,6 +262,7 @@ export const TextField = <Value extends string | File = string>({
         <span>{label}</span>
       </Text>
 
+      {/* Box */}
       <div className="skc-text-field__box">
         {leading && <div className="skc-text-field__leading">{leading}</div>}
         <Element
@@ -301,6 +311,7 @@ export const TextField = <Value extends string | File = string>({
         {trailing && <div className="skc-text-field__trailing">{trailing}</div>}
       </div>
 
+      {/* Helper/error message */}
       {helperMsg && (
         <Text
           id={`${id}-helper`}
