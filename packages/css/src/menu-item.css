@@ -16,6 +16,10 @@
   overflow: hidden;
   color: var(--on-surface);
   -webkit-tap-highlight-color: transparent;
+
+  &:focus-visible {
+    outline-offset: -3px;
+  }
 }
 
 .skc-menu-item__label {
