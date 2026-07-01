@@ -1,3 +1,5 @@
+"use client";
+
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { StyleableProps } from "@/lib/types";
