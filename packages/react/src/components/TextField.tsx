@@ -110,6 +110,8 @@ export interface TextFieldProps<Value extends string | File = string> {
    * Tells Text Field that it contains an invalid value and activates the error
    * state.
    *
+   * - Browser validation may override this if the field value is invalid, even
+   *   if `error` is false.
    * - Optional.
    */
   error?: boolean;
@@ -254,6 +256,7 @@ export const TextField = <Value extends string | File = string>({
         <Element
           aria-labelledby={`${id}-label`}
           aria-describedby={helperMsg ? `${id}-helper` : undefined}
+          aria-invalid={error || undefined}
           type={type}
           disabled={disabled}
           required={required}
