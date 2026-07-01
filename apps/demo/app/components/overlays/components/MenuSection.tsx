@@ -8,6 +8,7 @@ import {
   Menu,
   MenuItem,
   Section,
+  Text,
 } from "@suankularb-components/react";
 import type { FC } from "react";
 
@@ -17,10 +18,17 @@ const MenuSection: FC = () => {
       <Header>Menu</Header>
 
       <Columns columns={2}>
-        <p className="mb-2 text-balance">
-          Scroll down to see how Menu&rsquo;s anchor positioning adapts as the
-          trigger element moves up the viewport.
-        </p>
+        <Section className="mb-2">
+          <Text type="body-medium">
+            Scroll down to see how Menu&rsquo;s anchor positioning adapts as the
+            trigger element moves up the viewport.
+          </Text>
+          <Text type="body-medium">
+            You may need to{" "}
+            <span className="landscape:hidden">rotate your device or </span>
+            resize your browser window to see the effect in action.
+          </Text>
+        </Section>
 
         <Card
           appearance="outlined"
