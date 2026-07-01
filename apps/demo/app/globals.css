@@ -255,3 +255,6 @@
 @utility state-layer-* {
   --state-layer-color: --value(--color-*);
 }
+@utility flip-x {
+  @apply -scale-x-100;
+}

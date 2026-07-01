@@ -48,7 +48,7 @@ const MenuSection: FC = () => {
                 icon={
                   <MaterialIcon
                     icon="content_cut"
-                    className="rtl:-scale-x-100"
+                    className="rtl:flip-x"
                   />
                 }
                 metadata="⌘ X"
