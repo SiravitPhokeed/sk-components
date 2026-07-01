@@ -130,10 +130,7 @@
   }
 
   &[aria-disabled="true"] {
-    opacity: 0.12;
-    cursor: default;
-    border-color: var(--on-surface);
-    background-color: var(--on-surface);
+    background-color: color-mix(in srgb, var(--on-surface) 12%, transparent);
 
     &::before {
       display: none;
