@@ -1,3 +1,4 @@
+import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/card-content.css";
@@ -22,13 +23,18 @@ export interface CardContentProps extends ElementCustomizableProps {
  */
 export const CardContent: StyleableFC<CardContentProps> = ({
   children,
-  element: Element = "div",
+  element = "div",
   style,
   className,
 }) => {
   return (
-    <Element className={cn("skc-card-content", className)} style={style}>
+    <Text
+      type="body-medium"
+      element={element}
+      className={cn("skc-card-content", className)}
+      style={style}
+    >
       {children}
-    </Element>
+    </Text>
   );
 };
