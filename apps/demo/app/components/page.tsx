@@ -64,7 +64,7 @@ const ComponentsPage: FC = () => (
             <li>Data Table</li>
             <li>List</li>
             <li>Card</li>
-            <li>Assistive Chip</li>
+            <li>Assist Chip</li>
             <li>Filter Chip</li>
             <li>Input Chip</li>
             <li>Suggestion Chip</li>
