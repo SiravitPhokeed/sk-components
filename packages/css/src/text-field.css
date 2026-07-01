@@ -31,6 +31,8 @@
   }
 }
 
+/* ── Elements ────────────────────────────────────────────────────────────── */
+
 /* Add an asterisk to the label if the input is required,
    and also add it to the clip so the length still matches */
 :is(.skc-text-field__clip, .skc-text-field__label):has(
@@ -79,6 +81,9 @@
     padding-block: 0;
   }
 }
+.skc-text-field__input--static {
+  height: 1.5rem;
+}
 
 .skc-text-field__leading {
   .skc-material-icon {
@@ -106,6 +111,8 @@
   inset: auto 0 -2.25rem 1rem;
   height: 2rem;
 }
+
+/* ── Appearance ──────────────────────────────────────────────────────────── */
 
 .skc-text-field--outlined {
   .skc-text-field__clip {
@@ -231,6 +238,8 @@
   }
 }
 
+/* ── Disabled ────────────────────────────────────────────────────────────── */
+
 .skc-text-field--disabled {
   --_border-color: color-mix(in srgb, var(--outline) 12%, transparent);
   color: color-mix(in srgb, var(--on-surface) 38%, transparent);
@@ -250,6 +259,8 @@
   }
 }
 
+/* ── Error ───────────────────────────────────────────────────────────────── */
+
 .skc-text-field--error,
 .skc-text-field:not(.skc-text-field--valid):has(
     .skc-text-field__input:user-invalid
@@ -262,6 +273,8 @@
   }
 }
 
+/* ── Alignment ───────────────────────────────────────────────────────────── */
+
 .skc-text-field--left .skc-text-field__input {
   text-align: left;
 }
@@ -272,14 +285,14 @@
   text-align: right;
 }
 
+/* ── Behavior ────────────────────────────────────────────────────────────── */
+
 .skc-text-field--multi-line .skc-text-field__input {
-  field-sizing: content;
+  field-sizing: content; /* Allow the height to grow with content */
   resize: none;
 }
 
-.skc-text-field__input--static {
-  height: 1.5rem;
-}
+/* ── Other ───────────────────────────────────────────────────────────────── */
 
 /* No files: hide the input and show a message instead.
    Has file: show the input. The message is hidden programmatically. */
