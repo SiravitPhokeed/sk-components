@@ -5,6 +5,7 @@ import {
   FormItem,
   FullscreenDialog,
   SegmentedButton,
+  Text,
   TextField,
 } from "@suankularb-components/react";
 import { snackbar } from "@suankularb-components/react/helpers";
@@ -40,7 +41,7 @@ const ReportIssueDialog: FC = () => {
     >
       <Columns columns={2}>
         <div className="flex flex-col gap-4">
-          <p>
+          <Text type="body-medium" element="p">
             If you have a GitHub account, please consider reporting issues on
             our{" "}
             <a
@@ -51,7 +52,7 @@ const ReportIssueDialog: FC = () => {
               GitHub repository
             </a>
             . Thank you!
-          </p>
+          </Text>
           <FormItem
             label="I have already queried the issues page and cannot find my
                 issue."
