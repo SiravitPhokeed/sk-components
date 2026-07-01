@@ -50,8 +50,11 @@ const FeaturesSection: FC = () => {
           <CardHeader icon={<MaterialIcon icon="palette" />} title="Theming" />
           <CardContent>
             <p>
-              Import the Theme Provider component and get Suankularb&rsquo;s
-              pink-and-blue theme, or create your own by studying the{" "}
+              Import the Theme Provider component and get the default
+              pink-and-blue theme inspired by Suankularb&rsquo;s colors.
+            </p>
+            <p>
+              Or, create your own by studying the{" "}
               <a
                 href="https://github.com/suankularb-wittayalai-school/sk-components/tree/main/packages/css/src/_theme.css"
                 target="_blank"
