@@ -1,7 +1,7 @@
 "use client";
 
-import RemoveStudentsDialog from "@/app/components/communication/components/RemoveStudentsDialog";
-import ReportIssueDialog from "@/app/components/communication/components/ReportIssueDialog";
+import RemoveStudentsDialog from "@/app/components/overlays/components/RemoveStudentsDialog";
+import ReportIssueDialog from "@/app/components/overlays/components/ReportIssueDialog";
 import {
   Actions,
   Button,

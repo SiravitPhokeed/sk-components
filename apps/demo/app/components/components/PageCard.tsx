@@ -8,19 +8,20 @@ import {
   CardHeader,
 } from "@suankularb-components/react";
 import Link from "next/link";
-import type { FC, ReactElement } from "react";
+import type { FC, ReactElement, ReactNode } from "react";
 
 const PageCard: FC<{
+  children: ReactNode;
   icon: ReactElement;
   title: string;
   href: string;
-  components: string[];
-}> = ({ icon, title, href, components }) => (
+}> = ({ children, icon, title, href }) => (
   <Card appearance="outlined">
     <CardHeader icon={icon} title={title} />
+    <div className="bg-surface-container aspect-5/2" />
     <CardContent>
-      <p>{components.join(", ")}</p>
-      <Actions align="full">
+      <ul className="list-disc ps-3 md:columns-2">{children}</ul>
+      <Actions>
         <Button appearance="tonal" href={href} element={Link}>
           View showcase
         </Button>

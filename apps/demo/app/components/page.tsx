@@ -18,88 +18,77 @@ const ComponentsPage: FC = () => (
     <PageHeader>Components</PageHeader>
     <ContentLayout>
       <Section>
-        <Columns columns={4}>
-          {/* Actions */}
+        <Columns columns={2}>
           <PageCard
-            icon={<MaterialIcon icon="touch_app" />}
-            title="Actions"
-            href="/components/actions"
-            components={[
-              "Actions",
-              "Button",
-              "Segmented Button",
-              "Toggle Button",
-              "Input Chip",
-              "Assist Chip",
-              "Filter Chip",
-              "Suggestion Chip",
-              "Chip Set",
-              "FAB",
-            ]}
-          />
+            title="Layout and navigation"
+            icon={<MaterialIcon icon="view_quilt" />}
+            href="/components/layout"
+          >
+            <li>Root Layout</li>
+            <li>Content Layout</li>
+            <li>Split Layout</li>
+            <li>Columns</li>
+            <li>Section</li>
+            <li>Nav Bar</li>
+            <li>Nav Drawer</li>
+            <li>App Drawer</li>
+            <li>Tabs Container and Tab</li>
+            <li>Theme Provider</li>
+            <li>Anchor</li>
+          </PageCard>
 
-          {/* Input */}
           <PageCard
-            icon={<MaterialIcon icon="input" className="rtl:-scale-x-100" />}
-            title="Input"
-            href="/components/input"
-            components={[
-              "Checkbox",
-              "File Input",
-              "Form Group",
-              "Form Item",
-              "Radio",
-              "Search",
-              "Select",
-              "Switch",
-              "Text Field",
-            ]}
-          />
+            title="Inputs"
+            icon={<MaterialIcon icon="input" />}
+            href="/components/inputs"
+          >
+            <li>Button</li>
+            <li>Segmented Button</li>
+            <li>Toggle Button</li>
+            <li>Actions</li>
+            <li>Checkbox</li>
+            <li>Radio</li>
+            <li>Switch</li>
+            <li>Select</li>
+            <li>Text Field</li>
+            <li>Search</li>
+            <li>Form Group and Form Item</li>
+          </PageCard>
 
-          {/* Communication */}
           <PageCard
-            icon={<MaterialIcon icon="swap_horiz" />}
-            title="Communication"
-            href="/components/communication"
-            components={[
-              "Dialog",
-              "Dialog Header",
-              "Dialog Content",
-              "Full-screen Dialog",
-              "Progress",
-              "Snackbar",
-            ]}
-          />
+            title="Data display"
+            icon={<MaterialIcon icon="table_chart" />}
+            href="/components/data"
+          >
+            <li>Table</li>
+            <li>Data Table</li>
+            <li>List</li>
+            <li>Card</li>
+            <li>Assistive Chip</li>
+            <li>Filter Chip</li>
+            <li>Input Chip</li>
+            <li>Suggestion Chip</li>
+            <li>Text</li>
+            <li>Header</li>
+            <li>Page Header</li>
+            <li>Avatar</li>
+            <li>Material Icon</li>
+            <li>Divider</li>
+            <li>Interactive</li>
+          </PageCard>
 
-          {/* Dashboard */}
           <PageCard
-            icon={<MaterialIcon icon="dashboard" />}
-            title="Containers"
-            href="/components/containers"
-            components={[
-              "Card",
-              "Card Header",
-              "Card Content",
-              "Columns",
-              "Data Table",
-              "Data Table Search",
-              "Data Table Filters",
-              "Data Table Content",
-              "Data Table Head",
-              "Data Table Body",
-              "Data Table Pagination",
-              "Divider",
-              "List",
-              "List Item",
-              "List Item Content",
-              "Table",
-              "Table Head",
-              "Table Body",
-              "Table Foot",
-              "Table Row",
-              "Table Cell",
-            ]}
-          />
+            title="Overlays"
+            icon={<MaterialIcon icon="picture_in_picture_center" />}
+            href="/components/overlays"
+          >
+            <li>Dialog</li>
+            <li>Fullscreen Dialog</li>
+            <li>Menu</li>
+            <li>Menu Item</li>
+            <li>Snackbar</li>
+            <li>Progress</li>
+          </PageCard>
         </Columns>
       </Section>
     </ContentLayout>
