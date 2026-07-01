@@ -1,4 +1,5 @@
 import ColumnsSection from "@/app/components/layout/components/ColumnsSection";
+import NavBarSection from "@/app/components/layout/components/NavBarSection";
 import SplitLayoutSection from "@/app/components/layout/components/SplitLayoutSection";
 import TabSection from "@/app/components/layout/components/TabSection";
 import PageHeader from "@/components/PageHeader";
@@ -16,6 +17,7 @@ const LayoutPage: FC = () => (
     <ContentLayout>
       <SplitLayoutSection />
       <ColumnsSection />
+      <NavBarSection />
       <TabSection />
     </ContentLayout>
   </>
