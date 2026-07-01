@@ -104,6 +104,11 @@ const FeaturesSection: FC = () => {
           </CardContent>
         </Card>
       </Columns>
+
+      <Text type="body-small" element="p" className="text-on-surface-variant">
+        To reset the color scheme and text direction on this demo, reload the
+        page.
+      </Text>
     </Section>
   );
 };
