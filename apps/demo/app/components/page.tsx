@@ -28,7 +28,7 @@ const ComponentsPage: FC = () => (
       <Section>
         <Columns columns={2}>
           <PageCard
-            title="Layout and navigation"
+            title="Layout & navigation"
             icon={<MaterialIcon icon="view_quilt" />}
             src={[LayoutLight, LayoutDark]}
             href="/components/layout"

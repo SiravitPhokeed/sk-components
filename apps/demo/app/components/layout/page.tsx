@@ -9,12 +9,12 @@ import type { Metadata } from "next";
 import type { FC } from "react";
 
 export const metadata: Metadata = {
-  title: "Layout and navigation",
+  title: "Layout & navigation",
 };
 
 const LayoutPage: FC = () => (
   <>
-    <PageHeader parentURL="/components">Layout and navigation</PageHeader>
+    <PageHeader parentURL="/components">Layout & navigation</PageHeader>
     <ContentLayout>
       <SplitLayoutSection />
       <ColumnsSection />
