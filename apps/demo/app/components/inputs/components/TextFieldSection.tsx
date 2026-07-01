@@ -10,6 +10,7 @@ import {
   Section,
   SegmentedButton,
   Select,
+  Text,
   TextField,
   type TextFieldProps,
 } from "@suankularb-components/react";
@@ -69,10 +70,10 @@ const TextFieldSection: FC = () => {
           </Button>
         </SegmentedButton>
 
-        <p className="text-balance">
+        <Text type="body-medium" element="p" className="text-balance">
           For demonstration purposes only. Real Text Fields should not change
           appearance once rendered.
-        </p>
+        </Text>
       </section>
 
       <Columns columns={3} element="form" className="gap-y-8! pb-8">
@@ -189,11 +190,11 @@ const TextFieldSection: FC = () => {
         </Actions>
       </Columns>
 
-      <p className="mb-4 text-balance">
+      <Text type="body-medium" element="p" className="mb-4">
         Choose a Text Field type to see how it looks. Note that some types may
         not be supported on all browsers, in which case a placeholder message
         and a validation pattern will take effect instead.
-      </p>
+      </Text>
 
       <Columns columns={3} className="gap-y-8!">
         <Select<Required<TextFieldProps>["type"]>
