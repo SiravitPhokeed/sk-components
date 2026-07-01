@@ -291,6 +291,9 @@
   field-sizing: content; /* Allow the height to grow with content */
   resize: none;
 }
+.skc-text-field--textarea .skc-text-field__input {
+  height: calc(3lh + 2rem); /* Default to 3 lines of text + padding */
+}
 
 /* ── Other ───────────────────────────────────────────────────────────────── */
 
