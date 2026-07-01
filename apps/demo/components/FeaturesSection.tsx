@@ -19,13 +19,15 @@ const FeaturesSection: FC = () => {
   const [isRtl, setIsRtl] = useState(false);
 
   useEffect(() => {
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)",
-    ).matches;
+    const isInitialDark =
+      window.matchMedia("(prefers-color-scheme: dark)").matches ||
+      document.documentElement.classList.contains("scheme-dark");
+    const isInitialRtl = document.documentElement.dir === "rtl";
     // Setting it directly in `useState` causes a hydration error, so we set it
     // in `useEffect` instead.
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsDarkMode(prefersDark);
+    setIsDarkMode(isInitialDark);
+    setIsRtl(isInitialRtl);
   }, []);
   const handleSchemeChange = (isDark: boolean) => {
     setIsDarkMode(isDark);
@@ -36,7 +38,9 @@ const FeaturesSection: FC = () => {
   };
   const handleDirectionChange = (isRtl: boolean) => {
     setIsRtl(isRtl);
-    document.documentElement.dir = isRtl ? "rtl" : "ltr";
+    setTimeout(() => {
+      document.documentElement.dir = isRtl ? "rtl" : "ltr";
+    }, 300); // Flip after animation
   };
 
   return (

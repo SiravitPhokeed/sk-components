@@ -22,7 +22,7 @@ const DemoSection: FC = () => (
         element={Link}
       >
         <CardHeader
-          icon={<MaterialIcon icon="view_quilt" />}
+          icon={<MaterialIcon icon="view_quilt" className="rtl:flip-x" />}
           title="Layout & navigation"
           subtitle="Layouts, drawers, tabs"
         />
@@ -34,7 +34,7 @@ const DemoSection: FC = () => (
         element={Link}
       >
         <CardHeader
-          icon={<MaterialIcon icon="input" className="rtl:-scale-x-100" />}
+          icon={<MaterialIcon icon="input" className="rtl:flip-x" />}
           title="Inputs"
           subtitle="Buttons, form elements"
         />

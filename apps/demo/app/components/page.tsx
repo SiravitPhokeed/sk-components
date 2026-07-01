@@ -29,7 +29,7 @@ const ComponentsPage: FC = () => (
         <Columns columns={2}>
           <PageCard
             title="Layout & navigation"
-            icon={<MaterialIcon icon="view_quilt" />}
+            icon={<MaterialIcon icon="view_quilt" className="rtl:flip-x" />}
             src={[LayoutLight, LayoutDark]}
             href="/components/layout"
           >
@@ -48,7 +48,7 @@ const ComponentsPage: FC = () => (
 
           <PageCard
             title="Inputs"
-            icon={<MaterialIcon icon="input" />}
+            icon={<MaterialIcon icon="input" className="rtl:flip-x" />}
             src={[InputsLight, InputsDark]}
             href="/components/inputs"
           >

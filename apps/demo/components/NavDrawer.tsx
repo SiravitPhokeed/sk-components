@@ -62,14 +62,14 @@ const NavDrawer: FC = () => {
       {/* Components */}
       <NavDrawerSection header="Components">
         <NavDrawerItem
-          icon={<MaterialIcon icon="view_quilt" />}
+          icon={<MaterialIcon icon="view_quilt" className="rtl:flip-x" />}
           label="Layout & navigation"
           selected={pathname === "/components/layout"}
           href="/components/layout"
           element={Link}
         />
         <NavDrawerItem
-          icon={<MaterialIcon icon="input" />}
+          icon={<MaterialIcon icon="input" className="rtl:flip-x" />}
           label="Inputs"
           selected={pathname === "/components/inputs"}
           href="/components/inputs"
