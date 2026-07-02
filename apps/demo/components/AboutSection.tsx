@@ -4,17 +4,15 @@ import type { FC } from "react";
 
 const AboutSection: FC = () => (
   <Columns columns={6}>
-    {/* Left side: logo (not shown on mobile) */}
     <Image
       src="/images/logo.svg"
       width={48}
       height={48}
       priority
       alt="SK Components logo: blue square with text “SKC” with decorations"
-      className="drop-shadow-5 hidden w-full sm:block"
+      className="drop-shadow-5 mx-4 w-20 sm:mx-0 sm:w-full"
     />
 
-    {/* Right side: text */}
     <Section className="col-span-2 sm:col-span-3 md:col-span-5">
       <Header>What is SKCom?</Header>
       <Text type="body-medium" element="p">

@@ -1,12 +1,10 @@
 "use client";
 
-import Logo from "@/public/images/logo.svg";
 import {
   MaterialIcon,
   NavBarItem,
   NavBar as SKCNavBar,
 } from "@suankularb-components/react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { FC } from "react";
@@ -15,7 +13,7 @@ const NavBar: FC = () => {
   const pathname = usePathname();
 
   return (
-    <SKCNavBar brand={<Image src={Logo} priority alt="" />}>
+    <SKCNavBar>
       <NavBarItem
         icon={<MaterialIcon icon="info" />}
         label="About"
