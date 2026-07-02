@@ -17,3 +17,7 @@
     margin-top: 1.25rem;
   }
 }
+
+.skc-card-header + .skc-card-content {
+  padding-top: 0.5rem;
+}
