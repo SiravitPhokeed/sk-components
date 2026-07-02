@@ -32,8 +32,7 @@
     overflow: auto hidden;
   }
 
-  .skc-nav-bar__actions,
-  .skc-nav-bar__brand,
+  .skc-nav-bar__nav-toggle,
   .skc-nav-bar__end {
     display: none;
   }
@@ -62,16 +61,9 @@
     }
   }
 
-  .skc-nav-bar__actions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.25rem;
-    padding-top: 2.75rem;
-
-    .skc-button {
-      --_button-foreground-color: var(--on-surface);
-    }
+  .skc-nav-bar__nav-toggle {
+    --_button-foreground-color: var(--on-surface);
+    margin-top: 2.75rem;
   }
 
   .skc-nav-bar__brand {
