@@ -9,22 +9,21 @@ import {
   Text,
 } from "@suankularb-components/react";
 import Link from "next/link";
-import type { FC } from "react";
+import type { FC, ReactNode } from "react";
 
 const ExampleCard: FC<{
+  children: ReactNode;
   title: string;
-  description: string;
-  components: string[];
+  subtitle: string;
   href: string;
-}> = ({ title, description, components, href }) => (
-  <Card appearance="outlined">
+}> = ({ children, title, subtitle, href }) => (
+  <Card appearance="outlined" className="grid! grid-cols-2">
     <CardContent>
       <Header>{title}</Header>
-      <Text type="headline-small">{description}</Text>
+      <Text type="headline-small">{subtitle}</Text>
     </CardContent>
     <CardContent>
-      <p>{title} showcases the following components:</p>
-      <p>{components.join(", ")}</p>
+      {children}
       <Actions>
         <Button appearance="filled" href={href} element={Link}>
           Visit
