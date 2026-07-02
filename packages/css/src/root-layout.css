@@ -88,6 +88,7 @@ body {
 
   .skc-root-layout {
     .skc-page-header__blobs,
+    > .skc-fab,
     > .skc-nav-bar {
       display: none;
     }
