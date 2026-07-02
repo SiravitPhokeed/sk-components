@@ -219,8 +219,16 @@
       padding-block: 1rem;
     }
 
-    &:focus-within > :not(:has(.skc-material-icon)),
-    > .skc-text-field__input:not(:placeholder-shown),
+    /* Move the input and the trailing text element down when the input is
+      focused or has text in it */
+    &:focus-within,
+    &:has(.skc-text-field__input:not(:placeholder-shown)) {
+      > :not(:has(.skc-material-icon)) {
+        transform: translateY(0.5rem);
+      }
+    }
+    /* Static inpurts and the “No files attached” message does not move and is
+       always translated down */
     > .skc-text-field__input--static,
     > .skc-text-field__no-files {
       transform: translateY(0.5rem);
