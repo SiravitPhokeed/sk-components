@@ -20,8 +20,9 @@ const FeaturesSection: FC = () => {
 
   useEffect(() => {
     const isInitialDark =
-      window.matchMedia("(prefers-color-scheme: dark)").matches ||
-      document.documentElement.classList.contains("scheme-dark");
+      (window.matchMedia("(prefers-color-scheme: dark)").matches ||
+        document.documentElement.classList.contains("scheme-dark")) &&
+      !document.documentElement.classList.contains("scheme-light");
     const isInitialRtl = document.documentElement.dir === "rtl";
     // Setting it directly in `useState` causes a hydration error, so we set it
     // in `useEffect` instead.
