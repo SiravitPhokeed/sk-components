@@ -4,6 +4,7 @@ import {
   ChipSet,
   FilterChip,
   Header,
+  MenuItem,
   // MenuItem,
   Section,
 } from "@suankularb-components/react";
@@ -11,43 +12,78 @@ import { toggle } from "radash";
 import type { FC } from "react";
 import { useState } from "react";
 
-type FilterChipFilter = "students" | "teachers" | "parents";
+type FilterChipFilter = "juniors" | "seniors" | "teachers" | "parents";
 
 const FilterChipSection: FC = () => {
-  const [filters, setFilters] = useState<FilterChipFilter[]>(["students"]);
-  // const [showStudentsOptions, setShowStudentsOptions] =
-  //   useState(false);
+  const [filters, setFilters] = useState<FilterChipFilter[]>(["juniors"]);
 
   const toggleFilter = (toToggle: FilterChipFilter) =>
-    setFilters(toggle(filters, toToggle));
+    setFilters((prev) => toggle(prev, toToggle));
+
+  const toggleStudentsOptions = (toToggle: FilterChipFilter) =>
+    setFilters((prev) => {
+      const hasJuniorsOrSeniors = prev.some((filter) =>
+        ["juniors", "seniors"].includes(filter),
+      );
+      if (hasJuniorsOrSeniors) {
+        const newFilters = prev.filter(
+          (filter) => !["juniors", "seniors"].includes(filter),
+        );
+        return prev.includes(toToggle)
+          ? newFilters.filter((filter) => filter !== toToggle)
+          : [...newFilters, toToggle];
+      }
+      return [...prev, toToggle];
+    });
 
   return (
     <Section>
       <Header level={3}>Filter Chip</Header>
       <ChipSet>
         <FilterChip
-          selected={filters.includes("students")}
-          onClick={() => toggleFilter("students")}
-          // onMenuToggle={() => setShowStudentsOptions(!showStudentsOptions)}
-          // menu={
-          //   <Menu open={showStudentsOptions} density={-4}>
-          //     <MenuItem onClick={() => setShowStudentsOptions(false)} selected>
-          //       Juniors
-          //     </MenuItem>
-          //     <MenuItem onClick={() => setShowStudentsOptions(false)}>
-          //       Seniors
-          //     </MenuItem>
-          //   </Menu>
-          // }
+          selected={filters.some((filter) =>
+            ["juniors", "seniors"].includes(filter),
+          )}
+          menu={
+            <>
+              <MenuItem
+                command="hide-popover"
+                onClick={() => {
+                  toggleStudentsOptions("juniors");
+                }}
+                selected={filters.includes("juniors")}
+              >
+                Juniors
+              </MenuItem>
+              <MenuItem
+                command="hide-popover"
+                onClick={() => {
+                  setFilters((prev) => {
+                    const newFilters = toggle(prev, "seniors");
+                    return newFilters.filter((filter) => filter !== "juniors");
+                  });
+                }}
+                selected={filters.includes("seniors")}
+              >
+                Seniors
+              </MenuItem>
+            </>
+          }
         >
-          Students
+          {filters.includes("juniors")
+            ? "Juniors"
+            : filters.includes("seniors")
+              ? "Seniors"
+              : "Students"}
         </FilterChip>
+
         <FilterChip
           selected={filters.includes("teachers")}
           onClick={() => toggleFilter("teachers")}
         >
           Teachers
         </FilterChip>
+
         <FilterChip
           selected={filters.includes("parents")}
           onClick={() => toggleFilter("parents")}
