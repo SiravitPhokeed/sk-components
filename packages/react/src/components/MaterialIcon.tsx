@@ -1,7 +1,6 @@
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/material-icon.css";
-import { shake } from "radash";
 
 export interface MaterialIconProps {
   /**
@@ -60,13 +59,6 @@ export interface MaterialIconProps {
   size?: 20 | 24 | 40 | 48;
 }
 
-const FONT_VARIATION_KEYS = {
-  fill: "FILL",
-  weight: "wght",
-  grade: "GRAD",
-  size: "opsz",
-} as Record<string, string>;
-
 /**
  * Icons are essential to any web design. They orient the users, help user navigate, and save space.
  * Material Icon uses the “Material Symbol” icon font from Google.
@@ -87,23 +79,24 @@ export const MaterialIcon: StyleableFC<MaterialIconProps> = ({
   size,
   className,
   style,
-}) => {
-  return (
-    <i
-      {...(alt ? { role: "img", "aria-label": alt } : { "aria-hidden": true })}
-      style={{
-        ...style,
-        ...{
-          "--_fill": fill ? 1 : 0,
-          "--_weight": weight,
-          "--_grade": grade,
-          "--_size": size,
-        },
-      }}
-      className={cn(`skc-material-icon`, className)}
-      translate="no"
-    >
-      {icon}
-    </i>
-  );
-};
+}) => (
+  <i
+    {...(alt ? { role: "img", "aria-label": alt } : { "aria-hidden": true })}
+    style={{
+      ...style,
+      fontSize: size ? `${size / 16}rem` : undefined,
+      fontVariationSettings: (() => {
+        let value = "";
+        if (fill) value += `"FILL" 1, `;
+        if (weight) value += `"wght" ${weight}, `;
+        if (grade) value += `"GRAD" ${grade}, `;
+        if (size) value += `"opsz" ${size}, `;
+        return value.slice(0, -2); // Remove the last comma and space
+      })(),
+    }}
+    className={cn(`skc-material-icon`, className)}
+    translate="no"
+  >
+    {icon}
+  </i>
+);
