@@ -67,7 +67,7 @@ body {
       inset-inline-start: 0.75rem;
       box-shadow: none;
     }
-    &:has(> .skc-fab) > .skc-nav-bar .skc-nav-bar__destinations > .skc-nav-bar-item {
+    &:has(> .skc-fab) > .skc-nav-bar .skc-nav-bar-item {
       transform: translateY(3.5rem);
     }
   }
