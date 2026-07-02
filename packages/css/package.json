@@ -34,6 +34,7 @@
     "./dialog-content.css": "./dist/dialog-content.css",
     "./dialog-header.css": "./dist/dialog-header.css",
     "./divider.css": "./dist/divider.css",
+    "./fab.css": "./dist/fab.css",
     "./filter-chip.css": "./dist/filter-chip.css",
     "./form-group.css": "./dist/form-group.css",
     "./form-item.css": "./dist/form-item.css",

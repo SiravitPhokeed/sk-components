@@ -1,0 +1,111 @@
+/**
+ * **FAB**
+ * The Floating Action Button or FAB is the main action of a page.
+ */
+
+.skc-fab {
+  --state-layer-color: var(--_fab-foreground-color);
+  display: flex;
+
+  position: fixed;
+  bottom: calc(1rem + var(--_bottom-offset, 0rem));
+  justify-content: center;
+  align-items: center;
+  z-index: 80;
+  transition-property: transform, opacity;
+  transition: var(--motion-medium-4) var(--easing-emphasized);
+  inset-inline-end: 1rem;
+  box-shadow: var(--shadow-3);
+  border: none;
+  border-radius: var(--rounded-md);
+  background-color: var(--_fab-background-color);
+  padding: 1rem;
+  color: var(--_fab-foreground-color);
+
+  @starting-style {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+}
+
+/* Colors */
+.skc-fab--surface {
+  --_fab-background-color: var(--surface-container-high);
+  --_fab-foreground-color: var(--primary);
+}
+.skc-fab--primary {
+  --_fab-background-color: var(--primary-container);
+  --_fab-foreground-color: var(--on-primary-container);
+}
+.skc-fab--secondary {
+  --_fab-background-color: var(--secondary-container);
+  --_fab-foreground-color: var(--on-secondary-container);
+}
+.skc-fab--tertiary {
+  --_fab-background-color: var(--tertiary-container);
+  --_fab-foreground-color: var(--on-tertiary-container);
+}
+
+/* Icon */
+.skc-fab {
+  > .skc-material-icon {
+    transition: font-weight var(--motion-short-4) var(--easing-standard);
+    font-size: 1.5rem;
+  }
+
+  &:hover > .skc-material-icon {
+    font-weight: 600;
+  }
+
+  &:active > .skc-material-icon {
+    font-weight: 300;
+  }
+}
+
+/* Label */
+.skc-fab__label {
+  color: var(--_fab-foreground-color);
+  font-family: var(--font-display);
+  text-align: center;
+}
+
+/* Mobile: size variants and extended layout */
+@media (width < 600px) {
+  .skc-fab {
+    transform-origin: bottom right;
+  }
+
+  .skc-fab--small {
+    padding: 0.5rem;
+  }
+
+  .skc-fab--standard {
+    padding: 1rem;
+  }
+
+  .skc-fab--large {
+    border-radius: var(--rounded-xl);
+    padding: 1.875rem;
+  }
+
+  .skc-fab--large > .skc-material-icon {
+    font-size: 2.25rem;
+  }
+
+  .skc-fab--extended {
+    gap: 0.75rem;
+    padding: 1rem;
+    padding-inline-end: 1.25rem;
+  }
+}
+
+/* Desktop: all FABs render as standard with no label */
+@media (width >= 600px) {
+  .skc-fab {
+    transform-origin: center;
+  }
+
+  .skc-fab__label {
+    display: none;
+  }
+}
