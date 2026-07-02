@@ -1,5 +1,6 @@
 "use client";
 
+import cn from "@/lib/helpers/cn";
 import {
   Section,
   Header,
@@ -14,7 +15,15 @@ import type { FC } from "react";
 const DemoSection: FC = () => (
   <Section>
     <Header className="sr-only">Let’s start! Choose a page:</Header>
-    <Columns columns={4}>
+    <Columns
+      columns={4}
+      className={cn(
+        // Card Header
+        "*:*:*:grid!",
+        // Title and subtitle
+        "*:*:*:*:w-full! *:*:*:*:truncate!",
+      )}
+    >
       <Card
         appearance="outlined"
         stateLayerEffect
