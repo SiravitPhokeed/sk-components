@@ -1,5 +1,6 @@
 import ButtonsSection from "@/app/components/inputs/components/ButtonsSection";
 import CheckboxSection from "@/app/components/inputs/components/CheckboxSection";
+import FABSection from "@/app/components/inputs/components/FABSection";
 import RadioSection from "@/app/components/inputs/components/RadioSection";
 import ReportIssueFAB from "@/app/components/inputs/components/ReportIssueFAB";
 import SearchSection from "@/app/components/inputs/components/SearchSection";
@@ -27,6 +28,7 @@ const InputsPage: FC = () => (
         <ButtonsSection />
         <SegmentedButtonSection />
         <ToggleButtonsSection />
+        <FABSection />
       </Section>
       <CheckboxSection />
       <RadioSection />
