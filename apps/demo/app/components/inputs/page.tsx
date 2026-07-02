@@ -1,6 +1,7 @@
 import ButtonsSection from "@/app/components/inputs/components/ButtonsSection";
 import CheckboxSection from "@/app/components/inputs/components/CheckboxSection";
 import RadioSection from "@/app/components/inputs/components/RadioSection";
+import ReportIssueFAB from "@/app/components/inputs/components/ReportIssueFAB";
 import SearchSection from "@/app/components/inputs/components/SearchSection";
 import SegmentedButtonSection from "@/app/components/inputs/components/SegmentedButtonSection";
 import SelectSection from "@/app/components/inputs/components/SelectSection";
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
 
 const InputsPage: FC = () => (
   <>
+    <ReportIssueFAB />
     <PageHeader parentURL="/components">Inputs</PageHeader>
     <ContentLayout>
       <Section>
