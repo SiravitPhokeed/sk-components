@@ -69,15 +69,24 @@
 }
 
 /* Nested Card */
-:is(.skc-card, .skc-dialog) .skc-card {
-  --adaptive-primary-container: light-dark(
-    var(--primary-container),
-    var(--surface-container-high)
-  );
-  
-  border: 1px solid transparent;
-  &.skc-interactive:hover {
-    border-color: var(--outline-variant);
+:is(.skc-card--filled, .skc-dialog) .skc-card {
+  &.skc-card--outlined {
+    border-color: var(--outline);
+    background-color: transparent;
+  }
+  &.skc-card--filled {
+    --adaptive-primary-container: light-dark(
+      var(--primary-container),
+      var(--surface-container-high)
+    );
+  }
+
+  &.skc-interactive {
+    border: 0px solid var(--outline-variant);
+    &:hover {
+      margin: -1px;
+      border-width: 1px;
+    }
   }
 
   &:has(> .skc-card-content) {
