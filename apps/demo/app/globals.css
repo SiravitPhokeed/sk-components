@@ -258,3 +258,24 @@
 @utility flip-x {
   @apply -scale-x-100;
 }
+
+@custom-variant light {
+  :where(.scheme-light) & {
+    @slot;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not(.scheme-dark) & {
+      @slot;
+    }
+  }
+}
+@custom-variant dark {
+  :where(.scheme-dark) & {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not(.scheme-light) & {
+      @slot;
+    }
+  }
+}

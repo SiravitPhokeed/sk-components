@@ -21,8 +21,8 @@ const PageCard: FC<{
   <Card appearance="outlined">
     <CardHeader icon={icon} title={title} />
     <div className="bg-surface-container">
-      <Image src={src[0]} alt="" className="block dark:hidden" />
-      <Image src={src[1]} alt="" className="hidden dark:block" />
+      <Image src={src[0]} alt="" className="light:block dark:hidden" />
+      <Image src={src[1]} alt="" className="light:hidden dark:block" />
     </div>
     <CardContent>
       <ul className="list-disc ps-3 md:columns-2">{children}</ul>
