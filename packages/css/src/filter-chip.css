@@ -5,5 +5,15 @@
  * Chip Set.
  */
 
-/* No additional styles are needed for the Filter Chip component.
-   It is a variant of the Chip component and inherits all styles from it. */
+.skc-filter-chip__arrow {
+  transition: transform var(--motion-short-4) var(--easing-standard);
+
+  &,
+  &.skc-material-icon {
+    color: inherit;
+  }
+
+  .skc-filter-chip:has(+ .skc-menu:popover-open:not(.skc-menu--exiting)) & {
+    transform: rotate(180deg);
+  }
+}

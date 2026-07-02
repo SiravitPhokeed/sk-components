@@ -2,6 +2,7 @@
 
 import { Chip } from "@/components/Chip";
 import { MaterialIcon } from "@/components/MaterialIcon";
+import { Menu } from "@/components/Menu";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type {
@@ -10,7 +11,8 @@ import type {
   StyleableFC,
 } from "@/lib/types";
 import "@suankularb-components/css/filter-chip.css";
-import type { ReactNode } from "react";
+import type { Fragment, ReactElement, ReactNode } from "react";
+import { useId } from "react";
 
 /**
  * Props for {@link FilterChip Filter Chip}.
@@ -40,6 +42,15 @@ export interface FilterChipProps
    * - Optional.
    */
   tooltip?: string;
+
+  /**
+   * Turns the Filter Chip into a dropdown, displaying a Menu underneath the
+   * chip.
+   *
+   * - Must be a Fragment containing Menu Items.
+   * - Optional.
+   */
+  menu?: ReactElement<typeof Fragment>;
 
   /**
    * Use elevation instead of an outline to signify the Filter Chip's boundary.
@@ -90,6 +101,7 @@ export interface FilterChipProps
  * @param children The text displayed inside the chip.
  * @param icon An icon can appear before all content in an Filter Chip.
  * @param tooltip A message shown in a tooltip when the user hovers over the Filter Chip.
+ * @param menu Turns the Filter Chip into a dropdown, displaying a Menu underneath the chip.
  * @param elevated Use elevation instead of an outline to signify the Filter Chip's boundary.
  * @param selected If the Filter Chip is selected.
  * @param disabled Turns the Filter Chip gray and block any action associated with it.
@@ -99,6 +111,7 @@ export const FilterChip: StyleableFC<FilterChipProps> = ({
   children,
   icon,
   tooltip,
+  menu,
   elevated,
   selected,
   disabled,
@@ -109,23 +122,47 @@ export const FilterChip: StyleableFC<FilterChipProps> = ({
   element = "button",
   style,
   className,
-}) => (
-  <Chip
-    tooltip={tooltip}
-    elevated={elevated}
-    selected={selected}
-    disabled={disabled}
-    command={command}
-    commandfor={commandfor}
-    onClick={onClick ? () => onClick(!selected) : undefined}
-    href={href}
-    element={element}
-    className={cn("skc-filter-chip", className)}
-    style={style}
-  >
-    {selected ? <MaterialIcon icon="done" /> : icon}
-    <Text type="label-large" className="skc-chip__label">
-      {children}
-    </Text>
-  </Chip>
-);
+}) => {
+  const id = `chip-${useId()}`;
+  const anchorName = `--${id}`;
+  const menuId = `menu-${useId()}`;
+
+  const resolvedCommand = command ?? (menu ? "show-popover" : undefined);
+  const resolvedCommandFor = commandfor ?? (menu ? menuId : undefined);
+
+  return (
+    <>
+      <Chip
+        id={id}
+        tooltip={tooltip}
+        elevated={elevated}
+        selected={selected}
+        disabled={disabled}
+        command={resolvedCommand}
+        commandfor={resolvedCommandFor}
+        onClick={onClick ? () => onClick(!selected) : undefined}
+        href={href}
+        element={element}
+        className={cn("skc-filter-chip", className)}
+        style={{ anchorName, ...style }}
+      >
+        {selected ? <MaterialIcon icon="done" /> : icon}
+        <Text type="label-large" className="skc-chip__label">
+          {children}
+        </Text>
+        {menu && (
+          <MaterialIcon
+            icon="arrow_drop_down"
+            className="skc-filter-chip__arrow"
+          />
+        )}
+      </Chip>
+
+      {menu && (
+        <Menu id={menuId} anchor={anchorName} density={-2}>
+          {menu}
+        </Menu>
+      )}
+    </>
+  );
+};

@@ -17,6 +17,13 @@ import type { ElementType, ReactNode } from "react";
  */
 export interface ChipProps extends ActionableProps, ElementCustomizableProps {
   /**
+   * A unique identifier for the Chip.
+   *
+   * - Optional.
+   */
+  id?: string;
+
+  /**
    * The full content of the Chip — leading elements, label, and trailing
    * elements.
    *
