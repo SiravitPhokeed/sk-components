@@ -41,7 +41,7 @@ const ReportIssueDialog: FC = () => {
       }
       width={820}
     >
-      <Columns columns={2}>
+      <Columns columns={2} className="items-stretch!">
         <div className="flex flex-col gap-4">
           <Text type="body-medium" element="p">
             If you have a GitHub account, please consider reporting issues on
@@ -61,22 +61,35 @@ const ReportIssueDialog: FC = () => {
           >
             <Checkbox value={understood} onChange={setUnderstood} />
           </FormItem>
-          <SegmentedButton alt="View" full className="pb-4">
-            <Button
-              appearance="outlined"
-              selected={view === "bug-report"}
-              onClick={() => setView("bug-report")}
-            >
-              Bug report
-            </Button>
-            <Button
-              appearance="outlined"
-              selected={view === "feature-request"}
-              onClick={() => setView("feature-request")}
-            >
-              Feature request
-            </Button>
-          </SegmentedButton>
+          <div className="grow sm:pb-4">
+            <SegmentedButton alt="View" full>
+              <Button
+                appearance="outlined"
+                selected={view === "bug-report"}
+                onClick={() => setView("bug-report")}
+              >
+                Bug report
+              </Button>
+              <Button
+                appearance="outlined"
+                selected={view === "feature-request"}
+                onClick={() => setView("feature-request")}
+              >
+                Feature request
+              </Button>
+            </SegmentedButton>
+          </div>
+          <Text
+            type="body-small"
+            element="p"
+            className="text-on-surface-variant pb-3 text-balance"
+          >
+            This is a{" "}
+            <strong className="text-error font-medium">
+              non-functional demo.
+            </strong>{" "}
+            Submitting a report here will not send any data to the developers.
+          </Text>
         </div>
         <div>
           <div className="flex flex-col gap-12 pb-12">
