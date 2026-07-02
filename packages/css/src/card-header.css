@@ -16,7 +16,7 @@
   flex-grow: 1;
 }
 
-.skc-card-header .skc-avatar {
+.skc-card-header :is(.skc-avatar, .skc-icon) {
   flex-shrink: 0;
 }
 
