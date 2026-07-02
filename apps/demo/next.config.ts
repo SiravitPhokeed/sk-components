@@ -15,7 +15,6 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  allowedDevOrigins: ["192.168.1.133"],
   transpilePackages: [
     "@suankularb-components/react",
     "@suankularb-components/css",
