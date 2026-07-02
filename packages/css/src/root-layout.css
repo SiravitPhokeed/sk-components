@@ -15,18 +15,14 @@ body {
 }
 
 .skc-root-layout {
+  --_bottom-offset: 0rem;
+
   font-size: var(--text-base);
 
   > .skc-nav-bar {
     position: fixed;
     z-index: 70;
     inset: 0;
-
-    .skc-fab {
-      position: fixed;
-      inset-inline-end: 1rem;
-      bottom: calc(5rem + 1rem);
-    }
   }
 
   > .skc-progress {
@@ -44,8 +40,12 @@ body {
     }
   }
 
-  .skc-root-layout:has(> .skc-nav-bar) .skc-snackbar {
+  .skc-root-layout:has(> .skc-nav-bar) {
     --_bottom-offset: 5rem;
+
+    &:has(> .skc-fab) .skc-snackbar {
+      --_bottom-offset: 10rem;
+    }
   }
 }
 
@@ -59,12 +59,16 @@ body {
       ~ .skc-progress {
         inset-inline-start: 5rem;
       }
+    }
 
-      .skc-fab {
-        position: relative;
-        inset-inline-end: 0;
-        bottom: 0;
-      }
+    &:has(> .skc-nav-bar) > .skc-fab {
+      inset: auto;
+      top: 6rem;
+      inset-inline-start: 0.75rem;
+      box-shadow: none;
+    }
+    &:has(> .skc-fab) > .skc-nav-bar .skc-nav-bar__destinations > .skc-nav-bar-item {
+      transform: translateY(3.5rem);
     }
   }
 }

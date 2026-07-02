@@ -16,7 +16,6 @@
   --_exit-translate: 0.25rem;
 
   --_inset: 0.5rem;
-  --_bottom-offset: 0rem;
 
   position: fixed;
   flex-direction: row;
@@ -35,7 +34,7 @@
   box-sizing: border-box;
   margin: 0;
   inset: auto;
-  bottom: calc(var(--_bottom-offset) + var(--_inset));
+  bottom: calc(var(--_bottom-offset, 0rem) + var(--_inset));
   inset-inline-start: var(--_inset);
   box-shadow: var(--shadow-3);
   border: none;

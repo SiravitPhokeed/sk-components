@@ -66,21 +66,13 @@
     margin-top: 2.75rem;
   }
 
-  .skc-nav-bar__brand {
-    width: 3.5rem;
-
-    > img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    &:not(:last-child) {
-      margin-bottom: 0.75rem;
-    }
-  }
-
   .skc-nav-bar__destinations {
     flex-grow: 1;
+
+    .skc-nav-bar-item {
+      transform: translateY(0);
+      transition: transform var(--motion-medium-4) var(--easing-emphasized);
+    }
   }
 
   .skc-nav-bar__destinations,

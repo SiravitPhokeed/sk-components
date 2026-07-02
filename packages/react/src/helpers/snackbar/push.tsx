@@ -41,8 +41,12 @@ export default function snackbarPush(
 
   const id = `snackbar-${nextId++}`;
 
+  // Create a new React root for the Snackbar. If the consumer is using Root
+  // Layout, create it inside the Root Layout.
   const container = document.createElement("div");
-  document.body.appendChild(container);
+  const rootLayout = document.querySelector(".skc-root-layout");
+  if (rootLayout) rootLayout.appendChild(container);
+  else document.body.appendChild(container);
 
   const root = createRoot(container);
 
