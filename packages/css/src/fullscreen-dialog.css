@@ -112,7 +112,7 @@
       var(--secondary-fixed-dim),
       var(--secondary-container)
     );
-  --adaptive-background: var(--surface-container-high);
+    --adaptive-background: var(--surface-container-high);
 
     inset: 50% auto auto 50%;
     border-radius: var(--rounded-xl);

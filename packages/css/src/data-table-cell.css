@@ -39,12 +39,12 @@
 
   position: absolute;
   top: 50%;
-  inset-inline-start: 1rem;
   transform: translateY(-50%) rotate(var(--_rotate));
   opacity: 0;
   transition-duration: var(--motion-short-4);
   transition-property: opacity, transform;
   transition-timing-function: var(--easing-standard);
+  inset-inline-start: 1rem;
   color: var(--secondary);
 }
 
