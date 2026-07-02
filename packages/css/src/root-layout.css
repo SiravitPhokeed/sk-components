@@ -42,9 +42,16 @@ body {
 
   .skc-root-layout:has(> .skc-nav-bar) {
     --_bottom-offset: 5rem;
+    --_fab-size: 3.5rem;
 
     &:has(> .skc-fab) .skc-snackbar {
-      --_bottom-offset: 10rem;
+      --_bottom-offset: calc(6.25rem + var(--_fab-size));
+    }
+    &:has(> .skc-fab.skc-fab--small) {
+      --_fab-size: 2.5rem;
+    }
+    &:has(> .skc-fab.skc-fab--large) {
+      --_fab-size: 6rem;
     }
   }
 }
