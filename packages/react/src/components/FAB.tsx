@@ -58,7 +58,7 @@ export interface FABProps extends ActionableProps {
   /**
    * A message shown in a tooltip when the user hovers over the FAB.
    *
-   * - Optional.
+   * - Normally optional but required if the label is a React Element.
    */
   tooltip?: string;
 }
