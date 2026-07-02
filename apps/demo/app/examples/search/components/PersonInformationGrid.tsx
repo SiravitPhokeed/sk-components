@@ -28,8 +28,8 @@ const PersonInformationGrid: StyleableFC = ({ className, style }) => (
       <CardContent>M.604</CardContent>
     </Card>
     <Card appearance="filled" direction="row" className="items-start!">
-      <CardHeader title="Birthday" subtitle="March 8" className="grow pe-0!" />
-      <CardContent className="py-2.5! ps-0!">
+      <CardHeader title="Birthday" subtitle="March 8" className="grow pe-0" />
+      <CardContent className="py-2.5 ps-0!">
         <AgeCircle />
       </CardContent>
     </Card>

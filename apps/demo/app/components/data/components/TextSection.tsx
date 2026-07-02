@@ -17,7 +17,7 @@ const TextSection: FC = () => (
           <Card
             key={type}
             appearance="outlined"
-            className="overflow-hidden px-4 py-2 gap-1"
+            className="gap-1 overflow-hidden px-4 py-2"
           >
             {(["large", "medium", "small"] as const).map((size) => (
               <Text

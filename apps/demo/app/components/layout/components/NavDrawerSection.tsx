@@ -16,18 +16,9 @@ const NavDrawerSection: FC = () => {
           label="Learn"
           selected
         />
-        <NavDrawerItem
-          icon={<MaterialIcon icon="groups" />}
-          label="Classes"
-        />
-        <NavDrawerItem
-          icon={<MaterialIcon icon="search" />}
-          label="Search"
-        />
-        <NavDrawerItem
-          icon={<MaterialIcon icon="newspaper" />}
-          label="News"
-        />
+        <NavDrawerItem icon={<MaterialIcon icon="groups" />} label="Classes" />
+        <NavDrawerItem icon={<MaterialIcon icon="search" />} label="Search" />
+        <NavDrawerItem icon={<MaterialIcon icon="newspaper" />} label="News" />
         <NavDrawerItem
           icon={<MaterialIcon icon="account_circle" />}
           label="Account"

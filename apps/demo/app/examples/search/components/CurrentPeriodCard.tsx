@@ -7,7 +7,7 @@ const CurrentPeriodCard: StyleableFC = ({ className, style }) => (
     appearance="outlined"
     stateLayerEffect
     style={style}
-    className={cn("bg-surface! relative overflow-hidden rounded-md", className)}
+    className={cn("bg-surface relative overflow-hidden rounded-md", className)}
   >
     <div className="bg-surface-variant h-10 w-1/4" />
     <Text type="title-medium" element="p" className="absolute inset-s-3 top-2">

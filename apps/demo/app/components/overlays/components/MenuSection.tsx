@@ -30,10 +30,7 @@ const MenuSection: FC = () => {
           </Text>
         </Section>
 
-        <Card
-          appearance="outlined"
-          className="grid! h-108 place-content-center"
-        >
+        <Card appearance="outlined" className="grid h-108 place-content-center">
           <Anchor>
             <Button
               appearance="outlined"
@@ -46,10 +43,7 @@ const MenuSection: FC = () => {
             <Menu id="menu-edit">
               <MenuItem
                 icon={
-                  <MaterialIcon
-                    icon="content_cut"
-                    className="rtl:flip-x"
-                  />
+                  <MaterialIcon icon="content_cut" className="rtl:flip-x" />
                 }
                 metadata="⌘ X"
                 command="hide-popover"

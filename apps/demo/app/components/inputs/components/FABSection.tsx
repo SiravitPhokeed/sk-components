@@ -14,12 +14,12 @@ const FABSection: FC = () => (
       More options are available in smaller screens. Resize the window to see
       them.
     </Text>
-    <div className="flex flex-row flex-wrap items-start gap-2 *:relative! *:inset-0! *:z-0! *:transition-none!">
+    <div className="flex flex-row flex-wrap items-start gap-2 *:relative *:inset-0 *:z-0 *:transition-none!">
       <FAB
         color="primary"
         icon={<MaterialIcon icon="shopping_cart" />}
         tooltip="Go to checkout"
-        className="sm:hidden!"
+        className="sm:hidden"
       >
         Checkout
       </FAB>

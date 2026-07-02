@@ -40,23 +40,23 @@ const PROGRESS_MAP = {
       <MaterialIcon
         icon="warning"
         size={20}
-        className="text-on-surface-variant!"
+        className="text-on-surface-variant"
       />
     ),
     label: "Not started",
   },
   "in-progress": {
-    icon: <MaterialIcon icon="pending" size={20} className="text-primary!" />,
+    icon: <MaterialIcon icon="pending" size={20} className="text-primary" />,
     label: "In progress",
   },
   completed: {
     icon: (
-      <MaterialIcon icon="check_circle" size={20} className="text-outline!" />
+      <MaterialIcon icon="check_circle" size={20} className="text-outline" />
     ),
     label: "Completed",
   },
   blocked: {
-    icon: <MaterialIcon icon="block" size={20} className="text-error!" />,
+    icon: <MaterialIcon icon="block" size={20} className="text-error" />,
     label: "Blocked",
   },
 };

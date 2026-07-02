@@ -54,7 +54,7 @@ const CardSection: FC = () => (
             <CardHeader
               title="Wasapol Rassameechot"
               subtitle="M.605"
-              className="grow!"
+              className="grow"
             />
             <Anchor className="mr-2">
               <Button
@@ -63,7 +63,7 @@ const CardSection: FC = () => (
                 tooltip="Options"
                 command="show-popover"
                 commandfor="menu-atipol"
-                className="[--_button-foreground-color:var(--on-surface-variant)]!"
+                className="[--_button-foreground-color:var(--on-surface-variant)]"
               />
               <Menu id="menu-atipol">
                 <MenuItem command="hide-popover">View profile</MenuItem>

@@ -76,7 +76,7 @@ const TextFieldSection: FC = () => {
         </Text>
       </section>
 
-      <Columns columns={3} element="form" className="gap-y-8! pb-8">
+      <Columns columns={3} element="form" className="gap-y-8 pb-8">
         <TextField<string>
           appearance={appearance}
           label="Candidate name"
@@ -202,14 +202,14 @@ const TextFieldSection: FC = () => {
           label="Text Field type"
           value={type}
           onChange={setType}
-          className="[&_.skc-select\_\_value]:font-mono!"
+          className="[&_.skc-select\_\_value]:font-mono"
         >
           {TEXT_FIELD_TYPES.map((itrType) => (
             <MenuItem
               key={itrType}
               selected={itrType === type}
               value={itrType}
-              className="[&_.skc-menu-item\_\_label]:font-mono!"
+              className="[&_.skc-menu-item\_\_label]:font-mono"
             >
               {itrType}
             </MenuItem>

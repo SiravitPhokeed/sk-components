@@ -13,7 +13,7 @@ const PersonContactGrid: StyleableFC = ({ className, style }) => (
     <Columns
       columns={2}
       element={(props) => <ul {...props} role="list" />}
-      className="gap-2!"
+      className="gap-2"
     >
       <ContactCard type="facebook" value="Chatchai Charoen" />
       <ContactCard type="line" value="chatchaizaza2015" />

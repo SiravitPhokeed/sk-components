@@ -15,7 +15,7 @@ const ColumnsSection: FC = () => (
         <Card
           key={i}
           appearance="outlined"
-          className="grid! h-20 place-content-center"
+          className="grid h-20 place-content-center"
         >
           <Text type="headline-large">{i + 1}</Text>
         </Card>

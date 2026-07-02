@@ -17,7 +17,7 @@ const ExampleCard: FC<{
   subtitle: string;
   href: string;
 }> = ({ children, title, subtitle, href }) => (
-  <Card appearance="outlined" className="grid! grid-cols-2">
+  <Card appearance="outlined" className="grid grid-cols-2">
     <CardContent>
       <Header>{title}</Header>
       <Text type="headline-small">{subtitle}</Text>

@@ -30,7 +30,7 @@ const ContactCard: StyleableFC<{
     appearance="filled"
     stateLayerEffect
     href="#"
-    element={props => <li {...props} title={value} />}
+    element={(props) => <li {...props} title={value} />}
     className={className}
     style={style}
   >
@@ -38,7 +38,7 @@ const ContactCard: StyleableFC<{
       avatar={<Avatar>{AVATAR_MAP.get(type)}</Avatar>}
       title={value}
       subtitle={LABEL_MAP.get(type) ?? "Other"}
-      className="*:grid! *:*:truncate!"
+      className="*:grid *:*:truncate"
     />
   </Card>
 );

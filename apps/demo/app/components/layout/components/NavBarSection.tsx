@@ -15,7 +15,7 @@ const NavBarSection: FC = () => {
   return (
     <Section>
       <Header>Navigation Bar</Header>
-      <NavBar className="static! z-0! mx-0! h-fit! *:min-h-0! sm:mx-auto!">
+      <NavBar className="static z-0 mx-0 h-fit *:min-h-0 sm:mx-auto!">
         <NavBarItem
           icon={<MaterialIcon icon="school" />}
           label="Learn"

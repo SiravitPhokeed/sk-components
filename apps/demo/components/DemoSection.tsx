@@ -14,14 +14,14 @@ import type { FC } from "react";
 
 const DemoSection: FC = () => (
   <Section>
-    <Header className="sr-only">Let’s start! Choose a page:</Header>
+    <Header className="sr-only">Let’s start Choose a page:</Header>
     <Columns
       columns={4}
       className={cn(
         // Card Header
         "*:*:*:grid!",
         // Title and subtitle
-        "*:*:*:*:w-full! *:*:*:*:truncate!",
+        "*:*:*:*:w-full *:*:*:*:truncate!",
       )}
     >
       <Card

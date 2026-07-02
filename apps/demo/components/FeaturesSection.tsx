@@ -49,7 +49,7 @@ const FeaturesSection: FC = () => {
       <Header>Features</Header>
       <Columns
         columns={3}
-        className="[&_code]:bg-surface-variant items-stretch! [&_code]:rounded-xs [&_code]:px-1"
+        className="[&_code]:bg-surface-variant items-stretch [&_code]:rounded-xs [&_code]:px-1"
       >
         <Card appearance="outlined" className="sm:col-span-2 md:col-span-1">
           <CardHeader icon={<MaterialIcon icon="palette" />} title="Theming" />
@@ -79,7 +79,7 @@ const FeaturesSection: FC = () => {
           <Switch
             value={isDarkMode}
             onChange={handleSchemeChange}
-            className="absolute! inset-e-4 top-2"
+            className="absolute inset-e-4 top-2"
           />
           <CardContent>
             <p>
@@ -101,7 +101,7 @@ const FeaturesSection: FC = () => {
           <Switch
             value={isRtl}
             onChange={handleDirectionChange}
-            className="absolute! inset-e-4 top-2"
+            className="absolute inset-e-4 top-2"
           />
           <CardContent>
             <p>

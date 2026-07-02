@@ -17,14 +17,14 @@ const SplitLayoutSection: FC = () => (
     <Header>Split Layout</Header>
     <SplitLayout ratio={[4, 8]}>
       <div>
-        <Card appearance="outlined" className="grid! h-20 place-content-center">
+        <Card appearance="outlined" className="grid h-20 place-content-center">
           <Text type="headline-large">Left</Text>
         </Card>
       </div>
       <div>
         <Card
           appearance="outlined"
-          className="h-20 place-content-center sm:grid!"
+          className="h-20 place-content-center sm:grid"
         >
           <Text type="headline-large">Right</Text>
         </Card>

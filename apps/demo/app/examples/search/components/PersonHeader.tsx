@@ -15,7 +15,7 @@ const PersonHeader: StyleableFC<{
     className={cn("flex flex-col gap-6 p-4 md:flex-row", className)}
     style={style}
   >
-    <Avatar className="h-16! w-16! shrink-0" />
+    <Avatar className="h-16 w-16 shrink-0" />
     <div className="flex flex-col gap-4 md:gap-2">
       <Header>{name}</Header>
       <ChipSet scrollable className="-m-4 p-4 md:ms-0 md:ps-0">

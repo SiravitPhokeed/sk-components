@@ -13,9 +13,9 @@ const StudentCard: StyleableFC<{
       direction="row"
       stateLayerEffect
       className={cn(
-        "w-full rounded-none! border-transparent! bg-transparent! sm:rounded-full!",
+        "w-full rounded-none border-transparent bg-transparent sm:rounded-full!",
         selected &&
-          "sm:border-outline-variant! sm:bg-primary-container! sm:text-on-primary-container!",
+          "sm:border-outline-variant sm:bg-primary-container sm:text-on-primary-container!",
         className,
       )}
       style={style}
@@ -24,7 +24,7 @@ const StudentCard: StyleableFC<{
         avatar={
           <Avatar
             className={
-              selected ? "sm:bg-primary! sm:text-on-primary!" : undefined
+              selected ? "sm:bg-primary sm:text-on-primary" : undefined
             }
           >
             {name
