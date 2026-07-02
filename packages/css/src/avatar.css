@@ -8,13 +8,13 @@
   position: relative;
   place-content: center;
   border-radius: 50%;
-  background-color: var(--primary-container);
+  background-color: var(--adaptive-primary-container);
   width: 2.5rem;
   height: 2.5rem;
   color: var(--primary);
 
   &:has(img) {
-    background-color: var(--surface-container);
+    background-color: var(--adaptive-surface-container);
   }
 
   img,
@@ -24,13 +24,6 @@
     height: 100%;
     object-fit: cover;
   }
-}
-
-/* Contextual adaptations */
-.skc-dialog .skc-avatar:has(img),
-.skc-page-header .skc-avatar:has(img),
-.skc-card--filled .skc-avatar:has(img) {
-  background-color: var(--surface);
 }
 
 @media (width >= 600px) {

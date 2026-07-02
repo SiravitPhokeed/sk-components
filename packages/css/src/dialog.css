@@ -21,6 +21,14 @@
   --_duration: var(--_entry-duration);
   --_easing: var(--_entry-easing);
 
+  --adaptive-secondary-container: light-dark(
+    var(--secondary-fixed-dim),
+    var(--secondary-container)
+  );
+  --adaptive-background: var(--surface-container-high);
+  --adaptive-surface-variant: var(--surface-bright);
+  --adaptive-surface-container: var(--surface-bright);
+
   position: fixed;
   transform: translate(-50%, calc(-50% - var(--_offset-y))) scaleY(0);
   transform-origin: center top;

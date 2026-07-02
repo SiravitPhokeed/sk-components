@@ -131,7 +131,7 @@
     z-index: 10;
     transition: transform var(--_duration) var(--_easing);
     inset-inline-start: 0.75rem;
-    background-color: var(--background);
+    background-color: var(--adaptive-background);
     padding-inline: 0.25rem;
     height: var(--_border-width);
     overflow: hidden;

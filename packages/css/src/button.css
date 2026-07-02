@@ -113,7 +113,7 @@
 
 .skc-button--tonal {
   --_button-foreground-color: var(--on-secondary-container);
-  --_button-background-color: var(--secondary-container);
+  --_button-background-color: var(--adaptive-secondary-container);
   transition: box-shadow var(--motion-short-4) var(--easing-standard);
 
   &:hover {
@@ -144,7 +144,7 @@
   }
   &.skc-button--selected {
     --state-layer-color: var(--on-secondary-container);
-    background-color: var(--secondary-container);
+    background-color: var(--adaptive-secondary-container);
     &:focus-visible {
       border-color: var(--secondary);
     }

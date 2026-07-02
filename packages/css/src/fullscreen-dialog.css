@@ -108,6 +108,12 @@
     transform: translate(-50%, calc(-50% - var(--_offset-y))) scaleY(0);
     transform-origin: center top;
 
+    --adaptive-secondary-container: light-dark(
+      var(--secondary-fixed-dim),
+      var(--secondary-container)
+    );
+  --adaptive-background: var(--surface-container-high);
+
     inset: 50% auto auto 50%;
     border-radius: var(--rounded-xl);
     background-color: var(--surface-container-high);

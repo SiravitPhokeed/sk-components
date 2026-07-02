@@ -62,7 +62,7 @@
   background-color: var(--surface-container-low);
 
   &.skc-chip--selected {
-    background-color: var(--secondary-container);
+    background-color: var(--adaptive-secondary-container);
   }
 
   &[aria-disabled="true"] {
@@ -81,31 +81,12 @@
 /* Selected */
 .skc-chip--selected {
   border-color: transparent;
-  background-color: var(--secondary-container);
+  background-color: var(--adaptive-secondary-container);
   color: var(--on-secondary-container);
 
   .skc-material-icon,
   .skc-chip__trailing-button {
     color: var(--on-secondary-container);
-  }
-}
-
-/* Contextual adaptations — selected chip on filled surfaces */
-.skc-dialog .skc-chip--selected,
-.skc-page-header .skc-chip--selected,
-.skc-card--filled .skc-chip--selected {
-  --state-layer-color: var(--on-surface);
-
-  background-color: var(--surface);
-  color: var(--on-surface);
-}
-
-@media (width >= 600px) {
-  .skc-fullscreen-dialog .skc-chip--selected {
-    --state-layer-color: var(--on-surface);
-
-    background-color: var(--surface);
-    color: var(--on-surface);
   }
 }
 
@@ -118,8 +99,8 @@
 /* Trailing button */
 .skc-chip .skc-chip__trailing-button {
   --state-layer-color: var(--on-surface);
-  margin-block: -0.125rem;
   margin-inline-end: -0.75rem;
+  margin-block: -0.125rem;
 
   padding: 0.1875rem;
   color: var(--on-surface);
