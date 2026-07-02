@@ -33,7 +33,9 @@ body {
 
 @media (width < 600px) {
   .skc-root-layout {
-    padding-bottom: 5rem;
+    padding-bottom: calc(
+      1rem + var(--_nav-size, 0rem) + var(--_fab-size, 0rem)
+    );
 
     > .skc-nav-bar {
       top: auto;
@@ -41,17 +43,18 @@ body {
   }
 
   .skc-root-layout:has(> .skc-nav-bar) {
-    --_bottom-offset: 5rem;
+    --_nav-size: 5rem;
     --_fab-size: 3.5rem;
 
-    &:has(> .skc-fab) .skc-snackbar {
-      --_bottom-offset: calc(6.25rem + var(--_fab-size));
-    }
     &:has(> .skc-fab.skc-fab--small) {
       --_fab-size: 2.5rem;
     }
     &:has(> .skc-fab.skc-fab--large) {
       --_fab-size: 6rem;
+    }
+
+    &:not(:has(dialog[open])):has(> .skc-fab) .skc-snackbar {
+      --_bottom-offset: calc(1.25rem + var(--_nav-size) + var(--_fab-size));
     }
   }
 }

@@ -8,7 +8,7 @@
   display: flex;
 
   position: fixed;
-  bottom: calc(1rem + var(--_bottom-offset, 0rem));
+  bottom: calc(1rem + var(--_nav-size, 0rem));
   justify-content: center;
   align-items: center;
   z-index: 80;

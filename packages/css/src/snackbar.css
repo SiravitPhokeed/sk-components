@@ -24,13 +24,11 @@
   transform: translateY(var(--_exit-translate)) scaleY(0);
   transform-origin: bottom;
   opacity: 1;
-
-  /* A little delay to allow the previous Snackbar to exit before this one enters. */
   transition-delay: calc(var(--_duration) / 4);
-
-  transition-duration: var(--_duration);
-  transition-property: transform, opacity;
-  transition-timing-function: var(--_easing);
+  transition-property: bottom, transform, opacity;
+  transition: var(--_duration) var(--_easing)
+    /* A little delay to allow the previous Snackbar to exit before this one enters. */
+    calc(var(--_duration) / 4);
   box-sizing: border-box;
   margin: 0;
   inset: auto;
