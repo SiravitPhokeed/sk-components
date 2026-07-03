@@ -216,13 +216,14 @@
   --shadow-3: var(--shadow-3);
   --shadow-4: var(--shadow-4);
   --shadow-5: var(--shadow-5);
-  --shadow-text: var(--shadow-text);
 
-  --drop-shadow-1: var(--drop-shadow-1);
-  --drop-shadow-2: var(--drop-shadow-2);
-  --drop-shadow-3: var(--drop-shadow-3);
-  --drop-shadow-4: var(--drop-shadow-4);
-  --drop-shadow-5: var(--drop-shadow-5);
+  /* Tailwind CSS’s drop-shadow does not accept variables with multiple shadows,
+     so we manually define them here. */
+  --drop-shadow-1: 0 1px 2px #0000004d, 0 1px 3px 1px #00000026;
+  --drop-shadow-2: 0 1px 2px #0000004d, 0 2px 6px 2px #00000026;
+  --drop-shadow-3: 0 4px 8px #00000026, 0 1px 3px #0000004d;
+  --drop-shadow-4: 0 6px 10px #00000026, 0 2px 3px #0000004d;
+  --drop-shadow-5: 0 8px 12px #00000026, 0 4px 4px #0000004d;
 
   --duration-short-1: var(--motion-short-1);
   --duration-short-2: var(--motion-short-2);
