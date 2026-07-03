@@ -18,6 +18,8 @@
     position: relative;
     gap: 0.25rem;
     height: 0.25rem;
+    transform: scaleY(0);
+    transition: transform var(--motion-short-4) var(--easing-standard);
 
     /* Already flipped by parent */
     [dir="rtl"] & {
@@ -46,6 +48,9 @@
     background-color: var(--_indicator-color);
     aspect-ratio: 1;
   }
+}
+.skc-progress--visible.skc-progress--linear .skc-progress__track {
+  transform: scaleY(1);
 }
 
 @media (prefers-contrast: more) {
