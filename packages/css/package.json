@@ -84,6 +84,7 @@
     "prepublishOnly": "pnpm build"
   },
   "devDependencies": {
+    "cssnano": "^8.0.2",
     "postcss": "^8.5.0",
     "postcss-cli": "^11.0.0"
   }
