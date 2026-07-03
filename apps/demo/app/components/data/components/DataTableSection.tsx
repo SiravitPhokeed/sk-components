@@ -1,5 +1,6 @@
 "use client";
 
+import DataTableRowActions from "@/app/components/data/components/DataTableRowActions";
 import {
   Avatar,
   DataTable,
@@ -27,7 +28,7 @@ import { useState, type FC } from "react";
 
 // #region Data
 
-type Task = {
+export type Task = {
   task: string;
   assignee?: string;
   progress: "not-started" | "in-progress" | "completed" | "blocked";
@@ -198,7 +199,10 @@ const DataTableSection: FC = () => {
             headerGroups={getHeaderGroups()}
             colSpans={[7, 4, 4, 4]}
           />
-          <DataTableBody rowModel={getRowModel()} />
+          <DataTableBody<Task>
+            rowModel={getRowModel()}
+            rowActions={(task) => <DataTableRowActions task={task} />}
+          />
         </DataTableContent>
         <DataTablePagination
           rowsPerPage={ROWS_PER_PAGE}
