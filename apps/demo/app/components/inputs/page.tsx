@@ -1,5 +1,6 @@
 import ButtonsSection from "@/app/components/inputs/components/ButtonsSection";
 import CheckboxSection from "@/app/components/inputs/components/CheckboxSection";
+import ChipFieldSection from "@/app/components/inputs/components/ChipFieldSection";
 import FABSection from "@/app/components/inputs/components/FABSection";
 import RadioSection from "@/app/components/inputs/components/RadioSection";
 import ReportIssueFAB from "@/app/components/inputs/components/ReportIssueFAB";
@@ -34,6 +35,7 @@ const InputsPage: FC = () => (
       <RadioSection />
       <SwitchSection />
       <SelectSection />
+      <ChipFieldSection />
       <TextFieldSection />
       <SearchSection />
     </ContentLayout>
