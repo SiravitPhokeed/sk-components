@@ -27,6 +27,7 @@
   &:first-child {
     border-left: 0;
   }
+  &:nth-last-child(2):has(+ .skc-table-row__actions),
   &:last-child {
     border-right: 0;
   }

@@ -1,7 +1,9 @@
+import type { SegmentedButton } from "@/components/SegmentedButton";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/table-row.css";
-import type { ReactNode } from "react";
+import type { ReactElement, ReactNode } from "react";
+import { useId } from "react";
 
 /**
  * Props for {@link TableRow Table Row}.
@@ -14,6 +16,14 @@ export interface TableRowProps extends ElementCustomizableProps {
    * - Always required.
    */
   children: ReactNode;
+
+  /**
+   * Actions related to a row, shown on hover.
+   *
+   * - Must be a Segmented Button or a Button.
+   * - Optional.
+   */
+  actions?: ReactElement<typeof SegmentedButton>;
 }
 
 /**
@@ -24,11 +34,71 @@ export interface TableRowProps extends ElementCustomizableProps {
  */
 export const TableRow: StyleableFC<TableRowProps> = ({
   children,
+  actions,
   element: Element = "tr",
   style,
   className,
-}) => (
-  <Element className={cn("skc-table-row", className)} style={style}>
-    {children}
-  </Element>
-);
+}) => {
+  const id = `row-${useId()}`;
+  const anchorName = `--${id}`;
+
+  // TableRow is a part of Table, which is a scrollable element.
+  // .skc-table > .skc-table__content > .skc-table-head, .skc-table-body, .skc-table-foot > .skc-table-row > .skc-table-row__actions
+
+  // Watch for when actionsRef.current starts intersecting with the parent .skc-table, and if it does, console.log("intersecting")
+
+  // const rowRef = useRef<HTMLTableRowElement | null>(null);
+
+  // useEffect(() => {
+  //   const rowActions = rowRef.current;
+  //   if (!rowActions) return;
+
+  //   console.log(
+  //     rowActions.parentElement?.parentElement?.parentElement?.parentElement,
+  //   );
+
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       entries.forEach((entry) => {
+  //         if (entry.isIntersecting) {
+  //           console.log("intersecting");
+  //         }
+  //       });
+  //     },
+  //     {
+  //       root: rowActions.parentElement?.parentElement?.parentElement
+  //         ?.parentElement,
+  //       threshold: 0.1,
+  //     },
+  //   );
+
+  //   observer.observe(rowActions);
+
+  //   return () => {
+  //     observer.disconnect();
+  //   };
+  // }, []);
+
+  // const actionsRef = useRef<HTMLTableCellElement | null>(null);
+
+  return (
+    <>
+      <Element
+        // ref={rowRef}
+        className={cn("skc-table-row", className)}
+        style={{ anchorName, ...style }}
+      >
+        {children}
+        {actions && (
+          <td
+            // ref={actionsRef}
+            className="skc-table-row__actions"
+            style={{ positionAnchor: anchorName }}
+          >
+            {actions}
+          </td>
+        )}
+      </Element>
+    </>
+  );
+};

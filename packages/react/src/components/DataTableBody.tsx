@@ -1,7 +1,11 @@
 import { TableBody } from "@/components/TableBody";
 import { TableCell } from "@/components/TableCell";
-import { TableRow } from "@/components/TableRow";
-import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
+import { TableRow, type TableRowProps } from "@/components/TableRow";
+import type {
+  ElementCustomizableProps,
+  StyleableFC,
+  StyleableProps,
+} from "@/lib/types";
 import "@suankularb-components/css/table-body.css";
 import type { RowModel } from "@tanstack/react-table";
 import { flexRender } from "@tanstack/react-table";
@@ -30,6 +34,18 @@ export interface DataTableBodyProps<
    * @default "center"
    */
   align?: "left" | "center" | "right";
+
+  /**
+   * Actions related to a row, shown on hover.
+   *
+   * - Must be a Segmented Button.
+   * - Optional.
+   *
+   * @param row The data for the row this is place in.
+   */
+  rowActions?:
+    | Required<TableRowProps["actions"]>
+    | ((row: RowShape) => Required<TableRowProps["actions"]>);
 }
 
 /**
@@ -37,16 +53,24 @@ export interface DataTableBodyProps<
  *
  * @param rowModel The return of `getRowModel`, one of the functions of the Tanstack Table instance.
  */
-export const DataTableBody: StyleableFC<DataTableBodyProps> = ({
+export const DataTableBody = <RowShape extends {}>({
   rowModel,
   align = "left",
+  rowActions,
   element,
   style,
   className,
-}) => (
+}: StyleableProps & DataTableBodyProps<RowShape>) => (
   <TableBody element={element} style={style} className={className}>
     {rowModel.rows.map((row) => (
-      <TableRow key={row.id}>
+      <TableRow
+        key={row.id}
+        actions={
+          typeof rowActions === "function"
+            ? rowActions(row.original)
+            : rowActions
+        }
+      >
         {row.getVisibleCells().map((cell) => (
           <TableCell key={cell.id} align={align}>
             {flexRender(cell.column.columnDef.cell, cell.getContext())}

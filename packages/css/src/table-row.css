@@ -6,5 +6,58 @@
 
 .skc-table-row {
   display: table-row;
-  position: relative;
+  transition: background-color var(--motion-short-4) var(--easing-standard);
+  background-color: transparent;
+}
+
+/* ── Row actions ─────────────────────────────────────────────────────────── */
+
+.skc-table-row:has(> .skc-table-row__actions:not(:empty)) {
+  &:hover,
+  &:has(:focus-visible) {
+    background-color: color-mix(in srgb, var(--on-surface) 8%, transparent);
+
+    > .skc-table-row__actions {
+      transform: translateY(0);
+      opacity: 1;
+
+      > * {
+        pointer-events: auto;
+      }
+    }
+  }
+}
+
+.skc-table-row__actions {
+  --_inset: 0.5rem;
+  display: flex;
+  position: absolute;
+  top: calc(anchor(top) - 1.75rem);
+  left: calc(anchor(left) + var(--_inset));
+  align-items: center;
+  gap: 0.125rem;
+  transform: translateY(0.25rem);
+  opacity: 0;
+  z-index: 10;
+  transition: var(--motion-short-4) var(--easing-standard);
+  transition-property: opacity, transform;
+  pointer-events: none;
+
+  [dir="rtl"] & {
+    right: calc(anchor(right) + var(--_inset));
+    left: auto;
+  }
+
+  > .skc-segmented-button {
+    box-shadow: var(--shadow-1);
+    border-radius: var(--rounded-full);
+    background-color: var(--surface-variant);
+  }
+
+  .skc-button {
+    border: 0;
+    > .skc-material-icon {
+      margin-inline: 0.25rem;
+    }
+  }
 }
