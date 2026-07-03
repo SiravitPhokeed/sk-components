@@ -79,7 +79,8 @@
 }
 
 /* Selected */
-.skc-chip--selected {
+.skc-chip--selected,
+.skc-chip-field--last-chip-selected .skc-chip-set > .skc-chip:last-child {
   border-color: transparent;
   background-color: var(--adaptive-secondary-container);
   color: var(--on-secondary-container);

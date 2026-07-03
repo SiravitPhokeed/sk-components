@@ -1,0 +1,223 @@
+/**
+ * **Chip Field**
+ * A combination of Input Chips and a Text Field. Users can simply start typing
+ * into the Chip Field; their input is converted into an Input Chip on spacebar
+ * press.
+ */
+
+.skc-chip-field {
+  --_border-width: 1px;
+  --_border-color: var(--outline);
+  --_label-offset: 1rem;
+  --_duration: var(--motion-short-4);
+  --_easing: var(--easing-standard);
+  display: flex;
+
+  position: relative;
+  flex-direction: column;
+  color: var(--on-surface-variant);
+}
+
+/* ── Label ───────────────────────────────────────────────────────────────── */
+
+.skc-chip-field__label {
+  position: absolute;
+  top: 1rem;
+  transform-origin: left;
+  z-index: 10;
+  transition-property: color, transform;
+  transition: var(--_duration) var(--_easing);
+  inset-inline-start: var(--_label-offset);
+  pointer-events: none;
+  font-family: var(--font-display);
+
+  [dir="rtl"] & {
+    transform-origin: right;
+  }
+
+  .skc-chip-field:focus-within & {
+    color: var(--primary);
+  }
+}
+
+/* ── Clip ────────────────────────────────────────────────────────────────── */
+
+/* Hide a portion of the box border to make space for the label */
+.skc-chip-field__clip {
+  position: absolute;
+  top: 0;
+  transform: scaleX(0);
+  z-index: 10;
+  transition: transform var(--_duration) var(--_easing);
+  inset-inline-start: 0.75rem;
+  background-color: var(--adaptive-background);
+  padding-inline: 0.25rem;
+  height: var(--_border-width);
+  overflow: hidden;
+  pointer-events: none;
+  font-family: var(--font-display);
+}
+
+/* Show the clip and move the label up when:
+   - The field is focused, or
+   - The input has user-typed text (:not(:placeholder-shown)), or
+   - There are Input Chips in the Chip Set, or
+   - The consumer provided a placeholder (label is always at top) */
+.skc-chip-field:is(
+  :focus-within,
+  :has(.skc-chip-field__input:not(:placeholder-shown)),
+  :has(.skc-chip-set:not(:empty)),
+  :has(.skc-chip-field__input[placeholder]:not([placeholder=" "]))
+) {
+  .skc-chip-field__clip {
+    transform: scaleX(1);
+  }
+  .skc-chip-field__label {
+    transform: translateX(
+        calc((var(--_label-offset) * -1 + 1rem) * var(--inline-forward))
+      )
+      translateY(-1.75rem) scale(0.75);
+  }
+}
+
+/* ── Box ─────────────────────────────────────────────────────────────────── */
+
+.skc-chip-field__box {
+  --_box-padding-inline: calc(1rem - var(--_border-width));
+
+  display: flex;
+  transition: border-color var(--_duration) var(--_easing);
+  box-sizing: border-box;
+  border: var(--_border-width) solid var(--_border-color);
+  border-radius: var(--rounded-xs);
+  width: 100%;
+  min-height: 3.5rem;
+  overflow-x: auto;
+  overflow-y: clip;
+}
+
+/* ── Content ─────────────────────────────────────────────────────────────── */
+
+.skc-chip-field__content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-block: calc(-1 * var(--_border-width));
+  width: 100%;
+  min-width: fit-content;
+}
+
+/* ── Chip Set area ───────────────────────────────────────────────────────── */
+
+/* The ChipSet inside the Chip Field gets spacing adjustments */
+.skc-chip-field__content > .skc-chip-set {
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  padding-inline-start: calc(1rem - var(--_border-width));
+  padding-block: calc(0.75rem - var(--_border-width));
+
+  &:empty + .skc-chip-field__input {
+    padding-inline-start: 0;
+  }
+}
+
+/* ── Input ───────────────────────────────────────────────────────────────── */
+
+.skc-chip-field__input {
+  flex-grow: 1;
+  box-sizing: border-box;
+  margin-block: calc(-1 * var(--_border-width));
+  border: 0;
+  background-color: transparent;
+  padding-inline-start: 0.5rem;
+  padding-inline-end: calc(1rem - var(--_border-width));
+  padding-block: 1rem;
+  min-width: 12rem;
+  color: var(--on-surface);
+  font: inherit;
+  letter-spacing: inherit;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: var(--outline);
+  }
+}
+
+/* ── Helper/error message ────────────────────────────────────────────────── */
+
+.skc-chip-field__helper-msg {
+  position: absolute;
+  inset: auto 0 -2.25rem 1rem;
+  height: 2rem;
+
+  kbd {
+    /* Sharp shadow to make it look like a cutout */
+    box-shadow: 0 2px 0 var(--outline-variant);
+    border: 1px solid var(--outline-variant);
+    border-radius: var(--rounded-xs);
+    padding-inline: 0.25rem;
+    padding-block: 0.125rem;
+    font-family: inherit;
+  }
+}
+
+/* ── Required ────────────────────────────────────────────────────────────── */
+
+.skc-chip-field--required
+  :is(.skc-chip-field__clip, .skc-chip-field__label)::after {
+  content: " *";
+  color: var(--error);
+}
+
+/* ── Loading ─────────────────────────────────────────────────────────────── */
+
+.skc-chip-field .skc-progress {
+  position: absolute;
+  inset: var(--_border-width);
+  top: auto;
+}
+
+/* ── States ──────────────────────────────────────────────────────────────── */
+
+/* Hover */
+.skc-chip-field:not(.skc-chip-field--disabled) {
+  &:hover {
+    --_border-color: var(--on-surface);
+  }
+  &:focus-within {
+    --_border-width: 2px;
+    --_border-color: var(--primary);
+    outline: none;
+  }
+}
+
+/* ── Disabled ────────────────────────────────────────────────────────────── */
+
+.skc-chip-field--disabled {
+  --_border-color: color-mix(in srgb, var(--outline) 12%, transparent);
+  color: color-mix(in srgb, var(--on-surface) 38%, transparent);
+
+  .skc-chip-field__label {
+    color: color-mix(in srgb, var(--on-surface) 38%, transparent);
+  }
+
+  .skc-chip-field__input {
+    opacity: 0.38;
+    color: var(--on-surface);
+  }
+}
+
+/* ── Error ───────────────────────────────────────────────────────────────── */
+
+.skc-chip-field--error {
+  --_border-color: var(--error);
+
+  &,
+  &:focus-within .skc-chip-field__label {
+    color: var(--error);
+  }
+}
