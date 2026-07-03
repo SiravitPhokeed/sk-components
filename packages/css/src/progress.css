@@ -17,9 +17,9 @@
     display: flex;
     position: relative;
     gap: 0.25rem;
-    height: 0.25rem;
     transform: scaleY(0);
     transition: transform var(--motion-short-4) var(--easing-standard);
+    height: 0.25rem;
 
     /* Already flipped by parent */
     [dir="rtl"] & {
