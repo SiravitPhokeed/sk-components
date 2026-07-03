@@ -55,11 +55,13 @@ const ComponentsPage: FC = () => (
             <li>Button</li>
             <li>Segmented Button</li>
             <li>Toggle Button</li>
+            <li>Floating Action Button</li>
             <li>Actions</li>
             <li>Checkbox</li>
             <li>Radio</li>
             <li>Switch</li>
             <li>Select</li>
+            <li>Chip Field</li>
             <li>Text Field</li>
             <li>Search</li>
             <li>Form Group and Form Item</li>
