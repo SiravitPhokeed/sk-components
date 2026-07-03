@@ -97,3 +97,60 @@ body {
     }
   }
 }
+
+/* ── Global styles ───────────────────────────────────────────────────────── */
+
+:root {
+  --inline-forward: 1;
+}
+[dir="rtl"] {
+  --inline-forward: -1;
+}
+
+/* Focus ring animation for non-input elements */
+:not(input, textarea) {
+  &,
+  &:focus-visible {
+    --_focus-ring-color: var(--primary);
+    outline: 0 solid var(--_focus-ring-color);
+    outline-offset: 2px;
+  }
+  &:focus-visible {
+    animation: skc-focus var(--motion-long-4) var(--easing-standard) forwards;
+  }
+}
+@keyframes skc-focus {
+  0% {
+    outline-width: 0px;
+  }
+  25% {
+    outline-width: 8px;
+  }
+  100% {
+    outline-width: 3px;
+  }
+}
+
+/* Reduced motion */
+@keyframes skc-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes skc-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :not(input, textarea):focus-visible {
+    animation: none;
+    outline-width: 3px;
+  }
+}
