@@ -206,6 +206,18 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
   // Track if the last chip is selected (via backspace on empty input).
   const [lastChipSelected, setLastChipSelected] = useState(false);
 
+  /**
+   * Strip any single-char separator from the end of a value — the browser
+   * inserts the separator before keyup fires, so the raw input value carries
+   * a trailing separator like "123," that callers shouldn't see.
+   */
+  const stripSeparator = (val: string) => {
+    for (const sep of entrySeparators) {
+      if (sep.length === 1 && val.endsWith(sep)) return val.slice(0, -1);
+    }
+    return val;
+  };
+
   const handleKeyUp = (e: KeyboardEvent<HTMLInputElement>) => {
     const input = e.currentTarget;
     const currentValue = input.value;
@@ -230,8 +242,9 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
     // Check if the pressed key is an entry separator.
     if (entrySeparators.includes(e.key)) {
       e.preventDefault();
-      if (currentValue.trim()) {
-        onNewEntry?.(currentValue.trim());
+      const entryValue = stripSeparator(currentValue).trim();
+      if (entryValue) {
+        onNewEntry?.(entryValue);
         onChange?.("");
       }
     }
@@ -288,7 +301,7 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
             // detecting input value works even if the user doesn't provide a
             // placeholder.
             placeholder={placeholder ?? " "}
-            onChange={(e) => onChange?.(e.target.value)}
+            onChange={(e) => onChange?.(stripSeparator(e.target.value))}
             onFocus={() => setLastChipSelected(false)}
             onBlur={() => setLastChipSelected(false)}
             onKeyUp={handleKeyUp}
