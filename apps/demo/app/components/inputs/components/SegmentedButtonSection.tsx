@@ -6,7 +6,8 @@ import {
   Section,
   SegmentedButton,
 } from "@suankularb-components/react";
-import { type FC, useState } from "react";
+import type { FC } from "react";
+import { useState } from "react";
 
 const SegmentedButtonSection: FC = () => {
   const [view, setView] = useState<"schedule" | "list">("schedule");
