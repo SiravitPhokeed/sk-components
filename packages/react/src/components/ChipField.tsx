@@ -78,9 +78,12 @@ export interface ChipFieldProps {
   onDeleteLast?: () => any;
 
   /**
-   * An array of characters that trigger the creation of a new Input Chip.
+   * An array of keys that trigger the creation of a new Input Chip.
    *
    * - Optional.
+   *
+   * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values A list of key values}.
+   * @default [" ", ",", ";", "Enter"]
    */
   entrySeparators?: string[];
 
