@@ -9,7 +9,7 @@ import type {
   StyleableFC,
 } from "@/lib/types";
 import "@suankularb-components/css/nav-drawer-item.css";
-import type { ReactNode } from "react";
+import type { ReactElement, ReactNode } from "react";
 
 /**
  * Props for {@link NavDrawerItem Navigation Drawer Item}.
@@ -21,7 +21,7 @@ export interface NavDrawerItemProps
    *
    * - Always required.
    */
-  icon: ReactNode;
+  icon: ReactElement;
 
   /**
    * The title of the destination page.

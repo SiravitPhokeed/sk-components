@@ -25,7 +25,7 @@ export interface MenuProps extends ElementCustomizableProps {
   /**
    * Menu Items and other content inside the Menu.
    *
-   * - Should mostly contain Menu Items.
+   * - Should mostly contain Menu Items and optionally Dividers.
    * - Always required.
    */
   children: ReactNode;

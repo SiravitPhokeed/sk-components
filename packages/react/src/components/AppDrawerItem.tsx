@@ -9,7 +9,7 @@ import type {
   StyleableFC,
 } from "@/lib/types";
 import "@suankularb-components/css/app-drawer-item.css";
-import type { ReactNode } from "react";
+import type { ReactElement } from "react";
 import { useId } from "react";
 
 /**
@@ -20,7 +20,7 @@ export interface AppDrawerItemProps
   /**
    * The logo image of the app.
    */
-  logo: ReactNode;
+  logo: ReactElement;
 
   /**
    * The name of the app.

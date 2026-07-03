@@ -1,3 +1,4 @@
+import type { AppDrawer } from "@/components/AppDrawer";
 import type { ButtonProps } from "@/components/Button";
 import { Button } from "@/components/Button";
 import { MaterialIcon } from "@/components/MaterialIcon";
@@ -7,7 +8,7 @@ import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import { PageHeaderBlobs } from "@/svg/PageHeaderBlobs";
 import PageHeaderMinimizedBlobs from "@/svg/PageHeaderMinimizedBlob";
 import "@suankularb-components/css/page-header.css";
-import type { ReactNode } from "react";
+import type { ReactElement, ReactNode } from "react";
 
 /**
  * Props for {@link PageHeader Page Header}.
@@ -20,11 +21,6 @@ export interface PageHeaderProps extends ElementCustomizableProps {
    * - Always required.
    */
   children: ReactNode;
-
-  /**
-   * @deprecated
-   */
-  alt?: string;
 
   /**
    * The link the back Button navigates to.
@@ -41,17 +37,12 @@ export interface PageHeaderProps extends ElementCustomizableProps {
   parentURL?: string;
 
   /**
-   * @deprecated
-   */
-  homeURL?: string;
-
-  /**
    * An App Drawer placed on the right edge of the Page Header.
    *
    * - Recommended if this app is part of a family of apps.
    * - Optional.
    */
-  appDrawer?: ReactNode;
+  appDrawer?: ReactElement<typeof AppDrawer>;
 
   /**
    * Allows for translation of the accessibility labels.

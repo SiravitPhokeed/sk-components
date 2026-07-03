@@ -1,7 +1,10 @@
+import type { Checkbox } from "@/components/Checkbox";
+import type { Radio } from "@/components/Radio";
+import type { Switch } from "@/components/Switch";
 import { Text } from "@/components/Text";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/form-item.css";
-import type { ReactNode } from "react";
+import type { ReactElement, ReactNode } from "react";
 
 /**
  * Props for {@link FormItem Form Item}.
@@ -13,7 +16,7 @@ export interface FormItemProps extends ElementCustomizableProps {
    * - Must be a Checkbox, Radio, or Switch.
    * - Always required.
    */
-  children: ReactNode;
+  children: ReactElement<typeof Checkbox | typeof Radio | typeof Switch>;
 
   /**
    * The label for the input.

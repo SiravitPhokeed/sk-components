@@ -11,7 +11,7 @@ import type {
 } from "@/lib/types";
 import "@suankularb-components/css/tab.css";
 import { throttle } from "radash";
-import type { ReactNode } from "react";
+import type { ReactElement, ReactNode } from "react";
 import { useEffect, useRef } from "react";
 
 /**
@@ -26,7 +26,7 @@ export interface TabProps extends ActionableProps, ElementCustomizableProps {
    * - Normally optional but required if `label` is not defined as a Tab cannot
    *   be empty.
    */
-  icon?: ReactNode;
+  icon?: ReactElement;
 
   /**
    * An additional text label next to or underneath the icon.

@@ -1,11 +1,12 @@
 "use client";
 
+import type { Button } from "@/components/Button";
 import { Text } from "@/components/Text";
 import { useAnimatedPopover } from "@/hooks/useAnimatedPopover";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/snackbar.css";
-import type { ReactNode } from "react";
+import type { ReactElement, ReactNode } from "react";
 import { useEffect, useId, useRef } from "react";
 
 const EXITING_CLASS = "skc-snackbar--exiting";
@@ -36,7 +37,7 @@ export interface SnackbarProps {
    * - Must contain 1 Button with text appearance.
    * - Optional.
    */
-  action?: ReactNode;
+  action?: ReactElement<typeof Button>;
 
   /**
    * Put the message ({@link children `children`}) above the action

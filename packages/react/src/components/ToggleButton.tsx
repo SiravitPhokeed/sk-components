@@ -5,7 +5,7 @@ import { MaterialIcon } from "@/components/MaterialIcon";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/toggle-button.css";
-import type { ReactNode } from "react";
+import type { ReactElement } from "react";
 
 /**
  * Props for {@link ToggleButton Toggle Button}.
@@ -33,7 +33,7 @@ export interface ToggleButtonProps extends ElementCustomizableProps {
    *   value for `icon`.
    * - Always required, as a Toggle Button cannot be empty.
    */
-  icon: ReactNode;
+  icon: ReactElement;
 
   /**
    * A description of the Toggle Button for screen readers, similar to `alt` on

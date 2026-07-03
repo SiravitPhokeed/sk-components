@@ -3,7 +3,7 @@
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/switch.css";
-import type { ReactNode } from "react";
+import type { ReactElement } from "react";
 
 /**
  * Props for {@link Switch}.
@@ -30,7 +30,7 @@ export interface SwitchProps extends ElementCustomizableProps {
    * - You are encouraged to use Material Icons as the value for `offIcon`.
    * - Optional.
    */
-  offIcon?: ReactNode;
+  offIcon?: ReactElement;
 
   /**
    * An icon inside the Thumb when the switch is on.
@@ -38,7 +38,7 @@ export interface SwitchProps extends ElementCustomizableProps {
    * - You are encouraged to use Material Icons as the value for `onIcon`.
    * - Optional.
    */
-  onIcon?: ReactNode;
+  onIcon?: ReactElement;
 
   /**
    * Turns the Switch gray and block any action associated with it.

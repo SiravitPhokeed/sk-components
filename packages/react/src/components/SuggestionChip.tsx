@@ -10,7 +10,7 @@ import type {
   StyleableFC,
 } from "@/lib/types";
 import "@suankularb-components/css/suggestion-chip.css";
-import type { ReactNode } from "react";
+import type { ReactElement, ReactNode } from "react";
 
 /**
  * Props for {@link SuggestionChip Suggestion Chip}.
@@ -32,7 +32,7 @@ export interface SuggestionChipProps
    * - You are encouraged to use Material Icons as the value for `icon`.
    * - Optional.
    */
-  icon?: ReactNode;
+  icon?: ReactElement;
 
   /**
    * A message shown in a tooltip when the user hovers over the Suggestion

@@ -1,6 +1,7 @@
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/chip-set.css";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link ChipSet}.
@@ -13,7 +14,7 @@ export interface ChipSetProps extends ElementCustomizableProps {
    * - Must be the same type of Chips.
    * - Always required.
    */
-  children: React.ReactNode;
+  children: ReactNode;
 
   /**
    * If the parent element is not wide enough for all Chips to be visible, the

@@ -12,11 +12,15 @@ import { useId, type ReactNode } from "react";
 export interface AppDrawerSegmentProps extends ElementCustomizableProps {
   /**
    * The apps in this segment.
+   * 
+   * - Always required. Must be App Drawer Items.
    */
   children: ReactNode;
 
   /**
    * The title of the group.
+   * 
+   * - Always required.
    */
   title: string;
 }

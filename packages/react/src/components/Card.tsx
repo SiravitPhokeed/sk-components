@@ -13,11 +13,9 @@ import type { ReactNode } from "react";
  */
 export interface CardProps extends ActionableProps, ElementCustomizableProps {
   /**
-   * Card must contain at least 1 element; here is a list of SKCom
-   * components that work well with Card: Card Header, Card Media, Card
-   * Content, Chip List, Actions.
+   * Card must contain at least 1 element.
    *
-   * - Required.
+   * - Always required. Card Header and Card Content work well inside Card.
    */
   children: ReactNode;
 

@@ -5,7 +5,7 @@ import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/list-item-content.css";
-import { type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link ListItemContent List Item Content}.
@@ -16,21 +16,21 @@ export interface ListItemContentProps extends ElementCustomizableProps {
    *
    * - Optional.
    */
-  overline?: string | ReactNode;
+  overline?: ReactNode;
 
   /**
    * The main text of the List Item Content.
    *
    * - Always required.
    */
-  title: string | ReactNode;
+  title: ReactNode;
 
   /**
    * A description supplementing the title text.
    *
    * - Optional.
    */
-  desc?: string | ReactNode;
+  desc?: ReactNode;
 }
 
 /**
