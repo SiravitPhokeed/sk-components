@@ -79,8 +79,8 @@
     "./toggle-button.css": "./dist/toggle-button.css"
   },
   "scripts": {
-    "build": "postcss src/**/*.css --dir dist/ --base src/",
-    "dev": "postcss src/**/*.css --dir dist/ --base src/ --watch",
+    "build": "rm -rf dist && postcss src/**/*.css --dir dist/ --base src/",
+    "dev": "rm -rf dist && postcss src/**/*.css --dir dist/ --base src/ --watch",
     "prepublishOnly": "pnpm build"
   },
   "devDependencies": {
