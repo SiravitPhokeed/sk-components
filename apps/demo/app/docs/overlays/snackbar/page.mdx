@@ -1,0 +1,155 @@
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Snackbar",
+};
+
+## Snackbar
+
+Snackbar briefly shows low priority information that does not require action,
+as opposed to Dialog. It can inform the user about ongoing processes or an
+event that has just been completed.
+
+Users frequently leave Snackbars unread, so check if other components like
+Dialog, `loading` in Button, or inline banners are more appropriate for your
+use case.
+
+```tsx
+<Snackbar action={<Button appearance="text">Undo</Button>}>
+  Deleted 3 items
+</Snackbar>
+```
+
+### Usage
+
+You will most definitely want to use the Snackbar imperative API instead of
+using the component directly.
+
+#### `snackbar.push()`
+
+This method shows a Snackbar with the given message and action. It accepts a
+message, an optional action, and an optional configuration object.
+
+```tsx
+import { snackbar } from "@suankularb-components/react/helpers";
+
+snackbar.push(
+  "Deleted 3 items",
+  <Button appearance="text">Undo</Button>,
+  { autoDismissDurationMs: 6000 },
+});
+```
+
+The configuration object allows you to set other props on the Snackbar:
+`stacked`, `persistent`, and `autoDismissDurationMs`.
+
+#### `snackbar.promise()`
+
+This method shows a Snackbar for as long as a Promise is pending. It accepts a
+message, an `async` function, and an optional configuration object.
+
+```tsx
+import { snackbar } from "@suankularb-components/react/helpers";
+
+await snackbar.promise(
+  "Deleting items…",
+  () => fetch("/api/delete-items", { method: "DELETE" }),
+});
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      The message inside the Snackbar.
+
+      - The Material Design style guide
+        [recommends omitting periods](https://m3.material.io/foundations/content-design/style-guide/grammar-and-punctuation)
+        at the end of Snackbar messages.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="id" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The ID of the popover element, for Imperative API access.
+
+      - Optional. Defaults to an auto-generated ID.
+      - Call `showPopover()` on the element to display the Snackbar.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="action" required="never">
+    <TableCell>`ReactElement<typeof Button>`</TableCell>
+    <TableCell>
+
+      A Snackbar can contain 1 action. Pressing this action closes the Snackbar.
+
+      - Must contain 1 Button with text appearance.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="stacked" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Put the message (`children`) above the action (`action`).
+
+      - This is useful if the action text is long.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="persistent" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Prevent the Snackbar from auto-dismissing after a certain duration.
+
+      - Incompatible with `autoDismissDurationMs`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="autoDismissDurationMs" required="never">
+    <TableCell>`number`</TableCell>
+    <TableCell>
+
+      Time in milliseconds until the Snackbar exits automatically.
+
+      - Incompatible with `persistent`.
+      - Defaults to 6000 (6 seconds).
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>
+
+### Changes from v3
+
+See [v3 to v4 migration guide](/docs/migration/v3-to-v4) for a full list of changes.
+
+- Snackbar is no longer controlled. `snackbar.push` and `snackbar.promise` are
+  now used to show Snackbars imperatively.
+- Added `persistent` and `autoDismissDurationMs` for controlling dismissal behavior.

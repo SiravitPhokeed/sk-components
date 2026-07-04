@@ -19,9 +19,10 @@ const nextConfig: NextConfig = {
         source: "/docs",
         destination: "/docs/guides/getting-started",
         permanent: false,
-      }
+      },
     ];
   },
+  allowedDevOrigins: ["192.168.1.133"],
   transpilePackages: [
     "@suankularb-components/react",
     "@suankularb-components/css",

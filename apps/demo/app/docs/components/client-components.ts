@@ -10,5 +10,6 @@
 export {
   Actions,
   FormItem,
+  Progress,
   SegmentedButton,
 } from "@suankularb-components/react";

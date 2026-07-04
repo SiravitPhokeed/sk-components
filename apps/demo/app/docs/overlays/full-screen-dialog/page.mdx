@@ -1,0 +1,161 @@
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Full-screen Dialog",
+};
+
+## Full-screen Dialog
+
+A Full-screen Dialog fills the entire screen containing a series of tasks
+required to complete.
+
+A Full-screen Dialog only fills the screen on mobile and turns into a Dialog
+on larger screens. A Dialog can appear above a Full-screen Dialog.
+
+```tsx
+<FullscreenDialog
+  id="edit-profile"
+  title="Edit profile"
+  action={
+    <Button
+      appearance="filled"
+      command="request-close"
+      commandfor="edit-profile"
+    >
+      Save
+    </Button>
+  }
+>
+  {/* Content */}
+</FullscreenDialog>
+```
+
+A trigger button can open the Full-screen Dialog via the Invoker Commands API:
+
+```tsx
+<Button command="show-modal" commandfor="edit-profile">
+  Edit profile
+</Button>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      The content.
+
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="id" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The ID of the `<dialog>` element, for Invoker Commands API support.
+
+      - Use with `command="show-modal"` and `commandfor={"{"}id{"}"}` on a
+        trigger button to open the Full-screen Dialog declaratively via the
+        Invoker Commands API.
+      - Use `command="request-close"` to close, not `command="close"`.
+      - Optional. Defaults to an auto-generated ID.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="open" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      If the Full-screen Dialog is open and shown.
+
+      - When provided, the Full-screen Dialog is controlled: the consumer must
+        call `onClose` on dismiss and set `open` to `false`.
+      - When omitted, use `id` together with a trigger button that has
+        `command="show-modal"` and `commandfor={"{"}id{"}"}`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="title" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      The title text.
+
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="action" required="never">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      The submission Button.
+
+      - Should be a Button.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="width" required="never">
+    <TableCell>`CSSProperties["width"]`</TableCell>
+    <TableCell>
+
+      Full-screen Dialog transforms into a basic Dialog on larger screens. The
+      width of the Dialog can be set here.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="locale" required="never">
+    <TableCell>`"en-US" | "th"`</TableCell>
+    <TableCell>
+
+      Allows for translation of the accessibility labels.
+
+      - Must be `"en-US"` or `"th"`, as SKCom currently only support those 2
+        languages.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="onClose" required="never">
+    <TableCell>`() => void`</TableCell>
+    <TableCell>
+
+      The function triggered when the backdrop is clicked or Escape is pressed.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>
+
+### Changes from v3
+
+See [v3 to v4 migration guide](/docs/migration/v3-to-v4) for a full list of changes.
+
+- Added support for the Invoker Commands API. Full-screen Dialogs can now be opened via `command="show-modal"` without requiring `useState`.
+- Added `width`.
+- Added `locale`.

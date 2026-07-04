@@ -1,0 +1,129 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { Dialog, TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Dialog",
+};
+
+## Dialog
+
+A Dialog interrupts the user to have them make an immediately significant
+decision or prompts a user to enter important information.
+
+```tsx
+<Dialog id="remove-friend-dialog">
+  <DialogHeader
+    title="Remove friend?"
+    desc="You will not be able to see posts from Akira."
+  />
+  <Actions>
+    <Button command="request-close" commandfor="remove-friend-dialog">
+      Cancel
+    </Button>
+    <Button
+      appearance="filled"
+      command="request-close"
+      commandfor="remove-friend-dialog"
+    >
+      Remove
+    </Button>
+  </Actions>
+</Dialog>
+```
+
+A trigger button can open the Dialog via the Invoker Commands API:
+
+```tsx
+<Button command="show-modal" commandfor="remove-friend-dialog">
+  Remove friend
+</Button>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      Parts of a Dialog.
+
+      - Dialog Header and Actions are required components and must appear in the
+        said order.
+      - If present, Dialog Content must appear between Dialog Header and Actions.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="id" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The ID of the `<dialog>` element, for Invoker Commands API support.
+
+      - Use with `command="show-modal"` and `commandfor={"{"}id{"}"}` on a
+        trigger button to open the Dialog declaratively via the Invoker Commands
+        API.
+      - Use `command="request-close"` to close, not `command="close"`.
+      - Optional. Defaults to an auto-generated ID.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="open" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      If the Dialog is open and shown.
+
+      - When provided, the Dialog is controlled: the consumer must
+        call `onClose` on dismiss and set `open` to `false`.
+      - When omitted, use `id` together with a trigger button that has
+        `command="show-modal"` and `commandfor={"{"}id{"}"}`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="onClose" required="never">
+    <TableCell>`() => void`</TableCell>
+    <TableCell>
+
+      The function triggered when the backdrop is clicked or Escape is pressed.
+
+      - In controlled mode (`open` is provided), the consumer should set
+        `open` to `false` in response.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="width" required="never">
+    <TableCell>`CSSProperties["width"]`</TableCell>
+    <TableCell>
+
+      The width of the Dialog. This is useful when you want to fit more content
+      into a Dialog, or when you have many overlapping Dialogs.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>
+
+### Changes from v3
+
+See [v3 to v4 migration guide](/docs/migration/v3-to-v4) for a full list of changes.
+
+- Added support for the Invoker Commands API. Dialogs can now be opened via `command="show-modal"` without requiring `useState`.
+- Added `width`.
+- Renamed to `Dialog` from `Dialog`.

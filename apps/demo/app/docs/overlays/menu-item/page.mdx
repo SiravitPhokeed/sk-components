@@ -1,0 +1,155 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  MaterialIcon,
+  MenuItem,
+  TableCell,
+} from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Menu Item",
+};
+
+## Menu Item
+
+An action/option inside a temporary list.
+
+<DemoCard
+  component={MenuItem}
+  initialProps={{
+    children: "Copy",
+    icon: <MaterialIcon icon="content_copy" />,
+    metadata: "⌘ C",
+    className: "w-64",
+  }}
+  adjustableProps={{
+    dangerous: "boolean",
+    disabled: "boolean",
+    selected: "boolean",
+  }}
+/>
+
+```tsx
+<MenuItem
+  icon={<MaterialIcon icon="content_copy" />}
+  metadata="⌘ C"
+  command="hide-popover"
+>
+  Copy
+</MenuItem>
+```
+
+### Usage
+
+Menu Items are used inside Menu and Select. If not provided, `commandfor` will
+default to the nearest Menu’s `id`.
+
+### Props
+
+- `ActionableProps` are available: `command`, `commandFor`, `onClick`, and `href`.
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      The text displayed inside the Menu Item.
+
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="icon" required="never">
+    <TableCell>`ReactElement`</TableCell>
+    <TableCell>
+
+      An icon can appear before the text (`children`) in a Menu Item. In a long
+      Menu, icons can quickly orient users.
+
+      - If one Menu Item in a Menu has an icon, the rest should have one too.
+      - You are encouraged to use [Material Icon](/docs/data/material-icon) as the value for `icon`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="metadata" required="never">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      A message shown in a tooltip when the user hovers over the Menu Item.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="selected" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      If this Menu Item is selected in a dropdown Menu.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="dangerous" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      If the action the Menu Item accomplishes is dangerous, like deleting your
+      account. If it is, the Menu Item turns red (defined as `error` in the
+      palette).
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="disabled" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Turns the Menu Item text gray and block any action associated with it.
+      `onClick` and `href` will have no effect.
+
+      - [Learn when to disable something.](https://codium.one/index.php/en/blog/77-disabled-buttons-don-t-have-to-suck)
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="value" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The value of a Select item, similar to `value` on `<option>`.
+
+      - **Important:** this is intended to be used only when the Menu Item is
+        inside a Select. This prop is not functional otherwise.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>
+
+### Changes from v3
+
+See [v3 to v4 migration guide](/docs/migration/v3-to-v4) for a full list of changes.
+
+- Added support for the Invoker Commands API.
+- Added `dangerous`.
+- Added `value` for use within Select.

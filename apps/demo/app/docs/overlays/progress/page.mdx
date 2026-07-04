@@ -1,0 +1,103 @@
+import { Progress } from "@/app/docs/components/client-components";
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Progress",
+};
+
+## Progress
+
+A Progress indicates that something is ongoing. It can also indicate how
+much of that something has been done.
+
+<DemoCard
+  component={Progress}
+  initialProps={{
+    appearance: "circular",
+    alt: "Loading…",
+    visible: true,
+    className: "[&.skc-progress--linear]:w-64",
+  }}
+  adjustableProps={{
+    appearance: ["linear", "circular"],
+    visible: "boolean",
+  }}
+/>
+
+```tsx
+<Progress appearance="linear" alt="Loading…" />
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="appearance" required="always">
+    <TableCell>
+      ```
+      "linear"
+      | "circular"
+      ```
+    </TableCell>
+    <TableCell>
+
+      Progress can be either a loading spinner or a linear loading bar.
+
+      - Must be `linear` or `circular`.
+      - Keep the appearance consistent for the same actions. For example, if
+        loading a post uses `linear` in one place, the same action should always
+        use `linear` elsewhere.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="alt" required="always">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A description of the Progress for screen readers, similar to `alt` on
+      `<img>`.
+
+      - Always required, because a Progress has no significance to screenreaders.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="value" required="never">
+    <TableCell>`number`</TableCell>
+    <TableCell>
+
+      <div className="flex flex-row gap-2 mb-4">
+        <Progress appearance="circular" alt="Determinate" value={60} visible />
+        <Progress appearance="circular" alt="Indeterminate" visible />
+      </div>
+
+      The progress percentage (out of 100) of an activity.
+
+      - If undefined, the Progress will be in an indeterminate state.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="visible" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      If this Progress is visible.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

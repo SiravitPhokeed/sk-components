@@ -1,0 +1,134 @@
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Menu",
+};
+
+## Menu
+
+Menus display a list of choices on temporary surfaces.
+
+```tsx
+<Menu id="share-menu">
+  <MenuItem icon={<MaterialIcon icon="email" />}>Email</MenuItem>
+  <MenuItem icon={<MaterialIcon icon="chat" />}>Messages</MenuItem>
+</Menu>
+```
+
+### Usage
+
+A trigger button can open Menu via the Invoker Commands API.
+
+```tsx
+<Anchor>
+  <Button appearance="filled" command="show-popover" commandfor="share-menu">
+    Share
+  </Button>
+  <Menu id="share-menu">{/* ... */}</Menu>
+</Anchor>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      Menu Items and other content inside the Menu.
+
+      - Should mostly contain Menu Items and optionally Dividers.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="id" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The ID of the popover element, for Invoker Commands API support.
+
+      - Use with `command="show-popover"` and `commandfor={"{"}id{"}"}` on a
+        trigger button to open the Menu declaratively via the Invoker Commands
+        API.
+      - Menu Items inside this Menu will automatically use this ID for their
+        `commandfor` when they have a `command` but no explicit `commandfor`.
+      - Optional. Defaults to an auto-generated ID.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="anchor" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The anchor name (dashed-ident) for CSS Anchor Positioning.
+
+      - When inside an `<Anchor>`, this is auto-resolved from context — no
+        need to set it.
+      - When outside an `<Anchor>`, set this to the same name used on the
+        Anchor element (e.g. `anchor="--menu-trigger"`).
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="open" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      If the Menu is open and shown.
+
+      - When provided, the Menu is controlled: the consumer must
+        call `onClose` on dismiss and set `open` to `false`.
+      - When omitted, use `id` together with a trigger button that has
+        `command="show-popover"` and `commandfor={"{"}id{"}"}`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="density" required="never">
+    <TableCell>`0 | -2 | -4`</TableCell>
+    <TableCell>
+
+      A lower number means a more dense interface. In this case, less height.
+
+      - Must be an integer: 0, -2, or -4.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="onClose" required="never">
+    <TableCell>`() => void`</TableCell>
+    <TableCell>
+
+      The function triggered when the backdrop is clicked or Escape is pressed.
+
+      - In controlled mode (`open` is provided), the consumer should set
+        `open` to `false` in response.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>
+
+### Changes from v3
+
+See [v3 to v4 migration guide](/docs/migration/v3-to-v4) for a full list of changes.
+
+- Added support for the Invoker Commands API. Menus can now be opened via `command="show-popover"` without requiring `useState`.
+- Added `anchor` for CSS Anchor Positioning.
+- Added `density`.
