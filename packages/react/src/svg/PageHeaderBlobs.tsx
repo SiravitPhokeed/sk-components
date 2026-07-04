@@ -1,4 +1,3 @@
-import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 
 /**
@@ -6,8 +5,8 @@ import type { StyleableFC } from "@/lib/types";
  */
 export const PageHeaderBlobs: StyleableFC = ({ className, style }) =>
   // prettier-ignore
-  <svg viewBox="0 0 1194 780" fill="none" xmlns="http://www.w3.org/2000/svg" role="presentation"
-    className={cn("skc-page-header__blobs", className)} style={style}>
+  <svg viewBox="0 0 1194 780" fill="none" xmlns="http://www.w3.org/2000/svg"
+    className={className} style={style}>
       <g filter="url(#filter-page-header-blobs)"
         className="skc-page-header__blobs-group skc-page-header__blobs-group--desktop">
         <path d="M1154 -43.0043C1154 11.3035 882.153 112.69 805.57 112.69C728.986 112.69 634 0.952677 634 -53.3552C634 -107.663 892.528 -258 969.111 -258C1045.69 -258 1154 -97.3121 1154 -43.0043Z"

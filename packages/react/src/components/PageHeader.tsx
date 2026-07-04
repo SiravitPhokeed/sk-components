@@ -141,8 +141,10 @@ export const PageHeader: StyleableFC<PageHeaderProps> = ({
 
   return (
     <>
-      <PageHeaderBlobs />
-      <div aria-hidden className="skc-page-header__fade" />
+      <div aria-hidden className="skc-page-header__blobs">
+        <PageHeaderBlobs />
+        <div className="skc-page-header__fade" />
+      </div>
       <Element className={cn("skc-page-header", className)} style={style}>
         <div className="skc-page-header__content">
           {/* Nav toggle / Back Button */}
