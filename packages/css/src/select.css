@@ -146,6 +146,17 @@
   }
 }
 
+.skc-select--error {
+  --_border-color: var(--error);
+
+  &,
+  &:focus-within {
+    .skc-select__label {
+      color: var(--error);
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .skc-select__icon {
     transition: none;
