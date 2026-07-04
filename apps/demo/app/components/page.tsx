@@ -81,6 +81,7 @@ const ComponentsPage: FC = () => (
             <li>Filter Chip</li>
             <li>Input Chip</li>
             <li>Suggestion Chip</li>
+            <li>Chip Set</li>
             <li>Text</li>
             <li>Header</li>
             <li>Page Header</li>
@@ -97,7 +98,7 @@ const ComponentsPage: FC = () => (
             href="/components/overlays"
           >
             <li>Dialog</li>
-            <li>Fullscreen Dialog</li>
+            <li>Full-screen Dialog</li>
             <li>Menu</li>
             <li>Menu Item</li>
             <li>Snackbar</li>
