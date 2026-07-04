@@ -50,15 +50,15 @@ export interface FABProps extends ActionableProps {
   /**
    * A description of the FAB for screen readers, similar to `alt` on `<img>`.
    *
-   * - Required if the FAB just includes `icon`, because an icon has no
-   *   significance for screen readers.
+   * - Required if the FAB just includes `icon` and has no `tooltip`, because an
+   *   icon has no significance for screen readers.
    */
   alt?: string;
 
   /**
    * A message shown in a tooltip when the user hovers over the FAB.
    *
-   * - Normally optional but required if the label is a React Element.
+   * - Required if the FAB just includes `icon` and has no `alt`.
    */
   tooltip?: string;
 }
