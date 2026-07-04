@@ -1,0 +1,42 @@
+import { Actions, Button, Card, MaterialIcon } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Localization",
+};
+
+## Localization
+
+If your app supports multiple languages, you can pass a `locale` prop to
+components that support it. If you fail to provide a `locale`, the component
+will always fall back to `en-US`.
+
+<Card appearance="outlined" className="p-4 my-6">
+  <Actions align="center">
+    <Button children="Apps" appearance="text" icon={<MaterialIcon icon="apps" />} />
+    <Button children="ตัวเลือกแอพ" appearance="text" icon={<MaterialIcon icon="apps" />} />
+  </Actions>
+</Card>
+
+```tsx
+const locale = "th"; // Provided by your app’s localization logic
+return <AppDrawer locale={locale}>{/* ... */}</AppDrawer>;
+```
+
+SKCom currently supports **`en-US` and `th` locales.** The following components support the `locale` prop:
+
+- [App Drawer](/docs/layout/app-drawer)
+- [Button](/docs/inputs/button)
+- [Chip Field](/docs/inputs/chip-field)
+- [Data Table Cell](/docs/data/data-table-cell)
+- [Data Table Head](/docs/data/data-table-head)
+- [Data Table Pagination](/docs/data/data-table-pagination)
+- [Data Table Search](/docs/data/data-table-search)
+- [Full-screen Dialog](/docs/data/full-screen-dialog)
+- [Input Chip](/docs/data/input-chip)
+- [Nav Bar](/docs/layout/nav-bar)
+- [Page Header](/docs/layout/page-header)
+- [Search](/docs/inputs/search)
+- [Select](/docs/inputs/select)
+
+> It’s a good idea to keep this page open while you’re developing your app so
+> you don’t forget to pass the `locale` prop to components that support it.
