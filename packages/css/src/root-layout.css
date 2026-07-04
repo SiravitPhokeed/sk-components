@@ -6,6 +6,13 @@
  */
 
 body {
+  /* Defaults for adaptive colors */
+  --adaptive-primary-container: var(--primary-container);
+  --adaptive-secondary-container: var(--secondary-container);
+  --adaptive-background: var(--background);
+  --adaptive-surface-variant: var(--surface-variant);
+  --adaptive-surface-container: var(--surface-container);
+
   transition-property: background-color, color;
   transition: var(--motion-short-4) var(--easing-standard);
   margin: 0;

@@ -272,13 +272,6 @@
   --on-tertiary-fixed: #201c00;
   --tertiary-fixed-dim: #d7c770;
   --on-tertiary-fixed-variant: #514700;
-
-  /* Defaults for adaptive colors */
-  --adaptive-primary-container: var(--primary-container);
-  --adaptive-secondary-container: var(--secondary-container);
-  --adaptive-background: var(--background);
-  --adaptive-surface-variant: var(--surface-variant);
-  --adaptive-surface-container: var(--surface-container);
 }
 
 @media (prefers-color-scheme: dark) {
