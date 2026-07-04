@@ -7,6 +7,7 @@ import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type {
   ActionableProps,
+  CommandProps,
   ElementCustomizableProps,
   StyleableFC,
 } from "@/lib/types";
@@ -109,6 +110,21 @@ export interface InputChipProps
   disabled?: boolean;
 
   /**
+   * The command the delete button sends to the element specified in
+   * {@link commandfor `commandfor`}.
+   *
+   * - Optional.
+   */
+  deleteCommand?: CommandProps["command"];
+
+  /**
+   * The element the delete button sends the command specified in {@link command `command`} to.
+   *
+   * - Optional.
+   */
+  deleteCommandfor?: CommandProps["commandfor"];
+
+  /**
    * Triggers when the user clicks the delete button.
    *
    * - Optional.
@@ -160,6 +176,8 @@ export const InputChip: StyleableFC<InputChipProps> = ({
   onClick,
   href,
   onDelete,
+  deleteCommand,
+  deleteCommandfor,
   element,
   style,
   className,
@@ -197,7 +215,7 @@ export const InputChip: StyleableFC<InputChipProps> = ({
     </Text>
 
     {/* Delete button */}
-    {onDelete && (
+    {(deleteCommand || deleteCommandfor || onDelete) && (
       <span
         // Prevent the chip's onClick from firing when the delete button is
         // clicked.
@@ -209,6 +227,8 @@ export const InputChip: StyleableFC<InputChipProps> = ({
           alt={STRINGS[locale].remove}
           icon={<MaterialIcon icon="close" />}
           onClick={onDelete}
+          command={deleteCommand}
+          commandfor={deleteCommandfor}
           disabled={disabled || loading}
         />
       </span>
