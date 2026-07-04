@@ -1,12 +1,14 @@
 import cn from "@/lib/helpers/cn";
 import { Card, Header, Text } from "@suankularb-components/react";
 import type { MDXComponents } from "mdx/types";
+import Link from "next/link";
 import { list } from "radash";
 
 const components: MDXComponents = {
-  a: (props) => (
-    <a className="text-primary underline font-bold" {...props} />
-  ),
+  a: (props) => {
+    const Element = props.href?.startsWith("/") ? Link : "a";
+    return <Element className="text-primary font-bold underline" {...props} />;
+  },
   ...Object.fromEntries(
     list(2, 6).map((level) => [
       `h${level}`,
