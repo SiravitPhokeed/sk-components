@@ -30,13 +30,14 @@ export interface SplitLayoutProps extends ElementCustomizableProps {
   ratio: "list-detail" | "supporting-panel" | [number, number];
 
   /**
-   * On mobile, there is not enough space 2 have to columns on screen at once,
-   * so the right side disappears by default. Enabling `showRightOnMobile`
-   * will show the right side below the left side.
+   * The side to show on mobile.
    *
+   * - On mobile, there is not enough space 2 have to columns on screen at once.
+   *   Choose which side to show on mobile, or show both with the right side
+   *   below the left.
    * - Optional.
    */
-  showRightOnMobile?: boolean;
+  prefer?: "left" | "right" | "both";
 }
 
 /**
@@ -49,12 +50,12 @@ export interface SplitLayoutProps extends ElementCustomizableProps {
  *
  * @param children The content should have 2 sides; each element entered corresponds to a side.
  * @param ratio Choose from 2 presets or create your own. This uses the same grid system as Columns, so ensure each side of the ratio adds up to 12.
- * @param showRightOnMobile Show the right side below the left side instead of hiding it on mobile.
+ * @param prefer The side to show on mobile.
  */
 export const SplitLayout: StyleableFC<SplitLayoutProps> = ({
   children,
   ratio,
-  showRightOnMobile,
+  prefer = "left",
   element: Element = "section",
   style,
   className,
@@ -84,7 +85,7 @@ export const SplitLayout: StyleableFC<SplitLayoutProps> = ({
         typeof ratio === "string"
           ? `skc-split-layout--${ratio}`
           : "skc-split-layout--custom",
-        showRightOnMobile && "skc-split-layout--persist-right",
+        `skc-split-layout--prefer-${prefer}`,
         className,
       )}
     >
