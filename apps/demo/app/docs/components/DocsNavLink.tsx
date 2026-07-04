@@ -3,8 +3,7 @@
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import { Interactive, Text } from "@suankularb-components/react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import type { ReactNode } from "react";
 
 const DocsNavLink: StyleableFC<{
@@ -12,15 +11,18 @@ const DocsNavLink: StyleableFC<{
   href: string;
 }> = ({ children, href, className, style }) => {
   const pathname = usePathname();
+  const router = useRouter();
   const selected = pathname === href;
 
   return (
     <Interactive
+      role="link" // `command` does not work on `next/link`
       aria-current={selected ? "page" : undefined}
-      href={href}
-      element={Link}
+      command="request-close"
+      commandfor="docs-nav"
+      onClick={() => router.push(href)}
       className={cn(
-        "rounded-full px-3 py-1.5 transition-colors",
+        "w-full rounded-full px-3 py-1.5 text-start transition-colors",
         selected
           ? "bg-secondary-container text-on-secondary-container state-layer-on-secondary-container"
           : "state-layer-on-surface-variant text-on-surface-variant",
