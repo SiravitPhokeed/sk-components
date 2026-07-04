@@ -24,7 +24,7 @@ const DemoCard = ({
   return (
     <section className="my-6 space-y-3">
       <div className="bg-surface-container border-outline-variant rounded-lg border">
-        <div className="bg-surface grid min-h-48 list-none place-items-center overflow-x-auto rounded-[inherit] p-10 *:first:relative *:first:inset-0">
+        <div className="bg-surface relative isolate grid max-h-108 min-h-48 list-none place-items-center overflow-y-hidden rounded-[inherit] p-10 *:first:relative *:first:inset-0">
           <Component {...initialProps} {...adjustedProps} />
         </div>
         {adjustableProps && (

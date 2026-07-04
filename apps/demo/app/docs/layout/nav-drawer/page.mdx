@@ -1,0 +1,50 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  MaterialIcon,
+  NavDrawer,
+  NavDrawerItem,
+  NavDrawerSection,
+  TableCell,
+} from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Nav Drawer",
+};
+
+## Nav Drawer
+
+A navigation drawer that slides in from the left.
+
+```tsx
+<NavDrawer>
+  <NavDrawerSection header="Search">
+    <NavDrawerItem icon={<MaterialIcon icon="book" />} selected>
+      Subjects
+    </NavDrawerItem>
+    <NavDrawerItem icon={<MaterialIcon icon="groups" />}>
+      Classrooms
+    </NavDrawerItem>
+  </NavDrawerSection>
+</NavDrawer>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      Nav Drawer Sections holding Nav Drawer Items, the navigation destinations.
+
+      - Must consist of Nav Drawer Sections.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

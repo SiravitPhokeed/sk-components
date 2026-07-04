@@ -1,0 +1,61 @@
+import { Section } from "@/app/docs/components/client-components";
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  Header,
+  TableCell,
+} from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Section",
+};
+
+## Section
+
+Section is a way to group content under one Header.
+
+<DemoCard
+  component={Section}
+  initialProps={{
+    children: [
+      <Header key="h">Getting started</Header>,
+      <p key="p" style={{ margin: 0 }}>
+        SK Components (“SKCom”) is a design system consisting of tokens and
+        components created with the goal of a consistent and harmonious
+        experience across all Suankularb features and applications.
+      </p>,
+    ],
+  }}
+/>
+
+```tsx
+<Section>
+  <Header>Getting started</Header>
+  <p>
+    SK Components (“SKCom”) is a design system consisting of tokens and
+    components created with the goal of a consistent and harmonious
+    experience across all Suankularb features and applications.
+  </p>
+</Section>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      Section must have exactly 1 Header as the first direct descendant. After
+      that, it can include anything.
+
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

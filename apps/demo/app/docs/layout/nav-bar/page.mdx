@@ -1,0 +1,100 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  MaterialIcon,
+  NavBar,
+  NavBarItem,
+  TableCell,
+} from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Nav Bar",
+};
+
+## Nav Bar
+
+A Navigation Bar/Rail provides persistent access to all top-level pages. On
+larger screens, a Navigation Bar transforms into a Navigation Rail.
+
+<DemoCard
+  component={NavBar}
+  initialProps={{
+    children: [
+      <NavBarItem key="home" icon={<MaterialIcon icon="home" />} label="Home" selected />,
+      <NavBarItem key="search" icon={<MaterialIcon icon="search" />} label="Search" />,
+      <NavBarItem key="person" icon={<MaterialIcon icon="person" />} label="Profile" />,
+    ],
+    className: "max-w-64",
+  }}
+/>
+
+```tsx
+<NavBar>
+  <NavBarItem icon={<MaterialIcon icon="home" />} label="Home" selected />
+  <NavBarItem icon={<MaterialIcon icon="search" />} label="Search" />
+  <NavBarItem icon={<MaterialIcon icon="person" />} label="Profile" />
+</NavBar>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      A Navigation Bar contains Navigation Bar Items, each leading to a
+      different top-level page. These pages should only be navigated to from
+      the Navigation Bar and the Navigation Drawer.
+
+      - Must include at least 3 Navigation Bar Items.
+      - Must not include more than 5 Navigation Bar Items visible on mobile.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="end" required="never">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      More Navigation Items can be placed on the bottom of the Navigation Rail
+      in larger screens. Use cases are settings and log out.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="locale" required="never">
+    <TableCell>`"en-US" | "th"`</TableCell>
+    <TableCell>
+
+      Allows for translation of the accessibility labels.
+
+      - Must be `"en-US"` or `"th"`, as SKCom currently only support those 2
+        languages.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="onNavToggle" required="never">
+    <TableCell>`() => any`</TableCell>
+    <TableCell>
+
+      The function called when the user clicks on the navigation Button.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

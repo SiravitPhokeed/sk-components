@@ -1,0 +1,58 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  AppDrawerItem,
+  TableCell,
+} from "@suankularb-components/react";
+
+export const metadata = {
+  title: "App Drawer Item",
+};
+
+## App Drawer Item
+
+An app inside the App Drawer. A child of App Drawer Segment.
+
+<DemoCard
+  component={AppDrawerItem}
+  initialProps={{
+    name: "MyLearn+",
+    logo: <div className="size-16 bg-linear-to-b from-surface-variant to-secondary-container" />,
+  }}
+/>
+
+```tsx
+<AppDrawerItem
+  name="MyLearn+"
+  logo={<img src="/my-learn.svg" />}
+/>
+```
+
+### Props
+
+- `ActionableProps` are available: `command`, `commandFor`, `onClick`, and `href`.
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="logo" required="always">
+    <TableCell>`ReactElement`</TableCell>
+    <TableCell>
+
+      The logo image of the app.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="name" required="always">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The name of the app.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

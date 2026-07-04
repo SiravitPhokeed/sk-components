@@ -1,0 +1,108 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  MaterialIcon,
+  NavBarItem,
+  TableCell,
+} from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Nav Bar Item",
+};
+
+## Nav Bar Item
+
+One of the destinations in a Navigation Bar/Rail.
+
+<DemoCard
+  component={NavBarItem}
+  initialProps={{
+    icon: <MaterialIcon icon="home" />,
+    label: "Home",
+  }}
+  adjustableProps={{
+    selected: "boolean",
+  }}
+/>
+
+```tsx
+<NavBarItem icon={<MaterialIcon icon="home" />} label="Home" selected />
+```
+
+### Props
+
+- `ActionableProps` are available: `command`, `commandFor`, `onClick`, and `href`.
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="icon" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      Icons help users identify pages more quickly, which is crucial for
+      frequent destinations like those from the Navigation Bar/Rail.
+
+      - If the icon is sufficiently representative of the page, a label isn't
+        needed.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="label" required="never">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      An additional text label underneath the icon. This is useful if the icon
+      isn't sufficiently representative of the page.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="tooltip" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A message shown in a tooltip when the user hovers over the Navigation Bar
+      Item.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="selected" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Highlights the Navigation Bar Item. If the user is currently on this
+      page, the Navigation Bar Item should be highlighted.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="railOnly" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      This Navigation Bar Item will only show on the Navigation Rail visible on
+      larger screens and disappears on smaller screens. Since there can only be
+      a maximum of 5 destinations on a Navigation Bar, other destinations must
+      be hidden with `railOnly`.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

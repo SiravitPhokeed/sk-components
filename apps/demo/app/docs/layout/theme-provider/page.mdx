@@ -1,0 +1,30 @@
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Theme Provider",
+};
+
+## Theme Provider
+
+Provides default variables for SK Components.
+
+```tsx
+import { ThemeProvider } from "@suankularb-components/react";
+
+export default function App({ Component, pageProps }) {
+  return (
+    <ThemeProvider />
+    <Component {...pageProps} />
+  );
+}
+```
+
+### Props
+
+Theme Provider has no props.
+
+### Further reading
+
+- [Theming](/docs/guides/theming)

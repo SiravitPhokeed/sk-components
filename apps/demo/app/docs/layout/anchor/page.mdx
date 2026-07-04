@@ -1,0 +1,112 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  Anchor,
+  Button,
+  Menu,
+  MenuItem,
+  TableCell,
+} from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Anchor",
+};
+
+## Anchor
+
+Associates elements for CSS Anchor Positioning via the `anchor-name`
+CSS property, and passes the generated name through React context so
+child popover components (e.g. Menu) can auto-resolve their
+`position-anchor`.
+
+<DemoCard
+  component={Anchor}
+  initialProps={{
+    children: [
+      <Button key="btn" appearance="filled" command="show-popover" commandfor="docs-anchor-menu">
+        Open Menu
+      </Button>,
+      <Menu key="menu" id="docs-anchor-menu">
+        <MenuItem>Item 1</MenuItem>
+        <MenuItem>Item 2</MenuItem>
+      </Menu>,
+    ],
+  }}
+/>
+
+```tsx
+<Anchor>
+  <Button appearance="filled" command="show-popover" commandfor="share-menu">
+    Share
+  </Button>
+  <Menu id="share-menu">
+    <MenuItem icon={<MaterialIcon icon="email" />}>Email</MenuItem>
+    <MenuItem icon={<MaterialIcon icon="chat" />}>Messages</MenuItem>
+  </Menu>
+</Anchor>
+```
+
+### Usage
+
+Either use the **default pattern** where the trigger and positioned elements are
+wrapped inside the Anchor, or the **flexible pattern** where only the trigger
+is wrapped and the positioned element is placed elsewhere.
+
+The default pattern is shown in the example above. The flexible pattern is shown
+below.
+
+```tsx
+// Flexible pattern
+<Anchor name="--share-menu-anchor">
+  <Button appearance="filled" command="show-popover" commandfor="share-menu">
+    Share
+  </Button>
+</Anchor>
+<Menu id="share-menu" anchor="--share-menu-anchor">
+  <MenuItem icon={<MaterialIcon icon="email" />}>Email</MenuItem>
+  <MenuItem icon={<MaterialIcon icon="chat" />}>Messages</MenuItem>
+</Menu>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      Elements to anchor together — typically a trigger element (e.g. a Button)
+      followed by the positioned element (e.g. a Menu).
+
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="name" required="never">
+    <TableCell>`--{string}`</TableCell>
+    <TableCell>
+
+      The anchor name (dashed-ident) used for CSS Anchor Positioning.
+
+      - Optional. Auto-generated if omitted.
+      - When using the flexible pattern (Anchor wraps trigger only, Menu
+        positioned elsewhere), set this explicitly and pass the same value
+        to the Menu's `anchor` prop.
+      - Must be a valid dashed-ident (e.g. `--menu-trigger`).
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>
+
+### Changes from v3
+
+See [v3 to v4 migration guide](/docs/migration/v3-to-v4) for a full list of changes.
+
+- New in v4.

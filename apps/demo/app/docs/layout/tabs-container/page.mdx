@@ -1,0 +1,74 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  MaterialIcon,
+  Tab,
+  TableCell,
+  TabsContainer,
+} from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Tabs Container",
+};
+
+## Tabs Container
+
+A group of Tabs. Tabs allow the user to switch between pages on the same
+level of a page hierarchy. For example, an Overview, Students, and Teachers
+page of a class.
+
+<DemoCard
+  component={TabsContainer}
+  initialProps={{
+    appearance: "primary",
+    children: [
+      <Tab key="overview" icon={<MaterialIcon icon="overview" />} label="Overview" selected />,
+      <Tab key="students" icon={<MaterialIcon icon="group" />} label="Students" />,
+      <Tab key="teachers" icon={<MaterialIcon icon="school" />} label="Teachers" />,
+    ],
+  }}
+  adjustableProps={{
+    appearance: ["primary", "secondary"],
+  }}
+/>
+
+```tsx
+<TabsContainer appearance="primary">
+  <Tab icon={<MaterialIcon icon="overview" />} label="Overview" selected />
+  <Tab icon={<MaterialIcon icon="group" />} label="Students" />
+  <Tab icon={<MaterialIcon icon="school" />} label="Teachers" />
+</TabsContainer>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      Tabs to select from.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="appearance" required="always">
+    <TableCell>`"primary" | "secondary"`</TableCell>
+    <TableCell>
+
+      Where Tabs Container is placed affects its appearance. A Tabs Container
+      responsible for the entire content pane (`primary`) has a different
+      appearance as that for only a section (`secondary`).
+
+      - Must be `primary` or `secondary`.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

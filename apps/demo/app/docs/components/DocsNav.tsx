@@ -38,9 +38,15 @@ const DocsNav: StyleableFC = ({ className, style }) => (
       <DocsNavLink href="/docs/layout/columns">Columns</DocsNavLink>
       <DocsNavLink href="/docs/layout/section">Section</DocsNavLink>
       <DocsNavLink href="/docs/layout/nav-bar">Nav Bar</DocsNavLink>
+      <DocsNavLink href="/docs/layout/nav-bar-item">Nav Bar Item</DocsNavLink>
       <DocsNavLink href="/docs/layout/nav-drawer">Nav Drawer</DocsNavLink>
+      <DocsNavLink href="/docs/layout/nav-drawer-section">Nav Drawer Section</DocsNavLink>
+      <DocsNavLink href="/docs/layout/nav-drawer-item">Nav Drawer Item</DocsNavLink>
       <DocsNavLink href="/docs/layout/app-drawer">App Drawer</DocsNavLink>
-      <DocsNavLink href="/docs/layout/tabs">Tabs</DocsNavLink>
+      <DocsNavLink href="/docs/layout/app-drawer-segment">App Drawer Segment</DocsNavLink>
+      <DocsNavLink href="/docs/layout/app-drawer-item">App Drawer Item</DocsNavLink>
+      <DocsNavLink href="/docs/layout/tabs-container">Tabs Container</DocsNavLink>
+      <DocsNavLink href="/docs/layout/tab">Tab</DocsNavLink>
       <DocsNavLink href="/docs/layout/theme-provider">
         Theme Provider
       </DocsNavLink>

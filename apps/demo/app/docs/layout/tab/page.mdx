@@ -1,0 +1,95 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  MaterialIcon,
+  Tab,
+  TableCell,
+} from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Tab",
+};
+
+## Tab
+
+Tabs allow the user to switch between pages on the same level of a page
+hierarchy. For example, an Overview, Students, and Teachers page of a class.
+
+```tsx
+<Tab icon={<MaterialIcon icon="overview" />} label="Overview" selected />
+```
+
+### Props
+
+- `ActionableProps` are available: `command`, `commandFor`, `onClick`, and `href`.
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="icon" required="conditional">
+    <TableCell>`ReactElement`</TableCell>
+    <TableCell>
+
+      An icon appears before or above the label. Icons help users identify pages
+      more quickly.
+
+      - If the icon is sufficiently representative of the page, a label isn't
+        needed.
+      - Normally optional but required if `label` is not defined as a Tab cannot
+        be empty.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="label" required="conditional">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      An additional text label next to or underneath the icon.
+
+      - Required if `icon` is not defined as a Tab cannot be empty.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="alt" required="conditional">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A description of the Tab for screen readers, similar to `alt` on `<img>`.
+
+      - Required if the Tab just includes `icon`, because an icon has no
+        significance for screen readers.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="tooltip" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A message shown in a tooltip when the user hovers over the Tab.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="selected" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Highlights the Tab. If the user is currently on this page, the Tab should
+      be highlighted.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

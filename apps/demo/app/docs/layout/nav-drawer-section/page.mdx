@@ -1,0 +1,69 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  MaterialIcon,
+  NavDrawerItem,
+  NavDrawerSection,
+  TableCell,
+} from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Nav Drawer Section",
+};
+
+## Nav Drawer Section
+
+A group of destinations within a Navigation Drawer.
+
+<DemoCard
+  component={NavDrawerSection}
+  initialProps={{
+    header: "Search",
+    children: [
+      <NavDrawerItem key="subjects" icon={<MaterialIcon icon="book" />} label="Subjects" selected />,
+      <NavDrawerItem key="classrooms" icon={<MaterialIcon icon="groups" />} label="Classrooms" />,
+    ],
+    className: "w-84", // Actual width if inside Nav Drawer
+  }}
+/>
+
+```tsx
+<NavDrawerSection header="Search">
+  <NavDrawerItem icon={<MaterialIcon icon="book" />} label="Subjects" selected />
+  <NavDrawerItem icon={<MaterialIcon icon="groups" />} label="Classrooms" />
+</NavDrawerSection>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      Destinations grouped into this section.
+
+      - Must consist of Navigation Drawer Item(s).
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="header" required="conditional">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      The header of the section.
+
+      - Normally optional but required if this is the first Navigation Drawer
+        Section in a Navigation Drawer. In this case, it'd be the name of the app.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

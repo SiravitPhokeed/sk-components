@@ -1,0 +1,46 @@
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Root Layout",
+};
+
+## Root Layout
+
+The container of everything inside an application. Components which must
+appear only once — Navigation Drawer, Navigation Bar, FAB, and Page Header —
+only work optimally as direct descendants of Root Layout.
+
+Root Layout handles positioning of components and responsiveness.
+
+```tsx
+<RootLayout element="body">
+  <NavBar>{/* Nav Bar Items */}</NavBar>
+  <NavDrawer>{/* Nav Drawer Items */}</NavDrawer>
+  <FAB {/* FAB */} />
+  <PageHeader>Dashboard</PageHeader>
+  <ContentLayout>{/* Sections */}</ContentLayout>
+</RootLayout>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      Root Layout positions Navigation Drawer, Navigation Bar, and FAB. It can
+      contain Navigation Drawer, Navigation Bar, FAB, Page Header, Content
+      Layout, and Vertical Split Layout only.
+
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>
