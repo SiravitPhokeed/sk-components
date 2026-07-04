@@ -1,0 +1,162 @@
+import {
+  MaterialIcon,
+  TableCell,
+  ToggleButton,
+} from "@suankularb-components/react";
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+
+## Toggle Button
+
+A Button with just an icon that can be toggled on and off.
+
+<DemoCard
+  component={ToggleButton}
+  initialProps={{
+    appearance: "filled",
+    icon: <MaterialIcon icon="mic" />,
+    alt: "Mute",
+    tooltip: "Mute microphone",
+  }}
+  adjustableProps={{
+    appearance: ["filled", "tonal", "outlined", "standard"],
+    dangerous: "boolean",
+    disabled: "boolean",
+    value: "boolean",
+  }}
+/>
+
+```tsx
+<ToggleButton
+  appearance="filled"
+  icon={<MaterialIcon icon="mic" />}
+  alt="Mute"
+  tooltip="Mute microphone"
+/>
+```
+
+### Props
+
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="appearance" required="always">
+    <TableCell>
+      ```
+      "filled"
+      | "tonal"
+      | "outlined"
+      | "standard"
+      ```
+    </TableCell>
+    <TableCell>
+
+      The appearance of the Toggle Button.
+
+      Each appearance has a priority. For example, in a video conference
+      application, the end call button has higher priority than the raise hand
+      button. In this case, the end call is "filled," and the raise hand is
+      "outlined."
+
+      - Must be `filled`, `tonal`, `outlined`, or `standard`, from highest to
+        lowest priority.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="icon" required="always">
+    <TableCell>`ReactElement`</TableCell>
+    <TableCell>
+
+      A Toggle Button's action is only communicated via its icon, so keep the
+      icon clear.
+
+      - You are encouraged to use [Material Icon](/docs/data/material-icon) as the
+        value for `icon`.
+      - Always required, as a Toggle Button cannot be empty.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="alt" required="always">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A description of the Toggle Button for screen readers, similar to `alt` on
+      `<img>`.
+
+      - Always required, as an icon has no significance for screen readers.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="tooltip" required="always">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A message shown in a tooltip when the user hovers over the Toggle Button.
+
+      - Always required, just in case the icon is not clear enough for the user
+        to infer its action.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="dangerous" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      If the action the Toggle Button accomplishes is dangerous, like unmuting.
+      If it is, the Toggle Button turns red (defined as `error` in the palette).
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="disabled" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Turns the Toggle Button gray and blocks any action associated with it.
+      `onChange` will have no effect.
+
+      - [Learn when to disable something.](https://codium.one/index.php/en/blog/77-disabled-buttons-don-t-have-to-suck)
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="value" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Whether the Toggle Button is toggled on or off. This is useful if you want
+      a controlled input.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="onChange" required="never">
+    <TableCell>`(state: boolean) => void`</TableCell>
+    <TableCell>
+
+      This function triggers when the user toggles the Toggle Button.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

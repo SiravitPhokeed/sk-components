@@ -1,0 +1,140 @@
+import {
+  FAB,
+  MaterialIcon,
+  TableCell,
+} from "@suankularb-components/react";
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+
+## Floating Action Button
+
+The Floating Action Button or FAB is the main action of a page.
+
+<DemoCard
+  component={FAB}
+  initialProps={{
+    color: "primary",
+    icon: <MaterialIcon icon="add" />,
+    alt: "Create",
+  }}
+  adjustableProps={{
+    color: ["surface", "primary", "secondary", "tertiary"],
+    size: ["small", "standard", "large"],
+  }}
+>
+  `size` only applies on mobile.
+</DemoCard>
+
+```tsx
+<FAB color="primary" icon={<MaterialIcon icon="add" />} alt="Create" />
+```
+
+### Usage
+
+FAB must be a direct descendant of [Root Layout](/docs/layout/root-layout).
+
+### Props
+
+- `ActionableProps` are available: `command`, `commandFor`, `onClick`, and `href`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="conditional">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      The text displayed inside the FAB.
+
+      - Must be a string or a React Element.
+      - Incompatible with `size`.
+      - Normally optional but required if `icon` is undefined, as a FAB cannot
+        be empty.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="color" required="always">
+    <TableCell>
+      ```
+      "surface"
+      | "primary"
+      | "secondary"
+      | "tertiary"
+      ```
+    </TableCell>
+    <TableCell>
+
+      The color of the FAB.
+
+      - Must be `surface`, `primary`, `secondary`, or `tertiary`. These colors
+        are defined in the palette.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="size" required="never">
+    <TableCell>
+      ```
+      "small"
+      | "standard"
+      | "large"
+      ```
+    </TableCell>
+    <TableCell>
+
+      How large/small the FAB is.
+
+      - Must be `small`, `standard`, or `large`.
+      - Defaults to `standard`.
+      - Incompatible with `children`.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="icon" required="conditional">
+    <TableCell>`ReactElement`</TableCell>
+    <TableCell>
+
+      The icon displayed inside the FAB or alongside the label.
+
+      - You are encouraged to use [Material Icon](/docs/data/material-icon) as the value for `icon`.
+      - Required if `children` is undefined, as a FAB cannot be empty.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="alt" required="conditional">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A description of the FAB for screen readers, similar to `alt` on `<img>`.
+
+      - Required if the FAB just includes `icon` and has no `tooltip`, because
+        an icon has no significance for screen readers.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="tooltip" required="conditional">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A message shown in a tooltip when the user hovers over the FAB.
+
+      - Required if the FAB just includes `icon` and has no `alt`.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>
+
+### Changes from v3
+
+- `stateOnScroll` has been removed. FABs are now always visible.
+- FAB now moves to the Nav Bar on desktop on its own. `fab` is no longer a prop on `NavBar`.

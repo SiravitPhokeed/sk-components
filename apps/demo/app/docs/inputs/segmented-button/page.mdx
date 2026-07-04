@@ -1,0 +1,103 @@
+import { Button, TableCell } from "@suankularb-components/react";
+import { SegmentedButton } from "@/app/docs/components/client-components";
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+
+## Segmented Button
+
+Segmented Button combines multiple related Buttons together. Each Button in
+a Segmented Button can be toggled on and off.
+
+<DemoCard
+  component={SegmentedButton}
+  initialProps={{
+    children: [
+      <Button key="schedule" appearance="outlined" selected>
+        Schedule view
+      </Button>,
+      <Button key="subject" appearance="outlined">
+        Subject view
+      </Button>,
+    ],
+    alt: "View options",
+    className: "w-full justify-center",
+  }}
+  adjustableProps={{
+    full: "boolean",
+  }}
+/>
+
+```tsx
+<SegmentedButton alt="View options">
+  <Button appearance="filled" selected>
+    Schedule view
+  </Button>
+  <Button appearance="tonal">
+    Subject view
+  </Button>
+</SegmentedButton>
+```
+
+### Props
+
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      2-5 Buttons.
+
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="alt" required="always">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A description of the Segmented Button for screen readers, similar to `alt`
+      on `<img>`.
+
+      - Always required
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="density" required="never">
+    <TableCell>
+      ```
+      0
+      | -1
+      | -2
+      | -3
+      ```
+    </TableCell>
+    <TableCell>
+
+      A lower number means a more dense interface. In this case, less height.
+
+      - Must be an integer: 0, -1, -2, or -3.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="full" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Each Button will be equal in width.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

@@ -19,16 +19,24 @@ const DocsLayout: FC<{ children: ReactNode }> = ({ children }) => (
         </Card>
 
         <DocsNavSection title="Guides" open>
-          <DocsNavLink href="/docs/guides/getting-started">Getting started</DocsNavLink>
+          <DocsNavLink href="/docs/guides/getting-started">
+            Getting started
+          </DocsNavLink>
           <DocsNavLink href="/docs/guides/nextjs">Next.js</DocsNavLink>
-          <DocsNavLink href="/docs/guides/tailwindcss">Tailwind CSS</DocsNavLink>
-          <DocsNavLink href="/docs/guides/localization">Localization</DocsNavLink>
+          <DocsNavLink href="/docs/guides/tailwindcss">
+            Tailwind CSS
+          </DocsNavLink>
+          <DocsNavLink href="/docs/guides/localization">
+            Localization
+          </DocsNavLink>
           <DocsNavLink href="/docs/guides/theming">Theming</DocsNavLink>
         </DocsNavSection>
 
         <DocsNavSection title="Migrations">
           <DocsNavLink href="/docs/migrations/v4">Migrating to v4</DocsNavLink>
-          <DocsNavLink href="/docs/migrations/v3.3">Migrating to v3.3</DocsNavLink>
+          <DocsNavLink href="/docs/migrations/v3.3">
+            Migrating to v3.3
+          </DocsNavLink>
         </DocsNavSection>
 
         <DocsNavSection title="Inputs">
@@ -39,7 +47,7 @@ const DocsLayout: FC<{ children: ReactNode }> = ({ children }) => (
           <DocsNavLink href="/docs/inputs/toggle-button">
             Toggle Button
           </DocsNavLink>
-          <DocsNavLink href="/docs/inputs/floating-action-button">
+          <DocsNavLink href="/docs/inputs/fab">
             Floating Action Button
           </DocsNavLink>
           <DocsNavLink href="/docs/inputs/actions">Actions</DocsNavLink>
