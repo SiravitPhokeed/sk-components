@@ -24,10 +24,10 @@
     border-bottom: 0;
   }
   .skc-table-cell:first-child {
-    border-left: 0;
+    border-inline-start: 0;
   }
   .skc-table-cell:nth-last-child(2):has(+ .skc-table-row__actions),
   .skc-table-cell:last-child {
-    border-right: 0;
+    border-inline-end: 0;
   }
 }
