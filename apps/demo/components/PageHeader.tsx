@@ -1,5 +1,6 @@
 "use client";
 
+import type { StyleableFC } from "@/lib/types";
 import SKComLogo from "@/public/images/drawer/skcom.svg";
 import {
   AppDrawer,
@@ -10,9 +11,8 @@ import {
 } from "@suankularb-components/react";
 import Image from "next/image";
 import Link from "next/link";
-import type { FC } from "react";
 
-const PageHeader: FC<
+const PageHeader: StyleableFC<
   Pick<PageHeaderProps, "children"> & Partial<PageHeaderProps>
 > = (props) => (
   <SKCPageHeader

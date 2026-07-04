@@ -1,0 +1,222 @@
+import {
+  Actions,
+  Button,
+  MaterialIcon,
+  TableCell,
+} from "@suankularb-components/react";
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+
+## Button
+
+Button helps users take action, whether it’s logging in, liking a post, or going to a page.
+
+<DemoCard
+  component={Button}
+  initialProps={{
+    children: "Add friend",
+    appearance: "filled",
+    icon: <MaterialIcon icon="person_add" />,
+  }}
+  adjustableProps={{
+    appearance: ["filled", "tonal", "outlined", "text"],
+    dangerous: "boolean",
+    loading: "boolean",
+    disabled: "boolean",
+    selected: "boolean",
+  }}
+/>
+
+```tsx
+<Button appearance="filled" icon={<MaterialIcon icon="person_add" />}>
+  Add friend
+</Button>
+```
+
+### Props
+
+- `ActionableProps` are available: `command`, `commandFor`, `onClick`, and `href`.
+- `StyleableProps` are available: `className` and `style`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="conditional">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+      
+      The text displayed inside the Button.
+
+      - Must be a React Node, e.g., a string or an element.
+      - Required if `icon` is undefined, as a Button cannot be empty.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="appearance" required="always">
+    <TableCell>
+      ```
+      "filled"
+      | "tonal"
+      | "outlined"
+      | "text"
+      ```
+    </TableCell>
+    <TableCell>
+
+      <Actions align="left">
+        {["filled", "tonal", "outlined", "text"].map((appearance) => (
+          <Button
+            key={appearance}
+            children="Button"
+            appearance={appearance}
+          />
+        ))}
+      </Actions>
+
+      The appearance of the Button.
+
+      Each appearance has a priority. For example, in a log in page, the log in button has higher priority than the password recovery button. In this case, the log in button is "filled," and the password recovery is "text."
+
+      - Must be `filled`, `tonal`, `outlined`, or `text`, from highest to lowest priority.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="icon" required="conditional">
+    <TableCell>`ReactElement`</TableCell>
+    <TableCell>
+      
+      An icon can appear before the text (`children`) in a Button. In a page with many buttons, icons can quickly orient users.
+
+      - You are encouraged to use [Material Icon](/docs/data/material-icon) as the value for `icon`.
+      - Normally optional but required if `children` is undefined, as a Button cannot be empty.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="alt" required="conditional">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+      
+      A description of the Button for screen readers, similar to `alt` on `<img>`.
+
+      - Required if the Button just includes `icon`, because an icon has no significance for screen readers.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="tooltip" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+      
+      A message shown in a tooltip when the user hovers over the Button.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="autoFocus" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+      
+      If the Button is focused when the page loads.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="selected" required="conditional">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+      
+      If the Button is selected. `icon` is replaced with a checkmark if this is true.
+
+      - **Important:** this is intended to be used only when the Button is inside a Segmented Button. This prop will still be functional otherwise, but it is against Material guidelines.
+      - Required when inside a Segmented Button.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="dangerous" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      <Button children="Button" appearance="outlined" dangerous />
+
+      If the action the Button accomplishes is dangerous, like deleting your account. If it is, the Button turns red (defined as `error` in the palette).
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="loading" required="never">
+    <TableCell>`boolean | number`</TableCell>
+    <TableCell>
+
+      <Button children="Button" appearance="outlined" loading />
+
+      Disable the Button and add a Progress spinner in front of the text to signify loading status. `onClick` and `href` will have no effect.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="disabled" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      <Button children="Button" appearance="outlined" disabled />
+
+      Turns the Button gray and block any action associated with it. `onClick` and `href` will have no effect.
+
+      - [Learn when to disable something.](https://codium.one/index.php/en/blog/77-disabled-buttons-don-t-have-to-suck)
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="locale" required="never">
+    <TableCell>`"en-US" | "th"`</TableCell>
+    <TableCell>
+      
+      Allows for translation of the accessibility labels.
+
+      - Must be `"en-US"` or `"th"`, as SKCom currently only support those 2 languages.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>
+
+### Changes from v3
+
+See [v3 to v4 migration guide](/docs/migration/v3-to-v4#button) for a full list of changes.
+
+- Added support for the Invoker Commands API. Buttons can now show Dialogs, Full-screen Dialogs, and Menus without requiring `useState`.
+
+```tsx
+<Button command="show-modal" commandfor="remove-friend-dialog">
+  Remove friend
+</Button>
+<Dialog id="remove-friend-dialog">
+  {/* ... */}
+</Dialog>
+```
+
+- Added `autoFocus`.

@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
+import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
+  pageExtensions: ["md", "mdx", "tsx"],
   async redirects() {
     return [
       {
@@ -13,6 +15,11 @@ const nextConfig: NextConfig = {
         destination: "/examples/search",
         permanent: true,
       },
+      {
+        source: "/docs",
+        destination: "/docs/guides/getting-started",
+        permanent: false,
+      }
     ];
   },
   transpilePackages: [
@@ -21,4 +28,10 @@ const nextConfig: NextConfig = {
   ],
 };
 
-export default nextConfig;
+const withMDX = createMDX({
+  options: {
+    rehypePlugins: [["rehype-pretty-code", { theme: "github-dark" }]],
+  },
+});
+
+export default withMDX(nextConfig);

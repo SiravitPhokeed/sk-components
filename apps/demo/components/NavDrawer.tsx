@@ -49,13 +49,9 @@ const NavDrawer: FC = () => {
         <NavDrawerItem
           icon={<MaterialIcon icon="description" />}
           label="Docs"
-          onClick={() =>
-            window.open(
-              "https://docs.google.com/document/d/1ks5DrzfC_xLg48EFtZALoVQpJpxhsK2It3GDhAhZCcE/edit?usp=sharing",
-              undefined,
-              "popup",
-            )
-          }
+          selected={pathname.startsWith("/docs")}
+          href="/docs"
+          element={Link}
         />
       </NavDrawerSection>
 

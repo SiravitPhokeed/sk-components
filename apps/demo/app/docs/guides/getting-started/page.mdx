@@ -1,0 +1,78 @@
+## Getting started
+
+**SK Components (“SKCom”) is a design system** consisting of tokens and components created with the goal of a **consistent and harmonious experience across all Suankularb features** and applications.
+
+> The library is **based on Material Design 3,** although only Baseline is supported. There are currently no plans implement Expressive.
+>
+> You are encouraged to read the [Material Design 3 documentation](https://m3.material.io/) to understand the design system better.
+
+There are currently 2 official SKCom libraries:
+
+- **SK Components Styles** (`@suankularb-components/styles`) — a CSS library that other libraries can use to implement the design system.
+- **React SK Components** (`@suankularb-components/react`, **“ReSKCom”**) — a React library that provides React components that implement the design system.
+
+This documentation is for **ReSKCom**, which is the recommended library for React applications. Guidance for integrating with [Next.js](/docs/guides/nextjs) and [Tailwind CSS](/docs/guides/tailwindcss) is available.
+
+### Installation
+
+```bash
+npm install @suankularb-components/react
+```
+
+```bash
+pnpm add @suankularb-components/react
+```
+
+`react` and `react-dom` are peer dependencies, so you need to install them as well if you haven’t already. React 18 and up are supported.
+
+#### Fonts
+
+**Fonts are not bundled with the library,** so you need to install them yourself. These fonts are used by the default theme included with [Theme Provider](/docs/layout/theme-provider):
+
+- [Inter](https://fonts.google.com/specimen/Inter)
+- [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk)
+- [Sarabun](https://fonts.google.com/specimen/Sarabun)
+- [IBM Plex Sans Thai](https://fonts.google.com/specimen/IBM+Plex+Sans+Thai)
+
+[Material Icon](/docs/data/material-icon) uses the Material Symbols Outlined font. See the [Material Symbols documentation](https://fonts.google.com/icons) for a list of icons and installation instructions.
+
+### Usage
+
+- Import components from `@suankularb-components/react` and use them in your React application.
+  - For imperative helpers like [`snackbar.push`](/docs/components/snackbar), import them from `@suankularb-components/react/helpers`.
+- To use the default theme, simply add `<ThemeProvider />` to your app.
+- Root Layout must enclose all pages, as it provides the default layout and global styles.
+  - Layout components like [Page Header](/docs/layout/page-header) and [Content Layout](/docs/layout/content-layout) must be direct children of Root Layout.
+  - See [Root Layout](/docs/layout/root-layout) for more information.
+
+```tsx
+import {
+  Button,
+  ContentLayout,
+  PageHeader,
+  RootLayout,
+  Text,
+  ThemeProvider
+} from "@suankularb-components/react";
+import { snackbar } from "@suankularb-components/react/helpers";
+
+const App = () => {
+  return (
+    <>
+      <ThemeProvider />
+      <RootLayout>
+        <PageHeader>Hello world!</PageHeader>
+        <ContentLayout>
+          <Text type="body-large">Welcome to SK Components.</Text>
+          <Button
+            appearance="filled"
+            onClick={() => snackbar.push("Hello, world!")}
+          >
+            Click me!
+          </Button>
+        </ContentLayout>
+      </RootLayout>
+    </>
+  );
+}
+```

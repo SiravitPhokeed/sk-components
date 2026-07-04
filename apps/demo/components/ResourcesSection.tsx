@@ -9,6 +9,7 @@ import {
   Section,
   Text,
 } from "@suankularb-components/react";
+import Link from "next/link";
 import type { FC } from "react";
 
 const ResourcesSection: FC = () => (
@@ -20,13 +21,9 @@ const ResourcesSection: FC = () => (
         <strong>
           In addition to the demo website (which you’re on right now!), we also
           have a{" "}
-          <a
-            className="text-primary font-bold underline"
-            href="https://docs.google.com/document/d/1ks5DrzfC_xLg48EFtZALoVQpJpxhsK2It3GDhAhZCcE/edit?usp=sharing"
-            target="_blank"
-          >
+          <Link href="/docs" className="text-primary font-bold underline">
             full API reference
-          </a>{" "}
+          </Link>{" "}
           on all components in ReSKCom.
         </strong>{" "}
         You can interact with all the examples shown in the reference on this
@@ -46,9 +43,9 @@ const ResourcesSection: FC = () => (
     <Card
       appearance="filled"
       stateLayerEffect
-      href="https://docs.google.com/document/d/1ks5DrzfC_xLg48EFtZALoVQpJpxhsK2It3GDhAhZCcE/edit?usp=sharing"
+      href="/docs"
       className="mx-4 justify-end self-stretch sm:mx-0"
-      element={(props) => <a {...props} target="_blank" />}
+      element={Link}
     >
       <CardContent>
         <MaterialIcon icon="description" size={48} className="text-primary" />
