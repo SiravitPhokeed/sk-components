@@ -1,0 +1,181 @@
+/**
+ * **Side Sheet**
+ * A side sheet that slides in from the left.
+ */
+
+.skc-side-sheet {
+  --_entry-duration: var(--motion-long-4);
+  --_exit-duration: var(--motion-long-4);
+
+  --_easing: var(--easing-emphasized);
+  --_backdrop-easing: var(--easing-standard);
+
+  --_delay: 100ms;
+}
+
+.skc-side-sheet {
+  --_duration: var(--_entry-duration);
+
+  position: fixed;
+  transform: scaleX(0);
+  transform-origin: left;
+  z-index: 90;
+  transition: transform var(--_duration) var(--_easing);
+  transition-delay: var(--_delay);
+  margin: 0;
+  inset: 0;
+  inset-inline-end: auto;
+  border: none;
+  border-start-end-radius: var(--rounded-lg);
+  border-end-end-radius: var(--rounded-lg);
+  background-color: var(--surface-container-low);
+  padding: 0.75rem;
+  width: calc(100% - 4rem);
+  max-width: 22.5rem;
+  height: 100dvh;
+  max-height: none;
+  overflow-y: auto;
+  color: var(--on-surface);
+
+  [dir="rtl"] &,
+  &[dir="rtl"] {
+    transform-origin: right;
+  }
+
+  &::backdrop {
+    opacity: 0.5;
+    animation: skc-side-sheet-enter-backdrop var(--_duration)
+      var(--_backdrop-easing) backwards;
+    animation-delay: var(--_delay);
+    background-color: var(--scrim);
+  }
+
+  .skc-side-sheet__content {
+    transform: translateX(calc(-3rem * var(--inline-forward))) scaleX(1.1);
+    opacity: 0;
+    transition-delay: calc(var(--_delay) + var(--_duration) / 2);
+    transition-duration: calc(var(--_duration) * (2 / 3));
+    transition-property: transform, opacity;
+    transition-timing-function: var(--_easing);
+  }
+
+  /* Open state */
+  &[open] {
+    display: block;
+    transform: scaleX(1);
+
+    .skc-side-sheet__content {
+      transform: translateX(0) scaleX(1);
+      opacity: 1;
+    }
+
+    /* Entry starting style */
+    @starting-style {
+      transform: scaleX(0);
+
+      .skc-side-sheet__content {
+        transform: translateX(calc(-3rem * var(--inline-forward))) scaleX(1.1);
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.skc-side-sheet__content > :not(:last-child)::after {
+  display: block;
+  margin-inline: 1rem;
+  background-color: var(--outline-variant);
+  height: 1px;
+  content: "";
+}
+
+/* ── Backdrop entry animation (Safari can't @starting-style ::backdrop) ── */
+
+@keyframes skc-side-sheet-enter-backdrop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
+/* ── Exit animations (triggered via --exiting class) ── */
+
+@keyframes skc-side-sheet-exit {
+  from {
+    transform: translateX(0) scaleX(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(calc(-1rem * var(--inline-forward))) scaleX(0);
+    opacity: 0;
+  }
+}
+@keyframes skc-side-sheet-exit-children {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes skc-side-sheet-exit-backdrop {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.skc-side-sheet.skc-side-sheet--exiting {
+  --_duration: var(--_exit-duration);
+
+  & {
+    animation: skc-side-sheet-exit var(--_duration) var(--_easing) forwards;
+  }
+
+  &::backdrop {
+    animation: skc-side-sheet-exit-backdrop var(--_duration)
+      var(--_backdrop-easing) forwards;
+  }
+
+  .skc-side-sheet__content > * {
+    animation: calc(var(--_duration) / 3) var(--_easing) forwards
+      skc-side-sheet-exit-children;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skc-side-sheet {
+    transform: none;
+    transition-property: opacity;
+  }
+
+  .skc-side-sheet[open] {
+    transform: none;
+  }
+
+  @starting-style {
+    .skc-side-sheet[open] {
+      transform: none;
+      opacity: 0;
+    }
+  }
+
+  .skc-side-sheet .skc-side-sheet__content {
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
+
+  .skc-side-sheet.skc-side-sheet--exiting {
+    animation: skc-fade-out var(--_duration) var(--_easing) forwards;
+  }
+
+  .skc-side-sheet.skc-side-sheet--exiting .skc-side-sheet__content > * {
+    opacity: 0;
+    animation: none;
+  }
+}
