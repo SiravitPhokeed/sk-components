@@ -25,7 +25,7 @@ const DocsLayout: FC<{ children: ReactNode }> = ({ children }) => {
         >
           <FAB
             color="primary"
-            icon={<MaterialIcon icon="menu" />}
+            icon={<MaterialIcon icon="menu_book" />}
             command="show-modal"
             commandfor="docs-nav"
             className="sm:hidden"
