@@ -1,0 +1,177 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  MenuItem,
+  Select,
+  TableCell,
+} from "@suankularb-components/react";
+
+## Select
+
+Sometimes it's impractical to show all options at a time with a radio group.
+Select allows the user to choose from options shown on a temporary surface.
+
+<DemoCard
+  component={Select}
+  initialProps={{
+    children: [
+      <MenuItem key="public" value="public">Public school</MenuItem>,
+      <MenuItem key="private" value="private">Private school</MenuItem>,
+      <MenuItem key="international" value="international">International school</MenuItem>,
+    ],
+    appearance: "outlined",
+    label: "School type",
+    className: "w-64",
+  }}
+  adjustableProps={{
+    appearance: ["outlined", "filled"],
+    error: "boolean",
+  }}
+/>
+
+```tsx
+<Select<SchoolType> appearance="filled" label="School type">
+  <MenuItem value="public">Public school</MenuItem>
+  <MenuItem value="private">Private school</MenuItem>
+  <MenuItem value="international">International school</MenuItem>
+</Select>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      The options to select from.
+
+      - Must be Menu Items, each with `value` defined.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="appearance" required="always">
+    <TableCell>
+      ```
+      "outlined"
+      | "filled"
+      ```
+    </TableCell>
+    <TableCell>
+
+      How the Select looks. An outlined Select has a lower emphasis than filled,
+      so it is great for a form with many fields.
+
+      - Keep the appearance consistent across Selects. Separate different
+        appearances by region.
+      - Must be `outlined` or `filled`.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="label" required="always">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The placeholder text (when not focused and no value) and the label text
+      (when focused or has value).
+
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="leading" required="never">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      The leading text or icon, aligned to the left.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="helperMsg" required="conditional">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      A short description of the Select, or an error message during an error
+      state.
+
+      - Optional but recommended during an error state.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="locale" required="never">
+    <TableCell>`"en-US" | "th"`</TableCell>
+    <TableCell>
+
+      Allows for translation of the message shown when there are no options.
+
+      - Must be `"en-US"` or `"th"`, as SKCom currently only support those 2 languages.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="error" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Tells Select that it contains an invalid value and activates the error
+      state.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="value" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The value of the selected option. This is useful if you want a controlled
+      input.
+
+      - Must be one of the values entered via the `value` prop of the Menu Items.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="onChange" required="never">
+    <TableCell>`(value: Value) => any`</TableCell>
+    <TableCell>
+
+      This function triggers when the user chooses an option. The value is
+      passed in via the function.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>
+
+### Changes from v3
+
+- **Removed** `alt`.
+- **Removed** `menuAttr` — Menu is now fully managed internally.
+- **Added** generic type — `SelectProps<Value extends string>` for stronger type safety.
+- **Changed** `value` type from `any` to `string`.

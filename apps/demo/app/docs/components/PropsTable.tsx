@@ -11,9 +11,9 @@ const PropsTable: FC<{ children: ReactNode }> = ({ children }) => (
   <Table contentWidth={600} className="my-6">
     <TableHead>
       <TableRow>
-        <TableCell header>Prop</TableCell>
-        <TableCell header>Type</TableCell>
-        <TableCell header>Description</TableCell>
+        <TableCell header className="w-1/4">Prop</TableCell>
+        <TableCell header className="w-1/4">Type</TableCell>
+        <TableCell header className="w-2/4">Description</TableCell>
       </TableRow>
     </TableHead>
     <TableBody className="[&_td>*]:justify-start [&_td>*]:py-0 [&_td>*]:my-5 [&_td>*]:text-start">

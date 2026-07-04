@@ -1,0 +1,70 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { Radio, TableCell } from "@suankularb-components/react";
+
+## Radio
+
+A choice from a single-select set of choices. Unlike Checkbox and Switch,
+Radio always appear in a group.
+
+<DemoCard
+  component={Radio}
+  initialProps={{}}
+  adjustableProps={{
+    value: "boolean",
+    disabled: "boolean",
+  }}
+/>
+
+```tsx
+<Radio />
+```
+
+### Props
+
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="value" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      The state of the Radio. This is useful if you want a controlled input.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="onChange" required="never">
+    <TableCell>`(value: boolean) => any`</TableCell>
+    <TableCell>
+
+      This function triggers when the user toggles the Radio. The state is
+      passed in via the function as a boolean.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="disabled" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Turns the Radio gray and block any action associated with it.
+
+      - [Learn when to disable something.](https://codium.one/index.php/en/blog/77-disabled-buttons-don-t-have-to-suck)
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>
+
+### Changes from v3
+
+- **Removed** `inputAttr` — no longer accepts raw `<input>` attributes.

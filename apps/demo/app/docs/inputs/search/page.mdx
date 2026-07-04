@@ -1,0 +1,133 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { Search, TableCell } from "@suankularb-components/react";
+
+## Search
+
+Search allows the user to quickly find something using a query.
+
+<DemoCard
+  component={Search}
+  initialProps={{}}
+  adjustableProps={{
+    disabled: "boolean",
+  }}
+/>
+
+```tsx
+<Search />
+```
+
+### Props
+
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="value" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The value inside the field. This is useful if you want a controlled input.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="hotkey" required="never">
+    <TableCell>`boolean | string`</TableCell>
+    <TableCell>
+
+      Enables the user to focus on the field by pressing `/`, or any other key
+      you specify.
+
+      - Must be either boolean or a single character string.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="locale" required="never">
+    <TableCell>`"en-US" | "th"`</TableCell>
+    <TableCell>
+
+      Allows for translation of the default placeholder message.
+
+      - Must be `"en-US"` or `"th"`, as SKCom currently only support those 2 languages.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="onChange" required="never">
+    <TableCell>`(value: string) => any`</TableCell>
+    <TableCell>
+
+      This function triggers when the user make changes to the field value. The
+      value is passed in via the function.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="onSearch" required="never">
+    <TableCell>`() => any`</TableCell>
+    <TableCell>
+
+      This function triggers when the search button is clicked.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="placeholder" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A faint text displayed inside the field guiding the user.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="disabled" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Turns the Search gray and block any action associated with it. The user
+      will not be able to type in the field or click the search button.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="inputAttr" required="never">
+    <TableCell>`ComponentProps<"input">`</TableCell>
+    <TableCell>
+
+      Attributes for the underlying `<input>` element.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>
+
+### Changes from v3
+
+- **Removed** `children` — suggestion list no longer supported.
+- **Removed** `alt`.
+- **Added** `hotkey`.

@@ -1,0 +1,278 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  Card,
+  ChipField,
+  ChipSet,
+  InputChip,
+  TableCell,
+} from "@suankularb-components/react";
+
+## Chip Field
+
+A combination of Input Chips and a Text Field. Users can simply start typing
+into the Chip Field; their input is converted into an Input Chip on spacebar
+press.
+
+<DemoCard
+  component={ChipField}
+  initialProps={{
+    children: (
+      <ChipSet>
+        <InputChip deleteCommand="_">Pink</InputChip>
+        <InputChip deleteCommand="_">Blue</InputChip>
+      </ChipSet>
+    ),
+    label: "Colors",
+    className: "w-80",
+  }}
+/>
+
+```tsx
+<ChipField label="Colors" onNewEntry={addColor} onDeleteLast={removeLastColor}>
+  <ChipSet>
+    {colors.map((color) => (
+      <InputChip key={color} onDelete={() => removeColor(color)}>
+        {color}
+      </InputChip>
+    ))}
+  </ChipSet>
+</ChipField>
+```
+
+### Usage
+
+Here is how you can use Chip Field in your React application, using `useState`
+to manage the state of the Input Chips.
+
+```tsx
+const ColorChipField = () => {
+  const [colors, setColors] = useState<string[]>([]);
+
+  const addColor = (color: string) => {
+    setColors((prev) => [...prev, color]);
+  };
+  const removeColor = (color: string) => {
+    setColors((prev) => prev.filter((c) => c !== color));
+  };
+  const removeLastColor = () => {
+    setColors((prev) => prev.slice(0, -1));
+  };
+
+  return (
+    <ChipField
+      label="Colors"
+      onNewEntry={addColor}
+      onDeleteLast={removeLastColor}
+    >
+      <ChipSet>
+        {colors.map((color) => (
+          <InputChip key={color} onDelete={() => removeColor(color)}>
+            {color}
+          </InputChip>
+        ))}
+      </ChipSet>
+    </ChipField>
+  );
+};
+```
+
+This gives you the freedom to implement your own logic for how Input Chips are
+added and removed.
+
+For example, you may want to fetch a list of colors from an
+API and only allow the user to add colors that are in that list, or you may want
+to limit the number of Input Chips that can be added.
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactElement<typeof ChipSet>`</TableCell>
+    <TableCell>
+
+      The Input Chips that the user have already entered.
+
+      - Must be a [Chip Set](/docs/data/chip-set) with only [Input Chips](/docs/data/input-chip).
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="label" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      The placeholder text (if no placeholder specified or when not focused and
+      no value) and the label text (when focused or has value).
+
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="helperMsg" required="never">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      A short description of the Chip Field.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="value" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The value inside the field that is used to create
+      [Input Chips](/docs/data/input-chip). This is useful if you want a
+      controlled input.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="onChange" required="never">
+    <TableCell>`(value: string) => any`</TableCell>
+    <TableCell>
+
+      This function triggers when the user makes changes to the field value. The
+      value is passed in via the function.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="onNewEntry" required="conditional">
+    <TableCell>`(value: string) => any`</TableCell>
+    <TableCell>
+
+      This function triggers when the user hits a separator while in the field.
+
+      - The behavior expected to be implemented by the developer is that a new
+        Input Chip is created in the preceding Chip Set with the data passed
+        through this function.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="onDeleteLast" required="never">
+    <TableCell>`() => any`</TableCell>
+    <TableCell>
+
+      This function triggers when the user hits backspace twice while in the
+      field.
+
+      - The behavior expected to be implemented by the developer is that the
+        last Chip in the preceding Chip Set should be removed.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="entrySeparators" required="never">
+    <TableCell>`string[]`</TableCell>
+    <TableCell>
+
+      An array of keys that trigger the creation of a new Input Chip.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="placeholder" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The field can have some faint text guiding the user about what to write to
+      create an Input Chip. For example, a Chip Field for entering students into
+      a class by student code could have a placeholder say "Enter student code."
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="required" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Adds an asterisk to the label.
+
+      - Unlike in Text Field, this prop is purely cosmetic and does not affect
+        the validity of the form.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="loading" required="never">
+    <TableCell>`boolean | number`</TableCell>
+    <TableCell>
+
+      Add a Progress linear beneath the component to signify loading status.
+
+      - If `true`, a linear indeterminate Progress is shown.
+      - If a number, a linear determinate Progress with the given value is shown.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="disabled" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      The field cannot be edited.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="locale" required="never">
+    <TableCell>`"en-US" | "th"`</TableCell>
+    <TableCell>
+
+      Allows for translation of the accessibility labels.
+
+      - Must be `"en-US"` or `"th"`, as SKCom currently only support those 2 languages.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="inputAttr" required="never">
+    <TableCell>`ComponentProps<"input">`</TableCell>
+    <TableCell>
+
+      Attributes for the underlying `<input>` element used as the field.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

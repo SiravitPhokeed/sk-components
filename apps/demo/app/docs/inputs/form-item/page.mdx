@@ -1,0 +1,60 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  Checkbox,
+  FormItem,
+  Switch,
+  TableCell,
+} from "@suankularb-components/react";
+
+## Form Item
+
+A wrapper for form control components like Checkbox, Radio, and Switch with
+a label.
+
+<DemoCard
+  component={FormItem}
+  initialProps={{
+    children: <Switch />,
+    label: "Dark mode",
+  }}
+/>
+
+```tsx
+<FormItem label="Dark mode">
+  <Switch />
+</FormItem>
+```
+
+### Props
+
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactElement<typeof Checkbox | typeof Radio | typeof Switch>`</TableCell>
+    <TableCell>
+
+      The input.
+
+      - Must be a Checkbox, Radio, or Switch.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="label" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      The label for the input.
+
+      - Must be a React Node, e.g., a string or an element.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

@@ -1,0 +1,100 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { Checkbox, TableCell } from "@suankularb-components/react";
+
+## Checkbox
+
+A choice from a multi-select set of choices. When alone, a Checkbox is
+usually used for acknowledgement of or agreement to something, like a terms
+and conditions.
+
+<DemoCard
+  component={Checkbox}
+  initialProps={{}}
+  adjustableProps={{
+    value: "boolean",
+    disabled: "boolean",
+  }}
+/>
+
+```tsx
+<Checkbox />
+```
+
+### Usage
+
+Use Checkbox with [Form Item](/data/inputs/form-item) to provide a label, and [Form Group](/data/inputs/form-group) to group multiple Checkboxes together.
+
+```tsx
+<FormGroup>
+  <FormItem label="I agree to the terms and conditions">
+    <Checkbox />
+  </FormItem>
+  <FormItem label="I want to receive newsletters">
+    <Checkbox />
+  </FormItem>
+</FormGroup>
+```
+
+### Props
+
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="value" required="never">
+    <TableCell>`boolean | null`</TableCell>
+    <TableCell>
+
+      The state of the Checkbox. This is useful if you want a controlled input.
+
+      - If `tristate` is `true`, a `value` of `null` means indeterminate, which
+        displays a dash. If not, `value` cannot be `null`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="onChange" required="never">
+    <TableCell>`(value: boolean) => any`</TableCell>
+    <TableCell>
+
+      This function triggers when the user toggles the Checkbox. The state is
+      passed in via the function as a boolean.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="disabled" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Turns the Checkbox gray and block any action associated with it.
+
+      - [Learn when to disable something.](https://codium.one/index.php/en/blog/77-disabled-buttons-don-t-have-to-suck)
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="tristate" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Allows the Checkbox to have 3 states: off, on, and indeterminate.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>
+
+### Changes from v3
+
+- **Removed** `inputAttr` — no longer accepts raw `<input>` attributes.

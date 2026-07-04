@@ -1,0 +1,99 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  MaterialIcon,
+  Switch,
+  TableCell,
+} from "@suankularb-components/react";
+
+## Switch
+
+A Switch toggles something on and off. It is usually in a Form Item. Unlike
+Checkbox and Radio, a Switch is independent.
+
+<DemoCard
+  component={Switch}
+  initialProps={{}}
+  adjustableProps={{
+    value: "boolean",
+    disabled: "boolean",
+  }}
+/>
+
+```tsx
+<Switch />
+```
+
+### Props
+
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="value" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      The state of the Switch. This is useful if you want a controlled input.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="onChange" required="never">
+    <TableCell>`(value: boolean) => any`</TableCell>
+    <TableCell>
+
+      This function triggers when the user toggles the switch. The state is
+      passed in via the function as a boolean.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="offIcon" required="never">
+    <TableCell>`ReactElement`</TableCell>
+    <TableCell>
+
+      An icon inside the Thumb when the switch is off.
+
+      - You are encouraged to use [Material Icon](/docs/data/material-icon) as the value for `offIcon`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="onIcon" required="never">
+    <TableCell>`ReactElement`</TableCell>
+    <TableCell>
+
+      An icon inside the Thumb when the switch is on.
+
+      - You are encouraged to use [Material Icon](/docs/data/material-icon) as the value for `onIcon`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="disabled" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Turns the Switch gray and block any action associated with it.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>
+
+### Changes from v3
+
+- **Removed** `inputAttr` — no longer accepts raw `<input>` attributes.

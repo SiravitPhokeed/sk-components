@@ -1,0 +1,75 @@
+import { Actions } from "@/app/docs/components/client-components";
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { Button, TableCell } from "@suankularb-components/react";
+
+## Actions
+
+A row of Buttons. Actions handles spacing and overflow.
+
+<DemoCard
+  component={Actions}
+  initialProps={{
+    align: "center",
+    children: [
+      <Button key="cancel" appearance="outlined">
+        Cancel
+      </Button>,
+      <Button key="ok" appearance="filled">
+        Confirm
+      </Button>,
+    ],
+    className: "w-full",
+  }}
+  adjustableProps={{
+    align: ["left", "center", "right", "full"],
+  }}
+/>
+
+```tsx
+<Actions>
+  <Button appearance="outlined">Cancel</Button>
+  <Button appearance="filled">Confirm</Button>
+</Actions>
+```
+
+### Props
+
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      Actions contains Buttons. You can put as many Buttons inside Actions as
+      needed, but the recommended limit is 3.
+
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="align" required="never">
+    <TableCell>
+      ```
+      "left"
+      | "center"
+      | "right"
+      | "full"
+      ```
+    </TableCell>
+    <TableCell>
+
+      How the Buttons should be positioned. It can be aligned to the left, the
+      center, the right (default), or fill the entire width.
+
+      - Must be `left`, `center`, `right`, `full`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>
