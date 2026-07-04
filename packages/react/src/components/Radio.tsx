@@ -51,13 +51,13 @@ export const Radio: StyleableFC<RadioProps> = ({
   value,
   onChange,
   disabled,
-  element = "div",
+  element = "label",
   className,
   style,
 }) => {
   const [internalValue, setInternalValue] = useState(value ?? false);
-  const mergedValue = value ?? internalValue;
-  const mergedOnChange = onChange ?? setInternalValue;
+  const resolvedValue = value ?? internalValue;
+  const resolvedOnChange = onChange ?? setInternalValue;
 
   const formGroupContext = useFormgroupContext();
   const name = formGroupContext?.name;
@@ -69,7 +69,7 @@ export const Radio: StyleableFC<RadioProps> = ({
         element={element}
         className={cn(
           "skc-radio",
-          mergedValue && "skc-radio--selected",
+          resolvedValue && "skc-radio--selected",
           disabled && "skc-radio--disabled",
           className,
         )}
@@ -79,9 +79,10 @@ export const Radio: StyleableFC<RadioProps> = ({
           aria-disabled={disabled}
           type="radio"
           name={name}
-          checked={mergedValue}
+          checked={resolvedValue}
           onChange={(event) => {
-            if (!disabled) mergedOnChange(event.target.checked);
+            console.log(event.target.checked);
+            if (!disabled) resolvedOnChange(event.target.checked);
           }}
           className="skc-radio__input"
         />

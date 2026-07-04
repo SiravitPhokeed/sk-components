@@ -68,22 +68,22 @@ export const Checkbox: StyleableFC<CheckboxProps> = ({
   const [internalValue, setInternalValue] = useState<boolean | null>(
     value ?? false,
   );
-  const mergedValue = value ?? internalValue;
-  const mergedOnChange = onChange ?? setInternalValue;
+  const resolvedValue = value ?? internalValue;
+  const resolvedOnChange = onChange ?? setInternalValue;
 
   return (
     <Interactive
       role="checkbox"
-      aria-checked={mergedValue === null ? "mixed" : mergedValue}
+      aria-checked={resolvedValue === null ? "mixed" : resolvedValue}
       aria-disabled={disabled}
       onClick={() => {
-        if (!disabled) mergedOnChange(!mergedValue);
+        if (!disabled) resolvedOnChange(!resolvedValue);
       }}
       element={element}
       className={cn(
         "skc-checkbox",
-        value === true && "skc-checkbox--selected",
-        value === null && tristate && "skc-checkbox--indeterminate",
+        resolvedValue === true && "skc-checkbox--selected",
+        resolvedValue === null && tristate && "skc-checkbox--indeterminate",
         disabled && "skc-checkbox--disabled",
         className,
       )}
@@ -91,10 +91,10 @@ export const Checkbox: StyleableFC<CheckboxProps> = ({
     >
       <div className="skc-checkbox__box">
         <div className="skc-checkbox__icon">
-          {value === true ? (
+          {resolvedValue === true ? (
             <MaterialIcon icon="check_small" />
           ) : (
-            value === null &&
+            resolvedValue === null &&
             tristate && <MaterialIcon icon="check_indeterminate_small" />
           )}
         </div>

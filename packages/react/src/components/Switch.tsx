@@ -4,6 +4,7 @@ import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/switch.css";
 import type { ReactElement } from "react";
+import { useState } from "react";
 
 /**
  * Props for {@link Switch}.
@@ -67,14 +68,28 @@ export const Switch: StyleableFC<SwitchProps> = ({
   element: Element = "button",
   style,
   className,
-}) => (
-  <Element
-    aria-disabled={disabled}
-    aria-pressed={value}
-    style={style}
-    className={cn("skc-switch", value && "skc-switch--selected", className)}
-    onClick={() => onChange?.(!value)}
-  >
-    <div className="skc-switch__handle">{value ? onIcon : offIcon}</div>
-  </Element>
-);
+}) => {
+  const [internalValue, setInternalValue] = useState(value ?? false);
+  const resolvedValue = value ?? internalValue;
+  const resolvedOnChange = onChange ?? setInternalValue;
+
+  return (
+    <Element
+      aria-disabled={disabled}
+      aria-pressed={resolvedValue}
+      style={style}
+      className={cn(
+        "skc-switch",
+        resolvedValue && "skc-switch--selected",
+        className,
+      )}
+      onClick={() => {
+        if (!disabled) resolvedOnChange(!resolvedValue);
+      }}
+    >
+      <div className="skc-switch__handle">
+        {resolvedValue ? onIcon : offIcon}
+      </div>
+    </Element>
+  );
+};

@@ -6,6 +6,7 @@ import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/toggle-button.css";
 import type { ReactElement } from "react";
+import { useState } from "react";
 
 /**
  * Props for {@link ToggleButton Toggle Button}.
@@ -113,21 +114,27 @@ export const ToggleButton: StyleableFC<ToggleButtonProps> = ({
   style,
   className,
 }) => {
+  const [internalValue, setInternalValue] = useState(false);
+  const resolvedValue = value ?? internalValue;
+  const resolvedOnChange = onChange ?? setInternalValue;
+
   return (
     <Interactive
       element={element}
-      onClick={onChange && !disabled ? () => onChange(!value) : undefined}
+      onClick={() => {
+        if (!disabled) resolvedOnChange(!resolvedValue);
+      }}
       // We're using `aria-disabled` instead of `disabled` because it does
       // not disable tabbing in, which is better for accessibility.
       aria-disabled={disabled}
-      aria-pressed={value}
+      aria-pressed={resolvedValue}
       aria-label={alt}
       title={tooltip}
       style={style}
       className={cn(
         "skc-toggle-button",
         `skc-toggle-button--${appearance}`,
-        value && "skc-toggle-button--selected",
+        resolvedValue && "skc-toggle-button--selected",
         dangerous && "skc-toggle-button--dangerous",
         className,
       )}
