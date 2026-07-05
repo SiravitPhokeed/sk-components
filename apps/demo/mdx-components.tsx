@@ -28,25 +28,22 @@ const components: MDXComponents = {
     <Card
       appearance="filled"
       element="pre"
+      className={cn("my-4 block overflow-x-auto text-base", className)}
+      {...props}
+    />
+  ),
+  code: ({ "data-language": language, className, ...props }) => (
+    <code
       className={cn(
-        "my-4 block overflow-x-auto text-base tracking-normal",
+        language
+          ? "w-fit p-4"
+          : "bg-surface-variant rounded-xs px-1.5 text-[0.9em]",
+        "tracking-normal",
         className,
       )}
       {...props}
     />
   ),
-  code: ({ "data-language": dataLanguage, className, ...props }) =>
-    dataLanguage ? (
-      <code className={cn("w-fit p-4", className)} {...props} />
-    ) : (
-      <code
-        className={cn(
-          "bg-surface-variant rounded-xs px-1.5 text-[0.9em] tracking-normal",
-          className,
-        )}
-        {...props}
-      />
-    ),
   ul: (props) => <ul className="list-disc ps-6" {...props} />,
   li: (props) => <li className="mb-1" {...props} />,
   p: (props) => <p className="my-2" {...props} />,
