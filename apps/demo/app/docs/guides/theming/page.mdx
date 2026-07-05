@@ -4,13 +4,41 @@ export const metadata = {
 
 ## Theming
 
-The default theme is included with [Theme Provider](/docs/layout/theme-provider), which simply imports an internal `_theme.css` file with variables for colors, typography, and motion. The theme was generated from Suankularb’s school colors with the [Material Theme Builder](https://www.figma.com/community/plugin/1034969338659738588) Figma plugin.
+The default theme is included with
+[Theme Provider](/docs/layout/theme-provider), which simply imports an internal
+`_theme.css` file with variables for colors, typography, and motion. The theme
+was generated from Suankularb’s school colors with the
+[Material Theme Builder](https://www.figma.com/community/plugin/1034969338659738588)
+Figma plugin.
 
-If you wish to use your own theme, you can create a CSS file with the same variables and import it instead of using Theme Provider.
+If you wish to use your own theme, you can create a CSS file with the same
+variables and import it instead of using Theme Provider.
 
 ### Dark mode
 
-Dark mode is supported by default. The default theme uses the `prefers-color-scheme` media query as well as `scheme-light` and `scheme-dark` classes on `<html>` to determine which color scheme to use.
+Dark mode is supported by default. The default theme uses the
+`prefers-color-scheme` media query as well as `scheme-light` and `scheme-dark`
+classes on `<html>` to determine which color scheme to use.
+
+### Overriding default styles
+
+Most components extend `StyleableFC` which allows you to pass `className` and
+`style` props to override the component’s default styles.
+
+```tsx
+<Button appearance="primary" style={{ backgroundColor: "red"}}>
+  Red button
+</Button>
+```
+
+If you are using [Tailwind CSS](/docs/guides/tailwindcss-v4), `className` allows
+you to use utility classes to override the component’s default styles.
+
+```tsx
+<Button appearance="primary" className="bg-red-500">
+  Red button
+</Button>
+```
 
 ### Default `_theme.css`
 
