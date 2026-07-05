@@ -1,3 +1,6 @@
+import IconFontDialog from "@/app/docs/components/IconFontDialog";
+import { Button, MaterialIcon } from "@suankularb-components/react";
+
 export const metadata = {
   title: "Getting started",
 }
@@ -41,6 +44,16 @@ pnpm add @suankularb-components/react
 - [IBM Plex Sans Thai](https://fonts.google.com/specimen/IBM+Plex+Sans+Thai)
 
 [Material Icon](/docs/data/material-icon) uses the Material Symbols Outlined font. See the [Material Symbols documentation](https://fonts.google.com/icons) for a list of icons and installation instructions.
+
+<Button
+  children="Download icon font" 
+  appearance="outlined" 
+  icon={<MaterialIcon icon="download" />}
+  command="show-modal"
+  commandfor="icon-font-dialog"
+  className="mt-4"
+/>
+<IconFontDialog />
 
 ### Usage
 
