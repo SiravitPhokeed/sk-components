@@ -21,7 +21,7 @@ const DocsLayout: FC<{ children: ReactNode }> = ({ children }) => {
         <Text
           type="body-large"
           element="article"
-          className="w-screen pt-0 sm:w-auto"
+          className="w-screen pe-4 pt-0 sm:w-auto"
         >
           <FAB
             color="primary"
