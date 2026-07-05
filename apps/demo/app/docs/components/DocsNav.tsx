@@ -18,7 +18,8 @@ const DocsNav: StyleableFC = ({ className, style }) => (
       <DocsNavLink href="/docs/guides/getting-started">
         Getting started
       </DocsNavLink>
-      <DocsNavLink href="/docs/guides/nextjs">Next.js</DocsNavLink>
+      <DocsNavLink href="/docs/guides/nextjs-app">Next.js App Router</DocsNavLink>
+      <DocsNavLink href="/docs/guides/nextjs-pages">Next.js Pages Router</DocsNavLink>
       <DocsNavLink href="/docs/guides/tailwindcss-v4">Tailwind CSS v4</DocsNavLink>
       <DocsNavLink href="/docs/guides/tailwindcss-v3">Tailwind CSS v3</DocsNavLink>
       <DocsNavLink href="/docs/guides/localization">Localization</DocsNavLink>
