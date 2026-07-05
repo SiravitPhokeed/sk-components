@@ -4,7 +4,18 @@ export const metadata = {
 
 ## Migrating to v3.3
 
-- `useAnimationConfig()` is now deprecated. Use the `DURATION` and `EASING` constants instead.
+```bash
+npm install @suankularb-components/react@^3.3
+```
+
+```bash
+pnpm add @suankularb-components/react@^3.3
+```
+
+### Breaking changes
+
+- `useAnimationConfig()` is now deprecated. Use the `DURATION` and `EASING`
+  constants instead.
 
 ```tsx
 // Before
@@ -17,4 +28,8 @@ import { DURATION, EASING, transition } from "@suankularb-components/react";
 transition(DURATION.short4, EASING.standard);
 ```
 
-v3.3 was released on April 8, 2024. See the [release notes](https://github.com/suankularb-wittayalai-school/sk-components/pull/131) for more information.
+### Further reading
+
+v3.3 was released on April 8, 2024. See the
+[release notes](https://github.com/suankularb-wittayalai-school/sk-components/pull/131)
+for more information.
