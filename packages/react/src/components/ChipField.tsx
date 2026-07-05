@@ -146,7 +146,7 @@ const STRINGS = {
     loading: "Checking your input…",
     deleteLast: (
       <>
-        <kbd>⌫ backspace</kbd> again to delete this item, <kbd>⎋ esc</kbd> to
+        <kbd>⌫ backspace</kbd> again to delete this item, <kbd>→</kbd> to
         cancel
       </>
     ),
@@ -155,7 +155,7 @@ const STRINGS = {
     loading: "กำลังตรวจสอบข้อมูลของคุณ…",
     deleteLast: (
       <>
-        กด <kbd>⌫ backspace</kbd> อีกครั้งเพื่อลบรายการนี้ • กด <kbd>⎋ esc</kbd>{" "}
+        กด <kbd>⌫ backspace</kbd> อีกครั้งเพื่อลบรายการนี้ • กด <kbd>→</kbd>{" "}
         เพื่อยกเลิก
       </>
     ),
