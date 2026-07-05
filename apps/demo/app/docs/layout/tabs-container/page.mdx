@@ -42,6 +42,46 @@ page of a class.
 </TabsContainer>
 ```
 
+### Usage
+
+You can use `useState` to manage the selected Tab and render the corresponding
+page.
+
+```tsx
+const [selectedTab, setSelectedTab] = useState("overview");
+
+return (
+  <ContentLayout>
+    <TabsContainer appearance="primary">
+      <Tab
+        icon={<MaterialIcon icon="info" />}
+        label="Overview"
+        selected={selectedTab === "overview"}
+        onClick={() => setSelectedTab("overview")}
+      />
+      <Tab
+        icon={<MaterialIcon icon="groups" />}
+        label="Students"
+        selected={selectedTab === "students"}
+        onClick={() => setSelectedTab("students")}
+      />
+      <Tab
+        icon={<MaterialIcon icon="group" />}
+        label="Teachers"
+        selected={selectedTab === "teachers"}
+        onClick={() => setSelectedTab("teachers")}
+      />
+    </TabsContainer>
+
+    {new Map([
+      ["overview", <OverviewPage />],
+      ["students", <StudentsPage />],
+      ["teachers", <TeachersPage />],
+    ]).get(selectedTab)}
+  </ContentLayout>
+);
+```
+
 ### Props
 
 - `StyleableProps` are available: `className` and `style`.
