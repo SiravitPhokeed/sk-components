@@ -44,6 +44,19 @@ const DemoCard = ({
           </ChipSet>
         )}
       </div>
+      {process.env.NODE_ENV === "development" && (
+        <Text
+          type="title-small"
+          element="p"
+          className="text-on-error-container bg-error-container rounded-md px-4 py-2 md:text-center md:text-balance"
+        >
+          Do not rely on the output of this demo when developing components for
+          SKCom. This demo is for the consumer&rsquo;s convenience only and does
+          not reflect actual output.
+        </Text>
+      )}
+
+      {/* Notes */}
       <Text
         type="body-small"
         element="span"
