@@ -23,10 +23,14 @@ const DemoCard = ({
 
   return (
     <section className="my-6 space-y-3">
+      {/* Card */}
       <div className="bg-surface-container border-outline-variant rounded-lg border">
+        {/* Sample */}
         <div className="bg-surface relative isolate grid max-h-108 min-h-48 list-none place-items-center overflow-y-hidden rounded-[inherit] p-10 *:first:relative *:first:inset-0">
           <Component {...initialProps} {...adjustedProps} />
         </div>
+
+        {/* Adjustable props */}
         {adjustableProps && (
           <ChipSet
             scrollable
@@ -44,6 +48,8 @@ const DemoCard = ({
           </ChipSet>
         )}
       </div>
+
+      {/* Development-only warning */}
       {process.env.NODE_ENV === "development" && (
         <Text
           type="title-small"
