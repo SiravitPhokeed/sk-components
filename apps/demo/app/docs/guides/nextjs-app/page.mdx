@@ -131,11 +131,11 @@ const bodyFontEN = Inter({ subsets: ["latin"] });
 const displayFontEN = Space_Grotesk({ subsets: ["latin"] });
 const bodyFontTH = IBM_Plex_Sans_Thai({
   weights: ["300", "400", "500", "700"],
-  subsets: ["thai"]
+  subsets: ["thai"],
 });
 const displayFontTH = Sarabun({
   weights: ["300", "400", "500", "700"],
-  subsets: ["thai"]
+  subsets: ["thai"],
 });
 ```
 
@@ -145,7 +145,7 @@ Then, add the font class names to your Root Layout component.
 <SKCRootLayout
   className={[
     bodyFontEN.className, displayFontEN.className,
-    bodyFontTH.className, displayFontTH.className
+    bodyFontTH.className, displayFontTH.className,
   ].join(" ")}
 >
   {/* ... */}
