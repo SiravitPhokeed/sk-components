@@ -8,7 +8,6 @@ import {
 } from "@suankularb-components/react";
 import type { Metadata } from "next";
 import {
-  Fira_Code,
   IBM_Plex_Sans_Thai,
   Inter,
   Sarabun,
@@ -32,7 +31,11 @@ const displayFontTH = IBM_Plex_Sans_Thai({
 });
 
 // Mono font
-const monoFont = Fira_Code({ subsets: ["latin"] });
+const monoFont = localFont({
+  src: "../public/fonts/commit-mono.woff2",
+  style: "normal",
+  variable: "--font-mono",
+});
 
 // Icon font
 const iconFont = localFont({
@@ -59,7 +62,7 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
         displayFontEN.className,
         bodyFontTH.className,
         displayFontTH.className,
-        monoFont.className,
+        monoFont.variable,
         iconFont.variable,
         "antialiased",
       )}
