@@ -152,7 +152,9 @@ export const Search: StyleableFC<SearchProps> = ({
       />
       <input
         ref={ref}
+        aria-disabled={disabled}
         value={value}
+        readOnly={disabled}
         enterKeyHint="search"
         placeholder={placeholder ?? STRINGS[locale].placeholder}
         onChange={(event) => onChange?.(event.target.value)}

@@ -53,11 +53,22 @@
     font-family: var(--font-display);
   }
 
-  &:hover {
-    --_state-layer-opacity: 8%;
+  &:not([aria-disabled="true"]) {
+    &:hover {
+      --_state-layer-opacity: 8%;
+    }
+    &:focus-visible {
+      --_state-layer-opacity: 0%;
+      outline-color: var(--primary);
+    }
   }
-  &:focus-visible {
-    --_state-layer-opacity: 0%;
-    outline-color: var(--primary);
-  }
+}
+
+.skc-search:has(> [aria-disabled="true"]) {
+  background-color: color-mix(
+    in srgb,
+    var(--surface-container-high) 38%,
+    transparent
+  );
+  pointer-events: none;
 }
