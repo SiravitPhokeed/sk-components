@@ -55,6 +55,7 @@ export const TabsContainer: StyleableFC<TabsContainerProps> = ({
   return (
     <TabsContainerContext.Provider value={{ id, appearance, indicatorRef }}>
       <Element
+        key={[id, appearance].join("-")}
         style={style}
         className={cn(
           "skc-tabs-container",
