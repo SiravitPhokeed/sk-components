@@ -43,6 +43,7 @@ const iconFont = localFont({
   weight: "100 700",
   style: "normal",
   variable: "--font-icon",
+  display: "block",
 });
 
 export const metadata: Metadata = {
