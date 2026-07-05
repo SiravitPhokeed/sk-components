@@ -1,5 +1,229 @@
+import IconFontDialog from "@/app/docs/components/IconFontDialog";
+import { Button, MaterialIcon } from "@suankularb-components/react";
+
 export const metadata = {
-  title: "Using with Next.js App Router",
+  title: "Using with Next.js Pages Router",
 };
 
-## Using with Next.js App Router
+## Using with Next.js Pages Router
+
+Integrate SKCom into your Next.js project using the Pages Router. If you are
+using the App Router, please instead refer to
+[the guide for the App Router](/docs/guides/nextjs-app-router).
+
+### Setup
+
+In your Next.js project, install the package.
+
+```bash
+npm install @suankularb-components/react
+```
+
+```bash
+pnpm add @suankularb-components/react
+```
+
+Create a `_app.tsx` file in the `pages` directory if you don't have one already.
+Then, add [Theme Provider](/docs/layout/theme-provider) and wrap your app with
+[Root Layout](/docs/layout/root-layout) in the file.
+
+```tsx
+// pages/_app.tsx
+
+import { RootLayout, ThemeProvider } from "@suankularb-components/react";
+import type { AppProps } from "next/app"
+ 
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <ThemeProvider />
+      <RootLayout element="div">
+        <Component {...pageProps} />
+      </RootLayout>
+    </>
+  );
+}
+```
+
+### Layout
+
+You can create a `Layout` component that contains the
+[Nav Bar](/docs/layout/navbar) and [Nav Drawer](/docs/layout/nav-drawer)
+components, and import it into your `_app.tsx` file.
+
+With this setup, you don’t need to add the Nav Bar and Nav Drawer to every page.
+Next.js will add them to every page for you.
+
+```tsx
+// pages/_app.tsx
+
+import Layout from "@/components/Layout";
+import { ThemeProvider } from "@suankularb-components/react";
+import type { AppProps } from "next/app";
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <ThemeProvider />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </>
+  );
+}
+```
+
+You can create `@/components/NavBar.tsx` and `@/components/NavDrawer.tsx` using
+SKCom’s Nav Bar and Nav Drawer components and populate them with your app’s
+navigation items.
+
+```tsx
+// components/NavBar.tsx
+
+import {
+  MaterialIcon,
+  NavBarItem,
+  NavBar as SKCNavBar,
+} from "@suankularb-components/react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+
+const NavBar = () => {
+  const router = useRouter();
+
+  return (
+    <SKCNavBar>
+      <NavBarItem
+        icon={<MaterialIcon icon="home" />}
+        label="Home"
+        href="/"
+        selected={router.pathname === "/"}
+        element={Link}
+      />
+      {/* ... */}
+    </SKCNavBar>
+  );
+};
+```
+
+`@/components/NavDrawer.tsx` can be created in a similar way. Then, import these
+components into your `Layout` component.
+
+```tsx
+// components/Layout.tsx
+
+import NavBar from "@/components/NavBar";
+import NavDrawer from "@/components/NavDrawer";
+import { RootLayout } from "@suankularb-components/react";
+import type { ReactNode } from "react";
+
+const Layout = ({ children }: { children: ReactNode }) => {
+  return (
+    <RootLayout>
+      <NavBar />
+      <NavDrawer />
+      {children}
+    </RootLayout>
+  );
+};
+```
+
+Finally, import the `Layout` component into your `_app.tsx` file and wrap your
+app with it.
+
+### Fonts
+
+You can use
+[`next/font`](https://nextjs.org/docs/pages/api-reference/components/font) to
+load the fonts used in SKCom.
+
+#### Google Fonts
+
+Inter, Space Grotesk, Sarabun, and IBM Plex Sans Thai are available on Google
+Fonts. You can load them using `next/font/google` in your `_app.tsx` file (or
+your `Layout` component if you have one).
+
+```ts
+import {
+  Fira_Code,
+  IBM_Plex_Sans_Thai,
+  Inter,
+  Sarabun,
+  Space_Grotesk,
+} from "next/font/google";
+
+const bodyFontEN = Inter({ subsets: ["latin"] });
+const displayFontEN = Space_Grotesk({ subsets: ["latin"] });
+const bodyFontTH = IBM_Plex_Sans_Thai({
+  weights: ["300", "400", "500", "700"],
+  subsets: ["thai"]
+});
+const displayFontTH = Sarabun({
+  weights: ["300", "400", "500", "700"],
+  subsets: ["thai"]
+});
+```
+
+Then, add the font class names to your Root Layout component.
+
+```tsx
+<RootLayout
+  className={[
+    bodyFontEN.className, displayFontEN.className,
+    bodyFontTH.className, displayFontTH.className
+  ].join(" ")}
+>
+  {/* ... */}
+</RootLayout>
+```
+
+#### Icon Font
+
+<Button
+  children="Download icon font" 
+  appearance="filled" 
+  icon={<MaterialIcon icon="download" />}
+  command="show-modal"
+  commandfor="icon-font-dialog"
+  className="mb-4"
+/>
+<IconFontDialog />
+
+**Save the downloaded font file as `material-symbols.woff2` in your project’s
+`public/fonts` directory.** Then, load the font using `next/font/local` in your
+`_app.tsx` file or your `Layout` component.
+
+Take care to match the relative path to the font file with your project
+structure.
+
+```tsx
+import { localFont } from "next/font/local";
+
+const iconFont = localFont({
+  src: "../public/fonts/material-symbols.woff2",
+  weight: "100 700",
+  style: "normal",
+  variable: "--font-icon",
+});
+```
+
+Finally, add the font class name to your Root Layout component.
+
+```tsx
+<RootLayout className={[
+  /* ... Google Fonts ... */, iconFont.variable
+].join(" ")}>
+  {/* ... */}
+</RootLayout>
+```
+
+### Navigation
+
+**Many interactive components** have props that extend `ElementCustomizableProps`
+and thus **accept an `element` prop.** This allows you to use Next.js’s
+[`Link` component](https://nextjs.org/docs/pages/api-reference/components/link)
+for navigation instead of the default `<a>` element.
+
+```tsx
+<Button href="/about" element={Link}>About</Button>
+```
