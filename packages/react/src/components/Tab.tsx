@@ -83,8 +83,6 @@ export const Tab: StyleableFC<TabProps> = ({
   const contentRef = useRef<HTMLDivElement>(null);
 
   const animateIndicator = () => {
-    console.log("Animating indicator");
-
     if (!selected) return;
 
     const tab = tabRef.current;
