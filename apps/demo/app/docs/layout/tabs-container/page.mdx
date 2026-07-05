@@ -23,10 +23,11 @@ page of a class.
   initialProps={{
     appearance: "primary",
     children: [
-      <Tab key="overview" icon={<MaterialIcon icon="overview" />} label="Overview" selected />,
-      <Tab key="students" icon={<MaterialIcon icon="group" />} label="Students" />,
-      <Tab key="teachers" icon={<MaterialIcon icon="school" />} label="Teachers" />,
+      <Tab key="overview" icon={<MaterialIcon icon="info" />} label="Overview" selected />,
+      <Tab key="students" icon={<MaterialIcon icon="groups" />} label="Students" />,
+      <Tab key="teachers" icon={<MaterialIcon icon="group" />} label="Teachers" />,
     ],
+    className: "w-96",
   }}
   adjustableProps={{
     appearance: ["primary", "secondary"],
@@ -35,9 +36,9 @@ page of a class.
 
 ```tsx
 <TabsContainer appearance="primary">
-  <Tab icon={<MaterialIcon icon="overview" />} label="Overview" selected />
-  <Tab icon={<MaterialIcon icon="group" />} label="Students" />
-  <Tab icon={<MaterialIcon icon="school" />} label="Teachers" />
+  <Tab icon={<MaterialIcon icon="info" />} label="Overview" selected />
+  <Tab icon={<MaterialIcon icon="groups" />} label="Students" />
+  <Tab icon={<MaterialIcon icon="group" />} label="Teachers" />
 </TabsContainer>
 ```
 
