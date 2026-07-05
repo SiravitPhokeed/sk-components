@@ -13,12 +13,12 @@ Provides default variables for SK Components.
 ```tsx
 import { ThemeProvider } from "@suankularb-components/react";
 
-export default function App({ Component, pageProps }) {
-  return (
+const App = () => (
+  <>
     <ThemeProvider />
-    <Component {...pageProps} />
-  );
-}
+    <RootLayout>{/* ... */}</RootLayout>
+  </>
+);
 ```
 
 ### Props
