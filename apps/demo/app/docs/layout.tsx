@@ -17,7 +17,7 @@ const DocsLayout: FC<{ children: ReactNode }> = ({ children }) => {
         <DocsNav />
       </SideSheet>
       <SplitLayout ratio="list-detail" prefer="right">
-        <DocsNav />
+        <DocsNav className="ps-4" />
         <Text
           type="body-large"
           element="article"
