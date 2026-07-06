@@ -13,7 +13,7 @@ import { useRef } from "react";
 export interface SideSheetProps {
   /**
    * Content of the Side Sheet.
-   * 
+   *
    * - Always required.
    */
   children: ReactNode;
