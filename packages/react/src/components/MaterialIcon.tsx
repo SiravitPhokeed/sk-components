@@ -87,9 +87,10 @@ export const MaterialIcon: StyleableFC<MaterialIconProps> = ({
       fontSize: size ? `${size / 16}rem` : undefined,
       fontVariationSettings: (() => {
         let value = "";
-        if (fill) value += `"FILL" 1, `;
+        // `fill` and `grade` can be 0, so we explicitly check for undefined.
+        if (fill !== undefined) value += `"FILL" ${fill ? 1 : 0}, `;
         if (weight) value += `"wght" ${weight}, `;
-        if (grade) value += `"GRAD" ${grade}, `;
+        if (grade !== undefined) value += `"GRAD" ${grade}, `;
         if (size) value += `"opsz" ${size}, `;
         return value.slice(0, -2); // Remove the last comma and space
       })(),
