@@ -146,8 +146,7 @@ const STRINGS = {
     loading: "Checking your input…",
     deleteLast: (
       <>
-        <kbd>⌫ backspace</kbd> again to delete this item, <kbd>→</kbd> to
-        cancel
+        <kbd>⌫ backspace</kbd> again to delete this item, <kbd>→</kbd> to cancel
       </>
     ),
   },
