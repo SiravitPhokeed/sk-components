@@ -10,13 +10,13 @@ const DataTableRowActions: FC<{ task: Task }> = ({ task }) => {
   return (
     <SegmentedButton alt={`Row actions: ${task.task}`}>
       <Button
-        appearance="outlined"
+        appearance="text"
         icon={<MaterialIcon icon="edit" />}
         alt={`Edit: ${task.task}`}
         tooltip="Edit"
       />
       <Button
-        appearance="outlined"
+        appearance="text"
         icon={<MaterialIcon icon="delete" />}
         dangerous
         alt={`Delete: ${task.task}`}

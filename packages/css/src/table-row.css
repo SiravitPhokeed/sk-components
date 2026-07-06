@@ -54,10 +54,7 @@
     background-color: var(--surface-variant);
   }
 
-  .skc-button {
-    border: 0;
-    > .skc-material-icon {
-      margin-inline: 0.25rem;
-    }
+  .skc-button > .skc-material-icon {
+    margin-inline: 0.25rem;
   }
 }
