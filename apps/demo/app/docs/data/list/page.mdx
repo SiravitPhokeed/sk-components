@@ -1,0 +1,99 @@
+import { List } from "@/app/docs/components/client-components";
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  ListItem,
+  ListItemContent,
+  TableCell,
+} from "@suankularb-components/react";
+
+export const metadata = {
+  title: "List",
+};
+
+## List
+
+A vertical index of texts or images.
+
+<DemoCard
+  component={List}
+  initialProps={{
+    children: [
+      <ListItem key="1" align="center" lines={2}>
+        <div className="size-14 bg-primary-container" />
+        <ListItemContent title="Fish Burger" desc="฿50.00 • Contains fish" />
+      </ListItem>,
+      <ListItem key="2" align="center" lines={2}>
+        <div className="size-14 bg-secondary-container" />
+        <ListItemContent title="Pork Burger" desc="฿50.00" />
+      </ListItem>,
+      <ListItem key="3" align="center" lines={2}>
+        <div className="size-14 bg-tertiary-container" />
+        <ListItemContent title="Beef Burger" desc="฿50.00 • Contains beef" />
+      </ListItem>,
+    ],
+    className: "w-80",
+  }}
+  adjustableProps={{
+    divided: "boolean",
+  }}
+/>
+
+```tsx
+<List>
+  <ListItem align="center" lines={2}>
+    <img src="/images/fish-burger.png" alt="Fish Burger" />
+    <ListItemContent title="Fish Burger" desc="฿50.00 • Contains fish" />
+  </ListItem>
+  <ListItem align="center" lines={2}>
+    <img src="/images/pork-burger.png" alt="Pork Burger" />
+    <ListItemContent title="Pork Burger" desc="฿50.00" />
+  </ListItem>
+</List>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      List contains List Items, Buttons, or Cards. You can put as many items
+      inside List as needed, but the recommended limit is 3.
+
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="columns" required="never">
+    <TableCell>`2 | 3 | 4 | 6 | 12`</TableCell>
+    <TableCell>
+
+      Uses Columns under the hood. Number of columns.
+
+      - Must be an integer: 2, 3, 4, 6, or 12.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="divided" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Puts a Divider between List Items.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

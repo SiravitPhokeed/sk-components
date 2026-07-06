@@ -1,0 +1,83 @@
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Data Table Head",
+};
+
+## Data Table Head
+
+The head area of a Data Table.
+
+```tsx
+<DataTableHead headerGroups={table.getHeaderGroups()} colSpans={[1, 2, 1]} />
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="headerGroups" required="always">
+    <TableCell>`HeaderGroup<any>[]`</TableCell>
+    <TableCell>
+
+      The return of `getHeaderGroups`, one of the functions of the Tanstack Table
+      instance.
+
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="align" required="never">
+    <TableCell>
+      ```
+      "left"
+      | "center"
+      | "right"
+     ```
+     </TableCell>
+    <TableCell>
+
+      How the content in each cell should be positioned. It can be aligned to the
+      left, the center (default), or the right.
+
+      - Must be `left`, `center`, `right`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="colSpans" required="never">
+    <TableCell>`number[]`</TableCell>
+    <TableCell>
+
+      The fractional width of each column, in the same order as the columns are
+      defined.
+
+      - Must be an array of numbers.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="locale" required="never">
+    <TableCell>`"en-US" | "th"`</TableCell>
+    <TableCell>
+
+      Allows for translation of the accessibility labels.
+
+      - Must be `"en-US"` or `"th"`, as SKCom currently only support those 2
+        languages.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

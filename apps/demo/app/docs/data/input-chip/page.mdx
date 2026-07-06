@@ -1,0 +1,199 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  Avatar,
+  InputChip,
+  MaterialIcon,
+  TableCell,
+} from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Input Chip",
+};
+
+## Input Chip
+
+A Chip displaying a piece of information entered by the user is an Input
+Chip. This type of Chip can be added and deleted by the user.
+
+Like all Chips, an Input Chip appears alongside other Input Chips, but
+these can also appear inside a text field like in Chip Field.
+
+<DemoCard
+  component={InputChip}
+  initialProps={{
+    children: "Pansa S.",
+    avatar: <Avatar />,
+    deleteCommand: "_",
+  }}
+  adjustableProps={{
+    selected: "boolean",
+    elevated: "boolean",
+    dangerous: "boolean",
+    loading: "boolean",
+    disabled: "boolean",
+  }}
+/>
+
+```tsx
+<InputChip avatar={<Avatar />} onDelete={() => remove("Pansa")}>
+  Pansa S.
+</InputChip>
+```
+
+### Props
+
+- `ActionableProps` are available: `command`, `commandFor`, `onClick`, and `href`.
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      The text displayed inside the chip.
+
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="avatar" required="never">
+    <TableCell>`ReactElement`</TableCell>
+    <TableCell>
+
+      An avatar is placed before all content in an Input Chip. A use case would
+      be the profile picture of a user.
+
+      - You are encouraged to use [Avatar](/docs/data/avatar) as the value for `avatar`.
+      - Incompatible with `icon`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="icon" required="never">
+    <TableCell>`ReactElement`</TableCell>
+    <TableCell>
+
+      An icon can appear before the text in an Input Chip. In a page with many
+      chips, icons can quickly orient users.
+
+      - You are encouraged to use [Material Icon](/docs/data/material-icon) as the value for `icon`.
+      - Incompatible with `avatar`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="tooltip" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A message shown in a tooltip when the user hovers over the Input Chip.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="elevated" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Use elevation instead of an outline to signify the Input Chip’s boundary.
+
+      - **Important:** do not use this prop if you don’t have to. Only elevate
+        an Input Chip when its placement requires visual protection, such as on
+        top of an image.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="selected" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      If the Input Chip is selected. `avatar` or `icon` is replaced with a
+      checkmark if this is `true`.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="dangerous" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      If the action the Input Chip accomplishes is dangerous, like deleting your
+      account. If it is, the Input Chip turns red (defined as `error` in the
+      palette).
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="loading" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Disable the Input Chip and signify loading status. `onClick`, `href`, and
+      `onDelete` will have no effect.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="locale" required="never">
+    <TableCell>`"en-US" | "th"`</TableCell>
+    <TableCell>
+
+      Allows for translation of the accessibility labels.
+
+      - Must be `"en-US"` or `"th"`, as SKCom currently only support those 2
+        languages.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="disabled" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Turns the Input Chip gray and blocks any action associated with it.
+      `onClick`, `href`, and `onDelete` will have no effect.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="onDelete" required="never">
+    <TableCell>`() => any`</TableCell>
+    <TableCell>
+
+      Triggers when the user clicks the delete button.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

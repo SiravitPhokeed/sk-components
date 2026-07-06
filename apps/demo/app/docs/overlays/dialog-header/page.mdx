@@ -1,0 +1,99 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  DialogHeader,
+  MaterialIcon,
+  TableCell,
+} from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Dialog Header",
+};
+
+## Dialog Header
+
+The header section houses the main content of a Dialog. It should clearly and
+succinctly communicate a Dialog's purpose, and allow the user to quickly make
+a decision or enter information.
+
+<DemoCard
+  component={DialogHeader}
+  initialProps={{
+    icon: <MaterialIcon icon="person_remove" />,
+    title: "Remove friend?",
+    desc: "You will not be able to see posts from Akira.",
+    className: "bg-surface-container-high w-90 rounded-t-xl pb-6",
+  }}
+/>
+
+```tsx
+<Dialog id="remove-friend">
+  <DialogHeader
+    icon={<MaterialIcon icon="person_remove" />}
+    title="Remove friend?"
+    desc="You will not be able to see posts from Akira."
+  />
+  <Actions>
+    <Button command="request-close" commandfor="remove-friend">
+      Cancel
+    </Button>
+    <Button
+      appearance="filled"
+      command="request-close"
+      commandfor="remove-friend"
+    >
+      Remove
+    </Button>
+  </Actions>
+</Dialog>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="icon" required="never">
+    <TableCell>`ReactElement`</TableCell>
+    <TableCell>
+
+      The hero icon shown above the title text (`title`).
+
+      - You are encouraged to use [Material Icon](/docs/data/material-icon) as the value for `icon`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="title" required="never">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      The title text. This is useful when the supporting text is long and needs
+      a summary.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="desc" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      With a title (`title`), the supporting text complements the title text
+      with more details.
+
+      On its own, it succinctly presents the purpose of the Dialog, like
+      "Discard draft?" for a confirmation on exiting a page without saving.
+
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

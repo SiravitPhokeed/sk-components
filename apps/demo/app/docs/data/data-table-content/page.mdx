@@ -1,0 +1,56 @@
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Data Table Content",
+};
+
+## Data Table Content
+
+The main part of a Data Table.
+
+```tsx
+<DataTableContent contentWidth={800}>
+  <DataTableHead headerGroups={table.getHeaderGroups()} />
+  <DataTableBody rowModel={table.getRowModel()} />
+</DataTableContent>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      A Data Table Content’s content depends on if you decide to use Tanstack
+      Table or not.
+
+      - If you opt in to Tanstack Table: must include both Data Table Head and
+        Data Table Body.
+      - If you opt to use your own table solution: must include both Table Head
+        and Table Body.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="contentWidth" required="never">
+    <TableCell>`number`</TableCell>
+    <TableCell>
+
+      The minimum width of the content. When the table’s width is lower than
+      this value, it becomes scrollable. Otherwise, the content fills the width
+      of the Data Table.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

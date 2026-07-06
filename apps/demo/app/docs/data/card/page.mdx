@@ -1,0 +1,144 @@
+import { Card } from "@/app/docs/components/client-components";
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  CardContent,
+  CardHeader,
+  MaterialIcon,
+  TableCell,
+} from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Card",
+};
+
+## Card
+
+Card is a container for information and actions about a subject. It can be
+in a list, on its own, or as a link to another page; Card is extremely
+versatile.
+
+To quote Material Design 3, there is no right way to make a Card. However,
+we have provided some useful props and components to get you started.
+
+<DemoCard
+  component={Card}
+  initialProps={{
+    appearance: "outlined",
+    direction: "row",
+    children: (
+      <>
+        <CardHeader
+          icon={<MaterialIcon icon="person" />}
+          title="Phubodin Satapirom"
+          subtitle="Foreign Languages teacher"
+          className="grow"
+        />
+        <div className="bg-surface-container aspect-square min-w-18" />
+      </>
+    ),
+    className: "overflow-hidden gap-x-3",
+  }}
+  adjustableProps={{
+    appearance: ["outlined", "elevated", "filled"],
+    direction: ["column", "row"],
+    stateLayerEffect: "boolean",
+    shadowEffect: "boolean",
+  }}
+/>
+
+```tsx
+<Card appearance="outlined" direction="row">
+  <CardHeader
+    icon={<MaterialIcon icon="person" />}
+    title="Phubodin Satapirom"
+    subtitle="Foreign Languages teacher"
+  />
+  <img src="/images/phubodin.jpg" alt="Phubodin Satapirom" />
+</Card>
+```
+
+### Props
+
+- `ActionableProps` are available: `command`, `commandFor`, `onClick`, and `href`.
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      Card must contain at least 1 element.
+
+      - Always required. Card Header and Card Content work well inside Card.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="appearance" required="always">
+    <TableCell>
+      ```
+      "outlined"
+      | "elevated"
+      | "filled"
+      ```
+    </TableCell>
+    <TableCell>
+
+      The appearance of the Card.
+
+      - Each appearance puts different amounts of emphasis on the subject. From
+        most to least emphasis, a Card can be outlined, elevated, and filled.
+      - Must be `outlined`, `elevated`, or `filled`, from highest to lowest
+        emphasis.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="direction" required="never">
+    <TableCell>`"row" | "column"`</TableCell>
+    <TableCell>
+
+      The flow of the Card’s content, like the CSS property `flex-direction`.
+      The default is `column`.
+
+      - Must be `row` or `column`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="stateLayerEffect" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      In interactive components like Button, the state layer reacts to changes
+      to the state to signify its interactivity. For example, a Button’s state
+      layer turns up its opacity on hover.
+
+      - This effect can be enabled on Card as well, letting the user know that
+        this Card is interactive.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="shadowEffect" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Elevates Card on hover and focus to signify its interactivity.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

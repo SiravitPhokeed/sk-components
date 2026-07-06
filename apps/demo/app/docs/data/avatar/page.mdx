@@ -1,0 +1,63 @@
+import { Avatar } from "@/app/docs/components/client-components";
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Avatar",
+};
+
+## Avatar
+
+An avatar represents the user, whether by their initials or their picture.
+
+<DemoCard
+  component={Avatar}
+  initialProps={{
+    children: "SK",
+  }}
+/>
+
+```tsx
+<Avatar>SK</Avatar>
+```
+
+With a profile picture:
+
+```tsx
+<Avatar>
+  <img src="/profile.jpg" alt="Siravit Phokeed" />
+</Avatar>
+```
+
+Without children, a placeholder avatar is displayed:
+
+```tsx
+<Avatar />
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="never">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      A user’s initials or their profile image.
+
+      - Depending on the type of value, the Avatar will display differently:
+        - If the value is a string, it is displayed as the user’s initials. The
+          string should be no more than 2 characters long.
+        - If the value is an element, it is displayed as the user’s profile
+          picture. Note that the picture is cropped to a circle.
+        - If not defined, a placeholder avatar is displayed.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

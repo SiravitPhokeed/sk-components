@@ -1,0 +1,92 @@
+import { Text } from "@/app/docs/components/client-components";
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Text",
+};
+
+## Text
+
+A piece of text with a typographic style applied.
+
+<DemoCard
+  component={Text}
+  initialProps={{
+    type: "headline-large",
+    children: "The quick brown dog jumps over the lazy fox.",
+    className: "text-center text-balance",
+  }}
+  adjustableProps={{
+    type: [
+      "display-large",
+      "display-medium",
+      "display-small",
+      "headline-large",
+      "headline-medium",
+      "headline-small",
+      "title-large",
+      "title-medium",
+      "title-small",
+      "label-large",
+      "label-medium",
+      "label-small",
+      "body-large",
+      "body-medium",
+      "body-small",
+    ],
+  }}
+/>
+
+```tsx
+<Text type="headline-large">The quick brown dog jumps over the lazy fox.</Text>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      The text to apply the typographic styling to.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="id" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The unique identifier of the Text, similar to `id` on any HTML element.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="type" required="always">
+    <TableCell>
+      ```
+      "display-large" | "display-medium" | "display-small"
+      | "headline-large" | "headline-medium" | "headline-small"
+      | "title-large" | "title-medium" | "title-small"
+      | "label-large" | "label-medium" | "label-small"
+      | "body-large" | "body-medium" | "body-small"
+      ```
+    </TableCell>
+    <TableCell>
+
+      The typographic style to apply.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

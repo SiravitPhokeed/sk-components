@@ -18,10 +18,18 @@ const DocsNav: StyleableFC = ({ className, style }) => (
       <DocsNavLink href="/docs/guides/getting-started">
         Getting started
       </DocsNavLink>
-      <DocsNavLink href="/docs/guides/nextjs-app">Next.js App Router</DocsNavLink>
-      <DocsNavLink href="/docs/guides/nextjs-pages">Next.js Pages Router</DocsNavLink>
-      <DocsNavLink href="/docs/guides/tailwindcss-v4">Tailwind CSS v4</DocsNavLink>
-      <DocsNavLink href="/docs/guides/tailwindcss-v3">Tailwind CSS v3</DocsNavLink>
+      <DocsNavLink href="/docs/guides/nextjs-app">
+        Next.js App Router
+      </DocsNavLink>
+      <DocsNavLink href="/docs/guides/nextjs-pages">
+        Next.js Pages Router
+      </DocsNavLink>
+      <DocsNavLink href="/docs/guides/tailwindcss-v4">
+        Tailwind CSS v4
+      </DocsNavLink>
+      <DocsNavLink href="/docs/guides/tailwindcss-v3">
+        Tailwind CSS v3
+      </DocsNavLink>
       <DocsNavLink href="/docs/guides/localization">Localization</DocsNavLink>
       <DocsNavLink href="/docs/guides/theming">Theming</DocsNavLink>
     </DocsNavSection>
@@ -42,12 +50,23 @@ const DocsNav: StyleableFC = ({ className, style }) => (
       <DocsNavLink href="/docs/layout/nav-bar">Nav Bar</DocsNavLink>
       <DocsNavLink href="/docs/layout/nav-bar-item">Nav Bar Item</DocsNavLink>
       <DocsNavLink href="/docs/layout/nav-drawer">Nav Drawer</DocsNavLink>
-      <DocsNavLink href="/docs/layout/nav-drawer-section">Nav Drawer Section</DocsNavLink>
-      <DocsNavLink href="/docs/layout/nav-drawer-item">Nav Drawer Item</DocsNavLink>
+      <DocsNavLink href="/docs/layout/nav-drawer-section">
+        Nav Drawer Section
+      </DocsNavLink>
+      <DocsNavLink href="/docs/layout/nav-drawer-item">
+        Nav Drawer Item
+      </DocsNavLink>
+      <DocsNavLink href="/docs/layout/side-sheet">Side Sheet</DocsNavLink>
       <DocsNavLink href="/docs/layout/app-drawer">App Drawer</DocsNavLink>
-      <DocsNavLink href="/docs/layout/app-drawer-segment">App Drawer Segment</DocsNavLink>
-      <DocsNavLink href="/docs/layout/app-drawer-item">App Drawer Item</DocsNavLink>
-      <DocsNavLink href="/docs/layout/tabs-container">Tabs Container</DocsNavLink>
+      <DocsNavLink href="/docs/layout/app-drawer-segment">
+        App Drawer Segment
+      </DocsNavLink>
+      <DocsNavLink href="/docs/layout/app-drawer-item">
+        App Drawer Item
+      </DocsNavLink>
+      <DocsNavLink href="/docs/layout/tabs-container">
+        Tabs Container
+      </DocsNavLink>
       <DocsNavLink href="/docs/layout/tab">Tab</DocsNavLink>
       <DocsNavLink href="/docs/layout/theme-provider">
         Theme Provider
@@ -76,9 +95,38 @@ const DocsNav: StyleableFC = ({ className, style }) => (
 
     <DocsNavSection title="Data display">
       <DocsNavLink href="/docs/data/table">Table</DocsNavLink>
+      <DocsNavLink href="/docs/data/table-head">Table Head</DocsNavLink>
+      <DocsNavLink href="/docs/data/table-body">Table Body</DocsNavLink>
+      <DocsNavLink href="/docs/data/table-foot">Table Foot</DocsNavLink>
+      <DocsNavLink href="/docs/data/table-row">Table Row</DocsNavLink>
+      <DocsNavLink href="/docs/data/table-cell">Table Cell</DocsNavLink>
       <DocsNavLink href="/docs/data/data-table">Data Table</DocsNavLink>
+      <DocsNavLink href="/docs/data/data-table-search">
+        Data Table Search
+      </DocsNavLink>
+      <DocsNavLink href="/docs/data/data-table-filters">
+        Data Table Filters
+      </DocsNavLink>
+      <DocsNavLink href="/docs/data/data-table-content">
+        Data Table Content
+      </DocsNavLink>
+      <DocsNavLink href="/docs/data/data-table-head">
+        Data Table Head
+      </DocsNavLink>
+      <DocsNavLink href="/docs/data/data-table-body">
+        Data Table Body
+      </DocsNavLink>
+      <DocsNavLink href="/docs/data/data-table-pagination">
+        Data Table Pagination
+      </DocsNavLink>
       <DocsNavLink href="/docs/data/list">List</DocsNavLink>
+      <DocsNavLink href="/docs/data/list-item">List Item</DocsNavLink>
+      <DocsNavLink href="/docs/data/list-item-content">
+        List Item Content
+      </DocsNavLink>
       <DocsNavLink href="/docs/data/card">Card</DocsNavLink>
+      <DocsNavLink href="/docs/data/card-header">Card Header</DocsNavLink>
+      <DocsNavLink href="/docs/data/card-content">Card Content</DocsNavLink>
       <DocsNavLink href="/docs/data/assist-chip">Assist Chip</DocsNavLink>
       <DocsNavLink href="/docs/data/filter-chip">Filter Chip</DocsNavLink>
       <DocsNavLink href="/docs/data/input-chip">Input Chip</DocsNavLink>
@@ -97,7 +145,13 @@ const DocsNav: StyleableFC = ({ className, style }) => (
 
     <DocsNavSection title="Overlays">
       <DocsNavLink href="/docs/overlays/dialog">Dialog</DocsNavLink>
-      <DocsNavLink href="/docs/overlays/full-screen-dialog">
+      <DocsNavLink href="/docs/overlays/dialog-header">
+        Dialog Header
+      </DocsNavLink>
+      <DocsNavLink href="/docs/overlays/dialog-content">
+        Dialog Content
+      </DocsNavLink>
+      <DocsNavLink href="/docs/overlays/fullscreen-dialog">
         Full-screen Dialog
       </DocsNavLink>
       <DocsNavLink href="/docs/overlays/menu">Menu</DocsNavLink>

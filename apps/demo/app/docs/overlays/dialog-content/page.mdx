@@ -1,0 +1,89 @@
+import { DialogContent } from "@/app/docs/components/client-components";
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  Avatar,
+  List,
+  ListItem,
+  ListItemContent,
+  TableCell,
+} from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Dialog Content",
+};
+
+## Dialog Content
+
+Additional content that supplements the Dialog Header. This is where the
+user can see more details about a decision or a space for the user to enter
+information.
+
+<DemoCard
+  component={DialogContent}
+  initialProps={{
+    children: (
+      <List divided>
+        <ListItem align="center" lines={1}>
+          <Avatar>PS</Avatar>
+          <ListItemContent title="Pansa Santisakul" />
+        </ListItem>
+        <ListItem align="center" lines={1}>
+          <Avatar>WR</Avatar>
+          <ListItemContent title="Wasapol Rassameechot" />
+        </ListItem>
+      </List>
+    ),
+    height: 200,
+    className: "bg-surface-container-high w-90",
+  }}
+/>
+
+```tsx
+<DialogContent height={200}>
+  <List divided>
+    <ListItem align="center" lines={1}>
+      <Avatar>PS</Avatar>
+      <ListItemContent title="Pansa Santisakul" />
+    </ListItem>
+    <ListItem align="center" lines={1}>
+      <Avatar>WR</Avatar>
+      <ListItemContent title="Wasapol Rassameechot" />
+    </ListItem>
+  </List>
+</DialogContent>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      A Dialog Content can include anything. A common use case is List.
+
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="height" required="never">
+    <TableCell>`number`</TableCell>
+    <TableCell>
+
+      The height of this component. If its content is taller than this value,
+      Dialog Content scrolls.
+
+      - Setting a height will show Dividers on top of and below the component.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

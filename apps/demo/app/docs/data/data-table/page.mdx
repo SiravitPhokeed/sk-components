@@ -1,0 +1,180 @@
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Data Table",
+};
+
+## Data Table
+
+A more rich Table with support for filtering, search, and pagination; and
+integrates directly with
+[Tanstack Table](https://tanstack.com/table/v8/docs/overview).
+
+```tsx
+<DataTable>
+  <DataTableSearch value={globalFilter} onChange={setGlobalFilter} />
+  <DataTableContent>
+    <DataTableHead headerGroups={getHeaderGroups()} />
+    <DataTableBody rowModel={getRowModel()} />
+  </DataTableContent>
+  <DataTablePagination
+    rowsPerPage={5}
+    totalRows={getPrePaginationRowModel().rows.length}
+    onChange={(newPage) => table.setPageIndex(newPage - 1)}
+  />
+</DataTable>
+```
+
+### Usage
+
+Data Table is best used with Tanstack Table, which provides the data and state
+management for the table.
+
+- **With Tanstack Table:** all Data Table components are fully functional.
+- **Without Tanstack Table:** [Data Table Head](/docs/data/data-table-head) and
+  [Data Table Body](/docs/data/data-table-body) must be replaced with
+  [Table Head](/docs/data/table-head) and [Table Body](/docs/data/table-body)
+  respectively. You will also need to manage the data and state of the table
+  yourself.
+
+#### Full example with Tanstack Table
+
+1. Declare the data type and sample data.
+2. Create the column helper and columns with `createColumnHelper` and `accessor`.
+3. Create states for global filter, sorting, and pagination.
+4. Create the table instance with `useReactTable` and pass in the data, columns,
+   and states.
+5. Render the Data Table with the table instance and states.
+
+```tsx
+import {
+  DataTable,
+  DataTableSearch,
+  DataTableContent,
+  DataTableHead,
+  DataTableBody,
+  DataTablePagination,
+  MaterialIcon,
+} from "@suankularb-components/react";
+import {
+  createColumnHelper,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
+  type PaginationState,
+  type SortingState,
+} from "@tanstack/react-table";
+
+type Task = {
+  id: number;
+  name: string;
+  isComplete: boolean;
+};
+const SAMPLE_DATA = [
+  { id: 1, name: "Dry cleaning", isComplete: false },
+  { id: 2, name: "Grocery shopping", isComplete: true },
+  { id: 3, name: "Pay bills", isComplete: false },
+  { id: 4, name: "Clean the entity", isComplete: true },
+  { id: 5, name: "Walk the kitchen", isComplete: false },
+  { id: 6, name: "Water the living room", isComplete: true },
+  { id: 7, name: "Vacuum plants", isComplete: false },
+  { id: 8, name: "Mow cats", isComplete: true },
+  { id: 9, name: "Go to sleep", isComplete: false },
+  { id: 10, name: "Tokenmax", isComplete: true },
+];
+
+const columnHelper = createColumnHelper<Task>();
+const COLUMNS = [
+  columnHelper.accessor("id", {
+    header: "ID",
+    cell: (info) => <code>{info.getValue()}</code>,
+  }),
+  columnHelper.accessor("name", {
+    header: "Task name",
+    cell: (info) => info.getValue(),
+  }),
+  columnHelper.accessor("isComplete", {
+    header: "Completed?",
+    cell: (info) =>
+      info.getValue() ? (
+        <MaterialIcon icon="check" />
+      ) : (
+        <MaterialIcon icon="close" />
+      ),
+  }),
+];
+const PAGE_SIZE = 5;
+
+const DataTableExample = () => {
+  const [globalFilter, setGlobalFilter] = useState<string>("");
+  const [sorting, setSorting] = useState<SortingState>([]);
+  const [pagination, setPagination] = useState<PaginationState>({
+    pageIndex: 0,
+    pageSize: PAGE_SIZE,
+  });
+
+  const table = useReactTable({
+    data: SAMPLE_DATA,
+    columns: COLUMNS,
+    state: { globalFilter, sorting, pagination },
+    onGlobalFilterChange: setGlobalFilter,
+    onSortingChange: setSorting,
+    onPaginationChange: setPagination,
+    getCoreRowModel: getCoreRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+  });
+
+  return (
+    <DataTable>
+      <DataTableSearch value={globalFilter} onChange={setGlobalFilter} />
+      <DataTableContent contentWidth={800}>
+        <DataTableHead
+          headerGroups={table.getHeaderGroups()}
+          colSpans={[1, 2, 1]}
+        />
+        <DataTableBody<Task> rowModel={table.getRowModel()} />
+      </DataTableContent>
+      <DataTablePagination
+        rowsPerPage={PAGE_SIZE}
+        totalRows={table.getPrePaginationRowModel().rows.length}
+        onChange={(newPage) => table.setPageIndex(newPage - 1)}
+      />
+    </DataTable>
+  );
+};
+```
+
+> [`colSpans`](/docs/data/data-table-head) allows you to set the widths of the
+> columns in Data Table, similar to `grid-template-columns` in a CSS Grid.
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      There is a set of components especially designed to be used here: Data
+      Table Search, Data Table Filters, Data Table Content, and Data Table
+      Pagination.
+
+      - A Data Table cannot have both Data Table Search and Data Table Filters.
+      - A Data Table must have a Data Table Content.
+      - If present, Data Table Search/Data Table Filters must be the first
+        component.
+      - If present, Data Table Pagination must be the last component.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

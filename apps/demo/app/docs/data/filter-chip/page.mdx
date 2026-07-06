@@ -1,0 +1,162 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  FilterChip,
+  MaterialIcon,
+  TableCell,
+} from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Filter Chip",
+};
+
+## Filter Chip
+
+A set of Filter Chips provide product-authored options to narrow down
+content. A Filter Chip should never appear alone and should be a child of
+Chip Set.
+
+<DemoCard
+  component={FilterChip}
+  initialProps={{
+    children: "Teachers",
+    icon: <MaterialIcon icon="group" />,
+  }}
+  adjustableProps={{
+    selected: "boolean",
+    elevated: "boolean",
+    disabled: "boolean",
+  }}
+/>
+
+```tsx
+<FilterChip icon={<MaterialIcon icon="group" />} selected>
+  Teachers
+</FilterChip>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      The text displayed inside the chip.
+
+      - Must be a React Node, e.g., a string or an element.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="icon" required="never">
+    <TableCell>`ReactElement`</TableCell>
+    <TableCell>
+
+      An icon can appear before all content in an Filter Chip. In a page with
+      many cards, icons can quickly orient users.
+
+      - You are encouraged to use [Material Icon](/docs/data/material-icon) as the value for `icon`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="tooltip" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A message shown in a tooltip when the user hovers over the Filter Chip.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="menu" required="never">
+    <TableCell>`ReactElement<typeof Fragment>`</TableCell>
+    <TableCell>
+
+      Turns the Filter Chip into a dropdown, displaying a Menu underneath the
+      chip.
+
+      - Must be a Fragment containing Menu Items.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="elevated" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Use elevation instead of an outline to signify the Filter Chip’s boundary.
+
+      - **Important:** do not use this prop if you don’t have to. Only elevate
+        a Filter Chip when its placement requires visual protection, such as on
+        top of an image.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="selected" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      If the Filter Chip is selected. `icon` is replaced with a checkmark if
+      this is `true`.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="disabled" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Turns the Filter Chip gray and block any action associated with it.
+      `onClick` will have no effect.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="onClick" required="never">
+    <TableCell>`(state: boolean) => any`</TableCell>
+    <TableCell>
+
+      Triggers when the user toggles the Filter Chip on or off.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="href" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The URL of the page this Filter Chip leads to, similar to `href` on `<a>`.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

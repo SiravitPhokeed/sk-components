@@ -1,0 +1,73 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { ListItemContent, TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "List Item Content",
+};
+
+## List Item Content
+
+The text content of a List Item.
+
+<DemoCard
+  component={ListItemContent}
+  initialProps={{
+    overline: "Meal of the day",
+    title: "Fish Burger",
+    desc: "฿50.00 • Contains fish",
+    className: "w-80",
+  }}
+/>
+
+```tsx
+<ListItemContent
+  overline="Meal of the day"
+  title="Fish Burger"
+  desc="฿50.00 • Contains fish"
+/>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="overline" required="never">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      Small text on top of the title text.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="title" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      The main text of the List Item Content.
+
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="desc" required="never">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      A description supplementing the title text.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

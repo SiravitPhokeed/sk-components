@@ -1,0 +1,143 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  AssistChip,
+  MaterialIcon,
+  TableCell,
+} from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Assist Chip",
+};
+
+## Assist Chip
+
+Assist Chips are similar to Buttons in that it helps users take action. The
+difference is a Button is persistent (doesn’t change) and an Assist Chip is
+dynamic and contextual (changes according to the context).
+
+The label of an Assist Chip should start with a verb, i.e. “**Turn on**
+lights” or “**Save** to favorites.”
+
+<DemoCard
+  component={AssistChip}
+  initialProps={{
+    children: "Turn on lights",
+    icon: <MaterialIcon icon="lightbulb" />,
+  }}
+  adjustableProps={{
+    elevated: "boolean",
+    dangerous: "boolean",
+    loading: "boolean",
+    disabled: "boolean",
+  }}
+/>
+
+```tsx
+<AssistChip icon={<MaterialIcon icon="lightbulb" />}>Turn on lights</AssistChip>
+```
+
+### Props
+
+- `ActionableProps` are available: `command`, `commandFor`, `onClick`, and `href`.
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      The text shown inside the Assist Chip.
+
+      - The label should start with a verb, i.e. “**Turn on** lights” or
+        “**Save** to favorites.”
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="icon" required="never">
+    <TableCell>`ReactElement`</TableCell>
+    <TableCell>
+
+      An icon can appear before the text in an Assist Chip. In a Chip Set with
+      many chips, an icon can help the user find the right one more quickly.
+
+      - You are encouraged to use [Material Icon](/docs/data/material-icon) as the value for `icon`.
+      - Favicons and branded icons can also be used here.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="tooltip" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A message shown in a tooltip when the user hovers over the Assist Chip.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="elevated" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Use elevation instead of an outline to signify the Assist Chip’s boundary.
+
+      - **Important:** do not use this prop if you don’t have to. Only elevate
+        an Assist Chip when its placement requires visual protection, such as on
+        top of an image.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="dangerous" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      If the action the Assist Chip accomplishes is dangerous, like deleting
+      your account. If it is, the Assist Chip turns red (defined as `error` in
+      the palette).
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="loading" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Disable the Assist Chip to signify loading status. `onClick` and `href`
+      will have no effect.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="disabled" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Turns the Assist Chip gray and block any action associated with it.
+      `onClick` and `href` will have no effect.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

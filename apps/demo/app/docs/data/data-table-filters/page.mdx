@@ -1,0 +1,101 @@
+import { DataTableFilters } from "@/app/docs/components/client-components";
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { ChipSet, FilterChip, TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Data Table Filters",
+};
+
+## Data Table Filters
+
+Allows the user to filter the Data Table’s content by selecting from a list
+of filters.
+
+<DemoCard
+  component={DataTableFilters}
+  initialProps={{
+    children: (
+      <ChipSet>
+        <FilterChip selected>Active</FilterChip>
+        <FilterChip>Inactive</FilterChip>
+      </ChipSet>
+    ),
+    className: "w-full min-w-80",
+  }}
+/>
+
+```tsx
+<DataTableFilters>
+  <ChipSet>
+    <FilterChip selected>Active</FilterChip>
+    <FilterChip>Inactive</FilterChip>
+  </ChipSet>
+</DataTableFilters>
+```
+
+### Usage
+
+**Data Table Filters does not manage the data of the table.** You can use the
+`children` prop to pass in a Chip Set of Filter Chips and trigger the filtering
+logic when the user selects a filter.
+
+**With Tanstack Table**, you can hook up the Filter Chips to `columnFilters` to
+filter the table’s content.
+
+```tsx
+const [filter, setFilter] = useState("all");
+const table = useReactTable({
+  // ...
+  state: { columnFilters: [{ id: "status", value: filter }] },
+  onColumnFiltersChange: setColumnFilters,
+  getCoreRowModel: getCoreRowModel(),
+  getFilteredRowModel: getFilteredRowModel(),
+});
+
+return (
+  <DataTable>
+    <DataTableFilters>
+      <ChipSet>
+        <FilterChip
+          selected={filter === "active"}
+          onClick={() => setFilter("active")}
+        >
+          Active
+        </FilterChip>
+        <FilterChip
+          selected={filter === "inactive"}
+          onClick={() => setFilter("inactive")}
+        >
+          Inactive
+        </FilterChip>
+      </ChipSet>
+    </DataTableFilters>
+    <DataTableContent>
+      <DataTableHead headerGroups={getHeaderGroups()} />
+      <DataTableBody rowModel={getRowModel()} />
+    </DataTableContent>
+  </DataTable>
+);
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      A set of Filter Chips responsible for filtering the Data Table.
+
+      - Must be a Chip Set, which must consist of Filter Chips.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

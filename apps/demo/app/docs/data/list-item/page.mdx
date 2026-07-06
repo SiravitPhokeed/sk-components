@@ -1,0 +1,122 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  ListItem,
+  ListItemContent,
+  TableCell,
+} from "@suankularb-components/react";
+
+export const metadata = {
+  title: "List Item",
+};
+
+## List Item
+
+An item inside a List.
+
+<DemoCard
+  component={ListItem}
+  initialProps={{
+    children: (
+      <>
+        <div className="size-14 bg-surface-variant" />
+        <ListItemContent title="Pork Burger" desc="฿50.00" />
+      </>
+    ),
+    align: "center",
+    lines: 2,
+    className: "w-80",
+  }}
+  adjustableProps={{
+    align: ["top", "center", "bottom"],
+    stateLayerEffect: "boolean",
+  }}
+/>
+
+```tsx
+<ListItem align="center" lines={2}>
+  <img src="/images/pork-burger.png" alt="Pork Burger" />
+  <ListItemContent title="Pork Burger" desc="฿50.00" />
+</ListItem>
+```
+
+### Props
+
+- `ActionableProps` are available: `command`, `commandFor`, `onClick`, and `href`.
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      The content of a List Item consists of the leading section, the content
+      section, and the trailing section.
+
+      - Any components placed before List Item Content is put into the leading
+        section, and any after is put into the trailing section.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="align" required="always">
+    <TableCell>`"top" | "center" | "bottom"`</TableCell>
+    <TableCell>
+
+      The vertical alignment of the List Item’s content.
+
+      - Must be `top`, `center`, or `bottom`.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="lines" required="always">
+    <TableCell>`1 | 2 | 3 | [1\|2\|3, 1\|2\|3, 1\|2\|3, 1\|2\|3]`</TableCell>
+    <TableCell>
+
+      The number of lines contained by the List Item. The height is set from
+      this prop.
+
+      - Must be an integer (or a list of 4 integers, each corresponding to a
+        breakpoint) from 1 to 3.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="stateLayerEffect" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      In interactive components like Button, the state layer reacts to changes
+      to the state to signify its interactivity. For example, a Button’s state
+      layer turns up its opacity on hover.
+
+      - This effect can be enabled on List Item as well, letting the user know
+        that this List Item is interactive.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="containerElement" required="never">
+    <TableCell>`ElementType`</TableCell>
+    <TableCell>
+
+      The element to use as the container of the List Item.
+
+      - Defaults to `<li>`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

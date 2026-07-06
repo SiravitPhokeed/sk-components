@@ -32,7 +32,9 @@ on larger screens. A Dialog can appear above a Full-screen Dialog.
 </FullscreenDialog>
 ```
 
-A trigger button can open the Full-screen Dialog via the Invoker Commands API:
+### Usage
+
+A trigger button can open the Full-screen Dialog via the Invoker Commands API.
 
 ```tsx
 <Button command="show-modal" commandfor="edit-profile">
@@ -157,5 +159,3 @@ A trigger button can open the Full-screen Dialog via the Invoker Commands API:
 See [v3 to v4 migration guide](/docs/migrations/v4) for a full list of changes.
 
 - Added support for the Invoker Commands API. Full-screen Dialogs can now be opened via `command="show-modal"` without requiring `useState`.
-- Added `width`.
-- Added `locale`.

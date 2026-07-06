@@ -1,0 +1,69 @@
+import { ChipSet } from "@/app/docs/components/client-components";
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { FilterChip, TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Chip Set",
+};
+
+## Chip Set
+
+Chips are normally alongside each other. A Chip Set is a container for
+Chips, handling gaps, wrap, etc.
+
+<DemoCard
+  component={ChipSet}
+  initialProps={{
+    children: (
+      <>
+        <FilterChip selected>Pink</FilterChip>
+        <FilterChip>Blue</FilterChip>
+        <FilterChip>Yellow</FilterChip>
+      </>
+    ),
+  }}
+/>
+
+```tsx
+<ChipSet>
+  <FilterChip selected>Blue</FilterChip>
+  <FilterChip>Yellow</FilterChip>
+  <FilterChip>Green</FilterChip>
+</ChipSet>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      Chips.
+
+      - Must include ≥2 Chips.
+      - Must be the same type of Chips.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="scrollable" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      If the parent element is not wide enough for all Chips to be visible, the
+      Chip Set can be scrolled horizontally.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

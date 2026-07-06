@@ -1,0 +1,103 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { Interactive, Text, TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Interactive",
+};
+
+## Interactive
+
+Indicates interactivity with a state layer and a ripple effect.
+
+<DemoCard
+  component={Interactive}
+  initialProps={{
+    children: (
+      <>
+        <Text type="title-medium">English</Text>
+        <Text type="body-small">Phubodin</Text>
+      </>
+    ),
+    element: "button",
+    className:
+      "bg-secondary-container text-on-secondary-container state-layer-on-secondary-container grid h-14 w-24 rounded-sm px-4 py-2 text-start",
+  }}
+  adjustableProps={{
+    stateLayerEffect: "boolean",
+    rippleEffect: "boolean",
+    shadowEffect: "boolean",
+  }}
+>
+  `stateLayerEffect` and `rippleEffect` are enabled by default. Double-click to
+  disable.
+</DemoCard>
+
+```tsx
+<Interactive shadowEffect className="...">
+  <Text type="title-medium">English</Text>
+  <Text type="body-small">Phubodin</Text>
+</Interactive>
+```
+
+### Props
+
+- `ComponentProps<"div">` are available: all props of a `<div>` element.
+- `ActionableProps` are available: `command`, `commandFor`, `onClick`, and `href`.
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      The content to make interactive.
+
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="stateLayerEffect" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Show a state layer on top of the content that reacts in color to hover and
+      focus to signify its interactivity.
+
+      - Enabled by default.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="rippleEffect" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Show an ink ripple effect, a soft-edge translucent circle, radiating out
+      of the click/tap position every click/tap to signify interactivity.
+
+      - Enabled by default.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="shadowEffect" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Elevates the content on hover and focus to signify its interactivity.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

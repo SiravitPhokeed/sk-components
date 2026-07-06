@@ -1,0 +1,74 @@
+import { TableHead } from "@/app/docs/components/client-components";
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Table Head",
+};
+
+## Table Head
+
+The head area of a Table.
+
+<DemoCard
+  component={TableHead}
+  initialProps={{
+    children: (
+      <>
+        <TableCell header element="div">Test date</TableCell>
+        <TableCell header element="div">Method</TableCell>
+        <TableCell header element="div">Result</TableCell>
+      </>
+    ),
+    element: "div",
+    className:
+      "border-outline-variant grid w-full min-w-142 grid-cols-3 border-x *:not-last:border-e-0",
+  }}
+/>
+
+```tsx
+<TableHead fixed>
+  <TableRow>
+    <TableCell header>Test date</TableCell>
+    <TableCell header>Method</TableCell>
+    <TableCell header>Result</TableCell>
+  </TableRow>
+</TableHead>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      Table Head has the same behaviour as `<thead>`.
+
+      - Must consist of Table Row(s), which must consist of Table Cells with the
+        `header` enabled.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="fixed" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      If the Table Head stays put on scroll.
+
+      - Table Head will be fixed to the top of the parent Table, not the screen.
+      - Only effective if `height` is set on the parent Table.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

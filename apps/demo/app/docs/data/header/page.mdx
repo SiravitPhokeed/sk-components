@@ -1,0 +1,78 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { Header, MaterialIcon, TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Header",
+};
+
+## Header
+
+A Header helps users quickly identifies sections and their purpose.
+
+When used in conjunction with Section, the Section can be labeled with the
+Header for screen readers.
+
+<DemoCard
+  component={Header}
+  initialProps={{
+    children: "Getting started",
+  }}
+  adjustableProps={{
+    level: [2, 3, 4, 5, 6],
+  }}
+/>
+
+```tsx
+<Header level={2}>Getting started</Header>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      Header contains Buttons. You can put as many Buttons inside Header as
+      needed, but the recommended limit is 3.
+
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="level" required="never">
+    <TableCell>`2 | 3 | 4 | 5 | 6`</TableCell>
+    <TableCell>
+
+      The level of the Header. The number corresponds to an HTML header element,
+      i.e., `3` corresponds to `<h3>`.
+
+      - `2` by default.
+      - Must be a number from 2-6. `1` is not allowed as `<h1>` is reserved for Page Header.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="icon" required="never">
+    <TableCell>`ReactElement`</TableCell>
+    <TableCell>
+
+      An icon can appear before the text (`children`) in a Header. In a page
+      with many headers, icons can quickly orient users.
+
+      - You are encouraged to use [Material Icon](/docs/data/material-icon) as the value for `icon`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

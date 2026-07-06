@@ -1,0 +1,124 @@
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  MaterialIcon,
+  SuggestionChip,
+  TableCell,
+} from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Suggestion Chip",
+};
+
+## Suggestion Chip
+
+Dynamically generated suggestions, like quick-reply options, for instance.
+
+<DemoCard
+  component={SuggestionChip}
+  initialProps={{
+    children: "Looks good to me",
+    icon: <MaterialIcon icon="thumb_up" />,
+  }}
+  adjustableProps={{
+    selected: "boolean",
+    elevated: "boolean",
+    disabled: "boolean",
+  }}
+/>
+
+```tsx
+<SuggestionChip icon={<MaterialIcon icon="thumb_up" />}>
+  Looks good to me
+</SuggestionChip>
+```
+
+### Props
+
+- `ActionableProps` are available: `command`, `commandFor`, `onClick`, and `href`.
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      The text shown inside the Suggestion Chip.
+
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="icon" required="never">
+    <TableCell>`ReactElement`</TableCell>
+    <TableCell>
+
+      An icon can appear before the text (`children`) in an Suggestion Chip. In
+      a Chip Set with many chips, an icon can help the user find the right one
+      more quickly.
+
+      - You are encouraged to use [Material Icon](/docs/data/material-icon) as the value for `icon`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="tooltip" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A message shown in a tooltip when the user hovers over the Suggestion
+      Chip.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="elevated" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Use elevation instead of an outline to signify the Suggestion Chip’s
+      boundary.
+
+      - **Important:** do not use this prop if you don’t have to. Only elevate
+        a Suggestion Chip when its placement requires visual protection, such
+        as on top of an image.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="selected" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      If the Suggestion Chip is selected.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="disabled" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Turns the Suggestion Chip gray and block any action associated with it.
+      `onClick` and `href` will have no effect.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

@@ -1,0 +1,62 @@
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Data Table Body",
+};
+
+## Data Table Body
+
+The body section of a Data Table specified via Tanstack Table.
+
+```tsx
+<DataTableBody rowModel={table.getRowModel()} />
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="rowModel" required="always">
+    <TableCell>`RowModel<RowShape>`</TableCell>
+    <TableCell>
+
+      The return of `getRowModel`, one of the functions of the Tanstack Table
+      instance.
+
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="align" required="never">
+    <TableCell>`"left" | "center" | "right"`</TableCell>
+    <TableCell>
+
+      How the content in each cell should be positioned. It can be aligned to the
+      left (default), the center, or the right.
+
+      - Must be `left`, `center`, `right`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="rowActions" required="never">
+    <TableCell>`ReactElement | (row: RowShape) => ReactElement`</TableCell>
+    <TableCell>
+
+      Actions related to a row, shown on hover.
+
+      - Must be a Segmented Button.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

@@ -1,0 +1,30 @@
+import { Divider } from "@/app/docs/components/client-components";
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Divider",
+};
+
+## Divider
+
+A Divider separates items in a list with a thin line. This is used when
+separation cannot be accomplished with Cards or white space.
+
+<DemoCard
+  component={Divider}
+  initialProps={{
+    className: "w-full",
+  }}
+/>
+
+```tsx
+<Divider />
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.

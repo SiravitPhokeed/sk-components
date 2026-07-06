@@ -1,0 +1,66 @@
+import { TableBody } from "@/app/docs/components/client-components";
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { TableCell, TableRow } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Table Body",
+};
+
+## Table Body
+
+The body area of a Table.
+
+<DemoCard
+  component={TableBody}
+  initialProps={{
+    children: (
+      <>
+        <TableRow element="div">
+          <TableCell element="div">Jan 8, 2023</TableCell>
+          <TableCell element="div">ATK via saliva</TableCell>
+          <TableCell element="div">Negative</TableCell>
+        </TableRow>
+        <TableRow element="div">
+          <TableCell element="div">Jan 1, 2023</TableCell>
+          <TableCell element="div">RT-PCR</TableCell>
+          <TableCell element="div">Positive</TableCell>
+        </TableRow>
+      </>
+    ),
+    element: "div",
+    className:
+      "border-outline-variant grid w-full min-w-142 grid-cols-3 border-x *:contents *:*:not-last:border-e-0 *:first:*:border-b-0",
+  }}
+/>
+
+```tsx
+<TableBody>
+  <TableRow>
+    <TableCell>Jan 8, 2023</TableCell>
+    <TableCell>ATK via saliva</TableCell>
+    <TableCell>Negative</TableCell>
+  </TableRow>
+</TableBody>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      Table Body has the same behaviour as `<tbody>`.
+
+      - Must consist of Table Rows, which must consist of Table Cells.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

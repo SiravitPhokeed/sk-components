@@ -1,0 +1,107 @@
+import { TableRow } from "@/app/docs/components/client-components";
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  Button,
+  MaterialIcon,
+  SegmentedButton,
+  TableCell,
+} from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Table Row",
+};
+
+## Table Row
+
+A row of a Table, must be within a table area (Table Head, Table Body, or
+Table Foot).
+
+<DemoCard
+  component={TableRow}
+  initialProps={{
+    children: (
+      <>
+        <TableCell element="div">Jan 8, 2023</TableCell>
+        <TableCell element="div">ATK via saliva</TableCell>
+        <TableCell element="div">Negative</TableCell>
+      </>
+    ),
+    actions: (
+      <SegmentedButton alt="Actions: Jan 8, 2023">
+        <Button
+          appearance="text"
+          icon={<MaterialIcon icon="edit" />}
+          alt="Edit"
+        />
+        <Button
+          appearance="text"
+          icon={<MaterialIcon icon="delete" />}
+          alt="Delete"
+          dangerous
+        />
+      </SegmentedButton>
+    ),
+    element: "div",
+    className:
+      "border-outline-variant static! grid w-full min-w-142 grid-cols-3 border-x *:not-last:border-e-0",
+  }}
+/>
+
+```tsx
+<TableRow
+  actions={
+    <SegmentedButton alt="Actions: Jan 8, 2023">
+      <Button
+        appearance="text"
+        icon={<MaterialIcon icon="edit" />}
+        alt="Edit"
+      />
+      <Button
+        appearance="text"
+        icon={<MaterialIcon icon="delete" />}
+        alt="Delete"
+        dangerous
+      />
+    </SegmentedButton>
+  }
+>
+  <TableCell>Jan 8, 2023</TableCell>
+  <TableCell>ATK via saliva</TableCell>
+  <TableCell>Negative</TableCell>
+</TableRow>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      Table Row has the same behaviour as `<tr>`.
+
+      - Must consist of Table Cells.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="actions" required="never">
+    <TableCell>`ReactElement<typeof SegmentedButton>`</TableCell>
+    <TableCell>
+
+      Actions related to a row, shown on hover.
+
+      - Must be a Segmented Button.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

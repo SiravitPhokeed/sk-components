@@ -1,0 +1,117 @@
+import { Table } from "@/app/docs/components/client-components";
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import {
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Table",
+};
+
+## Table
+
+A Table displays information in columns and rows, each row representing a set
+of data in each aspect, represented by columns.
+
+<DemoCard
+  component={Table}
+  initialProps={{
+    children: (
+      <>
+        <TableHead>
+          <TableRow>
+            <TableCell header>Test date</TableCell>
+            <TableCell header>Method</TableCell>
+            <TableCell header>Result</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            <TableCell>Jan 8, 2023</TableCell>
+            <TableCell>ATK via saliva</TableCell>
+            <TableCell>Negative</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Jan 1, 2023</TableCell>
+            <TableCell>RT-PCR</TableCell>
+            <TableCell>Positive</TableCell>
+          </TableRow>
+        </TableBody>
+      </>
+    ),
+    contentWidth: 480,
+    className: "w-full",
+  }}
+/>
+
+```tsx
+<Table contentWidth={480}>
+  <TableHead>
+    <TableRow>
+      <TableCell header>Test date</TableCell>
+      <TableCell header>Method</TableCell>
+      <TableCell header>Result</TableCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableCell>Jan 8, 2023</TableCell>
+      <TableCell>ATK via saliva</TableCell>
+      <TableCell>Negative</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      The content of the Table.
+
+      - Must include Table Head and Table Body.
+      - Can include Table Foot in addition to the 2 required components.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="contentWidth" required="never">
+    <TableCell>`number`</TableCell>
+    <TableCell>
+
+      The minimum width of the content. When the Table’s width is lower than
+      this value, it becomes scrollable. Otherwise, the content fills the width
+      of the Table.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="height" required="never">
+    <TableCell>`number`</TableCell>
+    <TableCell>
+
+      The maximum height of the Table. The Table uses the content’s height until
+      it exceeds this value.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

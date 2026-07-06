@@ -1,0 +1,61 @@
+import { TableFoot } from "@/app/docs/components/client-components";
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Table Foot",
+};
+
+## Table Foot
+
+The foot area of a Table.
+
+<DemoCard
+  component={TableFoot}
+  initialProps={{
+    children: (
+      <>
+        <TableCell header element="div" className="col-span-2">
+          Total
+        </TableCell>
+        <TableCell element="div">THB 200.00</TableCell>
+      </>
+    ),
+    element: "div",
+    className:
+      "border-outline-variant grid w-full min-w-128 grid-cols-3 border-x *:not-last:border-e-0",
+  }}
+/>
+
+```tsx
+<TableFoot>
+  <TableRow>
+    <TableCell header colSpan={2}>
+      Total
+    </TableCell>
+    <TableCell>THB 200.00</TableCell>
+  </TableRow>
+</TableFoot>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      Table Foot has the same behaviour as `<tfoot>`.
+
+      - Must consist of Table Rows, which must consist of Table Cells.
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

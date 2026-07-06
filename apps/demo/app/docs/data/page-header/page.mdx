@@ -1,0 +1,130 @@
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Page Header",
+};
+
+## Page Header
+
+There’s exactly one Page Header on every page. It displays the title (in
+the only `<h1>` on the page), the back Button for navigating up, and
+the App Drawer.
+
+```tsx
+<PageHeader parentURL="/dashboard">My Learning</PageHeader>
+```
+
+On a top-level page without a parent, the Page Header displays a navigation
+toggle instead of a back button:
+
+```tsx
+<PageHeader onNavToggle={() => setNavOpen(true)}>Dashboard</PageHeader>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="children" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      The title text: the biggest text on a page and the only within a `<h1>`
+      tag.
+
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="parentURL" required="conditional">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The link the back Button navigates to.
+
+      - **Important:** the Back button is not for going back, but for going up a
+        hierarchy in the sitemap. As a page can sometimes be navigated to from
+        many places, this ensures that the Back button of a page always goes to
+        the same place.
+      - Required if `onBack` is not defined, as the back Button cannot have no
+        functionality.
+      - Incompatible with `onBack`.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="appDrawer" required="never">
+    <TableCell>`ReactElement<typeof AppDrawer>`</TableCell>
+    <TableCell>
+
+      An App Drawer placed on the right edge of the Page Header.
+
+      - Recommended if this app is part of a family of apps.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="locale" required="never">
+    <TableCell>`"en-US" | "th"`</TableCell>
+    <TableCell>
+
+      Allows for translation of the accessibility labels.
+
+      - Must be `"en-US"` or `"th"`, as SKCom currently only support those 2
+        languages.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="buttonElement" required="never">
+    <TableCell>`ButtonProps["element"]`</TableCell>
+    <TableCell>
+
+      Change the underlying element of the back Button from `<a>` to a custom
+      element. This is useful when a framework you're using has a Link component
+      for routing. An example is `next/link` from Next.js.
+
+      - Optional.
+      - Incompatible with `onBack`.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="onBack" required="conditional">
+    <TableCell>`() => any`</TableCell>
+    <TableCell>
+
+      The function triggered when the back Button is clicked.
+
+      - Required if `parentURL` is not defined, as the back Button cannot have
+        no functionality.
+      - Incompatible with `parentURL`.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="onNavToggle" required="never">
+    <TableCell>`() => any`</TableCell>
+    <TableCell>
+
+      The function called when the user clicks on the navigation Button.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

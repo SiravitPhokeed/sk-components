@@ -1,0 +1,92 @@
+import { CardHeader } from "@/app/docs/components/client-components";
+import DemoCard from "@/app/docs/components/DemoCard";
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { MaterialIcon, TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Card Header",
+};
+
+## Card Header
+
+The header of a Card. Sometimes all a Card needs is a Card Header.
+
+<DemoCard
+  component={CardHeader}
+  initialProps={{
+    icon: <MaterialIcon icon="person" />,
+    title: "Phubodin Satapirom",
+    subtitle: "Foreign Languages teacher",
+  }}
+/>
+
+```tsx
+<CardHeader
+  icon={<MaterialIcon icon="person" />}
+  title="Phubodin Satapirom"
+  subtitle="Foreign Languages teacher"
+/>
+```
+
+### Props
+
+- `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
+
+<PropsTable>
+  <PropsTableRow prop="avatar" required="never">
+    <TableCell>`ReactElement`</TableCell>
+    <TableCell>
+
+      An avatar is placed before all content in a Card Header. A use case would
+      be the profile picture of a user.
+
+      - You are encouraged to use [Avatar](/docs/data/avatar) as the value for
+        `avatar`.
+      - Incompatible with `icon`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="icon" required="never">
+    <TableCell>`ReactElement`</TableCell>
+    <TableCell>
+
+      An icon can appear before all content in a Card Header. In a page with
+      many cards, icons can quickly orient users.
+
+      - You are encouraged to use [Material Icon](/docs/data/material-icon) as the value for `icon`.
+      - Incompatible with `avatar`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="title" required="always">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      The most predominant text inside a Card.
+
+      - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="subtitle" required="never">
+    <TableCell>`ReactNode`</TableCell>
+    <TableCell>
+
+      A short text complementing the title text.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+</PropsTable>
