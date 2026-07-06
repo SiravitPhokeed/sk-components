@@ -40,6 +40,7 @@ export const TableRow: StyleableFC<TableRowProps> = ({
   className,
 }) => {
   const anchorName = useAnchorName();
+  const ActionsElement = Element === "tr" ? "td" : "div";
 
   return (
     <>
@@ -49,12 +50,12 @@ export const TableRow: StyleableFC<TableRowProps> = ({
       >
         {children}
         {actions && (
-          <td
+          <ActionsElement
             className="skc-table-row__actions"
             style={{ positionAnchor: anchorName }}
           >
             {actions}
-          </td>
+          </ActionsElement>
         )}
       </Element>
     </>
