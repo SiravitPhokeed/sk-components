@@ -11,6 +11,8 @@ import type { ReactNode } from "react";
 
 /**
  * Props for {@link DataTableCell Data Table Cell}.
+ *
+ * @private
  */
 export interface DataTableCellProps extends ElementCustomizableProps {
   /**
@@ -93,6 +95,8 @@ const STRINGS = {
  * @param onSortDirectionChange The function called when the user toggles the sort direction.
  * @param tooltip A message shown in a tooltip when the user hovers over the Data Table Cell.
  * @param locale Allows for translation of the accessibility labels.
+ *
+ * @private
  */
 export const DataTableCell: StyleableFC<DataTableCellProps> = ({
   children,

@@ -19,7 +19,6 @@ export { Columns, type ColumnsProps } from "./Columns";
 export { ContentLayout, type ContentLayoutProps } from "./ContentLayout";
 export { DataTable, type DataTableProps } from "./DataTable";
 export { DataTableBody, type DataTableBodyProps } from "./DataTableBody";
-export { DataTableCell, type DataTableCellProps } from "./DataTableCell";
 export {
   DataTableContent,
   type DataTableContentProps,
