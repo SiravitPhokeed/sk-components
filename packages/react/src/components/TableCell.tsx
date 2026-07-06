@@ -23,6 +23,20 @@ export interface TableCellProps extends ElementCustomizableProps {
   header?: boolean;
 
   /**
+   * The number of columns the cell should span.
+   *
+   * - Optional.
+   */
+  colSpan?: number;
+
+  /**
+   * The number of rows the cell should span.
+   *
+   * - Optional.
+   */
+  rowSpan?: number;
+
+  /**
    * How the content should be positioned. It can be aligned to the left, the
    * center (default), or the right.
    *
@@ -42,6 +56,8 @@ export interface TableCellProps extends ElementCustomizableProps {
 export const TableCell: StyleableFC<TableCellProps> = ({
   children,
   header,
+  colSpan,
+  rowSpan,
   align = "center",
   element: Element = header ? "th" : "td",
   style,
@@ -49,6 +65,8 @@ export const TableCell: StyleableFC<TableCellProps> = ({
 }) => {
   return (
     <Element
+      colSpan={colSpan}
+      rowSpan={rowSpan}
       style={style}
       className={cn(
         "skc-table-cell",
