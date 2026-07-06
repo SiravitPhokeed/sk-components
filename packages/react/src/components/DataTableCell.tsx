@@ -40,11 +40,20 @@ export interface DataTableCellProps extends ElementCustomizableProps {
   align?: "left" | "center" | "right";
 
   /**
+   * If the cell is sortable.
+   *
+   * - Only effective when {@link header `header`} is `true`.
+   * - Optional.
+   */
+  sortable?: boolean;
+
+  /**
    * The current sort direction of this column. When set, a sort indicator is
    * shown and the cell becomes sortable with a state layer and ripple effect.
    *
    * - Must be `asc` or `desc`.
-   * - Only effective when {@link header `header`} is `true`.
+   * - Only effective when {@link header `header`} and
+   *   {@link sortable `sortable`} are `true`.
    * - Optional.
    */
   sortDirection?: "asc" | "desc";
@@ -52,17 +61,11 @@ export interface DataTableCellProps extends ElementCustomizableProps {
   /**
    * The function called when the user toggles the sort direction.
    *
-   * - Only effective when {@link header `header`} is `true`.
+   * - Only effective when {@link header `header`} and
+   *   {@link sortable `sortable`} are `true`.
    * - Optional.
    */
   onSortDirectionChange?: (event?: unknown) => void;
-
-  /**
-   * A message shown in a tooltip when the user hovers over the Data Table Cell.
-   *
-   * - Optional.
-   */
-  tooltip?: string;
 
   /**
    * Allows for translation of the accessibility labels.
@@ -77,10 +80,12 @@ const STRINGS = {
   "en-US": {
     asc: "Sorted ascending",
     desc: "Sorted descending",
+    tooltip: "Click to toggle sort",
   },
   th: {
     asc: "เรียงจากน้อยไปมาก",
     desc: "เรียงจากมากไปน้อย",
+    tooltip: "คลิกเพื่อเรียง",
   },
 };
 
@@ -91,9 +96,9 @@ const STRINGS = {
  * @param children The content of the cell.
  * @param header If the cell is a header cell.
  * @param align How the content should be positioned.
+ * @param sortable If the cell is sortable.
  * @param sortDirection The current sort direction of this column.
  * @param onSortDirectionChange The function called when the user toggles the sort direction.
- * @param tooltip A message shown in a tooltip when the user hovers over the Data Table Cell.
  * @param locale Allows for translation of the accessibility labels.
  *
  * @private
@@ -102,9 +107,9 @@ export const DataTableCell: StyleableFC<DataTableCellProps> = ({
   children,
   header,
   align = "center",
+  sortable,
   sortDirection,
   onSortDirectionChange,
-  tooltip,
   locale = "en-US",
   element: Element = header ? "th" : "td",
   style,
@@ -125,12 +130,10 @@ export const DataTableCell: StyleableFC<DataTableCellProps> = ({
   }
 
   // Header cell, optionally sortable
-  const sortable = Boolean(onSortDirectionChange);
   const ContentElement = sortable ? Interactive : "div";
 
   return (
     <Element
-      title={tooltip}
       style={style}
       className={cn(
         "skc-data-table-cell",
@@ -141,7 +144,10 @@ export const DataTableCell: StyleableFC<DataTableCellProps> = ({
       )}
     >
       <ContentElement
-        {...(sortable && { onClick: onSortDirectionChange })}
+        {...(sortable && {
+          title: STRINGS[locale].tooltip,
+          onClick: onSortDirectionChange,
+        })}
         className="skc-data-table-cell__content"
       >
         {/* Sort indicator */}

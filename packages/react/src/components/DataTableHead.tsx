@@ -53,15 +53,6 @@ export interface DataTableHeadProps extends ElementCustomizableProps {
   locale?: "en-US" | "th";
 }
 
-const STRINGS = {
-  "en-US": {
-    sortBy: "Click to toggle sort",
-  },
-  th: {
-    sortBy: "คลิกเพื่อเรียง",
-  },
-};
-
 /**
  * The head area of a Data Table.
  *
@@ -91,15 +82,10 @@ export const DataTableHead: StyleableFC<DataTableHeadProps> = ({
               key={header.id}
               header
               align={align}
-              tooltip={
-                header.column.getCanSort() ? STRINGS[locale].sortBy : undefined
-              }
+              sortable={header.column.getCanSort()}
               sortDirection={header.column.getIsSorted() || undefined}
-              onSortDirectionChange={
-                header.column.getCanSort()
-                  ? header.column.getToggleSortingHandler()
-                  : undefined
-              }
+              onSortDirectionChange={header.column.getToggleSortingHandler()}
+              locale={locale}
               style={{
                 width: colSpans
                   ? `${(colSpans[header.index] / totalColSpan) * 100}%`
