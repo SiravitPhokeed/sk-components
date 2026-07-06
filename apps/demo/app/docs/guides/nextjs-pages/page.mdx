@@ -31,8 +31,8 @@ Then, add [Theme Provider](/docs/layout/theme-provider) and wrap your app with
 // pages/_app.tsx
 
 import { RootLayout, ThemeProvider } from "@suankularb-components/react";
-import type { AppProps } from "next/app"
- 
+import type { AppProps } from "next/app";
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -169,8 +169,10 @@ Then, add the font class names to your Root Layout component.
 ```tsx
 <RootLayout
   className={[
-    bodyFontEN.className, displayFontEN.className,
-    bodyFontTH.className, displayFontTH.className,
+    bodyFontEN.className,
+    displayFontEN.className,
+    bodyFontTH.className,
+    displayFontTH.className,
   ].join(" ")}
 >
   {/* ... */}
@@ -180,8 +182,8 @@ Then, add the font class names to your Root Layout component.
 #### Icon Font
 
 <Button
-  children="Download icon font" 
-  appearance="filled" 
+  children="Download icon font"
+  appearance="filled"
   icon={<MaterialIcon icon="download" />}
   command="show-modal"
   commandfor="icon-font-dialog"
@@ -211,9 +213,9 @@ const iconFont = localFont({
 Finally, add the font class name to your Root Layout component.
 
 ```tsx
-<RootLayout className={[
-  /* ... Google Fonts ... */, iconFont.variable
-].join(" ")}>
+<RootLayout
+  className={[, /* ... Google Fonts ... */ iconFont.variable].join(" ")}
+>
   {/* ... */}
 </RootLayout>
 ```
@@ -226,5 +228,7 @@ and thus **accept an `element` prop.** This allows you to use Next.js’s
 for navigation instead of the default `<a>` element.
 
 ```tsx
-<Button href="/about" element={Link}>About</Button>
+<Button href="/about" element={Link}>
+  About
+</Button>
 ```

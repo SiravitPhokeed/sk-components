@@ -24,7 +24,7 @@ system that keeps elements of a page aligned to a common grid
   component={Columns}
   initialProps={{
     children: list(1, 12).map((i) => (
-      <Card key={i} appearance="filled" className="p-2 grid place-items-center">
+      <Card key={i} appearance="filled" className="grid place-items-center p-2">
         <Text type="title-medium">{i}</Text>
       </Card>
     )),

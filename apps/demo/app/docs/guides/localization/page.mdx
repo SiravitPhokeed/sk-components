@@ -1,4 +1,9 @@
-import { Actions, Button, Card, MaterialIcon } from "@suankularb-components/react";
+import {
+  Actions,
+  Button,
+  Card,
+  MaterialIcon,
+} from "@suankularb-components/react";
 
 export const metadata = {
   title: "Localization",
@@ -10,10 +15,18 @@ If your app supports multiple languages, you can pass a `locale` prop to
 components that support it. If you don’t provide a `locale`, the component falls
 back to `en-US`.
 
-<Card appearance="outlined" className="p-4 my-6">
+<Card appearance="outlined" className="my-6 p-4">
   <Actions align="center">
-    <Button children="Apps" appearance="text" icon={<MaterialIcon icon="apps" />} />
-    <Button children="ตัวเลือกแอพ" appearance="text" icon={<MaterialIcon icon="apps" />} />
+    <Button
+      children="Apps"
+      appearance="text"
+      icon={<MaterialIcon icon="apps" />}
+    />
+    <Button
+      children="ตัวเลือกแอพ"
+      appearance="text"
+      icon={<MaterialIcon icon="apps" />}
+    />
   </Actions>
 </Card>
 
@@ -22,7 +35,8 @@ const locale = "th"; // Provided by your app’s localization logic
 return <AppDrawer locale={locale}>{/* ... */}</AppDrawer>;
 ```
 
-SKCom currently supports **`en-US` and `th` locales.** The following components support the `locale` prop:
+SKCom currently supports **`en-US` and `th` locales.** The following components
+support the `locale` prop:
 
 - [App Drawer](/docs/layout/app-drawer)
 - [Button](/docs/inputs/button)

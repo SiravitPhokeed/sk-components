@@ -21,9 +21,22 @@ larger screens, a Navigation Bar transforms into a Navigation Rail.
   component={NavBar}
   initialProps={{
     children: [
-      <NavBarItem key="home" icon={<MaterialIcon icon="home" />} label="Home" selected />,
-      <NavBarItem key="search" icon={<MaterialIcon icon="search" />} label="Search" />,
-      <NavBarItem key="person" icon={<MaterialIcon icon="person" />} label="Profile" />,
+      <NavBarItem
+        key="home"
+        icon={<MaterialIcon icon="home" />}
+        label="Home"
+        selected
+      />,
+      <NavBarItem
+        key="search"
+        icon={<MaterialIcon icon="search" />}
+        label="Search"
+      />,
+      <NavBarItem
+        key="person"
+        icon={<MaterialIcon icon="person" />}
+        label="Profile"
+      />,
     ],
     className: "max-w-64",
   }}

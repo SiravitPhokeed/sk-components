@@ -1,10 +1,7 @@
 import DemoCard from "@/app/docs/components/DemoCard";
 import PropsTable from "@/app/docs/components/PropsTable";
 import PropsTableRow from "@/app/docs/components/PropsTableRow";
-import {
-  AppDrawerItem,
-  TableCell,
-} from "@suankularb-components/react";
+import { AppDrawerItem, TableCell } from "@suankularb-components/react";
 
 export const metadata = {
   title: "App Drawer Item",
@@ -18,15 +15,14 @@ An app inside the App Drawer. A child of App Drawer Segment.
   component={AppDrawerItem}
   initialProps={{
     name: "MyLearn+",
-    logo: <div className="size-16 bg-linear-to-b from-surface-variant to-secondary-container" />,
+    logo: (
+      <div className="from-surface-variant to-secondary-container size-16 bg-linear-to-b" />
+    ),
   }}
 />
 
 ```tsx
-<AppDrawerItem
-  name="MyLearn+"
-  logo={<img src="/my-learn.svg" />}
-/>
+<AppDrawerItem name="MyLearn+" logo={<img src="/my-learn.svg" />} />
 ```
 
 ### Props

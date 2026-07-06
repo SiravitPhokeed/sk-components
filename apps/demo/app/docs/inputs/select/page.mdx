@@ -1,11 +1,7 @@
 import DemoCard from "@/app/docs/components/DemoCard";
 import PropsTable from "@/app/docs/components/PropsTable";
 import PropsTableRow from "@/app/docs/components/PropsTableRow";
-import {
-  MenuItem,
-  Select,
-  TableCell,
-} from "@suankularb-components/react";
+import { MenuItem, Select, TableCell } from "@suankularb-components/react";
 
 export const metadata = {
   title: "Select",
@@ -20,9 +16,15 @@ Select allows the user to choose from options shown on a temporary surface.
   component={Select}
   initialProps={{
     children: [
-      <MenuItem key="public" value="public">Public school</MenuItem>,
-      <MenuItem key="private" value="private">Private school</MenuItem>,
-      <MenuItem key="international" value="international">International school</MenuItem>,
+      <MenuItem key="public" value="public">
+        Public school
+      </MenuItem>,
+      <MenuItem key="private" value="private">
+        Private school
+      </MenuItem>,
+      <MenuItem key="international" value="international">
+        International school
+      </MenuItem>,
     ],
     appearance: "outlined",
     label: "School type",

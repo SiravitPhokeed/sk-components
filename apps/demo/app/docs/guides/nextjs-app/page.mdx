@@ -39,9 +39,7 @@ import type { ReactNode } from "react";
 const RootLayout = ({ children }: { children: ReactNode }) => (
   <html lang="en">
     <ThemeProvider />
-    <SKCRootLayout>
-      {children}
-    </SKCRootLayout>
+    <SKCRootLayout>{children}</SKCRootLayout>
   </html>
 );
 
@@ -106,6 +104,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => (
 
 export default RootLayout;
 ```
+
 ### Fonts
 
 You can use
@@ -144,8 +143,10 @@ Then, add the font class names to your Root Layout component.
 ```tsx
 <SKCRootLayout
   className={[
-    bodyFontEN.className, displayFontEN.className,
-    bodyFontTH.className, displayFontTH.className,
+    bodyFontEN.className,
+    displayFontEN.className,
+    bodyFontTH.className,
+    displayFontTH.className,
   ].join(" ")}
 >
   {/* ... */}
@@ -155,8 +156,8 @@ Then, add the font class names to your Root Layout component.
 #### Icon Font
 
 <Button
-  children="Download icon font" 
-  appearance="filled" 
+  children="Download icon font"
+  appearance="filled"
   icon={<MaterialIcon icon="download" />}
   command="show-modal"
   commandfor="icon-font-dialog"
@@ -186,9 +187,9 @@ const iconFont = localFont({
 Finally, add the font class name to your Root Layout component.
 
 ```tsx
-<SKCRootLayout className={[
-  /* ... Google Fonts ... */, iconFont.variable
-].join(" ")}>
+<SKCRootLayout
+  className={[, /* ... Google Fonts ... */ iconFont.variable].join(" ")}
+>
   {/* ... */}
 </SKCRootLayout>
 ```
@@ -201,5 +202,7 @@ and thus **accept an `element` prop.** This allows you to use Next.js’s
 for navigation instead of the default `<a>` element.
 
 ```tsx
-<Button href="/about" element={Link}>About</Button>
+<Button href="/about" element={Link}>
+  About
+</Button>
 ```

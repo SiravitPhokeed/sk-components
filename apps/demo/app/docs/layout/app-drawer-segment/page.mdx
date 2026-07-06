@@ -20,8 +20,20 @@ A group of apps in the App Drawer.
   initialProps={{
     title: "School apps",
     children: [
-      <AppDrawerItem key="1" name="Main site" logo={<div className="size-16 bg-linear-to-b from-surface-variant to-primary-container" />} />,
-      <AppDrawerItem key="2" name="MyLearn+" logo={<div className="size-16 bg-linear-to-b from-surface-variant to-secondary-container" />} />,
+      <AppDrawerItem
+        key="1"
+        name="Main site"
+        logo={
+          <div className="from-surface-variant to-primary-container size-16 bg-linear-to-b" />
+        }
+      />,
+      <AppDrawerItem
+        key="2"
+        name="MyLearn+"
+        logo={
+          <div className="from-surface-variant to-secondary-container size-16 bg-linear-to-b" />
+        }
+      />,
     ],
     className: "w-77", // Actual width if inside App Drawer
   }}

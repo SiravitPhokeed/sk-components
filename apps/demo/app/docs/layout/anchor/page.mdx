@@ -24,7 +24,12 @@ child popover components (e.g. Menu) can auto-resolve their
   component={Anchor}
   initialProps={{
     children: [
-      <Button key="btn" appearance="filled" command="show-popover" commandfor="docs-anchor-menu">
+      <Button
+        key="btn"
+        appearance="filled"
+        command="show-popover"
+        commandfor="docs-anchor-menu"
+      >
         Open Menu
       </Button>,
       <Menu key="menu" id="docs-anchor-menu">

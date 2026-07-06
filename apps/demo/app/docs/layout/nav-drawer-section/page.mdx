@@ -21,8 +21,17 @@ A group of destinations within a Navigation Drawer.
   initialProps={{
     header: "Search",
     children: [
-      <NavDrawerItem key="subjects" icon={<MaterialIcon icon="book" />} label="Subjects" selected />,
-      <NavDrawerItem key="classrooms" icon={<MaterialIcon icon="groups" />} label="Classrooms" />,
+      <NavDrawerItem
+        key="subjects"
+        icon={<MaterialIcon icon="book" />}
+        label="Subjects"
+        selected
+      />,
+      <NavDrawerItem
+        key="classrooms"
+        icon={<MaterialIcon icon="groups" />}
+        label="Classrooms"
+      />,
     ],
     className: "w-84", // Actual width if inside Nav Drawer
   }}
@@ -30,7 +39,11 @@ A group of destinations within a Navigation Drawer.
 
 ```tsx
 <NavDrawerSection header="Search">
-  <NavDrawerItem icon={<MaterialIcon icon="book" />} label="Subjects" selected />
+  <NavDrawerItem
+    icon={<MaterialIcon icon="book" />}
+    label="Subjects"
+    selected
+  />
   <NavDrawerItem icon={<MaterialIcon icon="groups" />} label="Classrooms" />
 </NavDrawerSection>
 ```

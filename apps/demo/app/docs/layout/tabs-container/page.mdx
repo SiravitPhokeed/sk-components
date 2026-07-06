@@ -23,9 +23,22 @@ page of a class.
   initialProps={{
     appearance: "primary",
     children: [
-      <Tab key="overview" icon={<MaterialIcon icon="info" />} label="Overview" selected />,
-      <Tab key="students" icon={<MaterialIcon icon="groups" />} label="Students" />,
-      <Tab key="teachers" icon={<MaterialIcon icon="group" />} label="Teachers" />,
+      <Tab
+        key="overview"
+        icon={<MaterialIcon icon="info" />}
+        label="Overview"
+        selected
+      />,
+      <Tab
+        key="students"
+        icon={<MaterialIcon icon="groups" />}
+        label="Students"
+      />,
+      <Tab
+        key="teachers"
+        icon={<MaterialIcon icon="group" />}
+        label="Teachers"
+      />,
     ],
     className: "w-96",
   }}
