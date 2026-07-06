@@ -5,6 +5,7 @@ import { MaterialIcon } from "@/components/MaterialIcon";
 import { Menu } from "@/components/Menu";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
+import useAnchorName from "@/lib/hooks/useAnchorName";
 import type { StyleableProps } from "@/lib/types";
 import "@suankularb-components/css/select.css";
 import type { ReactNode } from "react";
@@ -142,7 +143,7 @@ export const Select = <Value extends string = string>({
   className,
 }: StyleableProps & SelectProps<Value>): ReactNode => {
   const id = `select-${useId()}`;
-  const anchorName = `--${id}`;
+  const anchorName = useAnchorName();
   const menuId = `menu-${useId()}`;
 
   const [internalValue, setInternalValue] = useState<string | null>(null);

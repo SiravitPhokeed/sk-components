@@ -1,5 +1,6 @@
 import type { SegmentedButton } from "@/components/SegmentedButton";
 import cn from "@/lib/helpers/cn";
+import useAnchorName from "@/lib/hooks/useAnchorName";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/table-row.css";
 import type { ReactElement, ReactNode } from "react";
@@ -20,7 +21,7 @@ export interface TableRowProps extends ElementCustomizableProps {
   /**
    * Actions related to a row, shown on hover.
    *
-   * - Must be a Segmented Button or a Button.
+   * - Must be a Segmented Button.
    * - Optional.
    */
   actions?: ReactElement<typeof SegmentedButton>;
@@ -40,7 +41,7 @@ export const TableRow: StyleableFC<TableRowProps> = ({
   className,
 }) => {
   const id = `row-${useId()}`;
-  const anchorName = `--${id}`;
+  const anchorName = useAnchorName();
 
   // TableRow is a part of Table, which is a scrollable element.
   // .skc-table > .skc-table__content > .skc-table-head, .skc-table-body, .skc-table-foot > .skc-table-row > .skc-table-row__actions

@@ -5,6 +5,7 @@ import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import type { ReactNode } from "react";
 import { createContext, useContext, useId } from "react";
 import "@suankularb-components/css/anchor.css";
+import useAnchorName from "@/lib/hooks/useAnchorName";
 
 const AnchorContext = createContext<{ anchorName: `--${string}` } | null>(null);
 
@@ -50,12 +51,7 @@ export const Anchor: StyleableFC<AnchorProps> = ({
   style,
   className,
 }) => {
-  const anchorName =
-    name ??
-    // `useId()` returns strings like ":r1:" — colons are invalid in
-    // `dashed-idents`, so strip them.
-    `--anchor-${useId().replace(/:/g, "")}`;
-
+  const anchorName = useAnchorName(name);
   return (
     <AnchorContext.Provider value={{ anchorName }}>
       <Element

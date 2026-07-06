@@ -5,6 +5,7 @@ import { MaterialIcon } from "@/components/MaterialIcon";
 import { Menu } from "@/components/Menu";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
+import useAnchorName from "@/lib/hooks/useAnchorName";
 import type {
   CommandProps,
   ElementCustomizableProps,
@@ -124,7 +125,7 @@ export const FilterChip: StyleableFC<FilterChipProps> = ({
   className,
 }) => {
   const id = `chip-${useId()}`;
-  const anchorName = `--${id}`;
+  const anchorName = useAnchorName();
   const menuId = `menu-${useId()}`;
 
   const resolvedCommand = command ?? (menu ? "show-popover" : undefined);
