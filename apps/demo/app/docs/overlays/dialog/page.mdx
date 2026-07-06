@@ -33,7 +33,9 @@ decision or prompts a user to enter important information.
 </Dialog>
 ```
 
-A trigger button can open the Dialog via the Invoker Commands API:
+### Usage
+
+A trigger button can open the Dialog via the Invoker Commands API.
 
 ```tsx
 <Button command="show-modal" commandfor="remove-friend-dialog">
@@ -125,5 +127,3 @@ A trigger button can open the Dialog via the Invoker Commands API:
 See [v3 to v4 migration guide](/docs/migrations/v4) for a full list of changes.
 
 - Added support for the Invoker Commands API. Dialogs can now be opened via `command="show-modal"` without requiring `useState`.
-- Added `width`.
-- Renamed to `Dialog` from `Dialog`.
