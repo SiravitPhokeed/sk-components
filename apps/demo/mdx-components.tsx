@@ -28,7 +28,10 @@ const components: MDXComponents = {
     <Card
       appearance="filled"
       element="pre"
-      className={cn("my-4 block overflow-x-auto text-base", className)}
+      className={cn(
+        "my-4 block overflow-x-auto text-base [&_code]:bg-transparent",
+        className,
+      )}
       {...props}
     />
   ),
@@ -44,7 +47,15 @@ const components: MDXComponents = {
       {...props}
     />
   ),
-  ul: (props) => <ul className="list-disc ps-6" {...props} />,
+  ul: (props) => (
+    <ul className="*:marker:text-outline list-disc ps-6" {...props} />
+  ),
+  ol: (props) => (
+    <ol
+      className="*:marker:text-on-surface-variant *:marker:font-display list-decimal ps-6"
+      {...props}
+    />
+  ),
   li: (props) => <li className="mb-1" {...props} />,
   p: (props) => <p className="my-2" {...props} />,
 };
