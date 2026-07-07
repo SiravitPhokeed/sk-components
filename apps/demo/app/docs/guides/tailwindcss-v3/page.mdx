@@ -328,7 +328,7 @@ const config: Config = {
   // ...
   plugins: [
     function ({ addVariant }) {
-      addVariant("state-layer", ["&::before", ".skc-interactive__ripple"]);
+      addVariant("state-layer", ["&::before", "&_.skc-interactive\\_\\_ripple"]);
     },
   ],
 };
