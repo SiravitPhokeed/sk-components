@@ -55,6 +55,11 @@
       flex-direction: column;
       align-items: stretch;
     }
+
+    > * {
+      /* Fade out top */
+      mask-image: linear-gradient(to bottom, transparent 0, black 2rem);
+    }
   }
 
   .skc-root-layout,
