@@ -1,0 +1,38 @@
+import cn from "@/lib/helpers/cn";
+import { MaterialIcon, Text } from "@suankularb-components/react";
+import type { FC } from "react";
+
+const STYLES_BY_TYPE = {
+  new: {
+    className: "bg-primary-container text-primary",
+    icon: "star",
+    string: "New",
+  },
+  changed: {
+    className: "bg-secondary-container text-secondary",
+    icon: "edit",
+    string: "Changed",
+  },
+  removed: {
+    className: "bg-error-container text-error",
+    icon: "delete",
+    string: "Removed",
+  },
+};
+
+const ChangeBadge: FC<{
+  type: "new" | "changed" | "removed";
+}> = ({ type }) => (
+  <Text
+    type="title-small"
+    className={cn(
+      "inline-flex items-center gap-1 rounded-sm p-1 pr-2",
+      STYLES_BY_TYPE[type].className,
+    )}
+  >
+    <MaterialIcon icon={STYLES_BY_TYPE[type].icon} size={20} />{" "}
+    {STYLES_BY_TYPE[type].string}
+  </Text>
+);
+
+export default ChangeBadge;

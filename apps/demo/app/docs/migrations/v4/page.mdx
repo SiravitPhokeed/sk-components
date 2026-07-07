@@ -1,4 +1,7 @@
 import DisclosureCard from "@/app/docs/components/DisclosureCard";
+import SummaryTable from "@/app/docs/migrations/components/SummaryTable";
+import SummaryTableRow from "@/app/docs/migrations/components/SummaryTableRow";
+import SummaryTableSection from "@/app/docs/migrations/components/SummaryTableSection";
 import { Text } from "@suankularb-components/react";
 
 export const metadata = {
@@ -406,4 +409,571 @@ Wrap the components in a
 
 ### All API changes
 
-TODO
+A useful checklist for migrating your app to v4 is the following table of all
+API changes. Go through each component, one-by-one, and check if you need to
+update your code.
+
+<SummaryTable>
+
+<SummaryTableSection name="App Drawer Item">
+  <SummaryTableRow name="command" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+  <SummaryTableRow name="commandfor" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Assist Chip">
+  <SummaryTableRow name="command" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+  <SummaryTableRow name="commandfor" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Button">
+  <SummaryTableRow name="autoFocus" type="new">
+    `boolean` — Auto-focus on page load
+  </SummaryTableRow>
+  <SummaryTableRow name="command" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+  <SummaryTableRow name="commandfor" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Card">
+  <SummaryTableRow name="command" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+  <SummaryTableRow name="commandfor" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+  <SummaryTableRow name="aAttr" type="removed">
+    Pass-through attributes for the `<a>` variant — removed
+  </SummaryTableRow>
+  <SummaryTableRow name="buttonAttr" type="removed">
+    Pass-through attributes for the `<button>` variant — removed
+  </SummaryTableRow>
+  <SummaryTableRow name="layoutID" type="removed">
+    Framer Motion layout animation ID — removed
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Checkbox">
+  <SummaryTableRow name="inputAttr" type="removed">
+    Raw `<input>` attribute passthrough removed
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Chip Field">
+  <SummaryTableRow name="required" type="new">
+    `boolean` — marks the field as required
+  </SummaryTableRow>
+  <SummaryTableRow name="children" type="changed">
+    Type narrowed: `ReactNode` → `ReactElement<typeof ChipSet>`
+  </SummaryTableRow>
+  <SummaryTableRow name="alt" type="removed">
+    Removed (IDs use `useId()`)
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Data Table">
+  <SummaryTableRow name="layout" type="removed">
+    Framer Motion `LayoutProps` removed
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Data Table Body">
+  <SummaryTableRow name="align" type="new">
+    `"left" | "center" | "right"` — text alignment for body cells
+  </SummaryTableRow>
+  <SummaryTableRow name="rowActions" type="changed">
+    Type narrowed: `JSX.Element | ((row) => JSX.Element)` →
+    `ReactElement<typeof SegmentedButton> |
+    ((row) => ReactElement<typeof SegmentedButton>)`
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Data Table Head">
+  <SummaryTableRow name="align" type="new">
+    `"left" | "center" | "right"` — text alignment for header cells
+  </SummaryTableRow>
+  <SummaryTableRow name="colSpans" type="new">
+    `number[]` — column span values per header cell
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Dialog">
+  <SummaryTableRow name="id" type="new">
+    `string` — for Invoker Commands (`command="show-modal" commandfor={id}`).
+    Auto-generated if omitted.
+  </SummaryTableRow>
+  <SummaryTableRow name="open" type="changed">
+    Now **optional**. Omit for uncontrolled mode where the browser manages
+    open/close natively via Invoker Commands.
+  </SummaryTableRow>
+  <SummaryTableRow name="onClose" type="changed">
+    Now **optional**. Only needed in controlled mode.
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Dialog Header">
+  <SummaryTableRow name="alt" type="removed">
+    Accessibility description — removed (IDs use `useId()`)
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Filter Chip">
+  <SummaryTableRow name="href" type="new">
+    `string` — navigation URL (previously unavailable)
+  </SummaryTableRow>
+  <SummaryTableRow name="command" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+  <SummaryTableRow name="commandfor" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+  <SummaryTableRow name="menu" type="changed">
+    Fragment with Menu Items instead of Menu
+  </SummaryTableRow>
+  <SummaryTableRow name="onMenuToggle" type="removed">
+    Menu toggle callback removed
+</SummaryTableRow>
+
+</SummaryTableSection>
+
+<SummaryTableSection name="Floating Action Button">
+  <SummaryTableRow name="command" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+  <SummaryTableRow name="commandfor" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+  <SummaryTableRow name="stateOnScroll" type="removed">
+    Scroll-based state toggling removed
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Form Group">
+  <SummaryTableRow name="legendElement" type="new">
+    `ElementType` — custom element for the legend
+  </SummaryTableRow>
+  <SummaryTableRow name="alt" type="removed">
+    Removed (IDs use `useId()`)
+  </SummaryTableRow>
+  <SummaryTableRow name="legendAttr" type="removed">
+    Legend element passthrough — removed
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Form Item">
+  <SummaryTableRow name="children" type="changed">
+  Type narrowed to `ReactElement<typeof Checkbox | typeof Radio | typeof
+      Switch>`
+  </SummaryTableRow>
+  <SummaryTableRow name="alt" type="removed">
+    Removed (IDs use `useId()`)
+  </SummaryTableRow>
+  <SummaryTableRow name="labelAttr" type="removed">
+    Label element passthrough — removed
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Full-screen Dialog">
+  <SummaryTableRow name="id" type="new">
+    `string` — for Invoker Commands. Auto-generated if omitted.
+  </SummaryTableRow>
+  <SummaryTableRow name="locale" type="new">
+    `"en-US" | "th"` — translation of accessibility labels
+  </SummaryTableRow>
+  <SummaryTableRow name="alt" type="removed">
+    Removed (IDs use `useId()`)
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Header">
+  <SummaryTableRow name="hAttr" type="removed">
+    Heading element passthrough — removed
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Input Chip">
+  <SummaryTableRow name="tooltip" type="new">
+    `string` — hover tooltip text
+  </SummaryTableRow>
+  <SummaryTableRow name="locale" type="new">
+    `"en-US" | "th"` (default `"en-US"`)
+  </SummaryTableRow>
+  <SummaryTableRow name="deleteCommand" type="new">
+    Invoker Commands `command` for the delete button
+  </SummaryTableRow>
+  <SummaryTableRow name="deleteCommandfor" type="new">
+    Invoker Commands `commandfor` for the delete button
+  </SummaryTableRow>
+  <SummaryTableRow name="command" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+  <SummaryTableRow name="commandfor" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+  <SummaryTableRow name="editable" type="removed">
+    Edit mode removed entirely
+  </SummaryTableRow>
+  <SummaryTableRow name="value" type="removed">
+    Only meaningful with `editable` — removed
+  </SummaryTableRow>
+  <SummaryTableRow name="onChange" type="removed">
+    Only meaningful with `editable` — removed
+  </SummaryTableRow>
+  <SummaryTableRow name="onEditExit" type="removed">
+    Only meaningful with `editable` — removed
+  </SummaryTableRow>
+  <SummaryTableRow name="layoutID" type="removed">
+    Framer Motion layout ID — removed
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Interactive">
+  <SummaryTableRow name="command" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+  <SummaryTableRow name="commandfor" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+  <SummaryTableRow name="attr" type="removed">
+    Generic pass-through `<ElementProps>` replaced by standard `...props`
+    spread to underlying `<button>` / `<a>`
+  </SummaryTableRow>
+  <SummaryTableRow name="ElementProps" type="removed">
+    Component is no longer generic — no `<Interactive<HTMLAnchorElement>>`
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="List Item">
+  <SummaryTableRow name="containerElement" type="new">
+    `ElementType` — custom element for the container
+  </SummaryTableRow>
+  <SummaryTableRow name="command" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+  <SummaryTableRow name="commandfor" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="List Item Content">
+  <SummaryTableRow name="alt" type="removed">
+    Removed (IDs use `useId()`)
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Material Icon">
+  <SummaryTableRow name="alt" type="new">
+    `string` — accessibility label for the icon
+  </SummaryTableRow>
+  <SummaryTableRow name="element" type="removed">
+    No longer customizable
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Menu">
+  <SummaryTableRow name="id" type="new">
+    `string` — for Invoker Commands. Auto-generated if omitted.
+  </SummaryTableRow>
+  <SummaryTableRow name="anchor" type="new">
+    `string` — CSS Anchor Positioning name (dashed-ident). Auto-resolved from
+    `<Anchor>` context when wrapped.
+  </SummaryTableRow>
+  <SummaryTableRow name="onClose" type="new">
+    `() => void` — called when the popover closes
+  </SummaryTableRow>
+  <SummaryTableRow name="onBlur" type="removed">
+    Replaced by `onClose`
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Menu Item">
+  <SummaryTableRow name="dangerous" type="new">
+    `boolean` — renders with error color
+  </SummaryTableRow>
+  <SummaryTableRow name="command" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+  <SummaryTableRow name="commandfor" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+  <SummaryTableRow name="value" type="changed">
+    Type narrowed: `any` → `string`
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Nav Bar">
+  <SummaryTableRow name="onNavToggle" type="changed">
+    Was required (`() => any`), now **optional** (`() => void`)
+  </SummaryTableRow>
+  <SummaryTableRow name="end" type="changed">
+    Type widened: `JSX.Element` → `ReactNode`
+  </SummaryTableRow>
+  <SummaryTableRow name="brand" type="removed">
+    Brand logo slot removed
+  </SummaryTableRow>
+  <SummaryTableRow name="fab" type="removed">
+    Floating action button slot removed
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Nav Bar Item">
+  <SummaryTableRow name="command" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+  <SummaryTableRow name="commandfor" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+  <SummaryTableRow name="alt" type="removed">
+    Removed (IDs use `useId()`)
+  </SummaryTableRow>
+  <SummaryTableRow name="badge" type="removed">
+    Badge indicator removed
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Nav Drawer">
+  <SummaryTableRow name="open" type="removed">
+    No longer consumer-controlled. Use `command="show-modal"
+    commandfor="nav-drawer"`.
+  </SummaryTableRow>
+  <SummaryTableRow name="onClose" type="removed">
+    No longer needed
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Nav Drawer Item">
+  <SummaryTableRow name="command" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+  <SummaryTableRow name="commandfor" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Nav Drawer Section">
+  <SummaryTableRow name="alt" type="removed">
+    Removed (IDs use `useId()`)
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Page Header">
+  <SummaryTableRow name="appDrawer" type="changed">
+    Type narrowed: `JSX.Element` → `ReactElement<typeof AppDrawer>`
+  </SummaryTableRow>
+  <SummaryTableRow name="alt" type="removed">
+    Deprecated — removed
+  </SummaryTableRow>
+  <SummaryTableRow name="backAttr" type="removed">
+    Back button passthrough attributes — removed
+  </SummaryTableRow>
+  <SummaryTableRow name="brand" type="removed">
+    Deprecated — removed
+  </SummaryTableRow>
+  <SummaryTableRow name="homeURL" type="removed">
+    Deprecated — removed
+  </SummaryTableRow>
+  <SummaryTableRow name="icon" type="removed">
+    Deprecated — removed
+  </SummaryTableRow>
+  <SummaryTableRow name="title" type="removed">
+    Deprecated — removed; use `children` instead
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Radio">
+  <SummaryTableRow name="inputAttr" type="removed">
+    Raw `<input>` attribute passthrough removed
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Search">
+  <SummaryTableRow name="hotkey" type="new">
+    `boolean | string` — keyboard shortcut to focus the field (e.g. `"/"` or
+    `true` for `/`)
+  </SummaryTableRow>
+  <SummaryTableRow name="alt" type="removed">
+    Removed (IDs use `useId()`)
+  </SummaryTableRow>
+  <SummaryTableRow name="children" type="removed">
+    Suggestion list/dropdown no longer supported — remove any `<MenuItem>`
+    children
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Section">
+  <SummaryTableRow name="sectionAttr" type="removed">
+    Section element passthrough — removed
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Select">
+  <SummaryTableRow name="value" type="changed">
+    Type narrowed: `any` → `string` (generic `Value extends string`)
+  </SummaryTableRow>
+  <SummaryTableRow name="onChange" type="changed">
+    Now typed as `(value: Value) => any` with generic `Value`
+  </SummaryTableRow>
+  <SummaryTableRow name="alt" type="removed">
+    Removed (IDs use `useId()`)
+  </SummaryTableRow>
+  <SummaryTableRow name="element" type="removed">
+    No longer directly customizable
+  </SummaryTableRow>
+  <SummaryTableRow name="menuAttr" type="removed">
+    Menu is now fully managed internally — no passthrough needed
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Snackbar">
+  <SummaryTableRow name="id" type="new">
+    `string` — for imperative API access. Auto-generated if omitted.
+  </SummaryTableRow>
+  <SummaryTableRow name="persistent" type="new">
+    `boolean` — prevent auto-dismiss
+  </SummaryTableRow>
+  <SummaryTableRow name="autoDismissDurationMs" type="new">
+    `number` — time until auto-dismiss
+  </SummaryTableRow>
+  <SummaryTableRow name="action" type="changed">
+    Type narrowed to `ReactElement<typeof Button>`
+  </SummaryTableRow>
+  <SummaryTableRow name="open" type="removed">
+    No longer consumer-controlled
+  </SummaryTableRow>
+  <SummaryTableRow name="onClose" type="removed">
+    No longer needed
+  </SummaryTableRow>
+  <SummaryTableRow name="onExitComplete" type="removed">
+    No longer needed
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Split Layout">
+  <SummaryTableRow name="prefer" type="new">
+    `"left" | "right" | "both"` — which pane to show on small screens
+  </SummaryTableRow>
+  <SummaryTableRow name="showRightOnMobile" type="removed">
+    Replaced by `prefer`
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Suggestion Chip">
+  <SummaryTableRow name="command" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+  <SummaryTableRow name="commandfor" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Switch">
+  <SummaryTableRow name="buttonAttr" type="removed">
+    Raw `<button>` attribute passthrough removed
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Tab">
+  <SummaryTableRow name="command" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+  <SummaryTableRow name="commandfor" type="new">
+    Invoker Commands API support
+  </SummaryTableRow>
+  <SummaryTableRow name="containerID" type="removed">
+    Parent container ID — no longer needed (uses React Context)
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Table Cell">
+  <SummaryTableRow name="colSpan" type="new">
+    `number` — HTML colspan
+  </SummaryTableRow>
+  <SummaryTableRow name="rowSpan" type="new">
+    `number` — HTML rowspan
+  </SummaryTableRow>
+  <SummaryTableRow name="menu" type="removed">
+    Inline menu removed
+  </SummaryTableRow>
+  <SummaryTableRow name="onMenuToggle" type="removed">
+    Menu toggle callback removed
+  </SummaryTableRow>
+  <SummaryTableRow name="tdAttr" type="removed">
+    Raw `<td>` attribute passthrough removed
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Table Row">
+  <SummaryTableRow name="actions" type="changed">
+    Type narrowed: `JSX.Element` → `ReactElement<typeof SegmentedButton>`
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Tabs Container">
+  <SummaryTableRow name="alt" type="removed">
+    Removed (IDs use `useId()`)
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Text">
+  <SummaryTableRow name="id" type="new">
+    `string` — HTML `id` attribute
+  </SummaryTableRow>
+  <SummaryTableRow name="type" type="changed">
+    Removed `"button"`, `"caption"`, `"overline"`.
+  </SummaryTableRow>
+</SummaryTableSection>
+
+<SummaryTableSection name="Text Field">
+  <SummaryTableRow name="type" type="new">
+    Native input types: `"color"`, `"date"`, `"datetime-local"`, `"email"`,
+    `"file"`, `"month"`, `"number"`, `"password"`, `"search"`, `"tel"`,
+    `"text"`, `"time"`, `"url"`, `"week"`. Default `"text"`.
+  </SummaryTableRow>
+  <SummaryTableRow name="alt" type="removed">
+    Removed (IDs use `useId()`)
+  </SummaryTableRow>
+  <SummaryTableRow name="canClear" type="removed">
+    Clear button removed
+  </SummaryTableRow>
+</SummaryTableSection>
+
+</SummaryTable>
+
+<DisclosureCard summary="Components with no API changes">
+
+- Actions
+- App Drawer
+- App Drawer Segment
+- Avatar
+- Card Content
+- Card Header
+- Chip Set
+- Columns
+- Content Layout
+- Data Table Content
+- Data Table Filters
+- Data Table Pagination
+- Data Table Search
+- Dialog Content
+- Divider
+- List
+- Progress
+- Root Layout
+- Segmented Button
+- Table
+- Table Body
+- Table Foot
+- Table Head
+- Toggle Button
+
+</DisclosureCard>
