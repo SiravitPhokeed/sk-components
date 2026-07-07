@@ -70,7 +70,7 @@ const DemoCard = ({
       >
         <p>
           Visit the{" "}
-          <Link href="/components" className="text-primary font-bold underline">
+          <Link href="/components" className="link">
             Components page
           </Link>{" "}
           for an interactive demo.

@@ -49,7 +49,7 @@ const ReportIssueDialog: FC = () => {
             <a
               href="https://github.com/suankularb-wittayalai-school/mysk-frontend"
               target="_blank"
-              className="text-primary font-bold underline"
+              className="link"
             >
               GitHub repository
             </a>

@@ -24,7 +24,8 @@ const ExamplesPage: FC = () => (
             at{" "}
             <a
               href="https://mysk.school/search/students"
-              className="text-primary font-bold underline"
+              target="_blank"
+              className="link"
             >
               mysk.school/search/students
             </a>
