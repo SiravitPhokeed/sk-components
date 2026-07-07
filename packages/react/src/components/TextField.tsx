@@ -128,6 +128,17 @@ export interface TextFieldProps<Value extends string | File = string> {
   value?: string;
 
   /**
+   * Allows for translation of the “No files attached” text, which is put in
+   * place of the file name when no files have been attached yet.
+   *
+   * - Only valid if `type` is `file`.
+   * - Must be `th` or `en-US`, as SKCom currently only support those 2
+   *   languages.
+   * - Optional.
+   */
+  locale?: "en-US" | "th";
+
+  /**
    * This function triggers when the user make changes to the field value. The
    * value is passed in via the function.
    *
@@ -185,6 +196,15 @@ const PATTERN_BY_TYPE = new Map([
   ["week", "^[0-9]{4}-W[0-9]{2}$"],
 ]);
 
+const STRINGS = {
+  "en-US": {
+    noFiles: "No files attached",
+  },
+  th: {
+    noFiles: "ยังไม่ได้แนบไฟล์",
+  },
+};
+
 /**
  * A place for users to enter text.
  *
@@ -199,6 +219,7 @@ const PATTERN_BY_TYPE = new Map([
  * @param disabled Turns the Text Field gray and block user input.
  * @param error Tells Text Field that it contains an invalid value and activates the error state.
  * @param value The value inside the field. This is useful if you want a controlled input.
+ * @param locale Allows for translation of the “No files attached” text.
  * @param onChange This function triggers when the user make changes to the field value.
  * @param inputAttr Attributes for the underlying `<input>` element used as the field.
  */
@@ -215,6 +236,7 @@ export const TextField = <Value extends string | File = string>({
   disabled,
   error,
   value,
+  locale = "en-US",
   onChange,
   inputAttr,
   className,
@@ -306,7 +328,9 @@ export const TextField = <Value extends string | File = string>({
           {...inputAttr}
         />
         {type === "file" && !hasFile && (
-          <span className="skc-text-field__no-files">No files attached</span>
+          <span className="skc-text-field__no-files">
+            {STRINGS[locale].noFiles}
+          </span>
         )}
         {trailing && <div className="skc-text-field__trailing">{trailing}</div>}
       </div>
