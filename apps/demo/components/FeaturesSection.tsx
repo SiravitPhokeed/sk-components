@@ -63,7 +63,7 @@ const FeaturesSection: FC = () => {
               <a
                 href="https://github.com/suankularb-wittayalai-school/sk-components/tree/main/packages/css/src/_theme.css"
                 target="_blank"
-                className="text-primary font-bold"
+                className="link"
               >
                 <code>_theme.css</code>
               </a>{" "}

@@ -21,7 +21,7 @@ const ResourcesSection: FC = () => (
         <strong>
           In addition to the demo website (which you’re on right now!), we also
           have a{" "}
-          <Link href="/docs" className="text-primary font-bold underline">
+          <Link href="/docs" className="link">
             full API reference
           </Link>{" "}
           on all components in ReSKCom.
@@ -29,9 +29,9 @@ const ResourcesSection: FC = () => (
         You can interact with all the examples shown in the reference on this
         demo, and the interactive code on the “demo” app in{" "}
         <a
-          className="text-primary font-bold underline"
           href="https://github.com/suankularb-wittayalai-school/sk-components"
           target="_blank"
+          className="link"
         >
           this repository
         </a>
