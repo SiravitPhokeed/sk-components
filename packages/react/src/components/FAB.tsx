@@ -16,8 +16,7 @@ export interface FABProps extends ActionableProps {
    *
    * - Must be a string or a React Element.
    * - Incompatible with `size`.
-   * - Normally optional but required if `icon` is undefined, as a FAB cannot
-   *   be empty.
+   * - Optional.
    */
   children?: ReactNode;
 
@@ -43,9 +42,9 @@ export interface FABProps extends ActionableProps {
    * The icon displayed inside the FAB or alongside the label.
    *
    * - You are encouraged to use Material Icons as the value for `icon`.
-   * - Required if `children` is undefined, as a FAB cannot be empty.
+   * - Always required.
    */
-  icon?: ReactElement;
+  icon: ReactElement;
 
   /**
    * A description of the FAB for screen readers, similar to `alt` on `<img>`.
