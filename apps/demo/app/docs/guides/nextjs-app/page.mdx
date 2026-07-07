@@ -119,9 +119,7 @@ const HomePage = () => (
   <>
     <FAB color="primary" icon={<MaterialIcon icon="add" />} tooltip="Create" />
     <PageHeader>Home</PageHeader>
-    <ContentLayout>
-      {/* ... */}
-    </ContentLayout>
+    <ContentLayout>{/* ... */}</ContentLayout>
   </>
 );
 
@@ -190,7 +188,7 @@ Then, add the font class names to your Root Layout component.
 
 **Save the downloaded font file as `material-symbols.woff2` in your project’s
 `public/fonts` directory.** Then, load the font using `next/font/local` in your
-`_app.tsx` file or your `Layout` component.
+`layout.tsx` file.
 
 Take care to match the relative path to the font file with your project
 structure.
@@ -211,7 +209,15 @@ Finally, add the font class name to your Root Layout component.
 
 ```tsx
 <SKCRootLayout
-  className={[, /* ... Google Fonts ... */ iconFont.variable].join(" ")}
+  className={[
+    // Google Fonts
+    bodyFontEN.className,
+    displayFontEN.className,
+    bodyFontTH.className,
+    displayFontTH.className,
+    // Icon font
+    iconFont.variable,
+  ].join(" ")}
 >
   {/* ... */}
 </SKCRootLayout>

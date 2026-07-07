@@ -26,7 +26,7 @@ const SummaryTableSection: FC<{
         className="text-on-surface-variant group-open:rotate-90"
       />
     </Interactive>
-    <table className="w-full -mb-px">
+    <table className="-mb-px w-full">
       <TableHead>
         <TableRow>
           <TableCell header className="w-2/5">
