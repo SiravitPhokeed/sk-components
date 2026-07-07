@@ -1,3 +1,6 @@
+import DisclosureCard from "@/app/docs/components/DisclosureCard";
+import { Text } from "@suankularb-components/react";
+
 export const metadata = {
   title: "Migrating to v4",
 };
@@ -11,3 +14,396 @@ npm install @suankularb-components/react@latest
 ```bash
 pnpm add @suankularb-components/react@latest
 ```
+
+> tl;dr
+>
+> 1. [Next.js App Router](/docs/guides/nextjs-app) is now supported.
+> 2. SKCom now manages [Nav Drawer](/docs/layout/nav-drawer) and
+>    [Snackbar](/docs/overlays/snackbar) state for you, no Context required!
+> 3. [Modals](/docs/guides/modals) (e.g. [Menu](/docs/overlays/menu),
+>    [Dialog](/docs/overlays/dialog), [Nav Drawer](/docs/layout/nav-drawer))
+>    now support the
+>    [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API).
+> 4. [FAB](/docs/inputs/fab) is now in Root Layout instead of Nav Bar.
+> 5. `alt` and `*Attr` props were removed from most components that
+>    had it.
+> 6. Framer Motion is no longer directly supported.
+>
+> Scroll past the highlights for a complete list of API changes.
+
+### Highlights
+
+#### App Router support
+
+> You can skip this section if you are using the Pages Router.
+
+**Client Components are now marked** with the `"use client"` directive, which
+allows SKCom to be used in Next.js projects that use the App Router.
+
+This means all components are now either Server Components or Client Components,
+so **be mindful of passing props that are not
+[serializable](https://react.dev/reference/rsc/use-server#serializable-parameters-and-return-values)**
+to Server Components.
+
+Sometimes you _do_ need to pass a non-serializable prop to a Client Component,
+such as when passing in [`next/link`](https://nextjs.org/docs/app/api-reference/components/link) to a Server Component like
+[Card](/docs/data/card). In this case, you need to **mark the parent as a Client
+Component.**
+
+```tsx
+"use client";
+
+import { Card } from "@suankularb-components/react";
+import Link from "next/link";
+
+const ExampleCard = () => (
+  <Card title="Example Card" href="/example" element={Link} />
+);
+```
+
+#### Setup changes
+
+**[Theme Provider](/docs/layouts/theme-provider) is no longer a wrapper,** and can
+be added anywhere in the component tree.
+
+```tsx
+import { ThemeProvider } from "@suankularb-components/react";
+
+const App = () => (
+  <>
+    <ThemeProvider />
+    <RootLayout>
+      <PageHeader>Getting started</PageHeader>
+    </RootLayout>
+  </>
+);
+```
+
+---
+
+**You no longer manage the state of [Nav Drawer](/docs/layout/nav-drawer).**
+Just include Page Header, Nav Bar, and Nav Drawer as direct children of
+[Root Layout](/docs/layout/root-layout), and SKCom will handle the rest.
+
+If you had previously used `useState` or React Context to manage the state of
+Nav Drawer, you can remove that code.
+
+```tsx
+<RootLayout>
+  <NavBar>{/* ... */}</NavBar>
+  <NavDrawer>{/* ... */}</NavDrawer>
+  <PageHeader>Getting started</PageHeader>
+</RootLayout>
+```
+
+If you need to programmatically open or close the Nav Drawer, use the Invoker
+Commands API with the `id` of `nav-drawer`.
+
+```tsx
+<Button command="show-modal" commandfor="nav-drawer">
+  Open Nav Drawer
+</Button>
+```
+
+---
+
+**You no longer manage the state of [Snackbar](/docs/overlays/snackbar).** Use
+the new `snackbar.push()` and `snackbar.promise()` methods.
+
+If you had previously used `useState` or React Context to manage the state of
+Snackbar, you can remove that code. If you were using the Snackbar component
+itself, you can remove that as well.
+
+```tsx
+import { snackbar } from "@suankularb-components/react/helpers";
+
+snackbar.push(
+  "Deleted 3 items",
+  <Button appearance="text">Undo</Button>,
+  { autoDismissDurationMs: 6000 },
+});
+```
+
+#### Declarative modals
+
+**Replace `useState` with the Invoker Commands API** to open and close modals.
+
+- Previously, you would have to manage the state of modals like
+  [Menu](/docs/overlays/menu), [Dialog](/docs/overlays/dialog), and
+  [Full-screen Dialog](/docs/overlays/fullscreen-dialog) using `useState` or
+  React Context.
+- This approach is still available (“controlled mode”), but you can now use the
+  Invoker Commands API to open and close modals declaratively.
+
+```tsx
+// OLD: Controlled mode
+const [isOpen, setIsOpen] = useState(false);
+
+return (
+  <>
+    <Button onClick={() => setIsOpen(true)}>Open Menu</Button>
+    <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
+      {/* ... */}
+    </Dialog>
+  </>
+);
+```
+
+```tsx
+// NEW: Uncontrolled mode (Invoker Commands API)
+return (
+  <>
+    <Button command="show-modal" commandfor="example-dialog">
+      Open Menu
+    </Button>
+    <Dialog id="example-dialog">{/* ... */}</Dialog>
+  </>
+);
+```
+
+See the [Modals](/docs/guides/modals) guide for more information.
+
+---
+
+**New [Anchor](/docs/layout/anchor) component makes Menu easier to use.** Wrap
+the trigger and Menu in an Anchor component, and the Menu will automatically
+position itself relative to the trigger.
+
+```tsx
+// OLD: Controlled mode & without Anchor
+const [isOpen, setIsOpen] = useState(false);
+
+return (
+  <div style={{ position: "relative" }}>
+    <Button onClick={() => setIsOpen(true)}>Open Menu</Button>
+    <Menu open={isOpen} onBlur={() => setIsOpen(false)}>
+      <MenuItem>Item 1</MenuItem>
+      <MenuItem>Item 2</MenuItem>
+    </Menu>
+  </div>
+);
+```
+
+```tsx
+// NEW: Uncontrolled mode & with Anchor
+return (
+  <Anchor>
+    <Button command="show-popover" commandfor="example-menu">
+      Open Menu
+    </Button>
+    <Menu id="example-menu">
+      <MenuItem>Item 1</MenuItem>
+      <MenuItem>Item 2</MenuItem>
+    </Menu>
+  </Anchor>
+);
+```
+
+#### FAB in Root Layout
+
+**[FAB](/docs/inputs/fab) is now a direct child of [Root Layout](/docs/layout/root-layout).**
+
+- Previously, FAB was a prop of Nav Bar, which made it difficult to use FAB in
+  an app where Nav Bar was abstracted into a Layout and hard to access.
+- Now, FAB can be placed in the Root Layout, which makes it easier to use in any
+  app structure.
+
+```tsx
+// OLD: FAB in Nav Bar
+<NavBar fab={<FAB icon={<MaterialIcon icon="add" />} />}>{/* ... */}</NavBar>
+```
+
+```tsx
+// NEW: FAB in Root Layout
+<RootLayout>
+  <NavBar>{/* ... */}</NavBar>
+  <FAB icon={<MaterialIcon icon="add" />} />
+</RootLayout>
+```
+
+#### `alt` and `*Attr` props removed
+
+**Remove `alt`.** Previously, `alt` was required if the children of a component
+was React Elements instead of text, as it was used to generate IDs for
+accessibility. Now, `alt` is no longer required, and IDs are generated
+automatically.
+
+<Text type="body-medium" className="text-on-surface-variant">
+  If you were using `alt` to set the `aria-label` of a component, you might want
+  to make the contents itself more accessible instead.
+</Text>
+
+```tsx
+// OLD: `alt` prop required if content isn’t text
+<PageHeader alt="About MyLearn+">
+  <span>About</span>
+  <img src="/logo.svg" />
+</PageHeader>
+```
+
+```tsx
+// NEW: Remove `alt`
+<PageHeader>
+  <span>About</span>
+  <img src="/logo.svg" alt="MyLearn+" />
+</PageHeader>
+```
+
+<DisclosureCard
+  summary={
+    <>
+      Components that had <code>alt</code> prop removed
+    </>
+  }
+>
+
+- Chip Field
+- Dialog Header
+- Form Group
+- Form Item
+- Full-screen Dialog
+- List Item Content
+- Nav Bar Item
+- Nav Drawer Section
+- Page Header
+- Search
+- Select
+- Tab
+- Tabs Container
+- Text Field
+
+</DisclosureCard>
+
+> While `alt` was removed from most components, **Material Icon just gained an
+> `alt` prop if you need it.** Most times, though, the icon should accompany
+> text or be part of other components with existing accessibility labels, so you
+> likely won’t need to use it.
+
+---
+
+**Remove `*Attr` props.** Except for `inputAttr` in Text Field (which was not
+removed), this feature never saw much use, so it was removed.
+
+<DisclosureCard
+  summary={
+    <>
+      Components that had <code>*Attr</code> props removed
+    </>
+  }
+>
+
+- `aAttr`, `buttonAttr` — Card
+- `backAttr` — Page Header
+- `buttonAttr` — Switch
+- `hAttr` — Header
+- `inputAttr` — Checkbox, Radio
+- `labelAttr` — Form Item
+- `legendAttr` — Form Group
+- `menuAttr` — Select
+- `sectionAttr` — Section
+- `tdAttr` — Table Cell
+
+</DisclosureCard>
+
+#### Framer Motion support removed
+
+You can still use Motion in your app, but SKCom no longer directly supports it.
+
+**The `useAnimationConfig()`, `useRipple()`, and `useBreakpoint()` hooks, the
+`DURATION` and `EASING` constants, and the `transition` helper were removed.**
+
+- Use [Interactive](/docs/data/interactive) instead of `useRipple()`.
+- Other features can be replaced with your own implementations.
+
+<DisclosureCard
+  summary={
+    <>
+      Replacements for removed Motion features
+    </>
+  }
+>
+
+##### `useAnimationConfig()`, `DURATION`, and `EASING`
+
+```tsx
+import type { BezierDefinition } from "motion";
+
+/** A set of durations for animations. */
+export const DURATION = {
+  short1: 0.05,
+  short2: 0.1,
+  short3: 0.15,
+  short4: 0.2,
+  medium1: 0.25,
+  medium2: 0.3,
+  medium3: 0.35,
+  medium4: 0.4,
+  long1: 0.45,
+  long2: 0.5,
+  long3: 0.55,
+  long4: 0.6,
+  extraLong1: 0.7,
+  extraLong2: 0.8,
+  extraLong3: 0.9,
+  extraLong4: 1,
+};
+
+/** A set of easing definitions for animations. */
+export const EASING = {
+  linear: [0, 0, 1, 1] as BezierDefinition,
+  standard: [0.2, 0, 0, 1] as BezierDefinition,
+  standardAccelerate: [0.3, 0, 1, 1] as BezierDefinition,
+  standardDecelerate: [0, 0, 0, 1] as BezierDefinition,
+  emphasized: [0.2, 0, 0, 1] as BezierDefinition,
+  emphasizedAccelerate: [0.3, 0, 0.8, 0.15] as BezierDefinition,
+  emphasizedDecelerate: [0.05, 0.7, 0.1, 1] as BezierDefinition,
+};
+```
+
+##### `transition` helper
+
+```tsx
+import type { Tween } from "motion";
+
+/**
+ * Create a Motion Tween object from a duration and an easing.
+ *
+ * @see {@link https://motion.dev/docs/react-transitions#tween Motion documentation}
+ *
+ * @param duration How long the transition takes.
+ * @param easing The easing definition.
+ *
+ * @returns A Motion Tween object.
+ */
+export function transition(
+  duration: Tween["duration"],
+  easing: Tween["ease"],
+): Tween {
+  return { type: "tween", duration, ease: easing };
+}
+```
+
+##### `useBreakpoint()`
+
+Below are the breakpoints used in SKCom v4. You can use these to implement your
+own `useBreakpoint()` hook if you need it.
+
+```ts
+const breakpoints = {
+  sm: 600,
+  md: 905,
+  lg: 1440,
+};
+```
+
+</DisclosureCard>
+
+---
+
+**`layout` and `layoutID` props were removed** from most components that had it.
+Wrap the components in a
+[motion component](https://motion.dev/docs/react-motion-component) instead.
+
+### All API changes
+
+TODO
