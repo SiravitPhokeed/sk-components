@@ -69,12 +69,12 @@
 
 .skc-fullscreen-dialog__top-app-bar {
   display: flex;
-  position: fixed;
+  position: sticky;
+  top: 0;
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
-  z-index: 90;
-  inset: 0 0 auto;
+  z-index: 20;
   background-color: var(--surface);
   padding: 0.75rem 0.5rem;
 
@@ -92,12 +92,8 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  /* Top app bar: 4rem, nav bar: 5rem, visible padding: 1rem each */
-  padding-block: calc(4rem + 1rem) calc(5rem + 1rem);
-
-  > * {
-    margin-inline: 1rem;
-  }
+  padding: 1rem;
+  padding-bottom: 3rem;
 }
 
 @media (width >= 600px) {
@@ -105,15 +101,17 @@
     --_exit-transform-from: translate(-50%, -50%) scaleY(1);
     --_exit-transform-to: translate(-50%, calc(-50% - var(--_offset-y) / 4))
       scaleY(0);
-    transform: translate(-50%, calc(-50% - var(--_offset-y))) scaleY(0);
-    transform-origin: center top;
 
     --adaptive-secondary-container: light-dark(
       var(--secondary-fixed-dim),
       var(--secondary-container)
     );
     --adaptive-background: var(--surface-container-high);
+    --adaptive-surface-variant: var(--surface-bright);
+    --adaptive-surface-container: var(--surface-bright);
 
+    transform: translate(-50%, calc(-50% - var(--_offset-y))) scaleY(0);
+    transform-origin: center top;
     inset: 50% auto auto 50%;
     border-radius: var(--rounded-xl);
     background-color: var(--surface-container-high);

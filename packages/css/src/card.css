@@ -31,7 +31,10 @@
 }
 
 .skc-card--filled {
+  --adaptive-background: var(--adaptive-surface-variant);
+
   background-color: var(--adaptive-surface-variant);
+  color: var(--on-surface-variant);
 
   > * {
     --adaptive-secondary-container: light-dark(
