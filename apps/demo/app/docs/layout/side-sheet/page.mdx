@@ -11,12 +11,9 @@ export const metadata = {
 A side sheet that slides in from the left.
 
 ```tsx
-<SideSheet id="side-sheet">
-  <NavDrawerSection header="Main">
-    <NavDrawerItem icon={<MaterialIcon icon="home" />} selected>
-      Home
-    </NavDrawerItem>
-  </NavDrawerSection>
+<SideSheet id="about-sheet">
+  <Header>About Wasapol</Header>
+  {/* ... */}
 </SideSheet>
 ```
 
@@ -25,9 +22,10 @@ A side sheet that slides in from the left.
 A trigger button can open the Side Sheet via the Invoker Commands API.
 
 ```tsx
-<Button command="show-modal" commandfor="side-sheet">
+<Button command="show-modal" commandfor="about-sheet">
   Open side sheet
 </Button>
+```
 
 ### Props
 
@@ -52,9 +50,9 @@ A trigger button can open the Side Sheet via the Invoker Commands API.
 
       The ID of the `<dialog>` element, for Invoker Commands API support.
 
-      - Use with `command="show-modal"` and `commandfor={"{"}id{"}"}` on a
-        trigger button to open the Side Sheet declaratively via the Invoker
-        Commands API.
+      - Use with `command="show-modal"` and `commandfor={id}` on a trigger
+        button to open the Side Sheet declaratively via the Invoker Commands
+        API.
       - Use `command="request-close"` to close, not `command="close"`.
       - Optional.
 
