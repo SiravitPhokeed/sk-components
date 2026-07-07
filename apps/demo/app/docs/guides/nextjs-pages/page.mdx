@@ -46,6 +46,9 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
+> You must **set the `element` prop of Root Layout to `"div"`** when using the
+> Pages Router, as the default `"body"` value will cause a hydration error.
+
 ### Layout
 
 You can create a `Layout` component that contains the
