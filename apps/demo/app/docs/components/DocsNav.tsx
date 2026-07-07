@@ -34,7 +34,7 @@ const DocsNav: StyleableFC = ({ className, style }) => (
       <DocsNavLink href="/docs/guides/theming">Theming</DocsNavLink>
     </DocsNavSection>
 
-    <DocsNavSection title="Migrations">
+    <DocsNavSection title="Migrations" open>
       <DocsNavLink href="/docs/migrations/v4">Migrating to v4</DocsNavLink>
       <DocsNavLink href="/docs/migrations/v3.3">Migrating to v3.3</DocsNavLink>
     </DocsNavSection>
