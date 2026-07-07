@@ -3,6 +3,7 @@
 import download from "@/lib/helpers/download";
 import {
   Button,
+  Card,
   ChipField,
   ChipSet,
   FullscreenDialog,
@@ -13,7 +14,8 @@ import {
 import { snackbar } from "@suankularb-components/react/helpers";
 import Link from "next/link";
 import { unique } from "radash";
-import { useState, type FC } from "react";
+import type { FC } from "react";
+import { useState } from "react";
 
 /**
  * List of icon names that are used internally in SK Components.
@@ -78,54 +80,92 @@ const IconFontDialog: FC = () => {
         </Button>
       }
       width={600}
-      className="[&_a]:text-primary [&_a]:font-bold [&_a]:underline"
     >
-      <Text type="body-medium" element="p">
-        To use <Link href="/docs/data/material-icon">Material Icon</Link>, you
-        need to download the Material Symbols font and include it in your
-        project.
-      </Text>
-      <Text type="body-medium" element="p" className="mb-6">
-        <strong>
-          Enter the names of the icons you want to include in your project.
-        </strong>{" "}
-        You can find the names of the icons on{" "}
-        <a href="https://fonts.google.com/icons" target="_blank">
-          Google Fonts
-        </a>
-        .
-      </Text>
-
-      <ChipField
-        label="Icon names"
-        value={iconNamesInput}
-        onChange={setIconNamesInput}
-        onNewEntry={(name) => {
-          name = name.toLowerCase().replace(/[- ]/g, "_");
-          if (!/[a-z0-9_]+/.test(name) || iconNames.includes(name))
-            snackbar.push("Invalid icon name");
-          else setIconNames([...iconNames, name].sort());
-        }}
-        onDeleteLast={() => setIconNames(iconNames.slice(0, -1))}
-        entrySeparators={[",", ";", "Enter"]}
-        helperMsg="Comma-separated list"
-        placeholder="Enter icon name"
-      >
-        <ChipSet>
-          {iconNames.map((name) => (
-            <InputChip
-              key={name}
-              onDelete={() => {
-                setIconNames(iconNames.filter((n) => n !== name));
-              }}
+      <Card appearance="filled" className="gap-6 p-4 pb-10 sm:-m-2">
+        <Text type="body-medium" element="section" className="mb-3 space-y-2">
+          <p>
+            To use{" "}
+            <Link href="/docs/data/material-icon" className="link">
+              Material Icon
+            </Link>
+            , you need to download the Material Symbols font and include it in
+            your project.
+          </p>
+          <p>
+            <strong>
+              Enter the names of the icons you want to include in your project.
+            </strong>{" "}
+            You can find the names of the icons on{" "}
+            <Link
+              href="https://fonts.google.com/icons"
+              className="link"
+              target="_blank"
             >
-              <code>{name}</code>
-            </InputChip>
-          ))}
-        </ChipSet>
-      </ChipField>
+              Google Fonts
+              <MaterialIcon
+                icon="arrow_outward"
+                size={20}
+                className="-mt-1 inline-block"
+              />
+            </Link>
+            .
+          </p>
+        </Text>
 
-      <section className="text-on-surface-variant mt-6 space-y-2">
+        <ChipField
+          label="Icon names"
+          value={iconNamesInput}
+          onChange={setIconNamesInput}
+          onNewEntry={(name) => {
+            name = name.toLowerCase().replace(/[- ]/g, "_");
+            if (iconNames.includes(name)) snackbar.push("Icon already added");
+            else if (!/[a-z0-9_]+/.test(name))
+              snackbar.push("Invalid icon name");
+            else setIconNames([...iconNames, name].sort());
+          }}
+          onDeleteLast={() => setIconNames(iconNames.slice(0, -1))}
+          entrySeparators={[",", ";", "Enter"]}
+          helperMsg="Comma-separated list"
+          placeholder="Enter icon name"
+        >
+          <ChipSet>
+            {iconNames.map((name) => (
+              <InputChip
+                key={name}
+                onDelete={() => {
+                  setIconNames(iconNames.filter((n) => n !== name));
+                }}
+              >
+                <code>{name}</code>
+              </InputChip>
+            ))}
+          </ChipSet>
+        </ChipField>
+      </Card>
+
+      <section aria-labelledby="header-internal-icons" className="mt-6">
+        <Text
+          id="header-internal-icons"
+          type="title-medium"
+          element="h3"
+          className="mb-1"
+        >
+          Already included
+        </Text>
+        <Text type="body-medium" element="p" className="mb-3">
+          These icons will automatically be included in the downloaded font.
+        </Text>
+        <ul role="list" className="grid gap-2 sm:grid-cols-3">
+          {ICON_NAMES_USED_INTERNALLY.map((name) => (
+            <div key={name} className="flex items-center gap-1">
+              <MaterialIcon icon={name} size={20} className="text-secondary" />
+              <code>{name}</code>
+            </div>
+          ))}
+        </ul>
+      </section>
+
+      <section className="text-on-surface-variant mt-3 space-y-2">
         <MaterialIcon icon="info" size={20} />
         <Text type="body-small" element="p">
           Downloading every icon in the font can result in massive bundle sizes.
