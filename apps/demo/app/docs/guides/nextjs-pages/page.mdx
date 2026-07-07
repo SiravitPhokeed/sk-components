@@ -135,6 +135,29 @@ const Layout = ({ children }: { children: ReactNode }) => {
 Finally, import the `Layout` component into your `_app.tsx` file and wrap your
 app with it.
 
+---
+
+A **typical top-level page** might look something like this.
+
+```tsx
+// pages/index.tsx
+
+import type { NextPage } from "next";
+import { FAB, PageHeader } from "@suankularb-components/react";
+
+const HomePage: NextPage = () => (
+  <>
+    <FAB color="primary" icon={<MaterialIcon icon="add" />} tooltip="Create" />
+    <PageHeader>Home</PageHeader>
+    <ContentLayout>
+      {/* ... */}
+    </ContentLayout>
+  </>
+);
+
+export default HomePage;
+```
+
 ### Fonts
 
 You can use

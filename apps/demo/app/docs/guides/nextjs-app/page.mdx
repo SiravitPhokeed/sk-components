@@ -106,6 +106,28 @@ const RootLayout = ({ children }: { children: ReactNode }) => (
 export default RootLayout;
 ```
 
+---
+
+A **typical top-level page** might look something like this.
+
+```tsx
+// app/page.tsx
+
+import { FAB, PageHeader } from "@suankularb-components/react";
+
+const HomePage = () => (
+  <>
+    <FAB color="primary" icon={<MaterialIcon icon="add" />} tooltip="Create" />
+    <PageHeader>Home</PageHeader>
+    <ContentLayout>
+      {/* ... */}
+    </ContentLayout>
+  </>
+);
+
+export default HomePage;
+```
+
 ### Fonts
 
 You can use
