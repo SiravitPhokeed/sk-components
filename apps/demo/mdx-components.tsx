@@ -1,13 +1,35 @@
 import cn from "@/lib/helpers/cn";
-import { Card, Header, Text } from "@suankularb-components/react";
+import {
+  Card,
+  Divider,
+  Header,
+  MaterialIcon,
+  Text,
+} from "@suankularb-components/react";
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
 import { list } from "radash";
 
 const components: MDXComponents = {
-  a: (props) => {
-    const Element = props.href?.startsWith("/") ? Link : "a";
-    return <Element className="text-primary font-bold underline" {...props} />;
+  a: ({ children, ...props }) => {
+    const isExternal = props.href?.startsWith("http");
+    const Element = isExternal ? "a" : Link;
+    return (
+      <Element
+        className="link"
+        {...(isExternal && { target: "_blank" })}
+        {...props}
+      >
+        {children}
+        {isExternal && (
+          <MaterialIcon
+            icon="arrow_outward"
+            size={20}
+            className="-mt-1 inline-block"
+          />
+        )}
+      </Element>
+    );
   },
   ...Object.fromEntries(
     list(2, 6).map((level) => [
@@ -41,12 +63,14 @@ const components: MDXComponents = {
         language
           ? "w-fit p-4"
           : "bg-surface-variant rounded-xs px-1.5 text-[0.9em]",
-        "tracking-normal",
+        // Explicitly state font features for Firefox.
+        "font-features-['ss01','ss02','ss03','ss04','ss05'] tracking-normal",
         className,
       )}
       {...props}
     />
   ),
+  hr: () => <Divider className="my-3" />,
   ul: (props) => (
     <ul className="*:marker:text-outline list-disc ps-6" {...props} />
   ),
