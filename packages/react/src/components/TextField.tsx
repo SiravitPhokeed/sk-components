@@ -30,6 +30,12 @@ export interface TextFieldProps<Value extends string | File = string> {
    */
   label: ReactNode;
 
+  /**
+   * The type of the input field. This is useful if you want a specialized input
+   * field, like a date picker or a color picker.
+   *
+   * - Optional. Defaults to `text`.
+   */
   type?:
     | "color"
     | "date"
@@ -210,6 +216,7 @@ const STRINGS = {
  *
  * @param appearance How the Text Field looks.
  * @param label The placeholder text and the label text.
+ * @param type The type of the input field.
  * @param behavior How the Text Field behaves if the field value exceeds the visual space.
  * @param align The alignment of the input field.
  * @param leading The leading text or icon, aligned to the left.
