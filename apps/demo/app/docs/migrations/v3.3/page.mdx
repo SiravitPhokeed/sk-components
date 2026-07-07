@@ -16,18 +16,22 @@ npm install @suankularb-components/react@^3.3
 pnpm add @suankularb-components/react@^3.3
 ```
 
-### Breaking changes
+### Highlights
 
-- `useAnimationConfig()` is now deprecated. Use the `DURATION` and `EASING`
-  constants instead.
+#### Animation constants
+
+**`useAnimationConfig()` is now deprecated.** Use the `DURATION` and `EASING`
+constants instead.
 
 ```tsx
-// Before
+// OLD: `useAnimationConfig()`
 import { transition, useAnimationConfig } from "@suankularb-components/react";
 const { duration, easing } = useAnimationConfig();
 transition(duration.short4, easing.standard);
+```
 
-// After
+```tsx
+// NEW: `DURATION` and `EASING` constants
 import { DURATION, EASING, transition } from "@suankularb-components/react";
 transition(DURATION.short4, EASING.standard);
 ```
