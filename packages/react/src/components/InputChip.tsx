@@ -55,39 +55,12 @@ export interface InputChipProps
   tooltip?: string;
 
   /**
-   * Use elevation instead of an outline to signify the Input Chip's boundary.
-   *
-   * - **Important**: do not use this prop if you don't have to. Only elevate
-   *   an Input Chip when its placement requires visual protection, such as on
-   *   top of an image.
-   * - Optional.
-   */
-  elevated?: boolean;
-
-  /**
    * If the Input Chip is selected. {@link avatar `avatar`} or
    * {@link icon `icon`} is replaced with a checkmark if this is `true`.
    *
    * - Optional.
    */
   selected?: boolean;
-
-  /**
-   * If the action the Input Chip accomplishes is dangerous, like deleting your
-   * account. If it is, the Input Chip turns red (defined as `error` in the
-   * palette).
-   *
-   * - Optional.
-   */
-  dangerous?: boolean;
-
-  /**
-   * Disable the Input Chip and signify loading status. {@link onClick `onClick`},
-   * {@link href `href`}, and {@link onDelete `onDelete`} will have no effect.
-   *
-   * - Optional.
-   */
-  loading?: boolean;
 
   /**
    * Allows for translation of the accessibility labels.
@@ -99,15 +72,6 @@ export interface InputChipProps
    * @default "en-US"
    */
   locale?: "en-US" | "th";
-
-  /**
-   * Turns the Input Chip gray and blocks any action associated with it.
-   * {@link onClick `onClick`}, {@link href `href`}, and
-   * {@link onDelete `onDelete`} will have no effect.
-   *
-   * - Optional.
-   */
-  disabled?: boolean;
 
   /**
    * The command the delete button sends to the element specified in
@@ -152,11 +116,7 @@ const STRINGS = {
  * @param avatar An avatar is placed before all content in an Input Chip.
  * @param icon An icon can appear before the text in an Input Chip.
  * @param tooltip A message shown in a tooltip when the user hovers over the Input Chip.
- * @param elevated Use elevation instead of an outline to signify the Input Chip's boundary.
  * @param selected If the Input Chip is selected.
- * @param dangerous If the action the Input Chip accomplishes is dangerous.
- * @param loading Disable the Input Chip and signify loading status.
- * @param disabled Turns the Input Chip gray and blocks any action associated with it.
  * @param locale Allows for translation of the accessibility labels.
  * @param onDelete Triggers when the user clicks the delete button.
  */
@@ -165,11 +125,7 @@ export const InputChip: StyleableFC<InputChipProps> = ({
   avatar,
   icon,
   tooltip,
-  elevated,
   selected,
-  dangerous,
-  loading,
-  disabled,
   locale = "en-US",
   command,
   commandfor,
@@ -184,11 +140,7 @@ export const InputChip: StyleableFC<InputChipProps> = ({
 }) => (
   <Chip
     tooltip={tooltip}
-    elevated={elevated}
     selected={selected}
-    dangerous={dangerous}
-    loading={loading}
-    disabled={disabled}
     command={command}
     commandfor={commandfor}
     onClick={onClick}
@@ -217,7 +169,7 @@ export const InputChip: StyleableFC<InputChipProps> = ({
     {/* Delete button */}
     {(deleteCommand || deleteCommandfor || onDelete) && (
       <span
-        // Prevent the chip's onClick from firing when the delete button is
+        // Prevent the chip’s onClick from firing when the delete button is
         // clicked.
         onClick={(e) => e.stopPropagation()}
       >
@@ -229,7 +181,6 @@ export const InputChip: StyleableFC<InputChipProps> = ({
           onClick={onDelete}
           command={deleteCommand}
           commandfor={deleteCommandfor}
-          disabled={disabled || loading}
         />
       </span>
     )}

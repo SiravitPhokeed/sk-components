@@ -29,10 +29,6 @@ these can also appear inside a text field like in Chip Field.
   }}
   adjustableProps={{
     selected: "boolean",
-    elevated: "boolean",
-    dangerous: "boolean",
-    loading: "boolean",
-    disabled: "boolean",
   }}
 />
 
@@ -103,54 +99,12 @@ these can also appear inside a text field like in Chip Field.
 
   </PropsTableRow>
 
-  <PropsTableRow prop="elevated" required="never">
-    <TableCell>`boolean`</TableCell>
-    <TableCell>
-
-      Use elevation instead of an outline to signify the Input Chip’s boundary.
-
-      - **Important:** do not use this prop if you don’t have to. Only elevate
-        an Input Chip when its placement requires visual protection, such as on
-        top of an image.
-      - Optional.
-
-      </TableCell>
-
-  </PropsTableRow>
-
   <PropsTableRow prop="selected" required="never">
     <TableCell>`boolean`</TableCell>
     <TableCell>
 
       If the Input Chip is selected. `avatar` or `icon` is replaced with a
       checkmark if this is `true`.
-
-      - Optional.
-
-      </TableCell>
-
-  </PropsTableRow>
-
-  <PropsTableRow prop="dangerous" required="never">
-    <TableCell>`boolean`</TableCell>
-    <TableCell>
-
-      If the action the Input Chip accomplishes is dangerous, like deleting your
-      account. If it is, the Input Chip turns red (defined as `error` in the
-      palette).
-
-      - Optional.
-
-      </TableCell>
-
-  </PropsTableRow>
-
-  <PropsTableRow prop="loading" required="never">
-    <TableCell>`boolean`</TableCell>
-    <TableCell>
-
-      Disable the Input Chip and signify loading status. `onClick`, `href`, and
-      `onDelete` will have no effect.
 
       - Optional.
 
@@ -166,19 +120,6 @@ these can also appear inside a text field like in Chip Field.
 
       - Must be `"en-US"` or `"th"`, as SKCom currently only support those 2
         languages.
-      - Optional.
-
-      </TableCell>
-
-  </PropsTableRow>
-
-  <PropsTableRow prop="disabled" required="never">
-    <TableCell>`boolean`</TableCell>
-    <TableCell>
-
-      Turns the Input Chip gray and blocks any action associated with it.
-      `onClick`, `href`, and `onDelete` will have no effect.
-
       - Optional.
 
       </TableCell>
