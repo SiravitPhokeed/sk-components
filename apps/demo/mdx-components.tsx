@@ -25,7 +25,7 @@ const components: MDXComponents = {
           <MaterialIcon
             icon="arrow_outward"
             size={20}
-            className="-mt-1 inline-block"
+            className="rtl:flip-x -mt-1 inline-block"
           />
         )}
       </Element>
@@ -49,7 +49,7 @@ const components: MDXComponents = {
   pre: ({ className, ...props }) => (
     <Card
       appearance="filled"
-      element="pre"
+      element={(props) => <pre {...props} dir="ltr" />}
       className={cn(
         "my-4 block overflow-x-auto text-base [&_code]:bg-transparent",
         className,
