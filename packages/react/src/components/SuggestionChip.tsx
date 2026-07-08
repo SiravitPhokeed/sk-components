@@ -54,13 +54,6 @@ export interface SuggestionChipProps
   elevated?: boolean;
 
   /**
-   * If the Suggestion Chip is selected.
-   *
-   * - Optional.
-   */
-  selected?: boolean;
-
-  /**
    * Turns the Suggestion Chip gray and block any action associated with it.
    * `onClick` and `href` will have no effect.
    *
@@ -84,7 +77,6 @@ export const SuggestionChip: StyleableFC<SuggestionChipProps> = ({
   icon,
   tooltip,
   elevated,
-  selected,
   disabled,
   command,
   commandfor,
@@ -97,7 +89,6 @@ export const SuggestionChip: StyleableFC<SuggestionChipProps> = ({
   <Chip
     tooltip={tooltip}
     elevated={elevated}
-    selected={selected}
     disabled={disabled}
     command={command}
     commandfor={commandfor}
@@ -107,7 +98,7 @@ export const SuggestionChip: StyleableFC<SuggestionChipProps> = ({
     className={cn("skc-suggestion-chip", className)}
     style={style}
   >
-    {selected ? <MaterialIcon icon="done" /> : icon}
+    <MaterialIcon icon="done" />
     <Text type="label-large" className="skc-chip__label">
       {children}
     </Text>
