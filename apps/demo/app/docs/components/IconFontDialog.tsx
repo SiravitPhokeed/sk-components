@@ -155,7 +155,10 @@ const IconFontDialog: FC = () => {
         <Text type="body-medium" element="p" className="mb-3">
           These icons will automatically be included in the downloaded font.
         </Text>
-        <ul role="list" className="grid gap-2 sm:grid-cols-3">
+        <ul
+          role="list"
+          className="grid gap-2 sm:grid-flow-col sm:grid-cols-3 sm:grid-rows-3"
+        >
           {ICON_NAMES_USED_INTERNALLY.map((name) => (
             <div key={name} className="flex items-center gap-1">
               <MaterialIcon icon={name} size={20} className="text-secondary" />
