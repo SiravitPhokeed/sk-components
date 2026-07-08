@@ -38,7 +38,7 @@ const PromptCard: FC<{
       className="text-on-surface/90 from-secondary-container to-primary-container bg-linear-135"
     >
       <CardHeader icon={<MaterialIcon icon="robot_2" />} title={title} />
-      <Text type="body-medium" className="p-4 pt-0">
+      <Text type="body-medium" className="p-4 pt-0 md:text-balance">
         {children}
         <Actions className="mt-4">
           <Button
