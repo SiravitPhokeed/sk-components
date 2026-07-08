@@ -4,6 +4,7 @@ import PropsTableRow from "@/app/docs/components/PropsTableRow";
 import {
   Anchor,
   Button,
+  MaterialIcon,
   Menu,
   MenuItem,
   TableCell,
@@ -23,22 +24,53 @@ child popover components (e.g. Menu) can auto-resolve their
 <DemoCard
   component={Anchor}
   initialProps={{
-    children: [
-      <Button
-        key="btn"
-        appearance="filled"
-        command="show-popover"
-        commandfor="docs-anchor-menu"
-      >
-        Open Menu
-      </Button>,
-      <Menu key="menu" id="docs-anchor-menu">
-        <MenuItem>Item 1</MenuItem>
-        <MenuItem>Item 2</MenuItem>
-      </Menu>,
-    ],
+    children: (
+      <>
+        <Button
+          appearance="filled"
+          command="show-popover"
+          commandfor="share-menu"
+        >
+          Share
+        </Button>
+        <Menu id="share-menu">
+          <MenuItem
+            icon={<MaterialIcon icon="email" />}
+            command="request-close"
+          >
+            Email
+          </MenuItem>
+          <MenuItem icon={<MaterialIcon icon="chat" />} command="request-close">
+            Messages
+          </MenuItem>
+        </Menu>
+      </>
+    ),
   }}
 />
+
+```tsx
+<Anchor>
+  <Button appearance="filled" command="show-popover" commandfor="share-menu">
+    Share
+  </Button>
+  <Menu id="share-menu">
+    <MenuItem icon={<MaterialIcon icon="email" />} command="request-close">
+      Email
+    </MenuItem>
+    <MenuItem icon={<MaterialIcon icon="chat" />} command="request-close">
+      Messages
+    </MenuItem>
+  </Menu>
+</Anchor>
+```
+
+### Usage
+
+The **implicit pattern** is the recommended way to use Anchor.
+
+- Put the trigger element (e.g. a Button) and the positioned element (e.g. a Menu)
+  inside an Anchor.
 
 ```tsx
 <Anchor>
@@ -52,17 +84,15 @@ child popover components (e.g. Menu) can auto-resolve their
 </Anchor>
 ```
 
-### Usage
+The **explicit pattern** is useful when the trigger and positioned elements are
+not adjacent in the DOM.
 
-Either use the **default pattern** where the trigger and positioned elements are
-wrapped inside the Anchor, or the **flexible pattern** where only the trigger
-is wrapped and the positioned element is placed elsewhere.
-
-The default pattern is shown in the example above. The flexible pattern is shown
-below.
+- Wrap the trigger element in an Anchor and give it a `name` prop
+  (dashed-ident).
+- Give the positioned element an `anchor` prop with the same value as the Anchor's
+  `name` prop.
 
 ```tsx
-// Flexible pattern
 <Anchor name="--share-menu-anchor">
   <Button appearance="filled" command="show-popover" commandfor="share-menu">
     Share
