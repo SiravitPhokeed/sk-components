@@ -98,7 +98,7 @@ export const SuggestionChip: StyleableFC<SuggestionChipProps> = ({
     className={cn("skc-suggestion-chip", className)}
     style={style}
   >
-    <MaterialIcon icon="done" />
+    {icon && <div className="skc-chip__icon">{icon}</div>}
     <Text type="label-large" className="skc-chip__label">
       {children}
     </Text>

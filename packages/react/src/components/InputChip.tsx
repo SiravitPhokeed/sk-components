@@ -154,11 +154,13 @@ export const InputChip: StyleableFC<InputChipProps> = ({
       <div className="skc-input-chip__avatar">
         {selected ? <MaterialIcon icon="done" /> : avatar}
       </div>
-    ) : /* Icon (or checkmark when selected) */
-    selected ? (
-      <MaterialIcon icon="done" />
     ) : (
-      icon
+      // Icon (or checkmark when selected)
+      (selected || icon) && (
+        <div className="skc-chip__icon">
+          {selected ? <MaterialIcon icon="done" /> : icon}
+        </div>
+      )
     )}
 
     {/* Label */}

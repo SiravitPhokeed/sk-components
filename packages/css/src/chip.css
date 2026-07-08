@@ -5,8 +5,6 @@
  */
 
 .skc-chip {
-  --duration: var(--motion-short-4);
-  --easing: var(--easing-standard);
   --state-layer-color: var(--on-surface-variant);
 
   display: flex;
@@ -15,10 +13,8 @@
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  transition:
-    border-color var(--duration) var(--easing),
-    background-color var(--duration) var(--easing),
-    color var(--duration) var(--easing);
+  transition-property: background-color, border-color, color;
+  transition: var(--motion-short-4) var(--easing-standard);
   border: 1px solid var(--outline);
   border-radius: 0.5rem;
   background-color: transparent;
@@ -30,15 +26,18 @@
     inset: -1px;
   }
 
-  > .skc-material-icon {
+  > .skc-chip__icon {
+    --_icon-size: 1.125rem;
+    margin-inline-start: -0.5rem;
     color: var(--primary);
-    font-size: 1.125rem;
 
-    &:not(:last-child) {
-      margin-inline-start: -0.5rem;
+    > svg {
+      width: auto;
+      height: var(--_icon-size);
     }
-    &:last-child {
-      margin-inline-end: -0.5rem;
+
+    > .skc-material-icon {
+      font-size: var(--_icon-size);
     }
   }
 
@@ -49,8 +48,9 @@
     overflow: visible;
 
     &,
-    .skc-material-icon {
-      color: color-mix(in srgb, var(--on-surface) 38%, transparent);
+    .skc-chip__icon {
+      opacity: 0.38;
+      color: var(--on-surface-variant);
     }
   }
 }

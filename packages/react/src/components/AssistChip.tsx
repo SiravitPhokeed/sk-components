@@ -124,7 +124,7 @@ export const AssistChip: StyleableFC<AssistChipProps> = ({
     className={cn("skc-assist-chip", className)}
     style={style}
   >
-    {icon}
+    {icon && <div className="skc-chip__icon">{icon}</div>}
     <Text type="label-large" className="skc-chip__label">
       {children}
     </Text>

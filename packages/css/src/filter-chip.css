@@ -7,6 +7,8 @@
 
 .skc-filter-chip__arrow {
   transition: transform var(--motion-short-4) var(--easing-standard);
+  margin-inline-end: -0.5rem;
+  font-size: 1.125rem;
 
   &,
   &.skc-material-icon {

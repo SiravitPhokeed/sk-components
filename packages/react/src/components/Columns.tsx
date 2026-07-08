@@ -29,9 +29,7 @@ export interface ColumnsProps extends ElementCustomizableProps {
  * collapse columns into one column.
  *
  * The columns inside of Columns are based on the layout grid, which is a grid
- * system that keeps elements of a page aligned to a common grid
- * ({@link https://m3.material.io/foundations/adaptive-design/large-screens/overview#55fc0118-1fa3-48a3-b805-169bb58e6e78 M3 reference};
- * {@link https://m2.material.io/design/layout/responsive-layout-grid.html#columns-gutters-and-margins M2 reference}).
+ * system that keeps elements of a page aligned to a common grid.
  *
  * @param children The content to be divided.
  * @param columns Number of columns.

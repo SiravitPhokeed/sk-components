@@ -147,7 +147,11 @@ export const FilterChip: StyleableFC<FilterChipProps> = ({
         className={cn("skc-filter-chip", className)}
         style={{ anchorName, ...style }}
       >
-        {selected ? <MaterialIcon icon="done" /> : icon}
+        {(selected || icon) && (
+          <div className="skc-chip__icon">
+            {selected ? <MaterialIcon icon="done" /> : icon}
+          </div>
+        )}
         <Text type="label-large" className="skc-chip__label">
           {children}
         </Text>
