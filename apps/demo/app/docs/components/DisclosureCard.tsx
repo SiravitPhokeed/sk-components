@@ -22,7 +22,7 @@ const DisclosureCard: FC<{
       <Text type="title-medium">{summary}</Text>
       <MaterialIcon
         icon="chevron_right"
-        className="text-on-surface-variant shrink-0 group-open:rotate-90"
+        className="text-on-surface-variant rtl:flip-x shrink-0 group-open:rotate-90 group-open:rtl:-rotate-90"
       />
     </Interactive>
     <section className="px-4 pt-1 pb-3">{children}</section>
