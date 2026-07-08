@@ -541,15 +541,33 @@ SKCom no longer wraps or re-exports framer-motion.
 
 **Before:**
 
+In v3, consumers who needed a ripple effect on custom elements had to wire up
+`useRipple()` manually — managing a ref, spreading listeners, and rendering a
+`<motion.span>` for the ripple visual:
+
 ```tsx
-const ripple = useRipple();
-<button {...ripple.props}>{ripple.ripple}</button>;
+import { useRipple } from "@suankularb-components/react";
+import { motion } from "framer-motion";
+
+const buttonRef = useRef(null);
+const { rippleListeners, rippleControls, rippleStyle } = useRipple(buttonRef);
+
+<button ref={buttonRef} {...rippleListeners}>
+  Click me
+  <motion.span
+    aria-hidden
+    initial={{ scale: 0, opacity: 0.36 }}
+    animate={rippleControls}
+    className="skc-interactive__ripple"
+    style={rippleStyle}
+  />
+</button>;
 ```
 
 **After:**
 
 ```tsx
-<Interactive rippleEffect>Click me</Interactive>
+<Interactive>Click me</Interactive>
 ```
 
 ### 4.2 Removed exports
