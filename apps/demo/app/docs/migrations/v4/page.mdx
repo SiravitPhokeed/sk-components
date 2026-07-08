@@ -33,29 +33,24 @@ pnpm add @suankularb-components/react@latest
 ### Highlights
 
 > 1. **App Router support** — Client Components are now marked with
->   `"use client"`.
-> 
+>    `"use client"`.
 > 2. **Setup changes** — [Theme Provider](/docs/layouts/theme-provider) is no
 >    longer a wrapper, and you no longer manage the state of
 >    [Nav Drawer](/docs/layout/nav-drawer) or [Snackbar](/docs/overlays/snackbar).
 >    Try the new `snackbar.push()` and `snackbar.promise()` methods.
-> 
 > 3. **Declarative modals** — Replace `useState` with the
 >    [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API)
 >    for [Menu](/docs/overlays/menu), [Dialog](/docs/overlays/dialog), and
 >    [Full-screen Dialog](/docs/overlays/fullscreen-dialog). The new
 >    [Anchor](/docs/layout/anchor) component simplifies Menu positioning.
-> 
 > 4. **FAB in Root Layout** — [FAB](/docs/inputs/fab) moves from a Nav Bar prop
 >    to a direct child of [Root Layout](/docs/layout/root-layout).
-> 
 > 5. **`alt` and `*Attr` removed** — `alt` is removed in favor of auto-generated
 >    IDs, and `*Attr` pass-through props have been removed from most components.
-> 
 > 6. **Motion support removed** — You can still use
 >    [Motion](https://motion.dev/docs/react) in your app, but you may need to
 >    reimplement some features.
-> 
+>
 > A complete component-by-component checklist is available in the summary table at
 > the end of this page.
 
