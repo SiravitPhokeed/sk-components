@@ -26,6 +26,6 @@
 
 @media (prefers-color-scheme: dark) {
   .skc-material-icon {
-    --_grade: -25;
+    font-variation-settings: "GRAD" -25;
   }
 }
