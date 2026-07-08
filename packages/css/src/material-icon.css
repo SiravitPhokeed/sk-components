@@ -30,3 +30,7 @@
     font-variation-settings: "GRAD" -25;
   }
 }
+
+[dir="rtl"] .skc-material-icon--directional {
+  scale: -1 1;
+}

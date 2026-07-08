@@ -688,7 +688,7 @@ These are new capabilities you may want to use:
 - **FormGroup**: `legendElement`
 - **ChipField**: `required`
 - **ListItem**: `containerElement`
-- **MaterialIcon**: `alt` (accessibility label)
+- **MaterialIcon**: `alt` (accessibility label), `directional` (flips icon horizontally in RTL)
 - **SplitLayout**: `prefer`
 - **Interactive, Button**: `command`, `commandfor`
 - **MenuItem**: `dangerous`

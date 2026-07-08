@@ -20,7 +20,7 @@ icon font from Google.
 <DemoCard
   component={MaterialIcon}
   initialProps={{
-    icon: "person",
+    icon: "directions_run",
     fill: false,
     weight: 400,
     grade: 0,
@@ -32,11 +32,12 @@ icon font from Google.
     weight: [100, 200, 300, 400, 500, 600, 700],
     grade: [-25, 0, 200],
     size: [20, 24, 40, 48],
+    directional: "boolean",
   }}
 />
 
 ```tsx
-<MaterialIcon size={48} icon="person" />
+<MaterialIcon size={48} icon="directions_run" />
 ```
 
 You can find the list of all icons at
@@ -159,6 +160,21 @@ to animate** the icon’s weight, grade, and size.
       How large/small the icon is.
 
       - Uses the `opsz` font variation setting on the Material Symbol font.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="directional" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      If the icon should flip horizontally in right-to-left (RTL) languages.
+      
+      - This includes that indicate direction, like arrows and chevrons, and
+        icons that depict forward movement, like a person walking.
+      - Media controls, like play/pause and volume, should not flip.
       - Optional.
 
       </TableCell>

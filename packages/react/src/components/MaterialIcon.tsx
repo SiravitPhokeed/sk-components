@@ -57,6 +57,16 @@ export interface MaterialIconProps {
    * - Optional.
    */
   size?: 20 | 24 | 40 | 48;
+
+  /**
+   * If the icon should flip horizontally in right-to-left (RTL) languages.
+   *
+   * - This includes that indicate direction, like arrows and chevrons, and
+   *   icons that depict forward movement, like a person walking.
+   * - Media controls, like play/pause and volume, should not flip.
+   * - Optional.
+   */
+  directional?: boolean;
 }
 
 /**
@@ -69,6 +79,7 @@ export interface MaterialIconProps {
  * @param weight How thick the strokes are.
  * @param grade `grade` also adjusts the icon’s thickness, but more subtly.
  * @param size How large/small the icon is.
+ * @param directional If the icon should flip horizontally in right-to-left (RTL) languages.
  */
 export const MaterialIcon: StyleableFC<MaterialIconProps> = ({
   icon,
@@ -77,6 +88,7 @@ export const MaterialIcon: StyleableFC<MaterialIconProps> = ({
   weight,
   grade,
   size,
+  directional,
   className,
   style,
 }) => (
@@ -95,7 +107,11 @@ export const MaterialIcon: StyleableFC<MaterialIconProps> = ({
         return value ? value.slice(0, -2) : undefined; // Remove the last comma and space
       })(),
     }}
-    className={cn(`skc-material-icon`, className)}
+    className={cn(
+      `skc-material-icon`,
+      directional && `skc-material-icon--directional`,
+      className,
+    )}
     translate="no"
   >
     {icon}
