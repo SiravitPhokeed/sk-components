@@ -22,7 +22,7 @@ const DemoCard = ({
   >({});
 
   return (
-    <section className="my-6 space-y-3">
+    <section className="mb-6 mt-4 space-y-3">
       {/* Card */}
       <div className="bg-surface-container border-outline-variant rounded-lg border">
         {/* Sample */}

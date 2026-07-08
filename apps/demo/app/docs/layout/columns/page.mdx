@@ -1,5 +1,6 @@
 import { Card, Columns } from "@/app/docs/components/client-components";
 import DemoCard from "@/app/docs/components/DemoCard";
+import LinksChipSet from "@/app/docs/components/LinksChipSet";
 import PropsTable from "@/app/docs/components/PropsTable";
 import PropsTableRow from "@/app/docs/components/PropsTableRow";
 import { TableCell, Text } from "@suankularb-components/react";
@@ -16,9 +17,12 @@ make the content easier to read. On smaller screens, Columns automatically
 collapse columns into one column.
 
 The columns inside of Columns are based on the layout grid, which is a grid
-system that keeps elements of a page aligned to a common grid
-([M3 reference](https://m3.material.io/foundations/adaptive-design/large-screens/overview#55fc0118-1fa3-48a3-b805-169bb58e6e78);
-[M2 reference](https://m2.material.io/design/layout/responsive-layout-grid.html#columns-gutters-and-margins)).
+system that keeps elements of a page aligned to a common grid.
+
+<LinksChipSet
+  material="/foundations/layout/grids-spacing/overview"
+  source="/Columns.tsx"
+/>
 
 <DemoCard
   component={Columns}
