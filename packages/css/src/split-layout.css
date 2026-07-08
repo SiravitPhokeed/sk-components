@@ -58,7 +58,7 @@
 
     > * {
       /* Fade out top */
-      mask-image: linear-gradient(to bottom, transparent 0, black 2rem);
+      mask-image: linear-gradient(to bottom, transparent 0, black 1.5rem);
     }
   }
 
