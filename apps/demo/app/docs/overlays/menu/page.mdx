@@ -30,6 +30,15 @@ A trigger button can open Menu via the Invoker Commands API.
 </Anchor>
 ```
 
+Menu Items inside the Menu can close it via `command="request-close"`, unless a
+different `commandfor` is specified. “Light dismiss” is also supported by
+clicking outside the Menu or pressing Escape.
+
+```tsx
+// Inside Menu
+<MenuItem command="request-close">Email</MenuItem>
+```
+
 ### Props
 
 - `StyleableProps` are available: `className` and `style`.

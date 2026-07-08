@@ -9,21 +9,17 @@ export const metadata = {
 ## Full-screen Dialog
 
 A Full-screen Dialog fills the entire screen containing a series of tasks
-required to complete.
+required to complete. It fills the screen on mobile and turns into a Dialog on
+larger screens.
 
-A Full-screen Dialog only fills the screen on mobile and turns into a Dialog
-on larger screens. A Dialog can appear above a Full-screen Dialog.
+A Dialog can appear above a Full-screen Dialog.
 
 ```tsx
 <FullscreenDialog
   id="edit-profile"
   title="Edit profile"
   action={
-    <Button
-      appearance="filled"
-      command="request-close"
-      commandfor="edit-profile"
-    >
+    <Button appearance="filled" command="request-close">
       Save
     </Button>
   }
@@ -39,6 +35,21 @@ A trigger button can open the Full-screen Dialog via the Invoker Commands API.
 ```tsx
 <Button command="show-modal" commandfor="edit-profile">
   Edit profile
+</Button>
+```
+
+Buttons inside the Full-screen Dialog or the `action` prop can close it via
+`command="request-close"`, unless a different `commandfor` is specified. “Light
+dismiss” is also supported by pressing Escape or clicking the backdrop on larger
+screens.
+
+Use `appearance="text"` for the Button in the `action` prop to match the
+Material Design spec.
+
+```tsx
+// Inside Full-screen Dialog
+<Button appearance="text" command="request-close">
+  Cancel
 </Button>
 ```
 

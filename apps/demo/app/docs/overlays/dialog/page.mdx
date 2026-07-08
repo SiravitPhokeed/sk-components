@@ -19,14 +19,10 @@ decision or prompts a user to enter important information.
     desc="You will not be able to see posts from Akira."
   />
   <Actions>
-    <Button command="request-close" commandfor="remove-friend-dialog">
+    <Button appearance="text" command="request-close">
       Cancel
     </Button>
-    <Button
-      appearance="filled"
-      command="request-close"
-      commandfor="remove-friend-dialog"
-    >
+    <Button appearance="text" command="request-close">
       Remove
     </Button>
   </Actions>
@@ -40,6 +36,20 @@ A trigger button can open the Dialog via the Invoker Commands API.
 ```tsx
 <Button command="show-modal" commandfor="remove-friend-dialog">
   Remove friend
+</Button>
+```
+
+Buttons inside the Dialog can close it via `command="request-close"`, unless a
+different `commandfor` is specified. “Light dismiss” is also supported by
+clicking the backdrop or pressing Escape.
+
+Use `appearance="text"` for buttons inside a Dialog to match the Material Design
+spec.
+
+```tsx
+// Inside Dialog
+<Button appearance="text" command="request-close">
+  Cancel
 </Button>
 ```
 
