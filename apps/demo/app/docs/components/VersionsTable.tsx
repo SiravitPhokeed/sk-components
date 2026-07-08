@@ -11,7 +11,9 @@ const VersionsTable: FC<{ children: ReactNode }> = ({ children }) => (
   <Table contentWidth={480}>
     <TableHead>
       <TableRow>
-        <TableCell header className="w-28">Version</TableCell>
+        <TableCell header className="w-28">
+          Version
+        </TableCell>
         <TableCell header>Changes</TableCell>
       </TableRow>
     </TableHead>
