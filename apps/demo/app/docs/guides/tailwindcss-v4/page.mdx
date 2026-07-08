@@ -1,3 +1,5 @@
+import VersionsTable from "@/app/docs/components/VersionsTable";
+import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import TailwindSelector from "@/app/docs/components/TailwindSelector";
 
 export const metadata = {
@@ -313,3 +315,11 @@ can have those elements customized with Tailwind CSS utilities.
 ```
 
 Now the state layer and ripple effect will use the `primary` color.
+
+### Version changes
+
+<VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+    Tailwind CSS v4 support introduced.
+  </VersionsTableRow>
+</VersionsTable>

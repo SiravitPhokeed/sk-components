@@ -1,3 +1,5 @@
+import VersionsTable from "@/app/docs/components/VersionsTable";
+import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import { Actions, Button } from "@suankularb-components/react";
 import TailwindSelector from "@/app/docs/components/TailwindSelector";
 
@@ -344,3 +346,9 @@ The variant can then be used like so:
   I have a primary state layer!
 </Interactive>
 ```
+
+<VersionsTable>
+  <VersionsTableRow version="v3.0.0">
+    Tailwind CSS v3 support introduced.
+  </VersionsTableRow>
+</VersionsTable>

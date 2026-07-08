@@ -1,3 +1,5 @@
+import VersionsTable from "@/app/docs/components/VersionsTable";
+import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import IconFontDialog from "@/app/docs/components/IconFontDialog";
 import RouterSelector from "@/app/docs/components/RouterSelector";
 import { Button, MaterialIcon } from "@suankularb-components/react";
@@ -266,3 +268,14 @@ for navigation instead of the default `<a>` element.
   About
 </Button>
 ```
+
+### Version changes
+
+<VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+    Theme Provider no longer wraps the app. Root Layout now defaults to `element="body"`. FAB is now a direct child of Root Layout.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.0.0">
+    Pages Router support introduced.
+  </VersionsTableRow>
+</VersionsTable>

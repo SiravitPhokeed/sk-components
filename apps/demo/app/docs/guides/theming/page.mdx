@@ -1,3 +1,6 @@
+import VersionsTable from "@/app/docs/components/VersionsTable";
+import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
+
 export const metadata = {
   title: "Theming",
 };
@@ -333,3 +336,19 @@ For reference, here is the default `_theme.css` file included with Theme Provide
   }
 }
 ```
+
+### Version changes
+
+<VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+  
+    `_theme.css` replaced `abstracts.css`.
+
+    `easing-emphasized` now uses a `linear()` approximation.
+    Light/dark schemes now rely on the `color-scheme` property.
+
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.0.0">
+    `abstracts.css` introduced.
+  </VersionsTableRow>
+</VersionsTable>

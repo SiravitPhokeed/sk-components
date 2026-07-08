@@ -1,5 +1,7 @@
 import IconFontDialog from "@/app/docs/components/IconFontDialog";
 import RouterSelector from "@/app/docs/components/RouterSelector";
+import VersionsTable from "@/app/docs/components/VersionsTable";
+import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import { Button, MaterialIcon } from "@suankularb-components/react";
 
 export const metadata = {
@@ -236,3 +238,11 @@ for navigation instead of the default `<a>` element.
   About
 </Button>
 ```
+
+### Version changes
+
+<VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+    App Router support introduced.
+  </VersionsTableRow>
+</VersionsTable>
