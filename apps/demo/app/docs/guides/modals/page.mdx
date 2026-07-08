@@ -1,5 +1,145 @@
-export const meta = {
+import DisclosureCard from "@/app/docs/components/DisclosureCard";
+import VersionsTable from "@/app/docs/components/VersionsTable";
+import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
+
+export const metadata = {
   title: "Modals and popovers",
 };
 
 ## Modals and popovers
+
+Learn about how to open and close modals and popovers.
+
+### Getting started
+
+There are two main ways to open and close modals and popovers.
+
+- **Uncontrolled (recommended)**: Use the `command` and `commandfor` props on
+  trigger elements like Buttons to open and close modals and popovers.
+- **Controlled**: Use the `open` and `onClose` props on modals and popovers to
+  control their open state. This requires you to manage the open state, e.g.
+  with `useState`.
+
+> **Additional considerations:** [Menus](/docs/overlays/menu) can be anchored to
+> a trigger element with [Anchor](/docs/layout/anchor). For
+> [Snackbars](/docs/overlays/snackbar), use `snackbar.push()` and
+> `snackbar.promise()` instead of these two approaches.
+
+### Uncontrolled approach
+
+1. Assign a unique `id` to the modal or popover.
+2. Use the `command` prop on a trigger element to open the modal or popover, and
+   set the `commandfor` prop to the `id` of the modal or popover.
+
+```tsx
+<Button appearance="filled" command="open-modal" commandfor="discard-dialog">Discard</Button>
+<Dialog id="discard-dialog">
+  <DialogHeader>Discard changes?</DialogHeader>
+  <Actions>
+    <Button appearance="text" command="close-modal">Cancel</Button>
+    <Button appearance="text" command="close-modal">Discard</Button>
+  </Actions>
+</Dialog>
+```
+
+> Notice how the Dialog has an `id` of `discard-dialog`, and the Button has a
+> `commandfor` of `discard-dialog`. This is how the Button knows which modal to
+> open.
+
+Use the `command` prop to open and close modals and popovers.
+
+- **Open:** Use `show-popover` to open [Menu](/docs/overlays/menu) and
+`show-modal` to open [Dialog](/docs/overlays/dialog) and
+[Full-screen Dialog](/docs/overlays/fullscreen-dialog).
+
+- **Close:** Use `hide-popover` to close Menu and `request-close` to close Dialog
+and Full-screen Dialog. Use `close` if you need to close the modal without
+animation, although this is not recommended.
+
+<DisclosureCard summary="Compare modals and popovers">
+
+[App Drawer](/docs/layout/app-drawer), [Nav Drawer](/docs/layout/nav-drawer),
+[Dialog](/docs/overlays/dialog), and
+[Full-screen Dialog](/docs/overlays/fullscreen-dialog) are **modals**.
+
+- A modal is a type of overlay that **blocks interaction with the rest of the
+  application** until it is dismissed.
+- It has a backdrop that covers the rest of the application, and it is either
+  centered on the screen or slides in from the side.
+- For keyboard users, only the modal content is focusable, and pressing the
+  Escape key closes the modal.
+
+[Menu](/docs/overlays/menu) and [Snackbar](/docs/overlays/snackbar) are
+**popovers**.
+
+- A popover is a type of overlay that **does not block interaction with the rest
+  of the application**.
+- It does not have a backdrop, and it is anchored to a trigger element.
+
+</DisclosureCard>
+
+<DisclosureCard summary={
+  <>
+    Components that support <code>command</code> and <code>commandfor</code> props
+  </>
+}>
+
+- [App Drawer Item](/docs/layout/app-drawer-item)
+- [Assist Chip](/docs/data/assist-chip)
+- [Button](/docs/inputs/button)
+- [Card](/docs/data/card)
+- [Floating Action Button](/docs/inputs/fab)
+- [Input Chip](/docs/data/input-chip)
+- [Interactive](/docs/data/interactive)
+- [List Item](/docs/data/list-item)
+- [Menu Item](/docs/overlays/menu-item)
+- [Nav Bar Item](/docs/layout/nav-bar-item)
+- [Nav Drawer Item](/docs/layout/nav-drawer-item)
+- [Suggestion Chip](/docs/data/suggestion-chip)
+- [Tab](/docs/layout/tab)
+
+</DisclosureCard>
+
+### Controlled approach
+
+1. Use `useState` to manage the open state of the modal or popover.
+2. On the modal or popover, set the `open` prop to the open state, and set the
+   `onClose` prop to a function that sets the open state to `false`.
+3. On a trigger element, set the `onClick` prop to a function that sets the open
+   state to `true`.
+
+```tsx
+// Controlled
+const [open, setOpen] = useState(false);
+
+return (
+  <>
+    <Button appearance="filled" onClick={() => setOpen(true)}>
+      Discard
+    </Button>
+    <Dialog open={open} onClose={() => setOpen(false)}>
+      <DialogHeader>Discard changes?</DialogHeader>
+      <Actions>
+        <Button appearance="text" onClick={() => setOpen(false)}>
+          Cancel
+        </Button>
+        <Button appearance="text" onClick={() => setOpen(false)}>
+          Discard
+        </Button>
+      </Actions>
+    </Dialog>
+  </>
+);
+```
+
+### Version changes
+
+<VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+    Uncontrolled approach introduced and recommended. Controlled approach is
+    still supported.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.0.0">
+    Controlled approach introduced.
+  </VersionsTableRow>
+</VersionsTable>
