@@ -35,9 +35,12 @@ const PromptCard: FC<{
   return (
     <Card
       appearance="filled"
-      className="text-on-surface/90 from-secondary-container to-primary-container bg-linear-135"
+      className="text-on-surface/90 before:from-secondary before:to-primary from-secondary-container to-primary-container relative bg-linear-135 before:absolute before:inset-0 before:-z-10 before:animate-pulse before:bg-linear-135 before:opacity-60 before:blur-lg before:[animation-duration:5s]"
     >
-      <CardHeader icon={<MaterialIcon icon="robot_2" />} title={title} />
+      <CardHeader
+        icon={<MaterialIcon icon="robot_2" className="text-secondary" />}
+        title={title}
+      />
       <Text type="body-medium" className="p-4 pt-0 md:text-balance">
         {children}
         <Actions className="mt-4">
