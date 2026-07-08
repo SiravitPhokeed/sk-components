@@ -41,7 +41,7 @@ const components: MDXComponents = {
     <Card
       appearance="filled"
       element="blockquote"
-      className="font-display [&_code]:bg-surface-bright [&_strong]:text-primary my-4 px-4 py-1"
+      className="font-display [&_code]:bg-surface-bright [&_strong]:text-on-surface my-4 px-4 py-1"
     >
       <Text type="title-medium" {...props} />
     </Card>
