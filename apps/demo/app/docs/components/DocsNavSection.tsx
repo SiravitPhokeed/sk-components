@@ -18,7 +18,8 @@ const DocsNavSection: StyleableFC<{
       </Text>
       <MaterialIcon
         icon="chevron_right"
-        className="text-on-surface-variant rtl:flip-x group-open:rotate-90 group-open:rtl:-rotate-90"
+        directional
+        className="text-on-surface-variant group-open:rotate-90 group-open:rtl:-rotate-90"
       />
     </Interactive>
     <div className="border-s-outline-variant ms-2 mt-1 border-s ps-2">

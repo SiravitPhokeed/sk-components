@@ -105,7 +105,8 @@ const IconFontDialog: FC = () => {
               <MaterialIcon
                 icon="arrow_outward"
                 size={20}
-                className="rtl:flip-x -mt-1 inline-block"
+                directional
+                className="-mt-1 inline-block"
               />
             </Link>
             .
