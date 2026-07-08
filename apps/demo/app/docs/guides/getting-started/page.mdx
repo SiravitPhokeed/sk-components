@@ -1,3 +1,4 @@
+import DisclosureCard from "@/app/docs/components/DisclosureCard";
 import IconFontDialog from "@/app/docs/components/IconFontDialog";
 import { Button, MaterialIcon } from "@suankularb-components/react";
 
@@ -7,20 +8,47 @@ export const metadata = {
 
 ## Getting started
 
-**SK Components (“SKCom”) is a design system** consisting of tokens and components created with the goal of a **consistent and harmonious experience across all Suankularb features** and applications.
-
-> The library is **based on Material Design 3,** although only Baseline is supported. There are currently no plans implement Expressive.
->
-> You are encouraged to read the [Material Design 3 documentation](https://m3.material.io/) to understand the design system better.
+**SK Components (“SKCom”) is a design system based on
+[Material Design 3](https://m3.material.io/)** consisting of tokens and
+components created with the goal of a **consistent and harmonious experience
+across all Suankularb features** and applications.
 
 There are currently 2 official SKCom libraries:
 
-- **SK Components Styles** (`@suankularb-components/styles`) — a CSS library that other libraries can use to implement the design system.
-- **React SK Components** (`@suankularb-components/react`, **“ReSKCom”**) — a React library that provides React components that implement the design system.
+- **SK Components Styles** (`@suankularb-components/styles`) — a CSS library
+  that other libraries can use to implement the design system.
+- **React SK Components** (`@suankularb-components/react`, **“ReSKCom”**) — a
+  React library that provides React components that implement the design system.
 
-This documentation is for **ReSKCom**, which is the recommended library for React applications. Guidance for integrating with [Next.js](/docs/guides/nextjs-app) and [Tailwind CSS](/docs/guides/tailwindcss-v4) is available.
+This documentation is for **ReSKCom**, which is the recommended library for React applications.
 
 > SK Components v4 is now available. If you are using v3, [learn how to upgrade here](/docs/migrations/v4).
+
+<DisclosureCard summary="Is M3 Expressive supported?">
+
+No, SKCom is based on Material Design 3 Baseline, so
+[M3 Expressive](https://m3.material.io/blog/building-with-m3-expressive)
+features like updated components and the motion physics system aren’t
+available.
+
+This is to reduce compatibility issues for those
+[upgrading from v3 to v4](/docs/migrations/v4), so there is currently no plan
+to implement M3 Expressive in SKCom.
+
+</DisclosureCard>
+
+<DisclosureCard summary="Next.js and Tailwind CSS users: read this first">
+
+**Next.js users:** use the guides for integrating SKCom with Next.js instead of
+this guide. See the [App Router guide](/docs/guides/nextjs-app) or the
+[Pages Router guide](/docs/guides/nextjs-pages), depending on which router you
+are using.
+
+**Tailwind CSS users:** when you’re done with this guide or the Next.js guides,
+see the [Tailwind CSS guide](/docs/guides/tailwindcss-v4) for instructions on
+how to integrate SKCom with Tailwind CSS.
+
+</DisclosureCard>
 
 ### Installation
 
