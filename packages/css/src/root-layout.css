@@ -57,11 +57,11 @@ body {
     &:has(> .skc-nav-bar) {
       --_nav-size: 5rem;
     }
+    &:has(> .skc-fab) {
+      --_fab-size: calc(3.5rem + 1rem);
+    }
     &:has(> .skc-fab.skc-fab--small) {
       --_fab-size: calc(2.5rem + 1rem);
-    }
-    &:has(> .skc-fab.skc-fab) {
-      --_fab-size: calc(3.5rem + 1rem);
     }
     &:has(> .skc-fab.skc-fab--large) {
       --_fab-size: calc(6rem + 1rem);
