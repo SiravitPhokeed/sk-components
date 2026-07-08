@@ -73,6 +73,10 @@
 @media (width < 600px) {
   .skc-fab {
     transform-origin: bottom right;
+
+    [dir="rtl"] & {
+      transform-origin: bottom left;
+    }
   }
 
   .skc-fab--small {
