@@ -25,28 +25,39 @@ npm install @suankularb-components/react@latest
 pnpm add @suankularb-components/react@latest
 ```
 
-> tl;dr
->
-> 1. [Next.js App Router](/docs/guides/nextjs-app) is now supported.
-> 2. SKCom now manages [Nav Drawer](/docs/layout/nav-drawer) and
->    [Snackbar](/docs/overlays/snackbar) state for you, no Context required!
-> 3. [Modals](/docs/guides/modals) (e.g. [Menu](/docs/overlays/menu),
->    [Dialog](/docs/overlays/dialog), [Nav Drawer](/docs/layout/nav-drawer))
->    now support the
->    [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API).
-> 4. [FAB](/docs/inputs/fab) is now in Root Layout instead of Nav Bar.
-> 5. `alt` and `*Attr` props were removed from most components that
->    had it.
-> 6. Framer Motion is no longer directly supported.
->
-> Scroll past the highlights for a complete list of API changes.
-
 <PromptCard title="AI-assisted migration" prompt={prompt}>
   Save time by copying a structured prompt for your AI coding agent to help
   migrate your codebase to v4.
 </PromptCard>
 
 ### Highlights
+
+> 1. **App Router support** — Client Components are now marked with
+>   `"use client"`.
+> 
+> 2. **Setup changes** — [Theme Provider](/docs/layouts/theme-provider) is no
+>    longer a wrapper, and you no longer manage the state of
+>    [Nav Drawer](/docs/layout/nav-drawer) or [Snackbar](/docs/overlays/snackbar).
+>    Try the new `snackbar.push()` and `snackbar.promise()` methods.
+> 
+> 3. **Declarative modals** — Replace `useState` with the
+>    [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API)
+>    for [Menu](/docs/overlays/menu), [Dialog](/docs/overlays/dialog), and
+>    [Full-screen Dialog](/docs/overlays/fullscreen-dialog). The new
+>    [Anchor](/docs/layout/anchor) component simplifies Menu positioning.
+> 
+> 4. **FAB in Root Layout** — [FAB](/docs/inputs/fab) moves from a Nav Bar prop
+>    to a direct child of [Root Layout](/docs/layout/root-layout).
+> 
+> 5. **`alt` and `*Attr` removed** — `alt` is removed in favor of auto-generated
+>    IDs, and `*Attr` pass-through props have been removed from most components.
+> 
+> 6. **Motion support removed** — You can still use
+>    [Motion](https://motion.dev/docs/react) in your app, but you may need to
+>    reimplement some features.
+> 
+> A complete component-by-component checklist is available in the summary table at
+> the end of this page.
 
 #### App Router support
 
@@ -320,9 +331,10 @@ removed), this feature never saw much use, so it was removed.
 
 </DisclosureCard>
 
-#### Framer Motion support removed
+#### Motion support removed
 
-You can still use Motion in your app, but SKCom no longer directly supports it.
+You can still use Motion (formerly Framer Motion) in your app, but SKCom no
+longer directly supports it.
 
 **The `useAnimationConfig()`, `useRipple()`, and `useBreakpoint()` hooks, the
 `DURATION` and `EASING` constants, and the `transition` helper were removed.**
