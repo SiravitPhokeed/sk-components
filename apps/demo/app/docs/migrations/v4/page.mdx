@@ -225,6 +225,31 @@ return (
 );
 ```
 
+---
+
+<DisclosureCard summary={
+  <>
+    Using the right <code>command</code> for the right modal
+  </>
+}>
+
+**Open:** Use `show-popover` to open [Menu](/docs/overlays/menu) and
+`show-modal` to open [Dialog](/docs/overlays/dialog) and
+[Full-screen Dialog](/docs/overlays/fullscreen-dialog).
+
+The difference is that `show-popover` will position the modal relative to the
+trigger, while `show-modal` will center the modal in the viewport.
+
+---
+
+**Close:** Use `hide-popover` to close Menu and `request-close` to close Dialog
+and Full-screen Dialog. Use `close` if you need to close the modal without
+animation, although this is not recommended.
+
+Learn more in the [modals and popovers guide](/docs/guides/modals).
+
+</DisclosureCard>
+
 #### FAB in Root Layout
 
 **[FAB](/docs/inputs/fab) is now a direct child of [Root Layout](/docs/layout/root-layout).**
