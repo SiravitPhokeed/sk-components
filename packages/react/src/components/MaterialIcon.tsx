@@ -92,7 +92,7 @@ export const MaterialIcon: StyleableFC<MaterialIconProps> = ({
         if (weight) value += `"wght" ${weight}, `;
         if (grade !== undefined) value += `"GRAD" ${grade}, `;
         if (size) value += `"opsz" ${size}, `;
-        return value.slice(0, -2); // Remove the last comma and space
+        return value ? value.slice(0, -2) : undefined; // Remove the last comma and space
       })(),
     }}
     className={cn(`skc-material-icon`, className)}
