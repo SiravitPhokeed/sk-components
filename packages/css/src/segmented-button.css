@@ -49,6 +49,13 @@
 }
 
 /* Full width */
-.skc-segmented-button.skc-segmented-button--full > .skc-button {
+.skc-segmented-button.skc-segmented-button--full {
   width: 100%;
+
+  > .skc-button {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    min-width: 0;
+  }
 }
