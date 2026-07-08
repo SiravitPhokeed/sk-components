@@ -8,7 +8,19 @@ import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/fullscreen-dialog.css";
 import type { CSSProperties, ReactNode } from "react";
-import { useEffect, useId, useRef } from "react";
+import { createContext, useContext, useEffect, useId, useRef } from "react";
+
+const FullscreenDialogContext = createContext<{
+  dialogID: string;
+  onClose: (() => void) | undefined;
+} | null>(null);
+
+/**
+ * Returns the Full-screen Dialog context if inside a Full-screen Dialog, or
+ * `null` otherwise.
+ */
+export const useFullscreenDialogContext = () =>
+  useContext(FullscreenDialogContext);
 
 const EXITING_CLASS = "skc-fullscreen-dialog--exiting";
 const EXIT_ANIMATION_NAME = "skc-fullscreen-dialog-exit";
@@ -147,23 +159,25 @@ export const FullscreenDialog: StyleableFC<FullscreenDialogProps> = ({
       className={cn("skc-fullscreen-dialog", className)}
       style={{ ...style, width }}
     >
-      {/* Top app bar */}
-      <div className="skc-fullscreen-dialog__top-app-bar">
-        <Button
-          appearance="text"
-          icon={<MaterialIcon icon="close" />}
-          alt={STRINGS[locale].close}
-          command="request-close"
-          commandfor={dialogID}
-        />
-        <Text id={`${dialogID}-title`} type="title-large" element="h2">
-          {title}
-        </Text>
-        {action}
-      </div>
+      <FullscreenDialogContext.Provider value={{ dialogID, onClose }}>
+        {/* Top app bar */}
+        <div className="skc-fullscreen-dialog__top-app-bar">
+          <Button
+            appearance="text"
+            icon={<MaterialIcon icon="close" />}
+            alt={STRINGS[locale].close}
+            command="request-close"
+            commandfor={dialogID}
+          />
+          <Text id={`${dialogID}-title`} type="title-large" element="h2">
+            {title}
+          </Text>
+          {action}
+        </div>
 
-      {/* Content */}
-      <div className="skc-fullscreen-dialog__content">{children}</div>
+        {/* Content */}
+        <div className="skc-fullscreen-dialog__content">{children}</div>
+      </FullscreenDialogContext.Provider>
     </dialog>
   );
 };

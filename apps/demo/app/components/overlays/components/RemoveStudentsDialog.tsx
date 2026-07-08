@@ -30,18 +30,13 @@ const RemoveStudentsDialog = () => (
       </List>
     </DialogContent>
     <Actions>
-      <Button
-        appearance="text"
-        command="request-close"
-        commandfor="remove-students-dialog"
-      >
+      <Button appearance="text" command="request-close">
         Cancel
       </Button>
       <Button
         appearance="text"
         autoFocus
         command="request-close"
-        commandfor="remove-students-dialog"
         onClick={() => snackbar.push("Students removed")}
       >
         Remove

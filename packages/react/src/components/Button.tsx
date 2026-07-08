@@ -1,5 +1,7 @@
 "use client";
 
+import { useDialogContext } from "@/components/Dialog";
+import { useFullscreenDialogContext } from "@/components/FullscreenDialog";
 import { Interactive } from "@/components/Interactive";
 import { MaterialIcon } from "@/components/MaterialIcon";
 import { Progress } from "@/components/Progress";
@@ -167,6 +169,10 @@ export const Button: StyleableFC<ButtonProps> = ({
   const loadingBool = typeof loading === "number" || loading || false;
   const isFunctional = !(disabled || loadingBool);
 
+  const dialogContext = useDialogContext();
+  const fullscreenDialogContext = useFullscreenDialogContext();
+  const { dialogID } = dialogContext ?? fullscreenDialogContext ?? {};
+
   return (
     <Interactive
       aria-label={alt}
@@ -176,7 +182,7 @@ export const Button: StyleableFC<ButtonProps> = ({
       onClick={isFunctional ? onClick : undefined}
       href={isFunctional ? href : undefined}
       command={command}
-      commandfor={commandfor}
+      commandfor={commandfor ?? (command ? dialogID : undefined)}
       element={element}
       className={cn(
         "skc-button",

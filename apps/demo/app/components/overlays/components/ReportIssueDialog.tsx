@@ -28,7 +28,6 @@ const ReportIssueDialog: FC = () => {
         <Button
           appearance="text"
           command="request-close"
-          commandfor="report-issue-dialog"
           onClick={() => {
             snackbar.push(
               "Report submitted",
