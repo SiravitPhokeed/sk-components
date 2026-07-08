@@ -25,10 +25,10 @@
   transform-origin: bottom;
   opacity: 1;
   transition-delay: calc(var(--_duration) / 4);
-  transition-property: bottom, transform, opacity;
-  transition: var(--_duration) var(--_easing)
-    /* A little delay to allow the previous Snackbar to exit before this one enters. */
-    calc(var(--_duration) / 4);
+  transition: var(--_duration) var(--_easing);
+  /* A little delay to allow the previous Snackbar to exit before this one enters. */
+  transition-delay: calc(var(--_duration) / 4);
+  transition-property: transform, opacity;
   box-sizing: border-box;
   margin: 0;
   inset: auto;

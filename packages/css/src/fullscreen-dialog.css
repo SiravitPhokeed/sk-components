@@ -98,6 +98,12 @@
 
 @media (width >= 600px) {
   .skc-fullscreen-dialog {
+    --_entry-easing: var(--easing-emphasized);
+    --_entry-duration: var(--motion-long-4);
+
+    --_exit-easing: var(--easing-emphasized);
+    --_exit-duration: var(--motion-medium-4);
+
     --_exit-transform-from: translate(-50%, -50%) scaleY(1);
     --_exit-transform-to: translate(-50%, calc(-50% - var(--_offset-y) / 4))
       scaleY(0);
@@ -121,36 +127,23 @@
     overflow: hidden;
 
     > * {
-      transform: scaleY(5);
-      transition: transform var(--_duration) var(--_easing);
-
-      > * {
-        opacity: 0;
-        transition: opacity calc(var(--_duration) * (2 / 3)) var(--_easing);
-        transition-delay: calc(var(--_delay) + var(--_duration) / 2);
-      }
+      opacity: 0;
+      transition: opacity calc(var(--_duration) * (2 / 3)) var(--_easing);
+      transition-delay: calc(var(--_delay) + var(--_duration) / 2);
     }
 
     &[open] {
       transform: translate(-50%, -50%) scaleY(1);
 
       > * {
-        transform: scaleY(1);
-
-        > * {
-          opacity: 1;
-        }
+        opacity: 1;
       }
 
       @starting-style {
         transform: translate(-50%, calc(-50% - var(--_offset-y))) scaleY(0);
 
         > * {
-          transform: scaleY(5);
-
-          > * {
-            opacity: 0;
-          }
+          opacity: 0;
         }
       }
     }
@@ -202,11 +195,16 @@
     opacity: 0;
   }
 }
-
 @keyframes skc-fullscreen-dialog-exit-backdrop {
   from {
     opacity: 0.5;
   }
+  to {
+    opacity: 0;
+  }
+}
+/* Desktop-only */
+@keyframes skc-fullscreen-dialog-exit-content {
   to {
     opacity: 0;
   }
@@ -224,6 +222,13 @@
   &::backdrop {
     animation: var(--_duration) var(--_backdrop-easing) forwards
       skc-fullscreen-dialog-exit-backdrop;
+  }
+}
+
+@media (width >= 600px) {
+  .skc-fullscreen-dialog.skc-fullscreen-dialog--exiting > * {
+    animation: calc(var(--_duration) / 4) var(--_easing) forwards
+      skc-fullscreen-dialog-exit-content;
   }
 }
 

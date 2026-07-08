@@ -50,18 +50,25 @@ body {
   }
 
   .skc-root-layout:has(> .skc-nav-bar) {
-    --_nav-size: 5rem;
-    --_fab-size: 3.5rem;
+    --_nav-size: 0rem;
+    --_fab-size: 0rem;
 
+    /* Height + gap */
+    &:has(> .skc-nav-bar) {
+      --_nav-size: 5rem;
+    }
     &:has(> .skc-fab.skc-fab--small) {
-      --_fab-size: 2.5rem;
+      --_fab-size: calc(2.5rem + 1rem);
+    }
+    &:has(> .skc-fab.skc-fab) {
+      --_fab-size: calc(3.5rem + 1rem);
     }
     &:has(> .skc-fab.skc-fab--large) {
-      --_fab-size: 6rem;
+      --_fab-size: calc(6rem + 1rem);
     }
 
-    &:not(:has(dialog[open])):has(> .skc-fab) .skc-snackbar {
-      --_bottom-offset: calc(1.25rem + var(--_nav-size) + var(--_fab-size));
+    &:not(:has(dialog[open])) .skc-snackbar {
+      --_bottom-offset: calc(var(--_nav-size) + var(--_fab-size));
     }
   }
 }

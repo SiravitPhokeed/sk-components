@@ -5,13 +5,9 @@
  */
 
 .skc-dialog {
-  --_entry-easing: var(--easing-emphasized-decelerate);
-  --_entry-duration: var(--motion-medium-4);
-
-  --_exit-easing: var(--easing-emphasized-accelerate);
-  --_exit-duration: var(--motion-short-2);
-
-  --_backdrop-easing: var(--easing-standard);
+  --_easing: var(--easing-emphasized);
+  --_entry-duration: var(--motion-long-4);
+  --_exit-duration: var(--motion-medium-4);
 
   --_delay: 100ms;
   --_offset-y: 5rem;
@@ -19,7 +15,6 @@
 
 .skc-dialog {
   --_duration: var(--_entry-duration);
-  --_easing: var(--_entry-easing);
 
   --adaptive-secondary-container: light-dark(
     var(--secondary-fixed-dim),
@@ -51,21 +46,16 @@
 
   &::backdrop {
     opacity: 0.5;
-    animation: skc-dialog-enter-backdrop var(--_duration)
-      var(--_backdrop-easing) backwards;
+    animation: skc-dialog-enter-backdrop var(--_duration) var(--_easing)
+      backwards;
     animation-delay: var(--_delay);
     background-color: var(--scrim);
   }
 
   > * {
-    transform: scaleY(5);
-    transition: transform var(--_duration) var(--_easing);
-
-    > * {
-      opacity: 0;
-      transition: opacity calc(var(--_duration) * (2 / 3)) var(--_easing);
-      transition-delay: calc(var(--_delay) + var(--_duration) / 2);
-    }
+    opacity: 0;
+    transition: opacity calc(var(--_duration) * (2 / 3)) var(--_easing);
+    transition-delay: calc(var(--_delay) + var(--_duration) / 2);
   }
 
   /* Open state */
@@ -74,11 +64,7 @@
     opacity: 1;
 
     > * {
-      transform: scaleY(1);
-
-      > * {
-        opacity: 1;
-      }
+      opacity: 1;
     }
 
     @starting-style {
@@ -86,11 +72,7 @@
       opacity: 0;
 
       > * {
-        transform: scaleY(5);
-
-        > * {
-          opacity: 0;
-        }
+        opacity: 0;
       }
     }
   }
@@ -124,7 +106,6 @@
     opacity: 0;
   }
 }
-
 @keyframes skc-dialog-exit-backdrop {
   from {
     opacity: 0.5;
@@ -133,18 +114,23 @@
     opacity: 0;
   }
 }
+@keyframes skc-dialog-exit-content {
+  to {
+    opacity: 0;
+  }
+}
 
 .skc-dialog.skc-dialog--exiting {
   --_duration: var(--_exit-duration);
-  --_easing: var(--_exit-easing);
-
-  & {
-    animation: var(--_duration) var(--_easing) forwards skc-dialog-exit;
-  }
+  animation: var(--_duration) var(--_easing) forwards skc-dialog-exit;
 
   &::backdrop {
-    animation: var(--_duration) var(--_backdrop-easing) forwards
-      skc-dialog-exit-backdrop;
+    animation: var(--_duration) var(--_easing) forwards skc-dialog-exit-backdrop;
+  }
+
+  > * {
+    animation: calc(var(--_duration) / 4) var(--_easing) forwards
+      skc-dialog-exit-content;
   }
 }
 
