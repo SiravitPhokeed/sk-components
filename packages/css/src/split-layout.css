@@ -1,36 +1,8 @@
-.skc-split-layout--custom > .skc-split-layout__content {
-  grid-template-columns: var(--_left-col-span) var(--_right-col-span);
-}
-
-.skc-split-layout__content {
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 0.5rem;
-
-  > * {
-    .skc-content-layout {
-      padding: 1rem 1.25rem;
-    }
-
-    .skc-content-layout__content {
-      margin: 0;
-      width: 100%;
-    }
-  }
-}
-
-.skc-root-layout,
-.skc-root-layout > * {
-  > .skc-split-layout > .skc-split-layout__content {
-    margin: 0 auto;
-
-    > * {
-      padding: 1.5rem 1rem;
-    }
-  }
-}
-
 @media (width < 600px) {
+  .skc-split-layout {
+    padding-inline: 1rem;
+  }
+
   .skc-split-layout--prefer-left > .skc-split-layout__content > :last-child,
   .skc-split-layout--prefer-right > .skc-split-layout__content > :first-child {
     display: none;
@@ -38,89 +10,75 @@
 }
 
 @media (width >= 600px) {
+  .skc-split-layout::before {
+    position: fixed;
+    z-index: 10;
+    inset: 0;
+    background-image: linear-gradient(
+      to bottom,
+      var(--background),
+      transparent
+    );
+    height: 5rem;
+    pointer-events: none;
+    content: "";
+  }
+
   .skc-split-layout__content {
+    display: grid;
+    grid-template-columns:
+      minmax(0, var(--_left-col-span))
+      minmax(0, var(--_right-col-span));
+    row-gap: 0.5rem;
+    margin-inline: auto;
+    width: calc(100% - 12rem);
+    max-width: 72.5rem;
+
+    .skc-split-layout--list-detail > & {
+      --_left-col-span: 1fr;
+      --_right-col-span: 1fr;
+    }
+
+    .skc-split-layout--supporting-panel > & {
+      --_left-col-span: 5fr;
+      --_right-col-span: 3fr;
+    }
+
+    > :first-child {
+      position: sticky;
+      top: 4.25rem;
+      mask-image: linear-gradient(to bottom, transparent 0, black 1.5rem);
+      padding-inline: 1rem 0.75rem;
+      padding-block: 1.5rem;
+      height: calc(100dvh - 4.25rem);
+      overflow: hidden auto;
+    }
+    > :last-child {
+      padding-inline: 0.75rem 1rem;
+      padding-block: 1.5rem;
+    }
+  }
+
+  .skc-split-layout--custom {
     --_left-col-span: var(--_left-col-span-sm);
     --_right-col-span: var(--_right-col-span-sm);
-
-    .skc-split-layout--list-detail & {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .skc-split-layout--supporting-panel & {
-      grid-template-columns: 5fr 3fr;
-    }
-
-    .skc-columns {
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    > * {
-      /* Fade out top */
-      mask-image: linear-gradient(to bottom, transparent 0, black 1.5rem);
-    }
-  }
-
-  .skc-root-layout,
-  .skc-root-layout > * {
-    > .skc-split-layout > .skc-split-layout__content {
-      margin: 0 auto;
-      width: calc(100% - (12rem));
-      max-width: 70.5rem;
-
-      > * {
-        padding-inline: 0;
-        height: calc(100vh - 4.25rem);
-        overflow-y: auto;
-      }
-
-      > :first-child {
-        padding-inline-end: 0.75rem;
-      }
-
-      > :last-child {
-        padding-inline-start: 0.75rem;
-      }
-    }
-  }
-
-  @supports (height: 100dvh) {
-    .skc-root-layout,
-    .skc-root-layout > * {
-      > .skc-split-layout > .skc-split-layout__content {
-        width: calc(100% - (12rem));
-
-        > * {
-          height: calc(100dvh - 4.25rem);
-        }
-      }
-    }
   }
 }
 
-@media (width >= 768px) {
+@media (width >= 905px) {
   .skc-split-layout__content {
-    --_left-col-span: var(--_left-col-span-md);
-    --_right-col-span: var(--_right-col-span-md);
-
-    .skc-columns {
-      display: grid;
-      align-items: start;
-    }
-
     .skc-split-layout--list-detail & {
-      grid-template-columns: 1fr 2fr;
+      --_left-col-span: 1fr;
+      --_right-col-span: 2fr;
     }
 
     .skc-split-layout--supporting-panel & {
-      grid-template-columns: 3fr 1fr;
+      --_left-col-span: 3fr;
+      --_right-col-span: 1fr;
     }
   }
-}
 
-@media (width >= 1024px) {
-  .skc-split-layout__content {
+  .skc-split-layout--custom {
     --_left-col-span: var(--_left-col-span-lg);
     --_right-col-span: var(--_right-col-span-lg);
   }

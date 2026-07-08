@@ -95,6 +95,20 @@ body {
       transform: translateY(3.5rem);
     }
   }
+
+  .skc-root-layout:has(> .skc-split-layout) {
+    > .skc-page-header__blobs {
+      position: fixed;
+      > .skc-page-header__fade {
+        display: none;
+      }
+    }
+    > .skc-page-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+  }
 }
 
 @media print {
