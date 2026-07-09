@@ -145,6 +145,24 @@ snackbar.push(
 });
 ```
 
+---
+
+<DisclosureCard summary="Changes for Tailwind CSS users">
+
+Tailwind CSS v4 users can now override SKCom styles without using `!important`.
+Add this line **before** the `@import` directive in your Tailwind CSS
+configuration file.
+
+```css
+@layer theme, base, skc, components, utilities;
+@import "tailwindcss";
+```
+
+No changes are needed for Tailwind CSS v3 users. Upgrade to v4 to take advantage
+of this feature.
+
+</DisclosureCard>
+
 #### Declarative modals and popovers
 
 **Replace `useState` with the Invoker Commands API** to open and close modals.
