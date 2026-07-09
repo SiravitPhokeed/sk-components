@@ -23,15 +23,18 @@ There are two main ways to open and close modals and popovers.
 > **Additional considerations:** [Menus](/docs/overlays/menu) can be anchored to
 > a trigger element with [Anchor](/docs/layout/anchor). For
 > [Snackbars](/docs/overlays/snackbar), use `snackbar.push()` and
-> `snackbar.promise()` instead of these two approaches.
+> `snackbar.promise()` instead of these two modes.
 
-### Uncontrolled approach
+### Uncontrolled mode
+
+Use the [Invoker Commands API]() to open and close modals and popovers. This is the recommended approach.
 
 1. Assign a unique `id` to the modal or popover.
 2. Use the `command` prop on a trigger element to open the modal or popover, and
    set the `commandfor` prop to the `id` of the modal or popover.
 
 ```tsx
+// Uncontrolled mode (Invoker Commands API)
 <Button appearance="filled" command="open-modal" commandfor="discard-dialog">Discard</Button>
 <Dialog id="discard-dialog">
   <DialogHeader>Discard changes?</DialogHeader>
@@ -100,7 +103,7 @@ Use the `command` prop to open and close modals and popovers.
 
 </DisclosureCard>
 
-### Controlled approach
+### Controlled mode
 
 1. Use `useState` to manage the open state of the modal or popover.
 2. On the modal or popover, set the `open` prop to the open state, and set the
@@ -109,7 +112,7 @@ Use the `command` prop to open and close modals and popovers.
    state to `true`.
 
 ```tsx
-// Controlled
+// Controlled mode
 const [open, setOpen] = useState(false);
 
 return (
@@ -136,10 +139,10 @@ return (
 
 <VersionsTable>
   <VersionsTableRow version="v4.0.0">
-    Uncontrolled approach introduced and recommended. Controlled approach is
-    still supported.
+    Uncontrolled mode introduced and recommended. Controlled mode is still
+    supported.
   </VersionsTableRow>
   <VersionsTableRow version="v3.0.0">
-    Controlled approach introduced.
+    Controlled mode introduced.
   </VersionsTableRow>
 </VersionsTable>
