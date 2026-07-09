@@ -3,8 +3,6 @@
  * A Button with just an icon that can be toggled on and off.
  */
 
-/* ── Block ── */
-
 .skc-toggle-button {
   --_duration: var(--duration-short-4);
   --_ease: var(--ease-standard);
@@ -40,8 +38,6 @@
     font-weight: 300;
   }
 }
-
-/* ── Modifiers ── */
 
 /* Selected */
 .skc-toggle-button--selected .skc-material-icon {

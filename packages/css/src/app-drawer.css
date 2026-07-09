@@ -74,7 +74,7 @@
   }
 }
 
-/* ── Backdrop entry animation (Safari can't @starting-style ::backdrop) ── */
+/* ── Backdrop entry animation (Safari can't @starting-style ::backdrop) ──── */
 
 @keyframes skc-app-drawer-enter-backdrop {
   from {
@@ -85,7 +85,7 @@
   }
 }
 
-/* ── Exit animations (triggered via --exiting class) ── */
+/* ── Exit animations (triggered via --exiting class) ─────────────────────── */
 
 @keyframes skc-app-drawer-exit {
   /* No `translateY` here to make the exit less distracting */

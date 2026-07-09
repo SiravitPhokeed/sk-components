@@ -168,7 +168,7 @@
   }
 }
 
-/* ── Backdrop entry animation (Safari can't @starting-style ::backdrop) ── */
+/* ── Backdrop entry animation (Safari can't @starting-style ::backdrop) ──── */
 
 @keyframes skc-fullscreen-dialog-enter-backdrop {
   from {
@@ -179,7 +179,7 @@
   }
 }
 
-/* ── Exit animations ──────────────────────────────────────────────────── */
+/* ── Exit animations ─────────────────────────────────────────────────────── */
 
 /* Uses custom properties for transform so a single @keyframes works across
    breakpoints: `scale` on mobile, `translate + scaleY` on desktop. */
@@ -230,7 +230,7 @@
   }
 }
 
-/* ── Reduced motion ───────────────────────────────────────────────────── */
+/* ── Reduced motion ──────────────────────────────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {
   .skc-fullscreen-dialog {

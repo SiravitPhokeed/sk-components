@@ -81,7 +81,7 @@
   padding-inline-start: 1rem;
 }
 
-/* ── Backdrop entry animation (Safari can't @starting-style ::backdrop) ── */
+/* ── Backdrop entry animation (Safari can't @starting-style ::backdrop) ──── */
 
 @keyframes skc-dialog-enter-backdrop {
   from {
@@ -92,7 +92,7 @@
   }
 }
 
-/* ── Exit animations (triggered via --exiting class) ── */
+/* ── Exit animations (triggered via --exiting class) ─────────────────────── */
 
 @keyframes skc-dialog-exit {
   from {
