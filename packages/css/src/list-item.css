@@ -4,7 +4,7 @@
  */
 
 .skc-list-item {
-  --state-layer-color: var(--on-surface);
+  --state-layer-color: var(--color-on-surface);
 
   display: flex;
   flex-direction: row;
@@ -19,7 +19,7 @@
   text-decoration: none;
 
   > img {
-    background-color: var(--surface-variant);
+    background-color: var(--color-surface-variant);
     width: 3.5rem;
     height: 3.5rem;
   }
@@ -46,6 +46,6 @@
 /* State layer in Columns: add rounded corners at sm+ */
 @media (width >= 600px) {
   .skc-columns > .skc-list-item--state-layer {
-    border-radius: var(--rounded-md);
+    border-radius: var(--radius-md);
   }
 }

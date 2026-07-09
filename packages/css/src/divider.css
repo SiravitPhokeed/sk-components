@@ -6,5 +6,5 @@
 
 .skc-divider {
   border: none;
-  border-top: 1px solid var(--outline-variant);
+  border-top: 1px solid var(--color-outline-variant);
 }

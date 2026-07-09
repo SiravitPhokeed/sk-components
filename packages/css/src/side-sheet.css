@@ -4,11 +4,11 @@
  */
 
 .skc-side-sheet {
-  --_entry-duration: var(--motion-long-4);
-  --_exit-duration: var(--motion-long-4);
+  --_entry-duration: var(--duration-long-4);
+  --_exit-duration: var(--duration-long-4);
 
-  --_easing: var(--easing-emphasized);
-  --_backdrop-easing: var(--easing-standard);
+  --_ease: var(--ease-emphasized);
+  --_backdrop-ease: var(--ease-standard);
 
   --_delay: 100ms;
 }
@@ -20,22 +20,22 @@
   transform: scaleX(0);
   transform-origin: left;
   z-index: 90;
-  transition: transform var(--_duration) var(--_easing);
+  transition: transform var(--_duration) var(--_ease);
   transition-delay: var(--_delay);
   margin: 0;
   inset: 0;
   inset-inline-end: auto;
   border: none;
-  border-start-end-radius: var(--rounded-lg);
-  border-end-end-radius: var(--rounded-lg);
-  background-color: var(--surface-container-low);
+  border-start-end-radius: var(--radius-lg);
+  border-end-end-radius: var(--radius-lg);
+  background-color: var(--color-surface-container-low);
   padding: 0.75rem;
   width: calc(100% - 4rem);
   max-width: 22.5rem;
   height: 100dvh;
   max-height: none;
   overflow-y: auto;
-  color: var(--on-surface);
+  color: var(--color-on-surface);
 
   [dir="rtl"] &,
   &[dir="rtl"] {
@@ -45,9 +45,9 @@
   &::backdrop {
     opacity: 0.5;
     animation: skc-side-sheet-enter-backdrop var(--_duration)
-      var(--_backdrop-easing) backwards;
+      var(--_backdrop-ease) backwards;
     animation-delay: var(--_delay);
-    background-color: var(--scrim);
+    background-color: var(--color-scrim);
   }
 
   .skc-side-sheet__content {
@@ -56,7 +56,7 @@
     transition-delay: calc(var(--_delay) + var(--_duration) / 2);
     transition-duration: calc(var(--_duration) * (2 / 3));
     transition-property: transform, opacity;
-    transition-timing-function: var(--_easing);
+    transition-timing-function: var(--_ease);
   }
 
   /* Open state */
@@ -84,7 +84,7 @@
 .skc-side-sheet__content > :not(:last-child)::after {
   display: block;
   margin-inline: 1rem;
-  background-color: var(--outline-variant);
+  background-color: var(--color-outline-variant);
   height: 1px;
   content: "";
 }
@@ -133,16 +133,16 @@
   --_duration: var(--_exit-duration);
 
   & {
-    animation: skc-side-sheet-exit var(--_duration) var(--_easing) forwards;
+    animation: skc-side-sheet-exit var(--_duration) var(--_ease) forwards;
   }
 
   &::backdrop {
     animation: skc-side-sheet-exit-backdrop var(--_duration)
-      var(--_backdrop-easing) forwards;
+      var(--_backdrop-ease) forwards;
   }
 
   .skc-side-sheet__content > * {
-    animation: calc(var(--_duration) / 3) var(--_easing) forwards
+    animation: calc(var(--_duration) / 3) var(--_ease) forwards
       skc-side-sheet-exit-children;
   }
 }
@@ -171,7 +171,7 @@
   }
 
   .skc-side-sheet.skc-side-sheet--exiting {
-    animation: skc-fade-out var(--_duration) var(--_easing) forwards;
+    animation: skc-fade-out var(--_duration) var(--_ease) forwards;
   }
 
   .skc-side-sheet.skc-side-sheet--exiting .skc-side-sheet__content > * {

@@ -9,13 +9,13 @@
  */
 
 .skc-fullscreen-dialog {
-  --_entry-easing: var(--easing-emphasized-decelerate);
-  --_entry-duration: var(--motion-medium-4);
+  --_entry-ease: var(--ease-emphasized-decelerate);
+  --_entry-duration: var(--duration-medium-4);
 
-  --_exit-easing: var(--easing-emphasized-accelerate);
-  --_exit-duration: var(--motion-short-2);
+  --_exit-ease: var(--ease-emphasized-accelerate);
+  --_exit-duration: var(--duration-short-2);
 
-  --_backdrop-easing: var(--easing-standard);
+  --_backdrop-ease: var(--ease-standard);
 
   --_delay: 100ms;
   --_offset-y: 5rem;
@@ -23,7 +23,7 @@
 
 .skc-fullscreen-dialog {
   --_duration: var(--_entry-duration);
-  --_easing: var(--_entry-easing);
+  --_ease: var(--_entry-ease);
 
   --_exit-transform-from: scale(1);
   --_exit-transform-to: scale(0.9);
@@ -32,27 +32,26 @@
   transform: scale(0.75);
   opacity: 0;
   z-index: 90;
-  transition:
-    transform var(--_duration) var(--_easing),
-    opacity var(--_duration) var(--_easing);
+  transition: var(--_duration) var(--_ease);
   transition-delay: var(--_delay);
+  transition-property: transform, opacity;
   margin: 0;
   inset: 0;
   border: none;
-  background-color: var(--surface);
+  background-color: var(--color-surface);
   padding: 0;
   max-width: 100dvw;
   height: 100dvh;
   max-height: none;
   overflow-y: auto;
-  color: var(--on-surface);
+  color: var(--color-on-surface);
 
   &::backdrop {
     opacity: 0.5;
     animation: skc-fullscreen-dialog-enter-backdrop var(--_duration)
-      var(--_backdrop-easing) backwards;
+      var(--_backdrop-ease) backwards;
     animation-delay: var(--_delay);
-    background-color: var(--scrim);
+    background-color: var(--color-scrim);
   }
 
   /* Open state */
@@ -75,11 +74,11 @@
   align-items: center;
   gap: 0.5rem;
   z-index: 20;
-  background-color: var(--surface);
+  background-color: var(--color-surface);
   padding: 0.75rem 0.5rem;
 
   > .skc-button:first-child {
-    --_button-foreground-color: var(--on-surface);
+    --_button-foreground-color: var(--color-on-surface);
   }
 
   > h2 {
@@ -98,29 +97,29 @@
 
 @media (width >= 600px) {
   .skc-fullscreen-dialog {
-    --_entry-easing: var(--easing-emphasized);
-    --_entry-duration: var(--motion-long-4);
+    --_entry-ease: var(--ease-emphasized);
+    --_entry-duration: var(--duration-long-4);
 
-    --_exit-easing: var(--easing-emphasized);
-    --_exit-duration: var(--motion-medium-4);
+    --_exit-ease: var(--ease-emphasized);
+    --_exit-duration: var(--duration-medium-4);
 
     --_exit-transform-from: translate(-50%, -50%) scaleY(1);
     --_exit-transform-to: translate(-50%, calc(-50% - var(--_offset-y) / 4))
       scaleY(0);
 
     --adaptive-secondary-container: light-dark(
-      var(--secondary-fixed-dim),
-      var(--secondary-container)
+      var(--color-secondary-fixed-dim),
+      var(--color-secondary-container)
     );
-    --adaptive-background: var(--surface-container-high);
-    --adaptive-surface-variant: var(--surface-bright);
-    --adaptive-surface-container: var(--surface-bright);
+    --adaptive-background: var(--color-surface-container-high);
+    --adaptive-surface-variant: var(--color-surface-bright);
+    --adaptive-surface-container: var(--color-surface-bright);
 
     transform: translate(-50%, calc(-50% - var(--_offset-y))) scaleY(0);
     transform-origin: center top;
     inset: 50% auto auto 50%;
-    border-radius: var(--rounded-xl);
-    background-color: var(--surface-container-high);
+    border-radius: var(--radius-xl);
+    background-color: var(--color-surface-container-high);
     width: var(--_width, 22.5rem);
     max-width: calc(100vw - 3rem);
     height: auto;
@@ -128,7 +127,7 @@
 
     > * {
       opacity: 0;
-      transition: opacity calc(var(--_duration) * (2 / 3)) var(--_easing);
+      transition: opacity calc(var(--_duration) * (2 / 3)) var(--_ease);
       transition-delay: calc(var(--_delay) + var(--_duration) / 2);
     }
 
@@ -151,13 +150,13 @@
 
   .skc-fullscreen-dialog__top-app-bar {
     position: static;
-    background-color: var(--surface-container-high);
+    background-color: var(--color-surface-container-high);
     padding-inline: 0.75rem;
   }
 
   .skc-fullscreen-dialog__content {
     box-sizing: border-box;
-    border-top: 1px solid var(--outline);
+    border-top: 1px solid var(--color-outline);
     padding: 1.5rem;
     /* Top app bar: 4rem, visible margin from screen edge: 2rem */
     max-height: calc(100dvh - (4rem + 2rem));
@@ -212,22 +211,21 @@
 
 .skc-fullscreen-dialog.skc-fullscreen-dialog--exiting {
   --_duration: var(--_exit-duration);
-  --_easing: var(--_exit-easing);
+  --_ease: var(--_exit-ease);
 
   & {
-    animation: var(--_duration) var(--_easing) forwards
-      skc-fullscreen-dialog-exit;
+    animation: var(--_duration) var(--_ease) forwards skc-fullscreen-dialog-exit;
   }
 
   &::backdrop {
-    animation: var(--_duration) var(--_backdrop-easing) forwards
+    animation: var(--_duration) var(--_backdrop-ease) forwards
       skc-fullscreen-dialog-exit-backdrop;
   }
 }
 
 @media (width >= 600px) {
   .skc-fullscreen-dialog.skc-fullscreen-dialog--exiting > * {
-    animation: calc(var(--_duration) / 4) var(--_easing) forwards
+    animation: calc(var(--_duration) / 4) var(--_ease) forwards
       skc-fullscreen-dialog-exit-content;
   }
 }
@@ -252,7 +250,7 @@
   }
 
   .skc-fullscreen-dialog.skc-fullscreen-dialog--exiting {
-    animation: var(--_duration) var(--_easing) forwards skc-fade-out;
+    animation: var(--_duration) var(--_ease) forwards skc-fade-out;
   }
 }
 

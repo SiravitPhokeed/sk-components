@@ -7,8 +7,8 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  border-radius: var(--rounded-md);
-  background-color: var(--surface-bright);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-bright);
   padding: 1rem;
 }
 

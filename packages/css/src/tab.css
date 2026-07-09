@@ -5,9 +5,9 @@
  */
 
 .skc-tab {
-  --state-layer-color: var(--on-surface-variant);
-  --_duration: var(--motion-short-4);
-  --_easing: var(--easing-standard);
+  --state-layer-color: var(--color-on-surface-variant);
+  --_duration: var(--duration-short-4);
+  --_ease: var(--ease-standard);
 
   display: grid;
   place-items: center;
@@ -16,19 +16,19 @@
 .skc-tab__content {
   display: flex;
   align-items: center;
-  color: var(--on-surface-variant);
+  color: var(--color-on-surface-variant);
 }
 
 .skc-tab__icon .skc-material-icon {
   transition-property: font-weight, font-variation-settings;
-  transition: var(--_duration) var(--_easing);
+  transition: var(--_duration) var(--_ease);
   font-variation-settings: "FILL" 0;
 
   .skc-tab:hover & {
-    font-weight: var(--font-medium);
+    font-weight: var(--font-weight-medium);
   }
   .skc-tab:active & {
-    font-weight: var(--font-light);
+    font-weight: var(--font-weight-light);
   }
 }
 
@@ -47,11 +47,11 @@
   }
 
   .skc-tab__label {
-    transition: color var(--_duration) var(--_easing);
+    transition: color var(--_duration) var(--_ease);
   }
 
   .skc-tab--selected .skc-tab__content {
-    color: var(--primary);
+    color: var(--color-primary);
   }
 }
 

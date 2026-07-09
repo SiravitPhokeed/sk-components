@@ -14,7 +14,7 @@
 
 .skc-dialog-header > .skc-material-icon {
   align-self: center;
-  color: var(--secondary);
+  color: var(--color-secondary);
   font-size: 1.5rem;
 
   ~ h2 {
@@ -24,10 +24,10 @@
 
 .skc-dialog-header > h2 {
   margin-block: 0;
-  color: var(--on-surface);
+  color: var(--color-on-surface);
 }
 
 .skc-dialog-header > p {
   margin-block: 0;
-  color: var(--on-surface-variant);
+  color: var(--color-on-surface-variant);
 }

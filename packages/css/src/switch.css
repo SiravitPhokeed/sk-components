@@ -6,14 +6,13 @@
 
 .skc-switch {
   position: relative;
-  transition:
-    background-color var(--motion-short-4) var(--easing-standard),
-    border-color var(--motion-short-4) var(--easing-standard);
+  transition: var(--duration-short-4) var(--ease-standard);
+  transition-property: background-color, border-color;
   cursor: pointer;
   outline: none;
-  border: 2px solid var(--outline);
-  border-radius: var(--rounded-full);
-  background-color: var(--surface-variant);
+  border: 2px solid var(--color-outline);
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-variant);
   width: 3.25rem;
   height: 2rem;
   -webkit-tap-highlight-color: transparent;
@@ -31,12 +30,13 @@
     cursor: default;
     border-color: transparent;
     background-color: transparent;
-    color: color-mix(in srgb, var(--on-surface) 38%, transparent);
+    color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
 
     &::before {
       position: absolute;
       inset: -2px;
-      border: 2px solid color-mix(in srgb, var(--on-surface) 12%, transparent);
+      border: 2px solid
+        color-mix(in srgb, var(--color-on-surface) 12%, transparent);
       border-radius: inherit;
       pointer-events: none;
       content: "";
@@ -52,7 +52,7 @@
     &:hover > .skc-switch__handle,
     &:focus-visible > .skc-switch__handle,
     &:active > .skc-switch__handle {
-      background-color: var(--on-surface-variant);
+      background-color: var(--color-on-surface-variant);
     }
 
     &:hover .skc-switch__handle::before {
@@ -70,20 +70,17 @@
   display: grid;
   position: absolute;
   place-content: center;
-  transition:
-    inset var(--motion-short-4) var(--easing-standard),
-    width var(--motion-short-4) var(--easing-standard),
-    height var(--motion-short-4) var(--easing-standard),
-    background-color var(--motion-short-4) var(--easing-standard);
-  fill: var(--surface-variant);
-  stroke: var(--surface-variant);
+  transition: var(--duration-short-4) var(--ease-standard);
+  transition-property: inset, width, height, background-color;
+  fill: var(--color-surface-variant);
+  stroke: var(--color-surface-variant);
   inset: calc(0.5rem - 2px) auto auto calc(0.5rem - 2px);
   outline: none;
-  border-radius: var(--rounded-full);
-  background-color: var(--outline);
+  border-radius: var(--radius-full);
+  background-color: var(--color-outline);
   width: 1rem;
   height: 1rem;
-  color: var(--surface-variant);
+  color: var(--color-surface-variant);
 
   .skc-material-icon {
     font-size: 1rem;
@@ -101,9 +98,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     opacity: 0;
-    transition: opacity var(--motion-short-4) var(--easing-standard);
+    transition: opacity var(--duration-short-4) var(--ease-standard);
     border-radius: inherit;
-    background-color: var(--on-surface);
+    background-color: var(--color-on-surface);
     width: 2.5rem;
     height: 2.5rem;
     pointer-events: none;
@@ -112,41 +109,45 @@
 }
 
 .skc-switch--selected {
-  border-color: var(--primary);
-  background-color: var(--primary);
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
 
   > .skc-switch__handle {
-    fill: var(--on-primary-container);
-    stroke: var(--on-primary-container);
+    fill: var(--color-on-primary-container);
+    stroke: var(--color-on-primary-container);
     inset: calc(0.25rem - 2px) auto auto calc(1.5rem - 2px);
-    background-color: var(--on-primary);
+    background-color: var(--color-on-primary);
     width: 1.5rem;
     height: 1.5rem;
-    color: var(--on-primary-container);
+    color: var(--color-on-primary-container);
   }
 
   &:not([aria-disabled="true"]) {
     > .skc-switch__handle::before {
-      background-color: var(--primary);
+      background-color: var(--color-primary);
     }
 
     &:hover > .skc-switch__handle,
     &:focus-visible > .skc-switch__handle,
     &:active > .skc-switch__handle {
-      background-color: var(--primary-container);
+      background-color: var(--color-primary-container);
     }
   }
 
   &[aria-disabled="true"] {
-    background-color: color-mix(in srgb, var(--on-surface) 12%, transparent);
+    background-color: color-mix(
+      in srgb,
+      var(--color-on-surface) 12%,
+      transparent
+    );
 
     &::before {
       display: none;
     }
 
     > .skc-switch__handle {
-      background-color: var(--surface);
-      color: var(--on-surface);
+      background-color: var(--color-surface);
+      color: var(--color-on-surface);
     }
   }
 }

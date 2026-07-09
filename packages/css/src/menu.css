@@ -4,8 +4,8 @@
  */
 
 .skc-menu {
-  --_duration: var(--motion-medium-4);
-  --_easing: var(--easing-emphasized);
+  --_duration: var(--duration-medium-4);
+  --_ease: var(--ease-emphasized);
 
   position-try-fallbacks:
     flip-block,
@@ -13,18 +13,19 @@
     flip-block flip-inline;
   inset: auto;
   top: calc(anchor(bottom) + 0.5rem);
+  margin-top: 0.5rem;
   left: anchor(left);
   flex-direction: column;
   transform: scaleY(0);
   transform-origin: top;
   transition-property: transform, opacity;
-  transition: var(--_duration) var(--_easing);
+  transition: var(--_duration) var(--_ease);
   box-sizing: border-box;
   margin: 0;
   box-shadow: var(--shadow-3);
   border: none;
-  border-radius: var(--rounded-xs);
-  background-color: var(--surface-container);
+  border-radius: var(--radius-xs);
+  background-color: var(--color-surface-container);
   padding: 0.5rem 0;
   min-width: 12rem;
   max-height: max(50svh, 10rem);
@@ -34,7 +35,7 @@
 
   > * {
     opacity: 0;
-    transition: opacity calc(var(--_duration) / 3) var(--_easing)
+    transition: opacity calc(var(--_duration) / 3) var(--_ease)
       calc(var(--_duration) / 3);
   }
 
@@ -94,10 +95,10 @@
 }
 
 .skc-menu--exiting {
-  animation: var(--_duration) var(--_easing) forwards skc-menu-exit;
+  animation: var(--_duration) var(--_ease) forwards skc-menu-exit;
 
   > * {
-    animation: calc(var(--_duration) / 3) var(--_easing) forwards
+    animation: calc(var(--_duration) / 3) var(--_ease) forwards
       skc-menu-exit-content;
   }
 }
@@ -125,7 +126,7 @@
   }
 
   .skc-menu--exiting {
-    animation: var(--_duration) var(--_easing) forwards skc-fade-out;
+    animation: var(--_duration) var(--_ease) forwards skc-fade-out;
   }
 
   .skc-menu--exiting > * {

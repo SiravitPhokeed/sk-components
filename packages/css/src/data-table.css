@@ -5,9 +5,9 @@
  */
 
 .skc-data-table {
-  border: 2px solid var(--outline-variant);
+  border: 2px solid var(--color-outline-variant);
   border-radius: 1.25rem;
-  background-color: var(--surface-container-low);
+  background-color: var(--color-surface-container-low);
 }
 
 .skc-data-table > :first-child {

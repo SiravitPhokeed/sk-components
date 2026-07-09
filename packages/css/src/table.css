@@ -5,15 +5,15 @@
  */
 
 .skc-table {
-  border: 2px solid var(--outline-variant);
+  border: 2px solid var(--color-outline-variant);
   border-radius: 1.25rem;
-  background-color: var(--surface-container-low);
+  background-color: var(--color-surface-container-low);
   overflow: auto;
 }
 
 .skc-table__content {
   border-collapse: collapse;
-  background-color: var(--surface);
+  background-color: var(--color-surface);
   width: 100%;
   text-indent: 0;
 

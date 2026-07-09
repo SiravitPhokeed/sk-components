@@ -13,19 +13,19 @@
 
 .skc-app-drawer-item__logo {
   --state-layer-color: var(
-    --neutral-variant-30
+    --color-neutral-variant-30
   ); /* on-surface-variant (light) */
 
   display: grid;
   place-content: center;
-  border: 1px solid var(--outline-variant);
-  border-radius: var(--rounded-lg);
-  background-color: var(--surface);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
   padding: 0;
   aspect-ratio: 1;
 
   &:focus-visible {
-    border-color: var(--primary);
+    border-color: var(--color-primary);
   }
 
   > img {
@@ -34,6 +34,6 @@
 }
 
 .skc-app-drawer-item__name {
-  color: var(--on-surface);
+  color: var(--color-on-surface);
   text-align: center;
 }

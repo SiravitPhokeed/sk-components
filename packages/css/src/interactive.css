@@ -29,7 +29,7 @@
 }
 
 .skc-interactive--shadow {
-  transition: box-shadow var(--motion-short-4) var(--easing-standard);
+  transition: box-shadow var(--duration-short-4) var(--ease-standard);
 
   &:not([aria-disabled="true"]) {
     &:hover {
@@ -44,7 +44,7 @@
 .skc-interactive::before {
   position: absolute;
   opacity: 0;
-  transition: opacity var(--motion-short-3);
+  transition: opacity var(--duration-short-3);
   inset: 0;
   border-radius: inherit;
   background-color: var(--state-layer-color);
@@ -69,9 +69,8 @@
   position: absolute;
   transform: scale(0);
   opacity: 0.25;
-  transition:
-    transform var(--motion-long-2),
-    opacity var(--motion-long-2);
+  transition-duration: var(--duration-long-2);
+  transition-property: transform, opacity;
   border-radius: 50%;
   background-color: var(--state-layer-color);
   aspect-ratio: 1 / 1;

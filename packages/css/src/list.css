@@ -14,7 +14,7 @@
 
 /* Divided List */
 .skc-list--divided > :not(:last-child) {
-  border-bottom: 1px solid var(--outline-variant);
+  border-bottom: 1px solid var(--color-outline-variant);
 }
 
 /* Edge-to-edge on mobile inside a Content Layout section */

@@ -4,7 +4,7 @@
  */
 
 .skc-data-table-content {
-  background-color: var(--surface);
+  background-color: var(--color-surface);
   width: 100%;
   /* On mobile, allow horizontal scroll. Disabled at md+ because overflow-x
      forces overflow-y: auto per the CSS spec, which interferes with Menus. */

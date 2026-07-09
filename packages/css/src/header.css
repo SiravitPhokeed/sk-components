@@ -17,7 +17,7 @@
 
 .skc-material-icon {
   .skc-header & {
-    color: var(--on-surface-variant);
+    color: var(--color-on-surface-variant);
   }
 
   h2.skc-header & {

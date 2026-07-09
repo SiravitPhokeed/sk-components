@@ -7,7 +7,7 @@
 
 .skc-tabs-container {
   position: relative;
-  border-bottom: 1px solid var(--surface-variant);
+  border-bottom: 1px solid var(--color-surface-variant);
 
   .skc-tab {
     width: 100%;
@@ -37,13 +37,13 @@
   left: 0;
   transform: translateX(0);
   transition-property: transform, width;
-  transition: var(--motion-medium-4) var(--easing-standard);
+  transition: var(--duration-medium-4) var(--ease-standard);
   height: 0.1875rem;
 
   &::before {
     position: absolute;
     inset: 0;
-    background-color: var(--primary);
+    background-color: var(--color-primary);
     height: 100%;
     content: "";
   }
@@ -55,7 +55,7 @@
 
 .skc-tabs-container--primary .skc-tabs-container__indicator::before {
   inset-inline: 0.125rem;
-  border-radius: var(--rounded-xs) var(--rounded-xs) 0 0;
+  border-radius: var(--radius-xs) var(--radius-xs) 0 0;
 }
 
 .skc-section .skc-tabs-container {

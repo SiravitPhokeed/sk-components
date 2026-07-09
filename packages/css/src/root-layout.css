@@ -7,18 +7,18 @@
 
 body {
   /* Defaults for adaptive colors */
-  --adaptive-primary-container: var(--primary-container);
-  --adaptive-secondary-container: var(--secondary-container);
-  --adaptive-background: var(--background);
-  --adaptive-surface-variant: var(--surface-variant);
-  --adaptive-surface-container: var(--surface-container);
+  --adaptive-primary-container: var(--color-primary-container);
+  --adaptive-secondary-container: var(--color-secondary-container);
+  --adaptive-background: var(--color-background);
+  --adaptive-surface-variant: var(--color-surface-variant);
+  --adaptive-surface-container: var(--color-surface-container);
 
   transition-property: background-color, color;
-  transition: var(--motion-short-4) var(--easing-standard);
+  transition: var(--duration-short-4) var(--ease-standard);
   margin: 0;
-  background-color: var(--background);
+  background-color: var(--color-background);
   overflow-x: hidden;
-  color: var(--on-background);
+  color: var(--color-on-background);
 }
 
 .skc-root-layout {
@@ -139,12 +139,12 @@ body {
 :not(input, textarea) {
   &,
   &:focus-visible {
-    --_focus-ring-color: var(--primary);
+    --_focus-ring-color: var(--color-primary);
     outline: 0 solid var(--_focus-ring-color);
     outline-offset: 2px;
   }
   &:focus-visible {
-    animation: skc-focus var(--motion-long-4) var(--easing-standard) forwards;
+    animation: skc-focus var(--duration-long-4) var(--ease-standard) forwards;
   }
 }
 @keyframes skc-focus {

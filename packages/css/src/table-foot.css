@@ -5,5 +5,5 @@
 
 .skc-table-foot {
   display: table-footer-group;
-  background-color: var(--surface-container-low);
+  background-color: var(--color-surface-container-low);
 }

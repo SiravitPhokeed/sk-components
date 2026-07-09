@@ -48,17 +48,21 @@
 }
 
 .skc-page-header__blob--primary {
-  fill: light-dark(var(--primary-95), var(--primary-20));
+  fill: light-dark(var(--color-primary-95), var(--color-primary-20));
 }
 .skc-page-header__blob--secondary {
-  fill: light-dark(var(--secondary-90), var(--secondary-10));
+  fill: light-dark(var(--color-secondary-90), var(--color-secondary-10));
 }
 
 .skc-page-header__fade {
   position: absolute;
   inset: 0;
   bottom: auto;
-  background-image: linear-gradient(to bottom, var(--background), transparent);
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-background),
+    transparent
+  );
   height: 5rem;
 }
 
@@ -74,7 +78,7 @@
   position: fixed;
   top: 1rem;
   z-index: 80;
-  animation: skc-page-header-minimized-entry var(--easing-standard) backwards;
+  animation: skc-page-header-minimized-entry var(--ease-standard) backwards;
   animation-timeline: --_page-header-timeline;
   animation-range: exit 20%;
   inset-inline-start: 0.5rem;

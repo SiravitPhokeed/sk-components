@@ -4,8 +4,8 @@
  */
 
 .skc-nav-bar-item {
-  --_duration: var(--motion-short-4);
-  --_easing: var(--easing-standard);
+  --_duration: var(--duration-short-4);
+  --_ease: var(--ease-standard);
 
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@
   cursor: pointer;
   border: 0;
   background-color: transparent;
-  color: var(--on-surface);
+  color: var(--color-on-surface);
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
 
@@ -36,15 +36,15 @@
 }
 
 .skc-nav-bar-item__pill {
-  --state-layer-color: var(--on-surface);
+  --state-layer-color: var(--color-on-surface);
 
-  transition: color var(--_duration) var(--_easing);
-  border-radius: var(--rounded-full);
+  transition: color var(--_duration) var(--_ease);
+  border-radius: var(--radius-full);
   padding: 0.25rem 1rem;
 
   .skc-material-icon {
     transition-property: font-weight, font-variation-settings;
-    transition: var(--_duration) var(--_easing);
+    transition: var(--_duration) var(--_ease);
     font-size: 1.5rem;
     font-variation-settings: "FILL" 0;
 
@@ -62,34 +62,34 @@
     opacity: 0;
     z-index: -10;
     transition-property: opacity, transform;
-    transition: var(--_duration) var(--_easing);
+    transition: var(--_duration) var(--_ease);
     inset: 0;
     border-radius: inherit;
-    background-color: var(--secondary-container);
+    background-color: var(--color-secondary-container);
     pointer-events: none;
     content: "";
   }
 
   .skc-nav-bar-item:focus-visible & {
-    animation: skc-focus var(--motion-long-4) var(--easing-standard) forwards;
+    animation: skc-focus var(--duration-long-4) var(--ease-standard) forwards;
   }
 }
 
 .skc-nav-bar-item__label {
   transition-property: font-weight;
-  transition: var(--_duration) var(--_easing);
+  transition: var(--_duration) var(--_ease);
   font-family: var(--font-display);
   text-align: center;
 
   .skc-nav-bar-item.skc-nav-bar-item--selected & {
-    font-weight: var(--font-bold);
+    font-weight: var(--font-weight-bold);
   }
 }
 
 .skc-nav-bar-item--selected {
   .skc-nav-bar-item__pill {
-    --state-layer-color: var(--on-secondary-container);
-    color: var(--on-secondary-container);
+    --state-layer-color: var(--color-on-secondary-container);
+    color: var(--color-on-secondary-container);
 
     &::after {
       transform: scaleX(1);
@@ -102,7 +102,7 @@
   }
 
   .skc-nav-bar-item__label {
-    font-weight: var(--font-bold);
+    font-weight: var(--font-weight-bold);
   }
 }
 
@@ -119,12 +119,12 @@
     transition-property: font-weight, letter-spacing;
 
     .skc-nav-bar-item:hover & {
-      font-weight: var(--font-bold);
+      font-weight: var(--font-weight-bold);
       letter-spacing: 0.75px;
     }
 
     .skc-nav-bar-item:active & {
-      font-weight: var(--font-regular);
+      font-weight: var(--font-weight-regular);
       letter-spacing: 0.375px;
     }
   }

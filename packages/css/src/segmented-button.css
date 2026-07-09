@@ -18,12 +18,12 @@
   }
 
   > .skc-button:first-child {
-    border-start-start-radius: var(--rounded-full);
-    border-end-start-radius: var(--rounded-full);
+    border-start-start-radius: var(--radius-full);
+    border-end-start-radius: var(--radius-full);
   }
   > .skc-button:last-child {
-    border-start-end-radius: var(--rounded-full);
-    border-end-end-radius: var(--rounded-full);
+    border-start-end-radius: var(--radius-full);
+    border-end-end-radius: var(--radius-full);
   }
 
   /* Remove conflicting middle border on outlined buttons */

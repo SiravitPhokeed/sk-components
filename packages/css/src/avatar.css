@@ -11,7 +11,7 @@
   background-color: var(--adaptive-primary-container);
   width: 2.5rem;
   height: 2.5rem;
-  color: var(--primary);
+  color: var(--color-primary);
 
   &:has(img) {
     background-color: var(--adaptive-surface-container);
@@ -28,13 +28,13 @@
 
 @media (width >= 600px) {
   .skc-fullscreen-dialog .skc-avatar:has(img) {
-    background-color: var(--surface);
+    background-color: var(--color-surface);
   }
 }
 
 @media (prefers-contrast: more) {
   .skc-avatar {
-    color: var(--on-primary-container);
+    color: var(--color-on-primary-container);
   }
 }
 

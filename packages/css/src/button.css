@@ -19,7 +19,7 @@
   gap: 0.5rem;
   cursor: pointer;
   border: none;
-  border-radius: var(--rounded-full);
+  border-radius: var(--radius-full);
   background-color: var(--_button-background-color, transparent);
   padding: 0.625rem 1.5rem;
   overflow: hidden;
@@ -30,7 +30,7 @@
 .skc-button {
   > .skc-material-icon,
   > .skc-button__label {
-    transition: opacity var(--motion-short-4) var(--easing-standard);
+    transition: opacity var(--duration-short-4) var(--ease-standard);
   }
 }
 
@@ -50,7 +50,7 @@
   padding: 0.5rem;
 
   > .skc-material-icon {
-    transition: font-weight var(--motion-short-4) var(--easing-standard);
+    transition: font-weight var(--duration-short-4) var(--ease-standard);
     margin-inline-start: 0;
     font-size: 1.5rem;
   }
@@ -94,69 +94,89 @@
 }
 
 .skc-button--filled {
-  --_button-foreground-color: var(--on-primary);
-  --_button-background-color: var(--primary);
-  transition: box-shadow var(--motion-short-4) var(--easing-standard);
+  --_button-foreground-color: var(--color-on-primary);
+  --_button-background-color: var(--color-primary);
+  transition: box-shadow var(--duration-short-4) var(--ease-standard);
 
   &:hover {
     box-shadow: var(--shadow-1);
   }
 
   &.skc-button--disabled {
-    --state-layer-color: color-mix(in srgb, var(--on-surface) 38%, transparent);
-    background-color: color-mix(in srgb, var(--on-surface) 12%, transparent);
+    --state-layer-color: color-mix(
+      in srgb,
+      var(--color-on-surface) 38%,
+      transparent
+    );
+    background-color: color-mix(
+      in srgb,
+      var(--color-on-surface) 12%,
+      transparent
+    );
   }
   &.skc-button--dangerous {
-    --state-layer-color: var(--on-error);
-    background-color: var(--error);
+    --state-layer-color: var(--color-on-error);
+    background-color: var(--color-error);
   }
 }
 
 .skc-button--tonal {
-  --_button-foreground-color: var(--on-secondary-container);
+  --_button-foreground-color: var(--color-on-secondary-container);
   --_button-background-color: var(--adaptive-secondary-container);
-  transition: box-shadow var(--motion-short-4) var(--easing-standard);
+  transition: box-shadow var(--duration-short-4) var(--ease-standard);
 
   &:hover {
     box-shadow: var(--shadow-1);
   }
 
   &.skc-button--disabled {
-    --state-layer-color: color-mix(in srgb, var(--on-surface) 38%, transparent);
-    background-color: color-mix(in srgb, var(--on-surface) 12%, transparent);
+    --state-layer-color: color-mix(
+      in srgb,
+      var(--color-on-surface) 38%,
+      transparent
+    );
+    background-color: color-mix(
+      in srgb,
+      var(--color-on-surface) 12%,
+      transparent
+    );
   }
   &.skc-button--dangerous {
-    --state-layer-color: var(--on-error-container);
-    background-color: var(--error-container);
+    --state-layer-color: var(--color-on-error-container);
+    background-color: var(--color-error-container);
   }
 }
 
 .skc-button--outlined {
-  --_button-foreground-color: var(--primary);
-  border: 1px solid var(--outline);
+  --_button-foreground-color: var(--color-primary);
+  border: 1px solid var(--color-outline);
 
   &:focus-visible {
     border-color: var(--state-layer-color);
   }
 
   &.skc-button--disabled {
-    --state-layer-color: color-mix(in srgb, var(--on-surface) 38%, transparent);
-    border-color: color-mix(in srgb, var(--on-surface) 12%, transparent);
+    --state-layer-color: color-mix(
+      in srgb,
+      var(--color-on-surface) 38%,
+      transparent
+    );
+    border-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
   }
   &.skc-button--selected {
-    --state-layer-color: var(--on-secondary-container);
+    --state-layer-color: var(--color-on-secondary-container);
     background-color: var(--adaptive-secondary-container);
     &:focus-visible {
-      border-color: var(--secondary);
+      border-color: var(--color-secondary);
     }
   }
   &.skc-button--dangerous {
-    --state-layer-color: var(--error);
+    --state-layer-color: var(--color-error);
   }
 }
 
 .skc-button--text {
-  --_button-foreground-color: var(--primary);
+  --_button-foreground-color: var(--color-primary);
   background-color: transparent;
   padding-inline: 0.75rem;
 
@@ -165,9 +185,13 @@
   }
 
   &.skc-button--disabled {
-    --state-layer-color: color-mix(in srgb, var(--on-surface) 38%, transparent);
+    --state-layer-color: color-mix(
+      in srgb,
+      var(--color-on-surface) 38%,
+      transparent
+    );
   }
   &.skc-button--dangerous {
-    --state-layer-color: var(--error);
+    --state-layer-color: var(--color-error);
   }
 }

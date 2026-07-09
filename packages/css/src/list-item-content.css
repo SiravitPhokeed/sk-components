@@ -11,14 +11,14 @@
 }
 
 .skc-list-item-content__overline {
-  color: var(--on-surface-variant);
+  color: var(--color-on-surface-variant);
   font-family: var(--font-display);
 }
 
 .skc-list-item-content__title {
-  color: var(--on-surface);
+  color: var(--color-on-surface);
 }
 
 .skc-list-item-content__desc {
-  color: var(--on-surface-variant);
+  color: var(--color-on-surface-variant);
 }

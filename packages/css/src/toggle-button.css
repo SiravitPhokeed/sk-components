@@ -6,22 +6,20 @@
 /* ── Block ── */
 
 .skc-toggle-button {
-  --duration: var(--motion-short-4);
-  --easing: var(--easing-standard);
+  --_duration: var(--duration-short-4);
+  --_ease: var(--ease-standard);
 
   display: grid;
   place-content: center;
-  transition:
-    background-color var(--duration) var(--easing),
-    color var(--duration) var(--easing);
+  transition: var(--_duration) var(--_ease);
+  transition-property: background-color, color;
   border: 0;
-  border-radius: var(--rounded-full);
+  border-radius: var(--radius-full);
   padding: 0.5rem;
 
   .skc-material-icon {
-    transition-duration: var(--motion-short-4);
+    transition: var(--_duration) var(--_ease);
     transition-property: font-weight, font-variation-settings, color;
-    transition-timing-function: var(--easing-standard);
     color: var(--state-layer-color);
     font-variation-settings: "FILL" 0;
   }
@@ -30,7 +28,7 @@
   &[aria-disabled="true"] {
     opacity: 0.38;
     background-color: transparent;
-    color: var(--on-surface);
+    color: var(--color-on-surface);
   }
 }
 
@@ -52,80 +50,81 @@
 
 /* Filled */
 .skc-toggle-button--filled {
-  --state-layer-color: var(--primary);
-  background-color: var(--surface-variant);
+  --state-layer-color: var(--color-primary);
+  background-color: var(--color-surface-variant);
 
   &.skc-toggle-button--selected {
-    --state-layer-color: var(--on-primary);
-    background-color: var(--primary);
+    --state-layer-color: var(--color-on-primary);
+    background-color: var(--color-primary);
   }
 
   &.skc-toggle-button--dangerous {
-    --state-layer-color: var(--error);
-    background-color: var(--error-container);
+    --state-layer-color: var(--color-error);
+    background-color: var(--color-error-container);
 
     @media (prefers-contrast: more) {
-      --state-layer-color: var(--on-error-container);
+      --state-layer-color: var(--color-on-error-container);
     }
 
     &.skc-toggle-button--selected {
-      --state-layer-color: var(--on-error);
-      background-color: var(--error);
+      --state-layer-color: var(--color-on-error);
+      background-color: var(--color-error);
     }
   }
 }
 
 /* Tonal */
 .skc-toggle-button--tonal {
-  --state-layer-color: var(--on-surface-variant);
-  background-color: var(--surface-variant);
+  --state-layer-color: var(--color-on-surface-variant);
+  background-color: var(--color-surface-variant);
 
   &.skc-toggle-button--selected {
-    --state-layer-color: var(--on-secondary-container);
-    background-color: var(--secondary-container);
+    --state-layer-color: var(--color-on-secondary-container);
+    background-color: var(--color-secondary-container);
   }
 
   &.skc-toggle-button--dangerous {
-    --state-layer-color: var(--error);
-    background-color: var(--error-container);
+    --state-layer-color: var(--color-error);
+    background-color: var(--color-error-container);
 
     @media (prefers-contrast: more) {
-      --state-layer-color: var(--on-error-container);
+      --state-layer-color: var(--color-on-error-container);
     }
 
     &.skc-toggle-button--selected {
-      --state-layer-color: var(--on-error);
-      background-color: var(--error);
+      --state-layer-color: var(--color-on-error);
+      background-color: var(--color-error);
     }
   }
 }
 
 /* Outlined */
 .skc-toggle-button--outlined {
-  --state-layer-color: var(--on-surface);
-  border: 1px solid var(--outline);
+  --state-layer-color: var(--color-on-surface);
+  border: 1px solid var(--color-outline);
   background-color: transparent;
 
   &.skc-toggle-button--selected {
-    --state-layer-color: var(--inverse-on-surface);
-    border-color: var(--inverse-surface);
-    background-color: var(--inverse-surface);
+    --state-layer-color: var(--color-inverse-on-surface);
+    border-color: var(--color-inverse-surface);
+    background-color: var(--color-inverse-surface);
   }
 
   &.skc-toggle-button--dangerous {
-    --state-layer-color: var(--error);
+    --state-layer-color: var(--color-error);
 
     &.skc-toggle-button--selected {
-      --state-layer-color: var(--error-container);
+      --state-layer-color: var(--color-error-container);
     }
   }
 
   &[aria-disabled="true"] {
     border-color: transparent;
-    color: color-mix(in srgb, var(--on-surface) 38%, transparent);
+    color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
 
     &::before {
-      border: 1px solid color-mix(in srgb, var(--on-surface) 12%, transparent);
+      border: 1px solid
+        color-mix(in srgb, var(--color-on-surface) 12%, transparent);
       background-color: transparent;
     }
 
@@ -134,7 +133,7 @@
 
       &::before {
         border-color: transparent;
-        background-color: var(--on-surface);
+        background-color: var(--color-on-surface);
       }
     }
   }
@@ -142,18 +141,18 @@
 
 /* Standard */
 .skc-toggle-button--standard {
-  --state-layer-color: var(--on-surface);
+  --state-layer-color: var(--color-on-surface);
   background-color: transparent;
 
   &.skc-toggle-button--selected {
-    --state-layer-color: var(--primary);
+    --state-layer-color: var(--color-primary);
   }
 
   &.skc-toggle-button--dangerous {
-    --state-layer-color: var(--error);
+    --state-layer-color: var(--color-error);
   }
 
   &[aria-disabled="true"] {
-    color: color-mix(in srgb, var(--on-surface) 38%, transparent);
+    color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
   }
 }

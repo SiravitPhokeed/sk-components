@@ -17,7 +17,7 @@
 
 /* Scrollable variant */
 .skc-dialog-content.skc-dialog-content--scrollable {
-  border-top: 1px solid var(--outline);
-  border-bottom: 1px solid var(--outline);
+  border-top: 1px solid var(--color-outline);
+  border-bottom: 1px solid var(--color-outline);
   overflow-y: auto;
 }

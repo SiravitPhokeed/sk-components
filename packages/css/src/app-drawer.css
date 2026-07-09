@@ -4,8 +4,8 @@
  */
 
 .skc-app-drawer {
-  --_duration: var(--motion-long-2);
-  --_easing: var(--easing-emphasized);
+  --_duration: var(--duration-long-2);
+  --_ease: var(--ease-emphasized);
 
   --_delay: 100ms;
 }
@@ -30,30 +30,30 @@
   transform: translateY(-1rem) scaleY(0);
   transform-origin: top;
   transition-property: opacity, transform;
-  transition: var(--_duration) var(--_easing);
+  transition: var(--_duration) var(--_ease);
   transition-delay: var(--_delay);
   margin: 0;
   box-shadow: var(--shadow-1);
   border: none;
-  border-radius: calc(var(--rounded-md) + var(--_padding));
-  background-color: var(--surface-variant);
+  border-radius: calc(var(--radius-md) + var(--_padding));
+  background-color: var(--color-surface-variant);
   padding: var(--_padding);
   width: 20.25rem;
   overflow: hidden;
-  color: var(--on-surface);
+  color: var(--color-on-surface);
 
   .skc-app-drawer-segment > * {
     opacity: 0;
-    transition: opacity var(--_duration) var(--_easing);
+    transition: opacity var(--_duration) var(--_ease);
     transition-delay: calc(var(--_duration) / 2);
   }
 
   &::backdrop {
     opacity: 0.5;
-    animation: skc-app-drawer-enter-backdrop var(--_duration) var(--_easing)
+    animation: skc-app-drawer-enter-backdrop var(--_duration) var(--_ease)
       backwards;
     animation-delay: var(--_delay);
-    background-color: var(--scrim);
+    background-color: var(--color-scrim);
   }
 
   /* Open state */
@@ -119,14 +119,14 @@
 
 .skc-app-drawer__modal.skc-app-drawer__modal--exiting {
   & {
-    animation: skc-app-drawer-exit var(--_duration) var(--_easing) forwards;
+    animation: skc-app-drawer-exit var(--_duration) var(--_ease) forwards;
   }
   .skc-app-drawer-segment > * {
     animation: skc-app-drawer-exit-children calc(var(--_duration) / 4)
-      var(--_easing) forwards;
+      var(--_ease) forwards;
   }
   &::backdrop {
-    animation: skc-app-drawer-exit-backdrop var(--_duration) var(--_easing)
+    animation: skc-app-drawer-exit-backdrop var(--_duration) var(--_ease)
       forwards;
   }
 }
@@ -162,7 +162,7 @@
   }
 
   .skc-app-drawer__modal.skc-app-drawer__modal--exiting {
-    animation: skc-fade-out var(--_duration) var(--_easing) forwards;
+    animation: skc-fade-out var(--_duration) var(--_ease) forwards;
   }
 
   .skc-app-drawer__modal.skc-app-drawer__modal--exiting

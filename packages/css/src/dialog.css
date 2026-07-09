@@ -5,9 +5,9 @@
  */
 
 .skc-dialog {
-  --_easing: var(--easing-emphasized);
-  --_entry-duration: var(--motion-long-4);
-  --_exit-duration: var(--motion-medium-4);
+  --_ease: var(--ease-emphasized);
+  --_entry-duration: var(--duration-long-4);
+  --_exit-duration: var(--duration-medium-4);
 
   --_delay: 100ms;
   --_offset-y: 5rem;
@@ -17,44 +17,42 @@
   --_duration: var(--_entry-duration);
 
   --adaptive-secondary-container: light-dark(
-    var(--secondary-fixed-dim),
-    var(--secondary-container)
+    var(--color-secondary-fixed-dim),
+    var(--color-secondary-container)
   );
-  --adaptive-background: var(--surface-container-high);
-  --adaptive-surface-variant: var(--surface-bright);
-  --adaptive-surface-container: var(--surface-bright);
+  --adaptive-background: var(--color-surface-container-high);
+  --adaptive-surface-variant: var(--color-surface-bright);
+  --adaptive-surface-container: var(--color-surface-bright);
 
   position: fixed;
   transform: translate(-50%, calc(-50% - var(--_offset-y))) scaleY(0);
   transform-origin: center top;
   opacity: 0;
   z-index: 90;
-  transition:
-    transform var(--_duration) var(--_easing),
-    opacity var(--_duration) var(--_easing);
+  transition: var(--_duration) var(--_ease);
   transition-delay: var(--_delay);
+  transition-property: transform, opacity;
   margin: 0;
   inset: 50% auto auto 50%;
   border: none;
-  border-radius: var(--rounded-xl);
-  background-color: var(--surface-container-high);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface-container-high);
   padding: 0;
   width: 22.5rem;
   max-width: calc(100vw - 3rem);
   overflow: hidden;
-  color: var(--on-surface);
+  color: var(--color-on-surface);
 
   &::backdrop {
     opacity: 0.5;
-    animation: skc-dialog-enter-backdrop var(--_duration) var(--_easing)
-      backwards;
+    animation: skc-dialog-enter-backdrop var(--_duration) var(--_ease) backwards;
     animation-delay: var(--_delay);
-    background-color: var(--scrim);
+    background-color: var(--color-scrim);
   }
 
   > * {
     opacity: 0;
-    transition: opacity calc(var(--_duration) * (2 / 3)) var(--_easing);
+    transition: opacity calc(var(--_duration) * (2 / 3)) var(--_ease);
     transition-delay: calc(var(--_delay) + var(--_duration) / 2);
   }
 
@@ -122,14 +120,14 @@
 
 .skc-dialog.skc-dialog--exiting {
   --_duration: var(--_exit-duration);
-  animation: var(--_duration) var(--_easing) forwards skc-dialog-exit;
+  animation: var(--_duration) var(--_ease) forwards skc-dialog-exit;
 
   &::backdrop {
-    animation: var(--_duration) var(--_easing) forwards skc-dialog-exit-backdrop;
+    animation: var(--_duration) var(--_ease) forwards skc-dialog-exit-backdrop;
   }
 
   > * {
-    animation: calc(var(--_duration) / 4) var(--_easing) forwards
+    animation: calc(var(--_duration) / 4) var(--_ease) forwards
       skc-dialog-exit-content;
   }
 }
@@ -160,6 +158,6 @@
   }
 
   .skc-dialog.skc-dialog--exiting {
-    animation: var(--_duration) var(--_easing) forwards skc-fade-out;
+    animation: var(--_duration) var(--_ease) forwards skc-fade-out;
   }
 }

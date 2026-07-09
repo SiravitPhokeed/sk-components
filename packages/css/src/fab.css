@@ -13,11 +13,11 @@
   align-items: center;
   z-index: 80;
   transition-property: transform, opacity;
-  transition: var(--motion-medium-4) var(--easing-emphasized);
+  transition: var(--duration-medium-4) var(--ease-emphasized);
   inset-inline-end: 1rem;
   box-shadow: var(--shadow-3);
   border: none;
-  border-radius: var(--rounded-md);
+  border-radius: var(--radius-md);
   background-color: var(--_fab-background-color);
   padding: 1rem;
   color: var(--_fab-foreground-color);
@@ -30,26 +30,26 @@
 
 /* Colors */
 .skc-fab--surface {
-  --_fab-background-color: var(--surface-container-high);
-  --_fab-foreground-color: var(--primary);
+  --_fab-background-color: var(--color-surface-container-high);
+  --_fab-foreground-color: var(--color-primary);
 }
 .skc-fab--primary {
-  --_fab-background-color: var(--primary-container);
-  --_fab-foreground-color: var(--on-primary-container);
+  --_fab-background-color: var(--color-primary-container);
+  --_fab-foreground-color: var(--color-on-primary-container);
 }
 .skc-fab--secondary {
-  --_fab-background-color: var(--secondary-container);
-  --_fab-foreground-color: var(--on-secondary-container);
+  --_fab-background-color: var(--color-secondary-container);
+  --_fab-foreground-color: var(--color-on-secondary-container);
 }
 .skc-fab--tertiary {
-  --_fab-background-color: var(--tertiary-container);
-  --_fab-foreground-color: var(--on-tertiary-container);
+  --_fab-background-color: var(--color-tertiary-container);
+  --_fab-foreground-color: var(--color-on-tertiary-container);
 }
 
 /* Icon */
 .skc-fab {
   > .skc-material-icon {
-    transition: font-weight var(--motion-short-4) var(--easing-standard);
+    transition: font-weight var(--duration-short-4) var(--ease-standard);
     font-size: 1.5rem;
   }
 
@@ -88,7 +88,7 @@
   }
 
   .skc-fab--large {
-    border-radius: var(--rounded-xl);
+    border-radius: var(--radius-xl);
     padding: 1.875rem;
   }
 

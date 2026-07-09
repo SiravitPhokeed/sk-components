@@ -5,7 +5,7 @@
  */
 
 .skc-chip {
-  --state-layer-color: var(--on-surface-variant);
+  --state-layer-color: var(--color-on-surface-variant);
 
   display: flex;
   position: relative;
@@ -14,12 +14,12 @@
   align-items: center;
   gap: 0.5rem;
   transition-property: background-color, border-color, color;
-  transition: var(--motion-short-4) var(--easing-standard);
-  border: 1px solid var(--outline);
+  transition: var(--duration-short-4) var(--ease-standard);
+  border: 1px solid var(--color-outline);
   border-radius: 0.5rem;
   background-color: transparent;
   padding: 0.375rem 1rem;
-  color: var(--on-surface);
+  color: var(--color-on-surface);
 
   &::before,
   .skc-interactive__ripple-layer {
@@ -29,7 +29,7 @@
   > .skc-chip__icon {
     --_icon-size: 1.125rem;
     margin-inline-start: -0.5rem;
-    color: var(--primary);
+    color: var(--color-primary);
 
     > svg {
       width: auto;
@@ -44,13 +44,13 @@
   /* Disabled */
   &[aria-disabled="true"] {
     border-color: transparent;
-    border-color: color-mix(in srgb, var(--on-surface) 12%, transparent);
+    border-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
     overflow: visible;
 
     &,
     .skc-chip__icon {
       opacity: 0.38;
-      color: var(--on-surface-variant);
+      color: var(--color-on-surface-variant);
     }
   }
 }
@@ -59,7 +59,7 @@
 .skc-chip--elevated {
   box-shadow: var(--shadow-1);
   border: none;
-  background-color: var(--surface-container-low);
+  background-color: var(--color-surface-container-low);
 
   &.skc-chip--selected {
     background-color: var(--adaptive-secondary-container);
@@ -67,14 +67,18 @@
 
   &[aria-disabled="true"] {
     box-shadow: none;
-    background-color: color-mix(in srgb, var(--on-surface) 12%, transparent);
+    background-color: color-mix(
+      in srgb,
+      var(--color-on-surface) 12%,
+      transparent
+    );
   }
 }
 
 /* Dangerous */
 .skc-chip--dangerous {
   .skc-material-icon {
-    color: var(--error);
+    color: var(--color-error);
   }
 }
 
@@ -83,11 +87,11 @@
 .skc-chip-field--last-chip-selected .skc-chip-set > .skc-chip:last-child {
   border-color: transparent;
   background-color: var(--adaptive-secondary-container);
-  color: var(--on-secondary-container);
+  color: var(--color-on-secondary-container);
 
   .skc-material-icon,
   .skc-chip__trailing-button {
-    color: var(--on-secondary-container);
+    color: var(--color-on-secondary-container);
   }
 }
 
@@ -99,12 +103,12 @@
 
 /* Trailing button */
 .skc-chip .skc-chip__trailing-button {
-  --state-layer-color: var(--on-surface);
+  --state-layer-color: var(--color-on-surface);
   margin-inline-end: -0.75rem;
   margin-block: -0.125rem;
 
   padding: 0.1875rem;
-  color: var(--on-surface);
+  color: var(--color-on-surface);
 
   .skc-material-icon {
     width: 1.125rem;

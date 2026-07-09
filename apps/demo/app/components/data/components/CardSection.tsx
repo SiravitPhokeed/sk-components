@@ -62,7 +62,7 @@ const CardSection: FC = () => (
                 tooltip="Options"
                 command="show-popover"
                 commandfor="menu-atipol"
-                className="[--_button-foreground-color:var(--on-surface-variant)]"
+                className="[--_button-foreground-color:var(--color-on-surface-variant)]"
               />
               <Menu id="menu-atipol">
                 <MenuItem command="hide-popover">View profile</MenuItem>

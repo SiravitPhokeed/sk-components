@@ -5,23 +5,23 @@
 
 .skc-search {
   position: relative;
-  border-radius: var(--rounded-xl);
-  background-color: var(--surface-container-high);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface-container-high);
 }
 
 .skc-search::before {
   position: absolute;
   opacity: 0;
-  transition: opacity var(--motion-short-4) var(--easing-standard);
+  transition: opacity var(--duration-short-4) var(--ease-standard);
   inset: 0;
   border-radius: inherit;
-  background-color: var(--on-surface);
+  background-color: var(--color-on-surface);
   pointer-events: none;
   content: "";
 }
 
 .skc-search__button {
-  --_button-foreground-color: var(--on-surface);
+  --_button-foreground-color: var(--color-on-surface);
 
   position: absolute;
   top: 50%;
@@ -32,9 +32,9 @@
 .skc-search__input {
   --_state-layer-opacity: 0%;
 
-  transition-duration: var(--motion-short-4);
+  transition-duration: var(--duration-short-4);
   transition-property: background-color, outline-color;
-  transition-timing-function: var(--easing-standard);
+  transition-timing-function: var(--ease-standard);
   box-sizing: border-box;
   outline: 3px solid transparent;
   outline-offset: -3px;
@@ -42,7 +42,7 @@
   border-radius: inherit;
   background-color: color-mix(
     in srgb,
-    var(--on-surface) var(--_state-layer-opacity),
+    var(--color-on-surface) var(--_state-layer-opacity),
     transparent
   );
   padding: 1rem;
@@ -59,7 +59,7 @@
     }
     &:focus-visible {
       --_state-layer-opacity: 0%;
-      outline-color: var(--primary);
+      outline-color: var(--color-primary);
     }
   }
 }
@@ -67,7 +67,7 @@
 .skc-search:has(> [aria-disabled="true"]) {
   background-color: color-mix(
     in srgb,
-    var(--surface-container-high) 38%,
+    var(--color-surface-container-high) 38%,
     transparent
   );
   pointer-events: none;

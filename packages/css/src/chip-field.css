@@ -7,15 +7,15 @@
 
 .skc-chip-field {
   --_border-width: 1px;
-  --_border-color: var(--outline);
+  --_border-color: var(--color-outline);
   --_label-offset: 1rem;
-  --_duration: var(--motion-short-4);
-  --_easing: var(--easing-standard);
+  --_duration: var(--duration-short-4);
+  --_ease: var(--ease-standard);
   display: flex;
 
   position: relative;
   flex-direction: column;
-  color: var(--on-surface-variant);
+  color: var(--color-on-surface-variant);
 }
 
 /* ── Label ───────────────────────────────────────────────────────────────── */
@@ -26,7 +26,7 @@
   transform-origin: left;
   z-index: 10;
   transition-property: color, transform;
-  transition: var(--_duration) var(--_easing);
+  transition: var(--_duration) var(--_ease);
   inset-inline-start: var(--_label-offset);
   pointer-events: none;
   font-family: var(--font-display);
@@ -36,7 +36,7 @@
   }
 
   .skc-chip-field:focus-within & {
-    color: var(--primary);
+    color: var(--color-primary);
   }
 }
 
@@ -48,7 +48,7 @@
   top: 0;
   transform: scaleX(0);
   z-index: 10;
-  transition: transform var(--_duration) var(--_easing);
+  transition: transform var(--_duration) var(--_ease);
   inset-inline-start: 0.75rem;
   background-color: var(--adaptive-background);
   padding-inline: 0.25rem;
@@ -86,10 +86,10 @@
   --_box-padding-inline: calc(1rem - var(--_border-width));
 
   display: flex;
-  transition: border-color var(--_duration) var(--_easing);
+  transition: border-color var(--_duration) var(--_ease);
   box-sizing: border-box;
   border: var(--_border-width) solid var(--_border-color);
-  border-radius: var(--rounded-xs);
+  border-radius: var(--radius-xs);
   width: 100%;
   min-height: 3.5rem;
   overflow-x: auto;
@@ -134,7 +134,7 @@
   padding-inline-end: calc(1rem - var(--_border-width));
   padding-block: 1rem;
   min-width: 12rem;
-  color: var(--on-surface);
+  color: var(--color-on-surface);
   font: inherit;
   letter-spacing: inherit;
 
@@ -143,7 +143,7 @@
   }
 
   &::placeholder {
-    color: var(--outline);
+    color: var(--color-outline);
   }
 }
 
@@ -156,9 +156,9 @@
 
   kbd {
     /* Sharp shadow to make it look like a cutout */
-    box-shadow: 0 2px 0 var(--outline-variant);
-    border: 1px solid var(--outline-variant);
-    border-radius: var(--rounded-xs);
+    box-shadow: 0 2px 0 var(--color-outline-variant);
+    border: 1px solid var(--color-outline-variant);
+    border-radius: var(--radius-xs);
     padding-inline: 0.25rem;
     padding-block: 0.125rem;
     font-family: inherit;
@@ -170,7 +170,7 @@
 .skc-chip-field--required
   :is(.skc-chip-field__clip, .skc-chip-field__label)::after {
   content: " *";
-  color: var(--error);
+  color: var(--color-error);
 }
 
 /* ── Loading ─────────────────────────────────────────────────────────────── */
@@ -186,11 +186,11 @@
 /* Hover */
 .skc-chip-field:not(.skc-chip-field--disabled) {
   &:hover {
-    --_border-color: var(--on-surface);
+    --_border-color: var(--color-on-surface);
   }
   &:focus-within {
     --_border-width: 2px;
-    --_border-color: var(--primary);
+    --_border-color: var(--color-primary);
     outline: none;
   }
 }
@@ -198,26 +198,26 @@
 /* ── Disabled ────────────────────────────────────────────────────────────── */
 
 .skc-chip-field--disabled {
-  --_border-color: color-mix(in srgb, var(--outline) 12%, transparent);
-  color: color-mix(in srgb, var(--on-surface) 38%, transparent);
+  --_border-color: color-mix(in srgb, var(--color-outline) 12%, transparent);
+  color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
 
   .skc-chip-field__label {
-    color: color-mix(in srgb, var(--on-surface) 38%, transparent);
+    color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
   }
 
   .skc-chip-field__input {
     opacity: 0.38;
-    color: var(--on-surface);
+    color: var(--color-on-surface);
   }
 }
 
 /* ── Error ───────────────────────────────────────────────────────────────── */
 
 .skc-chip-field--error {
-  --_border-color: var(--error);
+  --_border-color: var(--color-error);
 
   &,
   &:focus-within .skc-chip-field__label {
-    color: var(--error);
+    color: var(--color-error);
   }
 }

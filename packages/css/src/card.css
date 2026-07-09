@@ -11,38 +11,38 @@
 /* Base Card */
 .skc-card {
   display: flex;
-  transition: var(--motion-short-4) var(--easing-standard);
+  transition: var(--duration-short-4) var(--ease-standard);
   transition-property: background-color, border-color, color;
-  border-radius: var(--rounded-md);
-  color: var(--on-surface);
+  border-radius: var(--radius-md);
+  color: var(--color-on-surface);
   text-align: start;
   -webkit-tap-highlight-color: transparent;
 }
 
 /* Appearance */
 .skc-card--outlined {
-  border: 1px solid var(--outline-variant);
-  background-color: var(--surface);
+  border: 1px solid var(--color-outline-variant);
+  background-color: var(--color-surface);
 }
 
 .skc-card--elevated {
   box-shadow: var(--shadow-2);
-  background-color: var(--surface-container-low);
+  background-color: var(--color-surface-container-low);
 }
 
 .skc-card--filled {
   --adaptive-background: var(--adaptive-surface-variant);
 
   background-color: var(--adaptive-surface-variant);
-  color: var(--on-surface-variant);
+  color: var(--color-on-surface-variant);
 
   > * {
     --adaptive-secondary-container: light-dark(
-      var(--secondary-fixed-dim),
-      var(--secondary-container)
+      var(--color-secondary-fixed-dim),
+      var(--color-secondary-container)
     );
-    --adaptive-surface-variant: var(--surface-bright);
-    --adaptive-surface-container: var(--surface-bright);
+    --adaptive-surface-variant: var(--color-surface-bright);
+    --adaptive-surface-container: var(--color-surface-bright);
   }
 }
 
@@ -58,7 +58,7 @@
 
 /* State layer effect */
 .skc-card.skc-interactive {
-  --state-layer-color: var(--on-surface-variant);
+  --state-layer-color: var(--color-on-surface-variant);
 }
 
 /* Shadow effect */
@@ -74,18 +74,18 @@
 /* Nested Card */
 :is(.skc-card--filled, .skc-dialog) .skc-card {
   &.skc-card--outlined {
-    border-color: var(--outline);
+    border-color: var(--color-outline);
     background-color: transparent;
   }
   &.skc-card--filled {
     --adaptive-primary-container: light-dark(
-      var(--primary-container),
-      var(--surface-container-high)
+      var(--color-primary-container),
+      var(--color-surface-container-high)
     );
   }
 
   &.skc-interactive {
-    border: 0px solid var(--outline-variant);
+    border: 0px solid var(--color-outline-variant);
     &:hover {
       margin: -1px;
       border-width: 1px;

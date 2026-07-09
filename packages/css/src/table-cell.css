@@ -6,7 +6,7 @@
 .skc-table-cell {
   display: table-cell;
   position: relative;
-  border: 1px solid var(--outline-variant);
+  border: 1px solid var(--color-outline-variant);
 }
 
 /* Cell content */
@@ -40,5 +40,5 @@
 
 /* Header */
 .skc-table-cell--header {
-  background-color: var(--surface-container);
+  background-color: var(--color-surface-container);
 }

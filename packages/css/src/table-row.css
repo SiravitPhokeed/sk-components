@@ -6,7 +6,7 @@
 
 .skc-table-row {
   display: table-row;
-  transition: background-color var(--motion-short-4) var(--easing-standard);
+  transition: background-color var(--duration-short-4) var(--ease-standard);
   background-color: transparent;
 }
 
@@ -15,7 +15,11 @@
 .skc-table-row:has(> .skc-table-row__actions:not(:empty)) {
   &:hover,
   &:has(:focus-visible) {
-    background-color: color-mix(in srgb, var(--on-surface) 8%, transparent);
+    background-color: color-mix(
+      in srgb,
+      var(--color-on-surface) 8%,
+      transparent
+    );
 
     > .skc-table-row__actions {
       transform: translateY(0);
@@ -39,7 +43,7 @@
   transform: translateY(0.25rem);
   opacity: 0;
   z-index: 10;
-  transition: var(--motion-short-4) var(--easing-standard);
+  transition: var(--duration-short-4) var(--ease-standard);
   transition-property: opacity, transform;
   pointer-events: none;
 
@@ -50,8 +54,8 @@
 
   > .skc-segmented-button {
     box-shadow: var(--shadow-1);
-    border-radius: var(--rounded-full);
-    background-color: var(--surface-variant);
+    border-radius: var(--radius-full);
+    background-color: var(--color-surface-variant);
   }
 
   .skc-button > .skc-material-icon {

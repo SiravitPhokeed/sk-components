@@ -5,14 +5,14 @@
 
 .skc-text-field {
   --_border-width: 1px;
-  --_border-color: var(--outline);
+  --_border-color: var(--color-outline);
   --_label-offset: 1rem;
 
-  --_duration: var(--motion-short-4);
-  --_easing: var(--easing-standard);
+  --_duration: var(--duration-short-4);
+  --_ease: var(--ease-standard);
 
   position: relative;
-  color: var(--on-surface-variant);
+  color: var(--color-on-surface-variant);
 }
 
 .skc-text-field__label {
@@ -21,7 +21,7 @@
   transform-origin: left;
   z-index: 10;
   transition-property: color, transform;
-  transition: var(--_duration) var(--_easing);
+  transition: var(--_duration) var(--_ease);
   inset-inline-start: var(--_label-offset);
   pointer-events: none;
   font-family: var(--font-display);
@@ -31,7 +31,7 @@
   }
 
   .skc-text-field:focus-within & {
-    color: var(--primary);
+    color: var(--color-primary);
   }
 }
 
@@ -43,13 +43,13 @@
     ~ .skc-text-field__box > .skc-text-field__input:required
   )::after {
   content: " *";
-  color: var(--error);
+  color: var(--color-error);
 }
 
 .skc-text-field__box {
   display: flex;
   flex-direction: row;
-  transition: border-color var(--_duration) var(--_easing);
+  transition: border-color var(--_duration) var(--_ease);
   box-sizing: border-box;
   width: 100%;
 
@@ -68,7 +68,7 @@
   background-color: transparent;
   width: 0;
   min-height: 3.5rem;
-  color: var(--on-surface);
+  color: var(--color-on-surface);
   font: inherit;
   letter-spacing: inherit;
   text-align: start;
@@ -129,7 +129,7 @@
     top: 0;
     transform: scaleX(0);
     z-index: 10;
-    transition: transform var(--_duration) var(--_easing);
+    transition: transform var(--_duration) var(--_ease);
     inset-inline-start: 0.75rem;
     background-color: var(--adaptive-background);
     padding-inline: 0.25rem;
@@ -164,7 +164,7 @@
   .skc-text-field__box {
     --_box-padding-inline: calc(1rem - var(--_border-width));
     border: var(--_border-width) solid var(--_border-color);
-    border-radius: var(--rounded-xs);
+    border-radius: var(--radius-xs);
 
     > * {
       margin-block: calc(-1 * var(--_border-width));
@@ -181,9 +181,9 @@
   &::before {
     position: absolute;
     opacity: 0;
-    transition: opacity var(--_duration) var(--_easing);
+    transition: opacity var(--_duration) var(--_ease);
     inset: 0;
-    background-color: var(--on-surface-variant);
+    background-color: var(--color-on-surface-variant);
     content: "";
   }
   &:not(.skc-text-field--disabled):hover:not(:focus-within)::before {
@@ -209,12 +209,12 @@
     --_box-padding-inline: 1rem;
 
     border-bottom: var(--_border-width) solid var(--_border-color);
-    border-radius: var(--rounded-xs) var(--rounded-xs) 0 0;
-    background-color: var(--surface-variant);
+    border-radius: var(--radius-xs) var(--radius-xs) 0 0;
+    background-color: var(--color-surface-variant);
 
     > * {
       transform: translateY(0);
-      transition: transform var(--_duration) var(--_easing);
+      transition: transform var(--_duration) var(--_ease);
       margin-bottom: calc(-1 * var(--_border-width));
       padding-block: 1rem;
     }
@@ -249,11 +249,11 @@
 
 .skc-text-field:not(.skc-text-field--disabled) {
   &:hover {
-    --_border-color: var(--on-surface);
+    --_border-color: var(--color-on-surface);
   }
   &:focus-within {
     --_border-width: 3px;
-    --_border-color: var(--primary);
+    --_border-color: var(--color-primary);
     outline: none;
   }
 }
@@ -261,21 +261,25 @@
 /* ── Disabled ────────────────────────────────────────────────────────────── */
 
 .skc-text-field--disabled {
-  --_border-color: color-mix(in srgb, var(--outline) 12%, transparent);
-  color: color-mix(in srgb, var(--on-surface) 38%, transparent);
+  --_border-color: color-mix(in srgb, var(--color-outline) 12%, transparent);
+  color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
 
   &:focus-within {
-    --_border-color: var(--primary);
+    --_border-color: var(--color-primary);
     --_border-width: 3px;
   }
 
   .skc-text-field__input {
     opacity: 0.38;
-    color: var(--on-surface);
+    color: var(--color-on-surface);
   }
 
   &.skc-text-field--filled .skc-text-field__box {
-    background-color: color-mix(in srgb, var(--on-surface) 4%, transparent);
+    background-color: color-mix(
+      in srgb,
+      var(--color-on-surface) 4%,
+      transparent
+    );
   }
 }
 
@@ -285,11 +289,11 @@
 .skc-text-field:not(.skc-text-field--valid):has(
     .skc-text-field__input:user-invalid
   ) {
-  --_border-color: var(--error);
+  --_border-color: var(--color-error);
 
   &,
   &:focus-within .skc-text-field__label {
-    color: var(--error);
+    color: var(--color-error);
   }
 }
 
@@ -336,12 +340,12 @@
 /* Autofill */
 .skc-text-field:has(.skc-text-field__input:autofill) {
   .skc-text-field__box {
-    background-color: var(--tertiary-container);
+    background-color: var(--color-tertiary-container);
   }
   &:focus-within {
-    --_border-color: var(--tertiary);
+    --_border-color: var(--color-tertiary);
     .skc-text-field__label {
-      color: var(--tertiary);
+      color: var(--color-tertiary);
     }
   }
 }

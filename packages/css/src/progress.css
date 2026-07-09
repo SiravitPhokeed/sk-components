@@ -5,8 +5,8 @@
  */
 
 .skc-progress {
-  --_indicator-color: var(--primary);
-  --_remainder-color: var(--primary-container);
+  --_indicator-color: var(--color-primary);
+  --_remainder-color: var(--color-primary-container);
 
   transform: scaleX(var(--inline-forward));
 }
@@ -18,7 +18,7 @@
     position: relative;
     gap: 0.25rem;
     transform: scaleY(0);
-    transition: transform var(--motion-short-4) var(--easing-standard);
+    transition: transform var(--duration-short-4) var(--ease-standard);
     height: 0.25rem;
 
     /* Already flipped by parent */
@@ -28,12 +28,12 @@
 
     &,
     > * {
-      border-radius: var(--rounded-full);
+      border-radius: var(--radius-full);
     }
   }
 
   .skc-progress__indicator {
-    transition: width var(--motion-short-3) var(--easing-standard);
+    transition: width var(--duration-short-3) var(--ease-standard);
     background-color: var(--_indicator-color);
   }
 
@@ -57,7 +57,7 @@
   .skc-progress--linear .skc-progress__remainder {
     box-sizing: border-box;
     border: 1px solid var(--_remainder-color);
-    background-color: var(--surface);
+    background-color: var(--color-surface);
   }
 }
 
@@ -100,8 +100,8 @@
 
     > * {
       transition:
-        stroke-width var(--motion-short-4) var(--easing-standard),
-        stroke-dashoffset var(--motion-short-2) var(--easing-standard);
+        stroke-width var(--duration-short-4) var(--ease-standard),
+        stroke-dashoffset var(--duration-short-2) var(--ease-standard);
       stroke-dasharray: 200;
       stroke-linecap: round;
       stroke-width: 0;
