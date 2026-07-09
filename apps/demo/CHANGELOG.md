@@ -45,3 +45,14 @@ Versions track the root library releases.
 ### Fixed
 
 - Search placeholder text in Split Layout demo
+
+## [3.0.0] - 2023-03-16
+
+### Added
+
+- Initial demo application showcasing all components and their variants
+- Full-page example: Lookup (list-detail view) built with Split Layout
+- Communications showcase page (Dialog, Snackbar)
+- Snackbar context for app-level feedback
+- Page load indicator using Progress component
+- Routing hooks in preparation for spatially-coherent page transitions

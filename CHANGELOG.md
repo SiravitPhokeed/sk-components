@@ -246,3 +246,30 @@ Changes to the demo app are documented in
 - Minified build output
 - Missing GitHub config files
 - Removed stale `reskcom` workspace from monorepo config
+
+## [3.0.0] - 2023-03-16
+
+### Added
+
+- Monorepo with npm workspaces: `packages/skcom-css` (SKCom Styles), `packages/skcom-react` (ReSKCom), and `apps/demo`
+- Theme Provider component for centralized design token import
+- `useScrollDirection` hook
+- Page transition support via Root Layout
+- **Actions:** Actions, Button, Segmented Button, Toggle Button
+- **Chips:** Assist Chip, Filter Chip, Input Chip, Suggestion Chip, Chip Field, Chip Set
+- **Data display:** Avatar, Card (with Card Header, Card Content), Data Table (with Search, Filters, Content, Head, Body, Pagination), List (with List Item, List Item Content), Table (with Table Head, Body, Foot, Row, Cell)
+- **Forms:** Checkbox, Form Group, Form Item, Radio, Search, Select, Switch, Text Field
+- **Layout:** Columns, Content Layout, Divider, Header, Page Header, Root Layout, Section, Split Layout
+- **Navigation:** Navigation Bar (with Navigation Bar Item), Navigation Drawer (with Navigation Drawer Section, Navigation Drawer Item)
+- **Feedback:** Dialog (with Dialog Header, Dialog Content), Full-screen Dialog, FAB, Progress, Snackbar
+- **Other:** Material Icon, Menu (with Menu Item), Tabs Container (with Tab)
+
+### Changed
+
+- Complete rewrite from v2; CSS framework and React components now ship as separate packages
+- Ripple animation (press feedback) on interactive components, using `getBoundingClientRect` for correct positioning
+- CSS abstracts restructured: `@mixin`/`@include` replace `@extend`
+
+### Removed
+
+- Tailwind Preflight dependency; the library no longer requires Tailwind CSS to function
