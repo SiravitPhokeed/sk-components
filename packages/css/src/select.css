@@ -95,8 +95,10 @@
 }
 
 .skc-select + .skc-menu {
-  top: calc(anchor(bottom) + 1px);
-  right: anchor(right);
+  position-area: initial;
+  top: anchor(bottom);
+  margin-top: 0;
+  inset-inline: anchor(left) anchor(right);
   width: auto;
 }
 

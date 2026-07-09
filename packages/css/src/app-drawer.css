@@ -20,11 +20,8 @@
 
   position: absolute;
   position-anchor: --_app-drawer-toggle;
+  position-area: block-end span-inline-start;
   position-try-fallbacks: flip-inline;
-  top: calc(anchor(bottom) + 0.5rem);
-  right: anchor(right);
-  bottom: auto;
-  left: auto;
   flex-direction: column;
   gap: 0.25rem;
   transform: translateY(-1rem) scaleY(0);
@@ -33,6 +30,7 @@
   transition: var(--_duration) var(--_ease);
   transition-delay: var(--_delay);
   margin: 0;
+  margin-top: 0.5rem;
   box-shadow: var(--shadow-1);
   border: none;
   border-radius: calc(var(--radius-md) + var(--_padding));

@@ -7,14 +7,11 @@
   --_duration: var(--duration-medium-4);
   --_ease: var(--ease-emphasized);
 
+  position-area: block-end span-inline-end;
   position-try-fallbacks:
     flip-block,
     flip-inline,
     flip-block flip-inline;
-  inset: auto;
-  top: calc(anchor(bottom) + 0.5rem);
-  margin-top: 0.5rem;
-  left: anchor(left);
   flex-direction: column;
   transform: scaleY(0);
   transform-origin: top;
@@ -22,6 +19,8 @@
   transition: var(--_duration) var(--_ease);
   box-sizing: border-box;
   margin: 0;
+  margin-top: 0.5rem;
+  inset: auto;
   box-shadow: var(--shadow-3);
   border: none;
   border-radius: var(--radius-xs);
@@ -29,8 +28,7 @@
   padding: 0.5rem 0;
   min-width: 12rem;
   max-height: max(50svh, 10rem);
-  overflow: visible;
-  overflow-y: auto;
+  overflow: hidden auto;
   list-style: none;
 
   > * {
