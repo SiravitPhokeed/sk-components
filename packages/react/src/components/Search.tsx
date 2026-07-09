@@ -50,11 +50,12 @@ export interface SearchProps extends ElementCustomizableProps {
   onChange?: (value: string) => any;
 
   /**
-   * This function triggers when the search button is clicked.
+   * This function triggers when the search button is clicked. The value is
+   * passed in via the function.
    *
    * - Optional.
    */
-  onSearch?: () => any;
+  onSearch?: (value: string) => any;
 
   /**
    * A faint text displayed inside the field guiding the user.
@@ -146,12 +147,18 @@ export const Search: StyleableFC<SearchProps> = ({
         appearance="text"
         alt={STRINGS[locale].action}
         icon={<MaterialIcon icon="search" />}
-        onClick={onSearch}
+        onClick={() => {
+          const input = ref.current;
+          if (!input) return;
+          onSearch?.(input.value);
+          input.focus();
+        }}
         disabled={disabled}
         className="skc-search__button"
       />
       <input
         ref={ref}
+        role="searchbox"
         aria-disabled={disabled}
         value={value}
         readOnly={disabled}
@@ -160,8 +167,9 @@ export const Search: StyleableFC<SearchProps> = ({
         onChange={(event) => onChange?.(event.target.value)}
         onKeyUp={(event) => {
           if (event.key !== "Enter") return;
-          onSearch?.();
-          event.currentTarget.blur();
+          const input = event.currentTarget;
+          onSearch?.(input.value);
+          if (input.value) input.blur();
         }}
         className="skc-search__input"
         {...inputAttr}
