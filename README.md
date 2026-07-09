@@ -6,7 +6,10 @@
     srcset="https://github.com/user-attachments/assets/4cbbe01a-12a7-4544-9444-71ea7a42803e"
     media="(prefers-color-scheme: dark)"
   >
-  <img alt="" src="https://github.com/user-attachments/assets/d27c5edb-3803-49ff-bf0d-d59b1eb47811">
+  <img
+    alt=""
+    src="https://github.com/user-attachments/assets/d27c5edb-3803-49ff-bf0d-d59b1eb47811"
+  >
 </picture>
 </p>
 
@@ -121,20 +124,31 @@ Install dependencies for the monorepo first.
 pnpm install
 ```
 
+---
+
 **When developing, run this command to watch for changes in the packages** and
 rebuild them automatically. Changes in `packages/css` and `packages/react` will
 be reflected in the demo app.
+
+> [!WARNING]
+>
+> The development build marks all components as Client Components.
 
 ```bash
 pnpm dev
 ```
 
-If you need to build the packages individually, you can run the following commands.
+---
+
+If you need to build the packages individually, you can run the following
+commands.
 
 ```bash
 pnpm --filter @suankularb-components/css build
 pnpm --filter @suankularb-components/react build
 ```
+
+---
 
 **To work on the documentation,** build the packages first, then start just the
 Next.js server for the demo app.
@@ -143,6 +157,8 @@ Next.js server for the demo app.
 pnpm build
 pnpm --filter demo dev
 ```
+
+---
 
 To view a production build of the demo app, run the following.
 
