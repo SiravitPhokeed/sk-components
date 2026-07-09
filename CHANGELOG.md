@@ -254,7 +254,6 @@ Changes to the demo app are documented in
 - Monorepo with npm workspaces: `packages/skcom-css` (SKCom Styles), `packages/skcom-react` (ReSKCom), and `apps/demo`
 - Theme Provider component for centralized design token import
 - `useScrollDirection` hook
-- Page transition support via Root Layout
 - **Actions:** Actions, Button, Segmented Button, Toggle Button
 - **Chips:** Assist Chip, Filter Chip, Input Chip, Suggestion Chip, Chip Field, Chip Set
 - **Data display:** Avatar, Card (with Card Header, Card Content), Data Table (with Search, Filters, Content, Head, Body, Pagination), List (with List Item, List Item Content), Table (with Table Head, Body, Foot, Row, Cell)
@@ -272,7 +271,9 @@ Changes to the demo app are documented in
 
 ### Removed
 
+- Components: Banner, Card List, Checklist, Dropdown (replaced by Select), File input (merged into Text Field), Form Button, Form Element (split into Form Group/Form Item), Layout Grid Cols, Link Button (merged into Button), Markdown, Monogram (replaced by Avatar), Noticebar, Persistent input, Radio Group (became Form Group + Radio), Radio Range, Range slider, Text Area (merged into Text Field), Title (split into Header/Page Header), X Scroll Content
 - Tailwind Preflight dependency; the library no longer requires Tailwind CSS to function
+- Storybook (replaced by demo app for component showcase)
 
 ## [2.8.1] - 2022-10-03
 
@@ -284,12 +285,11 @@ Changes to the demo app are documented in
 
 ### Added
 
-- Monorepo with npm workspaces, merging three repositories into one:
+- Monorepo with npm workspaces, merging two repositories into one:
   - `packages/skcom-css` — CSS framework (from `sk-components`)
   - `packages/skcom-react` — React components (from `react-sk-components`)
-  - `apps/docs` — documentation site (from `skcom-doc`)
 - CSS: Checklist, Radio Group (refactored), Range, Radio Range, Form Element wrapper
-- React: 28 components brought over from `react-sk-components` (Actions, Banner, Button, Card, CardList, Checklist, Chip, ChipList, Dialog, FAB, FormButton, FormElement, Header, Icon, Input, LayoutGridCols, LinkButton, Navigation, Noticebar, RadioGroup, RadioRange, Range, Section, Snackbar, Table, Title, XScrollContent)
+- React: 28 components brought over from `react-sk-components` (Actions, Banner, Button, Card, Card List, Checklist, Chip, Chip List, Dialog, FAB, Form Button, Form Element, Header, Icon, Input, Layout Grid Cols, Link Button, Navigation, Noticebar, Radio Group, Radio Range, Range, Section, Snackbar, Table, Title, X Scroll Content)
 - Storybook for component development
 
 ### Fixed
@@ -560,6 +560,9 @@ First stable release of the Suankularb Components CSS framework (`@suankularb-co
 - State layers on interactive components
 - Max lines text overflow utility
 - Scroll bar utility
+- Color palette, typography scale, responsive breakpoints, CSS reset
+- Utility classes: colors, shadows
+- npm publishing via Rollup, PostCSS build pipeline, CI/CD
 
 ### Changed
 
@@ -568,11 +571,123 @@ First stable release of the Suankularb Components CSS framework (`@suankularb-co
 - Header renamed to Title, redesigned
 - Content Layout restructured
 
-### System
+## [1.3.2] - 2022-02-18
 
-- Color palette, typography scale, responsive breakpoints, CSS reset
-- Utility classes: colors, shadows
+### Fixed
 
-### Infrastructure
+- FAB icon size
 
-- npm publishing via Rollup, PostCSS build pipeline, CI/CD
+## [1.3.1] - 2022-02-18
+
+_Version bump only._
+
+## [1.3.0] - 2022-02-18
+
+### Added
+
+- FAB component (filled, with shadow states and colors)
+- FAB Group (container for multiple FABs)
+- Small FAB variant
+- Large FAB icon support
+- Error colors
+
+### Fixed
+
+- Content Layout width clamp being overridden
+- Header icons missing hover and focus styles
+
+## [1.2.2] - 2022-02-09
+
+_Version bump only._
+
+## [1.2.1] - 2022-02-08
+
+_Version bump only._
+
+## [1.2.0] - 2022-02-08
+
+### Added
+
+- Dark mode support: Navigation, Search, Table, and palette now adapt to dark color scheme
+- Color utility classes
+- Shadow utility classes
+
+### Fixed
+
+- Dropdown selected state and Input focus behavior
+- Navigation z-index
+
+## [1.1.4] - 2022-02-02
+
+### Added
+
+- Installation documentation in README
+
+### Fixed
+
+- Build step missing from the CD pipeline
+
+## [1.1.3] - 2022-02-02
+
+First git-tagged release.
+
+_Version bump only._
+
+## [1.1.2] - 2022-02-02
+
+### Added
+
+- GitHub Actions CI/CD workflow
+
+## [1.1.1] - 2022-02-01
+
+### Changed
+
+- npm package moved to the `@suankularb-components` scope (`@suankularb-components/css`)
+
+## [1.1.0] - 2022-01-31
+
+### Fixed
+
+- Header back icon height
+- Material Icon width jumping while loading
+- Navigation icon color and positioning
+- Content Layout width, height, and padding
+- Font weights
+- Table color and page scroll
+- Rollup config refactored
+
+## [1.0.4] - 2022-01-29
+
+### Fixed
+
+- unpkg main route in package.json
+
+> **Note:** v1.0.5 was published to npm but the version bump was not committed to git and cannot be tagged.
+
+## [1.0.2] - 2022-01-29
+
+### Added
+
+- `style` field in package.json for CSS entry point
+
+> **Note:** v1.0.3 was published to npm but the version bump was not committed to git and cannot be tagged.
+
+## [1.0.1] - 2022-01-29
+
+### Added
+
+- Rollup build pipeline for npm distribution
+- Pre-built `dist` output
+
+## [1.0.0] - 2022-01-29
+
+First release of the project, published to npm as `suankularb-components`.
+
+### Added
+
+- **Components:** Button (filled, outlined, text), Navigation Bar (with states, mobile variant, icons), Header, Card (types, header, body, list), List (grid, select list with group support), Search, Input (persistent, file, textarea), Dropdown (with custom variant), Table (with modifiers, elevated row borders), Dialog (with overlay, hero section, JavaScript support), Icon (Material Icons)
+- **Layouts:** List Layout, Page Layout, Regular Layout
+- Color palette, typography scale, responsive breakpoints
+- CSS reset (based on modified Tailwind Preflight)
+- Text shadow utility
