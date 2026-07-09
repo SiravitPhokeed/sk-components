@@ -11,7 +11,8 @@ import {
   TextField,
 } from "@suankularb-components/react";
 import { snackbar } from "@suankularb-components/react/helpers";
-import { useState, type FC } from "react";
+import type { FC } from "react";
+import { useState } from "react";
 
 const ReportIssueDialog: FC = () => {
   const [understood, setUnderstood] = useState(false);

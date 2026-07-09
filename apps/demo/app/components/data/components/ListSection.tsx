@@ -11,7 +11,8 @@ import {
 } from "@suankularb-components/react";
 import Image from "next/image";
 import { toggle } from "radash";
-import { useState, type FC } from "react";
+import type { FC } from "react";
+import { useState } from "react";
 
 const ListSection: FC = () => {
   const [cart, setCart] = useState(["fish-burger"]);

@@ -1,12 +1,13 @@
 "use client";
 
 import {
-  Section,
-  Header,
   Columns,
+  Header,
   Progress,
+  Section,
 } from "@suankularb-components/react";
-import { useEffect, useState, type FC } from "react";
+import type { FC } from "react";
+import { useEffect, useState } from "react";
 
 const ProgressSection: FC = () => {
   const [progress, setProgress] = useState(70);

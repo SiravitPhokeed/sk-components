@@ -1,10 +1,4 @@
-import {
-  Header,
-  MaterialIcon,
-  Section,
-  type MaterialIconProps,
-} from "@suankularb-components/react";
-import { list } from "radash";
+import { Header, MaterialIcon, Section } from "@suankularb-components/react";
 import type { FC } from "react";
 
 const FILLS = [false, true];

@@ -7,7 +7,8 @@ import {
   NavBarItem,
   Section,
 } from "@suankularb-components/react";
-import { useState, type FC } from "react";
+import type { FC } from "react";
+import { useState } from "react";
 
 const NavBarSection: FC = () => {
   const [selected, setSelected] = useState("classes");

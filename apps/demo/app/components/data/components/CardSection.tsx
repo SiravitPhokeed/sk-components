@@ -2,7 +2,6 @@ import Atipol from "@/public/images/example/atipol.jpg";
 import {
   Actions,
   Anchor,
-  Avatar,
   Button,
   Card,
   CardContent,

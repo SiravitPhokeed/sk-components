@@ -8,7 +8,8 @@ import {
   Radio,
   Section,
 } from "@suankularb-components/react";
-import { useState, type FC } from "react";
+import type { FC } from "react";
+import { useState } from "react";
 
 const RadioSection: FC = () => {
   const [atkResult, setATKResult] = useState<"negative" | "positive">();

@@ -9,7 +9,8 @@ import {
   Section,
   Switch,
 } from "@suankularb-components/react";
-import { useState, type FC } from "react";
+import type { FC } from "react";
+import { useState } from "react";
 
 const SwitchSection: FC = () => {
   const [allow, setAllow] = useState(false);

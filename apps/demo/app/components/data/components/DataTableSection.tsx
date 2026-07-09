@@ -14,6 +14,7 @@ import {
   MaterialIcon,
   Section,
 } from "@suankularb-components/react";
+import type { PaginationState, SortingState } from "@tanstack/react-table";
 import {
   createColumnHelper,
   getCoreRowModel,
@@ -21,10 +22,9 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-  type PaginationState,
-  type SortingState,
 } from "@tanstack/react-table";
-import { useState, type FC } from "react";
+import type { FC } from "react";
+import { useState } from "react";
 
 // #region Data
 

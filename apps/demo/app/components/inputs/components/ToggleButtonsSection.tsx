@@ -7,7 +7,8 @@ import {
   Section,
   ToggleButton,
 } from "@suankularb-components/react";
-import { useState, type FC } from "react";
+import type { FC } from "react";
+import { useState } from "react";
 
 const ToggleButtonsSection: FC = () => {
   const [favorite, setFavorite] = useState(false);

@@ -5,7 +5,8 @@ import type { StyleableFC } from "@/lib/types";
 import { Interactive, Text } from "@suankularb-components/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, type ReactNode } from "react";
+import type { ReactNode } from "react";
+import { useEffect, useRef } from "react";
 
 const DocsNavLink: StyleableFC<{
   children: ReactNode;
