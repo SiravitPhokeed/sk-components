@@ -32,11 +32,13 @@ const SearchStudentsPage: FC = () => (
         <section className="relative grow">
           <Card
             appearance="filled"
-            className="bg-surface-container absolute inset-0 flex flex-col gap-5 overflow-auto rounded-t-lg p-4 sm:overflow-visible md:overflow-auto"
+            className="bg-surface-container absolute inset-0 overflow-auto rounded-t-lg"
           >
-            <CurrentPeriodCard />
-            <PersonInformationGrid />
-            <PersonContactGrid />
+            <div className="flex flex-col gap-5 p-4">
+              <CurrentPeriodCard />
+              <PersonInformationGrid />
+              <PersonContactGrid />
+            </div>
           </Card>
         </section>
       </SearchDetailsCard>
