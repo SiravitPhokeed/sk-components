@@ -290,7 +290,7 @@ Changes to the demo app are documented in
   (merged into Text Field), Title (split into Header/Page Header), X Scroll
   Content
 - Tailwind Preflight dependency; the library no longer requires Tailwind CSS to
-function
+  function
 - Storybook (replaced by demo app for component showcase)
 
 ## [2.8.1] - 2022-10-03
