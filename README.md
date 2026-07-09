@@ -1,16 +1,16 @@
 # Suankularb Components
 
 <p>
-<picture>
-  <source
-    srcset="https://github.com/user-attachments/assets/4cbbe01a-12a7-4544-9444-71ea7a42803e"
-    media="(prefers-color-scheme: dark)"
-  >
-  <img
-    alt=""
-    src="https://github.com/user-attachments/assets/d27c5edb-3803-49ff-bf0d-d59b1eb47811"
-  >
-</picture>
+  <picture>
+    <source
+      srcset="https://github.com/user-attachments/assets/daa36e1d-6dad-48ba-9728-15ca5e68d48b"
+      media="(prefers-color-scheme: dark)"
+    >
+    <img
+      alt=""
+      src="https://github.com/user-attachments/assets/8864cea6-0ccf-4d2c-b026-ad023f7d8f8f"
+    >
+  </picture>
 </p>
 
 SK Components is a design system consisting of tokens and components created
@@ -170,16 +170,16 @@ pnpm --filter demo start
 ### Demo application
 
 <p>
-<picture>
-  <source
-    srcset="https://github.com/user-attachments/assets/2c2f3cb9-ac66-41ae-bf2a-b5630050039d"
-    media="(prefers-color-scheme: dark)"
-  >
-  <img
-    alt="A screenshot of the About page of the demo application."
-    src="https://github.com/user-attachments/assets/c46eeb00-3b1c-44af-a9f8-6208c1cd5589"
-  >
-</picture>
+  <picture>
+    <source
+      srcset="https://github.com/user-attachments/assets/2c2f3cb9-ac66-41ae-bf2a-b5630050039d"
+      media="(prefers-color-scheme: dark)"
+    >
+    <img
+      alt="A screenshot of the About page of the demo application."
+      src="https://github.com/user-attachments/assets/c46eeb00-3b1c-44af-a9f8-6208c1cd5589"
+    >
+  </picture>
 </p>
 
 After starting the development server, you can access the demo application
