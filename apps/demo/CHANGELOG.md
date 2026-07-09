@@ -9,7 +9,8 @@ Versions track the root library releases.
 
 ### Changed
 
-- Replaced deprecated `sectionAttr` prop usage with `element` prop in example pages
+- Replaced deprecated `sectionAttr` prop usage with `element` prop in example
+  pages
 
 ## [3.2.0] - 2023-08-08
 

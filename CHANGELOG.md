@@ -7,7 +7,7 @@ From v3.3.0 onwards, this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 Changes to the demo app are documented in
-[apps/demo/CHANGELOG.md](apps/demo/CHANGELOG.md).
+[`apps/demo/CHANGELOG.md`](apps/demo/CHANGELOG.md).
 
 ## [Unreleased]
 
@@ -143,7 +143,8 @@ Changes to the demo app are documented in
 
 ### Changed
 
-- Interactive replaces ad-hoc interaction handling in Button, Card, Chips (all variants), Nav Bar Item, and Toggle Button
+- Interactive replaces ad-hoc interaction handling in Button, Card, Chips (all
+  variants), Nav Bar Item, and Toggle Button
 
 ### Fixed
 
@@ -251,28 +252,45 @@ Changes to the demo app are documented in
 
 ### Added
 
-- Monorepo with npm workspaces: `packages/skcom-css` (SKCom Styles), `packages/skcom-react` (ReSKCom), and `apps/demo`
+- Monorepo with npm workspaces: `packages/skcom-css` (SKCom Styles),
+  `packages/skcom-react` (ReSKCom), and `apps/demo`
 - Theme Provider component for centralized design token import
 - `useScrollDirection` hook
 - **Actions:** Actions, Button, Segmented Button, Toggle Button
-- **Chips:** Assist Chip, Filter Chip, Input Chip, Suggestion Chip, Chip Field, Chip Set
-- **Data display:** Avatar, Card (with Card Header, Card Content), Data Table (with Search, Filters, Content, Head, Body, Pagination), List (with List Item, List Item Content), Table (with Table Head, Body, Foot, Row, Cell)
-- **Forms:** Checkbox, Form Group, Form Item, Radio, Search, Select, Switch, Text Field
-- **Layout:** Columns, Content Layout, Divider, Header, Page Header, Root Layout, Section, Split Layout
-- **Navigation:** Navigation Bar (with Navigation Bar Item), Navigation Drawer (with Navigation Drawer Section, Navigation Drawer Item)
-- **Feedback:** Dialog (with Dialog Header, Dialog Content), Full-screen Dialog, FAB, Progress, Snackbar
+- **Chips:** Assist Chip, Filter Chip, Input Chip, Suggestion Chip, Chip Field,
+  Chip Set
+- **Data display:** Avatar, Card (with Card Header, Card Content), Data Table
+  (with Search, Filters, Content, Head, Body, Pagination), List (with List Item,
+  List Item Content), Table (with Table Head, Body, Foot, Row, Cell)
+- **Forms:** Checkbox, Form Group, Form Item, Radio, Search, Select, Switch,
+  Text Field
+- **Layout:** Columns, Content Layout, Divider, Header, Page Header, Root
+  Layout, Section, Split Layout
+- **Navigation:** Navigation Bar (with Navigation Bar Item), Navigation Drawer
+  (with Navigation Drawer Section, Navigation Drawer Item)
+- **Feedback:** Dialog (with Dialog Header, Dialog Content), Full-screen Dialog,
+  FAB, Progress, Snackbar
 - **Other:** Material Icon, Menu (with Menu Item), Tabs Container (with Tab)
 
 ### Changed
 
-- Complete rewrite from v2; CSS framework and React components now ship as separate packages
-- Ripple animation (press feedback) on interactive components, using `getBoundingClientRect` for correct positioning
+- Complete rewrite from v2; CSS framework and React components now ship as
+  separate packages
+- Ripple animation (press feedback) on interactive components, using
+  `getBoundingClientRect` for correct positioning
 - CSS abstracts restructured: `@mixin`/`@include` replace `@extend`
 
 ### Removed
 
-- Components: Banner, Card List, Checklist, Dropdown (replaced by Select), File input (merged into Text Field), Form Button, Form Element (split into Form Group/Form Item), Layout Grid Cols, Link Button (merged into Button), Markdown, Monogram (replaced by Avatar), Noticebar, Persistent input, Radio Group (became Form Group + Radio), Radio Range, Range slider, Text Area (merged into Text Field), Title (split into Header/Page Header), X Scroll Content
-- Tailwind Preflight dependency; the library no longer requires Tailwind CSS to function
+- Components: Banner, Card List, Checklist, Dropdown (replaced by Select), File
+  input (merged into Text Field), Form Button, Form Element (split into Form
+  Group/Form Item), Layout Grid Cols, Link Button (merged into Button),
+  Markdown, Monogram (replaced by Avatar), Noticebar, Persistent input, Radio
+  Group (became Form Group + Radio), Radio Range, Range slider, Text Area
+  (merged into Text Field), Title (split into Header/Page Header), X Scroll
+  Content
+- Tailwind Preflight dependency; the library no longer requires Tailwind CSS to
+function
 - Storybook (replaced by demo app for component showcase)
 
 ## [2.8.1] - 2022-10-03
@@ -288,8 +306,13 @@ Changes to the demo app are documented in
 - Monorepo with npm workspaces, merging two repositories into one:
   - `packages/skcom-css` — CSS framework (from `sk-components`)
   - `packages/skcom-react` — React components (from `react-sk-components`)
-- CSS: Checklist, Radio Group (refactored), Range, Radio Range, Form Element wrapper
-- React: 28 components brought over from `react-sk-components` (Actions, Banner, Button, Card, Card List, Checklist, Chip, Chip List, Dialog, FAB, Form Button, Form Element, Header, Icon, Input, Layout Grid Cols, Link Button, Navigation, Noticebar, Radio Group, Radio Range, Range, Section, Snackbar, Table, Title, X Scroll Content)
+- CSS: Checklist, Radio Group (refactored), Range, Radio Range, Form Element
+  wrapper
+- React: 28 components brought over from `react-sk-components` (Actions, Banner,
+  Button, Card, Card List, Checklist, Chip, Chip List, Dialog, FAB, Form Button,
+  Form Element, Header, Icon, Input, Layout Grid Cols, Link Button, Navigation,
+  Noticebar, Radio Group, Radio Range, Range, Section, Snackbar, Table, Title,
+  X Scroll Content)
 - Storybook for component development
 
 ### Fixed
@@ -382,7 +405,8 @@ _Version bump only._
 
 ### Added
 
-- Auto input messages (automatically switches between helper and error text based on validity)
+- Auto input messages (automatically switches between helper and error text
+  based on validity)
 
 ### Fixed
 
@@ -453,7 +477,8 @@ _Version bump only._
 
 ### Changed
 
-- **Breaking:** Dialog Header, Dialog Section, and Dialog List must now be wrapped in Dialog Content
+- **Breaking:** Dialog Header, Dialog Section, and Dialog List must now be
+  wrapped in Dialog Content
 
 ### Fixed
 
@@ -511,7 +536,8 @@ _Version bump only._
 
 ### Added
 
-- Chip component (selected/unselected states, outlined/elevated appearances, with icon/avatar variants)
+- Chip component (selected/unselected states, outlined/elevated appearances,
+  with icon/avatar variants)
 - Chip List (regular and radio group modes)
 - "Sora" as the display font for Latin glyphs
 
@@ -552,11 +578,17 @@ _Version bump only._
 
 ## [2.0.0] - 2022-03-02
 
-First stable release of the Suankularb Components CSS framework (`@suankularb-components/css`). A complete rewrite from v1 with a new layout grid, state layers, and expanded component set.
+First stable release of the Suankularb Components CSS framework
+(`@suankularb-components/css`). A complete rewrite from v1 with a new layout
+grid, state layers, and expanded component set.
 
 ### Added
 
-- **Components:** Button (filled, outlined, text, icon), Navigation Bar, Header, Icon, Card (with Header, Body, Horizontal, and Stacked variants), Full-screen Dialog, List Layout, Page Layout, Search, Input (with Persistent, Dropdown variants), Table, Dialog, TextArea, Monogram, FAB (small, normal, large, extended), FAB Group, Mobile Navigation
+- **Components:** Button (filled, outlined, text, icon), Navigation Bar, Header,
+  Icon, Card (with Header, Body, Horizontal, and Stacked variants), Full-screen
+  Dialog, List Layout, Page Layout, Search, Input (with Persistent, Dropdown
+  variants), Table, Dialog, TextArea, Monogram, FAB (small, normal, large,
+  extended), FAB Group, Mobile Navigation
 - State layers on interactive components
 - Max lines text overflow utility
 - Scroll bar utility
@@ -608,7 +640,8 @@ _Version bump only._
 
 ### Added
 
-- Dark mode support: Navigation, Search, Table, and palette now adapt to dark color scheme
+- Dark mode support: Navigation, Search, Table, and palette now adapt to dark
+  color scheme
 - Color utility classes
 - Shadow utility classes
 
@@ -643,7 +676,8 @@ _Version bump only._
 
 ### Changed
 
-- npm package moved to the `@suankularb-components` scope (`@suankularb-components/css`)
+- npm package moved to the `@suankularb-components` scope
+  (`@suankularb-components/css`)
 
 ## [1.1.0] - 2022-01-31
 
@@ -663,7 +697,8 @@ _Version bump only._
 
 - unpkg main route in package.json
 
-> **Note:** v1.0.5 was published to npm but the version bump was not committed to git and cannot be tagged.
+> **Note:** v1.0.5 was published to npm but the version bump was not committed
+> to git and cannot be tagged.
 
 ## [1.0.2] - 2022-01-29
 
@@ -671,7 +706,8 @@ _Version bump only._
 
 - `style` field in package.json for CSS entry point
 
-> **Note:** v1.0.3 was published to npm but the version bump was not committed to git and cannot be tagged.
+> **Note:** v1.0.3 was published to npm but the version bump was not committed
+> to git and cannot be tagged.
 
 ## [1.0.1] - 2022-01-29
 
@@ -686,7 +722,11 @@ First release of the project, published to npm as `suankularb-components`.
 
 ### Added
 
-- **Components:** Button (filled, outlined, text), Navigation Bar (with states, mobile variant, icons), Header, Card (types, header, body, list), List (grid, select list with group support), Search, Input (persistent, file, textarea), Dropdown (with custom variant), Table (with modifiers, elevated row borders), Dialog (with overlay, hero section, JavaScript support), Icon (Material Icons)
+- **Components:** Button (filled, outlined, text), Navigation Bar (with states,
+  mobile variant, icons), Header, Card (types, header, body, list), List (grid,
+  select list with group support), Search, Input (persistent, file, textarea),
+  Dropdown (with custom variant), Table (with modifiers, elevated row borders),
+  Dialog (with overlay, hero section, JavaScript support), Icon (Material Icons)
 - **Layouts:** List Layout, Page Layout, Regular Layout
 - Color palette, typography scale, responsive breakpoints
 - CSS reset (based on modified Tailwind Preflight)
