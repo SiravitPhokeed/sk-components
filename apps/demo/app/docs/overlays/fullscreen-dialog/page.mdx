@@ -22,7 +22,7 @@ A Dialog can appear above a Full-screen Dialog.
 
 ```tsx
 <FullscreenDialog
-  id="edit-profile"
+  id="edit-profile-dialog"
   title="Edit profile"
   action={
     <Button appearance="filled" command="request-close">
@@ -37,9 +37,10 @@ A Dialog can appear above a Full-screen Dialog.
 ### Usage
 
 A trigger button can open the Full-screen Dialog via the Invoker Commands API.
+Learn more in the [modals and popovers guide](/docs/guides/modals).
 
 ```tsx
-<Button command="show-modal" commandfor="edit-profile">
+<Button command="show-modal" commandfor="edit-profil-dialoge">
   Edit profile
 </Button>
 ```

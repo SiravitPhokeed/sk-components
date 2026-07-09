@@ -176,12 +176,12 @@ of this feature.
 
 ```tsx
 // OLD: Controlled mode
-const [isOpen, setIsOpen] = useState(false);
+const [open, setOpen] = useState(false);
 
 return (
   <>
-    <Button onClick={() => setIsOpen(true)}>Open Menu</Button>
-    <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
+    <Button onClick={() => setOpen(true)}>Open Dialog</Button>
+    <Dialog open={open} onClose={() => setOpen(false)}>
       {/* ... */}
     </Dialog>
   </>
@@ -193,7 +193,7 @@ return (
 return (
   <>
     <Button command="show-modal" commandfor="example-dialog">
-      Open Menu
+      Open Dialog
     </Button>
     <Dialog id="example-dialog">{/* ... */}</Dialog>
   </>
@@ -210,12 +210,12 @@ position itself relative to the trigger.
 
 ```tsx
 // OLD: Controlled mode & without Anchor
-const [isOpen, setIsOpen] = useState(false);
+const [open, setOpen] = useState(false);
 
 return (
   <div style={{ position: "relative" }}>
-    <Button onClick={() => setIsOpen(true)}>Open Menu</Button>
-    <Menu open={isOpen} onBlur={() => setIsOpen(false)}>
+    <Button onClick={() => setOpen(true)}>Open Menu</Button>
+    <Menu open={open} onClose={() => setOpen(false)}>
       <MenuItem>Item 1</MenuItem>
       <MenuItem>Item 2</MenuItem>
     </Menu>
