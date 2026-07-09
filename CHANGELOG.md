@@ -273,3 +273,306 @@ Changes to the demo app are documented in
 ### Removed
 
 - Tailwind Preflight dependency; the library no longer requires Tailwind CSS to function
+
+## [2.8.1] - 2022-10-03
+
+### Added
+
+- Data Table component
+
+## [2.8.0] - 2022-07-28
+
+### Added
+
+- Monorepo with npm workspaces, merging three repositories into one:
+  - `packages/skcom-css` — CSS framework (from `sk-components`)
+  - `packages/skcom-react` — React components (from `react-sk-components`)
+  - `apps/docs` — documentation site (from `skcom-doc`)
+- CSS: Checklist, Radio Group (refactored), Range, Radio Range, Form Element wrapper
+- React: 28 components brought over from `react-sk-components` (Actions, Banner, Button, Card, CardList, Checklist, Chip, ChipList, Dialog, FAB, FormButton, FormElement, Header, Icon, Input, LayoutGridCols, LinkButton, Navigation, Noticebar, RadioGroup, RadioRange, Range, Section, Snackbar, Table, Title, XScrollContent)
+- Storybook for component development
+
+### Fixed
+
+- CSS not loading in the React package
+
+## [2.7.4] - 2022-07-12
+
+### Fixed
+
+- Font imports conflicting with consumer app font imports
+- Outlined Button with Icon had too much left padding
+- Text Button with Icon had too much left padding
+
+## [2.7.3] - 2022-07-11
+
+_Version bump only._
+
+## [2.7.2] - 2022-07-11
+
+### Fixed
+
+- Page Layout not extending to full screen height
+
+## [2.7.1] - 2022-07-10
+
+### Added
+
+- Actions component
+- Banner component
+- Noticebar component
+
+### Changed
+
+- Fixed Title is now opt-in; Title scrolls with the page by default
+
+### Fixed
+
+- Main Section not behaving like Regular Layout
+- Table lacking scrollbar on desktop
+- Selected Chip state layer not fully covering the Chip
+
+## [2.7.0] - 2022-07-08
+
+### Added
+
+- Scroll snapping in X Scroll Content
+
+### Changed
+
+- Icons migrated to Material Symbols
+
+### Fixed
+
+- iOS compatibility issues
+- Chip List contrast issues when placed inside Dialog
+
+## [2.6.0] - 2022-05-12
+
+### Added
+
+- Radio component
+- Checkbox component
+- Range slider component
+- Radio Range component (scale selector)
+- Required field indicator on form inputs
+- Manual error state class for Input
+
+### Fixed
+
+- Input button not changing cursor to pointer on hover
+
+## [2.5.1] - 2022-05-08
+
+### Added
+
+- Snackbar component
+
+## [2.5.0] - 2022-05-08
+
+_Version bump only._
+
+## [2.4.5] - 2022-05-03
+
+### Fixed
+
+- Dialog Columns gap not adjustable for Input children
+
+## [2.4.4] - 2022-05-01
+
+### Added
+
+- Auto input messages (automatically switches between helper and error text based on validity)
+
+### Fixed
+
+- Helper and error messages wrapping when they shouldn't
+
+## [2.4.3] - 2022-05-01
+
+### Added
+
+- Disabled state for all Button variants (filled, tonal, outlined, text)
+- Disabled utility class
+
+## [2.4.2] - 2022-04-30
+
+### Added
+
+- Transparent Navigation variant
+- Error indicator (red underline) on Input
+- Error message text on Input
+- Helper message text on Input
+
+### Fixed
+
+- Title line-height too large on desktop
+- Subtitle in Title not using lighter weight
+- Dropdown Options appearing behind Label
+
+## [2.4.1] - 2022-04-06
+
+### Added
+
+- Input Chip component
+- Button Chip (Icon Chip) component
+
+### Fixed
+
+- Icon having no fixed height
+
+## [2.4.0] - 2022-03-30
+
+### Added
+
+- List Layout support on mobile
+- Scroll Desktop utility (replaces X Scroll Content)
+
+### Fixed
+
+- Icon in Button with Icon too large
+- Layout Grid Columns mis-categorized as utilities
+
+## [2.3.1] - 2022-03-28
+
+### Added
+
+- Text Stroke utility (adds outline to text)
+
+### Fixed
+
+- Dialog overflow issues
+- Dropdown issues
+
+## [2.3.0] - 2022-03-25
+
+### Added
+
+- Dialog Content wrapper component
+- No Transition modifier for Dialog (for use with animation libraries)
+
+### Changed
+
+- **Breaking:** Dialog Header, Dialog Section, and Dialog List must now be wrapped in Dialog Content
+
+### Fixed
+
+- Dialog incompatible with Framer Motion
+- Dialog padding incorrect
+
+## [2.2.5] - 2022-03-22
+
+### Added
+
+- Card action area support (clickable cards)
+- New `z-index` system
+
+### Fixed
+
+- Card action styling issues
+
+## [2.2.4] - 2022-03-19
+
+### Added
+
+- Error (danger) Button variants for all styles
+- Error variant for Has Action utility
+
+### Fixed
+
+- Dropdown height inconsistent with Input
+- Dialog List Item height inconsistent
+
+## [2.2.3] - 2022-03-18
+
+### Added
+
+- Dialog Hero support for large Dialogs
+- Icon Button for filled, outlined, and tonal Button variants
+
+### Fixed
+
+- Icons having unpredictable display behavior
+- Text inside Button flowing to multiple lines
+- Dialog Hero and Dialog List padding
+- Dropdown Options `z-index`
+
+## [2.2.2] - 2022-03-17
+
+_Version bump only._
+
+## [2.2.1] - 2022-03-11
+
+### Fixed
+
+- Chip Icon lacking `display: flex`
+
+## [2.2.0] - 2022-03-10
+
+### Added
+
+- Chip component (selected/unselected states, outlined/elevated appearances, with icon/avatar variants)
+- Chip List (regular and radio group modes)
+- "Sora" as the display font for Latin glyphs
+
+### Fixed
+
+- State layer hover transition on Has Action elements
+- Input width not modifiable
+- Icon Button having too little padding
+- Outlined Button larger than Filled Button
+- Button with Icon having incorrect padding
+
+## [2.1.2] - 2022-03-07
+
+_Version bump only._
+
+## [2.1.1] - 2022-03-06
+
+### Added
+
+- List Layout component
+- X Scroll Content component
+- Has Action utility class
+- Layout Grid Columns utility class
+- Support for manual light/dark mode classes
+
+### Changed
+
+- Title transforms into Top App Bar on mobile
+
+### Fixed
+
+- Unwanted focus outlines on elements that don't need them
+- Card Header spacing incorrect
+
+## [2.1.0] - 2022-03-06
+
+_Version bump only._
+
+## [2.0.0] - 2022-03-02
+
+First stable release of the Suankularb Components CSS framework (`@suankularb-components/css`). A complete rewrite from v1 with a new layout grid, state layers, and expanded component set.
+
+### Added
+
+- **Components:** Button (filled, outlined, text, icon), Navigation Bar, Header, Icon, Card (with Header, Body, Horizontal, and Stacked variants), Full-screen Dialog, List Layout, Page Layout, Search, Input (with Persistent, Dropdown variants), Table, Dialog, TextArea, Monogram, FAB (small, normal, large, extended), FAB Group, Mobile Navigation
+- State layers on interactive components
+- Max lines text overflow utility
+- Scroll bar utility
+
+### Changed
+
+- Components aligned to a shared layout grid
+- Card revamped; Card List removed in favor of Horizontal and Stacked variants
+- Header renamed to Title, redesigned
+- Content Layout restructured
+
+### System
+
+- Color palette, typography scale, responsive breakpoints, CSS reset
+- Utility classes: colors, shadows
+
+### Infrastructure
+
+- npm publishing via Rollup, PostCSS build pipeline, CI/CD
