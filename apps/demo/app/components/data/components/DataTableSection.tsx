@@ -65,13 +65,13 @@ const PROGRESS_MAP = {
 const SAMPLE_TASKS: Task[] = [
   {
     task: "MySK Data API specification",
-    assignee: "Smart W.",
+    assignee: "Jedpat T.",
     progress: "in-progress",
     dueDate: new Date("2023-02-28"),
   },
   {
     task: "MySK Authentication API specification",
-    assignee: "Smart W.",
+    assignee: "Jedpat T.",
     progress: "not-started",
   },
   {
@@ -81,13 +81,13 @@ const SAMPLE_TASKS: Task[] = [
   },
   {
     task: "SK Components v3.2.3 release",
-    assignee: "Siravit P.",
+    assignee: "Piyarom K.",
     progress: "completed",
     dueDate: new Date("2023-02-15"),
   },
   {
     task: "MySK Club Registry API specification",
-    assignee: "Smart W.",
+    assignee: "Jedpat T.",
     progress: "blocked",
   },
   {
@@ -98,7 +98,7 @@ const SAMPLE_TASKS: Task[] = [
   },
   {
     task: "MySK Electives design",
-    assignee: "Siravit P.",
+    assignee: "Piyarom K.",
     progress: "blocked",
     dueDate: new Date("2023-04-01"),
   },
