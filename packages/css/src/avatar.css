@@ -26,7 +26,7 @@
   }
 }
 
-@media (width >= 600px) {
+@media (width >= 40rem) {
   .skc-fullscreen-dialog .skc-avatar:has(img) {
     background-color: var(--color-surface);
   }

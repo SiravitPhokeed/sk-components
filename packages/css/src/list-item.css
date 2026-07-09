@@ -44,7 +44,7 @@
 }
 
 /* State layer in Columns: add rounded corners at sm+ */
-@media (width >= 600px) {
+@media (width >= 40rem) {
   .skc-columns > .skc-list-item--state-layer {
     border-radius: var(--radius-md);
   }

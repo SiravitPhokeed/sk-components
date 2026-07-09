@@ -1,4 +1,4 @@
-@media (width < 600px) {
+@media (width < 40rem) {
   .skc-split-layout {
     padding-inline: 1rem;
   }
@@ -9,7 +9,7 @@
   }
 }
 
-@media (width >= 600px) {
+@media (width >= 40rem) {
   .skc-split-layout::before {
     position: fixed;
     z-index: 10;
@@ -65,7 +65,7 @@
   }
 }
 
-@media (width >= 905px) {
+@media (width >= 64rem) {
   .skc-split-layout__content {
     .skc-split-layout--list-detail & {
       --_left-col-span: 1fr;

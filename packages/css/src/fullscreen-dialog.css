@@ -95,7 +95,7 @@
   padding-bottom: 3rem;
 }
 
-@media (width >= 600px) {
+@media (width >= 40rem) {
   .skc-fullscreen-dialog {
     --_entry-ease: var(--ease-emphasized);
     --_entry-duration: var(--duration-long-4);
@@ -223,7 +223,7 @@
   }
 }
 
-@media (width >= 600px) {
+@media (width >= 40rem) {
   .skc-fullscreen-dialog.skc-fullscreen-dialog--exiting > * {
     animation: calc(var(--_duration) / 4) var(--_ease) forwards
       skc-fullscreen-dialog-exit-content;
@@ -254,7 +254,7 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) and (min-width: 600px) {
+@media (prefers-reduced-motion: reduce) and (min-width: 40rem) {
   .skc-fullscreen-dialog {
     transform: translate(-50%, -50%);
 

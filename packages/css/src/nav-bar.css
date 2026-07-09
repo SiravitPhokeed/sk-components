@@ -24,7 +24,7 @@
   width: 100%;
 }
 
-@media (width < 600px) {
+@media (width < 40rem) {
   .skc-nav-bar {
     top: auto;
     background-color: var(--color-surface-container);
@@ -38,7 +38,7 @@
   }
 }
 
-@media (width >= 600px) {
+@media (width >= 40rem) {
   .skc-nav-bar {
     display: flex;
     flex-direction: column;

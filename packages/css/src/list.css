@@ -21,7 +21,7 @@
 .skc-content-layout__content > .skc-section > .skc-list {
   margin-inline: 0;
 }
-@media (width >= 600px) {
+@media (width >= 40rem) {
   .skc-content-layout__content > .skc-section > .skc-list {
     margin-inline: 1rem;
   }
