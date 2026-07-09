@@ -11,6 +11,88 @@ Changes to the demo app are documented in
 
 ## [Unreleased]
 
+### Added
+
+- Invoker Commands API support (`command` and `commandfor` props) on
+  **App Drawer Item**, **Assist Chip**, **Button**, **Card**, **Filter Chip**,
+  **FAB**, **Input Chip**, **Interactive**, **List Item**, **Menu Item**,
+  **Nav Bar Item**, **Nav Drawer Item**, **Suggestion Chip**, and **Tab**
+- `"use client"` directive on Client Components for Next.js App Router support
+- **Anchor** component for declarative popover positioning with CSS Anchor
+  Positioning
+- **Button:** `autoFocus` prop
+- **Chip Field:** `required` prop
+- **Data Table Body, Data Table Head:** `align` prop for text alignment
+- **Data Table Head:** `colSpans` prop for column spanning
+- **Dialog, Full-screen Dialog, Menu:** uncontrolled mode via Invoker Commands
+  API (`id` prop)
+- **Filter Chip:** `href` prop for navigation
+- **Form Group:** `legendElement` prop for custom legend elements
+- **Full-screen Dialog, Input Chip:** `locale` prop (`"en-US"` | `"th"`)
+- **Input Chip:** `tooltip` prop, and `deleteCommand`/`deleteCommandfor` for
+  Invoker Commands on the delete button
+- **List Item:** `containerElement` prop
+- **Material Icon:** `alt` prop for accessibility labels, and `directional`
+  prop to auto-flip icons in RTL
+- **Menu Item:** `dangerous` prop for destructive actions
+- **Search:** `hotkey` prop for keyboard shortcut to focus the field
+- **Snackbar:** `persistent` and `autoDismissDurationMs` props; new
+  `snackbar.push()` and `snackbar.promise()` imperative API (import from
+  `@suankularb-components/react/helpers`)
+- **Split Layout:** `prefer` prop (`"left"` | `"right"` | `"both"`)
+- **Table Cell:** `colSpan` and `rowSpan` props
+- **Text:** `id` prop
+- **Text Field:** `type` prop for native HTML input types
+
+### Changed
+
+- **Chip Field, Form Item, Page Header, Data Table Body, Table Row,
+  Snackbar:** `children` and other props narrowed to specific React Element
+  types
+- **Dialog, Full-screen Dialog:** `open` and `onClose` are now optional
+  (uncontrolled mode via Invoker Commands API)
+- **FAB** is now a direct child of **Root Layout** instead of a **Nav Bar** prop
+- **Filter Chip:** `menu` now takes a Fragment of Menu Items instead of a Menu
+  component
+- **Menu:** trigger and Menu are now placed inside an **Anchor** component
+  with Invoker Commands; `onBlur` renamed to `onClose`
+- **Nav Bar:** `onNavToggle` is now optional
+- **Nav Drawer** state is now managed internally by **Root Layout**; manual
+  `open`/`onClose` state is no longer needed
+- **Select, Menu Item:** `value` type narrowed from `any` to `string`
+- **Snackbar** is now managed internally via `snackbar.push()` or
+  `snackbar.promise()` (import from `@suankularb-components/react/helpers`)
+- **Split Layout:** `showRightOnMobile` replaced by `prefer`
+- **Text:** `"button"`, `"caption"`, and `"overline"` types removed
+  (use `"label-large"`, `"body-small"`, `"label-small"` instead)
+- **Text Field:** `inputAttr.type` replaced by direct `type` prop
+- **Theme Provider** is no longer a wrapper; include `<ThemeProvider />` anywhere
+  in the component tree
+- CSS is now on `@layer skc`, making it easier to override
+
+### Removed
+
+- **Chip Field, Dialog Header, Form Group, Form Item, Full-screen Dialog,
+  List Item Content, Nav Bar Item, Nav Drawer Section, Page Header, Search,
+  Select, Tab, Tabs Container, Text Field:** `alt` prop (IDs now auto-generated
+  via `useId()`)
+- **FAB:** `stateOnScroll`; **Filter Chip:** `onMenuToggle`
+- **Input Chip:** edit mode (`editable`, `value`, `onChange`, `onEditExit`)
+- **Interactive:** `attr` prop and generic type parameter
+- Motion integration (`useAnimationConfig()`, `useRipple()`,
+  `useBreakpoint()`, `DURATION`, `EASING`, and `transition`)
+- **Card, Input Chip, Data Table:** `layout` and `layoutID` props
+  (Framer Motion)
+- **Card, Page Header, Switch, Header, Checkbox, Radio, Form Item,
+  Form Group, Select, Section, Table Cell:** `*Attr` passthrough props
+  (`aAttr`, `buttonAttr`, `backAttr`, `hAttr`, `inputAttr`, `labelAttr`,
+  `legendAttr`, `menuAttr`, `sectionAttr`, `tdAttr`)
+- **Nav Bar:** `brand` and `fab` props; **Nav Bar Item:** `badge` prop
+- **Page Header:** `title`, `brand`, `homeURL`, `icon` (previously deprecated)
+- **Search:** `children` (suggestion dropdown); **Select, Material Icon:**
+  `element`; **Tab:** `containerID`; **Table Cell:** `menu` and `onMenuToggle`;
+  **Text Field:** `canClear`
+
 ## [3.3.2] - 2024-04-30
 
 ### Changed
