@@ -94,7 +94,7 @@
   inset: -2.25rem;
 }
 
-@media only screen and (width >= 40rem) {
+@media only screen and (width >= 38rem) {
   .skc-page-header {
     margin-bottom: 0;
     padding: 1.25rem 2rem 0.5rem;

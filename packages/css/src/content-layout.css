@@ -22,7 +22,7 @@
   }
 }
 
-@media only screen and (width >= 40rem) {
+@media only screen and (width >= 38rem) {
   .skc-content-layout {
     padding: 1.5rem 2rem 2.25rem;
   }

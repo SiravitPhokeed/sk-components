@@ -38,7 +38,7 @@ body {
   }
 }
 
-@media (width < 40rem) {
+@media (width < 38rem) {
   .skc-root-layout {
     padding-bottom: calc(
       1rem + var(--_nav-size, 0rem) + var(--_fab-size, 0rem)
@@ -73,7 +73,7 @@ body {
   }
 }
 
-@media (width >= 40rem) {
+@media (width >= 38rem) {
   .skc-root-layout {
     padding-bottom: 0;
 
