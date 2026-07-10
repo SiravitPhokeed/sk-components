@@ -28,6 +28,10 @@
       > * {
         pointer-events: auto;
       }
+
+      > .skc-segmented-button {
+        box-shadow: var(--shadow-1);
+      }
     }
   }
 }
@@ -53,7 +57,8 @@
   }
 
   > .skc-segmented-button {
-    box-shadow: var(--shadow-1);
+    transition: box-shadow var(--duration-short-4) var(--ease-standard);
+    box-shadow: none;
     border-radius: var(--radius-full);
     background-color: var(--color-surface-variant);
   }
