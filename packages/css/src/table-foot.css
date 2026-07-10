@@ -5,5 +5,26 @@
 
 .skc-table-foot {
   display: table-footer-group;
-  background-color: var(--color-surface-container-low);
+
+  .skc-table-cell {
+    background-color: var(--color-surface-container-low);
+  }
+}
+
+.skc-table-foot--fixed {
+  position: sticky;
+  z-index: 10;
+  inset: 0;
+  top: auto;
+  box-shadow: 0 -1px 0 var(--color-outline-variant);
+
+  .skc-table-cell {
+    border-top: 0;
+  }
+}
+
+.skc-table-body:has(+ .skc-table-foot--fixed)
+  > .skc-table-row:last-child
+  > .skc-table-cell {
+  border-bottom: 0;
 }

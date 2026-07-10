@@ -14,20 +14,39 @@ export interface TableFootProps extends ElementCustomizableProps {
    * - Always required.
    */
   children: ReactNode;
+
+  /**
+   * If the Table Foot stays put on scroll.
+   *
+   * - Table Foot will be fixed to the bottom of the parent Table, not the
+   *   screen.
+   * - Only effective if `height` is set on the parent Table.
+   * - Optional.
+   */
+  fixed?: boolean;
 }
 
 /**
  * The foot area of a Table.
  *
  * @param children Table Foot has the same behaviour as `<tfoot>`.
+ * @param fixed If the Table Foot stays put on scroll.
  */
 export const TableFoot: StyleableFC<TableFootProps> = ({
   children,
+  fixed,
   element: Element = "tfoot",
   style,
   className,
 }) => (
-  <Element className={cn("skc-table-foot", className)} style={style}>
+  <Element
+    className={cn(
+      "skc-table-foot",
+      fixed && "skc-table-foot--fixed",
+      className,
+    )}
+    style={style}
+  >
     {children}
   </Element>
 );
