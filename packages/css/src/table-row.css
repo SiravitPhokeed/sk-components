@@ -24,10 +24,9 @@
     > .skc-table-row__actions {
       transform: translateY(0);
       opacity: 1;
-
-      > * {
-        pointer-events: auto;
-      }
+      border-start-end-radius: 100%; /* Hover triangle (more forgiving hover area) */
+      padding-inline-end: 10rem;
+      pointer-events: auto;
 
       > .skc-segmented-button {
         box-shadow: var(--shadow-1);
