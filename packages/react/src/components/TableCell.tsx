@@ -62,26 +62,24 @@ export const TableCell: StyleableFC<TableCellProps> = ({
   element: Element = header ? "th" : "td",
   style,
   className,
-}) => {
-  return (
-    <Element
-      colSpan={colSpan}
-      rowSpan={rowSpan}
-      style={style}
-      className={cn(
-        "skc-table-cell",
-        header && "skc-table-cell--header",
-        `skc-table-cell--${align}`,
-        className,
-      )}
+}) => (
+  <Element
+    colSpan={colSpan}
+    rowSpan={rowSpan}
+    style={style}
+    className={cn(
+      "skc-table-cell",
+      header && "skc-table-cell--header",
+      `skc-table-cell--${align}`,
+      className,
+    )}
+  >
+    <Text
+      type={header ? "title-small" : "body-medium"}
+      className="skc-table-cell__content"
+      element="div"
     >
-      <Text
-        type={header ? "title-small" : "body-medium"}
-        className="skc-table-cell__content"
-        element="div"
-      >
-        {children}
-      </Text>
-    </Element>
-  );
-};
+      {children}
+    </Text>
+  </Element>
+);
