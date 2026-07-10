@@ -35,7 +35,7 @@ const PromptCard: FC<{
   return (
     <Card
       appearance="filled"
-      className="text-on-surface/90 before:from-secondary before:to-primary from-secondary-container to-primary-container relative bg-linear-135 before:absolute before:inset-0 before:-z-10 before:animate-pulse before:bg-linear-135 before:opacity-60 before:blur-md before:[animation-duration:5s]"
+      className="text-on-surface/90 before:from-secondary before:to-primary from-secondary-container to-primary-container relative my-4 bg-linear-135 before:absolute before:inset-0 before:-z-10 before:animate-pulse before:bg-linear-135 before:opacity-60 before:blur-md before:[animation-duration:5s]"
     >
       <CardHeader
         icon={<MaterialIcon icon="robot_2" className="text-secondary" />}
