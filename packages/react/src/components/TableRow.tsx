@@ -46,7 +46,7 @@ export const TableRow: StyleableFC<TableRowProps> = ({
     <>
       <Element
         className={cn("skc-table-row", className)}
-        style={{ anchorName, ...style }}
+        style={{ ...(actions && { anchorName }), ...style }}
       >
         {children}
         {actions && (
