@@ -36,3 +36,7 @@
     font-size: 1.25rem;
   }
 }
+
+.skc-header span {
+  text-wrap: balance;
+}
