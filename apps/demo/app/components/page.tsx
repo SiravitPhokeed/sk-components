@@ -43,7 +43,7 @@ const ComponentsPage: FC = () => (
             <li>App Drawer</li>
             <li>Tabs Container and Tab</li>
             <li>Theme Provider</li>
-            <li>Anchor</li>
+            <li>Divider</li>
           </PageCard>
 
           <PageCard
@@ -87,7 +87,6 @@ const ComponentsPage: FC = () => (
             <li>Page Header</li>
             <li>Avatar</li>
             <li>Material Icon</li>
-            <li>Divider</li>
             <li>Interactive</li>
           </PageCard>
 
@@ -99,6 +98,7 @@ const ComponentsPage: FC = () => (
           >
             <li>Dialog</li>
             <li>Full-screen Dialog</li>
+            <li>Anchor</li>
             <li>Menu</li>
             <li>Menu Item</li>
             <li>Snackbar</li>

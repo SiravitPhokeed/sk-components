@@ -72,7 +72,7 @@ const DocsNav: StyleableFC = ({ className, style }) => (
       <DocsNavLink href="/docs/layout/theme-provider">
         Theme Provider
       </DocsNavLink>
-      <DocsNavLink href="/docs/layout/anchor">Anchor</DocsNavLink>
+      <DocsNavLink href="/docs/layout/divider">Divider</DocsNavLink>
     </DocsNavSection>
 
     <DocsNavSection title="Inputs">
@@ -140,7 +140,6 @@ const DocsNav: StyleableFC = ({ className, style }) => (
       <DocsNavLink href="/docs/data/page-header">Page Header</DocsNavLink>
       <DocsNavLink href="/docs/data/avatar">Avatar</DocsNavLink>
       <DocsNavLink href="/docs/data/material-icon">Material Icon</DocsNavLink>
-      <DocsNavLink href="/docs/data/divider">Divider</DocsNavLink>
       <DocsNavLink href="/docs/data/interactive">Interactive</DocsNavLink>
     </DocsNavSection>
 
@@ -155,6 +154,7 @@ const DocsNav: StyleableFC = ({ className, style }) => (
       <DocsNavLink href="/docs/overlays/fullscreen-dialog">
         Full-screen Dialog
       </DocsNavLink>
+      <DocsNavLink href="/docs/overlays/anchor">Anchor</DocsNavLink>
       <DocsNavLink href="/docs/overlays/menu">Menu</DocsNavLink>
       <DocsNavLink href="/docs/overlays/menu-item">Menu Item</DocsNavLink>
       <DocsNavLink href="/docs/overlays/snackbar">Snackbar</DocsNavLink>
