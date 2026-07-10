@@ -36,10 +36,8 @@ export interface AnchorProps extends ElementCustomizableProps {
 }
 
 /**
- * Associates elements for CSS Anchor Positioning via the `anchor-name`
- * CSS property, and passes the generated name through React context so
- * child popover components (e.g. Menu) can auto-resolve their
- * `position-anchor`.
+ * Associates a trigger element (e.g. a Button) with a positioned element (e.g.
+ * a Menu) using CSS Anchor Positioning.
  *
  * @param children Elements to anchor together.
  * @param name The anchor name (dashed-ident) for CSS Anchor Positioning.
