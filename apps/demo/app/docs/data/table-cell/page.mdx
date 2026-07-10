@@ -23,12 +23,13 @@ A cell of a Table.
   }}
   adjustableProps={{
     header: "boolean",
+    scope: ["row", "col"],
     align: ["left", "center", "right"],
   }}
 />
 
 ```tsx
-<TableCell header align="center">
+<TableCell header scope="row" align="left">
   Cell content
 </TableCell>
 ```
@@ -57,6 +58,21 @@ A cell of a Table.
 
       If the cell is a header cell, Table Cell will use `<th>` instead of `<td>`.
 
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="scope" required="never">
+    <TableCell>`"col" | "row" | "colgroup" | "rowgroup"`</TableCell>
+    <TableCell>
+
+      The scope of the cell, which defines the cells that the header cell
+      relates to.
+
+      - Must be `col`, `row`, `colgroup`, or `rowgroup`.
+      - Only effective when `header` is `true`.
       - Optional.
 
       </TableCell>
