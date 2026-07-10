@@ -35,9 +35,10 @@ const ComponentsPage: FC = () => (
           >
             <li>Root Layout</li>
             <li>Content Layout</li>
-            <li>Split Layout</li>
-            <li>Columns</li>
+            <li>Page Header</li>
+            <li>Header</li>
             <li>Section</li>
+            <li>Columns</li>
             <li>Nav Bar</li>
             <li>Nav Drawer</li>
             <li>App Drawer</li>
@@ -83,8 +84,6 @@ const ComponentsPage: FC = () => (
             <li>Suggestion Chip</li>
             <li>Chip Set</li>
             <li>Text</li>
-            <li>Header</li>
-            <li>Page Header</li>
             <li>Avatar</li>
             <li>Material Icon</li>
             <li>Interactive</li>

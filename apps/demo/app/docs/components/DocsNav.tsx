@@ -46,8 +46,10 @@ const DocsNav: StyleableFC = ({ className, style }) => (
         Content Layout
       </DocsNavLink>
       <DocsNavLink href="/docs/layout/split-layout">Split Layout</DocsNavLink>
-      <DocsNavLink href="/docs/layout/columns">Columns</DocsNavLink>
+      <DocsNavLink href="/docs/layout/page-header">Page Header</DocsNavLink>
+      <DocsNavLink href="/docs/layout/header">Header</DocsNavLink>
       <DocsNavLink href="/docs/layout/section">Section</DocsNavLink>
+      <DocsNavLink href="/docs/layout/columns">Columns</DocsNavLink>
       <DocsNavLink href="/docs/layout/nav-bar">Nav Bar</DocsNavLink>
       <DocsNavLink href="/docs/layout/nav-bar-item">Nav Bar Item</DocsNavLink>
       <DocsNavLink href="/docs/layout/nav-drawer">Nav Drawer</DocsNavLink>
@@ -136,8 +138,6 @@ const DocsNav: StyleableFC = ({ className, style }) => (
       </DocsNavLink>
       <DocsNavLink href="/docs/data/chip-set">Chip Set</DocsNavLink>
       <DocsNavLink href="/docs/data/text">Text</DocsNavLink>
-      <DocsNavLink href="/docs/data/header">Header</DocsNavLink>
-      <DocsNavLink href="/docs/data/page-header">Page Header</DocsNavLink>
       <DocsNavLink href="/docs/data/avatar">Avatar</DocsNavLink>
       <DocsNavLink href="/docs/data/material-icon">Material Icon</DocsNavLink>
       <DocsNavLink href="/docs/data/interactive">Interactive</DocsNavLink>
