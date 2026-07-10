@@ -34,7 +34,10 @@ body {
 
   > .skc-progress {
     position: fixed;
+    z-index: 80;
+    margin: auto;
     inset: 0;
+    pointer-events: none;
   }
 }
 
@@ -79,10 +82,6 @@ body {
 
     > .skc-nav-bar {
       inset-inline-end: auto;
-
-      ~ .skc-progress {
-        inset-inline-start: 5rem;
-      }
     }
 
     &:has(> .skc-nav-bar) > .skc-fab {
