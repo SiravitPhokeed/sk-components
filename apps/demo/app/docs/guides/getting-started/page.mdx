@@ -20,9 +20,11 @@ There are currently 2 official SKCom libraries:
 - **React SK Components** (`@suankularb-components/react`, **“ReSKCom”**) — a
   React library that provides React components that implement the design system.
 
-This documentation is for **ReSKCom**, which is the recommended library for React applications.
+This documentation is for **ReSKCom**, which is the recommended library for
+React applications.
 
-> SK Components v4 is now available. If you are using v3, [learn how to upgrade here](/docs/migrations/v4).
+> SK Components v4 is now available. If you are using v3, [learn how to upgrade
+here](/docs/migrations/v4).
 
 <DisclosureCard summary="Is M3 Expressive supported?">
 
@@ -60,18 +62,23 @@ npm install @suankularb-components/react
 pnpm add @suankularb-components/react
 ```
 
-`react` and `react-dom` are peer dependencies, so you need to install them as well if you haven’t already. React 18 and up are supported.
+`react` and `react-dom` are peer dependencies, so you need to install them as
+well if you haven’t already. React 18 and up are supported.
 
 #### Fonts
 
-**Fonts are not bundled with the library,** so you need to install them yourself. These fonts are used by the default theme included with [Theme Provider](/docs/layout/theme-provider):
+**Fonts are not bundled with the library,** so you need to install them
+yourself. These fonts are used by the default theme included with [Theme
+Provider](/docs/layout/theme-provider):
 
 - [Inter](https://fonts.google.com/specimen/Inter)
 - [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk)
 - [Sarabun](https://fonts.google.com/specimen/Sarabun)
 - [IBM Plex Sans Thai](https://fonts.google.com/specimen/IBM+Plex+Sans+Thai)
 
-[Material Icon](/docs/data/material-icon) uses the Material Symbols Outlined font. See the [Material Symbols documentation](https://fonts.google.com/icons) for a list of icons and installation instructions.
+[Material Icon](/docs/data/material-icon) uses the Material Symbols Outlined
+font. See the [Material Symbols documentation](https://fonts.google.com/icons)
+for a list of icons and installation instructions.
 
 <Button
   children="Download icon font"
@@ -85,11 +92,15 @@ pnpm add @suankularb-components/react
 
 ### Usage
 
-- Import components from `@suankularb-components/react` and use them in your React application.
-  - For imperative helpers like [`snackbar.push`](/docs/overlays/snackbar), import them from `@suankularb-components/react/helpers`.
+- Import components from `@suankularb-components/react` and use them in your
+  React application.
+  - For imperative helpers like [`snackbar.push()`](/docs/overlays/snackbar),
+    import them from `@suankularb-components/react/helpers`.
 - To use the default theme, simply add `<ThemeProvider />` to your app.
-- Root Layout must enclose all pages, as it provides the default layout and global styles.
-  - Layout components like [Page Header](/docs/layout/page-header) and [Content Layout](/docs/layout/content-layout) must be direct children of Root Layout.
+- Root Layout must enclose all pages, as it provides the default layout and
+  global styles.
+  - Layout components like [Page Header](/docs/layout/page-header) and [Content
+    Layout](/docs/layout/content-layout) must be direct children of Root Layout.
   - See [Root Layout](/docs/layout/root-layout) for more information.
 
 ```tsx
