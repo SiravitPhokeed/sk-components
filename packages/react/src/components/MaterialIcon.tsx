@@ -1,8 +1,8 @@
 import cn from "@/lib/helpers/cn";
-import type { StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/material-icon.css";
 
-export interface MaterialIconProps {
+export interface MaterialIconProps extends ElementCustomizableProps {
   /**
    * Material Icon uses the “Material Symbol” font, where each icon has its own
    * corresponding text string. You can find the list of all icons at
@@ -89,10 +89,11 @@ export const MaterialIcon: StyleableFC<MaterialIconProps> = ({
   grade,
   size,
   directional,
+  element: Element = "i",
   className,
   style,
 }) => (
-  <i
+  <Element
     {...(alt ? { role: "img", "aria-label": alt } : { "aria-hidden": true })}
     style={{
       ...style,
@@ -115,5 +116,5 @@ export const MaterialIcon: StyleableFC<MaterialIconProps> = ({
     translate="no"
   >
     {icon}
-  </i>
+  </Element>
 );

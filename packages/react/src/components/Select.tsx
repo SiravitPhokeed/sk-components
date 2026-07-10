@@ -6,7 +6,7 @@ import { Menu } from "@/components/Menu";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import useAnchorName from "@/lib/hooks/useAnchorName";
-import type { StyleableProps } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableProps } from "@/lib/types";
 import "@suankularb-components/css/select.css";
 import type { ReactNode } from "react";
 import {
@@ -28,7 +28,9 @@ export const useSelectContext = () => useContext(SelectContext);
 /**
  * Props for {@link Select}.
  */
-export interface SelectProps<Value extends string = string> {
+export interface SelectProps<
+  Value extends string = string,
+> extends ElementCustomizableProps {
   /**
    * The options to select from.
    *
@@ -139,6 +141,7 @@ export const Select = <Value extends string = string>({
   error,
   value,
   onChange,
+  element = "button",
   style,
   className,
 }: StyleableProps & SelectProps<Value>): ReactNode => {
@@ -220,7 +223,7 @@ export const Select = <Value extends string = string>({
           ref={triggerRef}
           aria-labelledby={id}
           {...(children && { command: "show-popover", commandfor: menuId })}
-          element="button"
+          element={element}
           className="skc-select__box"
         >
           <Text type="body-large" className="skc-select__value">
