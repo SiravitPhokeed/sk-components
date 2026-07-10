@@ -1,13 +1,12 @@
 "use client";
 
-import cn from "@/lib/helpers/cn";
 import {
-  Section,
-  Header,
-  Columns,
   Card,
   CardHeader,
+  Columns,
+  Header,
   MaterialIcon,
+  Section,
 } from "@suankularb-components/react";
 import Link from "next/link";
 import type { FC } from "react";
@@ -15,15 +14,7 @@ import type { FC } from "react";
 const DemoSection: FC = () => (
   <Section>
     <Header className="sr-only">Let’s start Choose a page:</Header>
-    <Columns
-      columns={4}
-      className={cn(
-        // Card Header
-        "*:*:*:grid!",
-        // Title and subtitle
-        "*:*:*:*:w-full *:*:*:*:truncate!",
-      )}
-    >
+    <Columns columns={4}>
       <Card
         appearance="outlined"
         stateLayerEffect
@@ -34,6 +25,7 @@ const DemoSection: FC = () => (
           icon={<MaterialIcon icon="view_quilt" directional />}
           title="Layout & navigation"
           subtitle="Layouts, drawers, tabs"
+          truncate
         />
       </Card>
       <Card
@@ -46,6 +38,7 @@ const DemoSection: FC = () => (
           icon={<MaterialIcon icon="input" directional />}
           title="Inputs"
           subtitle="Buttons, form elements"
+          truncate
         />
       </Card>
       <Card
@@ -58,6 +51,7 @@ const DemoSection: FC = () => (
           icon={<MaterialIcon icon="table_chart" />}
           title="Data display"
           subtitle="Tables, lists, cards"
+          truncate
         />
       </Card>
       <Card
@@ -70,6 +64,7 @@ const DemoSection: FC = () => (
           icon={<MaterialIcon icon="picture_in_picture_center" />}
           title="Overlays"
           subtitle="Dialog, snackbar, menu"
+          truncate
         />
       </Card>
     </Columns>

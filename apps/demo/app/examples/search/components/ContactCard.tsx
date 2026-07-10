@@ -38,7 +38,7 @@ const ContactCard: StyleableFC<{
       avatar={<Avatar>{AVATAR_MAP.get(type)}</Avatar>}
       title={value}
       subtitle={LABEL_MAP.get(type) ?? "Other"}
-      className="*:grid *:*:truncate"
+      truncate
     />
   </Card>
 );
