@@ -16,11 +16,7 @@
   flex-grow: 1;
 }
 
-.skc-card-header :is(.skc-avatar, .skc-icon) {
-  flex-shrink: 0;
-}
-
-.skc-card-header .skc-icon {
+.skc-card-header__icon {
   color: var(--color-on-surface-variant);
 }
 
@@ -30,4 +26,17 @@
 
 .skc-card-header__subtitle {
   margin-block: 0;
+}
+
+.skc-card-header--truncate {
+  .skc-card-header__content {
+    display: grid;
+  }
+
+  .skc-card-header__title,
+  .skc-card-header__subtitle {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }

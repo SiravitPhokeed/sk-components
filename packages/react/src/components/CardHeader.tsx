@@ -41,6 +41,14 @@ export interface CardHeaderProps extends ElementCustomizableProps {
    * - Optional.
    */
   subtitle?: ReactNode;
+
+  /**
+   * Limits the title and subtitle to a single line, truncating the text with an
+   * ellipsis if it overflows.
+   *
+   * - Optional.
+   */
+  truncate?: boolean;
 }
 
 /**
@@ -50,19 +58,28 @@ export interface CardHeaderProps extends ElementCustomizableProps {
  * @param icon An icon can appear before all content in a Card Header.
  * @param title The most predominant text inside a Card.
  * @param subtitle A short text complementing the title text.
+ * @param truncate Limits the title and subtitle to a single line, truncating the text with an ellipsis if it overflows.
  */
 export const CardHeader: StyleableFC<CardHeaderProps> = ({
   avatar,
   icon,
   title,
   subtitle,
+  truncate,
   element: Element = "div",
   style,
   className,
 }) => {
   return (
-    <Element className={cn("skc-card-header", className)} style={style}>
-      {avatar || icon}
+    <Element
+      className={cn(
+        "skc-card-header",
+        truncate && "skc-card-header--truncate",
+        className,
+      )}
+      style={style}
+    >
+      {avatar || (icon && <div className="skc-card-header__icon">{icon}</div>)}
       <div className="skc-card-header__content">
         <Text
           type="title-medium"
