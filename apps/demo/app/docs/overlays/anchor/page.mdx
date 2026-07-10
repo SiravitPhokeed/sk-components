@@ -17,10 +17,8 @@ export const metadata = {
 
 ## Anchor
 
-Associates elements for CSS Anchor Positioning via the `anchor-name`
-CSS property, and passes the generated name through React context so
-child popover components (e.g. Menu) can auto-resolve their
-`position-anchor`.
+Associates a trigger element (e.g. a Button) with a positioned element (e.g.
+a Menu) using CSS Anchor Positioning.
 
 <LinksChipSet source="/Anchor.tsx" />
 
@@ -37,13 +35,10 @@ child popover components (e.g. Menu) can auto-resolve their
           Share
         </Button>
         <Menu id="share-menu">
-          <MenuItem
-            icon={<MaterialIcon icon="email" />}
-            command="request-close"
-          >
+          <MenuItem icon={<MaterialIcon icon="email" />} command="hide-popover">
             Email
           </MenuItem>
-          <MenuItem icon={<MaterialIcon icon="chat" />} command="request-close">
+          <MenuItem icon={<MaterialIcon icon="chat" />} command="hide-popover">
             Messages
           </MenuItem>
         </Menu>
@@ -58,10 +53,10 @@ child popover components (e.g. Menu) can auto-resolve their
     Share
   </Button>
   <Menu id="share-menu">
-    <MenuItem icon={<MaterialIcon icon="email" />} command="request-close">
+    <MenuItem icon={<MaterialIcon icon="email" />} command="hide-popover">
       Email
     </MenuItem>
-    <MenuItem icon={<MaterialIcon icon="chat" />} command="request-close">
+    <MenuItem icon={<MaterialIcon icon="chat" />} command="hide-popover">
       Messages
     </MenuItem>
   </Menu>
@@ -72,8 +67,8 @@ child popover components (e.g. Menu) can auto-resolve their
 
 The **implicit pattern** is the recommended way to use Anchor.
 
-- Put the trigger element (e.g. a Button) and the positioned element (e.g. a Menu)
-  inside an Anchor.
+- Put the trigger element (e.g. a [Button](/docs/inputs/button)) and the
+  positioned element (e.g. a [Menu](/docs/overlays/menu)) inside an Anchor.
 
 ```tsx
 <Anchor>
