@@ -1,4 +1,9 @@
 @theme inline {
+  --breakpoint-*: initial;
+  --breakpoint-sm: 38rem;
+  --breakpoint-md: 56rem;
+  --breakpoint-lg: 90rem;
+
   --font-weight-*: initial;
   --font-weight-thin: var(--font-weight-thin);
   --font-weight-light: var(--font-weight-light);
