@@ -13,7 +13,9 @@ import type { FC } from "react";
 
 const DemoSection: FC = () => (
   <Section>
-    <Header className="sr-only">Let’s start Choose a page:</Header>
+    <Header level={3} className="sr-only">
+      Components
+    </Header>
     <Columns columns={4}>
       <Card
         appearance="outlined"
