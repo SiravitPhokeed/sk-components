@@ -25,6 +25,10 @@ npm install @suankularb-components/react@latest
 pnpm add @suankularb-components/react@latest
 ```
 
+**This is a new major version, and that means breaking changes.** This guide
+will help you migrate your codebase to v4 and also introduce new features that
+you can take advantage of.
+
 <PromptCard title="AI-assisted migration" prompt={prompt}>
   Save time by copying a structured prompt for your AI coding agent to help
   migrate your codebase to v4.
@@ -147,7 +151,14 @@ snackbar.push(
 
 ---
 
+**CSS variables was renamed** to match Tailwind CSS v4&rsquo;s theme variables.
+If you were using the CSS variables directly, you need to update your code to
+use the new names. See the [theming guide](/docs/guides/theming) for more
+information.
+
 <DisclosureCard summary="Changes for Tailwind CSS users">
+
+Update your Tailwind CSS configuration file to use the new variable names.
 
 Tailwind CSS v4 users can now override SKCom styles without using `!important`.
 Add this line **before** the `@import` directive in your Tailwind CSS
@@ -157,9 +168,6 @@ configuration file.
 @layer theme, base, skc, components, utilities;
 @import "tailwindcss";
 ```
-
-No changes are needed for Tailwind CSS v3 users. Upgrade to v4 to take advantage
-of this feature.
 
 </DisclosureCard>
 
