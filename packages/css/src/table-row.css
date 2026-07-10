@@ -30,6 +30,10 @@
 
       > .skc-segmented-button {
         box-shadow: var(--shadow-1);
+
+        &:hover {
+          box-shadow: var(--shadow-2);
+        }
       }
     }
   }
