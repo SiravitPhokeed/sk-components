@@ -27,6 +27,11 @@
   }
 }
 
+/* Header */
+.skc-data-table-cell--header {
+  background-color: var(--color-surface-container-low);
+}
+
 /* Sortable header */
 .skc-data-table-cell--sortable {
   --state-layer-color: var(--color-on-surface);
