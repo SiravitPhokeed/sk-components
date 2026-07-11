@@ -153,8 +153,14 @@ snackbar.push(
 
 **CSS variables was renamed** to match Tailwind CSS v4’s theme variables.
 If you were using the CSS variables directly, you need to update your code to
-use the new names. See the [theming guide](/docs/guides/theming) for more
-information.
+use the new names. See the [theming guide](/docs/guides/theming) for the
+complete list of CSS variables.
+
+- `--font-*` → `--font-weight-*` (font weight only, font family still uses `--font-*`)
+- `--rounded-*` → `--radius-*`
+- `--motion-*` → `--duration-*`
+- `--easing-*` → `--ease-*`
+- All color variables are now prefixed with `--color-` (e.g. `--primary` → `--color-primary`)
 
 <DisclosureCard summary="Changes for Tailwind CSS users">
 
