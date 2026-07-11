@@ -6,6 +6,7 @@ import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/chip-field.css";
+import { sift } from "radash";
 import type {
   ComponentProps,
   KeyboardEvent,
@@ -57,15 +58,18 @@ export interface ChipFieldProps {
    */
   onChange?: (value: string) => any;
 
+  /** @deprecated Use `onNewEntries` instead. */
+  onNewEntry?: (value: string) => any;
+
   /**
-   * This function triggers when the user hits the spacebar while in the field.
+   * This function triggers when the user hits a separator or pastes
+   * separator-delimited text.
    *
-   * - The behavior expected to be implemented by the developer is that a new
-   *   Input Chip is created in the preceding Chip Set with the data passed
-   *   through this function.
+   * - When triggered by a key press, receives an array with a single entry.
+   * - When triggered by a paste, receives all split and trimmed values.
    * - Optional.
    */
-  onNewEntry?: (value: string) => any;
+  onNewEntries?: (values: string[]) => any;
 
   /**
    * This function triggers when the user hits backspace twice while in the
@@ -171,7 +175,7 @@ const STRINGS = {
  * @param helperMsg A short description of the Chip Field.
  * @param value The value inside the field that is used to create Input Chips.
  * @param onChange This function triggers when the user makes changes to the field value.
- * @param onNewEntry This function triggers when the user hits a separator while in the field.
+ * @param onNewEntries This function triggers when the user hits a separator or pastes separator-delimited text.
  * @param onDeleteLast This function triggers when the user hits backspace twice while in the field.
  * @param entrySeparators An array of characters that trigger the creation of a new Input Chip.
  * @param placeholder Faint text guiding the user about what to write.
@@ -187,6 +191,7 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
   value,
   onChange,
   onNewEntry,
+  onNewEntries,
   onDeleteLast,
   entrySeparators = DEFAULT_SEPARATORS,
   placeholder,
@@ -217,6 +222,60 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
     return val;
   };
 
+  /**
+   * Handle paste events in the input field. If the pasted text contains any of
+   * the entry separators, the text is split into multiple values and sent to
+   * `onNewEntries` or `onNewEntry`.
+   */
+  const handlePaste = (event: React.ClipboardEvent<HTMLInputElement>) => {
+    if (!onNewEntries && !onNewEntry) return;
+    const pastedText = event.clipboardData.getData("text");
+
+    // Map keyboard-key separators to paste-time characters.
+    // "Enter" → newline; single-char separators stay as-is; others are skipped.
+    const pasteEntrySeperators: string[] = [];
+    for (const separator of entrySeparators) {
+      if (separator === "Enter") pasteEntrySeperators.push("\n");
+      else if (separator.length === 1) pasteEntrySeperators.push(separator);
+    }
+
+    const hasSeparator = pasteEntrySeperators.some((sep) =>
+      pastedText.includes(sep),
+    );
+    if (!hasSeparator) return;
+
+    event.preventDefault();
+
+    // Build regex from paste-time separators (escape special regex chars).
+    const escaped = pasteEntrySeperators.map((s) =>
+      s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
+    );
+    const sepRegex = new RegExp(`[${escaped.join("")}]+`);
+    const values = sift(pastedText.split(sepRegex).map((v) => v.trim()));
+    if (values.length === 0) return;
+
+    if (onNewEntries) {
+      onNewEntries(values);
+      onChange?.("");
+    } else {
+      // Backward compat: send first value, keep remaining in input.
+      console.warn(
+        "[SKCom] `ChipField.onNewEntry` is deprecated. Use " +
+          "`onNewEntries` instead.",
+      );
+      onNewEntry?.(values[0]);
+      onChange?.(values.slice(1).join(", "));
+    }
+  };
+
+  /**
+   * If the user presses backspace on an empty input, the last chip is selected.
+   * If the user presses backspace again, the last chip is deleted.
+   * If the user presses any other key, the last chip is deselected.
+   *
+   * If the user presses an entry separator, the input value is sent to
+   * `onNewEntries` or `onNewEntry`.
+   */
   const handleKeyUp = (e: KeyboardEvent<HTMLInputElement>) => {
     const input = e.currentTarget;
     const currentValue = input.value;
@@ -243,7 +302,8 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
       e.preventDefault();
       const entryValue = stripSeparator(currentValue).trim();
       if (entryValue) {
-        onNewEntry?.(entryValue);
+        if (onNewEntries) onNewEntries([entryValue]);
+        else onNewEntry?.(entryValue);
         onChange?.("");
       }
     }
@@ -304,6 +364,7 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
             onFocus={() => setLastChipSelected(false)}
             onBlur={() => setLastChipSelected(false)}
             onKeyUp={handleKeyUp}
+            onPaste={handlePaste}
             className="skc-chip-field__input"
             {...inputAttr}
           />
