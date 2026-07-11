@@ -6,7 +6,7 @@ import { Card, CardHeader, CardContent } from "@suankularb-components/react";
 
 const PersonInformationGrid: StyleableFC = ({ className, style }) => (
   <section
-    className={cn("grid gap-2 md:grid-cols-2 lg:grid-cols-4", className)}
+    className={cn("grid gap-2 md:grid-cols-4", className)}
     style={style}
   >
     <Card appearance="filled" className="md:col-span-2">

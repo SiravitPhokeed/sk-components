@@ -10,7 +10,7 @@ const PersonContactGrid: StyleableFC = ({ className, style }) => (
     <Text type="title-medium" element="h3" className="px-3">
       Contacts
     </Text>
-    <ul className="grid gap-2 lg:grid-cols-2">
+    <ul className="grid gap-2 md:grid-cols-2">
       <ContactCard type="facebook" value="Chatchai Charoen" />
       <ContactCard type="line" value="chatchaizaza2015" />
       <ContactCard type="email" value="chatchai.cha@student.sk.ac.th" />
