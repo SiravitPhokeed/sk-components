@@ -35,3 +35,18 @@ transition(duration.short4, easing.standard);
 import { DURATION, EASING, transition } from "@suankularb-components/react";
 transition(DURATION.short4, EASING.standard);
 ```
+
+#### Tone-based surfaces
+
+**Surface container roles replaced elevatation-based surfaces.** Replace the
+following CSS variables in your code.
+
+- `surface-1` → `surface-container-low`
+- `surface-2` → `surface-container`
+- `surface-3` → `surface-container-high`
+- `surface-4` → `surface-container-highest`
+- `surface-5` → `surface-container-highest`
+
+`surface-container-lowest`, `surface-dim`, `surface-bright` were also added.
+See if these tokens can better replace your current usage of `surface-1` to
+`surface-5`.
