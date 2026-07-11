@@ -31,6 +31,44 @@ Header for screen readers.
 <Header level={2}>Getting started</Header>
 ```
 
+### Usage
+
+**Use “Sentence case”** instead of “Title Case” for the text in Header.
+
+<figure className="mt-3 mb-6 space-y-2">
+  <Header
+    children="About this feature"
+    icon={<MaterialIcon icon="check_circle" className="text-primary" />}
+    level={4}
+  />
+  <Header
+    children="About This Feature"
+    icon={<MaterialIcon icon="cancel" className="text-error" />}
+    level={4}
+  />
+</figure>
+
+**Put Header as the first child of [Section](/docs/layout/section)** to label
+the Section for screen readers. This uses the `aria-labelledby` attribute under
+the hood to automatically link the Section and Header together.
+
+```tsx
+<Section>
+  <Header level={3}>About this feature</Header>
+  {/* Section content */}
+</Section>
+```
+
+**Don’t skip heading levels**. The Header level should be one level lower than the
+previous Header. The default Header level is `2`, which corresponds to `<h2>`.
+
+```tsx
+<Header>Getting started</Header>
+<Header level={3}>Installation</Header>
+<Header level={4}>Using npm</Header>
+<Header level={4}>Using pnpm</Header>
+```
+
 ### Props
 
 - `StyleableProps` are available: `className` and `style`.

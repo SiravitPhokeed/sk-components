@@ -1,3 +1,4 @@
+import DisclosureCard from "@/app/docs/components/DisclosureCard";
 import LinksChipSet from "@/app/docs/components/LinksChipSet";
 import PropsTable from "@/app/docs/components/PropsTable";
 import PropsTableRow from "@/app/docs/components/PropsTableRow";
@@ -16,15 +17,32 @@ the App Drawer.
 <LinksChipSet source="/PageHeader.tsx" />
 
 ```tsx
-<PageHeader parentURL="/dashboard">My Learning</PageHeader>
+<PageHeader parentURL="/search">Search subjects</PageHeader>
 ```
 
-On a top-level page without a parent, the Page Header displays a navigation
-toggle instead of a back button:
+### Usage
+
+**Use “Sentence case”** instead of “Title Case” for the text in Page Header.
+
+A top-level page has no parent. On mobile, a Button to toggle Nav Drawr is
+displayed instead of a back Button.
 
 ```tsx
-<PageHeader onNavToggle={() => setNavOpen(true)}>Dashboard</PageHeader>
+<PageHeader>Home</PageHeader>
 ```
+
+Other pages have a parent and should have a back Button to navigate up the
+hierarchy.
+
+```tsx
+<PageHeader parentURL="/search">Search subjects</PageHeader>
+```
+
+<DisclosureCard summary="A tip for App Drawer">
+  To avoid having to declare a [App Drawer](/docs/layout/app-drawer) on every
+  page, you can declare your own Page Header component that already has the App
+  Drawer in it.
+</DisclosureCard>
 
 ### Props
 

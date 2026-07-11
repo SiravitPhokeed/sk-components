@@ -40,6 +40,19 @@ Section is a way to group content under one Header.
 </Section>
 ```
 
+### Usage
+
+**Put [Header](/docs/layout/header) as the first child of Section** to label
+the Section for screen readers. This uses the `aria-labelledby` attribute under
+the hood to automatically link the Section and Header together.
+
+```tsx
+<Section>
+  <Header level={3}>About this feature</Header>
+  {/* Section content */}
+</Section>
+```
+
 ### Props
 
 - `StyleableProps` are available: `className` and `style`.
