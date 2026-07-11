@@ -51,7 +51,11 @@ const IconFontDialog: FC = () => {
 
     let css = "";
     try {
-      const response = await fetch(stylesheetUrl);
+      const response = await fetch(
+        // Google Fonts does not accept percent-encoding. The URL object
+        // automatically encodes it, so we need to decode it back.
+        decodeURIComponent(stylesheetUrl.toString()),
+      );
       css = await response.text();
     } catch (_) {
       snackbar.push("Failed to download font");
