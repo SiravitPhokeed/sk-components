@@ -20,12 +20,12 @@ icon font from Google.
 <DemoCard
   component={MaterialIcon}
   initialProps={{
-    icon: "directions_run",
+    icon: "arrow_circle_right",
     fill: false,
     weight: 400,
     grade: 0,
     size: 48,
-    className: "transition-[font-variation-settings]",
+    className: "transition-[font-variation-settings,font-size]",
   }}
   adjustableProps={{
     fill: "boolean",
@@ -34,28 +34,31 @@ icon font from Google.
     size: [20, 24, 40, 48],
     directional: "boolean",
   }}
-/>
+>
+  `directional` only effective in RTL. [Toggle here](/).
+</DemoCard>
 
 ```tsx
 <MaterialIcon size={48} icon="directions_run" />
 ```
 
+### Usage
+
 You can find the list of all icons at
 [Google Fonts](https://fonts.google.com/icons).
-
-### Usage
 
 **Fonts are not bundled with the library, so you need to include the Material
 Symbols Outlined font in your project.** Follow the instructions in the
 [getting started](/docs/guides/getting-started) guide.
 
-Material Icon uses `font-variation-settings` to adjust the icon’s weight, grade,
-and size. You can **use `font-variation-settings` to your `transition` property
-to animate** the icon’s weight, grade, and size.
+Material Icon uses `font-variation-settings` to adjust the icon’s fill, weight,
+grade, and size. You can **use `font-variation-settings` to your `transition`
+property to animate** the icon’s fill, weight, grade, and size.
 
 ### Props
 
 - `StyleableProps` are available: `className` and `style`.
+- `ElementCustomizableProps` are available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="icon" required="always">
