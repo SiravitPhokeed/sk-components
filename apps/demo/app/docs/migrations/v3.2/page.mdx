@@ -1,0 +1,60 @@
+export const metadata = {
+  title: "Migrating to v3.2",
+};
+
+## Migrating to v3.2
+
+v3.2 was released on August 8, 2023. See the
+[release notes](https://github.com/suankularb-wittayalai-school/sk-components/pull/123)
+for more information.
+
+```bash
+npm install @suankularb-components/react@^3.3
+```
+
+```bash
+pnpm add @suankularb-components/react@^3.3
+```
+
+### Highlights
+
+#### Text component
+
+**[Text](/docs/data/text) component replaced the text utility classes.** Remove
+the text utility classes from your code and use the new Text component instead.
+
+```tsx
+// OLD: text utility classes
+<p className="skc-body-medium">Some text</p>
+```
+
+```tsx
+// NEW: Text component
+import { Text } from "@suankularb-components/react";
+
+<Text type="body-medium" element="p">
+  Some text
+</Text>;
+```
+
+#### New Page Header
+
+**[Page Header](/docs/layout/page-header) was redesigned to incorporate the new
+[App Drawer](/docs/layout/app-drawer).** No changes are needed for existing Page
+Header usage, but if your app is part of a family of apps, use the new
+`appDrawer` prop to display a drawer of related apps.
+
+```tsx
+<PageHeader
+  appDrawer={
+    <AppDrawer>
+      <AppDrawerSegment header="School apps">
+        <AppDrawerItem name="Main site" logo={<img src="/main.svg" />} />
+        <AppDrawerItem name="MyLearn+" logo={<img src="/my-learn.svg" />} />
+      </AppDrawerSegment>
+    </AppDrawer>
+  }
+>
+  Search subjects
+</PageHeader>
+```
