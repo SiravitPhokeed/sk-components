@@ -23,16 +23,12 @@ const AboutSection: FC = () => (
         </strong>{" "}
         and applications.
       </Text>
-      <Text
-        type="body-medium"
-        element="p"
-        className="[&_code]:bg-surface-variant [&_code]:rounded-xs [&_code]:px-1 [&_code]:font-bold"
-      >
+      <Text type="body-medium" element="p">
         There are currently 2 official SKCom libraries:{" "}
         <strong>SK Component Styles</strong> (
-        <code>@suankularb-components/css</code>) and{" "}
+        <code className="code">@suankularb-components/css</code>) and{" "}
         <strong>React SK Components</strong> (
-        <code>@suankularb-components/react</code>
+        <code className="code">@suankularb-components/react</code>
         ).
       </Text>
     </Section>

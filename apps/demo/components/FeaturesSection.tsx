@@ -47,10 +47,7 @@ const FeaturesSection: FC = () => {
   return (
     <Section>
       <Header>Features</Header>
-      <Columns
-        columns={3}
-        className="[&_code]:bg-surface-variant items-stretch [&_code]:rounded-xs [&_code]:px-1"
-      >
+      <Columns columns={3} className="items-stretch">
         <Card appearance="outlined" className="sm:col-span-2 md:col-span-1">
           <CardHeader icon={<MaterialIcon icon="palette" />} title="Theming" />
           <CardContent>
@@ -65,7 +62,7 @@ const FeaturesSection: FC = () => {
                 target="_blank"
                 className="link"
               >
-                <code>_theme.css</code>
+                <code className="code">_theme.css</code>
               </a>{" "}
               file and importing it into your project.
             </p>
@@ -84,12 +81,13 @@ const FeaturesSection: FC = () => {
           <CardContent>
             <p>
               Light and dark color schemes are supported both through user
-              preferences and programmatically with <code>scheme-light</code>{" "}
-              and <code>scheme-dark</code> classes.
+              preferences and programmatically with{" "}
+              <code className="code">scheme-light</code> and{" "}
+              <code className="code">scheme-dark</code> classes.
             </p>
             <Text type="body-small" className="text-on-surface-variant">
               High contrast mode is also supported through the{" "}
-              <code>prefers-contrast</code> media query.
+              <code className="code">prefers-contrast</code> media query.
             </Text>
           </CardContent>
         </Card>
