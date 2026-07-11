@@ -540,6 +540,13 @@ update your code.
 </SummaryTableSection>
 
 <SummaryTableSection name="Chip Field">
+  <SummaryTableRow name="onNewEntries" type="new">
+    `(values: string[]) => any` — receives all values when pasting or pressing
+    a separator key. Replaces `onNewEntry`.
+  </SummaryTableRow>
+  <SummaryTableRow name="onNewEntry" type="removed">
+    Replaced by `onNewEntries`, which accepts `string[]`.
+  </SummaryTableRow>
   <SummaryTableRow name="required" type="new">
     `boolean` — marks the field as required
   </SummaryTableRow>

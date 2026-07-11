@@ -40,7 +40,11 @@ press.
 />
 
 ```tsx
-<ChipField label="Colors" onNewEntry={addColor} onDeleteLast={removeLastColor}>
+<ChipField
+  label="Colors"
+  onNewEntries={addColors}
+  onDeleteLast={removeLastColor}
+>
   <ChipSet>
     {colors.map((color) => (
       <InputChip key={color} onDelete={() => removeColor(color)}>
@@ -60,8 +64,8 @@ to manage the state of the Input Chips.
 const ColorChipField = () => {
   const [colors, setColors] = useState<string[]>([]);
 
-  const addColor = (color: string) => {
-    setColors((prev) => [...prev, color]);
+  const addColors = (newColors: string[]) => {
+    setColors((prev) => [...prev, ...newColors]);
   };
   const removeColor = (color: string) => {
     setColors((prev) => prev.filter((c) => c !== color));
@@ -73,7 +77,7 @@ const ColorChipField = () => {
   return (
     <ChipField
       label="Colors"
-      onNewEntry={addColor}
+      onNewEntries={addColors}
       onDeleteLast={removeLastColor}
     >
       <ChipSet>
@@ -165,15 +169,15 @@ to limit the number of Input Chips that can be added.
 
   </PropsTableRow>
 
-  <PropsTableRow prop="onNewEntry" required="conditional">
-    <TableCell>`(value: string) => any`</TableCell>
+  <PropsTableRow prop="onNewEntries" required="never">
+    <TableCell>`(values: string[]) => any`</TableCell>
     <TableCell>
 
-      This function triggers when the user hits a separator while in the field.
+      This function triggers when the user hits a separator or pastes
+      separator-delimited text.
 
-      - The behavior expected to be implemented by the developer is that a new
-        Input Chip is created in the preceding Chip Set with the data passed
-        through this function.
+      - When triggered by a key press, receives an array with a single entry.
+      - When triggered by a paste, receives all split and trimmed values.
       - Optional.
 
       </TableCell>
