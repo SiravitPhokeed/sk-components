@@ -117,12 +117,23 @@ const IconFontDialog: FC = () => {
           label="Icon names"
           value={iconNamesInput}
           onChange={setIconNamesInput}
-          onNewEntry={(name) => {
-            name = name.toLowerCase().replace(/[- ]/g, "_");
-            if (iconNames.includes(name)) snackbar.push("Icon already added");
-            else if (!/[a-z0-9_]+/.test(name))
-              snackbar.push("Invalid icon name");
-            else setIconNames([...iconNames, name].sort());
+          onNewEntries={(names) => {
+            const validIconNames: string[] = [];
+            for (const raw of names) {
+              const name = raw.toLowerCase().replace(/[- ]/g, "_");
+              let error: string | null = null;
+              if (iconNames.includes(name) || validIconNames.includes(name))
+                error = `"${name}" already added`;
+              else if (!/[a-z0-9_]+/.test(name))
+                error = `"${name}" is not a valid icon name`;
+              if (error) {
+                snackbar.push(error);
+                continue;
+              } else validIconNames.push(name);
+            }
+            if (validIconNames.length > 0)
+              setIconNames([...iconNames, ...validIconNames].sort());
+            setIconNamesInput("");
           }}
           onDeleteLast={() => setIconNames(iconNames.slice(0, -1))}
           entrySeparators={[",", ";", "Enter"]}

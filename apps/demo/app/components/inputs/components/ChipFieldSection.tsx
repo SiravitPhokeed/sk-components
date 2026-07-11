@@ -26,16 +26,22 @@ const ChipFieldSection: FC = () => {
         required
         value={value}
         onChange={setValue}
-        onNewEntry={(value) => {
+        onNewEntries={(values) => {
           setLoading(true);
           setTimeout(() => {
             let error: string | null = null;
-            const newClass = Number(value);
-            if (classes.includes(newClass)) error = "Class already added";
-            else if (!/[1-6](0[1-9]|1[0-9])/.test(value))
-              error = "Enter a valid class number (e.g. 501, 602)";
-            if (error) snackbar.push(error, undefined, { persistent: true });
-            else setClasses([...classes, newClass]);
+            const newClasses: number[] = [];
+            for (const value of values) {
+              const newClass = Number(value);
+              if (classes.includes(newClass)) error = "Class already added";
+              if (!/[1-6](0[1-9]|1[0-9])/.test(value))
+                error = "Enter a valid class number (e.g. 501, 602)";
+              if (error) {
+                snackbar.push(error, undefined, { persistent: true });
+                break;
+              } else newClasses.push(newClass);
+            }
+            if (newClasses.length) setClasses([...classes, ...newClasses]);
             setLoading(false);
           }, 500);
         }}
