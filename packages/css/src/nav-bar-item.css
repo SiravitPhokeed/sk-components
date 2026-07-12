@@ -43,7 +43,7 @@
   padding: 0.25rem 1rem;
 
   .skc-material-icon {
-    transition-property: font-weight, font-variation-settings;
+    transition-property: color, font-weight, font-variation-settings;
     transition: var(--_duration) var(--_ease);
     font-size: 1.5rem;
     font-variation-settings: "FILL" 0;
