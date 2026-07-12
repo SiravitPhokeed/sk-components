@@ -67,7 +67,11 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
         // Use locally installed Material Symbols font in development, as the
         // optimized `localFont` does not have all icons, which is annoying for
         // development.
-        process.env.NODE_ENV === "production" && iconFont.variable,
+        (process.env.NODE_ENV === "production" ||
+          // Set ALWAYS_USE_OPTIMIZED_ICON_FONT to "true" to force the optimized
+          // font even in development.
+          process.env.ALWAYS_USE_OPTIMIZED_ICON_FONT === "true") &&
+          iconFont.variable,
         "antialiased",
       )}
     >
