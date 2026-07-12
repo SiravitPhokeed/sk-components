@@ -679,8 +679,9 @@ These are new capabilities you may want to use:
 - **Snackbar**: `persistent`, `autoDismissDurationMs`
 - **TextField**: `type` (now supports `"color"`, `"date"`, `"datetime-local"`, `"email"`, `"file"`, `"month"`, `"number"`, `"password"`, `"search"`, `"tel"`, `"text"`, `"time"`, `"url"`, `"week"`)
 - **Search**: `hotkey` (keyboard shortcut to focus)
-- **Dialog, FullscreenDialog, Menu, Snackbar**: `id` for Invoker Commands (auto-generated if omitted)
+- **Dialog, FullscreenDialog, Menu, Snackbar, SideSheet**: `id` for Invoker Commands (auto-generated if omitted)
 - **FullscreenDialog**: `locale` (`"en-US"` | `"th"`)
+- **SideSheet**: `attach` (`"left"` | `"right"`, defaults to `"right"`)
 - **Menu**: `anchor` (CSS anchor name, auto-resolved from `<Anchor>` context)
 - **DataTableBody, DataTableHead**: `align`
 - **DataTableHead**: `colSpans`

@@ -46,19 +46,15 @@ export const NavDrawer: StyleableFC<NavDrawerProps> = ({
   locale = "en-US",
   className,
   style,
-}) => {
-  return (
-    <SideSheet
-      id="nav-drawer"
-      className={cn("skc-nav-drawer", className)}
-      style={style}
-    >
-      <nav
-        aria-label={STRINGS[locale].label}
-        className="skc-nav-drawer__content"
-      >
-        {children}
-      </nav>
-    </SideSheet>
-  );
-};
+}) => (
+  <SideSheet
+    id="nav-drawer"
+    attach="left"
+    className={cn("skc-nav-drawer", className)}
+    style={style}
+  >
+    <nav aria-label={STRINGS[locale].label} className="skc-nav-drawer__content">
+      {children}
+    </nav>
+  </SideSheet>
+);

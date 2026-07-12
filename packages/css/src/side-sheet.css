@@ -1,14 +1,17 @@
 /**
  * **Side Sheet**
- * A side sheet that slides in from the trailing edge.
+ * Side Sheet is modal attached to one side of the screen. It is used to display
+ * content that is related to the main content, but not essential to it. It can
+ * be used for navigation, settings, or other secondary content.
  */
 
 .skc-side-sheet {
   --_duration: var(--duration-long-4);
   --_ease: var(--ease-emphasized);
-  --_backdrop-ease: var(--ease-standard);
 
   --_delay: 100ms;
+
+  --_edge-direction: 1;
 }
 
 .skc-side-sheet {
@@ -40,16 +43,16 @@
 
   &::backdrop {
     opacity: 0.5;
-    animation: skc-side-sheet-enter-backdrop var(--_duration)
-      var(--_backdrop-ease) backwards;
+    animation: skc-side-sheet-enter-backdrop var(--_duration) var(--_ease)
+      backwards;
     animation-delay: var(--_delay);
     background-color: var(--color-scrim);
   }
 
   > * {
-    opacity: 0;
-    transition: opacity var(--_duration) var(--_ease);
+    transition: var(--_duration) var(--_ease);
     transition-delay: calc(var(--_duration) / 2);
+    transition-property: transform, opacity;
   }
 
   /* Open state */
@@ -58,6 +61,7 @@
     transform: scaleX(1);
 
     > * {
+      transform: scaleX(1);
       opacity: 1;
     }
 
@@ -66,6 +70,7 @@
       transform: scaleX(0);
 
       > * {
+        transform: scaleX(1.025);
         opacity: 0;
       }
     }
@@ -91,7 +96,10 @@
     opacity: 1;
   }
   to {
-    transform: translateX(calc(1rem * var(--inline-forward))) scaleX(0);
+    transform: translateX(
+        calc(1rem * var(--inline-forward) * var(--_edge-direction))
+      )
+      scaleX(0);
     opacity: 0;
   }
 }
@@ -109,12 +117,12 @@
 
   > * {
     opacity: 0;
-    transition: opacity calc(var(--_duration) / 4) var(--_ease);
+    transition: calc(var(--_duration) / 4) var(--_ease);
   }
 
   &::backdrop {
-    animation: skc-side-sheet-exit-backdrop var(--_duration)
-      var(--_backdrop-ease) forwards;
+    animation: skc-side-sheet-exit-backdrop var(--_duration) var(--_ease)
+      forwards;
   }
 }
 
@@ -137,5 +145,23 @@
 
   .skc-side-sheet.skc-side-sheet--exiting {
     animation: skc-fade-out var(--_duration) var(--_ease) forwards;
+  }
+}
+
+/* ── Left attachment ─────────────────────────────────────────────────────── */
+
+.skc-side-sheet--left {
+  --_edge-direction: -1;
+
+  transform-origin: left;
+  inset-inline-end: auto;
+  inset-inline-start: 0;
+  border-radius: 0;
+  border-start-end-radius: var(--radius-lg);
+  border-end-end-radius: var(--radius-lg);
+
+  [dir="rtl"] &,
+  &[dir="rtl"] {
+    transform-origin: right;
   }
 }

@@ -18,6 +18,7 @@ Changes to the demo app are documented in
 - `"use client"` directive on Client Components for Next.js App Router support
 - **Anchor** component for declarative popover positioning with CSS Anchor
   Positioning
+- **Side Sheet** component for modal side panels
 - `snackbar.push()` and `snackbar.promise()` imperative APIs for Snackbar
 - `locale` support on Full-screen Dialog and Input Chip
 - RTL support

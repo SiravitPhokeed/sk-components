@@ -9,7 +9,9 @@ export const metadata = {
 
 ## Side Sheet
 
-A side sheet that slides in from the left.
+Side Sheet is modal attached to one side of the screen. It is used to display
+content that is related to the main content, but not essential to it. It can be
+used for navigation, settings, or other secondary content. 
 
 <LinksChipSet
   material="/components/side-sheets/overview"
@@ -60,6 +62,21 @@ A trigger button can open the Side Sheet via the Invoker Commands API.
         button to open the Side Sheet declaratively via the Invoker Commands
         API.
       - Use `command="request-close"` to close, not `command="close"`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="attach" required="never">
+    <TableCell>`"left" | "right"`</TableCell>
+    <TableCell>
+
+      The edge of the screen the Side Sheet attaches to.
+
+      - `"right"` attaches to the right edge in LTR, left in RTL. This is the
+        default.
+      - `"left"` attaches to the left edge in LTR, right in RTL.
       - Optional.
 
       </TableCell>
