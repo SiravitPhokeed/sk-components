@@ -44,11 +44,31 @@ const SCAN_EXTS = new Set([".tsx", ".ts", ".mdx"]);
 /** Directories to skip during the walk. */
 const SKIP_DIRS = new Set(["node_modules", ".next", ".turbo", ".git", "dist"]);
 
+const CONFIG_PATH = join(import.meta.dirname, "icons.config.json");
+
+// ---------------------------------------------------------------------------
+// CLI flags
+// ---------------------------------------------------------------------------
+
+const args = process.argv.slice(2);
+const cliIncludes = [];
+for (let i = 0; i < args.length; i++) {
+  if (args[i] === "--include" || args[i] === "-i") {
+    cliIncludes.push(
+      ...(args[++i] ?? "")
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean),
+    );
+  }
+}
+
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
 
 const B = (s) => `\x1b[96m${s}\x1b[0m`;
+const Y = (s) => `\x1b[93m${s}\x1b[0m`;
 
 /** Non-zero exit with a message. */
 function fail(message) {
@@ -113,20 +133,33 @@ function extractIcons(text) {
 async function scanIcons() {
   console.log("Scanning for Material Icon uses…");
 
-  const allNames = new Set();
+  const scanned = new Set();
 
   for (const dir of SCAN_DIRS) {
     for await (const file of walk(dir)) {
       const text = await readFile(file, "utf-8");
       for (const name of extractIcons(text)) {
-        allNames.add(name);
+        scanned.add(name);
       }
     }
   }
 
+  // Merge in icons from the config file.
+  let configNames = [];
+  try {
+    const raw = await readFile(CONFIG_PATH, "utf-8");
+    configNames = JSON.parse(raw).include ?? [];
+  } catch {}
+
+  // Merge all sources: scanned ∪ config ∪ CLI.
+  const allNames = new Set([...scanned, ...configNames, ...cliIncludes]);
+
   const sorted = [...allNames].sort();
+  const extra = [...allNames].filter((n) => !scanned.has(n)).length;
+  const breakdown =
+    extra > 0 ? ` (${scanned.size} scanned + ${extra} from config)` : "";
   console.log(
-    `  Found ${sorted.length} unique icon${sorted.length === 1 ? "" : "s"}:`,
+    `  Found ${sorted.length} unique icon${sorted.length === 1 ? "" : "s"}${breakdown}:`,
   );
 
   // Print in a balanced column grid that fits the terminal.
@@ -159,7 +192,9 @@ async function scanIcons() {
       const colMax = Math.max(
         ...sorted.slice(start, start + rowCount).map((s) => s.length),
       );
-      line.push(B(name.padEnd(colMax)));
+      const isExtra = name && !scanned.has(name);
+      const cell = name.padEnd(colMax);
+      line.push(!name ? cell : isExtra ? Y(cell) : B(cell));
     }
     console.log(`    ${line.join(" ".repeat(gap))}`);
   }
