@@ -202,12 +202,6 @@
     opacity: 0;
   }
 }
-/* Desktop-only */
-@keyframes skc-fullscreen-dialog-exit-content {
-  to {
-    opacity: 0;
-  }
-}
 
 .skc-fullscreen-dialog.skc-fullscreen-dialog--exiting {
   --_duration: var(--_exit-duration);
@@ -225,8 +219,8 @@
 
 @media (width >= 38rem) {
   .skc-fullscreen-dialog.skc-fullscreen-dialog--exiting > * {
-    animation: calc(var(--_duration) / 4) var(--_ease) forwards
-      skc-fullscreen-dialog-exit-content;
+    opacity: 0;
+    transition: opacity calc(var(--_duration) / 4) var(--_ease);
   }
 }
 
