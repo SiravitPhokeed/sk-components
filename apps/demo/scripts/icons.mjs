@@ -46,6 +46,12 @@ const SKIP_DIRS = new Set(["node_modules", ".next", ".turbo", ".git", "dist"]);
 
 const CONFIG_PATH = join(import.meta.dirname, "icons.config.json");
 
+// Google Fonts serves variable fonts only to browser-like clients.
+const BROWSER_UA =
+  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) " +
+  "AppleWebKit/537.36 (KHTML, like Gecko) " +
+  "Chrome/150.0.0.0 Safari/537.36";
+
 // ---------------------------------------------------------------------------
 // CLI flags
 // ---------------------------------------------------------------------------
@@ -216,13 +222,7 @@ async function downloadFont(iconNames) {
 
   console.log("\nFetching CSS from Google Fonts…");
   const cssResponse = await fetch(cssUrl, {
-    headers: {
-      // Google Fonts serves variable fonts only to browser-like clients.
-      "User-Agent":
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) " +
-        "AppleWebKit/537.36 (KHTML, like Gecko) " +
-        "Chrome/132.0.0.0 Safari/537.36",
-    },
+    headers: { "User-Agent": BROWSER_UA },
   });
   if (!cssResponse.ok) {
     fail(`Google Fonts returned HTTP ${cssResponse.status}`);
@@ -243,12 +243,7 @@ async function downloadFont(iconNames) {
 
   console.log("Downloading font file…");
   const fontResponse = await fetch(fontUrl, {
-    headers: {
-      "User-Agent":
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) " +
-        "AppleWebKit/537.36 (KHTML, like Gecko) " +
-        "Chrome/132.0.0.0 Safari/537.36",
-    },
+    headers: { "User-Agent": BROWSER_UA },
   });
   if (!fontResponse.ok) {
     fail(`Font download returned HTTP ${fontResponse.status}`);
