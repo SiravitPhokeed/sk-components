@@ -7,9 +7,15 @@ Thank you for your interest in contributing to SK Components.
 > [issue tracker](https://github.com/suankularb-wittayalai-school/sk-components/issues).
 > Thank you!
 
+## Getting started
+
+This project is a [pnpm](https://pnpm.io/) monorepo. Check the
+[README.md](README.md) for more information and instructions on how to set up the
+project.
+
 ## Style guidelines
 
-- Run Prettier before committing. Use `pn format`.
+- Run Prettier before committing. Use `pnpm format`.
 - Use Title Case when referring to components in documentation and commit
   messages.
   - e.g. Full-screen Dialog, not FullscreenDialog or full-screen dialog.
@@ -36,12 +42,15 @@ Thank you for your interest in contributing to SK Components.
   - `(demo)` for demo app changes.
   - `(docs)` for documentation changes inside the demo app.
   - e.g. `feat(css): add hover state to Button`
-- Use the present tense (“Add feature” not “Added feature”).
+- Keep the subject line not exceeding 50 characters.
+  - If you need to add more information, add a body after the subject line.
+- Use the present tense (“add feature” not “added feature”).
 - Don’t use backticks.
 
 ### Pull requests and changelogs
 
-- For pull requests and `CHANGELOG.md` entries, follow [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) guidelines.
+- For pull requests and `CHANGELOG.md` entries, follow [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
+  guidelines.
 - SKCom Styles and ReSKCom use the changelog at the root.
 - The demo app uses its own changelog in `apps/demo/CHANGELOG.md`.
 
