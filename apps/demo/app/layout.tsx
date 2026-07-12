@@ -64,7 +64,10 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
         bodyFontTH.className,
         displayFontTH.className,
         monoFont.variable,
-        iconFont.variable,
+        // Use locally installed Material Symbols font in development, as the
+        // optimized `localFont` does not have all icons, which is annoying for
+        // development.
+        process.env.NODE_ENV === "production" && iconFont.variable,
         "antialiased",
       )}
     >

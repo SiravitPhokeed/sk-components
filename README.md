@@ -118,7 +118,9 @@ const App = () => (
 
 ## Developing SKCom
 
-Install dependencies for the monorepo first.
+Install dependencies for the monorepo first. To use the demo app, also install
+the [Material Symbols Outlined font](https://fonts.google.com/download?family=Material%20Symbols%20Outlined)
+onto your system.
 
 ```bash
 pnpm install
