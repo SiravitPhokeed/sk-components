@@ -19,7 +19,9 @@ const DisclosureCard: FC<{
       element="summary"
       className="state-layer-on-surface flex items-center gap-1 px-4 py-3"
     >
-      <Text type="title-medium">{summary}</Text>
+      <Text type="title-medium" className="text-balance">
+        {summary}
+      </Text>
       <MaterialIcon
         icon="chevron_right"
         directional
