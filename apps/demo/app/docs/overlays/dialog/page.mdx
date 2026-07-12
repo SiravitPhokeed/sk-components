@@ -2,6 +2,8 @@ import DemoCard from "@/app/docs/components/DemoCard";
 import LinksChipSet from "@/app/docs/components/LinksChipSet";
 import PropsTable from "@/app/docs/components/PropsTable";
 import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import VersionsTable from "@/app/docs/components/VersionsTable";
+import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import { Dialog, TableCell } from "@suankularb-components/react";
 
 export const metadata = {
@@ -138,3 +140,25 @@ spec.
 
   </PropsTableRow>
 </PropsTable>
+
+### Version changes
+
+<VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+    Invoker Commands API support added. Uncontrolled mode via `id` introduced.
+    Animations revised.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.3.0">
+    Improved modal open/close animations.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.0.0">
+    Rewritten as composable component. `show` renamed to `open`. `type`,
+    `label`, `noOverlay`, `noBlurToClose`, and `onSubmit` removed. Title and
+    icon moved to Dialog Header. `actions` replaced by Actions component.
+    `width` introduced.
+  </VersionsTableRow>
+  <VersionsTableRow version="v2.5.0">
+    React implementation introduced.
+  </VersionsTableRow>
+  <VersionsTableRow version="v1.0.0">Dialog introduced.</VersionsTableRow>
+</VersionsTable>

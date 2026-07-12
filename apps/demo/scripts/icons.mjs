@@ -9,7 +9,14 @@
  */
 
 import { createWriteStream } from "node:fs";
-import { mkdir, readFile, readdir, rename, stat, unlink } from "node:fs/promises";
+import {
+  mkdir,
+  readFile,
+  readdir,
+  rename,
+  stat,
+  unlink,
+} from "node:fs/promises";
 import { extname, join, resolve } from "node:path";
 import { pipeline } from "node:stream/promises";
 

@@ -1,5 +1,7 @@
 import PropsTable from "@/app/docs/components/PropsTable";
 import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import VersionsTable from "@/app/docs/components/VersionsTable";
+import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import { TableCell } from "@suankularb-components/react";
 import LinksChipSet from "@/app/docs/components/LinksChipSet";
 
@@ -136,3 +138,16 @@ clicking outside the Menu or pressing Escape.
 
   </PropsTableRow>
 </PropsTable>
+
+### Version changes
+
+<VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+    Invoker Commands API support added. Uncontrolled mode via `id` introduced.
+    Animations revised.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.3.0">
+    Improved open/close animations.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.0.0">Menu introduced.</VersionsTableRow>
+</VersionsTable>

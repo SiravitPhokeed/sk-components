@@ -2,6 +2,8 @@ import DemoCard from "@/app/docs/components/DemoCard";
 import LinksChipSet from "@/app/docs/components/LinksChipSet";
 import PropsTable from "@/app/docs/components/PropsTable";
 import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import VersionsTable from "@/app/docs/components/VersionsTable";
+import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import {
   MaterialIcon,
   MenuItem,
@@ -148,3 +150,13 @@ default to the nearest Menu’s `id`.
 
   </PropsTableRow>
 </PropsTable>
+
+### Version changes
+
+<VersionsTable>
+  <VersionsTableRow version="v4.0.0">`dangerous` introduced.</VersionsTableRow>
+  <VersionsTableRow version="v3.3.0">
+    Selected state color introduced.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.0.0">Menu Item introduced.</VersionsTableRow>
+</VersionsTable>
