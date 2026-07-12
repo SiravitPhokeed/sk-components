@@ -46,10 +46,10 @@
     background-color: var(--color-scrim);
   }
 
-  .skc-side-sheet__content {
+  > * {
     opacity: 0;
-    transition: opacity calc(var(--_duration) * (2 / 3)) var(--_ease);
-    transition-delay: calc(var(--_delay) + var(--_duration) / 2);
+    transition: opacity var(--_duration) var(--_ease);
+    transition-delay: calc(var(--_duration) / 2);
   }
 
   /* Open state */
@@ -57,7 +57,7 @@
     display: block;
     transform: scaleX(1);
 
-    .skc-side-sheet__content {
+    > * {
       opacity: 1;
     }
 
@@ -65,19 +65,11 @@
     @starting-style {
       transform: scaleX(0);
 
-      .skc-side-sheet__content {
+      > * {
         opacity: 0;
       }
     }
   }
-}
-
-.skc-side-sheet__content > :not(:last-child)::after {
-  display: block;
-  margin-inline: 1rem;
-  background-color: var(--color-outline-variant);
-  height: 1px;
-  content: "";
 }
 
 /* ── Backdrop entry animation (Safari can't @starting-style ::backdrop) ──── */
@@ -96,9 +88,11 @@
 @keyframes skc-side-sheet-exit {
   from {
     transform: translateX(0) scaleX(1);
+    opacity: 1;
   }
   to {
     transform: translateX(calc(1rem * var(--inline-forward))) scaleX(0);
+    opacity: 0;
   }
 }
 @keyframes skc-side-sheet-exit-backdrop {
@@ -113,14 +107,14 @@
 .skc-side-sheet.skc-side-sheet--exiting {
   animation: skc-side-sheet-exit var(--_duration) var(--_ease) forwards;
 
+  > * {
+    opacity: 0;
+    transition: opacity calc(var(--_duration) / 4) var(--_ease);
+  }
+
   &::backdrop {
     animation: skc-side-sheet-exit-backdrop var(--_duration)
       var(--_backdrop-ease) forwards;
-  }
-
-  .skc-side-sheet__content {
-    opacity: 0;
-    transition: opacity calc(var(--_duration) / 4) var(--_ease);
   }
 }
 

@@ -2,3 +2,11 @@
  * **Nav Drawer**
  * A navigation drawer that slides in from the left.
  */
+
+.skc-nav-drawer__content > :not(:last-child)::after {
+  display: block;
+  margin-inline: 1rem;
+  background-color: var(--color-outline-variant);
+  height: 1px;
+  content: "";
+}

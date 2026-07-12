@@ -82,12 +82,16 @@ export const NavDrawerItem: StyleableFC<NavDrawerItemProps> = ({
   return (
     <li>
       <Interactive
-        href={href}
         aria-current={selected ? "page" : undefined}
         title={tooltip}
-        onClick={onClick}
         command={command}
         commandfor={commandfor}
+        onClick={() => {
+          const navDrawer = document.getElementById("nav-drawer");
+          if (navDrawer) (navDrawer as HTMLDialogElement).requestClose?.();
+          onClick?.();
+        }}
+        href={href}
         element={element}
         className={cn(
           "skc-nav-drawer-item",

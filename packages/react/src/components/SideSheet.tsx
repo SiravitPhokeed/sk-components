@@ -45,7 +45,7 @@ export const SideSheet: StyleableFC<SideSheetProps> = ({
 }) => {
   const drawerRef = useRef<HTMLDialogElement>(null);
 
-  const { close, dialogProps } = useAnimatedDialog(drawerRef, {
+  const { dialogProps } = useAnimatedDialog(drawerRef, {
     exitingClass: EXITING_CLASS,
     exitAnimationName: EXIT_ANIMATION_NAME,
   });
@@ -58,18 +58,7 @@ export const SideSheet: StyleableFC<SideSheetProps> = ({
       className={cn("skc-side-sheet", className)}
       style={style}
     >
-      <nav
-        className="skc-side-sheet__content"
-        // Auto-close when a Nav Drawer Item is clicked.
-        // Capture phase fires before the item's own onClick, matching the
-        // legacy behavior where onClose() fires first.
-        onClickCapture={(e) => {
-          const target = e.target as HTMLElement;
-          if (target.closest(".skc-nav-drawer-item")) close();
-        }}
-      >
-        {children}
-      </nav>
+      {children}
     </dialog>
   );
 };
