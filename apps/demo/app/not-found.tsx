@@ -2,7 +2,7 @@ import { MaterialIcon, Text } from "@suankularb-components/react";
 import type { FC } from "react";
 
 const NotFound: FC = () => (
-  <main className="bg-surface-container grid h-screen w-screen place-items-center p-4 pb-20">
+  <main className="body:bg-surface-container grid h-screen w-screen place-items-center p-4 pb-20">
     <div className="bg-surface-bright max-w-80 rounded-xl p-6 text-balance">
       <MaterialIcon icon="error" size={40} className="text-secondary mb-4" />
       <Text type="headline-small" element="h1" className="mb-2">

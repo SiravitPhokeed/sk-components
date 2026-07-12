@@ -18,7 +18,7 @@ export default function Error({
   const [retrying, setRetrying] = useState(false);
 
   return (
-    <main className="bg-surface-container flex h-screen w-screen flex-col items-center justify-center gap-2 p-4 pb-8">
+    <main className="body:bg-surface-container flex h-screen w-screen flex-col items-center justify-center gap-2 p-4 pb-8">
       <div className="bg-surface-bright max-w-80 rounded-xl p-6 text-balance">
         <MaterialIcon
           icon="warning"
