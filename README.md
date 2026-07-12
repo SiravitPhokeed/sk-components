@@ -116,60 +116,7 @@ const App = () => (
 );
 ```
 
-## Developing SKCom
-
-Install dependencies for the monorepo first. To use the demo app, also install
-the [Material Symbols Outlined font](https://fonts.google.com/download?family=Material%20Symbols%20Outlined)
-onto your system.
-
-```bash
-pnpm install
-```
-
----
-
-**When developing, run this command to watch for changes in the packages** and
-rebuild them automatically. Changes in `packages/css` and `packages/react` will
-be reflected in the demo app.
-
-> [!WARNING]
->
-> The development build marks all components as Client Components.
-
-```bash
-pnpm dev
-```
-
----
-
-If you need to build the packages individually, you can run the following
-commands.
-
-```bash
-pnpm --filter @suankularb-components/css build
-pnpm --filter @suankularb-components/react build
-```
-
----
-
-**To work on the documentation,** build the packages first, then start just the
-Next.js server for the demo app.
-
-```bash
-pnpm build
-pnpm --filter demo dev
-```
-
----
-
-To view a production build of the demo app, run the following.
-
-```bash
-pnpm build
-pnpm --filter demo start
-```
-
-### Demo application
+## Demo application
 
 <p>
   <picture>
@@ -184,8 +131,22 @@ pnpm --filter demo start
   </picture>
 </p>
 
-After starting the development server, you can access the demo application
-locally. Go to [`http://localhost:3000/`](http://localhost:3000/).
+A demo application is included in this repository to showcase the components and
+documentation. Running the app locally helps you develop and test components.
 
-You can interact with the examples in the documentation here, or dive deeper
-into how the examples are created by studying `apps/demo`.
+For SKCom users, the demo app is also a playground to interact with the components and view their documentation. You can dive deeper by studying the source code at [`apps/demo`](/apps/demo).
+
+## Available scripts
+
+| Script             | Description                                                     |
+| ------------------ | --------------------------------------------------------------- |
+| `pnpm build`       | Build all packages and the demo app.                            |
+| `pnpm build:css`   | Build the SKCom Styles package.                                 |
+| `pnpm build:react` | Build the ReSKCom package.                                      |
+| `pnpm dev`         | Start the development server for all packages and the demo app. |
+| `pnpm format`      | Run Prettier to format all files.                               |
+| `pnpm prepare`     | Prepare Husky for Git hooks.                                    |
+| `pnpm demo:dev`    | Start the development server for the demo app.                  |
+| `pnpm demo:build`  | Build the demo app.                                             |
+| `pnpm demo:start`  | Start the production server for the demo app.                   |
+| `pnpm demo:icons`  | Generate the icon components for the demo app.                  |

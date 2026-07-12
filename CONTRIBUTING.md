@@ -9,9 +9,48 @@ Thank you for your interest in contributing to SK Components.
 
 ## Getting started
 
-This project is a [pnpm](https://pnpm.io/) monorepo. Check the
-[README.md](README.md) for more information and instructions on how to set up the
-project.
+This project is a [pnpm](https://pnpm.io/) monorepo.
+
+Install dependencies for the monorepo first. To use the demo app, also install
+the [Material Symbols Outlined font](https://fonts.google.com/download?family=Material%20Symbols%20Outlined)
+onto your system.
+
+```bash
+pnpm install
+```
+
+**When developing, run this command to watch for changes in the packages** and
+rebuild them automatically. Changes in `packages/css` and `packages/react` will
+be reflected in the demo app.
+
+> [!WARNING]
+>
+> The development build marks all components as Client Components.
+
+```bash
+pnpm dev
+```
+
+**To work on the documentation,** build the packages first, then start just the
+Next.js server for the demo app.
+
+```bash
+pnpm build
+pnpm demo:dev
+```
+
+To view a production build of the demo app, run the following.
+
+```bash
+pnpm build
+pnpm demo:start
+```
+
+> [!IMPORTANT]
+>
+> The icon file is optimized to include only the icons used in the library or
+> demo app. If you add or remove icons, run `pnpm demo:icons` to update the icon
+> file.
 
 ## Style guidelines
 
