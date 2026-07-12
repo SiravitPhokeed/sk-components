@@ -215,7 +215,15 @@ async function downloadFont(iconNames) {
   const cssUrl = decodeURIComponent(url.toString());
 
   console.log("\nFetching CSS from Google Fonts…");
-  const cssResponse = await fetch(cssUrl);
+  const cssResponse = await fetch(cssUrl, {
+    headers: {
+      // Google Fonts serves variable fonts only to browser-like clients.
+      "User-Agent":
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) " +
+        "AppleWebKit/537.36 (KHTML, like Gecko) " +
+        "Chrome/132.0.0.0 Safari/537.36",
+    },
+  });
   if (!cssResponse.ok) {
     fail(`Google Fonts returned HTTP ${cssResponse.status}`);
   }
@@ -234,7 +242,14 @@ async function downloadFont(iconNames) {
   const tmpFile = join(tmpDir, "material-symbols.woff2");
 
   console.log("Downloading font file…");
-  const fontResponse = await fetch(fontUrl);
+  const fontResponse = await fetch(fontUrl, {
+    headers: {
+      "User-Agent":
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) " +
+        "AppleWebKit/537.36 (KHTML, like Gecko) " +
+        "Chrome/132.0.0.0 Safari/537.36",
+    },
+  });
   if (!fontResponse.ok) {
     fail(`Font download returned HTTP ${fontResponse.status}`);
   }
