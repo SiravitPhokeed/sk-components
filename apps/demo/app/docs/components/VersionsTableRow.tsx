@@ -2,7 +2,7 @@ import { TableCell, TableRow } from "@suankularb-components/react";
 import type { FC, ReactNode } from "react";
 
 const VersionsTableRow: FC<{
-  version: string;
+  version: `v${number}.${number}.${number}`;
   children: ReactNode;
 }> = ({ version, children }) => (
   <TableRow>
