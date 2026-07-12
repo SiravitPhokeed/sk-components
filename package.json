@@ -3,9 +3,14 @@
   "name": "sk-components",
   "scripts": {
     "build": "pnpm -r build",
+    "build:css": "pnpm -C packages/css build",
+    "build:react": "pnpm -C packages/react build",
     "dev": "pnpm -r --parallel dev",
     "format": "prettier --write .",
     "prepare": "husky",
+    "demo:dev": "pnpm -C apps/demo dev",
+    "demo:build": "pnpm -C apps/demo build",
+    "demo:start": "pnpm -C apps/demo start",
     "demo:icons": "pnpm -C apps/demo icons"
   },
   "devDependencies": {
