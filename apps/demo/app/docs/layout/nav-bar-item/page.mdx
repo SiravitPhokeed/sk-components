@@ -2,6 +2,8 @@ import DemoCard from "@/app/docs/components/DemoCard";
 import LinksChipSet from "@/app/docs/components/LinksChipSet";
 import PropsTable from "@/app/docs/components/PropsTable";
 import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import VersionsTable from "@/app/docs/components/VersionsTable";
+import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import {
   MaterialIcon,
   NavBarItem,
@@ -112,3 +114,13 @@ One of the destinations in a Navigation Bar/Rail.
 
   </PropsTableRow>
 </PropsTable>
+
+### Version changes
+
+<VersionsTable>
+  <VersionsTableRow version="v4.0.0">`badge` removed.</VersionsTableRow>
+  <VersionsTableRow version="v3.1.0">
+    Interactive replaced ad-hoc interaction handling.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.0.0">Nav Bar Item introduced.</VersionsTableRow>
+</VersionsTable>

@@ -2,6 +2,8 @@ import DemoCard from "@/app/docs/components/DemoCard";
 import LinksChipSet from "@/app/docs/components/LinksChipSet";
 import PropsTable from "@/app/docs/components/PropsTable";
 import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import VersionsTable from "@/app/docs/components/VersionsTable";
+import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import {
   MaterialIcon,
   NavBar,
@@ -117,3 +119,27 @@ larger screens, a Navigation Bar transforms into a Navigation Rail.
 
   </PropsTableRow>
 </PropsTable>
+
+### Version changes
+
+<VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+    `brand` and `fab` removed.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.1.0">
+    Interactive replaced ad-hoc interaction handling.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.0.0">
+    Rewritten as part of the v3 monorepo.
+  </VersionsTableRow>
+  <VersionsTableRow version="v2.8.0">
+    React implementation introduced (as Navigation, merged from
+    react-sk-components).
+  </VersionsTableRow>
+  <VersionsTableRow version="v2.0.0">
+    Rewritten in the CSS v2 framework.
+  </VersionsTableRow>
+  <VersionsTableRow version="v1.0.0">
+    Navigation Bar introduced.
+  </VersionsTableRow>
+</VersionsTable>

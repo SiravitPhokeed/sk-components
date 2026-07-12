@@ -1,6 +1,8 @@
 import LinksChipSet from "@/app/docs/components/LinksChipSet";
 import PropsTable from "@/app/docs/components/PropsTable";
 import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import VersionsTable from "@/app/docs/components/VersionsTable";
+import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import { TableCell } from "@suankularb-components/react";
 
 export const metadata = {
@@ -27,6 +29,18 @@ const App = () => (
 ### Props
 
 Theme Provider has no props.
+
+### Version changes
+
+<VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+    No longer a wrapper component; include `<ThemeProvider />` anywhere in the
+    component tree.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.0.0">
+    Theme Provider introduced.
+  </VersionsTableRow>
+</VersionsTable>
 
 ### Further reading
 

@@ -2,6 +2,8 @@ import DemoCard from "@/app/docs/components/DemoCard";
 import LinksChipSet from "@/app/docs/components/LinksChipSet";
 import PropsTable from "@/app/docs/components/PropsTable";
 import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import VersionsTable from "@/app/docs/components/VersionsTable";
+import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import { Header, MaterialIcon, TableCell } from "@suankularb-components/react";
 
 export const metadata = {
@@ -117,3 +119,20 @@ previous Header. The default Header level is `2`, which corresponds to `<h2>`.
 
   </PropsTableRow>
 </PropsTable>
+
+### Version changes
+
+<VersionsTable>
+  <VersionsTableRow version="v3.0.0">
+    Header introduced (split from Title).
+  </VersionsTableRow>
+  <VersionsTableRow version="v2.8.0">
+    React implementation introduced (as Title, merged from react-sk-components).
+  </VersionsTableRow>
+  <VersionsTableRow version="v2.0.0">
+    Renamed to Title, redesigned.
+  </VersionsTableRow>
+  <VersionsTableRow version="v1.0.0">
+    Header introduced (predecessor to Title).
+  </VersionsTableRow>
+</VersionsTable>

@@ -3,6 +3,8 @@ import DemoCard from "@/app/docs/components/DemoCard";
 import LinksChipSet from "@/app/docs/components/LinksChipSet";
 import PropsTable from "@/app/docs/components/PropsTable";
 import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import VersionsTable from "@/app/docs/components/VersionsTable";
+import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import {
   CardContent,
   CardHeader,
@@ -145,3 +147,26 @@ we have provided some useful props and components to get you started.
 
   </PropsTableRow>
 </PropsTable>
+
+### Version changes
+
+<VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+    `layout` and `layoutID` props removed.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.1.0">Button support added.</VersionsTableRow>
+  <VersionsTableRow version="v3.0.2">
+    Contextual adaptations for filled Card added. Attribute passthrough support
+    added.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.0.0">
+    React implementation introduced.
+  </VersionsTableRow>
+  <VersionsTableRow version="v2.2.5">
+    Action area support introduced.
+  </VersionsTableRow>
+  <VersionsTableRow version="v2.0.0">
+    Card revamped with Horizontal and Stacked variants.
+  </VersionsTableRow>
+  <VersionsTableRow version="v1.0.0">Card introduced.</VersionsTableRow>
+</VersionsTable>

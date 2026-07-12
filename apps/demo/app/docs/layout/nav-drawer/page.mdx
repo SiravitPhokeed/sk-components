@@ -2,6 +2,8 @@ import DemoCard from "@/app/docs/components/DemoCard";
 import LinksChipSet from "@/app/docs/components/LinksChipSet";
 import PropsTable from "@/app/docs/components/PropsTable";
 import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import VersionsTable from "@/app/docs/components/VersionsTable";
+import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import {
   MaterialIcon,
   NavDrawer,
@@ -54,3 +56,13 @@ A navigation drawer that slides in from the left.
 
   </PropsTableRow>
 </PropsTable>
+
+### Version changes
+
+<VersionsTable>
+  <VersionsTableRow version="v4.0.0">Animations revised.</VersionsTableRow>
+  <VersionsTableRow version="v3.2.0">
+    Translucent variant introduced.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.0.0">Nav Drawer introduced.</VersionsTableRow>
+</VersionsTable>

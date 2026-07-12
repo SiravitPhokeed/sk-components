@@ -2,6 +2,8 @@ import DemoCard from "@/app/docs/components/DemoCard";
 import LinksChipSet from "@/app/docs/components/LinksChipSet";
 import PropsTable from "@/app/docs/components/PropsTable";
 import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import VersionsTable from "@/app/docs/components/VersionsTable";
+import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import { FAB, MaterialIcon, TableCell } from "@suankularb-components/react";
 
 export const metadata = {
@@ -138,3 +140,25 @@ FAB must be a direct descendant of [Root Layout](/docs/layout/root-layout).
 
   </PropsTableRow>
 </PropsTable>
+
+### Version changes
+
+<VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+    Now direct child of Root Layout instead of Nav Bar prop. `stateOnScroll`
+    removed.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.0.2">
+    Minimize animation added.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.0.0">
+    React implementation rewritten in the v3 monorepo.
+  </VersionsTableRow>
+  <VersionsTableRow version="v2.8.0">
+    React implementation introduced (brought from react-sk-components).
+  </VersionsTableRow>
+  <VersionsTableRow version="v2.0.0">
+    Rewritten with small, normal, large, and extended variants.
+  </VersionsTableRow>
+  <VersionsTableRow version="v1.3.0">FAB introduced.</VersionsTableRow>
+</VersionsTable>

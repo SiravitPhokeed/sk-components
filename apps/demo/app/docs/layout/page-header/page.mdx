@@ -2,6 +2,8 @@ import DisclosureCard from "@/app/docs/components/DisclosureCard";
 import LinksChipSet from "@/app/docs/components/LinksChipSet";
 import PropsTable from "@/app/docs/components/PropsTable";
 import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import VersionsTable from "@/app/docs/components/VersionsTable";
+import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import { TableCell } from "@suankularb-components/react";
 
 export const metadata = {
@@ -149,3 +151,23 @@ hierarchy.
 
   </PropsTableRow>
 </PropsTable>
+
+### Version changes
+
+<VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+    `title`, `brand`, `homeURL`, `icon` removed.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.2.0">
+    Page Header minimize on scroll.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.1.0">
+    Text and icon animation removed.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.0.4">
+    Improved Page Header scroll animations.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.0.0">
+    Page Header introduced (split from Title).
+  </VersionsTableRow>
+</VersionsTable>

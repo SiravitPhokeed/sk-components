@@ -2,6 +2,8 @@ import DemoCard from "@/app/docs/components/DemoCard";
 import LinksChipSet from "@/app/docs/components/LinksChipSet";
 import PropsTable from "@/app/docs/components/PropsTable";
 import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import VersionsTable from "@/app/docs/components/VersionsTable";
+import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import {
   Actions,
   Button,
@@ -210,3 +212,31 @@ Button helps users take action, whether it’s logging in, liking a post, or goi
 
   </PropsTableRow>
 </PropsTable>
+
+### Version changes
+
+<VersionsTable>
+  <VersionsTableRow version="v4.0.0">`autoFocus` introduced.</VersionsTableRow>
+  <VersionsTableRow version="v3.1.0">
+    Interactive replaced ad-hoc interaction handling.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.0.0">
+    Rewritten as part of the v3 monorepo.
+  </VersionsTableRow>
+  <VersionsTableRow version="v2.8.0">
+    React implementation introduced (brought from react-sk-components).
+  </VersionsTableRow>
+  <VersionsTableRow version="v2.4.3">
+    Disabled state for all Button variants.
+  </VersionsTableRow>
+  <VersionsTableRow version="v2.2.4">
+    Error (danger) variants introduced.
+  </VersionsTableRow>
+  <VersionsTableRow version="v2.2.3">
+    Icon Button for filled, outlined, and tonal variants.
+  </VersionsTableRow>
+  <VersionsTableRow version="v2.0.0">
+    Rewritten with filled, outlined, text, and icon variants.
+  </VersionsTableRow>
+  <VersionsTableRow version="v1.0.0">Button introduced.</VersionsTableRow>
+</VersionsTable>

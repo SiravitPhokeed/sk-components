@@ -2,6 +2,8 @@ import DemoCard from "@/app/docs/components/DemoCard";
 import LinksChipSet from "@/app/docs/components/LinksChipSet";
 import PropsTable from "@/app/docs/components/PropsTable";
 import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import VersionsTable from "@/app/docs/components/VersionsTable";
+import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import {
   Checkbox,
   FormGroup,
@@ -90,3 +92,12 @@ A group of related form items, like options in a radio group.
 
   </PropsTableRow>
 </PropsTable>
+
+### Version changes
+
+<VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+    `legendElement` introduced. Prop injection replaced with React Context.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.0.0">Form Group introduced.</VersionsTableRow>
+</VersionsTable>

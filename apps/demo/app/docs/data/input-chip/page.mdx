@@ -2,6 +2,8 @@ import DemoCard from "@/app/docs/components/DemoCard";
 import LinksChipSet from "@/app/docs/components/LinksChipSet";
 import PropsTable from "@/app/docs/components/PropsTable";
 import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import VersionsTable from "@/app/docs/components/VersionsTable";
+import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import {
   Avatar,
   InputChip,
@@ -144,3 +146,21 @@ these can also appear inside a text field like in Chip Field.
 
   </PropsTableRow>
 </PropsTable>
+
+### Version changes
+
+<VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+    `tooltip`, `deleteCommand`, and `deleteCommandfor` introduced. Edit mode
+    removed (`editable`, `value`, `onChange`, `onEditExit`). `locale` support
+    added.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.3.0">Avatar support added.</VersionsTableRow>
+  <VersionsTableRow version="v3.1.0">
+    Interactive replaced ad-hoc interaction handling.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.0.0">
+    React implementation introduced.
+  </VersionsTableRow>
+  <VersionsTableRow version="v2.4.1">Input Chip introduced.</VersionsTableRow>
+</VersionsTable>

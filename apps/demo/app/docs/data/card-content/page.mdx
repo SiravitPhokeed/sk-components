@@ -3,6 +3,8 @@ import DemoCard from "@/app/docs/components/DemoCard";
 import LinksChipSet from "@/app/docs/components/LinksChipSet";
 import PropsTable from "@/app/docs/components/PropsTable";
 import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import VersionsTable from "@/app/docs/components/VersionsTable";
+import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import { Actions, Button, TableCell } from "@suankularb-components/react";
 
 export const metadata = {
@@ -59,3 +61,9 @@ A section of content inside Card.
 
   </PropsTableRow>
 </PropsTable>
+
+### Version changes
+
+<VersionsTable>
+  <VersionsTableRow version="v3.0.0">Card Content introduced.</VersionsTableRow>
+</VersionsTable>
