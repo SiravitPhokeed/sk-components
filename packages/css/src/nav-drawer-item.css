@@ -24,11 +24,6 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-.skc-nav-drawer-item .skc-material-icon {
-  transition: font-variation-settings var(--duration-short-4)
-    var(--ease-standard);
-}
-
 .skc-nav-drawer-item__label {
   flex-grow: 1;
 }
