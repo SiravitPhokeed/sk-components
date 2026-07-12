@@ -183,6 +183,7 @@ export const Button: StyleableFC<ButtonProps> = ({
       href={isFunctional ? href : undefined}
       command={command}
       commandfor={commandfor ?? (command ? dialogID : undefined)}
+      shadowEffect={["filled", "tonal"].includes(appearance)}
       element={element}
       className={cn(
         "skc-button",

@@ -17,7 +17,6 @@
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  cursor: pointer;
   border: none;
   border-radius: var(--radius-full);
   background-color: var(--_button-background-color, transparent);
@@ -65,14 +64,6 @@
   }
 }
 
-.skc-button--disabled {
-  cursor: default;
-
-  &:is(.skc-button--filled, .skc-button--tonal):hover {
-    box-shadow: none;
-  }
-}
-
 .skc-button .skc-progress {
   --_indicator-color: var(--state-layer-color);
   --_remainder-color: transparent;
@@ -96,11 +87,6 @@
 .skc-button--filled {
   --_button-foreground-color: var(--color-on-primary);
   --_button-background-color: var(--color-primary);
-  transition: box-shadow var(--duration-short-4) var(--ease-standard);
-
-  &:hover {
-    box-shadow: var(--shadow-1);
-  }
 
   &.skc-button--disabled {
     --state-layer-color: color-mix(
@@ -123,11 +109,6 @@
 .skc-button--tonal {
   --_button-foreground-color: var(--color-on-secondary-container);
   --_button-background-color: var(--adaptive-secondary-container);
-  transition: box-shadow var(--duration-short-4) var(--ease-standard);
-
-  &:hover {
-    box-shadow: var(--shadow-1);
-  }
 
   &.skc-button--disabled {
     --state-layer-color: color-mix(
