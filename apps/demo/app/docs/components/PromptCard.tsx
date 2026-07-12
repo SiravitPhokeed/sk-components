@@ -43,7 +43,7 @@ const PromptCard: FC<{
       />
       <Text type="body-medium" className="p-4 pt-0 md:text-balance">
         {children}
-        <Actions className="mt-4">
+        <Actions className="mt-4 sm:grid sm:justify-stretch md:flex md:justify-end">
           <Button
             appearance="outlined"
             icon={<MaterialIcon icon="download" />}
