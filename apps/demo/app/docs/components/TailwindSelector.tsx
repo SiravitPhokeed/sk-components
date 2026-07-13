@@ -13,7 +13,7 @@ const TailwindSelector: FC<{ value: "v3" | "v4" }> = ({ value }) => (
       <Button
         appearance="outlined"
         selected={value === "v4"}
-        href="/docs/guides/tailwindcss-v4"
+        href="/docs/integrations/tailwindcss-v4"
         element={Link}
       >
         v4
@@ -21,7 +21,7 @@ const TailwindSelector: FC<{ value: "v3" | "v4" }> = ({ value }) => (
       <Button
         appearance="outlined"
         selected={value === "v3"}
-        href="/docs/guides/tailwindcss-v3"
+        href="/docs/integrations/tailwindcss-v3"
         element={Link}
       >
         v3

@@ -18,18 +18,6 @@ const DocsNav: StyleableFC = ({ className, style }) => (
       <DocsNavLink href="/docs/guides/getting-started">
         Getting started
       </DocsNavLink>
-      <DocsNavLink href="/docs/guides/nextjs-app">
-        Next.js App Router
-      </DocsNavLink>
-      <DocsNavLink href="/docs/guides/nextjs-pages">
-        Next.js Pages Router
-      </DocsNavLink>
-      <DocsNavLink href="/docs/guides/tailwindcss-v4">
-        Tailwind CSS v4
-      </DocsNavLink>
-      <DocsNavLink href="/docs/guides/tailwindcss-v3">
-        Tailwind CSS v3
-      </DocsNavLink>
       <DocsNavLink href="/docs/guides/shared-props">Shared props</DocsNavLink>
       <DocsNavLink href="/docs/guides/modals">Modals and popovers</DocsNavLink>
       <DocsNavLink href="/docs/guides/disabling-elements">
@@ -40,7 +28,26 @@ const DocsNav: StyleableFC = ({ className, style }) => (
     </DocsNavSection>
 
     <DocsNavSection
-      icon={<MaterialIcon icon="select_window" />}
+      icon={<MaterialIcon icon="join_inner" />}
+      title="Integrations"
+      open
+    >
+      <DocsNavLink href="/docs/integrations/nextjs-app">
+        Next.js App Router
+      </DocsNavLink>
+      <DocsNavLink href="/docs/integrations/nextjs-pages">
+        Next.js Pages Router
+      </DocsNavLink>
+      <DocsNavLink href="/docs/integrations/tailwindcss-v4">
+        Tailwind CSS v4
+      </DocsNavLink>
+      <DocsNavLink href="/docs/integrations/tailwindcss-v3">
+        Tailwind CSS v3
+      </DocsNavLink>
+    </DocsNavSection>
+
+    <DocsNavSection
+      icon={<MaterialIcon icon="select_window_2" />}
       title="Migrations"
       open
     >
