@@ -125,7 +125,10 @@ const STRINGS = {
   update the documentation, update it in all four places.
   - The JSDoc in the interface and the component documentation must exactly
     match, _verbatim_ (except for line wraps).
-  - The JSDoc on the component, for each prop, must use the first few sentences of the JSDoc in the interface, verbatim. Remove line wraps.
+  - The JSDoc on the component, for each prop, must use the first few sentences
+    of the JSDoc in the interface, verbatim. Remove line wraps.
+  - **Exception:** The “Usage” section in the component documentation page in
+    the demo app is _not_ synced.
 
 ## Templates
 
