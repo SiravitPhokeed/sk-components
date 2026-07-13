@@ -34,7 +34,7 @@ const DemoCard = ({
         {adjustableProps && (
           <ChipSet
             scrollable
-            className="light:[--adaptive-secondary-container:var(--secondary-fixed-dim)] px-4 py-3"
+            className="light:[--adaptive-secondary-container:var(--color-secondary-fixed-dim)] px-4 py-3"
           >
             {Object.entries(adjustableProps).map(([prop, values]) => (
               <DemoCardChip
