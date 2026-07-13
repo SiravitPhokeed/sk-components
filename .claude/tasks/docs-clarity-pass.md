@@ -30,10 +30,11 @@ Branch: `docs/4.0.0/clarity-and-consistency`
 
 ### localization
 
-- [ ] 7 repetitive disclosure cards → consolidate into a table
+- [x] 7 repetitive disclosure cards consolidated into a reference table
 - [ ] Thai text in live example not explained for non-Thai readers
 - [ ] Version changes don't explain which components existed in v3
-- [ ] "keep this page open" tip has slightly scolding undertone
+- [x] "keep this page open" tip rephrased to be more encouraging
+- [x] Added react-intl and LinguiJS to library table
 
 ### theming
 

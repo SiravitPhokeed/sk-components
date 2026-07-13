@@ -1,4 +1,6 @@
 import DisclosureCard from "@/app/docs/components/DisclosureCard";
+import I18nLibsTable from "@/app/docs/components/I18nLibsTable";
+import I18nLibsTableRow from "@/app/docs/components/I18nLibsTableRow";
 import VersionsTable from "@/app/docs/components/VersionsTable";
 import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import {
@@ -6,11 +8,6 @@ import {
   Button,
   Card,
   MaterialIcon,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
   Text,
 } from "@suankularb-components/react";
 
@@ -122,102 +119,72 @@ const NavBarWithLocale: FC = () => {
 
 #### With a library
 
-The table below shows how to get the current locale from popular i18n
-libraries. After the table is a full example showing the complete pattern.
+The table below shows how to get the current locale from popular
+internationalization libraries. After the table is a full example showing the
+complete pattern.
 
-<Table className="my-6">
-  <TableHead>
-    <TableRow>
-      <TableCell header>Library</TableCell>
-      <TableCell header>Import</TableCell>
-      <TableCell header>Client Components</TableCell>
-      <TableCell header>Server Components</TableCell>
-    </TableRow>
-  </TableHead>
-  <TableBody>
-    <TableRow>
-      <TableCell header scope="row">next-intl</TableCell>
-      <TableCell>
-        <code>next-intl</code> / <code>next-intl/server</code>
-      </TableCell>
-      <TableCell>
-        <code>useLocale()</code>
-      </TableCell>
-      <TableCell>
-        <code>await getLocale()</code>
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell header scope="row">next-translate</TableCell>
-      <TableCell>
-        <code>next-translate/useTranslation</code>
-      </TableCell>
-      <TableCell>
-        <code>{"useTranslation().lang"}</code>
-      </TableCell>
-      <TableCell>
-        <code>{"await createTranslation().lang"}</code>
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell header scope="row">next-i18next (v16+)</TableCell>
-      <TableCell>
-        <code>next-i18next/client</code> / <code>next-i18next/server</code>
-      </TableCell>
-      <TableCell>
-        <code>{"useT().i18n.language"}</code>
-      </TableCell>
-      <TableCell>
-        <code>{"await getT().i18n.language"}</code>
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell header scope="row">next-i18next (v15)</TableCell>
-      <TableCell>
-        <code>next-i18next</code>
-      </TableCell>
-      <TableCell>
-        <code>{"useTranslation().i18n.language"}</code>
-      </TableCell>
-      <TableCell>—</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell header scope="row">react-i18next</TableCell>
-      <TableCell>
-        <code>react-i18next</code>
-      </TableCell>
-      <TableCell>
-        <code>{"useTranslation().i18n.language"}</code>
-      </TableCell>
-      <TableCell>—</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell header scope="row">react-intl</TableCell>
-      <TableCell>
-        <code>react-intl</code>
-      </TableCell>
-      <TableCell>
-        <code>{"useIntl().locale"}</code>
-      </TableCell>
-      <TableCell>—</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell header scope="row">LinguiJS</TableCell>
-      <TableCell>
-        <code>@lingui/react</code>
-      </TableCell>
-      <TableCell>
-        <code>{"useLingui().i18n.locale"}</code>
-      </TableCell>
-      <TableCell>—</TableCell>
-    </TableRow>
-  </TableBody>
-</Table>
+<I18nLibsTable>
+  <I18nLibsTableRow
+    library="next-intl"
+    href="https://next-intl.dev"
+    imports={["next-intl", "next-intl/server"]}
+    client="useLocale()"
+    server="await getLocale()"
+  />
+  <I18nLibsTableRow
+    library="next-translate"
+    href="https://github.com/aralroca/next-translate"
+    imports={["next-translate/useTranslation"]}
+    client="useTranslation().lang"
+    server="await createTranslation().lang"
+  />
+  <I18nLibsTableRow
+    library="next-i18next (v16+)"
+    href="https://github.com/i18next/next-i18next"
+    imports={["next-i18next/client", "next-i18next/server"]}
+    client="useT().i18n.language"
+    server="await getT().i18n.language"
+  />
+  <I18nLibsTableRow
+    library="next-i18next (v15)"
+    href="https://github.com/i18next/next-i18next/tree/v15"
+    imports={["next-i18next"]}
+    client="useTranslation().i18n.language"
+  />
+  <I18nLibsTableRow
+    library="react-i18next"
+    href="https://react.i18next.com"
+    imports={["react-i18next"]}
+    client="useTranslation().i18n.language"
+  />
+  <I18nLibsTableRow
+    library="react-intl"
+    href="https://formatjs.io/docs/react-intl"
+    imports={["react-intl"]}
+    client="useIntl().locale"
+  />
+  <I18nLibsTableRow
+    library="LinguiJS"
+    href="https://lingui.dev"
+    imports={["@lingui/react"]}
+    client="useLingui().i18n.locale"
+  />
+</I18nLibsTable>
 
-Here is what the full pattern looks like with `next-intl`:
+<Text
+  type="body-medium"
+  className="text-on-surface-variant *:-mt-2 *:mb-6"
+>
+  `react-i18next`, `react-intl`, and LinguiJS are hooks-based and require
+  wrapping in a Client Component. They still work in App Router — just add
+  `"use client"` to any component that calls the hook. `next-i18next` v15
+  supports Pages Router only and does not work with App Router.
+</Text>
+
+Here is what the full pattern looks like with `next-intl`.
 
 ```tsx
-// Regular components
+// Pages Router / Client Components in App Router
 import { NavBar } from "@suankularb-components/react";
 import { useLocale } from "next-intl";
 
@@ -228,7 +195,7 @@ const NavBarWithLocale = () => {
 ```
 
 ```tsx
-// Async Server Components
+// Async Server Components in App Router
 import { NavBar } from "@suankularb-components/react";
 import { getLocale } from "next-intl/server";
 
