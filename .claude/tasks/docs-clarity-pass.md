@@ -38,11 +38,11 @@ Branch: `docs/4.0.0/clarity-and-consistency`
 
 ### theming
 
-- [ ] 302-line CSS dump → collapse into a disclosure card
-- [ ] "create a CSS file with the same variables" understates effort
-- [ ] Suankularb school colors link assumes reader knows the school
-- [ ] `StyleableFC` used instead of simpler explanation
-- [ ] v4 version change note vague about old variable names
+- [x] 302-line CSS dump collapsed into a disclosure card
+- [x] Custom theme effort now honestly explained with Theme Builder caveats
+- [x] Suankularb school linked for context
+- [x] `StyleableFC` replaced with plain language
+- [x] v4 version note now links to the migration guide for the full mapping
 
 ### modals
 
