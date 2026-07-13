@@ -1,3 +1,7 @@
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { TableCell } from "@suankularb-components/react";
+
 export const metadata = {
   title: "Shared props",
 };
@@ -9,23 +13,46 @@ documenting these props on every component page, they are listed here.
 
 ### Styleable Props
 
-Every component accepts `className` and `style`, so you can customize their
+Every component accepts `className` and `style`, so you can customize its
 appearance like any other HTML element.
 
 ```tsx
-<Button appearance="filled" className="rounded-full">
-  Pill button
+<Button appearance="filled" style={{ backgroundColor: "rebeccapurple" }}>
+  Purple button
 </Button>
 ```
 
-- `className?: string` — CSS classes to add to the component.
-- `style?: CSSProperties` — inline styles to apply.
+<PropsTable>
+  <PropsTableRow prop="className" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      CSS classes to add to the component.
+
+      - Optional.
+
+    </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="style" required="never">
+    <TableCell>`CSSProperties`</TableCell>
+    <TableCell>
+
+      Inline styles to apply.
+
+      - Optional.
+
+    </TableCell>
+
+  </PropsTableRow>
+</PropsTable>
 
 ### Element Customizable Props
 
-Many components let you swap their underlying HTML tag. This is useful when you
-need a different semantic element, or when integrating with framework link
-components like `next/link`.
+Many components let you swap their underlying HTML tag. This is useful when
+you need a different semantic element, or when integrating with framework
+link components like `next/link`.
 
 ```tsx
 import Link from "next/link";
@@ -36,10 +63,22 @@ import Link from "next/link";
 ```
 
 If you don't provide an `element`, the component uses a sensible default
-(usually a `<button>`, `<a>`, or `<div>`). Check each component's page for its
-specific default.
+(usually a `<button>`, `<a>`, or `<div>`). Check each component's page for
+its specific default.
 
-- `element?: ElementType` — the underlying HTML element or custom component.
+<PropsTable>
+  <PropsTableRow prop="element" required="never">
+    <TableCell>`ElementType`</TableCell>
+    <TableCell>
+
+      The underlying HTML element or custom component.
+
+      - Optional.
+
+    </TableCell>
+
+  </PropsTableRow>
+</PropsTable>
 
 ### Actionable Props
 
@@ -54,9 +93,65 @@ props for declarative modals and popovers.
 </Button>
 ```
 
-- `command?: string` — the command to execute, e.g., `show-modal`.
-- `commandFor?: string` — the `id` of the element to command.
-- `onClick?: (event: MouseEvent) => any` — fired when the component is clicked.
-- `href?: string` — when set, the component renders as an `<a>` link.
-
 Learn more in the [modals and popovers](/docs/guides/modals) guide.
+
+<PropsTable>
+  <PropsTableRow prop="command" required="never">
+    <TableCell>
+      ```
+      "show-modal"
+      | "close"
+      | "request-close"
+      | "show-popover"
+      | "hide-popover"
+      | "toggle-popover"
+      | `--${string}`
+      ```
+    </TableCell>
+    <TableCell>
+
+      The command to send to the element specified in `commandfor`.
+
+      - Optional.
+
+    </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="commandfor" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The element to send the command specified in `command` to.
+
+      - Optional.
+
+    </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="onClick" required="never">
+    <TableCell>`() => any`</TableCell>
+    <TableCell>
+
+      The function called when the user interacts with the component, similar
+      to `onClick` on `<button>`.
+
+      - Optional.
+
+    </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="href" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The URL of the page the component leads to, similar to `href` on `<a>`.
+
+      - Optional.
+
+    </TableCell>
+
+  </PropsTableRow>
+</PropsTable>
