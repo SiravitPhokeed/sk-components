@@ -18,8 +18,9 @@ Branch: `docs/4.0.0/clarity-and-consistency`
 ## Guides section (not yet started)
 
 ### getting-started
+
 - [x] Dense opening paragraph — complete rewrite
-- [x] v4 callout moved after Usage so reader has context first
+- [x] v4 callout moved to top-of-page banner (Pattern 1)
 - [x] Next.js/Tailwind redirect moved near top, right after library list
 - [x] Usage bullet list restructured with sub-headings
 - [x] Peer dependency explanation expanded
@@ -28,12 +29,14 @@ Branch: `docs/4.0.0/clarity-and-consistency`
       per-component Material links
 
 ### localization
+
 - [ ] 7 repetitive disclosure cards → consolidate into a table
 - [ ] Thai text in live example not explained for non-Thai readers
 - [ ] Version changes don't explain which components existed in v3
 - [ ] "keep this page open" tip has slightly scolding undertone
 
 ### theming
+
 - [ ] 302-line CSS dump → collapse into a disclosure card
 - [ ] "create a CSS file with the same variables" understates effort
 - [ ] Suankularb school colors link assumes reader knows the school
@@ -41,32 +44,38 @@ Branch: `docs/4.0.0/clarity-and-consistency`
 - [ ] v4 version change note vague about old variable names
 
 ### modals
+
 - [ ] Snackbar exclusion note comes too early, confuses overview
 - [ ] Invoker Commands API named but not explained in friendly terms
 - [ ] "Notice how" callout placed after code instead of integrated
 - [ ] "Learn about how to" → "Learn how to"
 
 ### disabling-elements
+
 - [ ] "Learn when to make" → "Learn how to make"
 - [ ] Caption doesn't explicitly state which side is the recommendation
 - [ ] `ActionableProps` type name used without link to shared-props guide
 
 ### nextjs-app
+
 - [ ] FAB code example assumes Root Layout context — add note
 - [ ] Icon font download instructions in bold read like a warning
 - [ ] `ElementCustomizableProps` type name used without link
 
 ### nextjs-pages
+
 - [ ] `_app.tsx` not explained for readers unfamiliar with Pages Router
 - [ ] Layout section has redundancy between prose and code comments
 - [ ] `ElementCustomizableProps` type name used without link
 
 ### tailwindcss-v3
+
 - [ ] "If you are still using" frames v3 as outdated
 - [ ] 230-line config block with minimal structural explanation
 - [ ] Upgrade-to-v4 prompt takes real estate on v3 page
 
 ### tailwindcss-v4
+
 - [ ] 230-line config block with minimal structural explanation
 - [ ] `@theme inline` tip explains what but not why
 - [ ] `@utility` directive assumes reader knows Tailwind v4 API
@@ -84,6 +93,7 @@ Branch: `docs/4.0.0/clarity-and-consistency`
 ## Smaller one-offs
 
 ### inputs/
+
 - [ ] Chip Field: overly long 30-line usage example
 - [ ] Chip Field: "The behavior expected to be implemented by the developer" — too formal
 - [ ] Form Group: "element of the underlying `<legend>` element" — circular
@@ -96,6 +106,7 @@ Branch: `docs/4.0.0/clarity-and-consistency`
 - [ ] Select: "Separate different appearances by region" unexplained
 
 ### layout/
+
 - [ ] Nav Bar: "Navigation Bar/Rail" awkward slash phrasing
 - [ ] Nav Bar Item: "for, for instance" awkward
 - [ ] Nav Drawer: "Should be a child" → "Always place inside"
@@ -104,11 +115,13 @@ Branch: `docs/4.0.0/clarity-and-consistency`
 - [ ] Tab: missing DemoCard (every other component has one)
 
 ### data/
+
 - [ ] Data Table: "colSpans" note buried after 100-line code example
 - [ ] Data Table: humorous sample data ("Clean the entity", "Mow cats")
 - [ ] List: "Uses Columns under the hood" — explained inline now but could be better
 
 ### overlays/
+
 - [ ] Menu: "Menus display a list of choices on temporary surfaces" — jargon
 
 ---

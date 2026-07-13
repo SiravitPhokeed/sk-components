@@ -40,11 +40,9 @@ message, an optional action, and an optional configuration object.
 ```tsx
 import { snackbar } from "@suankularb-components/react/helpers";
 
-snackbar.push(
-  "Deleted 3 items",
-  <Button appearance="text">Undo</Button>,
-  { autoDismissDurationMs: 6000 },
-);
+snackbar.push("Deleted 3 items", <Button appearance="text">Undo</Button>, {
+  autoDismissDurationMs: 6000,
+});
 ```
 
 The configuration object allows you to set other props on the Snackbar:
@@ -58,9 +56,8 @@ message, an `async` function, and an optional configuration object.
 ```tsx
 import { snackbar } from "@suankularb-components/react/helpers";
 
-await snackbar.promise(
-  "Deleting items…",
-  () => fetch("/api/delete-items", { method: "DELETE" }),
+await snackbar.promise("Deleting items…", () =>
+  fetch("/api/delete-items", { method: "DELETE" }),
 );
 ```
 

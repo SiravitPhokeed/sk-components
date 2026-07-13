@@ -142,11 +142,9 @@ itself, you can remove that as well.
 ```tsx
 import { snackbar } from "@suankularb-components/react/helpers";
 
-snackbar.push(
-  "Deleted 3 items",
-  <Button appearance="text">Undo</Button>,
-  { autoDismissDurationMs: 6000 },
-);
+snackbar.push("Deleted 3 items", <Button appearance="text">Undo</Button>, {
+  autoDismissDurationMs: 6000,
+});
 ```
 
 ---
