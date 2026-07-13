@@ -69,9 +69,8 @@ clicking outside the Menu or pressing Escape.
 
       The ID of the popover element, for Invoker Commands API support.
 
-      - Use with `command="show-popover"` and `commandfor={"{"}id{"}"}` on a
-        trigger button to open the Menu declaratively via the Invoker Commands
-        API.
+      - Use with `command="show-popover"` and `commandfor={id}` on a trigger
+        button to open the Menu declaratively via the Invoker Commands API.
       - Menu Items inside this Menu will automatically use this ID for their
         `commandfor` when they have a `command` but no explicit `commandfor`.
       - Optional. Defaults to an auto-generated ID.
@@ -105,7 +104,7 @@ clicking outside the Menu or pressing Escape.
       - When provided, the Menu is controlled: the consumer must
         call `onClose` on dismiss and set `open` to `false`.
       - When omitted, use `id` together with a trigger button that has
-        `command="show-popover"` and `commandfor={"{"}id{"}"}`.
+        `command="show-popover"` and `commandfor={id}`.
       - Optional.
 
       </TableCell>

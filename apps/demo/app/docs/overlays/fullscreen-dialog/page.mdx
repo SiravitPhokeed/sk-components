@@ -85,9 +85,9 @@ Material Design spec.
 
       The ID of the `<dialog>` element, for Invoker Commands API support.
 
-      - Use with `command="show-modal"` and `commandfor={"{"}id{"}"}` on a
-        trigger button to open the Full-screen Dialog declaratively via the
-        Invoker Commands API.
+      - Use with `command="show-modal"` and `commandfor={id}` on a trigger
+        button to open the Full-screen Dialog declaratively via the Invoker
+        Commands API.
       - Use `command="request-close"` to close, not `command="close"`.
       - Optional. Defaults to an auto-generated ID.
 
@@ -104,7 +104,7 @@ Material Design spec.
       - When provided, the Full-screen Dialog is controlled: the consumer must
         call `onClose` on dismiss and set `open` to `false`.
       - When omitted, use `id` together with a trigger button that has
-        `command="show-modal"` and `commandfor={"{"}id{"}"}`.
+        `command="show-modal"` and `commandfor={id}`.
       - Optional.
 
       </TableCell>
