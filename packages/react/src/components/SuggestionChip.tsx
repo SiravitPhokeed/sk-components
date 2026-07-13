@@ -54,7 +54,7 @@ export interface SuggestionChipProps
   elevated?: boolean;
 
   /**
-   * Turns the Suggestion Chip gray and block any action associated with it.
+   * Turns the Suggestion Chip gray and blocks any action associated with it.
    * `onClick` and `href` will have no effect.
    *
    * - Optional.
@@ -70,7 +70,7 @@ export interface SuggestionChipProps
  * @param tooltip A message shown in a tooltip when the user hovers over the Suggestion Chip.
  * @param elevated Use elevation instead of an outline to signify the Suggestion Chip's boundary.
  * @param selected If the Suggestion Chip is selected.
- * @param disabled Turns the Suggestion Chip gray and block any action associated with it.
+ * @param disabled Turns the Suggestion Chip gray and blocks any action associated with it.
  */
 export const SuggestionChip: StyleableFC<SuggestionChipProps> = ({
   children,

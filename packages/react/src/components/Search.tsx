@@ -33,7 +33,7 @@ export interface SearchProps extends ElementCustomizableProps {
   /**
    * Allows for translation of the default placeholder message.
    *
-   * - Must be `th` or `en-US`, as SKCom currently only support those 2
+   * - Must be `th` or `en-US`, as SKCom currently only supports these two
    *   languages.
    * - Optional.
    *
@@ -42,7 +42,7 @@ export interface SearchProps extends ElementCustomizableProps {
   locale?: "en-US" | "th";
 
   /**
-   * This function triggers when the user make changes to the field value. The
+   * This function triggers when the user makes changes to the field value. The
    * value is passed in via the function.
    *
    * - Optional.
@@ -65,7 +65,7 @@ export interface SearchProps extends ElementCustomizableProps {
   placeholder?: string;
 
   /**
-   * Turns the Search gray and block any action associated with it. The user
+   * Turns the Search gray and blocks any action associated with it. The user
    * will not be able to type in the field or click the search button.
    *
    * - Optional.
@@ -96,10 +96,10 @@ const STRINGS = {
  *
  * @param value The value inside the field. This is useful if you want a controlled input.
  * @param locale Allows for translation of the default placeholder message.
- * @param onChange This function triggers when the user make changes to the field value.
+ * @param onChange This function triggers when the user makes changes to the field value.
  * @param onSearch This function triggers when the search button is clicked.
  * @param placeholder A faint text displayed inside the field guiding the user.
- * @param disabled Turns the Search gray and block any action associated with it.
+ * @param disabled Turns the Search gray and blocks any action associated with it.
  * @param inputAttr Attributes for the underlying `<input>` element.
  */
 export const Search: StyleableFC<SearchProps> = ({

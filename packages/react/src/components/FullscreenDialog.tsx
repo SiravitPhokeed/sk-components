@@ -82,7 +82,7 @@ export interface FullscreenDialogProps {
   /**
    * Allows for translation of the accessibility labels.
    *
-   * - Must be `th` or `en-US`, as SKCom currently only support those 2
+   * - Must be `th` or `en-US`, as SKCom currently only supports these two
    *   languages.
    * - Optional.
    */
@@ -104,8 +104,8 @@ const STRINGS = {
 };
 
 /**
- * A Full-screen Dialog fills the entire screen containing a series of tasks
- * required to complete.
+ * A Full-screen Dialog fills the entire screen with a series of tasks
+ * that must be completed.
  *
  * A Full-screen Dialog only fills the screen on mobile and turns into a Dialog
  * on larger screens. A Dialog can appear above a Full-screen Dialog.

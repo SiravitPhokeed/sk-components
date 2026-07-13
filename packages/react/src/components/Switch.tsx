@@ -42,7 +42,7 @@ export interface SwitchProps extends ElementCustomizableProps {
   onIcon?: ReactElement;
 
   /**
-   * Turns the Switch gray and block any action associated with it.
+   * Turns the Switch gray and blocks any action associated with it.
    *
    * - Optional.
    */
@@ -57,7 +57,7 @@ export interface SwitchProps extends ElementCustomizableProps {
  * @param onChange This function triggers when the user toggles the switch.
  * @param offIcon An icon inside the Thumb when the switch is off.
  * @param onIcon An icon inside the Thumb when the switch is on.
- * @param disabled Turns the Switch gray and block any action associated with it.
+ * @param disabled Turns the Switch gray and blocks any action associated with it.
  */
 export const Switch: StyleableFC<SwitchProps> = ({
   value,

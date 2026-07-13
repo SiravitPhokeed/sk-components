@@ -70,7 +70,7 @@ export interface AssistChipProps
   loading?: boolean;
 
   /**
-   * Turns the Assist Chip gray and block any action associated with it.
+   * Turns the Assist Chip gray and blocks any action associated with it.
    * `onClick` and `href` will have no effect.
    *
    * - Optional.
@@ -92,7 +92,7 @@ export interface AssistChipProps
  * @param elevated Use elevation instead of an outline to signify the Assist Chip's boundary.
  * @param dangerous If the action the Assist Chip accomplishes is dangerous, like deleting your account.
  * @param loading Disable the Assist Chip to signify loading status.
- * @param disabled Turns the Assist Chip gray and block any action associated with it.
+ * @param disabled Turns the Assist Chip gray and blocks any action associated with it.
  */
 export const AssistChip: StyleableFC<AssistChipProps> = ({
   children,

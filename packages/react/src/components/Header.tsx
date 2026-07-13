@@ -48,7 +48,7 @@ const HEADER_TYPE_BY_LEVEL = {
 } as const;
 
 /**
- * A Header helps users quickly identifies sections and their purpose.
+ * A Header helps users quickly identify sections and their purpose.
  *
  * When used in conjunction with Section, the Section can be labeled with the
  * Header for screen readers.

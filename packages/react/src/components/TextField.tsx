@@ -56,9 +56,9 @@ export interface TextFieldProps<Value extends string | File = string> {
    * How the Text Field behaves if the field value exceeds the visual space.
    *
    * - Must be `single-line`, `multi-line`, or `textarea`.
-   * - A single line Text Field can only accompany 1 line of text. Field value
+   * - A single line Text Field can only accommodate 1 line of text. Field value
    *   never wraps and instead scrolls.
-   * - A multi-line Text Field starts with just accompanying 1 line but
+   * - A multi-line Text Field starts with just accommodating 1 line but
    *   vertically extends to fit the field value as needed.
    * - A text area Text Field has a fixed height and wraps text.
    * - Optional.
@@ -107,7 +107,7 @@ export interface TextFieldProps<Value extends string | File = string> {
   required?: boolean;
 
   /**
-   * Turns the Text Field gray and block user input. `onChange` will not fire.
+   * Turns the Text Field gray and blocks user input. `onChange` will not fire.
    * {@link https://codium.one/index.php/en/blog/77-disabled-buttons-don-t-have-to-suck Learn when to disable something.}
    *
    * - Optional.
@@ -138,14 +138,14 @@ export interface TextFieldProps<Value extends string | File = string> {
    * place of the file name when no files have been attached yet.
    *
    * - Only valid if `type` is `file`.
-   * - Must be `th` or `en-US`, as SKCom currently only support those 2
+   * - Must be `th` or `en-US`, as SKCom currently only supports these two
    *   languages.
    * - Optional.
    */
   locale?: "en-US" | "th";
 
   /**
-   * This function triggers when the user make changes to the field value. The
+   * This function triggers when the user makes changes to the field value. The
    * value is passed in via the function.
    *
    * - Optional.
@@ -223,11 +223,11 @@ const STRINGS = {
  * @param trailing The trailing text or icon, aligned to the right.
  * @param helperMsg A short description of the Text Field, or an error message during an error state.
  * @param required If the user has to enter text in this field for the form to be valid.
- * @param disabled Turns the Text Field gray and block user input.
+ * @param disabled Turns the Text Field gray and blocks user input.
  * @param error Tells Text Field that it contains an invalid value and activates the error state.
  * @param value The value inside the field. This is useful if you want a controlled input.
  * @param locale Allows for translation of the “No files attached” text.
- * @param onChange This function triggers when the user make changes to the field value.
+ * @param onChange This function triggers when the user makes changes to the field value.
  * @param inputAttr Attributes for the underlying `<input>` element used as the field.
  */
 export const TextField = <Value extends string | File = string>({

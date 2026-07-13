@@ -56,7 +56,7 @@ export interface InteractiveProps
  *
  * @param children The content to make interactive.
  * @param stateLayerEffect Show a state layer on top of the content that reacts in color to hover and focus to signify its interactivity.
- * @param rippleEffect Show an ink ripple effect, a soft-edge translucent circle, radiating out of the click/tap position every click/tap to signify interactivity.
+ * @param rippleEffect Show an ink ripple effect, a soft-edge translucent circle, radiating outward from the point of each click/tap to signify interactivity.
  * @param shadowEffect Elevates the content on hover and focus to signify its interactivity.
  */
 export const Interactive: StyleableFC<

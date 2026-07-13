@@ -31,7 +31,7 @@ export interface CheckboxProps extends ElementCustomizableProps {
   onChange?: (value: boolean) => any;
 
   /**
-   * Turns the Checkbox gray and block any action associated with it.
+   * Turns the Checkbox gray and blocks any action associated with it.
    * {@link https://codium.one/index.php/en/blog/77-disabled-buttons-don-t-have-to-suck Learn when to disable something.}
    *
    * - Optional.
@@ -53,7 +53,7 @@ export interface CheckboxProps extends ElementCustomizableProps {
  *
  * @param value The state of the Checkbox. This is useful if you want a controlled input.
  * @param onChange This function triggers when the user toggles the Checkbox.
- * @param disabled Turns the Checkbox gray and block any action associated with it.
+ * @param disabled Turns the Checkbox gray and blocks any action associated with it.
  * @param tristate Allows the Checkbox to have 3 states: off, on, and indeterminate.
  */
 export const Checkbox: StyleableFC<CheckboxProps> = ({

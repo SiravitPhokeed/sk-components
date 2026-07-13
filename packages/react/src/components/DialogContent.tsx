@@ -26,8 +26,7 @@ export interface DialogContentProps extends ElementCustomizableProps {
 
 /**
  * Additional content that supplements the Dialog Header. This is where the
- * user can see more details about a decision or a space for the user to enter
- * information.
+ * user can see more details about a decision or enter information.
  *
  * @param children A Dialog Content can include anything. A common use case is List.
  * @param height The height of this component. If its content is taller than this value, Dialog Content scrolls.

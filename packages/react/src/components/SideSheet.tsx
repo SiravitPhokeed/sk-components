@@ -40,7 +40,7 @@ const EXITING_CLASS = "skc-side-sheet--exiting";
 const EXIT_ANIMATION_NAME = "skc-side-sheet-exit";
 
 /**
- * Side Sheet is modal attached to one side of the screen. It is used to display
+ * Side Sheet is a modal attached to one side of the screen. It is used to display
  * content that is related to the main content, but not essential to it. It can
  * be used for navigation, settings, or other secondary content.
  *

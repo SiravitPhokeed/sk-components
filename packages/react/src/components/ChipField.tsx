@@ -128,7 +128,7 @@ export interface ChipFieldProps {
   /**
    * Allows for translation of the accessibility labels.
    *
-   * - Must be `th` or `en-US`, as SKCom currently only support those 2
+   * - Must be `th` or `en-US`, as SKCom currently only supports these two
    *   languages.
    * - Optional.
    */

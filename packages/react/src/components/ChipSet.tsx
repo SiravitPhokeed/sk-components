@@ -26,7 +26,7 @@ export interface ChipSetProps extends ElementCustomizableProps {
 }
 
 /**
- * Chips are normally alongside each other. A Chip Set is a container for
+ * Chips normally appear alongside each other. A Chip Set is a container for
  * Chips, handling gaps, wrap, etc.
  *
  * @param children Chips.

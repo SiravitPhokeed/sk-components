@@ -21,7 +21,7 @@ export interface ProgressProps extends ElementCustomizableProps {
    * A description of the Progress for screen readers, similar to `alt` on
    * `<img>`.
    *
-   * - Always required, because a Progress has no significance to screenreaders.
+   * - Always required, because a Progress has no significance to screen readers.
    */
   alt: string;
 

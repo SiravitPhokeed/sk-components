@@ -103,7 +103,7 @@ export interface ButtonProps extends ActionableProps, ElementCustomizableProps {
   loading?: boolean | number;
 
   /**
-   * Turns the Button gray and block any action associated with it. `onClick`
+   * Turns the Button gray and blocks any action associated with it. `onClick`
    * and `href` will have no effect.
    * {@link https://codium.one/index.php/en/blog/77-disabled-buttons-don-t-have-to-suck Learn when to disable something.}
    *
@@ -114,7 +114,7 @@ export interface ButtonProps extends ActionableProps, ElementCustomizableProps {
   /**
    * Allows for translation of the accessibility labels.
    *
-   * - Must be `th` or `en-US`, as SKCom currently only support those 2
+   * - Must be `th` or `en-US`, as SKCom currently only supports these two
    *   languages.
    * - Optional.
    */
@@ -143,7 +143,7 @@ const STRINGS = {
  * @param selected If the Button is selected. `icon` is replaced with a checkmark if this is true.
  * @param dangerous If the action the Button accomplishes is dangerous, like deleting your account.
  * @param loading Disable the Button and add a Progress spinner in front of the text to signify loading status.
- * @param disabled Turns the Button gray and block any action associated with it.
+ * @param disabled Turns the Button gray and blocks any action associated with it.
  * @param locale Allows for translation of the accessibility labels.
  */
 export const Button: StyleableFC<ButtonProps> = ({

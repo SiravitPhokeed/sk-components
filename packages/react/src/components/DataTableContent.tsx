@@ -8,7 +8,7 @@ import type { ReactNode } from "react";
  */
 export interface DataTableContentProps extends ElementCustomizableProps {
   /**
-   * A Data Table Content's content depends on if you decide to use Tanstack
+   * A Data Table Content's content depends on whether you decide to use Tanstack
    * Table or not.
    *
    * - If you opt in to Tanstack Table: must include both Data Table Head and
@@ -32,7 +32,7 @@ export interface DataTableContentProps extends ElementCustomizableProps {
 /**
  * The main part of a Data Table.
  *
- * @param children A Data Table Content's content depends on if you decide to
+ * @param children A Data Table Content's content depends on whether you decide to
  *   use Tanstack Table or not.
  * @param contentWidth The minimum width of the content.
  */

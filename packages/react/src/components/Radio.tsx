@@ -31,7 +31,7 @@ export interface RadioProps extends ElementCustomizableProps {
   onChange?: (value: boolean) => any;
 
   /**
-   * Turns the Radio gray and block any action associated with it.
+   * Turns the Radio gray and blocks any action associated with it.
    * {@link https://codium.one/index.php/en/blog/77-disabled-buttons-don-t-have-to-suck Learn when to disable something.}
    *
    * - Optional.
@@ -41,11 +41,11 @@ export interface RadioProps extends ElementCustomizableProps {
 
 /**
  * A choice from a single-select set of choices. Unlike Checkbox and Switch,
- * Radio always appear in a group.
+ * Radio always appears in a group.
  *
  * @param value The state of the Radio. This is useful if you want a controlled input.
  * @param onChange This function triggers when the user toggles the Radio.
- * @param disabled Turns the Radio gray and block any action associated with it.
+ * @param disabled Turns the Radio gray and blocks any action associated with it.
  */
 export const Radio: StyleableFC<RadioProps> = ({
   value,

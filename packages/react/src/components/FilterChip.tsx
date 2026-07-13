@@ -72,7 +72,7 @@ export interface FilterChipProps
   selected?: boolean;
 
   /**
-   * Turns the Filter Chip gray and block any action associated with it.
+   * Turns the Filter Chip gray and blocks any action associated with it.
    * `onClick` will have no effect.
    *
    * - Optional.
@@ -105,7 +105,7 @@ export interface FilterChipProps
  * @param menu Turns the Filter Chip into a dropdown, displaying a Menu underneath the chip.
  * @param elevated Use elevation instead of an outline to signify the Filter Chip's boundary.
  * @param selected If the Filter Chip is selected.
- * @param disabled Turns the Filter Chip gray and block any action associated with it.
+ * @param disabled Turns the Filter Chip gray and blocks any action associated with it.
  * @param onClick Triggers when the user toggles the Filter Chip on or off.
  */
 export const FilterChip: StyleableFC<FilterChipProps> = ({

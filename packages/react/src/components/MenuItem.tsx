@@ -59,7 +59,7 @@ export interface MenuItemProps
   dangerous?: boolean;
 
   /**
-   * Turns the Menu Item text gray and block any action associated with it.
+   * Turns the Menu Item text gray and blocks any action associated with it.
    * `onClick` and `href` will have no effect.
    * {@link https://codium.one/index.php/en/blog/77-disabled-buttons-don-t-have-to-suck Learn when to disable something.}
    *
@@ -85,7 +85,7 @@ export interface MenuItemProps
  * @param metadata A message shown in a tooltip when the user hovers over the Menu Item.
  * @param selected If this Menu Item is selected in a dropdown Menu.
  * @param dangerous If the action the Menu Item accomplishes is dangerous, like deleting your account.
- * @param disabled Turns the Menu Item text gray and block any action associated with it.
+ * @param disabled Turns the Menu Item text gray and blocks any action associated with it.
  * @param value The value of a Select item, similar to `value` on `<option>`.
  */
 export const MenuItem: StyleableFC<MenuItemProps> = ({
