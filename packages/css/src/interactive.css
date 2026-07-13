@@ -15,8 +15,10 @@
   &:not([aria-disabled="true"]) {
     cursor: pointer;
 
-    &:hover::before {
-      opacity: 0.08;
+    @media (any-hover: hover) {
+      &:hover::before {
+        opacity: 0.08;
+      }
     }
     &:is(:focus-visible, :active)::before {
       opacity: 0.12;
@@ -32,8 +34,10 @@
   transition: box-shadow var(--duration-short-4) var(--ease-standard);
 
   &:not([aria-disabled="true"]) {
-    &:hover {
-      box-shadow: var(--shadow-1);
+    @media (any-hover: hover) {
+      &:hover {
+        box-shadow: var(--shadow-1);
+      }
     }
     &:active {
       box-shadow: none;

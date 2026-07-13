@@ -50,8 +50,10 @@
     outline: none;
   }
 
-  &:hover {
-    --_border-color: var(--color-on-surface);
+  @media (any-hover: hover) {
+    &:hover {
+      --_border-color: var(--color-on-surface);
+    }
   }
 
   &:focus,

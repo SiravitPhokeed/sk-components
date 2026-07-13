@@ -186,8 +186,10 @@
     background-color: var(--color-on-surface-variant);
     content: "";
   }
-  &:not(.skc-text-field--disabled):hover:not(:focus-within)::before {
-    opacity: 0.08;
+  @media (any-hover: hover) {
+    &:not(.skc-text-field--disabled):hover:not(:focus-within)::before {
+      opacity: 0.08;
+    }
   }
 
   .skc-text-field__clip {
@@ -248,8 +250,10 @@
 }
 
 .skc-text-field:not(.skc-text-field--disabled) {
-  &:hover {
-    --_border-color: var(--color-on-surface);
+  @media (any-hover: hover) {
+    &:hover {
+      --_border-color: var(--color-on-surface);
+    }
   }
   &:focus-within {
     --_border-width: 3px;

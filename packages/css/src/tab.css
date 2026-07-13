@@ -24,8 +24,10 @@
   transition: var(--_duration) var(--_ease);
   font-variation-settings: "FILL" 0;
 
-  .skc-tab:hover & {
-    font-weight: var(--font-weight-medium);
+  @media (any-hover: hover) {
+    .skc-tab:hover & {
+      font-weight: var(--font-weight-medium);
+    }
   }
   .skc-tab:active & {
     font-weight: var(--font-weight-light);

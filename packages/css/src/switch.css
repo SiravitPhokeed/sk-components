@@ -49,14 +49,20 @@
 
   /* Hover / focus / active state on handle */
   &:not([aria-disabled="true"]) {
-    &:hover > .skc-switch__handle,
+    @media (any-hover: hover) {
+      &:hover > .skc-switch__handle {
+        background-color: var(--color-on-surface-variant);
+      }
+    }
     &:focus-visible > .skc-switch__handle,
     &:active > .skc-switch__handle {
       background-color: var(--color-on-surface-variant);
     }
 
-    &:hover .skc-switch__handle::before {
-      opacity: 0.08;
+    @media (any-hover: hover) {
+      &:hover .skc-switch__handle::before {
+        opacity: 0.08;
+      }
     }
 
     &:focus-visible .skc-switch__handle::before,
@@ -127,7 +133,11 @@
       background-color: var(--color-primary);
     }
 
-    &:hover > .skc-switch__handle,
+    @media (any-hover: hover) {
+      &:hover > .skc-switch__handle {
+        background-color: var(--color-primary-container);
+      }
+    }
     &:focus-visible > .skc-switch__handle,
     &:active > .skc-switch__handle {
       background-color: var(--color-primary-container);

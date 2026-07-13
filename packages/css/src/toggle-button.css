@@ -31,8 +31,10 @@
 }
 
 .skc-toggle-button:not([aria-disabled="true"]) {
-  &:hover > .skc-material-icon {
-    font-weight: 600;
+  @media (any-hover: hover) {
+    &:hover > .skc-material-icon {
+      font-weight: 600;
+    }
   }
   &:active > .skc-material-icon {
     font-weight: 300;

@@ -53,8 +53,10 @@
     font-size: 1.5rem;
   }
 
-  &:hover > .skc-material-icon {
-    font-weight: 600;
+  @media (any-hover: hover) {
+    &:hover > .skc-material-icon {
+      font-weight: 600;
+    }
   }
 
   &:active > .skc-material-icon {

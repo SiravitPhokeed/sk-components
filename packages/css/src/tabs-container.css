@@ -48,8 +48,10 @@
     content: "";
   }
 
-  .skc-tabs-container:has(> .skc-tab--selected:hover) &::before {
-    transform: scaleX(1.5);
+  @media (any-hover: hover) {
+    .skc-tabs-container:has(> .skc-tab--selected:hover) &::before {
+      transform: scaleX(1.5);
+    }
   }
 }
 

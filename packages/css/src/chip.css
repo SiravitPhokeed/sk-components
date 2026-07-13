@@ -119,7 +119,15 @@
 
 /* Hide Chip state layer when Button state layer is visible */
 .skc-chip__trailing-button {
-  .skc-chip:has(&:hover),
+  @media (any-hover: hover) {
+    .skc-chip:has(&:hover) {
+      &::before,
+      > .skc-interactive__ripple-layer {
+        opacity: 0;
+        opacity: 0;
+      }
+    }
+  }
   .skc-chip:has(&:focus-visible) {
     &::before,
     > .skc-interactive__ripple-layer {

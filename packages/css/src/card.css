@@ -63,8 +63,10 @@
 
 /* Shadow effect */
 .skc-card--elevated.skc-interactive--shadow {
-  &:hover {
-    box-shadow: var(--shadow-3);
+  @media (any-hover: hover) {
+    &:hover {
+      box-shadow: var(--shadow-3);
+    }
   }
   &:active {
     box-shadow: var(--shadow-2);
@@ -86,9 +88,11 @@
 
   &.skc-interactive {
     border: 0px solid var(--color-outline-variant);
-    &:hover {
-      margin: -1px;
-      border-width: 1px;
+    @media (any-hover: hover) {
+      &:hover {
+        margin: -1px;
+        border-width: 1px;
+      }
     }
   }
 

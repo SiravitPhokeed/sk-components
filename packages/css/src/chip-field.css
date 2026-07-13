@@ -185,8 +185,10 @@
 
 /* Hover */
 .skc-chip-field:not(.skc-chip-field--disabled) {
-  &:hover {
-    --_border-color: var(--color-on-surface);
+  @media (any-hover: hover) {
+    &:hover {
+      --_border-color: var(--color-on-surface);
+    }
   }
   &:focus-within {
     --_border-width: 2px;

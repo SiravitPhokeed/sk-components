@@ -24,8 +24,10 @@
     animation: none;
   }
 
-  &:hover .skc-nav-bar-item__pill::before {
-    opacity: 0.08;
+  @media (any-hover: hover) {
+    &:hover .skc-nav-bar-item__pill::before {
+      opacity: 0.08;
+    }
   }
   &:active,
   &:focus-visible {
@@ -48,8 +50,10 @@
     font-size: 1.5rem;
     font-variation-settings: "FILL" 0;
 
-    .skc-nav-bar-item:hover & {
-      font-weight: 500;
+    @media (any-hover: hover) {
+      .skc-nav-bar-item:hover & {
+        font-weight: 500;
+      }
     }
     .skc-nav-bar-item:active & {
       font-weight: 300;
@@ -118,9 +122,11 @@
   .skc-nav-bar-item__label {
     transition-property: font-weight, letter-spacing;
 
-    .skc-nav-bar-item:hover & {
-      font-weight: var(--font-weight-bold);
-      letter-spacing: 0.75px;
+    @media (any-hover: hover) {
+      .skc-nav-bar-item:hover & {
+        font-weight: var(--font-weight-bold);
+        letter-spacing: 0.75px;
+      }
     }
 
     .skc-nav-bar-item:active & {

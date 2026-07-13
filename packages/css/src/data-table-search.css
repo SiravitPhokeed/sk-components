@@ -25,8 +25,10 @@
   content: "";
 }
 
-.skc-data-table-search:has(.skc-data-table-search__input:hover)::before {
-  opacity: 0.08;
+@media (any-hover: hover) {
+  .skc-data-table-search:has(.skc-data-table-search__input:hover)::before {
+    opacity: 0.08;
+  }
 }
 
 .skc-data-table-search:has(.skc-data-table-search__input:focus) {
