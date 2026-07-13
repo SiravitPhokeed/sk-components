@@ -28,7 +28,9 @@ pnpm add @suankularb-components/react
 ```
 
 Create an `_app.tsx` file in the `pages` directory if you don’t have one
-already. Then, add [Theme Provider](/docs/layout/theme-provider) and wrap your
+already. `_app.tsx` is Next.js’s custom App component — it wraps every page in
+your application, making it the right place for providers and shared layout.
+Then, add [Theme Provider](/docs/layout/theme-provider) and wrap your
 app with [Root Layout](/docs/layout/root-layout) in the file.
 
 ```tsx
@@ -56,31 +58,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
 You can create a `Layout` component that contains the
 [Nav Bar](/docs/layout/navbar) and [Nav Drawer](/docs/layout/nav-drawer)
-components, and import it into your `_app.tsx` file.
+components, and import it into your `_app.tsx` file. With this setup, you don’t
+need to add the Nav Bar and Nav Drawer to every page — Next.js will add them to
+every page for you.
 
-With this setup, you don’t need to add the Nav Bar and Nav Drawer to every page.
-Next.js will add them to every page for you.
-
-```tsx
-// pages/_app.tsx
-
-import Layout from "@/components/Layout";
-import { ThemeProvider } from "@suankularb-components/react";
-import type { AppProps } from "next/app";
-
-export default function App({ Component, pageProps }: AppProps) {
-  return (
-    <>
-      <ThemeProvider />
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </>
-  );
-}
-```
-
-You can create `@/components/NavBar.tsx` and `@/components/NavDrawer.tsx` using
+Start by creating `@/components/NavBar.tsx` and `@/components/NavDrawer.tsx` using
 SKCom’s Nav Bar and Nav Drawer components and populate them with your app’s
 navigation items.
 
@@ -135,8 +117,26 @@ const Layout = ({ children }: { children: ReactNode }) => {
 };
 ```
 
-Finally, import the `Layout` component into your `_app.tsx` file and wrap your
-app with it.
+With all the pieces in place, your `_app.tsx` should now look like this.
+
+```tsx
+// pages/_app.tsx
+
+import Layout from "@/components/Layout";
+import { ThemeProvider } from "@suankularb-components/react";
+import type { AppProps } from "next/app";
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <ThemeProvider />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </>
+  );
+}
+```
 
 ---
 
@@ -263,7 +263,8 @@ Finally, add the font class name to your Root Layout component.
 
 ### Navigation
 
-**Many interactive components** have props that extend `ElementCustomizableProps`
+**Many interactive components** have props that extend
+[`ElementCustomizableProps`](/docs/guides/shared-props#element-customizable-props)
 and thus **accept an `element` prop.** This allows you to use Next.js’s
 [`Link` component](https://nextjs.org/docs/pages/api-reference/components/link)
 for navigation instead of the default `<a>` element.

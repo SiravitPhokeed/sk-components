@@ -111,7 +111,9 @@ export default RootLayout;
 
 ---
 
-A **typical top-level page** might look something like this.
+A **typical top-level page** might look something like this. If you use a
+[FAB](/docs/inputs/fab), place it in your Root Layout (`layout.tsx`) rather
+than in individual pages — FAB is meant to be a child of Root Layout.
 
 ```tsx
 // app/page.tsx
@@ -193,8 +195,8 @@ Then, add the font class names to your Root Layout component.
 />
 <IconFontDialog />
 
-**Save the downloaded font file as `material-symbols.woff2` in your project’s
-`public/fonts` directory.** Then, load the font using `next/font/local` in your
+Save the downloaded font file as `material-symbols.woff2` in your project’s
+`public/fonts` directory. Then, load the font using `next/font/local` in your
 `layout.tsx` file.
 
 Take care to match the relative path to the font file with your project
@@ -232,7 +234,8 @@ Finally, add the font class name to your Root Layout component.
 
 ### Navigation
 
-**Many interactive components** have props that extend `ElementCustomizableProps`
+**Many interactive components** have props that extend
+[`ElementCustomizableProps`](/docs/guides/shared-props#element-customizable-props)
 and thus **accept an `element` prop.** This allows you to use Next.js’s
 [`Link` component](https://nextjs.org/docs/pages/api-reference/components/link)
 for navigation instead of the default `<a>` element.

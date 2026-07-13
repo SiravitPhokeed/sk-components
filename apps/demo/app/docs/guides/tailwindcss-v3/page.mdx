@@ -1,6 +1,5 @@
 import VersionsTable from "@/app/docs/components/VersionsTable";
 import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
-import { Actions, Button } from "@suankularb-components/react";
 import TailwindSelector from "@/app/docs/components/TailwindSelector";
 
 export const metadata = {
@@ -9,21 +8,10 @@ export const metadata = {
 
 ## Using with Tailwind CSS v3
 
-If you are still using [Tailwind CSS v3](https://v3.tailwindcss.com), you can
+If you are using [Tailwind CSS v3](https://v3.tailwindcss.com), you can
 integrate it with SK Components to use utility classes in your project.
 
 <TailwindSelector value="v3" />
-
-> Consider upgrading to Tailwind CSS v4, as it has support for layers which
-> allows you to override SK Components styles without using `!important`.
->
-> <Actions align="left" className="mt-5 mb-3">
->   <Button
->     children="Upgrade to Tailwind CSS v4"
->     appearance="filled"
->     href="https://tailwindcss.com/docs/upgrade-guide"
->   />
-> </Actions>
 
 ### Layers
 
@@ -42,6 +30,11 @@ To use the variables provided by [Theme Provider](/docs/layout/theme-provider)
 with Tailwind CSS (e.g. `bg-primary`), you need a translation layer between the
 two. This is done by pointing to the CSS variables provided by Theme Provider in
 your `tailwind.config.ts` file.
+
+The configuration below maps SKCom’s CSS variables to Tailwind’s design tokens.
+It covers breakpoints, font weights, font families, font sizes, border radii,
+easing curves, box shadows, and colors (both the full tonal palette and semantic
+color roles).
 
 ```ts
 import type { Config } from "tailwindcss";
@@ -302,6 +295,14 @@ The variant can then be used like so:
   I have a primary state layer!
 </Interactive>
 ```
+
+### Tailwind CSS v4
+
+Tailwind CSS v4 has built-in layer support, which lets you override SKCom
+styles without `!important`. See the [v4 guide](/docs/guides/tailwindcss-v4) if
+you are considering upgrading.
+
+### Version changes
 
 <VersionsTable>
   <VersionsTableRow version="v3.0.0">

@@ -59,27 +59,27 @@ Branch: `docs/4.0.0/clarity-and-consistency`
 
 ### nextjs-app
 
-- [ ] FAB code example assumes Root Layout context — add note
-- [ ] Icon font download instructions in bold read like a warning
-- [ ] `ElementCustomizableProps` type name used without link
+- [x] FAB code example assumes Root Layout context — add note
+- [x] Icon font download instructions in bold read like a warning
+- [x] `ElementCustomizableProps` type name used without link
 
 ### nextjs-pages
 
-- [ ] `_app.tsx` not explained for readers unfamiliar with Pages Router
-- [ ] Layout section has redundancy between prose and code comments
-- [ ] `ElementCustomizableProps` type name used without link
+- [x] `_app.tsx` not explained for readers unfamiliar with Pages Router
+- [x] Layout section has redundancy between prose and code comments
+- [x] `ElementCustomizableProps` type name used without link
 
 ### tailwindcss-v3
 
-- [ ] "If you are still using" frames v3 as outdated
-- [ ] 230-line config block with minimal structural explanation
-- [ ] Upgrade-to-v4 prompt takes real estate on v3 page
+- [x] "If you are still using" frames v3 as outdated
+- [x] 230-line config block with minimal structural explanation
+- [x] Upgrade-to-v4 prompt takes real estate on v3 page
 
 ### tailwindcss-v4
 
-- [ ] 230-line config block with minimal structural explanation
-- [ ] `@theme inline` tip explains what but not why
-- [ ] `@utility` directive assumes reader knows Tailwind v4 API
+- [x] 230-line config block with minimal structural explanation
+- [x] `@theme inline` tip explains what but not why
+- [x] `@utility` directive assumes reader knows Tailwind v4 API
 
 ---
 
