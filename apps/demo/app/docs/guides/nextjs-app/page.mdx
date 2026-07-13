@@ -116,7 +116,12 @@ A **typical top-level page** might look something like this.
 ```tsx
 // app/page.tsx
 
-import { FAB, PageHeader } from "@suankularb-components/react";
+import {
+  ContentLayout,
+  FAB,
+  MaterialIcon,
+  PageHeader,
+} from "@suankularb-components/react";
 
 const HomePage = () => (
   <>
@@ -138,8 +143,7 @@ load the fonts used in SKCom.
 #### Google Fonts
 
 Inter, Space Grotesk, Sarabun, and IBM Plex Sans Thai are available on Google
-Fonts. You can load them using `next/font/google` in your `_app.tsx` file (or
-your `Layout` component if you have one).
+Fonts. You can load them using `next/font/google` in your root layout file (e.g., `app/layout.tsx`).
 
 ```ts
 import {
@@ -197,7 +201,7 @@ Take care to match the relative path to the font file with your project
 structure.
 
 ```tsx
-import { localFont } from "next/font/local";
+import localFont from "next/font/local";
 
 const iconFont = localFont({
   src: "../public/fonts/material-symbols.woff2",

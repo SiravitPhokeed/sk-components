@@ -44,7 +44,7 @@ snackbar.push(
   "Deleted 3 items",
   <Button appearance="text">Undo</Button>,
   { autoDismissDurationMs: 6000 },
-});
+);
 ```
 
 The configuration object allows you to set other props on the Snackbar:
@@ -61,7 +61,7 @@ import { snackbar } from "@suankularb-components/react/helpers";
 await snackbar.promise(
   "Deleting items…",
   () => fetch("/api/delete-items", { method: "DELETE" }),
-});
+);
 ```
 
 ### Props

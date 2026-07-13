@@ -146,12 +146,12 @@ snackbar.push(
   "Deleted 3 items",
   <Button appearance="text">Undo</Button>,
   { autoDismissDurationMs: 6000 },
-});
+);
 ```
 
 ---
 
-**CSS variables was renamed** to match Tailwind CSS v4’s theme variables.
+**CSS variables were renamed** to match Tailwind CSS v4’s theme variables.
 If you were using the CSS variables directly, you need to update your code to
 use the new names. See the [theming guide](/docs/guides/theming) for the
 complete list of CSS variables.
@@ -288,7 +288,8 @@ Commands API.
 **[FAB](/docs/inputs/fab) is now a direct child of [Root Layout](/docs/layout/root-layout).**
 
 - Previously, FAB was a prop of Nav Bar, which made it difficult to use FAB in
-  an app where Nav Bar was abstracted into a Layout and hard to access.
+  an app where Nav Bar was abstracted into a Layout, making the prop very
+  difficult to access.
 - Now, FAB can be placed in the Root Layout, which makes it easier to use in any
   app structure.
 
@@ -308,13 +309,13 @@ Commands API.
 #### `alt` and `*Attr` props removed
 
 **Remove `alt`.** Previously, `alt` was required if the children of a component
-was React Elements instead of text, as it was used to generate IDs for
+were React Elements instead of text, as it was used to generate IDs for
 accessibility. Now, `alt` is no longer required, and IDs are generated
 automatically.
 
 <Text type="body-medium" className="text-on-surface-variant">
   If you were using `alt` to set the `aria-label` of a component, you might want
-  to make the contents itself more accessible instead.
+  to make the content itself more accessible instead.
 </Text>
 
 ```tsx
@@ -485,7 +486,7 @@ const breakpoints = {
 
 ---
 
-**`layout` and `layoutID` props were removed** from most components that had it.
+**`layout` and `layoutID` props were removed** from most components that had them.
 Wrap the components in a
 [motion component](https://motion.dev/docs/react-motion-component) instead.
 

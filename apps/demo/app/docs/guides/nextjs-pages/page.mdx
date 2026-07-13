@@ -146,7 +146,12 @@ A **typical top-level page** might look something like this.
 // pages/index.tsx
 
 import type { NextPage } from "next";
-import { FAB, PageHeader } from "@suankularb-components/react";
+import {
+  ContentLayout,
+  FAB,
+  MaterialIcon,
+  PageHeader,
+} from "@suankularb-components/react";
 
 const HomePage: NextPage = () => (
   <>
@@ -227,7 +232,7 @@ Take care to match the relative path to the font file with your project
 structure.
 
 ```tsx
-import { localFont } from "next/font/local";
+import localFont from "next/font/local";
 
 const iconFont = localFont({
   src: "../public/fonts/material-symbols.woff2",
