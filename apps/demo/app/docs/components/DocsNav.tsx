@@ -31,6 +31,9 @@ const DocsNav: StyleableFC = ({ className, style }) => (
         Tailwind CSS v3
       </DocsNavLink>
       <DocsNavLink href="/docs/guides/modals">Modals and popovers</DocsNavLink>
+      <DocsNavLink href="/docs/guides/disabling-elements">
+        Disabling elements
+      </DocsNavLink>
       <DocsNavLink href="/docs/guides/localization">Localization</DocsNavLink>
       <DocsNavLink href="/docs/guides/theming">Theming</DocsNavLink>
     </DocsNavSection>
