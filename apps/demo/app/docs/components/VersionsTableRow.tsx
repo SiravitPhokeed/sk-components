@@ -6,7 +6,14 @@ const VersionsTableRow: FC<{
   children: ReactNode;
 }> = ({ version, children }) => (
   <TableRow>
-    <TableCell align="left">{version}</TableCell>
+    <TableCell
+      header
+      scope="row"
+      align="center"
+      className="bg-transparent tabular-nums"
+    >
+      {version}
+    </TableCell>
     <TableCell align="left" className="*:block *:py-2">
       {children}
     </TableCell>
