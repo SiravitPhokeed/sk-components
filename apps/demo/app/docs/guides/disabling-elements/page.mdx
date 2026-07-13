@@ -47,7 +47,7 @@ do not understand why they are disabled** or how to enable them.
 them. Consider whether the user needs to know about the element at all, and if
 they don’t, remove it from the interface.
 
-<figure className="mt-4 mb-8 grid grid-cols-1 gap-x-6 gap-y-2 md:grid-cols-2">
+<figure className="mt-4 grid grid-cols-1 gap-x-6 gap-y-2 md:grid-cols-2">
   <Card appearance="outlined">
     <CardHeader
       icon={<MaterialIcon icon="cancel" className="text-error" />}
@@ -98,6 +98,11 @@ they don’t, remove it from the interface.
     </CardContent>
   </Card>
 </figure>
+
+<Text type="body-medium" className="text-on-surface-variant *:mb-8 *:mx-4">
+  The “See class” chip doesn’t need to be shown if the teacher doesn’t have a
+  class.
+</Text>
 
 **Explain why an element is disabled or how to enable it.** If it’s not obvious
 why an element is disabled, users may become frustrated and confused. You can
