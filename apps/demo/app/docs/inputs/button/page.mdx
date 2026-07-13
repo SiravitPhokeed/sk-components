@@ -119,9 +119,12 @@ in Button.
 
       The appearance of the Button.
 
-      Each appearance has a priority. For example, in a log in page, the log in button has higher priority than the password recovery button. In this case, the log in button is "filled," and the password recovery is "text."
+      Each appearance has a priority. For example, in a log in page, the log in
+      button has higher priority than the password recovery button. In this
+      case, the log in button is “filled,” and the password recovery is “text.”
 
-      - Must be `filled`, `tonal`, `outlined`, or `text`, from highest to lowest priority.
+      - Must be `filled`, `tonal`, `outlined`, or `text`, from highest to lowest
+        priority.
       - Always required.
 
       </TableCell>
@@ -132,10 +135,13 @@ in Button.
     <TableCell>`ReactElement`</TableCell>
     <TableCell>
       
-      An icon can appear before the text (`children`) in a Button. In a page with many buttons, icons can quickly orient users.
+      An icon can appear before the text (`children`) in a Button. In a page
+      with many buttons, icons can quickly orient users.
 
-      - You are encouraged to use [Material Icon](/docs/data/material-icon) as the value for `icon`.
-      - Normally optional but required if `children` is undefined, as a Button cannot be empty.
+      - You are encouraged to use [Material Icon](/docs/data/material-icon) as
+        the value for `icon`.
+      - Normally optional but required if `children` is undefined, as a Button
+        cannot be empty.
 
       </TableCell>
 
@@ -145,9 +151,11 @@ in Button.
     <TableCell>`string`</TableCell>
     <TableCell>
       
-      A description of the Button for screen readers, similar to `alt` on `<img>`.
+      A description of the Button for screen readers, similar to `alt` on
+      `<img>`.
 
-      - Required if the Button just includes `icon`, because an icon has no significance for screen readers.
+      - Required if the Button just includes `icon`, because an icon has no
+        significance for screen readers.
 
       </TableCell>
 
@@ -181,9 +189,12 @@ in Button.
     <TableCell>`boolean`</TableCell>
     <TableCell>
       
-      If the Button is selected. `icon` is replaced with a checkmark if this is true.
+      If the Button is selected. `icon` is replaced with a checkmark if this is
+      true.
 
-      - **Important:** this is intended to be used only when the Button is inside a Segmented Button. This prop will still be functional otherwise, but it is against Material guidelines.
+      - **Important:** this is intended to be used only when the Button is
+        inside a Segmented Button. This prop will still be functional otherwise,
+        but it is against Material guidelines.
       - Required when inside a Segmented Button.
 
       </TableCell>
@@ -196,7 +207,9 @@ in Button.
 
       <Button children="Button" appearance="outlined" dangerous />
 
-      If the action the Button accomplishes is dangerous, like deleting your account. If it is, the Button turns red (defined as `error` in the palette).
+      If the action the Button accomplishes is dangerous, like deleting your
+      account. If it is, the Button turns red (defined as `error` in the
+      palette).
 
       - Optional.
 
@@ -210,7 +223,8 @@ in Button.
 
       <Button children="Button" appearance="outlined" loading />
 
-      Disable the Button and add a Progress spinner in front of the text to signify loading status. `onClick` and `href` will have no effect.
+      Disable the Button and add a Progress spinner in front of the text to
+      signify loading status. `onClick` and `href` will have no effect.
 
       - Optional.
 
@@ -224,7 +238,8 @@ in Button.
 
       <Button children="Button" appearance="outlined" disabled />
 
-      Turns the Button gray and block any action associated with it. `onClick` and `href` will have no effect.
+      Turns the Button gray and block any action associated with it. `onClick`
+      and `href` will have no effect.
 
       - [Learn when to disable something.](https://codium.one/index.php/en/blog/77-disabled-buttons-don-t-have-to-suck)
       - Optional.
@@ -239,7 +254,8 @@ in Button.
       
       Allows for translation of the accessibility labels.
 
-      - Must be `th` or `en-US`, as SKCom currently only support those 2 languages.
+      - Must be `th` or `en-US`, as SKCom currently only support those 2
+        languages.
       - Optional.
 
       </TableCell>
