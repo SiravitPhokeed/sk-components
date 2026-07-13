@@ -2,7 +2,7 @@ import DocsNavLink from "@/app/docs/components/DocsNavLink";
 import DocsNavSection from "@/app/docs/components/DocsNavSection";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
-import { Card, CardHeader } from "@suankularb-components/react";
+import { Card, CardHeader, MaterialIcon } from "@suankularb-components/react";
 
 const DocsNav: StyleableFC = ({ className, style }) => (
   <nav
@@ -14,7 +14,7 @@ const DocsNav: StyleableFC = ({ className, style }) => (
       <CardHeader title="@suankularb-components/react" subtitle="v4.0.0" />
     </Card>
 
-    <DocsNavSection title="Guides" open>
+    <DocsNavSection icon={<MaterialIcon icon="info" />} title="Guides" open>
       <DocsNavLink href="/docs/guides/getting-started">
         Getting started
       </DocsNavLink>
@@ -35,13 +35,21 @@ const DocsNav: StyleableFC = ({ className, style }) => (
       <DocsNavLink href="/docs/guides/theming">Theming</DocsNavLink>
     </DocsNavSection>
 
-    <DocsNavSection title="Migrations" open>
+    <DocsNavSection
+      icon={<MaterialIcon icon="select_window" />}
+      title="Migrations"
+      open
+    >
       <DocsNavLink href="/docs/migrations/v4">Migrating to v4</DocsNavLink>
       <DocsNavLink href="/docs/migrations/v3.3">Migrating to v3.3</DocsNavLink>
       <DocsNavLink href="/docs/migrations/v3.2">Migrating to v3.2</DocsNavLink>
     </DocsNavSection>
 
-    <DocsNavSection title="Layout & navigation">
+    <DocsNavSection
+      icon={<MaterialIcon icon="view_quilt" directional />}
+      title="Layout & navigation"
+      className="mt-6"
+    >
       <DocsNavLink href="/docs/layout/root-layout">Root Layout</DocsNavLink>
       <DocsNavLink href="/docs/layout/content-layout">
         Content Layout
@@ -78,7 +86,10 @@ const DocsNav: StyleableFC = ({ className, style }) => (
       <DocsNavLink href="/docs/layout/divider">Divider</DocsNavLink>
     </DocsNavSection>
 
-    <DocsNavSection title="Inputs">
+    <DocsNavSection
+      icon={<MaterialIcon icon="input" directional />}
+      title="Inputs"
+    >
       <DocsNavLink href="/docs/inputs/button">Button</DocsNavLink>
       <DocsNavLink href="/docs/inputs/segmented-button">
         Segmented Button
@@ -97,7 +108,10 @@ const DocsNav: StyleableFC = ({ className, style }) => (
       <DocsNavLink href="/docs/inputs/form-item">Form Item</DocsNavLink>
     </DocsNavSection>
 
-    <DocsNavSection title="Data display">
+    <DocsNavSection
+      icon={<MaterialIcon icon="table_chart" />}
+      title="Data display"
+    >
       <DocsNavLink href="/docs/data/table">Table</DocsNavLink>
       <DocsNavLink href="/docs/data/table-head">Table Head</DocsNavLink>
       <DocsNavLink href="/docs/data/table-body">Table Body</DocsNavLink>
@@ -144,7 +158,10 @@ const DocsNav: StyleableFC = ({ className, style }) => (
       <DocsNavLink href="/docs/data/interactive">Interactive</DocsNavLink>
     </DocsNavSection>
 
-    <DocsNavSection title="Overlays">
+    <DocsNavSection
+      icon={<MaterialIcon icon="picture_in_picture_center" />}
+      title="Overlays"
+    >
       <DocsNavLink href="/docs/overlays/dialog">Dialog</DocsNavLink>
       <DocsNavLink href="/docs/overlays/dialog-header">
         Dialog Header
