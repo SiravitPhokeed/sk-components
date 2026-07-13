@@ -12,6 +12,17 @@
   }
 }
 
+/* iPadOS identifies as `any-hover` and not `hover`, so this override is
+   necessary. This still prevents hover styles from being applied on devices
+   that do not support hover, like smartphones. */
+@custom-variant hover {
+  @media (any-hover: hover) {
+    &:hover {
+      @slot;
+    }
+  }
+}
+
 @custom-variant light {
   :where(.scheme-light) & {
     @slot;
