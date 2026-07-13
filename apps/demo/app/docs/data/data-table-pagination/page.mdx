@@ -42,7 +42,7 @@ forward and backward on pages.
 `onChange` prop to trigger the logic for fetching the next page of data when the
 user changes the page.
 
-**With Tanstack Table**, you can hook up the `onChange` function to
+**With TanStack Table**, you can hook up the `onChange` function to
 `setPageIndex` to fetch the next page of data.
 
 ```tsx
@@ -53,12 +53,12 @@ user changes the page.
 />
 ```
 
-> The first page is 1, but Tanstack Table uses 0-based indexing, so we need to
+> The first page is 1, but TanStack Table uses 0-based indexing, so we need to
 > **subtract 1 from the new page number** when calling `setPageIndex`.
 >
 > ```txt
 >  SK Components: 1, 2, 3, 4, 5, ...
-> Tanstack Table: 0, 1, 2, 3, 4, ...
+> TanStack Table: 0, 1, 2, 3, 4, ...
 > ```
 
 ### Props
@@ -100,7 +100,7 @@ user changes the page.
 
       Allows for translation of the page indicator and accessibility labels.
 
-      - Must be `th` or `en-US`, as SKCom currently only supports these two
+      - Must be `th` or `en-US`, SKCom supports two languages: th and en-US.
         languages.
       - Optional.
 

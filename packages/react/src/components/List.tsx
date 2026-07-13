@@ -10,8 +10,7 @@ import type { ReactNode } from "react";
  */
 export interface ListProps extends ElementCustomizableProps {
   /**
-   * List contains List Items, Buttons, or Cards. You can put as many items
-   * inside List as needed, but the recommended limit is 3.
+   * The items in the list — List Items, Buttons, or Cards.
    *
    * - Always required.
    */

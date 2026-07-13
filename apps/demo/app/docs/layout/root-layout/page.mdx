@@ -11,11 +11,11 @@ export const metadata = {
 
 ## Root Layout
 
-The container of everything inside an application. Components which must
-appear only once — Navigation Drawer, Navigation Bar, FAB, and Page Header —
-only work optimally as direct descendants of Root Layout.
+The container for everything in your application. Components like Nav
+Drawer, Nav Bar, FAB, and Page Header each appear exactly once, and they
+work best as direct children of Root Layout.
 
-Root Layout handles positioning of components and responsiveness.
+Root Layout handles component positioning and responsiveness.
 
 <LinksChipSet source="/RootLayout.tsx" />
 
@@ -39,9 +39,17 @@ Root Layout handles positioning of components and responsiveness.
     <TableCell>`ReactNode`</TableCell>
     <TableCell>
 
-      Root Layout positions Navigation Drawer, Navigation Bar, and FAB. It can
-      contain Navigation Drawer, Navigation Bar, FAB, Page Header, Content
-      Layout, and Split Layout only.
+      Root Layout manages the placement of Nav Drawer, Nav Bar, and FAB.
+      Valid children are:
+
+      - Nav Drawer
+      - Nav Bar
+      - FAB
+      - Page Header
+      - Content Layout
+      - Split Layout
+
+      All other elements should go inside Content Layout or Split Layout.
 
       - Always required.
 
