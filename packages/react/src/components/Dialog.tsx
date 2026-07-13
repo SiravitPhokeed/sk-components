@@ -36,6 +36,8 @@ export interface DialogProps extends ElementCustomizableProps {
    * - Use with `command="show-modal" and `commandfor={id}` on a
    *   trigger button to open the Dialog declaratively via the Invoker Commands
    *   API.
+   * - Buttons inside this Dialog will automatically use this ID for their
+   *   `commandfor` when they have a `command` but no explicit `commandfor`.
    * - Use `command="request-close"` to close, not `command="close"`.
    * - Optional. Defaults to an auto-generated ID.
    */
