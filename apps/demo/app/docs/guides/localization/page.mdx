@@ -6,6 +6,11 @@ import {
   Button,
   Card,
   MaterialIcon,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
   Text,
 } from "@suankularb-components/react";
 
@@ -16,8 +21,25 @@ export const metadata = {
 ## Localization
 
 If your app supports multiple languages, you can pass a `locale` prop to
-components that support it. If you don’t provide a `locale`, the component falls
-back to `en-US`.
+components that support it. If you don't provide a `locale`, the component
+falls back to `en-US`.
+
+SKCom currently supports **`en-US` and `th`.** The following components accept
+the `locale` prop:
+
+- [App Drawer](/docs/layout/app-drawer)
+- [Button](/docs/inputs/button)
+- [Chip Field](/docs/inputs/chip-field)
+- [Data Table Head](/docs/data/data-table-head)
+- [Data Table Pagination](/docs/data/data-table-pagination)
+- [Data Table Search](/docs/data/data-table-search)
+- [Full-screen Dialog](/docs/overlays/fullscreen-dialog)
+- [Input Chip](/docs/data/input-chip)
+- [Nav Bar](/docs/layout/nav-bar)
+- [Page Header](/docs/layout/page-header)
+- [Search](/docs/inputs/search)
+- [Select](/docs/inputs/select)
+- [Text Field](/docs/inputs/text-field) (when `type` is `file`)
 
 <Card appearance="outlined" className="my-6 p-4">
   <Actions align="center">
@@ -35,44 +57,29 @@ back to `en-US`.
 </Card>
 
 ```tsx
-const locale = "th"; // Provided by your app’s localization logic
+const locale = "th"; // Provided by your app's localization logic
 return <AppDrawer locale={locale}>{/* ... */}</AppDrawer>;
 ```
 
-SKCom currently supports **`en-US` and `th` locales.** The following components
-support the `locale` prop.
-
-- [App Drawer](/docs/layout/app-drawer)
-- [Button](/docs/inputs/button)
-- [Chip Field](/docs/inputs/chip-field)
-- [Data Table Head](/docs/data/data-table-head)
-- [Data Table Pagination](/docs/data/data-table-pagination)
-- [Data Table Search](/docs/data/data-table-search)
-- [Full-screen Dialog](/docs/overlays/fullscreen-dialog)
-- [Input Chip](/docs/data/input-chip)
-- [Nav Bar](/docs/layout/nav-bar)
-- [Page Header](/docs/layout/page-header)
-- [Search](/docs/inputs/search)
-- [Select](/docs/inputs/select)
-- [Text Field](/docs/inputs/text-field) (when `type` is `file`)
-
-> It’s a good idea to keep this page open while you’re developing your app so
-> you don’t forget to pass the `locale` prop to components that support it.
+> Bookmark this page and reference it while developing. It lists every
+> component that accepts a `locale` prop, so you won't miss one.
 
 ### Example integrations
 
-SKCom works with any localization library that provides the current locale. The
-following examples show how to get the current locale from your app and pass it
-to the `locale` prop of components that support it.
+SKCom works with any localization library that can give you the current
+locale. The general pattern is:
 
-#### Bare Next.js
+1. Get the current locale from your library's hook or server function.
+2. Pass it as the `locale` prop to any SKCom component that supports it.
 
-<DisclosureCard summary="Using Next.js App Router">
+#### Without a library
 
-If you’re using **Next.js App Router** and internationalization is set up as
-`/[locale]/...`, you can pass in the `locale` page prop. Check the
-[Next.js internationalization guide](https://nextjs.org/docs/app/guides/internationalization)
-for more information.
+If you're using Next.js without a localization library, you can get the
+locale from the router or page params.
+
+<DisclosureCard summary="Next.js App Router">
+
+If your routes include a `[locale]` segment, access it from page params.
 
 ```tsx
 import { NavBar } from "@suankularb-components/react";
@@ -96,11 +103,9 @@ const RootLayout: FC<{
 
 </DisclosureCard>
 
-<DisclosureCard summary="Using Next.js Pages Router">
+<DisclosureCard summary="Next.js Pages Router">
 
-If you’re using **Next.js Pages Router**, you can use the
-[`useRouter` hook](https://nextjs.org/docs/pages/api-reference/functions/use-router)
-to get the `locale` from the router object.
+Use `useRouter` to access the locale from the router object.
 
 ```tsx
 import { NavBar } from "@suankularb-components/react";
@@ -115,26 +120,105 @@ const NavBarWithLocale: FC = () => {
 
 </DisclosureCard>
 
-#### With internationalization libraries
+#### With a library
 
-<DisclosureCard summary={
-  <>
-    Using <code>next-intl</code> with Next.js App Router
-  </>
-}>
+The table below shows how to get the current locale from popular i18n
+libraries. After the table is a full example showing the complete pattern.
 
-<Text type="body-medium" className="text-on-surface-variant *:mb-3">
-  **Note:** If you’re using `next-intl` with the Next.js Pages Router, see the
-  example for Next.js Page Router above.
-</Text>
+<Table className="my-6">
+  <TableHead>
+    <TableRow>
+      <TableCell header>Library</TableCell>
+      <TableCell header>Import</TableCell>
+      <TableCell header>Client Components</TableCell>
+      <TableCell header>Server Components</TableCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableCell header scope="row">next-intl</TableCell>
+      <TableCell>
+        <code>next-intl</code> / <code>next-intl/server</code>
+      </TableCell>
+      <TableCell>
+        <code>useLocale()</code>
+      </TableCell>
+      <TableCell>
+        <code>await getLocale()</code>
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell header scope="row">next-translate</TableCell>
+      <TableCell>
+        <code>next-translate/useTranslation</code>
+      </TableCell>
+      <TableCell>
+        <code>{"useTranslation().lang"}</code>
+      </TableCell>
+      <TableCell>
+        <code>{"await createTranslation().lang"}</code>
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell header scope="row">next-i18next (v16+)</TableCell>
+      <TableCell>
+        <code>next-i18next/client</code> / <code>next-i18next/server</code>
+      </TableCell>
+      <TableCell>
+        <code>{"useT().i18n.language"}</code>
+      </TableCell>
+      <TableCell>
+        <code>{"await getT().i18n.language"}</code>
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell header scope="row">next-i18next (v15)</TableCell>
+      <TableCell>
+        <code>next-i18next</code>
+      </TableCell>
+      <TableCell>
+        <code>{"useTranslation().i18n.language"}</code>
+      </TableCell>
+      <TableCell>—</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell header scope="row">react-i18next</TableCell>
+      <TableCell>
+        <code>react-i18next</code>
+      </TableCell>
+      <TableCell>
+        <code>{"useTranslation().i18n.language"}</code>
+      </TableCell>
+      <TableCell>—</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell header scope="row">react-intl</TableCell>
+      <TableCell>
+        <code>react-intl</code>
+      </TableCell>
+      <TableCell>
+        <code>{"useIntl().locale"}</code>
+      </TableCell>
+      <TableCell>—</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell header scope="row">LinguiJS</TableCell>
+      <TableCell>
+        <code>@lingui/react</code>
+      </TableCell>
+      <TableCell>
+        <code>{"useLingui().i18n.locale"}</code>
+      </TableCell>
+      <TableCell>—</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
 
-[`next-intl`](https://next-intl.dev/) provides
-[`useLocale` and `getLocale`](https://next-intl.dev/docs/usage/configuration#use-locale)
-to get the current locale. `useLocale` is available in regular components, while
-`getLocale` is available in Async Server Components.
+Here is what the full pattern looks like with `next-intl`:
 
 ```tsx
 // Regular components
+import { NavBar } from "@suankularb-components/react";
 import { useLocale } from "next-intl";
 
 const NavBarWithLocale = () => {
@@ -145,6 +229,7 @@ const NavBarWithLocale = () => {
 
 ```tsx
 // Async Server Components
+import { NavBar } from "@suankularb-components/react";
 import { getLocale } from "next-intl/server";
 
 const NavBarWithLocale = async () => {
@@ -152,133 +237,6 @@ const NavBarWithLocale = async () => {
   return <NavBar locale={locale}>{/* ... */}</NavBar>;
 };
 ```
-
-</DisclosureCard>
-
-<DisclosureCard summary={
-  <>
-    Using <code>next-translate</code>
-  </>
-}>
-
-[`next-translate`](https://github.com/aralroca/next-translate) provides
-[`useTranslation`](https://github.com/aralroca/next-translate#usetranslation)
-and [`createTranslation`](https://github.com/aralroca/next-translate#createTranslation).
-Destructure the `lang` property from the returned object to get the current locale.
-
-```tsx
-// Pages Router / Regular components in App Router
-import useTranslation from "next-translate/useTranslation";
-
-const NavBarWithLocale = () => {
-  const { lang: locale } = useTranslation();
-  return <NavBar locale={locale}>{/* ... */}</NavBar>;
-};
-```
-
-```tsx
-// Async Server Components in App Router
-import createTranslation from "next-translate/createTranslation";
-
-const NavBarWithLocale = async () => {
-  const { lang: locale } = await createTranslation();
-  return <NavBar locale={locale}>{/* ... */}</NavBar>;
-};
-```
-
-</DisclosureCard>
-
-<DisclosureCard summary={
-  <>
-    Using <code>next-i18next</code> (v16 onwards)
-  </>
-}>
-
-[`next-i18next`](https://github.com/i18next/next-i18next) provides `useT` and
-`getT` for Next.js App Router, and `useTranslation` for Next.js Pages Router.
-Destructure the `i18n.language` property from the returned object to get the
-current locale.
-
-```tsx
-// Regular components in App Router
-import { useT } from "next-i18next/client";
-
-const NavBarWithLocale = () => {
-  const { i18n } = useT();
-  const locale = i18n.language;
-  return <NavBar locale={locale}>{/* ... */}</NavBar>;
-};
-```
-
-```tsx
-// Async Server Components in App Router
-import { getT } from "next-i18next/server";
-
-const NavBarWithLocale = async () => {
-  const { i18n } = await getT();
-  const locale = i18n.language;
-  return <NavBar locale={locale}>{/* ... */}</NavBar>;
-};
-```
-
-```tsx
-// Pages Router
-import { useTranslation } from "next-i18next/client";
-
-const NavBarWithLocale = () => {
-  const { i18n } = useTranslation();
-  const locale = i18n.language;
-  return <NavBar locale={locale}>{/* ... */}</NavBar>;
-};
-```
-
-</DisclosureCard>
-
-<DisclosureCard summary={
-  <>
-    Using <code>next-i18next</code> (v15) with Next.js Pages Router
-  </>
-}>
-
-[`next-i18next`](https://github.com/i18next/next-i18next/tree/0aa33a73f540cf0ea8d5101e7613e0f4378a139f)
-v15 provides the [`useTranslation` hook](https://github.com/i18next/next-i18next/tree/0aa33a73f540cf0ea8d5101e7613e0f4378a139f#usetranslation)
-for Next.js Pages Router. Destructure the `i18n.language` property from the
-returned object to get the current locale.
-
-```tsx
-import { useTranslation } from "next-i18next";
-
-const NavBarWithLocale = () => {
-  const { i18n } = useTranslation();
-  const locale = i18n.language;
-  return <NavBar locale={locale}>{/* ... */}</NavBar>;
-};
-```
-
-</DisclosureCard>
-
-<DisclosureCard summary={
-  <>
-    Using <code>react-i18next</code>
-  </>
-}>
-
-[`react-i18next`](https://react.i18next.com) provides the
-[`useTranslation` hook](https://react.i18next.com/latest/usetranslation-hook).
-Destructure the `i18n.language` property from the returned object to get the
-current locale.
-
-```tsx
-import { useTranslation } from "react-i18next";
-
-const NavBarWithLocale = () => {
-  const { i18n } = useTranslation();
-  const locale = i18n.language;
-  return <NavBar locale={locale}>{/* ... */}</NavBar>;
-};
-```
-
-</DisclosureCard>
 
 ### Version changes
 
