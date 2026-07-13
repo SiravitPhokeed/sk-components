@@ -31,8 +31,8 @@ Branch: `docs/4.0.0/clarity-and-consistency`
 ### localization
 
 - [x] 7 repetitive disclosure cards consolidated into a reference table
-- [ ] Thai text in live example not explained for non-Thai readers
-- [ ] Version changes don't explain which components existed in v3
+- [x] Thai text in live example now explained with caption
+- [x] Version changes — skipped, too pedantic for practical use
 - [x] "keep this page open" tip rephrased to be more encouraging
 - [x] Added react-intl and LinguiJS to library table
 

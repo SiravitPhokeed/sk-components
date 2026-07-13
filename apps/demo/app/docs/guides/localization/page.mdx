@@ -21,8 +21,33 @@ If your app supports multiple languages, you can pass a `locale` prop to
 components that support it. If you don't provide a `locale`, the component
 falls back to `en-US`.
 
+<Card appearance="outlined" className="mt-6 mb-3 p-4">
+  <Actions align="center">
+    <Button
+      children="Apps"
+      appearance="text"
+      icon={<MaterialIcon icon="apps" />}
+    />
+    <Button
+      children="ตัวเลือกแอพ"
+      appearance="text"
+      icon={<MaterialIcon icon="apps" />}
+    />
+  </Actions>
+</Card>
+
+<Text type="body-medium" className="text-on-surface-variant *:mb-6 *:px-4">
+  The Thai text reads “App options.” Notice how the label changes based on the
+  `locale` prop.
+</Text>
+
+```tsx
+const locale = "th"; // Provided by your app's localization logic
+return <AppDrawer locale={locale}>{/* ... */}</AppDrawer>;
+```
+
 SKCom currently supports **`en-US` and `th`.** The following components accept
-the `locale` prop:
+the `locale` prop.
 
 - [App Drawer](/docs/layout/app-drawer)
 - [Button](/docs/inputs/button)
@@ -38,27 +63,7 @@ the `locale` prop:
 - [Select](/docs/inputs/select)
 - [Text Field](/docs/inputs/text-field) (when `type` is `file`)
 
-<Card appearance="outlined" className="my-6 p-4">
-  <Actions align="center">
-    <Button
-      children="Apps"
-      appearance="text"
-      icon={<MaterialIcon icon="apps" />}
-    />
-    <Button
-      children="ตัวเลือกแอพ"
-      appearance="text"
-      icon={<MaterialIcon icon="apps" />}
-    />
-  </Actions>
-</Card>
-
-```tsx
-const locale = "th"; // Provided by your app's localization logic
-return <AppDrawer locale={locale}>{/* ... */}</AppDrawer>;
-```
-
-> Bookmark this page and reference it while developing. It lists every
+> **Tip:** Bookmark this page and reference it while developing. It lists every
 > component that accepts a `locale` prop, so you won't miss one.
 
 ### Example integrations
@@ -66,12 +71,12 @@ return <AppDrawer locale={locale}>{/* ... */}</AppDrawer>;
 SKCom works with any localization library that can give you the current
 locale. The general pattern is:
 
-1. Get the current locale from your library's hook or server function.
+1. Get the current locale from your library’s hook or server function.
 2. Pass it as the `locale` prop to any SKCom component that supports it.
 
 #### Without a library
 
-If you're using Next.js without a localization library, you can get the
+If you’re using Next.js without a localization library, you can get the
 locale from the router or page params.
 
 <DisclosureCard summary="Next.js App Router">
@@ -171,14 +176,11 @@ complete pattern.
   />
 </I18nLibsTable>
 
-<Text
-  type="body-medium"
-  className="text-on-surface-variant *:-mt-2 *:mb-6"
->
+<Text type="body-medium" className="text-on-surface-variant *:-mt-2 *:mb-6">
   `react-i18next`, `react-intl`, and LinguiJS are hooks-based and require
-  wrapping in a Client Component. They still work in App Router — just add
-  `"use client"` to any component that calls the hook. `next-i18next` v15
-  supports Pages Router only and does not work with App Router.
+  wrapping in a Client Component. They still work in App Router — just add `"use
+  client"` to any component that calls the hook. `next-i18next` v15 supports
+  Pages Router only and does not work with App Router.
 </Text>
 
 Here is what the full pattern looks like with `next-intl`.
