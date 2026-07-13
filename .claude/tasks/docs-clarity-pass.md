@@ -46,16 +46,16 @@ Branch: `docs/4.0.0/clarity-and-consistency`
 
 ### modals
 
-- [ ] Snackbar exclusion note comes too early, confuses overview
-- [ ] Invoker Commands API named but not explained in friendly terms
-- [ ] "Notice how" callout placed after code instead of integrated
-- [ ] "Learn about how to" → "Learn how to"
+- [x] Snackbar exclusion note comes too early, confuses overview
+- [x] Invoker Commands API named but not explained in friendly terms
+- [x] "Notice how" callout placed after code instead of integrated
+- [x] "Learn about how to" → "Learn how to"
 
 ### disabling-elements
 
-- [ ] "Learn when to make" → "Learn how to make"
-- [ ] Caption doesn't explicitly state which side is the recommendation
-- [ ] `ActionableProps` type name used without link to shared-props guide
+- [x] "Learn when to make" → "Learn how to make"
+- [x] Caption doesn't explicitly state which side is the recommendation
+- [x] `ActionableProps` type name used without link to shared-props guide
 
 ### nextjs-app
 
