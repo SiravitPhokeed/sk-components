@@ -146,6 +146,11 @@ body {
     animation: skc-focus var(--duration-long-4) var(--ease-standard) forwards;
   }
 }
+@media (any-hover: none) {
+  :not(input, textarea):focus-visible {
+    animation: none;
+  }
+}
 @keyframes skc-focus {
   0% {
     outline-width: 0px;
