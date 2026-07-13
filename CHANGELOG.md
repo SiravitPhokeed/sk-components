@@ -48,6 +48,7 @@ Changes to the demo app are documented in
 - Revised color palette
 - App Drawer design to better match Material Design 3
 - Row actions design in Data Table Body and Table Row
+- Transparent Nav Bar on desktop
 - Animations for all modals and popovers (App Drawer, Nav Drawer, Dialog,
   Full-screen Dialog, Menu, Snackbar)
 - Manual light-dark color schemes now use `scheme-light`/`scheme-dark` classes
