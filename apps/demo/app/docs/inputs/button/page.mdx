@@ -43,6 +43,40 @@ Button helps users take action, whether it’s logging in, liking a post, or goi
 </Button>
 ```
 
+### Usage
+
+**Use the right appearance for the right priority.** Button has 4 appearances,
+from highest to lowest priority: `filled`, `tonal`, `outlined`, and `text`. For
+example, in a log in page, the log in button has higher priority than the
+password recovery button. In this case, the log in button is “filled,” and the
+password recovery is “text.”
+
+<Actions align="left" className="mt-3 mb-6">
+  <Button children="Log in" appearance="filled" />
+  <Button children="Forgot password" appearance="text" />
+</Actions>
+
+**Choose appearances that are easy to distinguish.** A set of tonal Buttons or
+text Buttons can blend together, making it hard for users to distinguish them.
+Use a mix of appearances to make it easier for users to identify the Buttons.
+
+<Actions align="left" className="mt-3 mb-6">
+  <Button children="Yes" appearance="text" />
+  <Button children="No" appearance="text" />
+  <Button children="Maybe" appearance="text" />
+</Actions>
+
+**Use “Sentence case”** instead of “Title Case” or a “CAPS BLOCK” for the text
+in Button.
+
+<Actions align="left" className="mt-3 mb-6">
+  <Button children="Add friend" appearance="outlined" icon={<MaterialIcon icon="check_circle" />} />
+  <Button children="Add Friend" appearance="outlined" icon={<MaterialIcon icon="cancel" />} dangerous />
+  <Button children="ADD FRIEND" appearance="outlined" icon={<MaterialIcon icon="cancel" />} dangerous />
+</Actions>
+
+**[Actions](/docs/components/actions) can be used to group Buttons together.**
+
 ### Props
 
 - `ActionableProps` are available: `command`, `commandFor`, `onClick`, and `href`.
