@@ -1,0 +1,62 @@
+export const metadata = {
+  title: "Shared props",
+};
+
+## Shared props
+
+Many SKCom components inherit props from a few shared types. Rather than
+documenting these props on every component page, they are listed here.
+
+### Styleable Props
+
+Every component accepts `className` and `style`, so you can customize their
+appearance like any other HTML element.
+
+```tsx
+<Button appearance="filled" className="rounded-full">
+  Pill button
+</Button>
+```
+
+- `className?: string` — CSS classes to add to the component.
+- `style?: CSSProperties` — inline styles to apply.
+
+### Element Customizable Props
+
+Many components let you swap their underlying HTML tag. This is useful when you
+need a different semantic element, or when integrating with framework link
+components like `next/link`.
+
+```tsx
+import Link from "next/link";
+
+<Button element={Link} href="/dashboard">
+  Go to dashboard
+</Button>
+```
+
+If you don't provide an `element`, the component uses a sensible default
+(usually a `<button>`, `<a>`, or `<div>`). Check each component's page for its
+specific default.
+
+- `element?: ElementType` — the underlying HTML element or custom component.
+
+### Actionable Props
+
+Interactive components like Button, List Item, and Navigation Bar Item can
+receive interaction props. These include standard event handlers as well as
+[Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API)
+props for declarative modals and popovers.
+
+```tsx
+<Button command="show-modal" commandfor="settings-dialog">
+  Open settings
+</Button>
+```
+
+- `command?: string` — the command to execute, e.g., `show-modal`.
+- `commandFor?: string` — the `id` of the element to command.
+- `onClick?: (event: MouseEvent) => any` — fired when the component is clicked.
+- `href?: string` — when set, the component renders as an `<a>` link.
+
+Learn more in the [modals and popovers](/docs/guides/modals) guide.
