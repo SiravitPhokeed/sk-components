@@ -1,3 +1,4 @@
+import DisclosureCard from "@/app/docs/components/DisclosureCard";
 import VersionsTable from "@/app/docs/components/VersionsTable";
 import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import {
@@ -5,6 +6,7 @@ import {
   Button,
   Card,
   MaterialIcon,
+  Text,
 } from "@suankularb-components/react";
 
 export const metadata = {
@@ -56,6 +58,227 @@ support the `locale` prop.
 
 > It’s a good idea to keep this page open while you’re developing your app so
 > you don’t forget to pass the `locale` prop to components that support it.
+
+### Example integrations
+
+SKCom works with any localization library that provides the current locale. The
+following examples show how to get the current locale from your app and pass it
+to the `locale` prop of components that support it.
+
+#### Bare Next.js
+
+<DisclosureCard summary="Using Next.js App Router">
+
+If you’re using **Next.js App Router** and internationalization is set up as
+`/[locale]/...`, you can pass in the `locale` page prop. Check the
+[Next.js internationalization guide](https://nextjs.org/docs/app/guides/internationalization)
+for more information.
+
+```tsx
+import { NavBar } from "@suankularb-components/react";
+import type { FC, ReactNode } from "react";
+
+const RootLayout: FC<{
+  children: ReactNode;
+  params: { locale: "en-US" | "th" };
+}> = ({ children, params }) => {
+  const { locale } = params;
+  return (
+    <html lang={locale}>
+      <body>
+        <NavBar locale={locale}>{/* ... */}</NavBar>
+        {/* ... */}
+      </body>
+    </html>
+  );
+};
+```
+
+</DisclosureCard>
+
+<DisclosureCard summary="Using Next.js Pages Router">
+
+If you’re using **Next.js Pages Router**, you can use the
+[`useRouter` hook](https://nextjs.org/docs/pages/api-reference/functions/use-router)
+to get the `locale` from the router object.
+
+```tsx
+import { NavBar } from "@suankularb-components/react";
+import { useRouter } from "next/router";
+import type { FC } from "react";
+
+const NavBarWithLocale: FC = () => {
+  const { locale } = useRouter();
+  return <NavBar locale={locale}>{/* ... */}</NavBar>;
+};
+```
+
+</DisclosureCard>
+
+#### With internationalization libraries
+
+<DisclosureCard summary={
+  <>
+    Using <code>next-intl</code> with Next.js App Router
+  </>
+}>
+
+<Text type="body-medium" className="text-on-surface-variant *:mb-3">
+  **Note:** If you’re using `next-intl` with the Next.js Pages Router, see the
+  example for Next.js Page Router above.
+</Text>
+
+[`next-intl`](https://next-intl.dev/) provides
+[`useLocale` and `getLocale`](https://next-intl.dev/docs/usage/configuration#use-locale)
+to get the current locale. `useLocale` is available in regular components, while
+`getLocale` is available in Async Server Components.
+
+```tsx
+// Regular components
+import { useLocale } from "next-intl";
+
+const NavBarWithLocale = () => {
+  const locale = useLocale();
+  return <NavBar locale={locale}>{/* ... */}</NavBar>;
+};
+```
+
+```tsx
+// Async Server Components
+import { getLocale } from "next-intl/server";
+
+const NavBarWithLocale = async () => {
+  const locale = await getLocale();
+  return <NavBar locale={locale}>{/* ... */}</NavBar>;
+};
+```
+
+</DisclosureCard>
+
+<DisclosureCard summary={
+  <>
+    Using <code>next-translate</code>
+  </>
+}>
+
+[`next-translate`](https://github.com/aralroca/next-translate) provides
+[`useTranslation`](https://github.com/aralroca/next-translate#usetranslation)
+and [`createTranslation`](https://github.com/aralroca/next-translate#createTranslation).
+Destruct the `lang` property from the returned object to get the current locale.
+
+```tsx
+// Pages Router / Regular components in App Router
+import useTranslation from "next-translate/useTranslation";
+
+const NavBarWithLocale = () => {
+  const { lang: locale } = useTranslation();
+  return <NavBar locale={locale}>{/* ... */}</NavBar>;
+};
+```
+
+```tsx
+// Async Server Components in App Router
+import createTranslation from "next-translate/createTranslation";
+
+const NavBarWithLocale = async () => {
+  const { lang: locale } = await createTranslation();
+  return <NavBar locale={locale}>{/* ... */}</NavBar>;
+};
+```
+
+</DisclosureCard>
+
+<DisclosureCard summary={
+  <>
+    Using <code>next-i18next</code> (v16 onwards)
+  </>
+}>
+
+[`next-i18next`](https://github.com/i18next/next-i18next) provides `useT` and
+`getT` for Next.js App Router, and `useTranslation` for Next.js Pages Router.
+Destruct the `i18n.language` property from the returned object to get the
+current locale.
+
+```tsx
+// Regular components in App Router
+import { useT } from "next-i18next/client";
+
+const NavBarWithLocale = () => {
+  const { i18n } = useT();
+  const locale = i18n.language;
+  return <NavBar locale={locale}>{/* ... */}</NavBar>;
+};
+```
+
+```tsx
+// Async Server Components in App Router
+import { getT } from "next-i18next/server";
+
+const NavBarWithLocale = async () => {
+  const { i18n } = await getT();
+  const locale = i18n.language;
+  return <NavBar locale={locale}>{/* ... */}</NavBar>;
+};
+```
+
+```tsx
+// Pages Router
+import { useTranslation } from "next-i18next/client";
+
+const NavBarWithLocale = () => {
+  const { i18n } = useTranslation();
+  const locale = i18n.language;
+  return <NavBar locale={locale}>{/* ... */}</NavBar>;
+};
+```
+
+</DisclosureCard>
+
+<DisclosureCard summary={
+  <>
+    Using <code>next-i18next</code> (v15) with Next.js Pages Router
+  </>
+}>
+
+[`next-i18next`](https://github.com/i18next/next-i18next/tree/0aa33a73f540cf0ea8d5101e7613e0f4378a139f)
+v15 provides the [`useTranslation` hook](https://github.com/i18next/next-i18next/tree/0aa33a73f540cf0ea8d5101e7613e0f4378a139f#usetranslation)
+for Next.js Pages Router. Destruct the `i18n.language` property from the
+returned object to get the current locale.
+
+```tsx
+import { useTranslation } from "next-i18next";
+
+const NavBarWithLocale = () => {
+  const { i18n } = useTranslation();
+  const locale = i18n.language;
+  return <NavBar locale={locale}>{/* ... */}</NavBar>;
+};
+```
+
+</DisclosureCard>
+
+<DisclosureCard summary={
+  <>
+    Using <code>react-i18next</code>
+  </>
+}>
+
+[`react-i18next`](https://react.i18next.com) provides the
+[`useTranslation` hook](https://react.i18next.com/latest/usetranslation-hook).
+Destruct the `i18n.language` property from the returned object to get the
+current locale.
+
+```tsx
+import { useTranslation } from "react-i18next";
+
+const NavBarWithLocale = () => {
+  const { i18n } = useTranslation();
+  const locale = i18n.language;
+  return <NavBar locale={locale}>{/* ... */}</NavBar>;
+};
+```
+
+</DisclosureCard>
 
 ### Version changes
 
