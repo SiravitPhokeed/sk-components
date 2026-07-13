@@ -16,10 +16,21 @@ export default function Error({
   unstable_retry: () => void;
 }) {
   const [retrying, setRetrying] = useState(false);
+  const isClientError = !error.digest;
+  const splitDigest = error.digest
+    ? // XXXX XXX XXX
+      error.digest.length === 10
+      ? [
+          error.digest.slice(0, 4),
+          error.digest.slice(4, 7),
+          error.digest.slice(7),
+        ].join(" ")
+      : error.digest
+    : null;
 
   return (
-    <main className="body:bg-surface-container flex h-screen w-screen flex-col items-center justify-center gap-2 p-4 pb-8">
-      <div className="bg-surface-bright max-w-80 rounded-xl p-6 text-balance">
+    <main className="body:bg-surface-container flex h-screen w-screen flex-col items-center justify-center gap-2 p-4">
+      <div className="bg-surface-bright mb-4 max-w-80 rounded-xl p-6 text-balance">
         <MaterialIcon
           icon="warning"
           size={40}
@@ -33,7 +44,8 @@ export default function Error({
           element="p"
           className="text-on-surface-variant mb-8"
         >
-          A server error occurred. Reload to try again.
+          A {isClientError ? "client error" : "server error"} occurred. Reload
+          to try again.
         </Text>
 
         <Actions align="left">
@@ -59,11 +71,28 @@ export default function Error({
         </Actions>
       </div>
 
-      <Text type="label-large" className="text-on-surface-variant mt-4 grid">
-        <code>
-          {error.name} • {error.digest}
-        </code>
-      </Text>
+      {isClientError ? (
+        <details className="text-on-surface-variant px-48 not-open:mb-8">
+          <Text
+            type="title-small"
+            element="summary"
+            className="relative z-10 cursor-default text-center marker:hidden"
+          >
+            <code className="text-[0.9em]">{error.name}</code>: {error.message}
+          </Text>
+          <Text
+            type="body-small"
+            element="pre"
+            className="-mt-3 max-h-100 overflow-y-auto mask-y-from-transparent mask-y-from-0 mask-y-to-black mask-y-to-6 py-6 font-mono leading-normal whitespace-pre-wrap"
+          >
+            {error.stack}
+          </Text>
+        </details>
+      ) : (
+        <Text type="title-small" className="text-on-surface-variant mb-8 block">
+          <code>ERROR • {splitDigest}</code>
+        </Text>
+      )}
     </main>
   );
 }
