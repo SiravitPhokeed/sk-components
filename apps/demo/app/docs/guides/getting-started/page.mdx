@@ -8,54 +8,46 @@ export const metadata = {
 
 ## Getting started
 
-**SK Components (“SKCom”) is a design system based on
-[Material Design 3](https://m3.material.io/)** consisting of tokens and
-components created with the goal of a **consistent and harmonious experience
-across all Suankularb features** and applications.
+**SK Components (“SKCom”) is a React component library built on
+[Material Design 3](https://m3.material.io/).** It provides components that
+follow Material Design principles, so you can ship faster with components
+that already handle styling, accessibility, and behavior.
 
-There are currently 2 official SKCom libraries:
+SKCom was originally created for
+[Suankularb Wittayalai School](https://www.sk.ac.th/)’s family of
+applications, including its flagship application [MySK](https://mysk.school/),
+and continues to serve Suankularb students and staff today.
 
-- **SK Components Styles** (`@suankularb-components/styles`) — a CSS library
+> **Before you build:** Material Design 3 has an excellent
+> [style guide](https://m3.material.io/foundations/content-design/style-guide/ux-writing-best-practices)
+> and detailed
+> [component documentation](https://m3.material.io/components). Misusing
+> components — like putting the wrong kind of action on a Button or using a
+> Dialog when a separate page would be better — creates confusing experiences.
+>
+> Most SKCom component pages link to the relevant Material Design page at the
+> top, so you can check the official guidance before you start.
+
+There are currently two official SKCom libraries:
+
+- **SK Components Styles** (`@suankularb-components/css`) — a CSS library
   that other libraries can use to implement the design system.
 - **React SK Components** (`@suankularb-components/react`, **“ReSKCom”**) — a
-  React library that provides React components that implement the design system.
+  React library that provides React components implementing the design system.
 
 This documentation is for **ReSKCom**, which is the recommended library for
 React applications.
 
-> SK Components v4 is now available. If you are using v3, [learn how to upgrade
-> here](/docs/migrations/v4).
-
-> Since SKCom is based on Material Design 3, visit the [Material Design 3
-> documentation](https://m3.material.io/) for more information on the design
-> system, including its principles, components, and tokens.
->
-> Also, refer to the [style guide](https://m3.material.io/foundations/content-design/style-guide/ux-writing-best-practices)
-> when writing content for your application.
-
-<DisclosureCard summary="Is M3 Expressive supported?">
-
-No, SKCom is based on Material Design 3 Baseline, so
-[M3 Expressive](https://m3.material.io/blog/building-with-m3-expressive)
-features like updated components and the motion physics system aren’t
-available.
-
-This is to reduce compatibility issues for those
-[upgrading from v3 to v4](/docs/migrations/v4), so there is currently no plan
-to implement M3 Expressive in SKCom.
-
-</DisclosureCard>
-
 <DisclosureCard summary="Next.js and Tailwind CSS users: read this first">
 
-**Next.js users:** use the guides for integrating SKCom with Next.js instead of
-this guide. See the [App Router guide](/docs/guides/nextjs-app) or the
-[Pages Router guide](/docs/guides/nextjs-pages), depending on which router you
-are using.
+**Next.js users:** use the guides for integrating SKCom with Next.js instead
+of this guide. See the [App Router guide](/docs/guides/nextjs-app) or the
+[Pages Router guide](/docs/guides/nextjs-pages), depending on which router
+you are using.
 
-**Tailwind CSS users:** when you’re done with this guide or the Next.js guides,
-see the [Tailwind CSS guide](/docs/guides/tailwindcss-v4) for instructions on
-how to integrate SKCom with Tailwind CSS.
+**Tailwind CSS users:** when you’re done with this guide or the Next.js
+guides, see the [Tailwind CSS guide](/docs/guides/tailwindcss-v4) for
+instructions on integrating SKCom with Tailwind CSS.
 
 </DisclosureCard>
 
@@ -69,14 +61,15 @@ npm install @suankularb-components/react
 pnpm add @suankularb-components/react
 ```
 
-`react` and `react-dom` are peer dependencies, so you need to install them as
-well if you haven’t already. React 18 and up are supported.
+`react` and `react-dom` are peer dependencies — your project must provide
+them rather than the library bundling its own copy. React 18 and later are
+supported. If you’re starting from scratch, install them first.
 
 #### Fonts
 
 **Fonts are not bundled with the library,** so you need to install them
-yourself. These fonts are used by the default theme included with [Theme
-Provider](/docs/layout/theme-provider):
+yourself. These fonts are used by the default theme included with
+[Theme Provider](/docs/layout/theme-provider):
 
 - [Inter](https://fonts.google.com/specimen/Inter)
 - [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk)
@@ -99,16 +92,20 @@ for a list of icons and installation instructions.
 
 ### Usage
 
-- Import components from `@suankularb-components/react` and use them in your
-  React application.
-  - For imperative helpers like [`snackbar.push()`](/docs/overlays/snackbar),
-    import them from `@suankularb-components/react/helpers`.
-- To use the default theme, simply add `<ThemeProvider />` to your app.
-- Root Layout must enclose all pages, as it provides the default layout and
-  global styles.
-  - Layout components like [Page Header](/docs/layout/page-header) and [Content
-    Layout](/docs/layout/content-layout) must be direct children of Root Layout.
-  - See [Root Layout](/docs/layout/root-layout) for more information.
+**Import components** from `@suankularb-components/react` and use them in
+your React application. For imperative helpers like
+[`snackbar.push()`](/docs/overlays/snackbar), import them from
+`@suankularb-components/react/helpers`.
+
+**Add the default theme** by placing `<ThemeProvider />` in your app. It
+provides the CSS variables all components depend on.
+
+**Wrap your app** with `<RootLayout>`. It provides the default page layout
+and global styles. Layout components like
+[Page Header](/docs/layout/page-header) and
+[Content Layout](/docs/layout/content-layout) must be direct children of
+Root Layout. See the
+[Root Layout documentation](/docs/layout/root-layout) for details.
 
 ```tsx
 import {
@@ -139,3 +136,19 @@ const App = () => (
   </>
 );
 ```
+
+> SK Components v4 is now available. If you are using v3,
+> [learn how to upgrade here](/docs/migrations/v4).
+
+<DisclosureCard summary="Is M3 Expressive supported?">
+
+No, SKCom is based on Material Design 3 Baseline, so
+[M3 Expressive](https://m3.material.io/blog/building-with-m3-expressive)
+features like updated components and the motion physics system aren’t
+available.
+
+This is to reduce compatibility issues for those
+[upgrading from v3 to v4](/docs/migrations/v4), so there is currently no
+plan to implement M3 Expressive in SKCom.
+
+</DisclosureCard>
