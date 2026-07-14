@@ -85,9 +85,9 @@ Branch: `docs/4.0.0/clarity-and-consistency`
 
 ## Repetitive boilerplate (cross-cutting)
 
-- [ ] "This function triggers when the user…" — identical in 7+ files
-- [ ] "Learn when to disable something" link text — dry, identical in 5+ files
-- [ ] "You are encouraged to use Material Icon" — overused in 5+ files
+- [x] "This function triggers when the user…" — identical in 7+ files
+- [x] "Learn when to disable something" link text — dry, identical in 5+ files
+- [x] "You are encouraged to use Material Icon" — overused in 5+ files
 
 ---
 

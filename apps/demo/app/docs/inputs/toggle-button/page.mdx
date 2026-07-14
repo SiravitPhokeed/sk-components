@@ -140,7 +140,7 @@ A Button with just an icon that can be toggled on and off.
       Turns the Toggle Button gray and blocks any action associated with it.
       `onChange` will have no effect.
 
-      - [Learn when to disable something.](https://codium.one/index.php/en/blog/77-disabled-buttons-don-t-have-to-suck)
+      - [Learn how to make disabled elements less frustrating.](/docs/guides/disabling-elements)
       - Optional.
 
       </TableCell>
@@ -164,7 +164,8 @@ A Button with just an icon that can be toggled on and off.
     <TableCell>`(state: boolean) => void`</TableCell>
     <TableCell>
 
-      This function triggers when the user toggles the Toggle Button.
+      Called when the user toggles the Toggle Button. The state is passed in via
+      the function as a boolean.
 
       - Optional.
 
