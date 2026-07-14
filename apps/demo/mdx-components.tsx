@@ -73,11 +73,11 @@ const components: MDXComponents = {
   ),
   hr: () => <Divider className="my-3" />,
   ul: (props) => (
-    <ul className="*:marker:text-outline list-disc ps-6" {...props} />
+    <ul className="marker:text-outline list-disc ps-6" {...props} />
   ),
   ol: (props) => (
     <ol
-      className="*:marker:text-on-surface-variant *:marker:font-display list-decimal ps-6"
+      className="marker:text-on-surface-variant marker:font-display list-decimal ps-6"
       {...props}
     />
   ),
