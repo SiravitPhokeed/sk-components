@@ -31,6 +31,27 @@ be reflected in the demo app.
 pnpm dev
 ```
 
+<details>
+  <summary>
+    <strong>
+      Material Icons aren’t showing up?
+    </strong>
+  </summary>
+  <p>
+    Your browser may be blocking locally installed fonts from loading in an
+    effort to prevent fingerprinting.
+  </p>
+  <ul>
+    <li>Set the environment variable
+      <code>ALWAYS_USE_OPTIMIZED_ICON_FONT=true</code> to use the optimized
+      icon font instead of the local font.
+    </li>
+    <li>
+      Run `pnpm demo:icons` to generate the optimized icon font.
+    </li>
+  </ul>
+</details>
+
 **To work on the documentation,** build the packages first, then start just the
 Next.js server for the demo app.
 
