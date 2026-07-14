@@ -6,6 +6,7 @@ import VersionsTable from "@/app/docs/components/VersionsTable";
 import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import {
   AssistChip,
+  ChipSet,
   MaterialIcon,
   TableCell,
 } from "@suankularb-components/react";
@@ -50,11 +51,10 @@ Assist Chips appear in a [Chip Set](/docs/data/chip-set).
 The label of an Assist Chip should start with a verb, i.e. “**Turn on**
 lights” or “**Save** to favorites.”
 
-```tsx
-<AssistChip icon={<MaterialIcon icon="lightbulb" />}>
-  Turn on lights
-</AssistChip>
-```
+<ChipSet className="my-3">
+  <AssistChip children="Turn on lights" icon={<MaterialIcon icon="lightbulb" />} />
+  <AssistChip children="Save to favorites" icon={<MaterialIcon icon="bookmark" />} />
+</ChipSet>
 
 ### Props
 

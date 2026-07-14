@@ -6,6 +6,7 @@ import VersionsTable from "@/app/docs/components/VersionsTable";
 import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import {
   Avatar,
+  ChipSet,
   InputChip,
   MaterialIcon,
   TableCell,
@@ -51,11 +52,10 @@ Input Chips appear in a [Chip Set](/docs/data/chip-set) or
 Input Chip labels represent user-entered data, such as a name, email
 address, or tag.
 
-```tsx
-<InputChip avatar={<Avatar />} onDelete={() => remove("Pansa")}>
-  Pansa S.
-</InputChip>
-```
+<ChipSet className="my-3">
+  <InputChip children="Pansa S." avatar={<Avatar />} deleteCommand="_" />
+  <InputChip children="Wasapol R." avatar={<Avatar />} deleteCommand="_" />
+</ChipSet>
 
 ### Props
 

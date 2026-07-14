@@ -5,6 +5,7 @@ import PropsTableRow from "@/app/docs/components/PropsTableRow";
 import VersionsTable from "@/app/docs/components/VersionsTable";
 import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import {
+  ChipSet,
   FilterChip,
   MaterialIcon,
   TableCell,
@@ -48,11 +49,10 @@ content. Filter Chips appear in a [Chip Set](/docs/data/chip-set).
 Filter Chip labels should be nouns or short adjectives that describe a
 category or attribute, like “Teachers” or “Free shipping.”
 
-```tsx
-<FilterChip icon={<MaterialIcon icon="group" />} selected>
-  Teachers
-</FilterChip>
-```
+<ChipSet className="my-3">
+  <FilterChip children="Teachers" selected />
+  <FilterChip children="Students" />
+</ChipSet>
 
 ### Props
 
