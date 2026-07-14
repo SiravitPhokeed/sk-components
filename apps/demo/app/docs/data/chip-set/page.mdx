@@ -33,28 +33,30 @@ Chips, handling gaps, wrap, etc.
 
 ```tsx
 <ChipSet>
-  <FilterChip selected>Blue</FilterChip>
+  <FilterChip selected>Pink</FilterChip>
+  <FilterChip>Blue</FilterChip>
   <FilterChip>Yellow</FilterChip>
-  <FilterChip>Green</FilterChip>
 </ChipSet>
 ```
 
 ### Usage
 
-Chip Set wraps any type of Chip — [Assist Chips](/docs/data/assist-chip),
+Chip Set wraps any variant of Chip — [Assist Chips](/docs/data/assist-chip),
 [Filter Chips](/docs/data/filter-chip), [Input Chips](/docs/data/input-chip),
-or [Suggestion Chips](/docs/data/suggestion-chip).
+or [Suggestion Chips](/docs/data/suggestion-chip). Variants of Chips cannot be
+mixed in a single Chip Set.
 
 ```tsx
 <ChipSet>
-  <AssistChip icon={<MaterialIcon icon="lightbulb" />}>
-    Turn on lights
-  </AssistChip>
-  <FilterChip selected>Red</FilterChip>
+  <FilterChip selected>Pink</FilterChip>
+  <FilterChip>Blue</FilterChip>
   <FilterChip>Yellow</FilterChip>
-  <FilterChip>Green</FilterChip>
 </ChipSet>
 ```
+
+Different variants of Chips have different features and behaviors. To help you
+choose the right variant, check out the
+[Material Design guidelines on Chip variants](https://m3.material.io/components/chips/guidelines#295a6e5e-a1c1-42db-a3f2-fca3f103838a).
 
 ### Props
 
