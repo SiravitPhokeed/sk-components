@@ -22,9 +22,6 @@ dynamic and contextual (changes according to the context).
 
 Assist Chips appear in a [Chip Set](/docs/data/chip-set).
 
-The label of an Assist Chip should start with a verb, i.e. “**Turn on**
-lights” or “**Save** to favorites.”
-
 <LinksChipSet
   material="/components/chips/guidelines#5dd1928c-1476-4029-bdc5-fde66fc0dcb1"
   source="/AssistChip.tsx"
@@ -46,6 +43,17 @@ lights” or “**Save** to favorites.”
 
 ```tsx
 <AssistChip icon={<MaterialIcon icon="lightbulb" />}>Turn on lights</AssistChip>
+```
+
+### Usage
+
+The label of an Assist Chip should start with a verb, i.e. “**Turn on**
+lights” or “**Save** to favorites.”
+
+```tsx
+<AssistChip icon={<MaterialIcon icon="lightbulb" />}>
+  Turn on lights
+</AssistChip>
 ```
 
 ### Props
