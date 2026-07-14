@@ -46,6 +46,23 @@ Indicates interactivity with a state layer and a ripple effect.
 </Interactive>
 ```
 
+### Usage
+
+Interactive adds a state layer and optional ripple effect to any element. Use
+Tailwind CSS classes to style the state layer color.
+
+```tsx
+<Interactive
+  shadowEffect
+  element="button"
+  className="bg-secondary-container text-on-secondary-container
+    state-layer:bg-on-secondary-container h-14 rounded-sm px-4 py-2"
+>
+  <Text type="title-medium">English</Text>
+  <Text type="body-small">Atipol</Text>
+</Interactive>
+```
+
 ### Props
 
 - `ComponentProps<"div">` are available: all props of a `<div>` element.

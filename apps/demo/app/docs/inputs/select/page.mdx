@@ -50,6 +50,30 @@ menu.
 </Select>
 ```
 
+### Usage
+
+Manage the selected value with `useState`. Each option is a
+[Menu Item](/docs/overlays/menu-item) with a `value`.
+
+```tsx
+type Frequency = "one-off" | "daily" | "weekly";
+
+const [frequency, setFrequency] = useState<Frequency>();
+
+return (
+  <Select<Frequency>
+    appearance="outlined"
+    label="Frequency"
+    value={frequency}
+    onChange={setFrequency}
+  >
+    <MenuItem value="one-off">One-off</MenuItem>
+    <MenuItem value="daily">Daily</MenuItem>
+    <MenuItem value="weekly">Weekly</MenuItem>
+  </Select>
+);
+```
+
 ### Props
 
 - [`StyleableProps`](/docs/guides/shared-props): `className` and `style`.

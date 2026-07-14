@@ -39,6 +39,23 @@ Chips, handling gaps, wrap, etc.
 </ChipSet>
 ```
 
+### Usage
+
+Chip Set wraps any type of Chip — [Assist Chips](/docs/data/assist-chip),
+[Filter Chips](/docs/data/filter-chip), [Input Chips](/docs/data/input-chip),
+or [Suggestion Chips](/docs/data/suggestion-chip).
+
+```tsx
+<ChipSet>
+  <AssistChip icon={<MaterialIcon icon="lightbulb" />}>
+    Turn on lights
+  </AssistChip>
+  <FilterChip selected>Red</FilterChip>
+  <FilterChip>Yellow</FilterChip>
+  <FilterChip>Green</FilterChip>
+</ChipSet>
+```
+
 ### Props
 
 - [`StyleableProps`](/docs/guides/shared-props): `className` and `style`.

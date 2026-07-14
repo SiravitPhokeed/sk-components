@@ -30,6 +30,20 @@ Checkbox and Radio, a Switch is independent.
 <Switch />
 ```
 
+### Usage
+
+Use [Form Item](/docs/inputs/form-item) to add a label to a Switch.
+
+```tsx
+const [allow, setAllow] = useState(false);
+
+return (
+  <FormItem label="Allow notifications">
+    <Switch value={allow} onChange={setAllow} />
+  </FormItem>
+);
+```
+
 ### Props
 
 - [`ElementCustomizableProps`](/docs/guides/shared-props): `element`.

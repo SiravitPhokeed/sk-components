@@ -129,9 +129,38 @@ Branch: `docs/4.0.0/clarity-and-consistency`
 
 ## Information hierarchy (cross-cutting)
 
-- [x] 4 components have no Usage section — deferred, feature addition not clarity fix
-- [x] Usage section depth varies wildly — observation, not actionable in this pass
 - [x] Shared types linking in guides prose — already linked in all guide pages
+
+### Missing Usage sections — form elements
+
+- [x] Radio
+- [x] Switch
+- [x] Search
+- [x] Select
+- [x] Text Field
+- [x] Segmented Button
+- [x] Toggle Button
+- [x] Form Group — original code example already sufficient, removed Usage
+- [x] Form Item — original code example already sufficient, removed Usage
+
+### Further reading — layout components
+
+- [x] Nav Bar — links to Next.js integration guides
+- [x] Root Layout — links to Next.js integration guides
+- [x] Content Layout — links to Next.js integration guides
+- [x] Nav Drawer — links to Next.js integration guides
+- [x] App Drawer — links to Localization guide
+- [x] Split Layout — skipped, no relevant guide content
+- [x] Columns — skipped, no relevant guide content
+- [x] Actions — skipped, in inputs/ not layout
+
+### Missing Usage sections — data display
+
+- [x] List
+- [x] Card
+- [x] Chip Set
+- [x] Interactive
+- [x] Individual chips (Assist, Filter, Input, Suggestion) — skipped, Chip Set covers usage
 
 ---
 

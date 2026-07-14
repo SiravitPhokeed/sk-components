@@ -48,6 +48,26 @@ A Button with just an icon that can be toggled on and off.
 />
 ```
 
+### Usage
+
+Manage the pressed state with `useState`. The `tooltip` is required to help
+users understand what the icon means.
+
+```tsx
+const [favorite, setFavorite] = useState(false);
+
+return (
+  <ToggleButton
+    appearance="filled"
+    icon={<MaterialIcon icon="favorite" />}
+    alt="Favorite"
+    tooltip="Save to favorites"
+    value={favorite}
+    onChange={setFavorite}
+  />
+);
+```
+
 ### Props
 
 - [`ElementCustomizableProps`](/docs/guides/shared-props): `element`.

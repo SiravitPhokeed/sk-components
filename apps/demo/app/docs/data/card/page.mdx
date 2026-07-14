@@ -64,6 +64,24 @@ we have provided some useful props and components to get you started.
 </Card>
 ```
 
+### Usage
+
+Card is composed of [Card Header](/docs/data/card-header) and
+[Card Content](/docs/data/card-content).
+
+```tsx
+<Card appearance="outlined">
+  <CardHeader
+    icon={<MaterialIcon icon="person" />}
+    title="Atipol Sukrisadanon"
+    subtitle="Foreign Languages teacher"
+  />
+  <CardContent>
+    <p>Atipol Sukrisadanon is a teacher at Suankularb Wittayalai School.</p>
+  </CardContent>
+</Card>
+```
+
 ### Props
 
 - [`ActionableProps`](/docs/guides/shared-props): `command`, `commandfor`, `onClick`, and `href`.

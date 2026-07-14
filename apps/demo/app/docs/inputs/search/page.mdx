@@ -28,6 +28,18 @@ Search allows the user to quickly find something using a query.
 <Search />
 ```
 
+### Usage
+
+Manage the search query with `useState` and handle changes with `onChange`.
+
+```tsx
+const [query, setQuery] = useState("");
+
+return (
+  <Search value={query} onChange={setQuery} />
+);
+```
+
 ### Props
 
 - [`ElementCustomizableProps`](/docs/guides/shared-props): `element`.

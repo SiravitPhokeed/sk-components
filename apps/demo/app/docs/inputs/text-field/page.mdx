@@ -68,6 +68,24 @@ answers.
 />
 ```
 
+### Usage
+
+Manage the field value with `useState`. Use `behavior` to switch between
+single-line, multi-line, and textarea modes.
+
+```tsx
+const [name, setName] = useState("");
+
+return (
+  <TextField<string>
+    appearance="outlined"
+    label="Full name"
+    value={name}
+    onChange={setName}
+  />
+);
+```
+
 ### Props
 
 - [`StyleableProps`](/docs/guides/shared-props): `className` and `style`.

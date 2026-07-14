@@ -33,6 +33,32 @@ Radio always appears in a group.
 <Radio />
 ```
 
+### Usage
+
+Radio always appears in a group. Use [Form Group](/docs/inputs/form-group) to
+group related Radios and [Form Item](/docs/inputs/form-item) to label each one.
+
+```tsx
+const [atkResult, setATKResult] = useState<"negative" | "positive">();
+
+return (
+  <FormGroup label="ATK result">
+    <FormItem label="Negative">
+      <Radio
+        value={atkResult === "negative"}
+        onChange={() => setATKResult("negative")}
+      />
+    </FormItem>
+    <FormItem label="Positive">
+      <Radio
+        value={atkResult === "positive"}
+        onChange={() => setATKResult("positive")}
+      />
+    </FormItem>
+  </FormGroup>
+);
+```
+
 ### Props
 
 - [`ElementCustomizableProps`](/docs/guides/shared-props): `element`.
