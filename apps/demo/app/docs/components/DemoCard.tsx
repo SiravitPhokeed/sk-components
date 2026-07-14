@@ -66,14 +66,14 @@ const DemoCard = ({
       <Text
         type="body-small"
         element="span"
-        className="text-on-surface-variant *:my-1"
+        className="text-on-surface-variant block *:inline"
       >
         <p>
           Visit the{" "}
           <Link href="/components" className="link">
             Components page
           </Link>{" "}
-          for an interactive demo.
+          for an interactive demo.{" "}
         </p>
         {children}
       </Text>
