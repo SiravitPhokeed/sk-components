@@ -113,8 +113,8 @@ A Button with just an icon that can be toggled on and off.
 
       A message shown in a tooltip when the user hovers over the Toggle Button.
 
-      - Always required, just in case the icon is not clear enough for the user
-        to infer its action.
+      - Always required, since the icon alone may not be clear enough for the user
+        to infer the action.
 
       </TableCell>
 
@@ -124,8 +124,8 @@ A Button with just an icon that can be toggled on and off.
     <TableCell>`boolean`</TableCell>
     <TableCell>
 
-      If the action the Toggle Button accomplishes is dangerous, like unmuting.
-      If it is, the Toggle Button turns red (defined as `error` in the palette).
+      Set to `true` if the action is destructive, such as deleting an item. When
+      `true`, the Toggle Button turns red (defined as `error` in the palette).
 
       - Optional.
 

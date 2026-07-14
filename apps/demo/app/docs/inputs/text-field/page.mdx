@@ -85,8 +85,9 @@ answers.
       How the Text Field looks. An outlined Text Field has a lower emphasis than
       filled, so it is great for a form with many fields.
 
-      - Keep the appearance consistent across Text Fields. Separate different
-        appearances by region.
+      - Keep the appearance consistent across Text Fields. For example, use
+        `outlined` for form fields and `filled` for search bars, rather than mixing
+        both in the same context.
       - Must be `outlined` or `filled`.
       - Always required.
 
@@ -169,10 +170,10 @@ answers.
     </TableCell>
     <TableCell>
 
-      The alignment of the input field.
+      The text alignment inside the input. Use `right` when the input value
+      should sit next to trailing text — for example, a username field with a
+      `@domain` suffix so the value reads naturally with the suffix.
 
-      - This is useful if the input value should come immediately before the
-        trailing text, like the start of an email.
       - Optional.
 
       </TableCell>

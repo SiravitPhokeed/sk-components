@@ -95,47 +95,43 @@ Branch: `docs/4.0.0/clarity-and-consistency`
 
 ### inputs/
 
-- [ ] Chip Field: overly long 30-line usage example
-- [ ] Chip Field: "The behavior expected to be implemented by the developer" — too formal
-- [ ] Form Group: "element of the underlying `<legend>` element" — circular
-- [ ] Segmented Button: "2-5 Buttons" — too terse
-- [ ] Switch: "Thumb" capitalized unnecessarily
-- [ ] Text Field: email alignment example confusing
-- [ ] Toggle Button: "Just in case" too casual
-- [ ] Toggle Button: "Like unmuting" as dangerous action example
-- [ ] Actions: "Actions contains Buttons" → "Actions contain Buttons"
-- [ ] Select: "Separate different appearances by region" unexplained
+- [x] Chip Field: overly long 30-line usage example — justified complexity, keeping
+- [x] Chip Field: "The behavior expected to be implemented by the developer" — too formal
+- [x] Form Group: "element of the underlying `<legend>` element" — circular
+- [x] Segmented Button: "2-5 Buttons" — too terse
+- [x] Switch: "Thumb" capitalized unnecessarily
+- [x] Text Field: email alignment example confusing
+- [x] Toggle Button: "Just in case" too casual
+- [x] Toggle Button: "Like unmuting" as dangerous action example
+- [x] Actions: "Actions contains Buttons" → "Actions contain Buttons"
+- [x] Select: "Separate different appearances by region" unexplained
 
 ### layout/
 
-- [ ] Nav Bar: "Navigation Bar/Rail" awkward slash phrasing
-- [ ] Nav Bar Item: "for, for instance" awkward
-- [ ] Nav Drawer: "Should be a child" → "Always place inside"
-- [ ] Nav Drawer: `children` description repetitive
-- [ ] Theme Provider: valuable info hidden in version changelog
-- [ ] Tab: missing DemoCard (every other component has one)
+- [x] Nav Bar: "Navigation Bar/Rail" awkward slash phrasing
+- [x] Nav Bar Item: "Navigation Bar/Rail" references (was Nav Bar Item, not Nav Bar)
+- [x] Nav Drawer Item: "Should be a child" → "Always place inside" (was Nav Drawer Item, not Nav Drawer)
+- [x] Nav Drawer: `children` description repetitive
+- [x] Theme Provider: valuable info hidden in version changelog — already fine, main description covers it
+- [x] Tab: missing DemoCard — deferred, feature addition not clarity fix
 
 ### data/
 
-- [ ] Data Table: "colSpans" note buried after 100-line code example
-- [ ] Data Table: humorous sample data ("Clean the entity", "Mow cats")
-- [ ] List: "Uses Columns under the hood" — explained inline now but could be better
+- [x] Data Table: "colSpans" note buried after 100-line code example
+- [x] Data Table: humorous sample data — KEEP (user: target demo is 13-18 year olds)
+- [x] List: "Uses Columns under the hood" — explained inline now but could be better
 
 ### overlays/
 
-- [ ] Menu: "Menus display a list of choices on temporary surfaces" — jargon
+- [x] Menu: "Menus display a list of choices on temporary surfaces" — jargon
 
 ---
 
 ## Information hierarchy (cross-cutting)
 
-- [ ] 4 components have no Usage section: Segmented Button, Text Field, Toggle
-      Button, Select
-- [ ] Usage section depth varies wildly (Button has 4 guidelines + live examples,
-      Chip Field has full stateful example, some have nothing)
-- [ ] Shared types (`StyleableProps` etc.) now link to shared-props guide but in
-      guides prose, the type names are still bare (nextjs-app, nextjs-pages,
-      theming, disabling-elements)
+- [x] 4 components have no Usage section — deferred, feature addition not clarity fix
+- [x] Usage section depth varies wildly — observation, not actionable in this pass
+- [x] Shared types linking in guides prose — already linked in all guide pages
 
 ---
 
@@ -149,7 +145,7 @@ Branch: `docs/4.0.0/clarity-and-consistency`
 
 ## Deferred / needs user decision
 
-- [ ] Data Table sample data humor — keep or replace?
-- [ ] Redundant `required` info (attribute + bullet say same thing) — scope too large
-- [ ] Behaviour vs behavior inconsistency across directories — British vs American
-- [ ] `_app.tsx` → `layout.tsx` was fixed in nextjs-app but needs review
+- [x] Data Table sample data humor — keep (user confirmed)
+- [x] Redundant `required` info — keep as-is (user confirmed)
+- [x] Behaviour vs behavior — use American English, added to CONTRIBUTING.md
+- [x] `_app.tsx` → `layout.tsx` — fixed in nextjs-app, reviewed
