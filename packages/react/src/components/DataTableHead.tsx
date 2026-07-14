@@ -26,8 +26,6 @@ export interface DataTableHeadProps extends ElementCustomizableProps {
    *
    * - Must be `left`, `center`, `right`.
    * - Optional.
-   *
-   * @default "center"
    */
   align?: "left" | "center" | "right";
 
@@ -46,10 +44,7 @@ export interface DataTableHeadProps extends ElementCustomizableProps {
    * Allows for translation of the accessibility labels.
    *
    * - Must be `en-US` or `th`.
-   *   languages.
    * - Optional.
-   *
-   * @default "en-US"
    */
   locale?: "en-US" | "th";
 }

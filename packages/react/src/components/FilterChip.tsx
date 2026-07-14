@@ -54,7 +54,7 @@ export interface FilterChipProps
   menu?: ReactElement<typeof Fragment>;
 
   /**
-   * Use elevation instead of an outline to signify the Filter Chip's boundary.
+   * Use elevation instead of an outline to signify the Filter Chip’s boundary.
    *
    * - **Use sparingly.** Only elevate a Filter Chip when its placement
    *   requires visual protection, such as on top of an image.
@@ -102,7 +102,7 @@ export interface FilterChipProps
  * @param icon An icon can appear before all content in a Filter Chip.
  * @param tooltip A message shown in a tooltip when the user hovers over the Filter Chip.
  * @param menu Turns the Filter Chip into a dropdown, displaying a Menu underneath the chip.
- * @param elevated Use elevation instead of an outline to signify the Filter Chip's boundary.
+ * @param elevated Use elevation instead of an outline to signify the Filter Chip’s boundary.
  * @param selected If the Filter Chip is selected.
  * @param disabled Turns the Filter Chip gray and blocks any action associated with it.
  * @param onClick Called when the user toggles the Filter Chip on or off. The state is passed in via the function as a boolean.

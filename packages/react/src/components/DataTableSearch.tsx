@@ -23,7 +23,6 @@ export interface DataTableSearchProps extends ElementCustomizableProps {
    * Allows for translation of the default placeholder message.
    *
    * - Must be `en-US` or `th`.
-   *   languages.
    * - Optional.
    */
   locale?: "en-US" | "th";

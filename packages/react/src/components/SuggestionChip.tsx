@@ -43,7 +43,7 @@ export interface SuggestionChipProps
   tooltip?: string;
 
   /**
-   * Use elevation instead of an outline to signify the Suggestion Chip's
+   * Use elevation instead of an outline to signify the Suggestion Chip’s
    * boundary.
    *
    * - **Use sparingly.** Only elevate a Suggestion Chip when its placement
@@ -69,7 +69,7 @@ export interface SuggestionChipProps
  * @param children The text shown inside the Suggestion Chip.
  * @param icon An icon can appear before the text (`children`) in a Suggestion Chip.
  * @param tooltip A message shown in a tooltip when the user hovers over the Suggestion Chip.
- * @param elevated Use elevation instead of an outline to signify the Suggestion Chip's boundary.
+ * @param elevated Use elevation instead of an outline to signify the Suggestion Chip’s boundary.
  * @param disabled Turns the Suggestion Chip gray and blocks any action associated with it.
  */
 export const SuggestionChip: StyleableFC<SuggestionChipProps> = ({

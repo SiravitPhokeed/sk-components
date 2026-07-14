@@ -109,7 +109,7 @@ export interface TextFieldProps<Value extends string | File = string> {
   /**
    * Turns the Text Field gray and blocks user input. `onChange` will not fire.
    *
-   * - [Learn how to make disabled elements less frustrating.](/docs/guides/disabling-elements)
+   * - {@link https://sk-components-demo.mysk.school/docs/guides/disabling-elements Learn how to make disabled elements less frustrating.}
    * - Optional.
    */
   disabled?: boolean;
@@ -137,7 +137,6 @@ export interface TextFieldProps<Value extends string | File = string> {
    *
    * - Only valid if `type` is `file`.
    * - Must be `en-US` or `th`.
-   *   languages.
    * - Optional.
    */
   locale?: "en-US" | "th";

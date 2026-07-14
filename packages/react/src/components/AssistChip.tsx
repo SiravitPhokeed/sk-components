@@ -19,8 +19,8 @@ export interface AssistChipProps
   /**
    * The text shown inside the Assist Chip.
    *
-   * - The label should start with a verb, i.e. "_Turn on_ lights" or "_Save_
-   *   to favorites."
+   * - The label should start with a verb, i.e. “_Turn on_ lights” or “_Save_
+   *   to favorites.”
    * - Always required.
    */
   children: ReactNode;
@@ -43,7 +43,7 @@ export interface AssistChipProps
   tooltip?: string;
 
   /**
-   * Use elevation instead of an outline to signify the Assist Chip's boundary.
+   * Use elevation instead of an outline to signify the Assist Chip’s boundary.
    *
    * - **Use sparingly.** Only elevate an Assist Chip when its placement
    *   requires visual protection, such as on top of an image.
@@ -82,13 +82,15 @@ export interface AssistChipProps
  * difference is a Button is persistent (doesn't change) and an Assist Chip is
  * dynamic and contextual (changes according to the context).
  *
- * The label of an Assist Chip should start with a verb, i.e. "_Turn on_
- * lights" or "_Save_ to favorites".
+ * Assist Chips appear in a Chip Set.
+ *
+ * The label of an Assist Chip should start with a verb, i.e. “_Turn on_
+ * lights” or “_Save_ to favorites.”
  *
  * @param children The text shown inside the Assist Chip.
  * @param icon An icon can appear before the text in an Assist Chip.
  * @param tooltip A message shown in a tooltip when the user hovers over the Assist Chip.
- * @param elevated Use elevation instead of an outline to signify the Assist Chip's boundary.
+ * @param elevated Use elevation instead of an outline to signify the Assist Chip’s boundary.
  * @param dangerous If the action the Assist Chip accomplishes is dangerous, like deleting your account.
  * @param loading Disable the Assist Chip to signify loading status.
  * @param disabled Turns the Assist Chip gray and blocks any action associated with it.

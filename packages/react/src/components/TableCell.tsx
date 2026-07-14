@@ -62,6 +62,8 @@ export interface TableCellProps extends ElementCustomizableProps {
  * @param children The content of the cell.
  * @param header If the cell is a header cell, Table Cell will use `<th>` instead of `<td>`.
  * @param scope The scope of the cell, which defines the cells that the header cell relates to.
+ * @param colSpan The number of columns the cell should span.
+ * @param rowSpan The number of rows the cell should span.
  * @param align How the content should be positioned. It can be aligned to the left, the center (default), or the right.
  */
 export const TableCell: StyleableFC<TableCellProps> = ({

@@ -28,7 +28,7 @@ export interface NavDrawerItemProps
    *
    * - Always required.
    */
-  label?: ReactNode;
+  label: ReactNode;
 
   /**
    * Some text aligned to the right of a Navigation Drawer Item. This is useful

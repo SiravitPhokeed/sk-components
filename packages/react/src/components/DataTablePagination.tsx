@@ -32,7 +32,6 @@ export interface DataTablePaginationProps extends ElementCustomizableProps {
    * Allows for translation of the page indicator and accessibility labels.
    *
    * - Must be `en-US` or `th`.
-   *   languages.
    * - Optional.
    */
   locale?: "en-US" | "th";
@@ -43,10 +42,6 @@ export interface DataTablePaginationProps extends ElementCustomizableProps {
    * - The following is passed to the function: the current page number, the
    *   start index, and the end index.
    * - Optional.
-   *
-   * @param page The current page number, starting from 1.
-   * @param start The start index of the range of data to pull from for this page.
-   * @param end The end index of the range of data to pull from for this page.
    */
   onChange?: (page: number, start: number, end: number) => any;
 }

@@ -31,8 +31,8 @@ export interface ButtonProps extends ActionableProps, ElementCustomizableProps {
    * The appearance of the Button.
    *
    * Each appearance has a priority. For example, in a log in page, the log in
-   * button has higher priority than the password recovery button. In this
-   * case, the log in button is “filled,” and the password recovery is “text.”
+   * button has higher priority than the password recovery Button. In this
+   * case, the log in Button is “filled,” and the password recovery is “text.”
    *
    * - Must be `filled`, `tonal`, `outlined`, or `text`, from highest to lowest
    *   priority.
@@ -44,7 +44,7 @@ export interface ButtonProps extends ActionableProps, ElementCustomizableProps {
    * An icon can appear before the text (`children`) in a Button. In a page
    * with many buttons, icons can quickly orient users.
    *
-   * - You are encouraged to use [Material Icon](/docs/data/material-icon) as the
+   * - You are encouraged to use {@link MaterialIcon Material Icon} as the
    *   value for `icon`.
    * - Normally optional but required if `children` is undefined, as a Button
    *   cannot be empty.
@@ -107,7 +107,7 @@ export interface ButtonProps extends ActionableProps, ElementCustomizableProps {
    * Turns the Button gray and blocks any action associated with it. `onClick`
    * and `href` will have no effect.
    *
-   * - [Learn how to make disabled elements less frustrating.](/docs/guides/disabling-elements)
+   * - {@link https://sk-components-demo.mysk.school/docs/guides/disabling-elements Learn how to make disabled elements less frustrating.}
    * - Optional.
    */
   disabled?: boolean;

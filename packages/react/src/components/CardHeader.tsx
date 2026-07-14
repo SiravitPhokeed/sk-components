@@ -58,6 +58,7 @@ export interface CardHeaderProps extends ElementCustomizableProps {
  * @param icon An icon can appear before all content in a Card Header. In a page with many cards, icons can quickly orient users.
  * @param title The most predominant text inside a Card.
  * @param subtitle A short text complementing the title text.
+ * @param truncate Limits the title and subtitle to a single line, truncating the text with an ellipsis if it overflows.
  */
 export const CardHeader: StyleableFC<CardHeaderProps> = ({
   avatar,

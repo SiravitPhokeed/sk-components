@@ -44,7 +44,7 @@ export interface ListItemProps
   children: ReactNode;
 
   /**
-   * The vertical alignment of the List Item's content.
+   * The vertical alignment of the List Item’s content.
    *
    * - Must be `top`, `center`, or `bottom`.
    * - Always required.
@@ -63,8 +63,8 @@ export interface ListItemProps
 
   /**
    * A state layer is a visual overlay that responds to user interaction. For
-   * example, a Button's state layer increases its opacity on hover, signaling
-   * it's clickable.
+   * example, a Button’s state layer increases its opacity on hover, signaling
+   * it’s clickable.
    *
    * - This effect can be enabled on List Item too, helping users recognize
    *   it as interactive.
@@ -85,9 +85,9 @@ export interface ListItemProps
  * An item inside a List.
  *
  * @param children The content of a List Item consists of the leading section, the content section, and the trailing section.
- * @param align The vertical alignment of the List Item's content.
+ * @param align The vertical alignment of the List Item’s content.
  * @param lines The number of lines contained by the List Item. The height is set from this prop.
- * @param stateLayerEffect A state layer is a visual overlay that responds to user interaction. For example, a Button's state layer increases its opacity on hover, signaling it's clickable.
+ * @param stateLayerEffect A state layer is a visual overlay that responds to user interaction. For example, a Button’s state layer increases its opacity on hover, signaling it’s clickable.
  * @param containerElement The element to use as the container of the List Item.
  */
 export const ListItem: StyleableFC<ListItemProps> = ({
