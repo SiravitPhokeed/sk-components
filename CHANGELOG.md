@@ -24,6 +24,7 @@ Changes to the demo app are documented in
 - RTL support
 - Component-specific additions:
   - **Button:** `autoFocus`
+  - **Card Header**: `truncate`
   - **Chip Field:** `required`
   - **Data Table Body, Data Table Head:** `align` for text alignment
   - **Data Table Head:** `colSpans` for column spanning
