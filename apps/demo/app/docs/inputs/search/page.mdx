@@ -20,12 +20,13 @@ Search allows the user to quickly find something using a query.
   component={Search}
   initialProps={{}}
   adjustableProps={{
+    hotkey: "boolean",
     disabled: "boolean",
   }}
 />
 
 ```tsx
-<Search />
+<Search hotkey />
 ```
 
 ### Usage
@@ -35,9 +36,7 @@ Manage the search query with `useState` and handle changes with `onChange`.
 ```tsx
 const [query, setQuery] = useState("");
 
-return (
-  <Search value={query} onChange={setQuery} />
-);
+return <Search value={query} onChange={setQuery} />;
 ```
 
 ### Props
@@ -61,8 +60,8 @@ return (
     <TableCell>`boolean | string`</TableCell>
     <TableCell>
 
-      Enables the user to focus on the field by pressing `/`, or any other key
-      you specify.
+      Enables the user to focus on the field by pressing
+      <kbd className="kbd">/</kbd>, or any other key you specify.
 
       - Must be either boolean or a single character string.
       - Optional.
@@ -101,8 +100,8 @@ return (
     <TableCell>`(value: string) => any`</TableCell>
     <TableCell>
 
-      Called when the search button is clicked. The value is
-      passed in via the function.
+      Called when the search button is clicked. The value is passed in via the
+      function.
 
       - Optional.
 
