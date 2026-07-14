@@ -8,8 +8,8 @@ export const metadata = {
 
 ## Getting started
 
-**SK Components (“SKCom”) is a React component library built on
-[Material Design 3](https://m3.material.io/).** It provides components that
+SK Components (“SKCom”) is a component library built on
+[Material Design 3](https://m3.material.io/). It provides components that
 follow Material Design principles, so you can ship faster with components
 that already handle styling, accessibility, and behavior.
 
@@ -99,15 +99,15 @@ your React application. For imperative helpers like
 [`snackbar.push()`](/docs/overlays/snackbar), import them from
 `@suankularb-components/react/helpers`.
 
-**Add the default theme** by placing `<ThemeProvider />` in your app. It
-provides the CSS variables all components depend on.
+**Add the default [theme](/docs/layout/theme-provider)** by placing
+`<ThemeProvider />` in your app. It provides the CSS variables all components
+depend on.
 
 **Wrap your app** with `<RootLayout>`. It provides the default page layout
 and global styles. Layout components like
 [Page Header](/docs/layout/page-header) and
 [Content Layout](/docs/layout/content-layout) must be direct children of
-Root Layout. See the
-[Root Layout documentation](/docs/layout/root-layout) for details.
+[Root Layout](/docs/layout/root-layout).
 
 ```tsx
 import {

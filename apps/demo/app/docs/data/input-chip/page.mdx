@@ -138,7 +138,33 @@ They can also appear inside a text field like Chip Field.
     <TableCell>`() => any`</TableCell>
     <TableCell>
 
-      Triggers when the user clicks the delete button.
+      Called when the user clicks the delete button.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="deleteCommand" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The command the delete button sends to the element specified in
+      `deleteCommandfor`.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="deleteCommandfor" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The element the delete button sends the command specified in
+      `deleteCommand` to.
 
       - Optional.
 

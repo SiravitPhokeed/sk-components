@@ -152,7 +152,7 @@ complete pattern.
   />
   <I18nLibsTableRow
     library="next-i18next (v15)"
-    href="https://github.com/i18next/next-i18next/tree/v15"
+    href="https://github.com/i18next/next-i18next/tree/0aa33a73f540cf0ea8d5101e7613e0f4378a139f"
     imports={["next-i18next"]}
     client="useTranslation().i18n.language"
   />
@@ -176,11 +176,15 @@ complete pattern.
   />
 </I18nLibsTable>
 
-<Text type="body-medium" className="text-on-surface-variant *:-mt-2 *:mb-6">
-  `react-i18next`, `react-intl`, and LinguiJS are hooks-based and require
-  wrapping in a Client Component. They still work in App Router — just add `"use
-  client"` to any component that calls the hook. `next-i18next` v15 supports
-  Pages Router only and does not work with App Router.
+<Text type="body-medium" className="text-on-surface-variant -mt-3 mb-6 block">
+
+`react-i18next`, `react-intl`, and LinguiJS are hooks-based and require
+wrapping in a Client Component.
+
+`next-i18next` v15 supports Pages Router only and does not work with App Router.
+`next-i18next` v16+ preserves `useTranslation()` for Pages Router at the
+`next-i18next/pages` import.
+
 </Text>
 
 Here is what the full pattern looks like with `next-intl`.

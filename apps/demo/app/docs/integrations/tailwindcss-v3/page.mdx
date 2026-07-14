@@ -1,6 +1,6 @@
+import TailwindSelector from "@/app/docs/components/TailwindSelector";
 import VersionsTable from "@/app/docs/components/VersionsTable";
 import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
-import TailwindSelector from "@/app/docs/components/TailwindSelector";
 
 export const metadata = {
   title: "Using with Tailwind CSS v3",
@@ -268,30 +268,32 @@ export default config;
 ### State layer
 
 Components that use state layers and ripple effects (e.g. Buttons, Chips, etc.)
-can have those elements customized with a custom Tailwind CSS variant.
+can have those elements customized with a custom Tailwind CSS plugin.
 
-Add this variant to your `tailwind.config.ts` file:
+Import `plugin` from `tailwindcss/plugin` and add the following to your
+`tailwind.config.ts` file. This adds `state-layer-*` utility classes.
 
 ```ts
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const config: Config = {
   // ...
   plugins: [
-    function ({ addVariant }) {
-      addVariant("state-layer", [
-        "&::before",
-        "&_.skc-interactive\\_\\_ripple",
-      ]);
-    },
+    plugin(function ({ matchUtilities, theme }) {
+      matchUtilities(
+        { "state-layer": (value) => ({ "--state-layer-color": value }) },
+        { values: theme("colors") },
+      );
+    }),
   ],
 };
 ```
 
-The variant can then be used like so:
+The utility classes can then be used like so.
 
 ```tsx
-<Interactive className="state-layer:bg-primary">
+<Interactive className="state-layer-primary">
   I have a primary state layer!
 </Interactive>
 ```
@@ -299,8 +301,8 @@ The variant can then be used like so:
 ### Tailwind CSS v4
 
 Tailwind CSS v4 has built-in layer support, which lets you override SKCom
-styles without `!important`. See the [v4 guide](/docs/integrations/tailwindcss-v4) if
-you are considering upgrading.
+styles without `!important`. See the [v4 guide](/docs/integrations/tailwindcss-v4)
+if you are considering upgrading.
 
 ### Version changes
 

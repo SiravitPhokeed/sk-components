@@ -58,22 +58,6 @@ A vertical index of texts or images.
 </List>
 ```
 
-### Usage
-
-List wraps [List Items](/docs/data/list-item), each containing a
-[List Item Content](/docs/data/list-item-content).
-
-```tsx
-<List divided>
-  <ListItem align="center">
-    <ListItemContent title="Fish Burger" desc="฿50.00" />
-  </ListItem>
-  <ListItem align="center">
-    <ListItemContent title="Pork Burger" desc="฿50.00" />
-  </ListItem>
-</List>
-```
-
 ### Props
 
 - [`StyleableProps`](/docs/guides/shared-props): `className` and `style`.
@@ -84,7 +68,8 @@ List wraps [List Items](/docs/data/list-item), each containing a
     <TableCell>`ReactNode`</TableCell>
     <TableCell>
 
-      The items in the list — List Items, Buttons, or Cards.
+      List contains List Items, each containing a List Item Content and other
+      elements.
 
       - Always required.
 

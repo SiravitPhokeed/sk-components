@@ -33,7 +33,6 @@ Then, add [Theme Provider](/docs/layout/theme-provider) and wrap your app with
 
 ```tsx
 // app/layout.tsx
-
 import {
   RootLayout as SKCRootLayout,
   ThemeProvider,
@@ -58,7 +57,6 @@ navigation items.
 
 ```tsx
 // components/NavBar.tsx
-
 import { NavBar as SKCNavBar } from "@suankularb-components/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -86,7 +84,6 @@ components into your `layout.tsx` file.
 
 ```tsx
 // app/layout.tsx
-
 import NavBar from "@/components/NavBar";
 import NavDrawer from "@/components/NavDrawer";
 import {
@@ -111,13 +108,10 @@ export default RootLayout;
 
 ---
 
-A **typical top-level page** might look something like this. You can place
-[FAB](/docs/inputs/fab) directly in a page component — since Next.js wraps each
-page with Root Layout, FAB in a page still ends up as a child of Root Layout.
+A **typical top-level page** might look something like this.
 
 ```tsx
 // app/page.tsx
-
 import {
   ContentLayout,
   FAB,
@@ -183,7 +177,7 @@ Then, add the font class names to your Root Layout component.
 </SKCRootLayout>
 ```
 
-#### Icon Font
+#### Icon font
 
 <Button
   children="Download icon font"
@@ -237,7 +231,7 @@ Finally, add the font class name to your Root Layout component.
 **Many interactive components** have props that extend
 [`ElementCustomizableProps`](/docs/guides/shared-props#element-customizable-props)
 and thus **accept an `element` prop.** This allows you to use Next.js’s
-[`Link` component](https://nextjs.org/docs/pages/api-reference/components/link)
+[`Link` component](https://nextjs.org/docs/app/api-reference/components/link)
 for navigation instead of the default `<a>` element.
 
 ```tsx

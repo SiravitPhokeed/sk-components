@@ -9,6 +9,7 @@ import {
   Button,
   MaterialIcon,
   TableCell,
+  Text,
 } from "@suankularb-components/react";
 
 export const metadata = {
@@ -60,7 +61,13 @@ password recovery is “text.”
 text Buttons can blend together, making it hard for users to distinguish them.
 Use a mix of appearances to make it easier for users to identify the Buttons.
 
-<Actions align="left" className="mt-3 mb-6">
+<div className="flex items-center gap-1 px-2">
+  <MaterialIcon icon="cancel" size={20} className="text-error" />
+  <Text type="title-small" className="text-on-surface-variant">
+    Don’t
+  </Text>
+</div>
+<Actions align="left" className="mb-6">
   <Button children="Yes" appearance="text" />
   <Button children="No" appearance="text" />
   <Button children="Maybe" appearance="text" />
