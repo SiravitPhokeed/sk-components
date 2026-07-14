@@ -3,6 +3,7 @@
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/switch.css";
+import type { MaterialIcon } from "@/components/MaterialIcon";
 import type { ReactElement } from "react";
 import { useState } from "react";
 
@@ -28,7 +29,7 @@ export interface SwitchProps extends ElementCustomizableProps {
   /**
    * An icon inside the thumb when the Switch is off.
    *
-   * - You are encouraged to use [Material Icon](/docs/data/material-icon) as
+   * - You are encouraged to use {@link MaterialIcon Material Icon} as
    *   the value for `offIcon`.
    * - Optional.
    */
@@ -37,7 +38,7 @@ export interface SwitchProps extends ElementCustomizableProps {
   /**
    * An icon inside the thumb when the Switch is on.
    *
-   * - You are encouraged to use [Material Icon](/docs/data/material-icon) as
+   * - You are encouraged to use {@link MaterialIcon Material Icon} as
    *   the value for `onIcon`.
    * - Optional.
    */

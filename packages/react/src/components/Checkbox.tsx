@@ -31,7 +31,7 @@ export interface CheckboxProps extends ElementCustomizableProps {
   /**
    * Turns the Checkbox gray and blocks any action associated with it.
    *
-   * - [Learn how to make disabled elements less frustrating.](/docs/guides/disabling-elements)
+   * - {@link https://sk-components-demo.mysk.school/docs/guides/disabling-elements Learn how to make disabled elements less frustrating.}
    * - Optional.
    */
   disabled?: boolean;

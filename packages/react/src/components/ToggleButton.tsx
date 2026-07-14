@@ -30,7 +30,7 @@ export interface ToggleButtonProps extends ElementCustomizableProps {
    * A Toggle Button's action is only communicated via its icon, so keep the
    * icon clear.
    *
-   * - You are encouraged to use Material Icon as the value for `icon`.
+   * - You are encouraged to use {@link MaterialIcon Material Icon} as the value for `icon`.
    * - Always required, as a Toggle Button cannot be empty.
    */
   icon: ReactElement;
@@ -63,7 +63,7 @@ export interface ToggleButtonProps extends ElementCustomizableProps {
    * Turns the Toggle Button gray and blocks any action associated with it.
    * `onChange` will have no effect.
    *
-   * - {@link /docs/guides/disabling-elements Learn how to make disabled elements less frustrating.}
+   * - {@link https://sk-components-demo.mysk.school/docs/guides/disabling-elements Learn how to make disabled elements less frustrating.}
    * - Optional.
    */
   disabled?: boolean;

@@ -1,6 +1,7 @@
 "use client";
 
 import type { ChipSet } from "@/components/ChipSet";
+import type { InputChip } from "@/components/InputChip";
 import { Progress } from "@/components/Progress";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
@@ -22,7 +23,7 @@ export interface ChipFieldProps {
   /**
    * The Input Chips that the user have already entered.
    *
-   * - Must be a [Chip Set](/docs/data/chip-set) with only [Input Chips](/docs/data/input-chip).
+   * - Must be a {@link ChipSet Chip Set} with only {@link InputChip Input Chips}.
    * - Always required.
    */
   children: ReactElement<typeof ChipSet>;
@@ -43,7 +44,7 @@ export interface ChipFieldProps {
   helperMsg?: ReactNode;
 
   /**
-   * The value inside the field that is used to create Input Chips. This is
+   * The value inside the field that is used to create {@link InputChip Input Chips}. This is
    * useful if you want a controlled input.
    *
    * - Optional.
@@ -167,7 +168,7 @@ const STRINGS = {
  * @param children The Input Chips that the user have already entered.
  * @param label The placeholder text (if no placeholder specified or when not focused and no value) and the label text (when focused or has value).
  * @param helperMsg A short description of the Chip Field.
- * @param value The value inside the field that is used to create Input Chips.
+ * @param value The value inside the field that is used to create {@link InputChip Input Chips}.
  * @param onChange Called when the user makes changes to the field value.
  * @param onNewEntries Called when the user hits a separator or pastes separator-delimited text.
  * @param onDeleteLast Called when the user hits backspace twice while in the field.
