@@ -40,14 +40,14 @@ you can take advantage of.
 >    `"use client"`.
 > 2. **Setup changes** — [Theme Provider](/docs/layouts/theme-provider) is no
 >    longer a wrapper, and you no longer manage the state of
->    [Nav Drawer](/docs/layout/nav-drawer) or [Snackbar](/docs/overlays/snackbar).
+>    [Navigation Drawer](/docs/layout/nav-drawer) or [Snackbar](/docs/overlays/snackbar).
 >    Try the new `snackbar.push()` and `snackbar.promise()` methods.
 > 3. **Declarative modals and popovers** — Replace `useState` with the
 >    [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API)
 >    for [Menu](/docs/overlays/menu), [Dialog](/docs/overlays/dialog), and
 >    [Full-screen Dialog](/docs/overlays/fullscreen-dialog). The new
 >    [Anchor](/docs/overlays/anchor) component simplifies Menu positioning.
-> 4. **FAB in Root Layout** — [FAB](/docs/inputs/fab) moves from a Nav Bar prop
+> 4. **FAB in Root Layout** — [FAB](/docs/inputs/fab) moves from a Navigation Bar prop
 >    to a direct child of [Root Layout](/docs/layout/root-layout).
 > 5. **`alt` and `*Attr` removed** — `alt` is removed in favor of auto-generated
 >    IDs, and `*Attr` pass-through props have been removed from most components.
@@ -106,12 +106,12 @@ const App = () => (
 
 ---
 
-**You no longer manage the state of [Nav Drawer](/docs/layout/nav-drawer).**
-Just include Page Header, Nav Bar, and Nav Drawer as direct children of
+**You no longer manage the state of [Navigation Drawer](/docs/layout/nav-drawer).**
+Just include Page Header, Navigation Bar, and Navigation Drawer as direct children of
 [Root Layout](/docs/layout/root-layout), and SKCom will handle the rest.
 
 If you had previously used `useState` or React Context to manage the state of
-Nav Drawer, you can remove that code.
+Navigation Drawer, you can remove that code.
 
 ```tsx
 <RootLayout>
@@ -121,12 +121,12 @@ Nav Drawer, you can remove that code.
 </RootLayout>
 ```
 
-If you need to programmatically open or close the Nav Drawer, use the Invoker
+If you need to programmatically open or close the Navigation Drawer, use the Invoker
 Commands API with the `id` of `nav-drawer`.
 
 ```tsx
 <Button command="show-modal" commandfor="nav-drawer">
-  Open Nav Drawer
+  Open Navigation Drawer
 </Button>
 ```
 
@@ -285,14 +285,14 @@ Commands API.
 
 **[FAB](/docs/inputs/fab) is now a direct child of [Root Layout](/docs/layout/root-layout).**
 
-- Previously, FAB was a prop of Nav Bar, which made it difficult to use FAB in
-  an app where Nav Bar was abstracted into a Layout, making the prop very
+- Previously, FAB was a prop of Navigation Bar, which made it difficult to use FAB in
+  an app where Navigation Bar was abstracted into a Layout, making the prop very
   difficult to access.
 - Now, FAB can be placed in the Root Layout, which makes it easier to use in any
   app structure.
 
 ```tsx
-// OLD: FAB in Nav Bar
+// OLD: FAB in Navigation Bar
 <NavBar fab={<FAB icon={<MaterialIcon icon="add" />} />}>{/* ... */}</NavBar>
 ```
 
@@ -346,8 +346,8 @@ automatically.
 - Form Item
 - Full-screen Dialog
 - List Item Content
-- Nav Bar Item
-- Nav Drawer Section
+- Navigation Bar Item
+- Navigation Drawer Section
 - Page Header
 - Search
 - Select
@@ -799,7 +799,7 @@ update your code.
   </SummaryTableRow>
 </SummaryTableSection>
 
-<SummaryTableSection name="Nav Bar">
+<SummaryTableSection name="Navigation Bar">
   <SummaryTableRow name="onNavToggle" type="changed">
     Was required (`() => any`), now **optional** (`() => void`)
   </SummaryTableRow>
@@ -814,7 +814,7 @@ update your code.
   </SummaryTableRow>
 </SummaryTableSection>
 
-<SummaryTableSection name="Nav Bar Item">
+<SummaryTableSection name="Navigation Bar Item">
   <SummaryTableRow name="command" type="new">
     Invoker Commands API support
   </SummaryTableRow>
@@ -829,7 +829,7 @@ update your code.
   </SummaryTableRow>
 </SummaryTableSection>
 
-<SummaryTableSection name="Nav Drawer">
+<SummaryTableSection name="Navigation Drawer">
   <SummaryTableRow name="open" type="removed">
     No longer consumer-controlled. Use `command="show-modal"
     commandfor="nav-drawer"`.
@@ -839,7 +839,7 @@ update your code.
   </SummaryTableRow>
 </SummaryTableSection>
 
-<SummaryTableSection name="Nav Drawer Item">
+<SummaryTableSection name="Navigation Drawer Item">
   <SummaryTableRow name="command" type="new">
     Invoker Commands API support
   </SummaryTableRow>
@@ -848,7 +848,7 @@ update your code.
   </SummaryTableRow>
 </SummaryTableSection>
 
-<SummaryTableSection name="Nav Drawer Section">
+<SummaryTableSection name="Navigation Drawer Section">
   <SummaryTableRow name="alt" type="removed">
     Removed (IDs use `useId()`)
   </SummaryTableRow>

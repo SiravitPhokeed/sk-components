@@ -30,7 +30,7 @@ const ICON_NAMES_USED_INTERNALLY = [
   "check_small", // Checkbox
   "close", // Dialog, Chips
   "done", // Button
-  "menu", // Nav Bar
+  "menu", // Navigation Bar
   "search", // Search
 ];
 

@@ -56,7 +56,7 @@ export interface NavDrawerItemProps
 }
 
 /**
- * A destination in a Navigation Drawer. Always place inside a Nav Drawer
+ * A destination in a Navigation Drawer. Always place inside a Navigation Drawer
  * Section.
  *
  * @param icon Icons help users identify pages more quickly.

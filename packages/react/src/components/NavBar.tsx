@@ -56,7 +56,7 @@ const STRINGS = {
 };
 
 /**
- * A Nav Bar provides persistent access to all top-level pages. On larger
+ * A Navigation Bar provides persistent access to all top-level pages. On larger
  * screens, it transforms into a Navigation Rail.
  *
  * @param children A Navigation Bar contains Navigation Bar Items, each leading to a different top-level page.

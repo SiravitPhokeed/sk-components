@@ -12,7 +12,7 @@ export const metadata = {
 ## Root Layout
 
 The container for everything in your application. Components like Nav
-Drawer, Nav Bar, FAB, and Page Header each appear exactly once, and they
+Drawer, Navigation Bar, FAB, and Page Header each appear exactly once, and they
 work best as direct children of Root Layout.
 
 Root Layout handles component positioning and responsiveness.
@@ -21,8 +21,8 @@ Root Layout handles component positioning and responsiveness.
 
 ```tsx
 <RootLayout element="body">
-  <NavBar>{/* Nav Bar Items */}</NavBar>
-  <NavDrawer>{/* Nav Drawer Sections */}</NavDrawer>
+  <NavBar>{/* Navigation Bar Items */}</NavBar>
+  <NavDrawer>{/* Navigation Drawer Sections */}</NavDrawer>
   <FAB {/* FAB props */} />
   <PageHeader>Dashboard</PageHeader>
   <ContentLayout>{/* Sections */}</ContentLayout>
@@ -40,11 +40,12 @@ Root Layout handles component positioning and responsiveness.
     <TableCell>`ReactNode`</TableCell>
     <TableCell>
 
-      Root Layout manages the placement of Nav Drawer, Nav Bar, and FAB.
+      Root Layout manages the placement of Navigation Drawer, Navigation Bar,
+      and FAB.
 
       - These six components should be direct children of Root Layout:
-        - Nav Drawer
-        - Nav Bar
+        - Navigation Drawer
+        - Navigation Bar
         - FAB
         - Page Header
         - Content Layout
@@ -68,7 +69,7 @@ Root Layout handles component positioning and responsiveness.
 
 <VersionsTable>
   <VersionsTableRow version="v4.0.0">
-    FAB is now a direct child of Root Layout instead of a Nav Bar prop.
+    FAB is now a direct child of Root Layout instead of a Navigation Bar prop.
   </VersionsTableRow>
   <VersionsTableRow version="v3.0.0">Root Layout introduced.</VersionsTableRow>
 </VersionsTable>

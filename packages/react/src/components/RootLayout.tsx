@@ -8,11 +8,12 @@ import type { ReactNode } from "react";
  */
 export interface RootLayoutProps extends ElementCustomizableProps {
   /**
-   * Root Layout manages the placement of Nav Drawer, Nav Bar, and FAB.
+   * Root Layout manages the placement of Navigation Drawer, Navigation Bar, and
+   * FAB.
    *
    * - These six components should be direct children of Root Layout:
-   *   - Nav Drawer
-   *   - Nav Bar
+   *   - Navigation Drawer
+   *   - Navigation Bar
    *   - FAB
    *   - Page Header
    *   - Content Layout
@@ -25,12 +26,12 @@ export interface RootLayoutProps extends ElementCustomizableProps {
 
 /**
  * The container for everything in your application. Components like Nav
- * Drawer, Nav Bar, FAB, and Page Header each appear exactly once, and they
+ * Drawer, Navigation Bar, FAB, and Page Header each appear exactly once, and they
  * work best as direct children of Root Layout.
  *
  * Root Layout handles component positioning and responsiveness.
  *
- * @param children Root Layout manages the placement of Nav Drawer, Nav Bar, and FAB.
+ * @param children Root Layout manages the placement of Navigation Drawer, Navigation Bar, and FAB.
  */
 export const RootLayout: StyleableFC<RootLayoutProps> = ({
   children,

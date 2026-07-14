@@ -70,14 +70,14 @@ const DocsNav: StyleableFC = ({ className, style }) => (
       <DocsNavLink href="/docs/layout/header">Header</DocsNavLink>
       <DocsNavLink href="/docs/layout/section">Section</DocsNavLink>
       <DocsNavLink href="/docs/layout/columns">Columns</DocsNavLink>
-      <DocsNavLink href="/docs/layout/nav-bar">Nav Bar</DocsNavLink>
-      <DocsNavLink href="/docs/layout/nav-bar-item">Nav Bar Item</DocsNavLink>
-      <DocsNavLink href="/docs/layout/nav-drawer">Nav Drawer</DocsNavLink>
+      <DocsNavLink href="/docs/layout/nav-bar">Navigation Bar</DocsNavLink>
+      <DocsNavLink href="/docs/layout/nav-bar-item">Navigation Bar Item</DocsNavLink>
+      <DocsNavLink href="/docs/layout/nav-drawer">Navigation Drawer</DocsNavLink>
       <DocsNavLink href="/docs/layout/nav-drawer-section">
-        Nav Drawer Section
+        Navigation Drawer Section
       </DocsNavLink>
       <DocsNavLink href="/docs/layout/nav-drawer-item">
-        Nav Drawer Item
+        Navigation Drawer Item
       </DocsNavLink>
       <DocsNavLink href="/docs/layout/side-sheet">Side Sheet</DocsNavLink>
       <DocsNavLink href="/docs/layout/app-drawer">App Drawer</DocsNavLink>

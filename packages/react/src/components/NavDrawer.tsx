@@ -5,11 +5,12 @@ import "@suankularb-components/css/nav-drawer.css";
 import type { ReactNode } from "react";
 
 /**
- * Props for {@link NavDrawer Nav Drawer}.
+ * Props for {@link NavDrawer Navigation Drawer}.
  */
 export interface NavDrawerProps {
   /**
-   * Nav Drawer Sections holding Nav Drawer Items, the navigation destinations.
+   * Navigation Drawer Sections holding Navigation Drawer Items, the navigation
+   * destinations.
    *
    * - Always required.
    */
@@ -36,7 +37,7 @@ const STRINGS = {
 /**
  * A navigation drawer that slides in from the left.
  *
- * @param children Nav Drawer Sections holding Nav Drawer Items, the navigation destinations.
+ * @param children Navigation Drawer Sections holding Navigation Drawer Items, the navigation destinations.
  * @param locale Allows for translation of the accessibility labels.
  */
 export const NavDrawer: StyleableFC<NavDrawerProps> = ({
