@@ -136,7 +136,7 @@ export interface TextFieldProps<Value extends string | File = string> {
    * place of the file name when no files have been attached yet.
    *
    * - Only valid if `type` is `file`.
-   * - Must be `th` or `en-US`. SKCom supports two languages: th and en-US.
+   * - Must be `en-US` or `th`.
    *   languages.
    * - Optional.
    */

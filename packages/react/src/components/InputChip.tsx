@@ -65,7 +65,7 @@ export interface InputChipProps
   /**
    * Allows for translation of the accessibility labels.
    *
-   * - Must be `th` or `en-US`. SKCom supports two languages: th and en-US.
+   * - Must be `en-US` or `th`.
    * - Optional.
    *
    * @default "en-US"

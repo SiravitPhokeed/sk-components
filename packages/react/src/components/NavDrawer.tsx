@@ -18,7 +18,7 @@ export interface NavDrawerProps {
   /**
    * Allows for translation of the accessibility labels.
    *
-   * - Must be `th` or `en-US`, as SKCom currently only supports these two
+   * - Must be `en-US` or `th`, as SKCom currently only supports these two
    *   languages.
    * - Optional.
    */

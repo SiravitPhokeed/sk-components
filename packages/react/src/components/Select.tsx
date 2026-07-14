@@ -77,7 +77,7 @@ export interface SelectProps<
   /**
    * Allows for translation of the message shown when there are no options.
    *
-   * - Must be `th` or `en-US`. SKCom supports two languages: th and en-US.
+   * - Must be `en-US` or `th`.
    * - Optional.
    */
   locale?: "en-US" | "th";

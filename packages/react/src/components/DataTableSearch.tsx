@@ -22,7 +22,7 @@ export interface DataTableSearchProps extends ElementCustomizableProps {
   /**
    * Allows for translation of the default placeholder message.
    *
-   * - Must be `th` or `en-US`. SKCom supports two languages: th and en-US.
+   * - Must be `en-US` or `th`.
    *   languages.
    * - Optional.
    */
