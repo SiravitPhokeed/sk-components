@@ -61,6 +61,8 @@ pnpm demo:start
 - Use Sentence case for headers.
 - Put prop names in codeblocks in documentation.
   - e.g. `onClick` instead of onClick.
+- Use American English in documentation and commit messages.
+  - e.g. behavior, not behaviour.
 - Use smart quotes in documentation and commit messages. In JSX, escape them
   with `&ldquo;`, `&rdquo;`, etc.
   - e.g. `isn’t` instead of `isn't` (notice the apostrophe).
