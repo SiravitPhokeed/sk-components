@@ -15,8 +15,9 @@ export interface TextFieldProps<Value extends string | File = string> {
    * How the Text Field looks. An outlined Text Field has a lower emphasis than
    * filled, so it is great for a form with many fields.
    *
-   * - Keep the appearance consistent across Text Fields. Separate different
-   *   appearances by region.
+   * - Keep the appearance consistent across Text Fields. For example, use
+   *   `outlined` for form fields and `filled` for search bars, rather than mixing
+   *   both in the same context.
    * - Must be `outlined` or `filled`.
    * - Always required.
    */
@@ -55,7 +56,6 @@ export interface TextFieldProps<Value extends string | File = string> {
   /**
    * How the Text Field behaves if the field value exceeds the visual space.
    *
-   * - Must be `single-line`, `multi-line`, or `textarea`.
    * - A single line Text Field can only accommodate 1 line of text. Field value
    *   never wraps and instead scrolls.
    * - A multi-line Text Field starts with just accommodating 1 line but
@@ -66,10 +66,10 @@ export interface TextFieldProps<Value extends string | File = string> {
   behavior?: "single-line" | "multi-line" | "textarea";
 
   /**
-   * The alignment of the input field.
+   * The text alignment inside the input. Use `right` when the input value
+   * should sit next to trailing text — for example, a username field with a
+   * `@domain` suffix so the value reads naturally with the suffix.
    *
-   * - This is useful if the input value should come immediately before the
-   *   trailing text, like the start of an email.
    * - Optional.
    */
   align?: "left" | "right";
@@ -108,8 +108,8 @@ export interface TextFieldProps<Value extends string | File = string> {
 
   /**
    * Turns the Text Field gray and blocks user input. `onChange` will not fire.
-   * {@link https://codium.one/index.php/en/blog/77-disabled-buttons-don-t-have-to-suck Learn when to disable something.}
    *
+   * - [Learn how to make disabled elements less frustrating.](/docs/guides/disabling-elements)
    * - Optional.
    */
   disabled?: boolean;
@@ -128,8 +128,6 @@ export interface TextFieldProps<Value extends string | File = string> {
    * The value inside the field. This is useful if you want a controlled input.
    *
    * - Optional.
-   *
-   * @see {@link https://reactjs.org/docs/forms.html#controlled-components React documention on controlled input}
    */
   value?: string;
 
@@ -138,19 +136,17 @@ export interface TextFieldProps<Value extends string | File = string> {
    * place of the file name when no files have been attached yet.
    *
    * - Only valid if `type` is `file`.
-   * - Must be `th` or `en-US`, as SKCom currently only supports these two
+   * - Must be `th` or `en-US`. SKCom supports two languages: th and en-US.
    *   languages.
    * - Optional.
    */
   locale?: "en-US" | "th";
 
   /**
-   * This function triggers when the user makes changes to the field value. The
-   * value is passed in via the function.
+   * Called when the user makes changes to the field value. The value is passed
+   * in via the function.
    *
    * - Optional.
-   *
-   * @param value The value of the field.
    */
   onChange?: (value: Value) => any;
 
@@ -212,22 +208,23 @@ const STRINGS = {
 };
 
 /**
- * A place for users to enter text.
+ * A field where users enter text — from short passwords to long-form
+ * answers.
  *
- * @param appearance How the Text Field looks.
- * @param label The placeholder text and the label text.
+ * @param appearance How the Text Field looks. An outlined Text Field has a lower emphasis than filled, so it is great for a form with many fields.
+ * @param label The placeholder text (when not focused and no value) and the label text (when focused or has value).
  * @param type The type of the input field.
  * @param behavior How the Text Field behaves if the field value exceeds the visual space.
- * @param align The alignment of the input field.
+ * @param align The text alignment inside the input. Use `right` when the input value should sit next to trailing text — for example, a username field with a `@domain` suffix so the value reads naturally with the suffix.
  * @param leading The leading text or icon, aligned to the left.
  * @param trailing The trailing text or icon, aligned to the right.
  * @param helperMsg A short description of the Text Field, or an error message during an error state.
  * @param required If the user has to enter text in this field for the form to be valid.
- * @param disabled Turns the Text Field gray and blocks user input.
+ * @param disabled Turns the Text Field gray and blocks user input. `onChange` will not fire.
  * @param error Tells Text Field that it contains an invalid value and activates the error state.
  * @param value The value inside the field. This is useful if you want a controlled input.
- * @param locale Allows for translation of the “No files attached” text.
- * @param onChange This function triggers when the user makes changes to the field value.
+ * @param locale Allows for translation of the “No files attached” text, which is put in place of the file name when no files have been attached yet.
+ * @param onChange Called when the user makes changes to the field value. The value is passed in via the function.
  * @param inputAttr Attributes for the underlying `<input>` element used as the field.
  */
 export const TextField = <Value extends string | File = string>({

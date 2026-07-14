@@ -14,7 +14,7 @@ export interface AvatarProps extends ElementCustomizableProps {
    *
    * - Depending on the type of value, the Avatar will display differently:
    *   - If the value is a string, it is displayed as the user’s initials. The
-   *     string should be no more that 2 characters long.
+   *     string should be no more than 2 characters long.
    *   - If the value is an element, it is displayed as the user’s profile
    *     picture. Note that the picture is cropped to a circle.
    *   - If not defined, a placeholder avatar is displayed.

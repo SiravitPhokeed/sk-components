@@ -29,10 +29,10 @@ export interface FilterChipProps
   children: ReactNode;
 
   /**
-   * An icon can appear before all content in an Filter Chip. In a page with
-   * many cards, icons can quickly orient users.
+   * An icon can appear before all content in a Filter Chip. In a Chip Set with
+   * many chips, icons can quickly orient users.
    *
-   * - You are encouraged to use Material Icons as the value for `icon`.
+   * - You are encouraged to use Material Icon as the value for `icon`.
    * - Optional.
    */
   icon?: ReactElement;
@@ -56,9 +56,8 @@ export interface FilterChipProps
   /**
    * Use elevation instead of an outline to signify the Filter Chip's boundary.
    *
-   * - Important: do not use this prop if you don't have to. Only elevate an
-   *   Filter Chip when its placement requires visual protection, such as on
-   *   top of an image.
+   * - **Use sparingly.** Only elevate a Filter Chip when its placement
+   *   requires visual protection, such as on top of an image.
    * - Optional.
    */
   elevated?: boolean;
@@ -80,7 +79,8 @@ export interface FilterChipProps
   disabled?: boolean;
 
   /**
-   * Triggers when the user toggles the Filter Chip on or off.
+   * Called when the user toggles the Filter Chip on or off. The state is
+   * passed in via the function as a boolean.
    *
    * - Optional.
    */
@@ -96,17 +96,17 @@ export interface FilterChipProps
 
 /**
  * A set of Filter Chips provide product-authored options to narrow down
- * content. A Filter Chip should never appear alone and should be a child of
- * Chip Set.
+ * content. Filter Chips appear in a Chip Set.
  *
  * @param children The text displayed inside the chip.
- * @param icon An icon can appear before all content in an Filter Chip.
+ * @param icon An icon can appear before all content in a Filter Chip.
  * @param tooltip A message shown in a tooltip when the user hovers over the Filter Chip.
  * @param menu Turns the Filter Chip into a dropdown, displaying a Menu underneath the chip.
  * @param elevated Use elevation instead of an outline to signify the Filter Chip's boundary.
  * @param selected If the Filter Chip is selected.
  * @param disabled Turns the Filter Chip gray and blocks any action associated with it.
- * @param onClick Triggers when the user toggles the Filter Chip on or off.
+ * @param onClick Called when the user toggles the Filter Chip on or off. The state is passed in via the function as a boolean.
+ * @param href The URL of the page this Filter Chip leads to, similar to `href` on `<a>`.
  */
 export const FilterChip: StyleableFC<FilterChipProps> = ({
   children,

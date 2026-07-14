@@ -10,7 +10,7 @@ export interface ChipSetProps extends ElementCustomizableProps {
   /**
    * Chips.
    *
-   * - Must include ≥2 Chips.
+   * - Must include at least 2 Chips.
    * - Must be the same type of Chips.
    * - Always required.
    */

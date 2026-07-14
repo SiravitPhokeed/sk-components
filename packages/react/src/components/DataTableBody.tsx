@@ -17,7 +17,7 @@ export interface DataTableBodyProps<
   RowShape extends {} = any,
 > extends ElementCustomizableProps {
   /**
-   * The return of `getRowModel`, one of the functions of the Tanstack Table
+   * The return of `getRowModel`, one of the functions of the TanStack Table
    * instance.
    *
    * - Always required.
@@ -49,9 +49,10 @@ export interface DataTableBodyProps<
 }
 
 /**
- * The body section of a Data Table specified via Tanstack Table.
+ * The body section of a Data Table, designed to work with TanStack Table.
+ * For the non-TanStack path, use Table Body instead.
  *
- * @param rowModel The return of `getRowModel`, one of the functions of the Tanstack Table instance.
+ * @param rowModel The return of `getRowModel`, one of the functions of the TanStack Table instance.
  */
 export const DataTableBody = <RowShape extends {}>({
   rowModel,

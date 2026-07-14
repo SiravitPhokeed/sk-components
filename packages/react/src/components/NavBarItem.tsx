@@ -19,7 +19,7 @@ export interface NavBarItemProps
   extends ActionableProps, ElementCustomizableProps {
   /**
    * Icons help users identify pages more quickly, which is crucial for
-   * frequent destinations like those from the Navigation Bar/Rail.
+   * frequent destinations like those from the Nav Bar.
    *
    * - If the icon is sufficiently representative of the page, a label isn't
    *   needed.
@@ -63,9 +63,9 @@ export interface NavBarItemProps
 }
 
 /**
- * One of the destinations in a Navigation Bar/Rail.
+ * One of the destinations in a Nav Bar.
  *
- * @param icon Icons help users identify pages more quickly, which is crucial for frequent destinations like those from the Navigation Bar/Rail.
+ * @param icon Icons help users identify pages more quickly, which is crucial for frequent destinations like those from the Nav Bar.
  * @param label An additional text label underneath the icon.
  * @param tooltip A message shown in a tooltip when the user hovers over the Navigation Bar Item.
  * @param selected Highlights the Navigation Bar Item. If the user is currently on this page, the Navigation Bar Item should be highlighted.

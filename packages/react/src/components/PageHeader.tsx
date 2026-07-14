@@ -29,7 +29,6 @@ export interface PageHeaderProps extends ElementCustomizableProps {
    *   hierarchy in the sitemap. As a page can sometimes be navigated to from
    *   many places, this ensures that the Back button of a page always goes to
    *   the same place.
-   *   {@link https://m2.material.io/design/navigation/understanding-navigation.html Learn more about navigation.}
    * - Required if `onBack` is not defined, as the back Button cannot have no
    *   functionality.
    * - Incompatible with `onBack`.
@@ -47,16 +46,16 @@ export interface PageHeaderProps extends ElementCustomizableProps {
   /**
    * Allows for translation of the accessibility labels.
    *
-   * - Must be `th` or `en-US`, as SKCom currently only supports these two
+   * - Must be `th` or `en-US`. SKCom supports two languages: th and en-US.
    *   languages.
    * - Optional.
    */
   locale?: "en-US" | "th";
 
   /**
-   * Change the underlying element from `<a>` to a custom element. This is
-   * useful when a framework you’re using has a Link component for routing. An
-   * example is `next/link` from Next.js.
+   * Change the underlying element of the back Button from `<a>` to a custom
+   * element. This is useful when a framework you’re using has a Link component
+   * for routing. An example is `next/link` from Next.js.
    *
    * - Optional.
    * - Incompatible with `onBack`.
@@ -98,6 +97,7 @@ const STRINGS = {
  *
  * @param children The title text: the biggest text on a page and the only within a `<h1>` tag.
  * @param parentURL The link the back Button navigates to.
+ * @param appDrawer An App Drawer placed on the right edge of the Page Header.
  * @param locale Allows for translation of the accessibility labels.
  * @param buttonElement Change the underlying element of the back Button from `<a>` to a custom element.
  * @param onBack The function triggered when the back Button is clicked.

@@ -1,6 +1,7 @@
 /**
  * **Menu**
- * Menus display a list of choices on temporary surfaces.
+ * Menus show a list of actions or options in a popover that appears next to a
+ * trigger element.
  */
 
 .skc-menu {

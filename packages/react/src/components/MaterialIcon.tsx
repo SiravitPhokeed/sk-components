@@ -4,9 +4,9 @@ import "@suankularb-components/css/material-icon.css";
 
 export interface MaterialIconProps extends ElementCustomizableProps {
   /**
-   * Material Icon uses the “Material Symbol” font, where each icon has its own
-   * corresponding text string. You can find the list of all icons at
-   * {@link https://fonts.google.com/icons Google Fonts}.
+   * Material Icon uses the “Material Symbols Outlined” icon font, where each
+   * icon has its own corresponding text string. You can find the list of all
+   * icons at {@link https://fonts.google.com/icons Google Fonts}.
    *
    * - Always required.
    */
@@ -61,7 +61,7 @@ export interface MaterialIconProps extends ElementCustomizableProps {
   /**
    * If the icon should flip horizontally in right-to-left (RTL) languages.
    *
-   * - This includes that indicate direction, like arrows and chevrons, and
+   * - This includes icons that indicate direction, like arrows and chevrons, and
    *   icons that depict forward movement, like a person walking.
    * - Media controls, like play/pause and volume, should not flip.
    * - Optional.
@@ -71,9 +71,9 @@ export interface MaterialIconProps extends ElementCustomizableProps {
 
 /**
  * Icons are essential to any web design. They orient the users, help user navigate, and save space.
- * Material Icon uses the “Material Symbol” icon font from Google.
+ * Material Icon uses the “Material Symbols Outlined” icon font from Google.
  *
- * @param icon Material Icon uses the “Material Symbol” font, where each icon has its own corresponding text string. You can find the list of all icons at {@link https://fonts.google.com/icons Google Fonts}.
+ * @param icon Material Icon uses the “Material Symbols Outlined” icon font, where each icon has its own corresponding text string. You can find the list of all icons at {@link https://fonts.google.com/icons Google Fonts}.
  * @param alt A description of the Material Icon for screen readers, similar to `alt` on `<img>`.
  * @param fill If the icon is filled or not.
  * @param weight How thick the strokes are.

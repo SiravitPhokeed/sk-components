@@ -22,7 +22,7 @@ export interface ChipFieldProps {
   /**
    * The Input Chips that the user have already entered.
    *
-   * - Must be a Chip Set with only Input Chips.
+   * - Must be a [Chip Set](/docs/data/chip-set) with only [Input Chips](/docs/data/input-chip).
    * - Always required.
    */
   children: ReactElement<typeof ChipSet>;
@@ -51,8 +51,8 @@ export interface ChipFieldProps {
   value?: string;
 
   /**
-   * This function triggers when the user makes changes to the field value. The
-   * value is passed in via the function.
+   * Called when the user makes changes to the field value. The value is passed
+   * in via the function.
    *
    * - Optional.
    */
@@ -62,8 +62,7 @@ export interface ChipFieldProps {
   onNewEntry?: (value: string) => any;
 
   /**
-   * This function triggers when the user hits a separator or pastes
-   * separator-delimited text.
+   * Called when the user hits a separator or pastes separator-delimited text.
    *
    * - When triggered by a key press, receives an array with a single entry.
    * - When triggered by a paste, receives all split and trimmed values.
@@ -72,11 +71,9 @@ export interface ChipFieldProps {
   onNewEntries?: (values: string[]) => any;
 
   /**
-   * This function triggers when the user hits backspace twice while in the
-   * field.
+   * Called when the user hits backspace twice while in the field.
    *
-   * - The behavior expected to be implemented by the developer is that the
-   *   last Chip in the preceding Chip Set should be removed.
+   * - Should remove the last Chip in the preceding Chip Set.
    * - Optional.
    */
   onDeleteLast?: () => any;
@@ -85,16 +82,14 @@ export interface ChipFieldProps {
    * An array of keys that trigger the creation of a new Input Chip.
    *
    * - Optional.
-   *
-   * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values A list of key values}.
-   * @default [" ", ",", ";", "Enter"]
    */
   entrySeparators?: string[];
 
   /**
    * The field can have some faint text guiding the user about what to write to
    * create an Input Chip. For example, a Chip Field for entering students into
-   * a class by student code could have a placeholder say "Enter student code."
+   * a class by student code could have a placeholder say “Enter student
+   * code.”
    *
    * - Optional.
    */
@@ -128,8 +123,7 @@ export interface ChipFieldProps {
   /**
    * Allows for translation of the accessibility labels.
    *
-   * - Must be `th` or `en-US`, as SKCom currently only supports these two
-   *   languages.
+   * - Must be `th` or `en-US`. SKCom supports two languages: th and en-US.
    * - Optional.
    */
   locale?: "en-US" | "th";
@@ -171,15 +165,16 @@ const STRINGS = {
  * press.
  *
  * @param children The Input Chips that the user have already entered.
- * @param label The placeholder text and the label text.
+ * @param label The placeholder text (if no placeholder specified or when not focused and no value) and the label text (when focused or has value).
  * @param helperMsg A short description of the Chip Field.
  * @param value The value inside the field that is used to create Input Chips.
- * @param onChange This function triggers when the user makes changes to the field value.
- * @param onNewEntries This function triggers when the user hits a separator or pastes separator-delimited text.
- * @param onDeleteLast This function triggers when the user hits backspace twice while in the field.
- * @param entrySeparators An array of characters that trigger the creation of a new Input Chip.
- * @param placeholder Faint text guiding the user about what to write.
- * @param loading Disable the Chip Field and signify loading status.
+ * @param onChange Called when the user makes changes to the field value.
+ * @param onNewEntries Called when the user hits a separator or pastes separator-delimited text.
+ * @param onDeleteLast Called when the user hits backspace twice while in the field.
+ * @param entrySeparators An array of keys that trigger the creation of a new Input Chip.
+ * @param placeholder The field can have some faint text guiding the user about what to write to create an Input Chip.
+ * @param required Adds an asterisk to the label.
+ * @param loading Add a Progress linear beneath the component to signify loading status.
  * @param disabled The field cannot be edited.
  * @param locale Allows for translation of the accessibility labels.
  * @param inputAttr Attributes for the underlying `<input>` element used as the field.

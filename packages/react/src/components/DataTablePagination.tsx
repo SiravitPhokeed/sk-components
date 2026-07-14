@@ -31,16 +31,16 @@ export interface DataTablePaginationProps extends ElementCustomizableProps {
   /**
    * Allows for translation of the page indicator and accessibility labels.
    *
-   * - Must be `th` or `en-US`, as SKCom currently only supports these two
+   * - Must be `th` or `en-US`. SKCom supports two languages: th and en-US.
    *   languages.
    * - Optional.
    */
   locale?: "en-US" | "th";
 
   /**
-   * Triggers when the user changes the page.
+   * Called when the user changes the page.
    *
-   * - The following is passed onto the function: the current page number, the
+   * - The following is passed to the function: the current page number, the
    *   start index, and the end index.
    * - Optional.
    *
@@ -86,13 +86,13 @@ const STRINGS = {
 
 /**
  * At the footer of a Data Table, Data Table Pagination provides controls for
- * paginating the Data Table data, including the current rows and navigating to
+ * paginating the Data Table data, including the current rows and navigating
  * forward and backward on pages.
  *
  * @param rowsPerPage The maximum number of rows shown on the Data Table at a time.
  * @param totalRows The total number of rows of data, including both those currently shown and not shown on the Data Table.
  * @param locale Allows for translation of the page indicator and accessibility labels.
- * @param onChange Triggers when the user changes the page.
+ * @param onChange Called when the user changes the page.
  */
 export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
   rowsPerPage,

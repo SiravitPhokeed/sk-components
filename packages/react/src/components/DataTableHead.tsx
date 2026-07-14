@@ -13,7 +13,7 @@ import { sum } from "radash";
  */
 export interface DataTableHeadProps extends ElementCustomizableProps {
   /**
-   * The return of `getHeaderGroups`, one of the functions of the Tanstack Table
+   * The return of `getHeaderGroups`, one of the functions of the TanStack Table
    * instance.
    *
    * - Always required.
@@ -45,7 +45,8 @@ export interface DataTableHeadProps extends ElementCustomizableProps {
   /**
    * Allows for translation of the accessibility labels.
    *
-   * - Must be `th` or `en-US`, as SKCom currently only supports these two languages.
+   * - Must be `th` or `en-US`. SKCom supports two languages: th and en-US.
+   *   languages.
    * - Optional.
    *
    * @default "en-US"
@@ -56,8 +57,9 @@ export interface DataTableHeadProps extends ElementCustomizableProps {
 /**
  * The head area of a Data Table.
  *
- * @param headerGroups The return of `getHeaderGroups`, one of the functions of the Tanstack Table instance.
+ * @param headerGroups The return of `getHeaderGroups`, one of the functions of the TanStack Table instance.
  * @param align How the content in each cell should be positioned.
+ * @param colSpans The fractional width of each column, in the same order as the columns are defined.
  * @param locale Allows for translation of the accessibility labels.
  */
 export const DataTableHead: StyleableFC<DataTableHeadProps> = ({

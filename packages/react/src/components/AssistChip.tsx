@@ -19,8 +19,8 @@ export interface AssistChipProps
   /**
    * The text shown inside the Assist Chip.
    *
-   * - The label should start with a verb, i.e. "**Turn on** lights" or
-   *   "**Save** to favorites".
+   * - The label should start with a verb, i.e. "_Turn on_ lights" or "_Save_
+   *   to favorites."
    * - Always required.
    */
   children: ReactNode;
@@ -29,7 +29,7 @@ export interface AssistChipProps
    * An icon can appear before the text in an Assist Chip. In a Chip Set with
    * many chips, an icon can help the user find the right one more quickly.
    *
-   * - You are encouraged to use Material Icons as the value for `icon`.
+   * - You are encouraged to use Material Icon as the value for `icon`.
    * - Favicons and branded icons can also be used here.
    * - Optional.
    */
@@ -45,9 +45,8 @@ export interface AssistChipProps
   /**
    * Use elevation instead of an outline to signify the Assist Chip's boundary.
    *
-   * - **Important**: do not use this prop if you don't have to. Only elevate
-   *   an Assist Chip when its placement requires visual protection, such as on
-   *   top of an image.
+   * - **Use sparingly.** Only elevate an Assist Chip when its placement
+   *   requires visual protection, such as on top of an image.
    * - Optional.
    */
   elevated?: boolean;
@@ -79,12 +78,12 @@ export interface AssistChipProps
 }
 
 /**
- * Assist Chips are similar to Buttons in that it helps users take action. The
+ * Assist Chips are similar to Buttons in that they help users take action. The
  * difference is a Button is persistent (doesn't change) and an Assist Chip is
  * dynamic and contextual (changes according to the context).
  *
- * The label of an Assist Chip should start with a verb, i.e. "**Turn on**
- * lights" or "**Save** to favorites".
+ * The label of an Assist Chip should start with a verb, i.e. "_Turn on_
+ * lights" or "_Save_ to favorites".
  *
  * @param children The text shown inside the Assist Chip.
  * @param icon An icon can appear before the text in an Assist Chip.

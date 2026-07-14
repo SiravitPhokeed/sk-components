@@ -8,8 +8,8 @@ import type { ReactNode } from "react";
  */
 export interface ActionsProps extends ElementCustomizableProps {
   /**
-   * Actions contains Buttons. You can put as many Buttons inside Actions as
-   * needed, but the recommended limit is 3.
+   * The Buttons inside Actions. You can include as many as needed, but the
+   * recommended limit is 3.
    *
    * - Always required.
    */
@@ -28,7 +28,7 @@ export interface ActionsProps extends ElementCustomizableProps {
 /**
  * A row of Buttons. Actions handles spacing and overflow.
  *
- * @param children Actions contains Buttons; the recommended limit is 3.
+ * @param children The Buttons inside Actions.
  * @param align How the Buttons should be positioned.
  */
 export const Actions: StyleableFC<ActionsProps> = ({

@@ -19,11 +19,12 @@ import { useEffect, useRef } from "react";
  */
 export interface TabProps extends ActionableProps, ElementCustomizableProps {
   /**
-   * An icon appears before or above the label. Icons help users identify pages more quickly.
+   * An icon appears before or above the label. Icons help users identify pages
+   * more quickly.
    *
    * - If the icon is sufficiently representative of the page, a label isn’t
    *   needed.
-   * - Normally optional but required if `label` is not defined as a Tab cannot
+   * - Normally optional, but required if `label` is not defined, as a Tab cannot
    *   be empty.
    */
   icon?: ReactElement;
@@ -31,7 +32,7 @@ export interface TabProps extends ActionableProps, ElementCustomizableProps {
   /**
    * An additional text label next to or underneath the icon.
    *
-   * - Required if `icon` is not defined as a Tab cannot be empty.
+   * - Required if `icon` is not defined, as a Tab cannot be empty.
    */
   label?: ReactNode;
 
@@ -65,6 +66,7 @@ export interface TabProps extends ActionableProps, ElementCustomizableProps {
  *
  * @param icon An icon appears before or above the label. Icons help users identify pages more quickly.
  * @param label An additional text label next to or underneath the icon.
+ * @param alt A description of the Tab for screen readers, similar to `alt` on `<img>`.
  * @param tooltip A message shown in a tooltip when the user hovers over the Tab.
  * @param selected Highlights the Tab. If the user is currently on this page, the Tab should be highlighted.
  */

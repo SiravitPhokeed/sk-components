@@ -10,16 +10,17 @@ import type { ReactNode } from "react";
  */
 export interface ListProps extends ElementCustomizableProps {
   /**
-   * The items in the list — List Items, Buttons, or Cards.
+   * List contains List Items, each containing a List Item Content and other
+   * elements.
    *
    * - Always required.
    */
   children: ReactNode;
 
   /**
-   * Uses Columns under the hood. Number of columns.
+   * The number of columns in the list. Internally uses Columns for layout.
    *
-   * - Must be an integer from 2, 3, 4, 6, or 12.
+   * - Must be an integer: 2, 3, 4, 6, or 12.
    * - Optional.
    */
   columns?: ColumnsProps["columns"];
@@ -35,8 +36,8 @@ export interface ListProps extends ElementCustomizableProps {
 /**
  * A vertical index of texts or images.
  *
- * @param children Items inside the List.
- * @param columns Uses Columns under the hood. Number of columns.
+ * @param children List contains List Items, each containing a List Item Content and other elements.
+ * @param columns The number of columns in the list. Internally uses Columns for layout.
  * @param divided Puts a Divider between List Items.
  */
 export const List: StyleableFC<ListProps> = ({

@@ -20,7 +20,7 @@ export const useSectionId = (): string | null => useContext(SectionContext);
 
 export interface SectionProps extends ElementCustomizableProps {
   /**
-   * Section must have exactly 1 Header as the first direct descendent. After
+   * Section must have exactly 1 Header as the first direct descendant. After
    * that, it can include anything.
    *
    * - Always required.
@@ -29,9 +29,9 @@ export interface SectionProps extends ElementCustomizableProps {
 }
 
 /**
- * Section is a way to group content under one Header.
+ * Groups content under a single Header.
  *
- * @param children Section must have exactly 1 Header as the first direct descendent. After that, it can include anything.
+ * @param children Section must have exactly 1 Header as the first direct descendant. After that, it can include anything.
  */
 export const Section: StyleableFC<SectionProps> = ({
   children,

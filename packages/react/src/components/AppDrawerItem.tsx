@@ -29,7 +29,8 @@ export interface AppDrawerItemProps
 }
 
 /**
- * An app inside the App Drawer. A child of App Drawer Segment.
+ * Represents a single app inside the App Drawer. Always lives inside an
+ * App Drawer Segment.
  *
  * @param logo The logo image of the app.
  * @param name The name of the app.

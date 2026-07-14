@@ -1,6 +1,7 @@
 /**
  * **App Drawer Item**
- * An app inside the App Drawer. A child of App Drawer Segment.
+ * Represents a single app inside the App Drawer. Always lives inside an
+ * App Drawer Segment.
  */
 
 .skc-app-drawer-item {

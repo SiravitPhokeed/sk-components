@@ -1,12 +1,12 @@
 /**
  * **Columns**
  *
- * Columns break up content in larger screens into multiple columns, so as to
+ * Columns break up content on larger screens into multiple columns, so as to
  * make the content easier to read. On smaller screens, Columns automatically
  * collapse columns into one column.
  *
- * The columns inside of Columns are based on the layout grid, which is a grid
- * system that keeps elements of a page aligned to a common grid.
+ * Columns is built on a 12-column grid. This grid system keeps elements
+ * visually aligned across the page, creating a consistent rhythm.
  */
 
 .skc-columns {

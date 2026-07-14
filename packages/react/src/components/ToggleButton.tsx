@@ -16,9 +16,9 @@ export interface ToggleButtonProps extends ElementCustomizableProps {
    * The appearance of the Toggle Button.
    *
    * Each appearance has a priority. For example, in a video conference
-   * application, the end call button has higher priority than the raise hand
-   * button. In this case, the end call is "filled," and the raise hand is
-   * "outlined."
+   * application, the end call Button has higher priority than the raise hand
+   * button. In this case, the end call is “filled,” and the raise hand is
+   * “outlined.”
    *
    * - Must be `filled`, `tonal`, `outlined`, or `standard`, from highest to
    *   lowest priority.
@@ -30,8 +30,7 @@ export interface ToggleButtonProps extends ElementCustomizableProps {
    * A Toggle Button's action is only communicated via its icon, so keep the
    * icon clear.
    *
-   * - You are encouraged to use {@link MaterialIcon Material Icons} as the
-   *   value for `icon`.
+   * - You are encouraged to use Material Icon as the value for `icon`.
    * - Always required, as a Toggle Button cannot be empty.
    */
   icon: ReactElement;
@@ -47,14 +46,14 @@ export interface ToggleButtonProps extends ElementCustomizableProps {
   /**
    * A message shown in a tooltip when the user hovers over the Toggle Button.
    *
-   * - Always required, just in case the icon is not clear enough for the user
-   *   to infer its action.
+   * - Always required, since the icon alone may not be clear enough for the user
+   *   to infer the action.
    */
   tooltip: string;
 
   /**
-   * If the action the Toggle Button accomplishes is dangerous, like unmuting.
-   * If it is, the Toggle Button turns red (defined as `error` in the palette).
+   * Set to `true` if the action is destructive, such as deleting an item. When
+   * `true`, the Toggle Button turns red (defined as `error` in the palette).
    *
    * - Optional.
    */
@@ -63,8 +62,8 @@ export interface ToggleButtonProps extends ElementCustomizableProps {
   /**
    * Turns the Toggle Button gray and blocks any action associated with it.
    * `onChange` will have no effect.
-   * {@link https://codium.one/index.php/en/blog/77-disabled-buttons-don-t-have-to-suck Learn when to disable something.}
    *
+   * - {@link /docs/guides/disabling-elements Learn how to make disabled elements less frustrating.}
    * - Optional.
    */
   disabled?: boolean;
@@ -74,17 +73,14 @@ export interface ToggleButtonProps extends ElementCustomizableProps {
    * a controlled input.
    *
    * - Optional.
-   *
-   * @see {@link https://reactjs.org/docs/forms.html#controlled-components React documentation on controlled input}
    */
   value?: boolean;
 
   /**
-   * This function triggers when the user toggles the Toggle Button.
+   * Called when the user toggles the Toggle Button. The state is passed in via
+   * the function as a boolean.
    *
    * - Optional.
-   *
-   * @param state Whether the Toggle Button is toggled on or off.
    */
   onChange?: (state: boolean) => void;
 }
@@ -96,10 +92,10 @@ export interface ToggleButtonProps extends ElementCustomizableProps {
  * @param icon A Toggle Button's action is only communicated via its icon, so keep the icon clear.
  * @param alt A description of the Toggle Button for screen readers, similar to `alt` on `<img>`.
  * @param tooltip A message shown in a tooltip when the user hovers over the Toggle Button.
- * @param dangerous If the action the Toggle Button accomplishes is dangerous, like unmuting.
- * @param disabled Turns the Toggle Button gray and blocks any action associated with it.
- * @param value Whether the Toggle Button is toggled on or off.
- * @param onChange This function triggers when the user toggles the Toggle Button.
+ * @param dangerous Set to `true` if the action is destructive, such as deleting an item. When `true`, the Toggle Button turns red (defined as `error` in the palette).
+ * @param disabled Turns the Toggle Button gray and blocks any action associated with it. `onChange` will have no effect.
+ * @param value Whether the Toggle Button is toggled on or off. This is useful if you want a controlled input.
+ * @param onChange Called when the user toggles the Toggle Button. The state is passed in via the function as a boolean.
  */
 export const ToggleButton: StyleableFC<ToggleButtonProps> = ({
   appearance,

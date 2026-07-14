@@ -32,7 +32,7 @@ export interface NavDrawerItemProps
 
   /**
    * Some text aligned to the right of a Navigation Drawer Item. This is useful
-   * for, for instance, displaying the number of new messages.
+   * for example, displaying the number of new messages.
    *
    * - Optional.
    */
@@ -56,8 +56,8 @@ export interface NavDrawerItemProps
 }
 
 /**
- * A destination in a Navigation Drawer. Should be a child of a Navigation
- * Drawer Section.
+ * A destination in a Navigation Drawer. Always place inside a Nav Drawer
+ * Section.
  *
  * @param icon Icons help users identify pages more quickly.
  * @param label The title of the destination page.

@@ -8,7 +8,7 @@ import type { ReactNode } from "react";
  */
 export interface SegmentedButtonProps extends ElementCustomizableProps {
   /**
-   * 2-5 Buttons.
+   * Between 2 and 5 Buttons.
    *
    * - Always required.
    */
@@ -18,7 +18,7 @@ export interface SegmentedButtonProps extends ElementCustomizableProps {
    * A description of the Segmented Button for screen readers, similar to `alt`
    * on `<img>`.
    *
-   * - Always required
+   * - Always required.
    */
   alt: string;
 
@@ -42,7 +42,7 @@ export interface SegmentedButtonProps extends ElementCustomizableProps {
  * Segmented Button combines multiple related Buttons together. Each Button in
  * a Segmented Button can be toggled on and off.
  *
- * @param children 2-5 Buttons.
+ * @param children Between 2 and 5 Buttons.
  * @param alt A description of the Segmented Button for screen readers, similar to `alt` on `<img>`.
  * @param density A lower number means a more dense interface. In this case, less height.
  * @param full Each Button will be equal in width.

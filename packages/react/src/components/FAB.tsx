@@ -41,7 +41,7 @@ export interface FABProps extends ActionableProps {
   /**
    * The icon displayed inside the FAB or alongside the label.
    *
-   * - You are encouraged to use Material Icons as the value for `icon`.
+   * - You are encouraged to use [Material Icon](/docs/data/material-icon) as the value for `icon`.
    * - Always required.
    */
   icon: ReactElement;

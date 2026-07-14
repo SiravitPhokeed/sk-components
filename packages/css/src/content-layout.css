@@ -1,6 +1,8 @@
 /**
  * **Content Layout**
- * A simple width-clamped vertical flow of content with minimal default styling.
+ * A centered, single-column container for page content. It limits the
+ * maximum width and arranges children vertically, with minimal built-in
+ * styling.
  */
 
 .skc-content-layout {

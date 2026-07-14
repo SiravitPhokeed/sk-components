@@ -11,7 +11,6 @@ export interface NavDrawerProps {
   /**
    * Nav Drawer Sections holding Nav Drawer Items, the navigation destinations.
    *
-   * - Must consist of {@link NavDrawerSection Nav Drawer Sections}.
    * - Always required.
    */
   children: ReactNode;
@@ -38,7 +37,7 @@ const STRINGS = {
 /**
  * A navigation drawer that slides in from the left.
  *
- * @param children Nav Drawer Sections holding Nav Drawer Items.
+ * @param children Nav Drawer Sections holding Nav Drawer Items, the navigation destinations.
  * @param locale Allows for translation of the accessibility labels.
  */
 export const NavDrawer: StyleableFC<NavDrawerProps> = ({

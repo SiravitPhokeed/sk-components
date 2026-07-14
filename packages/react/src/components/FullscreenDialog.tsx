@@ -36,23 +36,24 @@ export interface FullscreenDialogProps {
   /**
    * The ID of the `<dialog>` element, for Invoker Commands API support.
    *
-   * - Optional. Use with `command="show-modal" and `commandfor={id}` on a
-   *   trigger button to open the Dialog declaratively via the Invoker Commands
-   *   API.
+   * - Use with `command="show-modal"` and `commandfor={id}` on a trigger
+   *   button to open the Full-screen Dialog declaratively via the Invoker
+   *   Commands API.
    * - Buttons inside this Dialog will automatically use this ID for their
    *   `commandfor` when they have a `command` but no explicit `commandfor`.
    * - Use `command="request-close"` to close, not `command="close"`.
-   * - Defaults to an auto-generated ID.
+   * - Optional. Defaults to an auto-generated ID.
    */
   id?: string;
 
   /**
    * If the Full-screen Dialog is open and shown.
    *
-   * - Optional. When provided, the Dialog is controlled: the consumer must
+   * - When provided, the Full-screen Dialog is controlled: the consumer must
    *   call `onClose` on dismiss and set `open` to `false`.
    * - When omitted, use `id` together with a trigger button that has
    *   `command="show-modal"` and `commandfor={id}`.
+   * - Optional.
    */
   open?: boolean;
 
@@ -82,7 +83,7 @@ export interface FullscreenDialogProps {
   /**
    * Allows for translation of the accessibility labels.
    *
-   * - Must be `th` or `en-US`, as SKCom currently only supports these two
+   * - Must be `th` or `en-US`. SKCom supports two languages: th and en-US.
    *   languages.
    * - Optional.
    */
@@ -104,18 +105,18 @@ const STRINGS = {
 };
 
 /**
- * A Full-screen Dialog fills the entire screen with a series of tasks
- * that must be completed.
+ * A Full-screen Dialog presents a series of tasks that must be completed. It
+ * takes over the full screen on mobile and becomes a standard Dialog on larger
+ * screens.
  *
- * A Full-screen Dialog only fills the screen on mobile and turns into a Dialog
- * on larger screens. A Dialog can appear above a Full-screen Dialog.
+ * A Dialog can appear above a Full-screen Dialog.
  *
  * @param children The content.
- * @param id TThe ID of the `<dialog>` element, for Invoker Commands API support.
+ * @param id The ID of the `<dialog>` element, for Invoker Commands API support.
  * @param open If the Full-screen Dialog is open and shown.
  * @param title The title text.
  * @param action The submission Button.
- * @param width The width of the Dialog this Full-screen Dialog transforms into.
+ * @param width Full-screen Dialog transforms into a basic Dialog on larger screens. The width of the Dialog can be set here.
  * @param locale Allows for translation of the accessibility labels.
  * @param onClose The function triggered when the backdrop is clicked or Escape is pressed.
  */

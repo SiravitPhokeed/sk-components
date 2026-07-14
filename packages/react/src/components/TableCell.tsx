@@ -27,7 +27,7 @@ export interface TableCellProps extends ElementCustomizableProps {
    * to.
    *
    * - Must be `col`, `row`, `colgroup`, or `rowgroup`.
-   * - Only effective when {@link header `header`} is `true`.
+   * - Only effective when `header` is `true`.
    * - Optional.
    */
   scope?: "col" | "row" | "colgroup" | "rowgroup";

@@ -1,7 +1,7 @@
 /**
- * **Navigation Drawer Item**
- * A destination in a Navigation Drawer. Should be a child of a Navigation
- * Drawer Section.
+ * **Nav Drawer Item**
+ * A destination in a Navigation Drawer. Always place inside a Nav Drawer
+ * Section.
  */
 
 .skc-nav-drawer-item {

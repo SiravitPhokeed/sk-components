@@ -27,7 +27,7 @@ export interface AnchorProps extends ElementCustomizableProps {
    * The anchor name (dashed-ident) used for CSS Anchor Positioning.
    *
    * - Optional. Auto-generated if omitted.
-   * - When using the flexible pattern (Anchor wraps trigger only, Menu
+   * - When using the explicit pattern (Anchor wraps trigger only, Menu
    *   positioned elsewhere), set this explicitly and pass the same value
    *   to the Menu's `anchor` prop.
    * - Must be a valid dashed-ident (e.g. `--menu-trigger`).

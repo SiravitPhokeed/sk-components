@@ -17,19 +17,19 @@ export interface ColumnsProps extends ElementCustomizableProps {
   /**
    * Number of columns.
    *
-   * - Must be an integer from 2, 3, 4, 6, or 12.
+   * - Must be an integer: 2, 3, 4, 6, or 12.
    * - Always required.
    */
   columns: 2 | 3 | 4 | 6 | 12;
 }
 
 /**
- * Columns break up content in larger screens into multiple columns, so as to
+ * Columns break up content on larger screens into multiple columns, so as to
  * make the content easier to read. On smaller screens, Columns automatically
  * collapse columns into one column.
  *
- * The columns inside of Columns are based on the layout grid, which is a grid
- * system that keeps elements of a page aligned to a common grid.
+ * Columns is built on a 12-column grid. This grid system keeps elements
+ * visually aligned across the page, creating a consistent rhythm.
  *
  * @param children The content to be divided.
  * @param columns Number of columns.

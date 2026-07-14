@@ -33,20 +33,19 @@ export interface MenuProps extends ElementCustomizableProps {
   /**
    * The ID of the popover element, for Invoker Commands API support.
    *
-   * - Optional. Use with `command="show-popover"` and `commandfor={id}` on a
-   *   trigger button to open the Menu declaratively via the Invoker Commands
-   *   API.
+   * - Use with `command="show-popover"` and `commandfor={id}` on a trigger
+   *   button to open the Menu declaratively via the Invoker Commands API.
    * - Menu Items inside this Menu will automatically use this ID for their
    *   `commandfor` when they have a `command` but no explicit `commandfor`.
-   * - Defaults to an auto-generated ID.
+   * - Optional. Defaults to an auto-generated ID.
    */
   id?: string;
 
   /**
    * The anchor name (dashed-ident) for CSS Anchor Positioning.
    *
-   * - When inside an {@link Anchor `<Anchor>`}, this is auto-resolved from
-   *   context — no need to set it.
+   * - When inside an `<Anchor>`, this is auto-resolved from context — no
+   *   need to set it.
    * - When outside an `<Anchor>`, set this to the same name used on the
    *   Anchor element (e.g. `anchor="--menu-trigger"`).
    * - Optional.
@@ -56,10 +55,11 @@ export interface MenuProps extends ElementCustomizableProps {
   /**
    * If the Menu is open and shown.
    *
-   * - Optional. When provided, the Menu is controlled: the consumer must
+   * - When provided, the Menu is controlled: the consumer must
    *   call `onClose` on dismiss and set `open` to `false`.
    * - When omitted, use `id` together with a trigger button that has
    *   `command="show-popover"` and `commandfor={id}`.
+   * - Optional.
    */
   open?: boolean;
 
@@ -81,7 +81,8 @@ export interface MenuProps extends ElementCustomizableProps {
 }
 
 /**
- * Menus display a list of choices on temporary surfaces.
+ * Menus show a list of actions or options in a popover that appears next to a
+ * trigger element.
  *
  * @param children Menu Items and other content inside the Menu.
  * @param id The ID of the popover element, for Invoker Commands API support.

@@ -17,14 +17,12 @@ export interface SplitLayoutProps extends ElementCustomizableProps {
   children: ReactNode;
 
   /**
-   * Choose from 2 presets or create your own. This uses the same grid system
-   * as Columns, so ensure each side of the ratio adds up to 12.
+   * Choose between two presets or provide custom values. Uses the same
+   * 12-column grid as Columns, so the two values must add up to 12.
    *
-   * - If you choose to use a preset: must be `list-detail` or
-   *   `supporting-panel`. Learn more about these Material Design’s
-   *   documentation.
-   * - If you choose to create a custom ratio: must be an array with 2
-   *   numbers, the first being the left and the last being the right.
+   * - `"list-detail"` — a wide list and a narrower detail pane.
+   * - `"supporting-panel"` — main content with a small supporting column.
+   * - `[number, number]` — custom column widths (e.g., `[8, 4]`).
    * - Always required.
    */
   ratio: "list-detail" | "supporting-panel" | [number, number];
@@ -32,7 +30,7 @@ export interface SplitLayoutProps extends ElementCustomizableProps {
   /**
    * The side to show on mobile.
    *
-   * - On mobile, there is not enough space 2 have to columns on screen at once.
+   * - On mobile, there is not enough space to have 2 columns on screen at once.
    *   Choose which side to show on mobile, or show both with the right side
    *   below the left.
    * - Optional.
@@ -49,7 +47,7 @@ export interface SplitLayoutProps extends ElementCustomizableProps {
  * small column set aside for supporting content.
  *
  * @param children The content should have 2 sides; each element entered corresponds to a side.
- * @param ratio Choose from 2 presets or create your own. This uses the same grid system as Columns, so ensure each side of the ratio adds up to 12.
+ * @param ratio Choose between two presets or provide custom values. Uses the same 12-column grid as Columns, so the two values must add up to 12.
  * @param prefer The side to show on mobile.
  */
 export const SplitLayout: StyleableFC<SplitLayoutProps> = ({

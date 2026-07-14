@@ -8,8 +8,8 @@ import "@suankularb-components/css/divider.css";
 export interface DividerProps extends ElementCustomizableProps {}
 
 /**
- * A Divider separates items in a list with a thin line. This is used when
- * separation cannot be accomplished with Cards or white space.
+ * A Divider draws a thin line between items to separate them visually. Use
+ * it when spacing alone or Cards aren’t enough to distinguish groups.
  */
 export const Divider: StyleableFC<DividerProps> = ({
   element: Element = "hr",

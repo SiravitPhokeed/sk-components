@@ -8,7 +8,7 @@ import type { ReactNode } from "react";
  */
 export interface TableBodyProps extends ElementCustomizableProps {
   /**
-   * Table Body has the same behaviour as `<tbody>`.
+   * Table Body has the same behavior as `<tbody>`.
    *
    * - Must consist of Table Rows, which must consist of Table Cells.
    * - Always required.
@@ -19,7 +19,7 @@ export interface TableBodyProps extends ElementCustomizableProps {
 /**
  * The body area of a Table.
  *
- * @param children Table Body has the same behaviour as `<tbody>`.
+ * @param children Table Body has the same behavior as `<tbody>`.
  */
 export const TableBody: StyleableFC<TableBodyProps> = ({
   children,

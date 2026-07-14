@@ -22,10 +22,8 @@ export interface CardProps extends ActionableProps, ElementCustomizableProps {
   /**
    * The appearance of the Card.
    *
-   * - Each appearance puts different amounts of emphasis on the subject. From
-   *   most to least emphasis, a Card can be outlined, elevated, and filled.
-   * - Must be `outlined`, `elevated`, or `filled`, from highest to lowest
-   *   emphasis.
+   * - From most to least emphasis: `outlined`, `elevated`, `filled`.
+   * - Each appearance puts a different amount of emphasis on the subject.
    * - Always required.
    */
   appearance: "outlined" | "elevated" | "filled";
@@ -40,12 +38,12 @@ export interface CardProps extends ActionableProps, ElementCustomizableProps {
   direction?: "row" | "column";
 
   /**
-   * In interactive components like Button, the state layer reacts to changes
-   * to the state to signify its interactivity. For example, a Button’s state
-   * layer turns up its opacity on hover.
+   * A state layer is a visual overlay that responds to user interaction. For
+   * example, a Button’s state layer increases its opacity on hover, signaling
+   * it’s clickable.
    *
-   * - This effect can be enabled on Card as well, letting the user know that
-   *   this Card is interactive.
+   * - This effect can be enabled on Card too, helping users recognize it as
+   *   interactive.
    * - Optional.
    */
   stateLayerEffect?: boolean;
@@ -59,16 +57,20 @@ export interface CardProps extends ActionableProps, ElementCustomizableProps {
 }
 
 /**
- * Card is a container for information and actions about a subject. It can be
- * in a list, on its own, or as a link to another page; Card is extremely versatile.
+ * Card is a container for related information and actions about a subject. It can
+ * hold any content — text, images, or other components — arranged in a row
+ * or a column.
  *
- * To quote Material Design 3, there is no right way to make a Card. However,
- * we have provided some useful props and components to get you started.
+ * What you put inside Card is up to you. Here is one common pattern — a header,
+ * an image, some text, and an action — but you can use any combination.
+ *
+ * Card Header, Card Content, and Actions are available to help structure common
+ * patterns, but none are required — Card itself imposes no structure.
  *
  * @param children Card must contain at least 1 element.
- * @param appearance The appearance of the Card. Each appearance puts different amounts of emphasis on the subject.
- * @param direction The flow of the Card’s content, like the CSS property `flex-direction`.
- * @param stateLayerEffect The state layer reacts to changes to the state to signify its interactivity. This effect can be enabled on Card as well.
+ * @param appearance The appearance of the Card.
+ * @param direction The flow of the Card’s content, like the CSS property `flex-direction`. The default is `column`.
+ * @param stateLayerEffect A state layer is a visual overlay that responds to user interaction. For example, a Button’s state layer increases its opacity on hover, signaling it’s clickable.
  * @param shadowEffect Elevates Card on hover and focus to signify its interactivity.
  */
 export const Card: StyleableFC<CardProps> = ({

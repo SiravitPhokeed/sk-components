@@ -25,11 +25,11 @@ export interface SuggestionChipProps
   children: ReactNode;
 
   /**
-   * An icon can appear before the text (`children`) in an Suggestion Chip. In
+   * An icon can appear before the text (`children`) in a Suggestion Chip. In
    * a Chip Set with many chips, an icon can help the user find the right one
    * more quickly.
    *
-   * - You are encouraged to use Material Icons as the value for `icon`.
+   * - You are encouraged to use Material Icon as the value for `icon`.
    * - Optional.
    */
   icon?: ReactElement;
@@ -46,9 +46,8 @@ export interface SuggestionChipProps
    * Use elevation instead of an outline to signify the Suggestion Chip's
    * boundary.
    *
-   * - **Important**: do not use this prop if you don't have to. Only elevate
-   *   an Suggestion Chip when its placement requires visual protection, such
-   *   as on top of an image.
+   * - **Use sparingly.** Only elevate a Suggestion Chip when its placement
+   *   requires visual protection, such as on top of an image.
    * - Optional.
    */
   elevated?: boolean;
@@ -63,13 +62,14 @@ export interface SuggestionChipProps
 }
 
 /**
- * Dynamically generated suggestions, like quick-reply options, for instance.
+ * Dynamically generated suggestions, such as quick-reply options.
+ *
+ * Suggestion Chips appear in a Chip Set.
  *
  * @param children The text shown inside the Suggestion Chip.
- * @param icon An icon can appear before the text (`children`) in an Suggestion Chip.
+ * @param icon An icon can appear before the text (`children`) in a Suggestion Chip.
  * @param tooltip A message shown in a tooltip when the user hovers over the Suggestion Chip.
  * @param elevated Use elevation instead of an outline to signify the Suggestion Chip's boundary.
- * @param selected If the Suggestion Chip is selected.
  * @param disabled Turns the Suggestion Chip gray and blocks any action associated with it.
  */
 export const SuggestionChip: StyleableFC<SuggestionChipProps> = ({
