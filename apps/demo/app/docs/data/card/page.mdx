@@ -6,6 +6,8 @@ import PropsTableRow from "@/app/docs/components/PropsTableRow";
 import VersionsTable from "@/app/docs/components/VersionsTable";
 import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import {
+  Actions,
+  Button,
   CardContent,
   CardHeader,
   MaterialIcon,
@@ -18,12 +20,9 @@ export const metadata = {
 
 ## Card
 
-Card is a container for information and actions about a subject. It can be
-in a list, on its own, or as a link to another page; Card is extremely
-versatile.
-
-To quote Material Design 3, there is no right way to make a Card. However,
-we have provided some useful props and components to get you started.
+Card is a container for related information and actions about a subject. It
+can hold any content — text, images, or other components — arranged in a row
+or a column.
 
 <LinksChipSet material="/components/cards/overview" source="/Card.tsx" />
 
@@ -54,7 +53,7 @@ we have provided some useful props and components to get you started.
 />
 
 ```tsx
-<Card appearance="outlined" direction="row">
+<Card appearance="outlined">
   <CardHeader
     icon={<MaterialIcon icon="person" />}
     title="Phubodin Satapirom"
@@ -66,21 +65,13 @@ we have provided some useful props and components to get you started.
 
 ### Usage
 
-Card is composed of [Card Header](/docs/data/card-header) and
-[Card Content](/docs/data/card-content).
+What you put inside Card is up to you. Here is one common pattern — a header,
+an image, some text, and an action — but you can use any combination.
 
-```tsx
-<Card appearance="outlined">
-  <CardHeader
-    icon={<MaterialIcon icon="person" />}
-    title="Atipol Sukrisadanon"
-    subtitle="Foreign Languages teacher"
-  />
-  <CardContent>
-    <p>Atipol Sukrisadanon is a teacher at Suankularb Wittayalai School.</p>
-  </CardContent>
-</Card>
-```
+[Card Header](/docs/data/card-header),
+[Card Content](/docs/data/card-content), and
+[Actions](/docs/inputs/actions) are available to help structure common
+patterns, but none are required — Card itself imposes no structure.
 
 ### Props
 
