@@ -42,6 +42,17 @@ appear in a [Chip Set](/docs/data/chip-set).
 </SuggestionChip>
 ```
 
+### Usage
+
+Suggestion Chip labels should be concise noun phrases that the user can
+accept or dismiss, like “Looks good to me” or “Maybe later.”
+
+```tsx
+<SuggestionChip icon={<MaterialIcon icon="thumb_up" />}>
+  Looks good to me
+</SuggestionChip>
+```
+
 ### Props
 
 - [`ActionableProps`](/docs/guides/shared-props) available: `command`,
