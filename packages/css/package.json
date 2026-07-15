@@ -80,13 +80,18 @@
     "./toggle-button.css": "./dist/toggle-button.css"
   },
   "scripts": {
-    "build": "rm -rf dist && postcss src/**/*.css --dir dist/ --base src/",
-    "dev": "rm -rf dist && postcss src/**/*.css --dir dist/ --base src/ --watch",
+    "build": "rm -rf dist && node build.mjs",
+    "dev": "rm -rf dist && node build.mjs --watch",
     "prepublishOnly": "pnpm build"
   },
+  "browserslist": [
+    "chrome >= 114",
+    "firefox >= 125",
+    "safari >= 17",
+    "edge >= 114"
+  ],
   "devDependencies": {
-    "cssnano": "^8.0.2",
-    "postcss": "^8.5.16",
-    "postcss-cli": "^11.0.1"
+    "browserslist": "^4.28.6",
+    "lightningcss": "^1.32.0"
   }
 }
