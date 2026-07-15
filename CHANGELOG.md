@@ -139,6 +139,10 @@ Changes to the demo app are documented in
 - CSS migrated to new color palette
 - Line endings standardized to LF
 
+### Deprecated
+
+- `useAnimationConfig()` hook (replaced by `DURATION` and `EASING` constants)
+
 ### Fixed
 
 - `onNewEntry` called on every keystroke in Chip Field
