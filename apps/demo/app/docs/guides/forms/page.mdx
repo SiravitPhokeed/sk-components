@@ -164,7 +164,7 @@ return (
 </Text>
 
 > [HTML radio buttons](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/radio)
-> must share the same `name` to work as a group. Each Radio have its own `id`
+> must share the same `name` to work as a group. Each Radio has its own `id`
 > which identifies the selected option in the group.
 >
 > In the example above, `formData.get("contact-method")` will return either
@@ -203,7 +203,7 @@ Checkbox, Radio, or Switch.
 
 </DisclosureCard>
 
-#### Form validation
+#### Validation in uncontrolled forms
 
 Simple [client-side validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#client-side_validation)
 can be done with the `required` and `inputAttr` props. For more complex
@@ -241,9 +241,22 @@ including [validation attributes](https://developer.mozilla.org/en-US/docs/Web/H
 The controlled approach keeps field values in React state with `useState`,
 giving you access to values before the form is submitted.
 
+> **Radio in controlled mode:** Radio’s `value` prop expects a boolean (whether
+> that option is selected), and `onChange` fires with the new boolean value. To
+> implement a mutually exclusive group, manage the selected option in a single
+> state variable and compare it against each Radio:
+>
+> ```tsx
+> <Radio
+>   value={contactMethod === "email"}
+>   onChange={() => setContactMethod("email")}
+> />
+> ```
+
 ```tsx
 const [fullName, setFullName] = useState("");
 const [schoolType, setSchoolType] = useState("public");
+const [contactMethod, setContactMethod] = useState("");
 const [subscribe, setSubscribe] = useState(false);
 const [agreed, setAgreed] = useState(false);
 
@@ -251,7 +264,7 @@ const handleSubmit: SubmitEventHandler<HTMLFormElement> = async (e) => {
   e.preventDefault();
   const response = await fetch("/api/register", {
     method: "POST",
-    body: JSON.stringify({ fullName, schoolType, subscribe, agreed }),
+    body: JSON.stringify({ fullName, schoolType, contactMethod, subscribe, agreed }),
   });
   if (!response.ok) snackbar.push("Failed to submit form");
   else snackbar.push("Form submitted successfully");
@@ -278,7 +291,7 @@ return (
       <MenuItem value="international">International</MenuItem>
     </Select>
 
-    <FormGroup label="Preferred contact method">
+    <FormGroup name="contact-method" label="Preferred contact method">
       <FormItem label="Email">
         <Radio
           value={contactMethod === "email"}
@@ -318,6 +331,32 @@ return (
 > Controlled fields can still have a `name` prop if you want them to
 > participate in both approaches — for example, controlled fields that also
 > submit via `FormData`.
+
+#### Validation in controlled forms
+
+Unlike uncontrolled forms where you lean on [HTML constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Constraint_validation#validation-related_attributes),
+controlled forms let you validate in the `onChange` handler or derive error
+states from current values.
+
+```tsx
+const [email, setEmail] = useState("");
+const emailError =
+  email.length > 0 && !email.includes("@") ? "Invalid email" : null;
+
+return (
+  <TextField
+    appearance="outlined"
+    label="Email"
+    error={emailError !== null}
+    value={email}
+    onChange={setEmail}
+    helperMsg={emailError}
+  />
+);
+```
+
+This approach also works for cross-field validation (e.g., comparing two
+passwords) or async checks that aren’t possible with HTML attributes.
 
 ### Version changes
 
