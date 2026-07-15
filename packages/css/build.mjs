@@ -54,13 +54,16 @@ async function processFile(filePath, targets) {
   const result = transform({
     filename: relativePath,
     code,
-    minify: true,
+    minify: false,
     targets,
     errorRecovery: true,
   });
 
   // Wrap output in @layer skc { ... }
-  const output = `@layer ${LAYER}{${result.code.toString().trim()}}`;
+  const css = result.code.toString().trim();
+  const output = css
+    ? `@layer ${LAYER} {\n\n${css}\n\n}\n`
+    : `@layer ${LAYER}{}\n`;
 
   await mkdir(dirname(dest), { recursive: true });
   await writeFile(dest, output);
