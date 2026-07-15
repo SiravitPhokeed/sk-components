@@ -31,13 +31,6 @@ export interface FormItemProps extends ElementCustomizableProps {
   children: ReactElement<typeof Checkbox | typeof Radio | typeof Switch>;
 
   /**
-   * The ID of the Form Item.
-   *
-   * - Optional.
-   */
-  id?: string;
-
-  /**
    * The name for the input, passed down to form controls like Checkbox, Radio,
    * and Switch via context. The child’s own `name` prop takes precedence.
    *
@@ -60,17 +53,15 @@ export interface FormItemProps extends ElementCustomizableProps {
  *
  * @param children The input.
  * @param label The label for the input.
- * @param id The ID of the Form Item.
  * @param name The name for the input, passed down to form controls like Checkbox, Radio, and Switch via context.
  */
 export const FormItem: StyleableFC<FormItemProps> = ({
   children,
-  id,
   name,
   label,
   element: Element = "label",
 }) => (
-  <Element id={id} className="skc-form-item">
+  <Element className="skc-form-item">
     <FormItemContext.Provider value={name ? { name } : null}>
       {children}
     </FormItemContext.Provider>

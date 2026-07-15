@@ -4,20 +4,16 @@ import { useFormgroupContext } from "@/components/FormGroup";
 import { useFormItemContext } from "@/components/FormItem";
 import { Interactive } from "@/components/Interactive";
 import cn from "@/lib/helpers/cn";
-import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
+import type { ElementCustomizableProps, StyleableProps } from "@/lib/types";
 import "@suankularb-components/css/radio.css";
+import type { ReactNode } from "react";
 
 /**
  * Props for {@link Radio}.
  */
-export interface RadioProps extends ElementCustomizableProps {
-  /**
-   * The ID of the Radio, passed to the underlying `<input>` element.
-   *
-   * - Optional.
-   */
-  id?: string;
-
+export interface RadioProps<
+  Value extends string = string,
+> extends ElementCustomizableProps {
   /**
    * The name of the Radio, used to group Radios together for form submission.
    * If not provided, falls back to the parent Form Item’s `name`, then the
@@ -28,19 +24,28 @@ export interface RadioProps extends ElementCustomizableProps {
   name?: string;
 
   /**
-   * The state of the Radio. This is useful if you want a controlled input.
+   * The value submitted when this Radio is selected, similar to `value` on
+   * `<input type="radio">`. Defaults to `on`.
    *
    * - Optional.
    */
-  value?: boolean;
+  value?: Value;
 
   /**
-   * Called when the user toggles the Radio. The state is passed in via the
-   * function as a boolean.
+   * Whether the Radio is selected. This is useful if you want a controlled
+   * input.
    *
    * - Optional.
    */
-  onChange?: (value: boolean) => any;
+  checked?: boolean;
+
+  /**
+   * Called when the user selects the Radio. The value is passed in via the
+   * function.
+   *
+   * - Optional.
+   */
+  onChange?: (value: Value) => any;
 
   /**
    * Turns the Radio gray and blocks any action associated with it.
@@ -55,22 +60,22 @@ export interface RadioProps extends ElementCustomizableProps {
  * A choice from a single-select set of choices. Unlike Checkbox and Switch,
  * Radio always appears in a group.
  *
- * @param value The state of the Radio. This is useful if you want a controlled input.
- * @param onChange Called when the user toggles the Radio. The state is passed in via the function as a boolean.
- * @param disabled Turns the Radio gray and blocks any action associated with it.
  * @param name The name of the Radio, used to group Radios together for form submission.
- * @param id The ID of the Radio, passed to the underlying `<input>` element.
+ * @param value The value submitted when this Radio is selected, similar to `value` on `<input type="radio">`.
+ * @param checked Whether the Radio is selected. This is useful if you want a controlled input.
+ * @param onChange Called when the user selects the Radio. The value is passed in via the function.
+ * @param disabled Turns the Radio gray and blocks any action associated with it.
  */
-export const Radio: StyleableFC<RadioProps> = ({
-  id,
+export const Radio = <Value extends string = string>({
   name,
-  value,
+  value = "on" as Value,
+  checked,
   onChange,
   disabled,
   element = "label",
   className,
   style,
-}) => {
+}: StyleableProps & RadioProps<Value>): ReactNode => {
   const formGroupContext = useFormgroupContext();
   const formItemContext = useFormItemContext();
   const formGroupName = formGroupContext?.name;
@@ -80,33 +85,27 @@ export const Radio: StyleableFC<RadioProps> = ({
   const resolvedName = name ?? formItemName ?? formGroupName;
 
   return (
-    <>
-      <Interactive
-        tabIndex={undefined}
-        element={element}
-        className={cn(
-          "skc-radio",
-          disabled && "skc-radio--disabled",
-          className,
-        )}
-        style={style}
-      >
-        <input
-          aria-disabled={disabled}
-          type="radio"
-          id={id}
-          name={resolvedName}
-          checked={value}
-          onChange={(event) => {
-            if (!disabled) onChange?.(event.target.checked);
-          }}
-          className="skc-radio__input"
-        />
+    <Interactive
+      tabIndex={undefined}
+      element={element}
+      className={cn("skc-radio", disabled && "skc-radio--disabled", className)}
+      style={style}
+    >
+      <input
+        aria-disabled={disabled}
+        type="radio"
+        name={resolvedName}
+        value={value}
+        checked={checked}
+        onChange={(event) => {
+          if (!disabled && event.target.checked) onChange?.(value);
+        }}
+        className="skc-radio__input"
+      />
 
-        <div aria-hidden className="skc-radio__circle">
-          <div className="skc-radio__marker" />
-        </div>
-      </Interactive>
-    </>
+      <div aria-hidden className="skc-radio__circle">
+        <div className="skc-radio__marker" />
+      </div>
+    </Interactive>
   );
 };
