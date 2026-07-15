@@ -52,9 +52,11 @@ default to the nearest Menu’s `id`.
 
 ### Props
 
-- `ActionableProps` are available: `command`, `commandFor`, `onClick`, and `href`.
-- `StyleableProps` are available: `className` and `style`.
-- `ElementCustomizableProps` are available: `element`.
+- [`ActionableProps`](/docs/guides/shared-props) available: `command`,
+  `commandfor`, `onClick`, and `href`.
+- [`StyleableProps`](/docs/guides/shared-props) available: `className` and
+  `style`.
+- [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="children" required="always">
@@ -77,7 +79,8 @@ default to the nearest Menu’s `id`.
       Menu, icons can quickly orient users.
 
       - If one Menu Item in a Menu has an icon, the rest should have one too.
-      - You are encouraged to use [Material Icon](/docs/data/material-icon) as the value for `icon`.
+      - You are encouraged to use [Material Icon](/docs/data/material-icon) as
+        the value for `icon`.
       - Optional.
 
       </TableCell>
@@ -129,7 +132,7 @@ default to the nearest Menu’s `id`.
       Turns the Menu Item text gray and blocks any action associated with it.
       `onClick` and `href` will have no effect.
 
-      - [Learn when to disable something.](https://codium.one/index.php/en/blog/77-disabled-buttons-don-t-have-to-suck)
+      - [Learn how to make disabled elements less frustrating.](/docs/guides/disabling-elements)
       - Optional.
 
       </TableCell>

@@ -14,7 +14,7 @@ export interface DialogHeaderProps extends ElementCustomizableProps {
   /**
    * The hero icon shown above the title text (`title`).
    *
-   * - You are encouraged to use Material Icons as the value for `icon`.
+   * - You are encouraged to use Material Icon as the value for `icon`.
    * - Optional.
    */
   icon?: ReactElement;
@@ -32,7 +32,7 @@ export interface DialogHeaderProps extends ElementCustomizableProps {
    * with more details.
    *
    * On its own, it succinctly presents the purpose of the Dialog, like
-   * "Discard draft?," for a confirmation on exiting a page without saving.
+   * "Discard draft?" for a confirmation on exiting a page without saving.
    *
    * - Always required.
    */
@@ -40,13 +40,13 @@ export interface DialogHeaderProps extends ElementCustomizableProps {
 }
 
 /**
- * The header section houses the main content of a Dialog. It should clearly and
- * succinctly communicate a Dialog's purpose, and allow the user to quickly make
+ * The header section contains the title and supporting text of a Dialog. It
+ * should clearly communicate the Dialog's purpose so the user can quickly make
  * a decision or enter information.
  *
  * @param icon The hero icon shown above the title text (`title`).
  * @param title The title text.
- * @param desc Complements the title text or succinctly presents the purpose of the Dialog.
+ * @param desc With a title (`title`), the supporting text complements the title text with more details.
  */
 export const DialogHeader: StyleableFC<DialogHeaderProps> = ({
   icon,

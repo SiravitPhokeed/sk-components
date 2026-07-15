@@ -5,13 +5,13 @@ import "@suankularb-components/css/nav-drawer.css";
 import type { ReactNode } from "react";
 
 /**
- * Props for {@link NavDrawer Nav Drawer}.
+ * Props for {@link NavDrawer Navigation Drawer}.
  */
 export interface NavDrawerProps {
   /**
-   * Nav Drawer Sections holding Nav Drawer Items, the navigation destinations.
+   * Navigation Drawer Sections holding Navigation Drawer Items, the navigation
+   * destinations.
    *
-   * - Must consist of {@link NavDrawerSection Nav Drawer Sections}.
    * - Always required.
    */
   children: ReactNode;
@@ -19,8 +19,7 @@ export interface NavDrawerProps {
   /**
    * Allows for translation of the accessibility labels.
    *
-   * - Must be `th` or `en-US`, as SKCom currently only supports these two
-   *   languages.
+   * - Must be `en-US` or `th`.
    * - Optional.
    */
   locale?: "en-US" | "th";
@@ -38,7 +37,7 @@ const STRINGS = {
 /**
  * A navigation drawer that slides in from the left.
  *
- * @param children Nav Drawer Sections holding Nav Drawer Items.
+ * @param children Navigation Drawer Sections holding Navigation Drawer Items, the navigation destinations.
  * @param locale Allows for translation of the accessibility labels.
  */
 export const NavDrawer: StyleableFC<NavDrawerProps> = ({

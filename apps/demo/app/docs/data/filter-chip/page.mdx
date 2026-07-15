@@ -5,6 +5,7 @@ import PropsTableRow from "@/app/docs/components/PropsTableRow";
 import VersionsTable from "@/app/docs/components/VersionsTable";
 import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import {
+  ChipSet,
   FilterChip,
   MaterialIcon,
   TableCell,
@@ -17,8 +18,7 @@ export const metadata = {
 ## Filter Chip
 
 A set of Filter Chips provide product-authored options to narrow down
-content. A Filter Chip should never appear alone and should be a child of
-Chip Set.
+content. Filter Chips appear in a [Chip Set](/docs/data/chip-set).
 
 <LinksChipSet
   material="/components/chips/guidelines#8d453d50-8d8e-43aa-9ae3-87ed134d2e64"
@@ -44,10 +44,21 @@ Chip Set.
 </FilterChip>
 ```
 
+### Usage
+
+Filter Chip labels should be nouns or short adjectives that describe a
+category or attribute, like “Teachers” or “Free shipping.”
+
+<ChipSet className="my-3">
+  <FilterChip children="Teachers" selected />
+  <FilterChip children="Students" />
+</ChipSet>
+
 ### Props
 
-- `StyleableProps` are available: `className` and `style`.
-- `ElementCustomizableProps` are available: `element`.
+- [`StyleableProps`](/docs/guides/shared-props) available: `className` and
+  `style`.
+- [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="children" required="always">
@@ -67,8 +78,8 @@ Chip Set.
     <TableCell>`ReactElement`</TableCell>
     <TableCell>
 
-      An icon can appear before all content in a Filter Chip. In a page with
-      many cards, icons can quickly orient users.
+      An icon can appear before all content in a Filter Chip. In a Chip Set
+      with many chips, icons can quickly orient users.
 
       - You are encouraged to use [Material Icon](/docs/data/material-icon) as the value for `icon`.
       - Optional.
@@ -109,9 +120,8 @@ Chip Set.
 
       Use elevation instead of an outline to signify the Filter Chip’s boundary.
 
-      - **Important:** do not use this prop if you don’t have to. Only elevate
-        a Filter Chip when its placement requires visual protection, such as on
-        top of an image.
+      - **Use sparingly.** Only elevate a Filter Chip when its placement
+        requires visual protection, such as on top of an image.
       - Optional.
 
       </TableCell>
@@ -148,7 +158,8 @@ Chip Set.
     <TableCell>`(state: boolean) => any`</TableCell>
     <TableCell>
 
-      Triggers when the user toggles the Filter Chip on or off.
+      Called when the user toggles the Filter Chip on or off. The state is
+      passed in via the function as a boolean.
 
       - Optional.
 

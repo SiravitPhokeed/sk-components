@@ -13,7 +13,7 @@ const RouterSelector: FC<{ value: "app" | "pages" }> = ({ value }) => (
       <Button
         appearance="outlined"
         selected={value === "app"}
-        href="/docs/guides/nextjs-app"
+        href="/docs/integrations/nextjs-app"
         element={Link}
       >
         App Router
@@ -21,7 +21,7 @@ const RouterSelector: FC<{ value: "app" | "pages" }> = ({ value }) => (
       <Button
         appearance="outlined"
         selected={value === "pages"}
-        href="/docs/guides/nextjs-pages"
+        href="/docs/integrations/nextjs-pages"
         element={Link}
       >
         Pages Router

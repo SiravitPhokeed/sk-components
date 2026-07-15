@@ -31,8 +31,8 @@ export interface InteractiveProps
   stateLayerEffect?: boolean;
 
   /**
-   * Show an ink ripple effect, a soft-edge translucent circle, radiating out
-   * of the click/tap position every click/tap to signify interactivity.
+   * Show an ink ripple effect, a soft-edge translucent circle, radiating
+   * outward from the point of each click/tap to signify interactivity.
    *
    * - Enabled by default.
    * - Optional.

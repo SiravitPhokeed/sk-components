@@ -1,6 +1,7 @@
 /**
  * **App Drawer**
- * A drawer of related apps.
+ * A dropdown panel that opens from a Button, giving users quick access to a
+ * family of related apps.
  */
 
 .skc-app-drawer {

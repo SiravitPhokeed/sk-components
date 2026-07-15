@@ -6,6 +6,7 @@ import VersionsTable from "@/app/docs/components/VersionsTable";
 import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import {
   AssistChip,
+  ChipSet,
   MaterialIcon,
   TableCell,
 } from "@suankularb-components/react";
@@ -20,8 +21,7 @@ Assist Chips are similar to Buttons in that they help users take action. The
 difference is a Button is persistent (doesn’t change) and an Assist Chip is
 dynamic and contextual (changes according to the context).
 
-The label of an Assist Chip should start with a verb, i.e. “**Turn on**
-lights” or “**Save** to favorites.”
+Assist Chips appear in a [Chip Set](/docs/data/chip-set).
 
 <LinksChipSet
   material="/components/chips/guidelines#5dd1928c-1476-4029-bdc5-fde66fc0dcb1"
@@ -46,11 +46,23 @@ lights” or “**Save** to favorites.”
 <AssistChip icon={<MaterialIcon icon="lightbulb" />}>Turn on lights</AssistChip>
 ```
 
+### Usage
+
+The label of an Assist Chip should start with a verb, i.e. “_Turn on_ lights” or
+“_Save_ to favorites.”
+
+<ChipSet className="my-3">
+  <AssistChip children="Turn on lights" icon={<MaterialIcon icon="lightbulb" />} />
+  <AssistChip children="Save to favorites" icon={<MaterialIcon icon="bookmark" />} />
+</ChipSet>
+
 ### Props
 
-- `ActionableProps` are available: `command`, `commandFor`, `onClick`, and `href`.
-- `StyleableProps` are available: `className` and `style`.
-- `ElementCustomizableProps` are available: `element`.
+- [`ActionableProps`](/docs/guides/shared-props) available: `command`,
+  `commandfor`, `onClick`, and `href`.
+- [`StyleableProps`](/docs/guides/shared-props) available: `className` and
+  `style`.
+- [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="children" required="always">
@@ -59,8 +71,8 @@ lights” or “**Save** to favorites.”
 
       The text shown inside the Assist Chip.
 
-      - The label should start with a verb, i.e. “**Turn on** lights” or
-        “**Save** to favorites.”
+      - The label should start with a verb, i.e. “_Turn on_ lights” or “_Save_
+        to favorites.”
       - Always required.
 
       </TableCell>
@@ -100,9 +112,8 @@ lights” or “**Save** to favorites.”
 
       Use elevation instead of an outline to signify the Assist Chip’s boundary.
 
-      - **Important:** do not use this prop if you don’t have to. Only elevate
-        an Assist Chip when its placement requires visual protection, such as on
-        top of an image.
+      - **Use sparingly.** Only elevate an Assist Chip when its placement
+        requires visual protection, such as on top of an image.
       - Optional.
 
       </TableCell>

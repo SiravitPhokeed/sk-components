@@ -49,16 +49,44 @@ a Segmented Button can be toggled on and off.
 </SegmentedButton>
 ```
 
+### Usage
+
+Manage the selected view with `useState`. Each Button gets a `selected` prop
+and an `onClick` handler.
+
+```tsx
+const [view, setView] = useState<"schedule" | "list">("schedule");
+
+return (
+  <SegmentedButton alt="View">
+    <Button
+      appearance="outlined"
+      selected={view === "schedule"}
+      onClick={() => setView("schedule")}
+    >
+      Schedule view
+    </Button>
+    <Button
+      appearance="outlined"
+      selected={view === "list"}
+      onClick={() => setView("list")}
+    >
+      List view
+    </Button>
+  </SegmentedButton>
+);
+```
+
 ### Props
 
-- `ElementCustomizableProps` are available: `element`.
+- [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="children" required="always">
     <TableCell>`ReactNode`</TableCell>
     <TableCell>
 
-      2-5 Buttons.
+      Between 2 and 5 Buttons.
 
       - Always required.
 

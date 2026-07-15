@@ -8,7 +8,7 @@ import type { ReactNode } from "react";
  */
 export interface TableHeadProps extends ElementCustomizableProps {
   /**
-   * Table Head has the same behaviour as `<thead>`.
+   * Table Head has the same behavior as `<thead>`.
    *
    * - Must consist of Table Row(s), which must consist of Table Cells with the
    *   `header` enabled.
@@ -29,7 +29,7 @@ export interface TableHeadProps extends ElementCustomizableProps {
 /**
  * The head area of a Table.
  *
- * @param children Table Head has the same behaviour as `<thead>`.
+ * @param children Table Head has the same behavior as `<thead>`.
  * @param fixed If the Table Head stays put on scroll.
  */
 export const TableHead: StyleableFC<TableHeadProps> = ({

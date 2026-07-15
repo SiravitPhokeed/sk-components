@@ -44,7 +44,7 @@ export interface ListItemProps
   children: ReactNode;
 
   /**
-   * The vertical alignment of the List Item's content.
+   * The vertical alignment of the List Item’s content.
    *
    * - Must be `top`, `center`, or `bottom`.
    * - Always required.
@@ -62,12 +62,12 @@ export interface ListItemProps
     | [ListItemLines, ListItemLines, ListItemLines, ListItemLines];
 
   /**
-   * In interactive components like Button, the state layer reacts to changes
-   * to the state to signify its interactivity. For example, a Button's state
-   * layer turns up its opacity on hover.
+   * A state layer is a visual overlay that responds to user interaction. For
+   * example, a Button’s state layer increases its opacity on hover, signaling
+   * it’s clickable.
    *
-   * - This effect can be enabled on List Item as well, letting the user know
-   *   that this List Item is interactive.
+   * - This effect can be enabled on List Item too, helping users recognize
+   *   it as interactive.
    * - Optional.
    */
   stateLayerEffect?: boolean;
@@ -77,8 +77,6 @@ export interface ListItemProps
    *
    * - Defaults to `<li>`.
    * - Optional.
-   *
-   * @default "li"
    */
   containerElement?: ElementType;
 }
@@ -87,9 +85,9 @@ export interface ListItemProps
  * An item inside a List.
  *
  * @param children The content of a List Item consists of the leading section, the content section, and the trailing section.
- * @param align The vertical alignment of the List Item's content.
- * @param lines The number of lines contained by the List Item.
- * @param stateLayerEffect The state layer reacts to changes to the state to signify its interactivity. This effect can be enabled on List Item as well.
+ * @param align The vertical alignment of the List Item’s content.
+ * @param lines The number of lines contained by the List Item. The height is set from this prop.
+ * @param stateLayerEffect A state layer is a visual overlay that responds to user interaction. For example, a Button’s state layer increases its opacity on hover, signaling it’s clickable.
  * @param containerElement The element to use as the container of the List Item.
  */
 export const ListItem: StyleableFC<ListItemProps> = ({

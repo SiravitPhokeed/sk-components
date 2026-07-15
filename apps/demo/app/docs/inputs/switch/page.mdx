@@ -30,9 +30,23 @@ Checkbox and Radio, a Switch is independent.
 <Switch />
 ```
 
+### Usage
+
+Use [Form Item](/docs/inputs/form-item) to add a label to a Switch.
+
+```tsx
+const [allow, setAllow] = useState(false);
+
+return (
+  <FormItem label="Allow notifications">
+    <Switch value={allow} onChange={setAllow} />
+  </FormItem>
+);
+```
+
 ### Props
 
-- `ElementCustomizableProps` are available: `element`.
+- [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="value" required="never">
@@ -51,8 +65,8 @@ Checkbox and Radio, a Switch is independent.
     <TableCell>`(value: boolean) => any`</TableCell>
     <TableCell>
 
-      This function triggers when the user toggles the Switch. The state is
-      passed in via the function as a boolean.
+      Called when the user toggles the Switch. The state is passed in via the
+      function as a boolean.
 
       - Optional.
 
@@ -64,9 +78,10 @@ Checkbox and Radio, a Switch is independent.
     <TableCell>`ReactElement`</TableCell>
     <TableCell>
 
-      An icon inside the Thumb when the Switch is off.
+      An icon inside the thumb when the Switch is off.
 
-      - You are encouraged to use [Material Icon](/docs/data/material-icon) as the value for `offIcon`.
+      - You are encouraged to use [Material Icon](/docs/data/material-icon) as
+        the value for `offIcon`.
       - Optional.
 
       </TableCell>
@@ -77,9 +92,10 @@ Checkbox and Radio, a Switch is independent.
     <TableCell>`ReactElement`</TableCell>
     <TableCell>
 
-      An icon inside the Thumb when the Switch is on.
+      An icon inside the thumb when the Switch is on.
 
-      - You are encouraged to use [Material Icon](/docs/data/material-icon) as the value for `onIcon`.
+      - You are encouraged to use [Material Icon](/docs/data/material-icon) as
+        the value for `onIcon`.
       - Optional.
 
       </TableCell>

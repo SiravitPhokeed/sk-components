@@ -103,7 +103,8 @@ to limit the number of Input Chips that can be added.
 
 ### Props
 
-- `StyleableProps` are available: `className` and `style`.
+- [`StyleableProps`](/docs/guides/shared-props) available: `className` and
+  `style`.
 
 <PropsTable>
   <PropsTableRow prop="children" required="always">
@@ -162,8 +163,8 @@ to limit the number of Input Chips that can be added.
     <TableCell>`(value: string) => any`</TableCell>
     <TableCell>
 
-      This function triggers when the user makes changes to the field value. The
-      value is passed in via the function.
+      Called when the user makes changes to the field value. The value is passed
+      in via the function.
 
       - Optional.
 
@@ -175,8 +176,8 @@ to limit the number of Input Chips that can be added.
     <TableCell>`(values: string[]) => any`</TableCell>
     <TableCell>
 
-      This function triggers when the user hits a separator or pastes
-      separator-delimited text.
+      Called when the user hits a separator or pastes separator-delimited
+      text.
 
       - When triggered by a key press, receives an array with a single entry.
       - When triggered by a paste, receives all split and trimmed values.
@@ -190,11 +191,9 @@ to limit the number of Input Chips that can be added.
     <TableCell>`() => any`</TableCell>
     <TableCell>
 
-      This function triggers when the user hits backspace twice while in the
-      field.
+      Called when the user hits backspace twice while in the field.
 
-      - The behavior expected to be implemented by the developer is that the
-        last Chip in the preceding Chip Set should be removed.
+      - Should remove the last Chip in the preceding Chip Set.
       - Optional.
 
       </TableCell>
@@ -274,7 +273,7 @@ to limit the number of Input Chips that can be added.
 
       Allows for translation of the accessibility labels.
 
-      - Must be `th` or `en-US`, as SKCom currently only supports these two languages.
+      - Must be `en-US` or `th`.
       - Optional.
 
       </TableCell>

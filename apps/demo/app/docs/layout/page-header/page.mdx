@@ -26,7 +26,7 @@ the App Drawer.
 
 **Use “Sentence case”** instead of “Title Case” for the text in Page Header.
 
-A top-level page has no parent. On mobile, a Button to toggle Nav Drawer is
+A top-level page has no parent. On mobile, a Button to toggle Navigation Drawer is
 displayed instead of a back Button.
 
 ```tsx
@@ -41,15 +41,17 @@ hierarchy.
 ```
 
 <DisclosureCard summary="A tip for App Drawer">
-  To avoid having to declare a [App Drawer](/docs/layout/app-drawer) on every
-  page, you can declare your own Page Header component that already has the App
-  Drawer in it.
+  To avoid having to declare an [App Drawer](/docs/layout/app-drawer) on every
+  page, you can **declare your own Page Header component that already has the
+  App Drawer** in it. You can then export that component and use it on every
+  page instead of the default Page Header.
 </DisclosureCard>
 
 ### Props
 
-- `StyleableProps` are available: `className` and `style`.
-- `ElementCustomizableProps` are available: `element`.
+- [`StyleableProps`](/docs/guides/shared-props) available: `className` and
+  `style`.
+- [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="children" required="always">
@@ -102,8 +104,7 @@ hierarchy.
 
       Allows for translation of the accessibility labels.
 
-      - Must be `th` or `en-US`, as SKCom currently only supports these two
-        languages.
+      - Must be `en-US` or `th`.
       - Optional.
 
       </TableCell>

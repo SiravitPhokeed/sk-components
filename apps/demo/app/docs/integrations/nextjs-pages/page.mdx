@@ -1,19 +1,19 @@
-import IconFontDialog from "@/app/docs/components/IconFontDialog";
-import RouterSelector from "@/app/docs/components/RouterSelector";
 import VersionsTable from "@/app/docs/components/VersionsTable";
 import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
+import IconFontDialog from "@/app/docs/components/IconFontDialog";
+import RouterSelector from "@/app/docs/components/RouterSelector";
 import { Button, MaterialIcon } from "@suankularb-components/react";
 
 export const metadata = {
-  title: "Using with Next.js App Router",
+  title: "Using with Next.js Pages Router",
 };
 
-## Using with Next.js App Router
+## Using with Next.js Pages Router
 
 Integrate SKCom into your [Next.js](https://nextjs.org/) project using the
-[App Router](https://nextjs.org/docs/app).
+[Pages Router](https://nextjs.org/docs/pages/getting-started).
 
-<RouterSelector value="app" />
+<RouterSelector value="pages" />
 
 ### Setup
 
@@ -27,44 +27,56 @@ npm install @suankularb-components/react
 pnpm add @suankularb-components/react
 ```
 
-Create a `layout.tsx` file in the `app` directory if you don’t have one already.
-Then, add [Theme Provider](/docs/layout/theme-provider) and wrap your app with
-[Root Layout](/docs/layout/root-layout) in the file.
+Create an `_app.tsx` file in the `pages` directory if you don’t have one
+already. `_app.tsx` is Next.js’s custom App component — it wraps every page in
+your application, making it the right place for providers and shared layout.
+Then, add [Theme Provider](/docs/layout/theme-provider) and wrap your
+app with [Root Layout](/docs/layout/root-layout) in the file.
 
 ```tsx
-// app/layout.tsx
+// pages/_app.tsx
+import { RootLayout, ThemeProvider } from "@suankularb-components/react";
+import type { AppProps } from "next/app";
 
-import {
-  RootLayout as SKCRootLayout,
-  ThemeProvider,
-} from "@suankularb-components/react";
-import type { ReactNode } from "react";
-
-const RootLayout = ({ children }: { children: ReactNode }) => (
-  <html lang="en">
-    <ThemeProvider />
-    <SKCRootLayout>{children}</SKCRootLayout>
-  </html>
-);
-
-export default RootLayout;
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <ThemeProvider />
+      <RootLayout element="div">
+        <Component {...pageProps} />
+      </RootLayout>
+    </>
+  );
+}
 ```
+
+> You must **set the `element` prop of Root Layout to `"div"`** when using the
+> Pages Router, as the default `"body"` value will cause a hydration error.
 
 ### Layout
 
-You can create `@/components/NavBar.tsx` and `@/components/NavDrawer.tsx` using
-SKCom’s Nav Bar and Nav Drawer components and populate them with your app’s
-navigation items.
+You can create a `Layout` component that contains the
+[Navigation Bar](/docs/layout/navbar) and [Navigation Drawer](/docs/layout/nav-drawer)
+components, and import it into your `_app.tsx` file. With this setup, you don’t
+need to add the Navigation Bar and Navigation Drawer to every page — Next.js
+will add them to every page for you.
+
+Start by creating `@/components/NavBar.tsx` and `@/components/NavDrawer.tsx`
+using SKCom’s Navigation Bar and Navigation Drawer components and populate them
+with your app’s navigation items.
 
 ```tsx
 // components/NavBar.tsx
-
-import { NavBar as SKCNavBar } from "@suankularb-components/react";
+import {
+  MaterialIcon,
+  NavBarItem,
+  NavBar as SKCNavBar,
+} from "@suankularb-components/react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 
 const NavBar = () => {
-  const pathname = usePathname();
+  const router = useRouter();
 
   return (
     <SKCNavBar>
@@ -72,7 +84,7 @@ const NavBar = () => {
         icon={<MaterialIcon icon="home" />}
         label="Home"
         href="/"
-        selected={pathname === "/"}
+        selected={router.pathname === "/"}
         element={Link}
       />
       {/* ... */}
@@ -82,31 +94,44 @@ const NavBar = () => {
 ```
 
 `@/components/NavDrawer.tsx` can be created in a similar way. Then, import these
-components into your `layout.tsx` file.
+components into your `Layout` component.
 
 ```tsx
-// app/layout.tsx
-
+// components/Layout.tsx
 import NavBar from "@/components/NavBar";
 import NavDrawer from "@/components/NavDrawer";
-import {
-  RootLayout as SKCRootLayout,
-  ThemeProvider,
-} from "@suankularb-components/react";
+import { RootLayout } from "@suankularb-components/react";
 import type { ReactNode } from "react";
 
-const RootLayout = ({ children }: { children: ReactNode }) => (
-  <html lang="en">
-    <ThemeProvider />
-    <SKCRootLayout>
+const Layout = ({ children }: { children: ReactNode }) => {
+  return (
+    <RootLayout>
       <NavBar />
       <NavDrawer />
       {children}
-    </SKCRootLayout>
-  </html>
-);
+    </RootLayout>
+  );
+};
+```
 
-export default RootLayout;
+With all the pieces in place, your `_app.tsx` should now look like this.
+
+```tsx
+// pages/_app.tsx
+import Layout from "@/components/Layout";
+import { ThemeProvider } from "@suankularb-components/react";
+import type { AppProps } from "next/app";
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <ThemeProvider />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </>
+  );
+}
 ```
 
 ---
@@ -114,8 +139,9 @@ export default RootLayout;
 A **typical top-level page** might look something like this.
 
 ```tsx
-// app/page.tsx
+// pages/index.tsx
 
+import type { NextPage } from "next";
 import {
   ContentLayout,
   FAB,
@@ -123,7 +149,7 @@ import {
   PageHeader,
 } from "@suankularb-components/react";
 
-const HomePage = () => (
+const HomePage: NextPage = () => (
   <>
     <FAB color="primary" icon={<MaterialIcon icon="add" />} tooltip="Create" />
     <PageHeader>Home</PageHeader>
@@ -137,13 +163,14 @@ export default HomePage;
 ### Fonts
 
 You can use
-[`next/font`](https://nextjs.org/docs/app/api-reference/components/font) to
+[`next/font`](https://nextjs.org/docs/pages/api-reference/components/font) to
 load the fonts used in SKCom.
 
 #### Google Fonts
 
 Inter, Space Grotesk, Sarabun, and IBM Plex Sans Thai are available on Google
-Fonts. You can load them using `next/font/google` in your root layout file (e.g., `app/layout.tsx`).
+Fonts. You can load them using `next/font/google` in your `_app.tsx` file (or
+your `Layout` component if you have one).
 
 ```ts
 import {
@@ -169,7 +196,7 @@ const displayFontTH = Sarabun({
 Then, add the font class names to your Root Layout component.
 
 ```tsx
-<SKCRootLayout
+<RootLayout
   className={[
     bodyFontEN.className,
     displayFontEN.className,
@@ -178,10 +205,10 @@ Then, add the font class names to your Root Layout component.
   ].join(" ")}
 >
   {/* ... */}
-</SKCRootLayout>
+</RootLayout>
 ```
 
-#### Icon Font
+#### Icon font
 
 <Button
   children="Download icon font"
@@ -195,7 +222,7 @@ Then, add the font class names to your Root Layout component.
 
 **Save the downloaded font file as `material-symbols.woff2` in your project’s
 `public/fonts` directory.** Then, load the font using `next/font/local` in your
-`layout.tsx` file.
+`_app.tsx` file or your `Layout` component.
 
 Take care to match the relative path to the font file with your project
 structure.
@@ -215,7 +242,7 @@ const iconFont = localFont({
 Finally, add the font class name to your Root Layout component.
 
 ```tsx
-<SKCRootLayout
+<RootLayout
   className={[
     // Google Fonts
     bodyFontEN.className,
@@ -227,12 +254,13 @@ Finally, add the font class name to your Root Layout component.
   ].join(" ")}
 >
   {/* ... */}
-</SKCRootLayout>
+</RootLayout>
 ```
 
 ### Navigation
 
-**Many interactive components** have props that extend `ElementCustomizableProps`
+**Many interactive components** have props that extend
+[`ElementCustomizableProps`](/docs/guides/shared-props#element-customizable-props)
 and thus **accept an `element` prop.** This allows you to use Next.js’s
 [`Link` component](https://nextjs.org/docs/pages/api-reference/components/link)
 for navigation instead of the default `<a>` element.
@@ -247,6 +275,10 @@ for navigation instead of the default `<a>` element.
 
 <VersionsTable>
   <VersionsTableRow version="v4.0.0">
-    App Router support introduced.
+    Theme Provider no longer wraps the app. Root Layout now defaults to
+    `element="body"`. FAB is now a direct child of Root Layout.
+  </VersionsTableRow>
+  <VersionsTableRow version="v3.0.0">
+    Pages Router support introduced.
   </VersionsTableRow>
 </VersionsTable>

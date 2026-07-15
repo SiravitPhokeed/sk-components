@@ -1,3 +1,9 @@
+/**
+ * **Theme Provider**
+ * Sets up the CSS variables and default theme that all SK Components depend on.
+ * Include this once near the root of your app tree.
+ */
+
 :root {
   font-size: 16px;
 

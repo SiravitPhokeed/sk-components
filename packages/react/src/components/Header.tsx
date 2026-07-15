@@ -12,8 +12,8 @@ import type { ElementType, ReactElement, ReactNode } from "react";
  */
 export interface HeaderProps extends ElementCustomizableProps {
   /**
-   * Header contains Buttons. You can put as many Buttons inside Header as
-   * needed, but the recommended limit is 3.
+   * The text or heading content of the Header. This is typically a short
+   * string that identifies a section or page.
    *
    * - Always required.
    */
@@ -33,7 +33,7 @@ export interface HeaderProps extends ElementCustomizableProps {
    * An icon can appear before the text (`children`) in a Header. In a page
    * with many headers, icons can quickly orient users.
    *
-   * - You are encouraged to use Material Icons as the value for `icon`.
+   * - You are encouraged to use Material Icon as the value for `icon`.
    * - Optional.
    */
   icon?: ReactElement;
@@ -53,9 +53,9 @@ const HEADER_TYPE_BY_LEVEL = {
  * When used in conjunction with Section, the Section can be labeled with the
  * Header for screen readers.
  *
- * @param children The text of the Header.
- * @param level The level of the Header. The number corresponds to an HTML header element.
- * @param icon An icon can appear before the text (`children`) in a Header.
+ * @param children The text or heading content of the Header. This is typically a short string that identifies a section or page.
+ * @param level The level of the Header. The number corresponds to an HTML header element, i.e., `3` corresponds to `<h3>`.
+ * @param icon An icon can appear before the text (`children`) in a Header. In a page with many headers, icons can quickly orient users.
  */
 export const Header: StyleableFC<HeaderProps> = ({
   children,

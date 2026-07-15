@@ -3,6 +3,7 @@
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/switch.css";
+import type { MaterialIcon } from "@/components/MaterialIcon";
 import type { ReactElement } from "react";
 import { useState } from "react";
 
@@ -18,25 +19,27 @@ export interface SwitchProps extends ElementCustomizableProps {
   value?: boolean;
 
   /**
-   * This function triggers when the user toggles the switch. The state is
-   * passed in via the function as a boolean.
+   * Called when the user toggles the Switch. The state is passed in via the
+   * function as a boolean.
    *
    * - Optional.
    */
   onChange?: (value: boolean) => any;
 
   /**
-   * An icon inside the Thumb when the switch is off.
+   * An icon inside the thumb when the Switch is off.
    *
-   * - You are encouraged to use Material Icons as the value for `offIcon`.
+   * - You are encouraged to use {@link MaterialIcon Material Icon} as
+   *   the value for `offIcon`.
    * - Optional.
    */
   offIcon?: ReactElement;
 
   /**
-   * An icon inside the Thumb when the switch is on.
+   * An icon inside the thumb when the Switch is on.
    *
-   * - You are encouraged to use Material Icons as the value for `onIcon`.
+   * - You are encouraged to use {@link MaterialIcon Material Icon} as
+   *   the value for `onIcon`.
    * - Optional.
    */
   onIcon?: ReactElement;
@@ -53,10 +56,10 @@ export interface SwitchProps extends ElementCustomizableProps {
  * A Switch toggles something on and off. It is usually in a Form Item. Unlike
  * Checkbox and Radio, a Switch is independent.
  *
- * @param value The state of the Switch.
- * @param onChange This function triggers when the user toggles the switch.
- * @param offIcon An icon inside the Thumb when the switch is off.
- * @param onIcon An icon inside the Thumb when the switch is on.
+ * @param value The state of the Switch. This is useful if you want a controlled input.
+ * @param onChange Called when the user toggles the Switch. The state is passed in via the function as a boolean.
+ * @param offIcon An icon inside the thumb when the Switch is off.
+ * @param onIcon An icon inside the thumb when the Switch is on.
  * @param disabled Turns the Switch gray and blocks any action associated with it.
  */
 export const Switch: StyleableFC<SwitchProps> = ({

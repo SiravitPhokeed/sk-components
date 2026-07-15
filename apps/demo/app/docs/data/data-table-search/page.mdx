@@ -39,7 +39,7 @@ Allows the user to filter the Data Table’s content using a text query.
 `value` and `onChange` props to control the field’s value and trigger the
 filtering logic when the user makes changes to the field.
 
-**With Tanstack Table**, you can hook up the `onChange` function to
+**With TanStack Table**, you can hook up the `onChange` function to
 `setGlobalFilter` to filter the table’s content.
 
 ```tsx
@@ -66,8 +66,9 @@ return (
 
 ### Props
 
-- `StyleableProps` are available: `className` and `style`.
-- `ElementCustomizableProps` are available: `element`.
+- [`StyleableProps`](/docs/guides/shared-props) available: `className` and
+  `style`.
+- [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="value" required="never">
@@ -89,8 +90,7 @@ return (
 
       Allows for translation of the default placeholder message.
 
-      - Must be `th` or `en-US`, as SKCom currently only supports these two
-        languages.
+      - Must be `en-US` or `th`.
       - Optional.
 
       </TableCell>
@@ -101,10 +101,10 @@ return (
     <TableCell>`(value: string) => any`</TableCell>
     <TableCell>
 
-      This function triggers when the user makes changes to the field value. The
-      value is passed in via the function.
+      Called when the user makes changes to the field value. The value is passed
+      in via the function.
 
-      - With [Tanstack Table](https://tanstack.com/table/), this function
+      - With [TanStack Table](https://tanstack.com/table/), this function
         can be hooked up to `setGlobalFilter`.
       - Optional.
 

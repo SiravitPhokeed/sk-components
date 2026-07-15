@@ -1,8 +1,7 @@
 /**
  * **Filter Chip**
  * A set of Filter Chips provide product-authored options to narrow down
- * content. A Filter Chip should never appear alone and should be a child of
- * Chip Set.
+ * content. Filter Chips appear in a Chip Set.
  */
 
 .skc-filter-chip__arrow {

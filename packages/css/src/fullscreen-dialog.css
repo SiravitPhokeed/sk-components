@@ -1,11 +1,11 @@
 /**
  * **Full-screen Dialog**
  *
- * A Full-screen Dialog fills the entire screen with a series of tasks
- * that must be completed.
+ * A Full-screen Dialog presents a series of tasks that must be completed. It
+ * takes over the full screen on mobile and becomes a standard Dialog on larger
+ * screens.
  *
- * A Full-screen Dialog only fills the screen on mobile and turns into a Dialog
- * on larger screens. A Dialog can appear above a Full-screen Dialog.
+ * A Dialog can appear above a Full-screen Dialog.
  */
 
 .skc-fullscreen-dialog {

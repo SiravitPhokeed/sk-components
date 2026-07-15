@@ -33,9 +33,35 @@ Radio always appears in a group.
 <Radio />
 ```
 
+### Usage
+
+Radio always appears in a group. Use [Form Group](/docs/inputs/form-group) to
+group related Radios and [Form Item](/docs/inputs/form-item) to label each one.
+
+```tsx
+const [atkResult, setATKResult] = useState<"negative" | "positive">();
+
+return (
+  <FormGroup label="ATK result">
+    <FormItem label="Negative">
+      <Radio
+        value={atkResult === "negative"}
+        onChange={() => setATKResult("negative")}
+      />
+    </FormItem>
+    <FormItem label="Positive">
+      <Radio
+        value={atkResult === "positive"}
+        onChange={() => setATKResult("positive")}
+      />
+    </FormItem>
+  </FormGroup>
+);
+```
+
 ### Props
 
-- `ElementCustomizableProps` are available: `element`.
+- [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="value" required="never">
@@ -54,8 +80,8 @@ Radio always appears in a group.
     <TableCell>`(value: boolean) => any`</TableCell>
     <TableCell>
 
-      This function triggers when the user toggles the Radio. The state is
-      passed in via the function as a boolean.
+      Called when the user toggles the Radio. The state is passed in via the
+      function as a boolean.
 
       - Optional.
 
@@ -69,7 +95,7 @@ Radio always appears in a group.
 
       Turns the Radio gray and blocks any action associated with it.
 
-      - [Learn when to disable something.](https://codium.one/index.php/en/blog/77-disabled-buttons-don-t-have-to-suck)
+      - [Learn how to make disabled elements less frustrating.](/docs/guides/disabling-elements)
       - Optional.
 
       </TableCell>

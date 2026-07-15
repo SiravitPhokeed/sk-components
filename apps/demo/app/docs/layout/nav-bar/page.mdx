@@ -12,13 +12,13 @@ import {
 } from "@suankularb-components/react";
 
 export const metadata = {
-  title: "Nav Bar",
+  title: "Navigation Bar",
 };
 
-## Nav Bar
+## Navigation Bar
 
-A Navigation Bar/Rail provides persistent access to all top-level pages. On
-larger screens, a Navigation Bar transforms into a Navigation Rail.
+A Navigation Bar provides persistent access to all top-level pages. On larger screens,
+it transforms into a Navigation Rail.
 
 <LinksChipSet
   material="/components/navigation-bar/overview"
@@ -60,8 +60,9 @@ larger screens, a Navigation Bar transforms into a Navigation Rail.
 
 ### Props
 
-- `StyleableProps` are available: `className` and `style`.
-- `ElementCustomizableProps` are available: `element`.
+- [`StyleableProps`](/docs/guides/shared-props) available: `className` and
+  `style`.
+- [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="children" required="always">
@@ -99,8 +100,7 @@ larger screens, a Navigation Bar transforms into a Navigation Rail.
 
       Allows for translation of the accessibility labels.
 
-      - Must be `th` or `en-US`, as SKCom currently only supports these two
-        languages.
+      - Must be `en-US` or `th`.
       - Optional.
 
       </TableCell>
@@ -120,14 +120,21 @@ larger screens, a Navigation Bar transforms into a Navigation Rail.
   </PropsTableRow>
 </PropsTable>
 
+### Further reading
+
+- [Next.js App Router](/docs/integrations/nextjs-app) — wiring Navigation Bar with
+  `usePathname` and `Link`
+- [Next.js Pages Router](/docs/integrations/nextjs-pages) — wiring Navigation Bar with
+  `useRouter` and `Link`
+
 ### Version changes
 
 <VersionsTable>
   <VersionsTableRow version="v4.0.0">
-    `brand` and `fab` removed. Nav Bar made fully transparent on desktop.
+    `brand` and `fab` removed. Navigation Bar made fully transparent on desktop.
   </VersionsTableRow>
   <VersionsTableRow version="v3.2.0">
-    Nav Bar made translucent on desktop.
+    Navigation Bar made translucent on desktop.
   </VersionsTableRow>
   <VersionsTableRow version="v3.1.0">
     Interactive replaced ad-hoc interaction handling.

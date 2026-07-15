@@ -22,8 +22,8 @@ export interface NavDrawerSectionProps extends ElementCustomizableProps {
   /**
    * The header of the section.
    *
-   * - Normally optional but required if this is the first Navigation Drawer
-   *   Section in a Navigation Drawer. In this case, it'd be the name of the app.
+   * - Optional for secondary sections. Required for the first section in a Nav
+   *   Drawer, where it typically displays the app name.
    */
   header?: ReactNode;
 }

@@ -24,7 +24,7 @@ export interface DataTableProps extends ElementCustomizableProps {
 
 /**
  * A richer Table with support for filtering, search, and pagination; and
- * integrates directly with Tanstack Table.
+ * integrates directly with TanStack Table.
  *
  * @param children There is a set of components especially designed to be used here: Data Table Search, Data Table Filters, Data Table Content, and Data Table Pagination.
  */

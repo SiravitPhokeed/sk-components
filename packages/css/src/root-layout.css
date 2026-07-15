@@ -1,8 +1,8 @@
 /**
  * **Root Layout**
- * The container of everything inside an application. Components which must
- * appear only once — Navigation Drawer, Navigation Bar, FAB, and Page Header
- * — only work optimally as direct descendants of Root Layout.
+ * The container for everything in your application. Components like Nav
+ * Drawer, Navigation Bar, FAB, and Page Header each appear exactly once, and they
+ * work best as direct children of Root Layout.
  */
 
 body {

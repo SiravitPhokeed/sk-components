@@ -43,8 +43,9 @@ export interface SelectProps<
    * How the Select looks. An outlined Select has a lower emphasis than filled,
    * so it is great for a form with many fields.
    *
-   * - Keep the appearance consistent across Selects. Separate different
-   *   appearances by region.
+   * - Keep the appearance consistent across Selects. For example, use `outlined`
+   *   for form fields and `filled` for toolbar controls, rather than mixing both
+   *   in the same context.
    * - Must be `outlined` or `filled`.
    * - Always required.
    */
@@ -76,8 +77,7 @@ export interface SelectProps<
   /**
    * Allows for translation of the message shown when there are no options.
    *
-   * - Must be `th` or `en-US`, as SKCom currently only supports these two
-   *   languages.
+   * - Must be `en-US` or `th`.
    * - Optional.
    */
   locale?: "en-US" | "th";
@@ -100,8 +100,7 @@ export interface SelectProps<
   value?: string;
 
   /**
-   * This function triggers when the user chooses an option. The value is
-   * passed in via the function.
+   * Called when the user chooses an option. The value is passed in via the function.
    *
    * - Optional.
    */
@@ -119,17 +118,18 @@ const STRINGS = {
 
 /**
  * Sometimes it’s impractical to show all options at a time with a radio group.
- * Select allows the user to choose from options shown on a temporary surface.
+ * Select allows the user to choose from options that appear in a dropdown
+ * menu.
  *
  * @param children The options to select from.
- * @param appearance How the Select looks.
- * @param label The label text.
+ * @param appearance How the Select looks. An outlined Select has a lower emphasis than filled, so it is great for a form with many fields.
+ * @param label The placeholder text (when not focused and no value) and the label text (when focused or has value).
  * @param leading The leading text or icon, aligned to the left.
  * @param helperMsg A short description of the Select, or an error message during an error state.
  * @param locale Allows for translation of the message shown when there are no options.
  * @param error Tells Select that it contains an invalid value and activates the error state.
  * @param value The value of the selected option. This is useful if you want a controlled input.
- * @param onChange This function triggers when the user chooses an option.
+ * @param onChange Called when the user chooses an option. The value is passed in via the function.
  */
 export const Select = <Value extends string = string>({
   children,

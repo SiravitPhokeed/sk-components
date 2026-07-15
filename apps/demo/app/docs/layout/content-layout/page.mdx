@@ -11,7 +11,9 @@ export const metadata = {
 
 ## Content Layout
 
-A simple width-clamped vertical flow of content with minimal default styling.
+A centered, single-column container for page content. It limits the
+maximum width and arranges children vertically, with minimal built-in
+styling.
 
 <LinksChipSet source="/ContentLayout.tsx" />
 
@@ -26,8 +28,9 @@ A simple width-clamped vertical flow of content with minimal default styling.
 
 ### Props
 
-- `StyleableProps` are available: `className` and `style`.
-- `ElementCustomizableProps` are available: `element`.
+- [`StyleableProps`](/docs/guides/shared-props) available: `className` and
+  `style`.
+- [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="children" required="always">
@@ -44,6 +47,13 @@ A simple width-clamped vertical flow of content with minimal default styling.
 
   </PropsTableRow>
 </PropsTable>
+
+### Further reading
+
+- [Next.js App Router](/docs/integrations/nextjs-app) — Content Layout in a
+  typical page structure
+- [Next.js Pages Router](/docs/integrations/nextjs-pages) — Content Layout in a
+  typical page structure
 
 ### Version changes
 

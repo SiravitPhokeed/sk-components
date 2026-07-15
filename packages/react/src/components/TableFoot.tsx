@@ -8,7 +8,7 @@ import type { ReactNode } from "react";
  */
 export interface TableFootProps extends ElementCustomizableProps {
   /**
-   * Table Foot has the same behaviour as `<tfoot>`.
+   * Table Foot has the same behavior as `<tfoot>`.
    *
    * - Must consist of Table Rows, which must consist of Table Cells.
    * - Always required.
@@ -29,7 +29,7 @@ export interface TableFootProps extends ElementCustomizableProps {
 /**
  * The foot area of a Table.
  *
- * @param children Table Foot has the same behaviour as `<tfoot>`.
+ * @param children Table Foot has the same behavior as `<tfoot>`.
  * @param fixed If the Table Foot stays put on scroll.
  */
 export const TableFoot: StyleableFC<TableFootProps> = ({

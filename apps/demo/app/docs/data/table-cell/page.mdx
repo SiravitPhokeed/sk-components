@@ -28,7 +28,9 @@ A cell of a Table.
     scope: ["row", "col"],
     align: ["left", "center", "right"],
   }}
-/>
+>
+  `scope` only effective when `header` is `true`.
+</DemoCard>
 
 ```tsx
 <TableCell header scope="row" align="left">
@@ -38,8 +40,9 @@ A cell of a Table.
 
 ### Props
 
-- `StyleableProps` are available: `className` and `style`.
-- `ElementCustomizableProps` are available: `element`.
+- [`StyleableProps`](/docs/guides/shared-props) available: `className` and
+  `style`.
+- [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="children" required="always">

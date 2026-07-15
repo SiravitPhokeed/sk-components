@@ -24,7 +24,7 @@ export interface NavBarProps extends ElementCustomizableProps {
 
   /**
    * More Navigation Items can be placed on the bottom of the Navigation Rail
-   * in larger screens. Use cases are settings and log out.
+   * on larger screens. Use cases are settings and log out.
    *
    * - Optional.
    */
@@ -33,7 +33,7 @@ export interface NavBarProps extends ElementCustomizableProps {
   /**
    * Allows for translation of the accessibility labels.
    *
-   * - Must be `th` or `en-US`, as SKCom currently only supports these two languages.
+   * - Must be `en-US` or `th`.
    * - Optional.
    */
   locale?: "en-US" | "th";
@@ -56,11 +56,11 @@ const STRINGS = {
 };
 
 /**
- * A Navigation Bar/Rail provides persistent access to all top-level pages. On
- * larger screens, a Navigation Bar transforms into a Navigation Rail.
+ * A Navigation Bar provides persistent access to all top-level pages. On larger
+ * screens, it transforms into a Navigation Rail.
  *
  * @param children A Navigation Bar contains Navigation Bar Items, each leading to a different top-level page.
- * @param end More Navigation Items can be placed on the bottom of the Navigation Rail in larger screens.
+ * @param end More Navigation Items can be placed on the bottom of the Navigation Rail on larger screens.
  * @param locale Allows for translation of the accessibility labels.
  * @param onNavToggle The function called when the user clicks on the navigation Button.
  */

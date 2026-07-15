@@ -41,8 +41,9 @@ much of that something has been done.
 
 ### Props
 
-- `StyleableProps` are available: `className` and `style`.
-- `ElementCustomizableProps` are available: `element`.
+- [`StyleableProps`](/docs/guides/shared-props) available: `className` and
+  `style`.
+- [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="appearance" required="always">
@@ -88,7 +89,7 @@ much of that something has been done.
         <Progress appearance="circular" alt="Indeterminate" visible />
       </div>
 
-      The progress percentage (out of 100) of an activity.
+      The progress percentage of an activity (a value from 0 to 100).
 
       - If undefined, the Progress will be in an indeterminate state.
       - Optional.

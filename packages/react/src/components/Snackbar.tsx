@@ -17,7 +17,7 @@ export interface SnackbarProps {
    * The message inside the Snackbar.
    *
    * - The Material Design style guide
-   *   {@link https://m3.material.io/foundations/content-design/style-guide/grammar-and-punctuation recommend omitting periods}
+   *   {@link https://m3.material.io/foundations/content-design/style-guide/grammar-and-punctuation recommends omitting periods}
    *   at the end of Snackbar messages.
    * - Always required.
    */
@@ -40,8 +40,7 @@ export interface SnackbarProps {
   action?: ReactElement<typeof Button>;
 
   /**
-   * Put the message ({@link children `children`}) above the action
-   * ({@link action `action`}).
+   * Put the message (`children`) above the action (`action`).
    *
    * - This is useful if the action text is long.
    * - Optional.
@@ -51,7 +50,7 @@ export interface SnackbarProps {
   /**
    * Prevent the Snackbar from auto-dismissing after a certain duration.
    *
-   * - Incompatible with {@link autoDismissDurationMs `autoDismissDurationMs`}.
+   * - Incompatible with `autoDismissDurationMs`.
    * - Optional.
    */
   persistent?: boolean;
@@ -59,7 +58,7 @@ export interface SnackbarProps {
   /**
    * Time in milliseconds until the Snackbar exits automatically.
    *
-   * - Incompatible with {@link persistent `persistent`}.
+   * - Incompatible with `persistent`.
    * - Defaults to 6000 (6 seconds).
    * - Optional.
    *

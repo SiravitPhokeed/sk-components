@@ -1,3 +1,13 @@
+/**
+ * **Split Layout**
+ * List-detail views and supporting panel layouts can be created with Split
+ * Layout.
+ *
+ * In a list-detail view, the left side is a list and the right is the list’s
+ * detail. In a supporting panel layout, the main content takes focus with a
+ * small column set aside for supporting content.
+ */
+
 @media (width < 38rem) {
   .skc-split-layout {
     padding-inline: 1rem;

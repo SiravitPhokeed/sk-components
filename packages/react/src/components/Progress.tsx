@@ -26,7 +26,7 @@ export interface ProgressProps extends ElementCustomizableProps {
   alt: string;
 
   /**
-   * The progress percentage (out of 100) of an activity.
+   * The progress percentage of an activity (a value from 0 to 100).
    *
    * - If undefined, the Progress will be in an indeterminate state.
    * - Optional.
@@ -47,7 +47,7 @@ export interface ProgressProps extends ElementCustomizableProps {
  *
  * @param appearance Progress can be either a loading spinner or a linear loading bar.
  * @param alt A description of the Progress for screen readers, similar to `alt` on `<img>`.
- * @param value The progress percentage (out of 100) of an activity.
+ * @param value The progress percentage of an activity (a value from 0 to 100).
  * @param visible If this Progress is visible.
  */
 export const Progress: StyleableFC<ProgressProps> = ({

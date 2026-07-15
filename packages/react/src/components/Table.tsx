@@ -35,8 +35,8 @@ export interface TableProps extends ElementCustomizableProps {
 }
 
 /**
- * A Table displays information in columns and rows, each row representing a set
- * of data in each aspect, represented by columns.
+ * A Table displays information in columns and rows, where each row represents a
+ * data record and each column represents a data attribute.
  *
  * @param children The content of the Table.
  * @param contentWidth The minimum width of the content.

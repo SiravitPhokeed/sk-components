@@ -18,18 +18,7 @@ const DocsNav: StyleableFC = ({ className, style }) => (
       <DocsNavLink href="/docs/guides/getting-started">
         Getting started
       </DocsNavLink>
-      <DocsNavLink href="/docs/guides/nextjs-app">
-        Next.js App Router
-      </DocsNavLink>
-      <DocsNavLink href="/docs/guides/nextjs-pages">
-        Next.js Pages Router
-      </DocsNavLink>
-      <DocsNavLink href="/docs/guides/tailwindcss-v4">
-        Tailwind CSS v4
-      </DocsNavLink>
-      <DocsNavLink href="/docs/guides/tailwindcss-v3">
-        Tailwind CSS v3
-      </DocsNavLink>
+      <DocsNavLink href="/docs/guides/shared-props">Shared props</DocsNavLink>
       <DocsNavLink href="/docs/guides/modals">Modals and popovers</DocsNavLink>
       <DocsNavLink href="/docs/guides/disabling-elements">
         Disabling elements
@@ -39,7 +28,26 @@ const DocsNav: StyleableFC = ({ className, style }) => (
     </DocsNavSection>
 
     <DocsNavSection
-      icon={<MaterialIcon icon="select_window" />}
+      icon={<MaterialIcon icon="join_inner" />}
+      title="Integrations"
+      open
+    >
+      <DocsNavLink href="/docs/integrations/nextjs-app">
+        Next.js App Router
+      </DocsNavLink>
+      <DocsNavLink href="/docs/integrations/nextjs-pages">
+        Next.js Pages Router
+      </DocsNavLink>
+      <DocsNavLink href="/docs/integrations/tailwindcss-v4">
+        Tailwind CSS v4
+      </DocsNavLink>
+      <DocsNavLink href="/docs/integrations/tailwindcss-v3">
+        Tailwind CSS v3
+      </DocsNavLink>
+    </DocsNavSection>
+
+    <DocsNavSection
+      icon={<MaterialIcon icon="select_window_2" />}
       title="Migrations"
       open
     >
@@ -62,14 +70,14 @@ const DocsNav: StyleableFC = ({ className, style }) => (
       <DocsNavLink href="/docs/layout/header">Header</DocsNavLink>
       <DocsNavLink href="/docs/layout/section">Section</DocsNavLink>
       <DocsNavLink href="/docs/layout/columns">Columns</DocsNavLink>
-      <DocsNavLink href="/docs/layout/nav-bar">Nav Bar</DocsNavLink>
-      <DocsNavLink href="/docs/layout/nav-bar-item">Nav Bar Item</DocsNavLink>
-      <DocsNavLink href="/docs/layout/nav-drawer">Nav Drawer</DocsNavLink>
+      <DocsNavLink href="/docs/layout/nav-bar">Navigation Bar</DocsNavLink>
+      <DocsNavLink href="/docs/layout/nav-bar-item">Navigation Bar Item</DocsNavLink>
+      <DocsNavLink href="/docs/layout/nav-drawer">Navigation Drawer</DocsNavLink>
       <DocsNavLink href="/docs/layout/nav-drawer-section">
-        Nav Drawer Section
+        Navigation Drawer Section
       </DocsNavLink>
       <DocsNavLink href="/docs/layout/nav-drawer-item">
-        Nav Drawer Item
+        Navigation Drawer Item
       </DocsNavLink>
       <DocsNavLink href="/docs/layout/side-sheet">Side Sheet</DocsNavLink>
       <DocsNavLink href="/docs/layout/app-drawer">App Drawer</DocsNavLink>

@@ -5,6 +5,7 @@ import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { ActionableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/fab.css";
+import type { MaterialIcon } from "@/components/MaterialIcon";
 import type { ReactElement, ReactNode } from "react";
 
 /**
@@ -41,7 +42,7 @@ export interface FABProps extends ActionableProps {
   /**
    * The icon displayed inside the FAB or alongside the label.
    *
-   * - You are encouraged to use Material Icons as the value for `icon`.
+   * - You are encouraged to use {@link MaterialIcon Material Icon} as the value for `icon`.
    * - Always required.
    */
   icon: ReactElement;

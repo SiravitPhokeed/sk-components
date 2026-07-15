@@ -36,8 +36,9 @@ The header of a Card. Sometimes all a Card needs is a Card Header.
 
 ### Props
 
-- `StyleableProps` are available: `className` and `style`.
-- `ElementCustomizableProps` are available: `element`.
+- [`StyleableProps`](/docs/guides/shared-props) available: `className` and
+  `style`.
+- [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="avatar" required="never">
@@ -88,6 +89,19 @@ The header of a Card. Sometimes all a Card needs is a Card Header.
     <TableCell>
 
       A short text complementing the title text.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="truncate" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Limits the title and subtitle to a single line, truncating the text with an
+      ellipsis if it overflows.
 
       - Optional.
 

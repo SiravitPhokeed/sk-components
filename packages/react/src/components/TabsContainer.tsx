@@ -24,7 +24,7 @@ export interface TabsContainerProps extends ElementCustomizableProps {
   children: ReactNode;
 
   /**
-   * Where Tabs Container is placed affects its appearance. A Tabs Container
+   * Where the Tabs Container is placed affects its appearance. A Tabs Container
    * responsible for the entire content pane (`primary`) has a different
    * appearance as that for only a section (`secondary`).
    *
@@ -40,7 +40,7 @@ export interface TabsContainerProps extends ElementCustomizableProps {
  * page of a class.
  *
  * @param children Tabs to select from.
- * @param appearance Where Tabs Container is placed affects its appearance. A Tabs Container responsible for the entire content pane (`primary`) has a different appearance as that for only a section (`secondary`).
+ * @param appearance Where the Tabs Container is placed affects its appearance. A Tabs Container responsible for the entire content pane (`primary`) has a different appearance as that for only a section (`secondary`).
  */
 export const TabsContainer: StyleableFC<TabsContainerProps> = ({
   children,

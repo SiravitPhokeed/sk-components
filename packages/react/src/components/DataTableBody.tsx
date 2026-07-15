@@ -17,7 +17,7 @@ export interface DataTableBodyProps<
   RowShape extends {} = any,
 > extends ElementCustomizableProps {
   /**
-   * The return of `getRowModel`, one of the functions of the Tanstack Table
+   * The return of `getRowModel`, one of the functions of the TanStack Table
    * instance.
    *
    * - Always required.
@@ -31,7 +31,6 @@ export interface DataTableBodyProps<
    * - Must be `left`, `center`, `right`.
    * - Optional.
    *
-   * @default "left"
    */
   align?: "left" | "center" | "right";
 
@@ -41,7 +40,6 @@ export interface DataTableBodyProps<
    * - Must be a Segmented Button.
    * - Optional.
    *
-   * @param row The data for the row this is place in.
    */
   rowActions?:
     | Required<TableRowProps["actions"]>
@@ -49,9 +47,12 @@ export interface DataTableBodyProps<
 }
 
 /**
- * The body section of a Data Table specified via Tanstack Table.
+ * The body section of a Data Table, designed to work with TanStack Table.
+ * For the non-TanStack path, use Table Body instead.
  *
- * @param rowModel The return of `getRowModel`, one of the functions of the Tanstack Table instance.
+ * @param rowModel The return of `getRowModel`, one of the functions of the TanStack Table instance.
+ * @param align How the content in each cell should be positioned. It can be aligned to the left (default), the center, or the right.
+ * @param rowActions Actions related to a row, shown on hover.
  */
 export const DataTableBody = <RowShape extends {}>({
   rowModel,

@@ -33,7 +33,7 @@ export interface DialogProps extends ElementCustomizableProps {
   /**
    * The ID of the `<dialog>` element, for Invoker Commands API support.
    *
-   * - Use with `command="show-modal" and `commandfor={id}` on a
+   * - Use with `command="show-modal"` and `commandfor={id}` on a
    *   trigger button to open the Dialog declaratively via the Invoker Commands
    *   API.
    * - Buttons inside this Dialog will automatically use this ID for their
@@ -72,8 +72,8 @@ export interface DialogProps extends ElementCustomizableProps {
 }
 
 /**
- * A Dialog interrupts the user to have them make an immediately significant
- * decision or prompts a user to enter important information.
+ * A Dialog interrupts the user to make an immediately significant decision
+ * or enter important information.
  *
  * @param id The ID of the `<dialog>` element, for Invoker Commands API support.
  * @param children Parts of a Dialog.

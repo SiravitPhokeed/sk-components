@@ -1,3 +1,4 @@
+import DisclosureCard from "@/app/docs/components/DisclosureCard";
 import VersionsTable from "@/app/docs/components/VersionsTable";
 import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 
@@ -8,14 +9,22 @@ export const metadata = {
 ## Theming
 
 The default theme is included with
-[Theme Provider](/docs/layout/theme-provider), which simply imports an internal
+[Theme Provider](/docs/layout/theme-provider), which imports an internal
 `_theme.css` file with variables for colors, typography, and motion. The theme
-was generated from Suankularb’s school colors with the
+was generated from
+[Suankularb Wittayalai School](https://www.sk.ac.th/)’s school colors using the
 [Material Theme Builder](https://www.figma.com/community/plugin/1034969338659738588)
 Figma plugin.
 
-If you wish to use your own theme, you can create a CSS file with the same
-variables and import it instead of using Theme Provider.
+If you wish to use your own theme, you can **create a CSS file that defines the
+same variables** and import it instead of using Theme Provider.
+
+- Be aware that this takes some work: Material Theme Builder outputs tokens
+  prefixed with `--md-sys-*` split across separate light and dark files, while
+  SKCom expects `--color-*` tokens combined into single `light-dark()` calls.
+- You’ll need to manually map each token to SKCom’s naming convention.
+- The full `_theme.css` below can serve as a reference for which variables you
+  need to define.
 
 ### Dark mode
 
@@ -25,27 +34,36 @@ classes on `<html>` to determine which color scheme to use.
 
 ### Overriding default styles
 
-Most components extend `StyleableFC` which allows you to pass `className` and
-`style` props to override the component’s default styles.
+Most components accept `className` and `style` props, so you can customize
+their appearance like any other HTML element.
 
 ```tsx
-<Button appearance="primary" style={{ backgroundColor: "red" }}>
-  Red button
+<Button appearance="filled" style={{ backgroundColor: "green" }}>
+  Green button
 </Button>
 ```
 
-If you are using [Tailwind CSS](/docs/guides/tailwindcss-v4), `className` allows
+If you are using [Tailwind CSS](/docs/integrations/tailwindcss-v4), `className` allows
 you to use utility classes to override the component’s default styles.
 
 ```tsx
-<Button appearance="primary" className="bg-red-500">
-  Red button
+<Button appearance="filled" className="bg-green-700">
+  Green button
 </Button>
 ```
 
 ### Default `_theme.css`
 
-For reference, here is the default `_theme.css` file included with Theme Provider.
+For reference, here is the default `_theme.css` file included with
+Theme Provider.
+
+<DisclosureCard
+  summary={
+    <>
+      Show full <code>_theme.css</code>
+    </>
+  }
+>
 
 ```css
 :root {
@@ -350,6 +368,8 @@ For reference, here is the default `_theme.css` file included with Theme Provide
   }
 }
 ```
+
+</DisclosureCard>
 
 ### Version changes
 

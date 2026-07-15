@@ -11,18 +11,18 @@ export const metadata = {
 
 ## Root Layout
 
-The container of everything inside an application. Components which must
-appear only once — Navigation Drawer, Navigation Bar, FAB, and Page Header —
-only work optimally as direct descendants of Root Layout.
+The container for everything in your application. Components like Nav
+Drawer, Navigation Bar, FAB, and Page Header each appear exactly once, and they
+work best as direct children of Root Layout.
 
-Root Layout handles positioning of components and responsiveness.
+Root Layout handles component positioning and responsiveness.
 
 <LinksChipSet source="/RootLayout.tsx" />
 
 ```tsx
 <RootLayout element="body">
-  <NavBar>{/* Nav Bar Items */}</NavBar>
-  <NavDrawer>{/* Nav Drawer Sections */}</NavDrawer>
+  <NavBar>{/* Navigation Bar Items */}</NavBar>
+  <NavDrawer>{/* Navigation Drawer Sections */}</NavDrawer>
   <FAB {/* FAB props */} />
   <PageHeader>Dashboard</PageHeader>
   <ContentLayout>{/* Sections */}</ContentLayout>
@@ -31,18 +31,26 @@ Root Layout handles positioning of components and responsiveness.
 
 ### Props
 
-- `StyleableProps` are available: `className` and `style`.
-- `ElementCustomizableProps` are available: `element`.
+- [`StyleableProps`](/docs/guides/shared-props) available: `className` and
+  `style`.
+- [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="children" required="always">
     <TableCell>`ReactNode`</TableCell>
     <TableCell>
 
-      Root Layout positions Navigation Drawer, Navigation Bar, and FAB. It can
-      contain Navigation Drawer, Navigation Bar, FAB, Page Header, Content
-      Layout, and Split Layout only.
+      Root Layout manages the placement of Navigation Drawer, Navigation Bar,
+      and FAB.
 
+      - These six components should be direct children of Root Layout:
+        - Navigation Drawer
+        - Navigation Bar
+        - FAB
+        - Page Header
+        - Content Layout
+        - Split Layout
+      - All other elements should go inside Content Layout or Split Layout.
       - Always required.
 
       </TableCell>
@@ -50,11 +58,18 @@ Root Layout handles positioning of components and responsiveness.
   </PropsTableRow>
 </PropsTable>
 
+### Further reading
+
+- [Next.js App Router](/docs/integrations/nextjs-app) — setting up Root Layout
+  in `layout.tsx`
+- [Next.js Pages Router](/docs/integrations/nextjs-pages) — setting up Root Layout
+  in `_app.tsx`
+
 ### Version changes
 
 <VersionsTable>
   <VersionsTableRow version="v4.0.0">
-    FAB is now a direct child of Root Layout instead of a Nav Bar prop.
+    FAB is now a direct child of Root Layout instead of a Navigation Bar prop.
   </VersionsTableRow>
   <VersionsTableRow version="v3.0.0">Root Layout introduced.</VersionsTableRow>
 </VersionsTable>

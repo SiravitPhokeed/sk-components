@@ -22,7 +22,7 @@ export interface CardHeaderProps extends ElementCustomizableProps {
    * An icon can appear before all content in a Card Header. In a page with
    * many cards, icons can quickly orient users.
    *
-   * - You are encouraged to use Material Icons as the value for `icon`.
+   * - You are encouraged to use Material Icon as the value for `icon`.
    * - Incompatible with `avatar`.
    * - Optional.
    */
@@ -54,8 +54,8 @@ export interface CardHeaderProps extends ElementCustomizableProps {
 /**
  * The header of a Card. Sometimes all a Card needs is a Card Header.
  *
- * @param avatar An avatar is placed before all content in a Card Header.
- * @param icon An icon can appear before all content in a Card Header.
+ * @param avatar An avatar is placed before all content in a Card Header. A use case would be the profile picture of a user.
+ * @param icon An icon can appear before all content in a Card Header. In a page with many cards, icons can quickly orient users.
  * @param title The most predominant text inside a Card.
  * @param subtitle A short text complementing the title text.
  * @param truncate Limits the title and subtitle to a single line, truncating the text with an ellipsis if it overflows.

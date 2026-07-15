@@ -1,10 +1,9 @@
 /**
  * **Input Chip**
- * A Chip displaying a piece of information entered by the user. This type of
- * Chip can be added and deleted by the user.
+ * A Chip displaying a piece of information entered by the user is an Input
+ * Chip. This type of Chip can be added and deleted by the user.
  *
- * Like all Chips, an Input Chip appears alongside other Input Chips, but
- * these can also appear inside a text field like in Chip Field.
+ * Input Chips appear in a Chip Set or Chip Field.
  */
 
 .skc-input-chip {

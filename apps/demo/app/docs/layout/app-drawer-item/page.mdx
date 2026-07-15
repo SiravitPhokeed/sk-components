@@ -12,7 +12,8 @@ export const metadata = {
 
 ## App Drawer Item
 
-An app inside the App Drawer. A child of App Drawer Segment.
+Represents a single app inside the App Drawer. Always lives inside an
+App Drawer Segment.
 
 <LinksChipSet source="/AppDrawerItem.tsx" />
 
@@ -32,9 +33,11 @@ An app inside the App Drawer. A child of App Drawer Segment.
 
 ### Props
 
-- `ActionableProps` are available: `command`, `commandFor`, `onClick`, and `href`.
-- `StyleableProps` are available: `className` and `style`.
-- `ElementCustomizableProps` are available: `element`.
+- [`ActionableProps`](/docs/guides/shared-props) available: `command`,
+  `commandfor`, `onClick`, and `href`.
+- [`StyleableProps`](/docs/guides/shared-props) available: `className` and
+  `style`.
+- [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="logo" required="always">

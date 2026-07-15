@@ -12,10 +12,10 @@ import {
 } from "@suankularb-components/react";
 
 export const metadata = {
-  title: "Nav Drawer Section",
+  title: "Navigation Drawer Section",
 };
 
-## Nav Drawer Section
+## Navigation Drawer Section
 
 A group of destinations within a Navigation Drawer.
 
@@ -41,7 +41,7 @@ A group of destinations within a Navigation Drawer.
         label="Classrooms"
       />,
     ],
-    className: "w-84", // Actual width if inside Nav Drawer
+    className: "w-84", // Actual width if inside Navigation Drawer
   }}
 />
 
@@ -58,8 +58,9 @@ A group of destinations within a Navigation Drawer.
 
 ### Props
 
-- `StyleableProps` are available: `className` and `style`.
-- `ElementCustomizableProps` are available: `element`.
+- [`StyleableProps`](/docs/guides/shared-props) available: `className` and
+  `style`.
+- [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="children" required="always">
@@ -81,8 +82,8 @@ A group of destinations within a Navigation Drawer.
 
       The header of the section.
 
-      - Normally optional but required if this is the first Navigation Drawer
-        Section in a Navigation Drawer. In this case, it'd be the name of the app.
+      - Optional for secondary sections. Required for the first section in a
+        Navigation Drawer, where it typically displays the app name.
 
       </TableCell>
 
@@ -93,6 +94,6 @@ A group of destinations within a Navigation Drawer.
 
 <VersionsTable>
   <VersionsTableRow version="v3.0.0">
-    Nav Drawer Section introduced.
+    Navigation Drawer Section introduced.
   </VersionsTableRow>
 </VersionsTable>

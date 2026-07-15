@@ -16,8 +16,6 @@ export interface SearchProps extends ElementCustomizableProps {
    * The value inside the field. This is useful if you want a controlled input.
    *
    * - Optional.
-   *
-   * @see {@link https://reactjs.org/docs/forms.html#controlled-components React documention on controlled input}
    */
   value?: string;
 
@@ -33,25 +31,22 @@ export interface SearchProps extends ElementCustomizableProps {
   /**
    * Allows for translation of the default placeholder message.
    *
-   * - Must be `th` or `en-US`, as SKCom currently only supports these two
-   *   languages.
+   * - Must be `en-US` or `th`.
    * - Optional.
-   *
-   * @default "en-US"
    */
   locale?: "en-US" | "th";
 
   /**
-   * This function triggers when the user makes changes to the field value. The
-   * value is passed in via the function.
+   * Called when the user makes changes to the field value. The value is passed
+   * in via the function.
    *
    * - Optional.
    */
   onChange?: (value: string) => any;
 
   /**
-   * This function triggers when the search button is clicked. The value is
-   * passed in via the function.
+   * Called when the search button is clicked. The value is passed in via the
+   * function.
    *
    * - Optional.
    */
@@ -95,9 +90,10 @@ const STRINGS = {
  * Search allows the user to quickly find something using a query.
  *
  * @param value The value inside the field. This is useful if you want a controlled input.
+ * @param hotkey Enables the user to focus on the field by pressing `/`, or any other key you specify.
  * @param locale Allows for translation of the default placeholder message.
- * @param onChange This function triggers when the user makes changes to the field value.
- * @param onSearch This function triggers when the search button is clicked.
+ * @param onChange Called when the user makes changes to the field value. The value is passed in via the function.
+ * @param onSearch Called when the search button is clicked. The value is passed in via the function.
  * @param placeholder A faint text displayed inside the field guiding the user.
  * @param disabled Turns the Search gray and blocks any action associated with it.
  * @param inputAttr Attributes for the underlying `<input>` element.

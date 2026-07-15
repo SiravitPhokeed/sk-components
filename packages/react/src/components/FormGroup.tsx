@@ -38,7 +38,7 @@ export interface FormGroupProps extends ElementCustomizableProps {
   label: ReactNode;
 
   /**
-   * The element of the underlying `<legend>` element.
+   * The HTML element to render for the `<legend>`. Defaults to `"label"`.
    *
    * - Optional.
    */
@@ -46,11 +46,11 @@ export interface FormGroupProps extends ElementCustomizableProps {
 }
 
 /**
- * A group of related form items, like options in a radio group.
+ * A group of related Form Items, like options in a radio group.
  *
  * @param children Form Items within this group, be it a set of options to choose from or related settings in a preferences page.
- * @param label The legend for the entire field.
- * @param legendElement Change the underlying element of the legend from `<legend>` to a custom element.
+ * @param label The legend for the entire group.
+ * @param legendElement The HTML element to render for the `<legend>`.
  */
 export const FormGroup: StyleableFC<FormGroupProps> = ({
   children,

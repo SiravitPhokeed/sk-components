@@ -65,7 +65,7 @@ const components: MDXComponents = {
           ? "w-fit p-4"
           : "bg-surface-variant rounded-xs px-1.5 text-[0.9em]",
         // Explicitly state font features for Firefox.
-        "font-features-['ss01','ss02','ss03','ss04','ss05'] tracking-normal",
+        "font-features-['ss01','ss02','ss03','ss04','ss05'] leading-normal tracking-normal",
         className,
       )}
       {...props}
@@ -73,11 +73,11 @@ const components: MDXComponents = {
   ),
   hr: () => <Divider className="my-3" />,
   ul: (props) => (
-    <ul className="*:marker:text-outline list-disc ps-6" {...props} />
+    <ul className="marker:text-outline list-disc ps-6" {...props} />
   ),
   ol: (props) => (
     <ol
-      className="*:marker:text-on-surface-variant *:marker:font-display list-decimal ps-6"
+      className="marker:text-on-surface-variant marker:font-display list-decimal ps-6"
       {...props}
     />
   ),

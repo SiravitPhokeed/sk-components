@@ -31,8 +31,8 @@ export interface ButtonProps extends ActionableProps, ElementCustomizableProps {
    * The appearance of the Button.
    *
    * Each appearance has a priority. For example, in a log in page, the log in
-   * button has higher priority than the password recovery button. In this
-   * case, the log in button is “filled,” and the password recovery is “text.”
+   * button has higher priority than the password recovery Button. In this
+   * case, the log in Button is “filled,” and the password recovery is “text.”
    *
    * - Must be `filled`, `tonal`, `outlined`, or `text`, from highest to lowest
    *   priority.
@@ -44,7 +44,8 @@ export interface ButtonProps extends ActionableProps, ElementCustomizableProps {
    * An icon can appear before the text (`children`) in a Button. In a page
    * with many buttons, icons can quickly orient users.
    *
-   * - You are encouraged to use {@link MaterialIcon Material Icons} as the value for `icon`.
+   * - You are encouraged to use {@link MaterialIcon Material Icon} as the
+   *   value for `icon`.
    * - Normally optional but required if `children` is undefined, as a Button
    *   cannot be empty.
    */
@@ -77,7 +78,7 @@ export interface ButtonProps extends ActionableProps, ElementCustomizableProps {
    * If the Button is selected. `icon` is replaced with a checkmark if this is
    * true.
    *
-   * - **Important**: this is intended to be used only when the Button is
+   * - **Important:** this is intended to be used only when the Button is
    *   inside a Segmented Button. This prop will still be functional otherwise,
    *   but it is against Material guidelines.
    * - Required when inside a Segmented Button.
@@ -94,7 +95,7 @@ export interface ButtonProps extends ActionableProps, ElementCustomizableProps {
   dangerous?: boolean;
 
   /**
-   * {@link disabled Disable} the Button and add a Progress spinner in front of
+   * Disable the Button and add a Progress spinner in front of
    * the text to signify loading status. `onClick` and `href` will have no
    * effect.
    *
@@ -105,8 +106,8 @@ export interface ButtonProps extends ActionableProps, ElementCustomizableProps {
   /**
    * Turns the Button gray and blocks any action associated with it. `onClick`
    * and `href` will have no effect.
-   * {@link https://codium.one/index.php/en/blog/77-disabled-buttons-don-t-have-to-suck Learn when to disable something.}
    *
+   * - {@link https://sk-components-demo.mysk.school/docs/guides/disabling-elements Learn how to make disabled elements less frustrating.}
    * - Optional.
    */
   disabled?: boolean;
@@ -114,8 +115,7 @@ export interface ButtonProps extends ActionableProps, ElementCustomizableProps {
   /**
    * Allows for translation of the accessibility labels.
    *
-   * - Must be `th` or `en-US`, as SKCom currently only supports these two
-   *   languages.
+   * - Must be `en-US` or `th`.
    * - Optional.
    */
   locale?: "en-US" | "th";

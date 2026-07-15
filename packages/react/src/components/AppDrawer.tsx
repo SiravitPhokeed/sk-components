@@ -21,14 +21,13 @@ export interface AppDrawerProps {
   /**
    * Allows for translation of the accessibility labels.
    *
-   * - Must be `th` or `en-US`, as SKCom currently only supports these two
-   *   languages.
+   * - Must be `en-US` or `th`.
    * - Optional.
    */
   locale?: "en-US" | "th";
 
   /**
-   * Triggers when the toggle Button opens the drawer.
+   * Called when the toggle Button opens the drawer.
    */
   onOpen?: () => any;
 }
@@ -48,11 +47,12 @@ const EXITING_CLASS = "skc-app-drawer__modal--exiting";
 const EXIT_ANIMATION_NAME = "skc-app-drawer-exit";
 
 /**
- * A drawer of related apps.
+ * A dropdown panel that opens from a Button, giving users quick access to a
+ * family of related apps.
  *
  * @param children App Drawer Segments.
  * @param locale Allows for translation of the accessibility labels.
- * @param onOpen Triggers when the toggle Button opens the drawer.
+ * @param onOpen Called when the toggle Button opens the drawer.
  */
 export const AppDrawer: StyleableFC<AppDrawerProps> = ({
   children,

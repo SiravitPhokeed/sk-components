@@ -11,7 +11,8 @@ export const metadata = {
 
 ## Menu
 
-Menus display a list of choices on temporary surfaces.
+Menus show a list of actions or options in a popover that appears next to a
+trigger element.
 
 <LinksChipSet material="/components/menus/overview" source="/Menu.tsx" />
 
@@ -36,8 +37,8 @@ A trigger button can open a Menu via the Invoker Commands API.
 ```
 
 Menu Items inside the Menu can close it via `command="request-close"`, unless a
-different `commandfor` is specified. “Light dismiss” is also supported by
-clicking outside the Menu or pressing Escape.
+different `commandfor` is specified. Clicking outside the Menu or pressing Escape also closes it (known as
+“light dismiss”).
 
 ```tsx
 // Inside Menu
@@ -46,8 +47,9 @@ clicking outside the Menu or pressing Escape.
 
 ### Props
 
-- `StyleableProps` are available: `className` and `style`.
-- `ElementCustomizableProps` are available: `element`.
+- [`StyleableProps`](/docs/guides/shared-props) available: `className` and
+  `style`.
+- [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="children" required="always">

@@ -5,6 +5,7 @@ import PropsTableRow from "@/app/docs/components/PropsTableRow";
 import VersionsTable from "@/app/docs/components/VersionsTable";
 import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import {
+  ChipSet,
   MaterialIcon,
   SuggestionChip,
   TableCell,
@@ -16,7 +17,8 @@ export const metadata = {
 
 ## Suggestion Chip
 
-Dynamically generated suggestions, like quick-reply options, for instance.
+Dynamically generated suggestions, such as quick-reply options. Suggestion Chips
+appear in a [Chip Set](/docs/data/chip-set).
 
 <LinksChipSet
   material="/components/chips/guidelines#36d7bb16-a9bf-4cf6-a73d-8e05510d66a7"
@@ -41,11 +43,23 @@ Dynamically generated suggestions, like quick-reply options, for instance.
 </SuggestionChip>
 ```
 
+### Usage
+
+Suggestion Chip labels should be concise noun phrases that the user can
+accept or dismiss, like “Looks good to me” or “Maybe later.”
+
+<ChipSet className="my-3">
+  <SuggestionChip children="Looks good to me" />
+  <SuggestionChip children="Maybe later" />
+</ChipSet>
+
 ### Props
 
-- `ActionableProps` are available: `command`, `commandFor`, `onClick`, and `href`.
-- `StyleableProps` are available: `className` and `style`.
-- `ElementCustomizableProps` are available: `element`.
+- [`ActionableProps`](/docs/guides/shared-props) available: `command`,
+  `commandfor`, `onClick`, and `href`.
+- [`StyleableProps`](/docs/guides/shared-props) available: `className` and
+  `style`.
+- [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="children" required="always">
@@ -95,9 +109,8 @@ Dynamically generated suggestions, like quick-reply options, for instance.
       Use elevation instead of an outline to signify the Suggestion Chip’s
       boundary.
 
-      - **Important:** do not use this prop if you don’t have to. Only elevate
-        a Suggestion Chip when its placement requires visual protection, such
-        as on top of an image.
+      - **Use sparingly.** Only elevate a Suggestion Chip when its placement
+        requires visual protection, such as on top of an image.
       - Optional.
 
       </TableCell>

@@ -6,6 +6,7 @@ import VersionsTable from "@/app/docs/components/VersionsTable";
 import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import {
   Avatar,
+  ChipSet,
   InputChip,
   MaterialIcon,
   TableCell,
@@ -20,8 +21,8 @@ export const metadata = {
 A Chip displaying a piece of information entered by the user is an Input
 Chip. This type of Chip can be added and deleted by the user.
 
-Like all Chips, an Input Chip appears alongside other Input Chips, but
-these can also appear inside a text field like in Chip Field.
+Input Chips appear in a [Chip Set](/docs/data/chip-set) or
+[Chip Field](/docs/data/chip-field).
 
 <LinksChipSet
   material="/components/chips/guidelines#4d2d5ef5-3fcd-46e9-99f2-067747b2393f"
@@ -46,11 +47,23 @@ these can also appear inside a text field like in Chip Field.
 </InputChip>
 ```
 
+### Usage
+
+Input Chip labels represent user-entered data, such as a name, email
+address, or tag.
+
+<ChipSet className="my-3">
+  <InputChip children="Pansa S." avatar={<Avatar />} deleteCommand="_" />
+  <InputChip children="Wasapol R." avatar={<Avatar />} deleteCommand="_" />
+</ChipSet>
+
 ### Props
 
-- `ActionableProps` are available: `command`, `commandFor`, `onClick`, and `href`.
-- `StyleableProps` are available: `className` and `style`.
-- `ElementCustomizableProps` are available: `element`.
+- [`ActionableProps`](/docs/guides/shared-props) available: `command`,
+  `commandfor`, `onClick`, and `href`.
+- [`StyleableProps`](/docs/guides/shared-props) available: `className` and
+  `style`.
+- [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="children" required="always">
@@ -126,8 +139,7 @@ these can also appear inside a text field like in Chip Field.
 
       Allows for translation of the accessibility labels.
 
-      - Must be `th` or `en-US`, as SKCom currently only supports these two
-        languages.
+      - Must be `en-US` or `th`.
       - Optional.
 
       </TableCell>
@@ -138,7 +150,33 @@ these can also appear inside a text field like in Chip Field.
     <TableCell>`() => any`</TableCell>
     <TableCell>
 
-      Triggers when the user clicks the delete button.
+      Called when the user clicks the delete button.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="deleteCommand" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The command the delete button sends to the element specified in
+      `deleteCommandfor`.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="deleteCommandfor" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The element the delete button sends the command specified in
+      `deleteCommand` to.
 
       - Optional.
 

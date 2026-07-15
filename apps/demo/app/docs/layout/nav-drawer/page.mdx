@@ -13,10 +13,10 @@ import {
 } from "@suankularb-components/react";
 
 export const metadata = {
-  title: "Nav Drawer",
+  title: "Navigation Drawer",
 };
 
-## Nav Drawer
+## Navigation Drawer
 
 A navigation drawer that slides in from the left.
 
@@ -40,26 +40,47 @@ A navigation drawer that slides in from the left.
 
 ### Props
 
-- `StyleableProps` are available: `className` and `style`.
+- [`StyleableProps`](/docs/guides/shared-props) available: `className` and
+  `style`.
 
 <PropsTable>
   <PropsTableRow prop="children" required="always">
     <TableCell>`ReactNode`</TableCell>
     <TableCell>
 
-      Nav Drawer Sections holding Nav Drawer Items, the navigation destinations.
+      Navigation Drawer Sections holding Navigation Drawer Items, the navigation
+      destinations.
 
-      - Must consist of Nav Drawer Sections.
       - Always required.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="locale" required="never">
+    <TableCell>`"en-US" | "th"`</TableCell>
+    <TableCell>
+
+      Allows for translation of the accessibility labels.
+
+      - Must be `en-US` or `th`.
+      - Optional.
 
       </TableCell>
 
   </PropsTableRow>
 </PropsTable>
 
+### Further reading
+
+- [Next.js App Router](/docs/integrations/nextjs-app) — creating and importing
+  Navigation Drawer into your layout
+- [Next.js Pages Router](/docs/integrations/nextjs-pages) — creating and importing
+  Navigation Drawer into your layout
+
 ### Version changes
 
 <VersionsTable>
-  <VersionsTableRow version="v4.0.0">Animations revised.</VersionsTableRow>
-  <VersionsTableRow version="v3.0.0">Nav Drawer introduced.</VersionsTableRow>
+  <VersionsTableRow version="v4.0.0">Modal behavior delegated to Side Sheet.</VersionsTableRow>
+  <VersionsTableRow version="v3.0.0">Navigation Drawer introduced.</VersionsTableRow>
 </VersionsTable>

@@ -16,7 +16,8 @@ export const metadata = {
 
 ## Text Field
 
-A place for users to enter text.
+A field where users enter text — from short passwords to long-form
+answers.
 
 <LinksChipSet
   material="/components/text-fields/overview"
@@ -67,9 +68,28 @@ A place for users to enter text.
 />
 ```
 
+### Usage
+
+Manage the field value with `useState`. Use `behavior` to switch between
+single-line, multi-line, and textarea modes.
+
+```tsx
+const [name, setName] = useState("");
+
+return (
+  <TextField<string>
+    appearance="outlined"
+    label="Full name"
+    value={name}
+    onChange={setName}
+  />
+);
+```
+
 ### Props
 
-- `StyleableProps` are available: `className` and `style`.
+- [`StyleableProps`](/docs/guides/shared-props) available: `className` and
+  `style`.
 
 <PropsTable>
   <PropsTableRow prop="appearance" required="always">
@@ -84,8 +104,9 @@ A place for users to enter text.
       How the Text Field looks. An outlined Text Field has a lower emphasis than
       filled, so it is great for a form with many fields.
 
-      - Keep the appearance consistent across Text Fields. Separate different
-        appearances by region.
+      - Keep the appearance consistent across Text Fields. For example, use
+        `outlined` for form fields and `filled` for search bars, rather than mixing
+        both in the same context.
       - Must be `outlined` or `filled`.
       - Always required.
 
@@ -168,10 +189,10 @@ A place for users to enter text.
     </TableCell>
     <TableCell>
 
-      The alignment of the input field.
+      The text alignment inside the input. Use `right` when the input value
+      should sit next to trailing text — for example, a username field with a
+      `@domain` suffix so the value reads naturally with the suffix.
 
-      - This is useful if the input value should come immediately before the
-        trailing text, like the start of an email.
       - Optional.
 
       </TableCell>
@@ -237,7 +258,7 @@ A place for users to enter text.
 
       Turns the Text Field gray and blocks user input. `onChange` will not fire.
 
-      - [Learn when to disable something.](https://codium.one/index.php/en/blog/77-disabled-buttons-don-t-have-to-suck)
+      - [Learn how to make disabled elements less frustrating.](/docs/guides/disabling-elements)
       - Optional.
 
       </TableCell>
@@ -279,8 +300,7 @@ A place for users to enter text.
       place of the file name when no files have been attached yet.
 
       - Only valid if `type` is `file`.
-      - Must be `th` or `en-US`, as SKCom currently only supports these two
-        languages.
+      - Must be `en-US` or `th`.
       - Optional.
 
     </TableCell>
@@ -291,8 +311,8 @@ A place for users to enter text.
     <TableCell>`(value: Value) => any`</TableCell>
     <TableCell>
 
-      This function triggers when the user makes changes to the field value. The
-      value is passed in via the function.
+      Called when the user makes changes to the field value. The value is passed
+      in via the function.
 
       - Optional.
 

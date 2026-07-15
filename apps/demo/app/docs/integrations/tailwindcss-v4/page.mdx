@@ -25,7 +25,7 @@ use SK Components with Tailwind CSS v4, you need to add this line **before** the
 ```
 
 Using layers means that you can use utility classes to override SK Components
-styles without requiring `!important`.
+styles without needing `!important`.
 
 ```tsx
 <Button appearance="filled" className="bg-tertiary text-on-tertiary">
@@ -44,9 +44,16 @@ to the CSS variables provided by Theme Provider.
 You can also [declare the theme in a separate CSS
 file](https://tailwindcss.com/docs/theme#sharing-across-projects) and import it.
 
-> Make sure you use
-> [`@theme inline`](https://tailwindcss.com/docs/theme#referencing-other-variables).
-> This won’t work with just `@theme`.
+> Make sure you **use
+> [`@theme inline`](https://tailwindcss.com/docs/theme#referencing-other-variables)
+> rather than plain `@theme`.** The `inline` variant tells Tailwind to reference
+> your CSS variables directly instead of generating new ones. This is necessary
+> because Theme Provider already defines the variables at runtime.
+
+The configuration below maps SKCom’s CSS variables to Tailwind’s design tokens.
+It covers breakpoints, font weights, font families, font sizes, border radii,
+easing curves, colors (both the full tonal palette and semantic color roles),
+and shadows.
 
 ```css
 @theme inline {
@@ -273,6 +280,10 @@ file](https://tailwindcss.com/docs/theme#sharing-across-projects) and import it.
 
 Components that use state layers and ripple effects (e.g. Buttons, Chips, etc.)
 can have those elements customized with Tailwind CSS utilities.
+
+[`@utility`](https://tailwindcss.com/docs/adding-custom-styles#adding-custom-utilities)
+lets you define custom utility classes in Tailwind v4. The snippet below
+registers a `state-layer-*` utility that accepts any Tailwind color token.
 
 ```css
 @utility state-layer-* {

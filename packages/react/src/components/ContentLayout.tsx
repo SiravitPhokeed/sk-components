@@ -18,7 +18,9 @@ export interface ContentLayoutProps extends ElementCustomizableProps {
 }
 
 /**
- * A simple width-clamped vertical flow of content with minimal default styling.
+ * A centered, single-column container for page content. It limits the
+ * maximum width and arranges children vertically, with minimal built-in
+ * styling.
  *
  * @param children The main content of a page is grouped into Sections inside of a Content Layout.
  */

@@ -22,20 +22,17 @@ export interface DataTableSearchProps extends ElementCustomizableProps {
   /**
    * Allows for translation of the default placeholder message.
    *
-   * - Must be `th` or `en-US`, as SKCom currently only supports these two
-   *   languages.
+   * - Must be `en-US` or `th`.
    * - Optional.
    */
   locale?: "en-US" | "th";
 
   /**
-   * This function triggers when the user makes changes to the field value. The
-   * value is passed in via the function.
+   * Called when the user makes changes to the field value. The value is passed
+   * in via the function.
    *
-   * - With {@link https://tanstack.com/table/ Tanstack Table}, this function
-   *   can be hooked up to
-   *   {@link https://tanstack.com/table/v8/docs/api/features/filters#setglobalfilter setGlobalFitler}.
-   *   {@link https://tanstack.com/table/v8/docs/examples/react/filters See an example.}
+   * - With [TanStack Table](https://tanstack.com/table/), this function
+   *   can be hooked up to `setGlobalFilter`.
    * - Optional.
    */
   onChange?: (value: string) => any;
@@ -71,7 +68,7 @@ const STRINGS = {
  *
  * @param value The value inside the search field. This is useful if you want a controlled input.
  * @param locale Allows for translation of the default placeholder message.
- * @param onChange This function triggers when the user makes changes to the field value.
+ * @param onChange Called when the user makes changes to the field value. The value is passed in via the function.
  * @param placeholder A faint text displayed inside the field guiding the user.
  * @param inputAttr Attributes for the underlying `<input>` element used as the field.
  */

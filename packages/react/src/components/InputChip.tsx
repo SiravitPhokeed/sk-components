@@ -40,7 +40,7 @@ export interface InputChipProps
    * An icon can appear before the text in an Input Chip. In a page with many
    * chips, icons can quickly orient users.
    *
-   * - You are encouraged to use {@link MaterialIcon Material Icons} as the
+   * - You are encouraged to use {@link MaterialIcon Material Icon} as the
    *   value for `icon`.
    * - Incompatible with {@link avatar `avatar`}.
    * - Optional.
@@ -65,8 +65,7 @@ export interface InputChipProps
   /**
    * Allows for translation of the accessibility labels.
    *
-   * - Must be `th` or `en-US`, as SKCom currently only supports these two
-   *   languages.
+   * - Must be `en-US` or `th`.
    * - Optional.
    *
    * @default "en-US"
@@ -75,21 +74,22 @@ export interface InputChipProps
 
   /**
    * The command the delete button sends to the element specified in
-   * {@link commandfor `commandfor`}.
+   * {@link deleteCommandfor `deleteCommandfor`}.
    *
    * - Optional.
    */
   deleteCommand?: CommandProps["command"];
 
   /**
-   * The element the delete button sends the command specified in {@link command `command`} to.
+   * The element the delete button sends the command specified in
+   * {@link deleteCommand `deleteCommand`} to.
    *
    * - Optional.
    */
   deleteCommandfor?: CommandProps["commandfor"];
 
   /**
-   * Triggers when the user clicks the delete button.
+   * Called when the user clicks the delete button.
    *
    * - Optional.
    */
@@ -109,8 +109,7 @@ const STRINGS = {
  * A Chip displaying a piece of information entered by the user is an Input
  * Chip. This type of Chip can be added and deleted by the user.
  *
- * Like all Chips, an Input Chip appears alongside other Input Chips, but
- * these can also appear inside a text field like in Chip Field.
+ * Input Chips appear in a Chip Set or Chip Field.
  *
  * @param children The text displayed inside the chip.
  * @param avatar An avatar is placed before all content in an Input Chip.
@@ -118,7 +117,11 @@ const STRINGS = {
  * @param tooltip A message shown in a tooltip when the user hovers over the Input Chip.
  * @param selected If the Input Chip is selected.
  * @param locale Allows for translation of the accessibility labels.
- * @param onDelete Triggers when the user clicks the delete button.
+ * @param onDelete Called when the user clicks the delete button.
+ * @param deleteCommand The command the delete button sends to the element specified in
+ *   `deleteCommandfor`.
+ * @param deleteCommandfor The element the delete button sends the command specified in
+ *   `deleteCommand` to.
  */
 export const InputChip: StyleableFC<InputChipProps> = ({
   children,

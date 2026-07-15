@@ -84,8 +84,8 @@ The **implicit pattern** is the recommended way to use Anchor.
 </Anchor>
 ```
 
-The **explicit pattern** is useful when the trigger and positioned elements are
-not adjacent in the DOM.
+The **explicit pattern** is useful when the
+trigger and positioned elements are not adjacent in the DOM.
 
 - Wrap the trigger element in an Anchor and give it a `name` prop
   (dashed-ident).
@@ -106,8 +106,9 @@ not adjacent in the DOM.
 
 ### Props
 
-- `StyleableProps` are available: `className` and `style`.
-- `ElementCustomizableProps` are available: `element`.
+- [`StyleableProps`](/docs/guides/shared-props) available: `className` and
+  `style`.
+- [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="children" required="always">
@@ -130,7 +131,7 @@ not adjacent in the DOM.
       The anchor name (dashed-ident) used for CSS Anchor Positioning.
 
       - Optional. Auto-generated if omitted.
-      - When using the flexible pattern (Anchor wraps trigger only, Menu
+      - When using the explicit pattern (Anchor wraps trigger only, Menu
         positioned elsewhere), set this explicitly and pass the same value
         to the Menu’s `anchor` prop.
       - Must be a valid dashed-ident (e.g. `--menu-trigger`).

@@ -21,7 +21,7 @@ export interface SideSheetProps {
   /**
    * The ID of the `<dialog>` element, for Invoker Commands API support.
    *
-   * - Use with `command="show-modal" and `commandfor={id}` on a trigger button
+   * - Use with `command="show-modal"` and `commandfor={id}` on a trigger button
    *   to open the Side Sheet declaratively via the Invoker Commands API.
    * - Use `command="request-close"` to close, not `command="close"`.
    * - Optional.
@@ -31,6 +31,9 @@ export interface SideSheetProps {
   /**
    * The edge of the screen the Side Sheet attaches to.
    *
+   * - `"right"` attaches to the right edge in LTR, left in RTL. This is the
+   *   default.
+   * - `"left"` attaches to the left edge in LTR, right in RTL.
    * - Optional.
    */
   attach?: "left" | "right";
@@ -40,9 +43,9 @@ const EXITING_CLASS = "skc-side-sheet--exiting";
 const EXIT_ANIMATION_NAME = "skc-side-sheet-exit";
 
 /**
- * Side Sheet is a modal attached to one side of the screen. It is used to display
- * content that is related to the main content, but not essential to it. It can
- * be used for navigation, settings, or other secondary content.
+ * A modal panel that slides in from the side of the screen for secondary
+ * content — related information, settings, or navigation that doesn’t need to
+ * be front and center.
  *
  * @param children Content of the Side Sheet.
  * @param id The ID of the `<dialog>` element, for Invoker Commands API support.

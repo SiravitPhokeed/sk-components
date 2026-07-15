@@ -8,7 +8,8 @@ export const metadata = {
 
 ## Modals and popovers
 
-Learn about how to open and close modals and popovers.
+Learn how to open and close modals and popovers like Dialog, Full-screen Dialog,
+and Menu.
 
 ### Getting started
 
@@ -20,20 +21,21 @@ There are two main ways to open and close modals and popovers.
   control their open state. This requires you to manage the open state, e.g.
   with `useState`.
 
-> **Additional considerations:** [Menus](/docs/overlays/menu) can be anchored to
-> a trigger element with [Anchor](/docs/overlays/anchor). For
-> [Snackbars](/docs/overlays/snackbar), use `snackbar.push()` and
-> `snackbar.promise()` instead of these two modes.
+> **Additional consideration:** [Menus](/docs/overlays/menu) can be anchored to
+> a trigger element with [Anchor](/docs/overlays/anchor).
 
 ### Uncontrolled mode
 
-Use the
+The
 [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API)
-to open and close modals and popovers. This is the recommended approach.
+lets trigger elements (like Buttons) open and close modals and popovers
+declaratively through HTML attributes — no state management needed. This is the
+recommended approach.
 
 1. Assign a unique `id` to the modal or popover.
 2. Use the `command` prop on a trigger element to open the modal or popover, and
-   set the `commandfor` prop to the `id` of the modal or popover.
+   set the `commandfor` prop to the `id` of the modal or popover. This is how the
+   trigger knows which modal to open.
 
 ```tsx
 // Uncontrolled mode (Invoker Commands API)
@@ -49,10 +51,6 @@ to open and close modals and popovers. This is the recommended approach.
 </Dialog>
 ```
 
-> Notice how the Dialog has an `id` of `discard-dialog`, and the Button has a
-> `commandfor` of `discard-dialog`. This is how the Button knows which modal to
-> open.
-
 Use the `command` prop to open and close modals and popovers.
 
 - **Open:** Use `show-popover` to open [Menu](/docs/overlays/menu) and
@@ -65,14 +63,13 @@ Use the `command` prop to open and close modals and popovers.
 
 <DisclosureCard summary="Compare modals and popovers">
 
-[App Drawer](/docs/layout/app-drawer), [Nav Drawer](/docs/layout/nav-drawer),
+[App Drawer](/docs/layout/app-drawer), [Navigation Drawer](/docs/layout/nav-drawer),
 [Dialog](/docs/overlays/dialog), and
 [Full-screen Dialog](/docs/overlays/fullscreen-dialog) are **modals**.
 
 - A modal is a type of overlay that **blocks interaction with the rest of the
   application** until it is dismissed.
-- It has a backdrop that covers the rest of the application, and it is either
-  centered on the screen or slides in from the side.
+- It has a backdrop that covers the rest of the application.
 - For keyboard users, only the modal content is focusable, and pressing the
   Escape key closes the modal.
 
@@ -81,7 +78,7 @@ Use the `command` prop to open and close modals and popovers.
 
 - A popover is a type of overlay that **does not block interaction with the rest
   of the application**.
-- It does not have a backdrop, and it is anchored to a trigger element.
+- It does not have a backdrop.
 
 </DisclosureCard>
 
@@ -100,8 +97,8 @@ Use the `command` prop to open and close modals and popovers.
 - [Interactive](/docs/data/interactive)
 - [List Item](/docs/data/list-item)
 - [Menu Item](/docs/overlays/menu-item)
-- [Nav Bar Item](/docs/layout/nav-bar-item)
-- [Nav Drawer Item](/docs/layout/nav-drawer-item)
+- [Navigation Bar Item](/docs/layout/nav-bar-item)
+- [Navigation Drawer Item](/docs/layout/nav-drawer-item)
 - [Suggestion Chip](/docs/data/suggestion-chip)
 - [Tab](/docs/layout/tab)
 
@@ -139,12 +136,18 @@ return (
 );
 ```
 
+### Snackbar
+
+[Snackbars](/docs/overlays/snackbar) are an exception — they use
+`snackbar.push()` and `snackbar.promise()` instead of either mode. See the
+documentation for Snackbars for more information.
+
 ### Version changes
 
 <VersionsTable>
   <VersionsTableRow version="v4.0.0">
     Uncontrolled mode introduced and recommended. Controlled mode is still
-    supported.
+    supported, except on Snackbars.
   </VersionsTableRow>
   <VersionsTableRow version="v3.0.0">
     Controlled mode introduced.

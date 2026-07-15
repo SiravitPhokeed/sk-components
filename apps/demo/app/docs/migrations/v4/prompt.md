@@ -739,7 +739,7 @@ grep -rn '@import "tailwindcss"' --include="*.css"
 ### 6.3 Theme variables and state layer (inform the user)
 
 Two more setup steps are available at:
-https://sk-components-demo.mysk.school/docs/guides/tailwindcss-v4
+https://sk-components-demo.mysk.school/docs/integrations/tailwindcss-v4
 
 These let you use Tailwind utility classes with SKCom design tokens (e.g.,
 `bg-primary`, `text-on-surface`). Ask the user if they want these applied —

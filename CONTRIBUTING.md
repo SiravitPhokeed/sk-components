@@ -31,6 +31,27 @@ be reflected in the demo app.
 pnpm dev
 ```
 
+<details>
+  <summary>
+    <strong>
+      Material Icons aren’t showing up?
+    </strong>
+  </summary>
+  <p>
+    Your browser may be blocking locally installed fonts from loading in an
+    effort to prevent fingerprinting.
+  </p>
+  <ul>
+    <li>Set the environment variable
+      <code>ALWAYS_USE_OPTIMIZED_ICON_FONT=true</code> to use the optimized
+      icon font instead of the local font.
+    </li>
+    <li>
+      Run `pnpm demo:icons` to generate the optimized icon font.
+    </li>
+  </ul>
+</details>
+
 **To work on the documentation,** build the packages first, then start just the
 Next.js server for the demo app.
 
@@ -61,6 +82,8 @@ pnpm demo:start
 - Use Sentence case for headers.
 - Put prop names in codeblocks in documentation.
   - e.g. `onClick` instead of onClick.
+- Use American English in documentation and commit messages.
+  - e.g. behavior, not behaviour.
 - Use smart quotes in documentation and commit messages. In JSX, escape them
   with `&ldquo;`, `&rdquo;`, etc.
   - e.g. `isn’t` instead of `isn't` (notice the apostrophe).
@@ -86,12 +109,24 @@ pnpm demo:start
 - Use the present tense (“add feature” not “added feature”).
 - Don’t use backticks.
 
-### Pull requests and changelogs
+### Changelogs
 
-- For pull requests and `CHANGELOG.md` entries, follow [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
+- For `CHANGELOG.md` entries, follow [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
   guidelines.
 - SKCom Styles and ReSKCom use the changelog at the root.
 - The demo app uses its own changelog in `apps/demo/CHANGELOG.md`.
+
+### Pull requests
+
+- Use version branches as the base branch for your pull request.
+- The pull request title should start with the version number and use “Title Case.” Keep it short.
+  - e.g. `[4.0.1] Button`.
+- If the pull request is not a feature, use the full name of a commit type.
+  - e.g. `[4.0.1] Documentation: Button Usage`.
+- The pull request body should folow Keep a Changelog guidelines.
+- When a version is ready to be released, create a pull request to merge the version branch into
+  `main`.
+  - e.g. `Release 4.0.1`.
 
 ### ReSKCom guidelines
 

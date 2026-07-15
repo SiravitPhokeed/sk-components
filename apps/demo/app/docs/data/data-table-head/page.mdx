@@ -21,15 +21,16 @@ The head area of a Data Table.
 
 ### Props
 
-- `StyleableProps` are available: `className` and `style`.
-- `ElementCustomizableProps` are available: `element`.
+- [`StyleableProps`](/docs/guides/shared-props) available: `className` and
+  `style`.
+- [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="headerGroups" required="always">
     <TableCell>`HeaderGroup<any>[]`</TableCell>
     <TableCell>
 
-      The return of `getHeaderGroups`, one of the functions of the Tanstack Table
+      The return of `getHeaderGroups`, one of the functions of the TanStack Table
       instance.
 
       - Always required.
@@ -78,8 +79,7 @@ The head area of a Data Table.
 
       Allows for translation of the accessibility labels.
 
-      - Must be `th` or `en-US`, as SKCom currently only supports these two
-        languages.
+      - Must be `en-US` or `th`.
       - Optional.
 
       </TableCell>

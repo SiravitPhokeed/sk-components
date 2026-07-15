@@ -20,17 +20,28 @@ Search allows the user to quickly find something using a query.
   component={Search}
   initialProps={{}}
   adjustableProps={{
+    hotkey: "boolean",
     disabled: "boolean",
   }}
 />
 
 ```tsx
-<Search />
+<Search hotkey />
+```
+
+### Usage
+
+Manage the search query with `useState` and handle changes with `onChange`.
+
+```tsx
+const [query, setQuery] = useState("");
+
+return <Search value={query} onChange={setQuery} />;
 ```
 
 ### Props
 
-- `ElementCustomizableProps` are available: `element`.
+- [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="value" required="never">
@@ -49,8 +60,8 @@ Search allows the user to quickly find something using a query.
     <TableCell>`boolean | string`</TableCell>
     <TableCell>
 
-      Enables the user to focus on the field by pressing `/`, or any other key
-      you specify.
+      Enables the user to focus on the field by pressing
+      <kbd className="kbd">/</kbd>, or any other key you specify.
 
       - Must be either boolean or a single character string.
       - Optional.
@@ -65,7 +76,7 @@ Search allows the user to quickly find something using a query.
 
       Allows for translation of the default placeholder message.
 
-      - Must be `th` or `en-US`, as SKCom currently only supports these two languages.
+      - Must be `en-US` or `th`.
       - Optional.
 
       </TableCell>
@@ -76,8 +87,8 @@ Search allows the user to quickly find something using a query.
     <TableCell>`(value: string) => any`</TableCell>
     <TableCell>
 
-      This function triggers when the user makes changes to the field value. The
-      value is passed in via the function.
+      Called when the user makes changes to the field value. The value is passed
+      in via the function.
 
       - Optional.
 
@@ -89,8 +100,8 @@ Search allows the user to quickly find something using a query.
     <TableCell>`(value: string) => any`</TableCell>
     <TableCell>
 
-      This function triggers when the search button is clicked. The value is
-      passed in via the function.
+      Called when the search button is clicked. The value is passed in via the
+      function.
 
       - Optional.
 

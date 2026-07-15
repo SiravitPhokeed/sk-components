@@ -10,7 +10,7 @@ import type { ReactElement, ReactNode } from "react";
  */
 export interface TableRowProps extends ElementCustomizableProps {
   /**
-   * Table Row has the same behaviour as `<tr>`.
+   * Table Row has the same behavior as `<tr>`.
    *
    * - Must consist of Table Cells.
    * - Always required.
@@ -30,7 +30,8 @@ export interface TableRowProps extends ElementCustomizableProps {
  * A row of a Table, must be within a table area (Table Head, Table Body, or
  * Table Foot).
  *
- * @param children Table Row has the same behaviour as `<tr>`.
+ * @param children Table Row has the same behavior as `<tr>`.
+ * @param actions Actions related to a row, shown on hover.
  */
 export const TableRow: StyleableFC<TableRowProps> = ({
   children,

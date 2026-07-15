@@ -19,8 +19,8 @@ export const metadata = {
 
 ## Disabling elements
 
-Learn when to make disabled elements in your application less frustrating for
-users, and how to implement them in your code.
+Learn how to make disabled elements less frustrating for users, and how to
+implement them in your code.
 
 <Button
   children="Read more"
@@ -99,9 +99,9 @@ they don’t, remove it from the interface.
   </Card>
 </figure>
 
-<Text type="body-medium" className="text-on-surface-variant *:mb-8 *:mx-4">
-  The “See class” chip doesn’t need to be shown if the teacher doesn’t have a
-  class.
+<Text type="body-medium" className="text-on-surface-variant *:mx-4 *:mb-8">
+  The “Do” card shows the recommended approach: the “See class” chip doesn’t
+  need to be shown if the teacher doesn’t have a class.
 </Text>
 
 **Explain why an element is disabled or how to enable it.** If it’s not obvious
@@ -177,7 +177,8 @@ show an error message when the user tries to submit the form.
 
 ### `disabled` prop
 
-**To disable an element, use the `disabled` prop.** `ActionableProps` like
+**To disable an element, use the `disabled` prop.**
+[`ActionableProps`](/docs/guides/shared-props#actionable-props) like
 `onClick` and `href` will be _ignored_. The element will remain focusable for
 accessibility, but will appear visually disabled and will not respond to user
 interaction.

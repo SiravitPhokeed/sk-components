@@ -9,6 +9,7 @@ import {
   Button,
   MaterialIcon,
   TableCell,
+  Text,
 } from "@suankularb-components/react";
 
 export const metadata = {
@@ -60,7 +61,13 @@ password recovery is “text.”
 text Buttons can blend together, making it hard for users to distinguish them.
 Use a mix of appearances to make it easier for users to identify the Buttons.
 
-<Actions align="left" className="mt-3 mb-6">
+<div className="flex items-center gap-1 px-2">
+  <MaterialIcon icon="cancel" size={20} className="text-error" />
+  <Text type="title-small" className="text-on-surface-variant">
+    Don’t
+  </Text>
+</div>
+<Actions align="left" className="mb-6">
   <Button children="Yes" appearance="text" />
   <Button children="No" appearance="text" />
   <Button children="Maybe" appearance="text" />
@@ -70,17 +77,33 @@ Use a mix of appearances to make it easier for users to identify the Buttons.
 in Button.
 
 <Actions align="left" className="mt-3 mb-6">
-  <Button children="Add friend" appearance="outlined" icon={<MaterialIcon icon="check_circle" />} />
-  <Button children="Add Friend" appearance="outlined" icon={<MaterialIcon icon="cancel" />} dangerous />
-  <Button children="ADD FRIEND" appearance="outlined" icon={<MaterialIcon icon="cancel" />} dangerous />
+  <Button
+    children="Add friend"
+    appearance="outlined"
+    icon={<MaterialIcon icon="check_circle" />}
+  />
+  <Button
+    children="Add Friend"
+    appearance="outlined"
+    icon={<MaterialIcon icon="cancel" />}
+    dangerous
+  />
+  <Button
+    children="ADD FRIEND"
+    appearance="outlined"
+    icon={<MaterialIcon icon="cancel" />}
+    dangerous
+  />
 </Actions>
 
 **[Actions](/docs/components/actions) can be used to group Buttons together.**
 
 ### Props
 
-- `ActionableProps` are available: `command`, `commandFor`, `onClick`, and `href`.
-- `StyleableProps` are available: `className` and `style`.
+- [`ActionableProps`](/docs/guides/shared-props) available: `command`,
+  `commandfor`, `onClick`, and `href`.
+- [`StyleableProps`](/docs/guides/shared-props) available: `className` and
+  `style`.
 
 <PropsTable>
   <PropsTableRow prop="children" required="conditional">
@@ -241,7 +264,7 @@ in Button.
       Turns the Button gray and blocks any action associated with it. `onClick`
       and `href` will have no effect.
 
-      - [Learn when to disable something.](https://codium.one/index.php/en/blog/77-disabled-buttons-don-t-have-to-suck)
+      - [Learn how to make disabled elements less frustrating.](/docs/guides/disabling-elements)
       - Optional.
 
       </TableCell>
@@ -254,8 +277,7 @@ in Button.
       
       Allows for translation of the accessibility labels.
 
-      - Must be `th` or `en-US`, as SKCom currently only supports these two
-        languages.
+      - Must be `en-US` or `th`.
       - Optional.
 
       </TableCell>

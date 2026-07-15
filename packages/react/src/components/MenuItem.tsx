@@ -30,7 +30,7 @@ export interface MenuItemProps
    * Menu, icons can quickly orient users.
    *
    * - If one Menu Item in a Menu has an icon, the rest should have one too.
-   * - You are encouraged to use Material Icons as the value for `icon`.
+   * - You are encouraged to use Material Icon as the value for `icon`.
    * - Optional.
    */
   icon?: ReactElement;
@@ -61,8 +61,8 @@ export interface MenuItemProps
   /**
    * Turns the Menu Item text gray and blocks any action associated with it.
    * `onClick` and `href` will have no effect.
-   * {@link https://codium.one/index.php/en/blog/77-disabled-buttons-don-t-have-to-suck Learn when to disable something.}
    *
+   * - Learn how to make disabled elements less frustrating.
    * - Optional.
    */
   disabled?: boolean;
@@ -70,7 +70,7 @@ export interface MenuItemProps
   /**
    * The value of a Select item, similar to `value` on `<option>`.
    *
-   * - **Important**: this is intended to be used only when the Menu Item is
+   * - **Important:** this is intended to be used only when the Menu Item is
    *   inside a Select. This prop is not functional otherwise.
    * - Optional.
    */

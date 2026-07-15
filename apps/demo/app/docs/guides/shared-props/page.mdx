@@ -1,0 +1,158 @@
+import PropsTable from "@/app/docs/components/PropsTable";
+import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import { TableCell } from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Shared props",
+};
+
+## Shared props
+
+Many SKCom components inherit props from a few shared types. Rather than
+documenting these props on every component page, they are listed here.
+
+### `StyleableProps`
+
+Every component accepts `className` and `style`, so you can customize its
+appearance like any other HTML element.
+
+```tsx
+<Button appearance="filled" style={{ backgroundColor: "rebeccapurple" }}>
+  Purple button
+</Button>
+```
+
+<PropsTable>
+  <PropsTableRow prop="className" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      CSS classes to add to the component.
+
+      - Optional.
+
+    </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="style" required="never">
+    <TableCell>`CSSProperties`</TableCell>
+    <TableCell>
+
+      Inline styles to apply.
+
+      - Optional.
+
+    </TableCell>
+
+  </PropsTableRow>
+</PropsTable>
+
+### `ElementCustomizableProps`
+
+Many components let you swap their underlying HTML tag. This is useful when
+you need a different semantic element, or when integrating with framework
+link components like Next.js’s
+[`Link` component](https://nextjs.org/docs/app/api-reference/components/link).
+
+```tsx
+import Link from "next/link";
+
+<Button appearance="filled" href="/dashboard" element={Link}>
+  Go to dashboard
+</Button>;
+```
+
+If you don’t provide an `element`, the component uses a sensible default
+(usually a `<button>`, `<a>`, or `<div>`). Check each component’s page for
+its specific default.
+
+<PropsTable>
+  <PropsTableRow prop="element" required="never">
+    <TableCell>`ElementType`</TableCell>
+    <TableCell>
+
+      The underlying HTML element or custom component.
+
+      - Optional.
+
+    </TableCell>
+
+  </PropsTableRow>
+</PropsTable>
+
+### `ActionableProps`
+
+Interactive components like Button, List Item, and Navigation Bar Item can
+receive interaction props. These include standard event handlers as well as
+[Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API)
+props for declarative modals and popovers.
+
+```tsx
+<Button command="show-modal" commandfor="settings-dialog">
+  Open settings
+</Button>
+```
+
+Learn more in the [modals and popovers](/docs/guides/modals) guide.
+
+<PropsTable>
+  <PropsTableRow prop="command" required="never">
+    <TableCell>
+      ```
+      "show-modal"
+      | "close"
+      | "request-close"
+      | "show-popover"
+      | "hide-popover"
+      | "toggle-popover"
+      | `--${string}`
+      ```
+    </TableCell>
+    <TableCell>
+
+      The command to send to the element specified in `commandfor`.
+
+      - Optional.
+
+    </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="commandfor" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The element to send the command specified in `command` to.
+
+      - Optional.
+
+    </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="onClick" required="never">
+    <TableCell>`() => any`</TableCell>
+    <TableCell>
+
+      The function called when the user interacts with the component, similar
+      to `onClick` on `<button>`.
+
+      - Optional.
+
+    </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="href" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The URL of the page the component leads to, similar to `href` on `<a>`.
+
+      - Optional.
+
+    </TableCell>
+
+  </PropsTableRow>
+</PropsTable>

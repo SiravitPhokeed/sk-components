@@ -70,7 +70,7 @@ export interface DataTableCellProps extends ElementCustomizableProps {
   /**
    * Allows for translation of the accessibility labels.
    *
-   * - Must be `th` or `en-US`, as SKCom currently only supports these two languages.
+   * - Must be `en-US` or `th`, as SKCom currently only supports these two languages.
    * - Optional.
    */
   locale?: "en-US" | "th";

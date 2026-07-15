@@ -11,7 +11,8 @@ export const metadata = {
 
 ## Theme Provider
 
-Provides default variables for SK Components.
+Sets up the CSS variables and default theme that all SK Components depend on.
+Include this once near the root of your app tree.
 
 <LinksChipSet material="/styles" source="/ThemeProvider.tsx" />
 
@@ -30,6 +31,10 @@ const App = () => (
 
 Theme Provider has no props.
 
+### Further reading
+
+- [Theming](/docs/guides/theming)
+
 ### Version changes
 
 <VersionsTable>
@@ -41,7 +46,3 @@ Theme Provider has no props.
     Theme Provider introduced.
   </VersionsTableRow>
 </VersionsTable>
-
-### Further reading
-
-- [Theming](/docs/guides/theming)

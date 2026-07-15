@@ -48,9 +48,29 @@ A Button with just an icon that can be toggled on and off.
 />
 ```
 
+### Usage
+
+Manage the pressed state with `useState`. The `tooltip` is required to help
+users understand what the icon means.
+
+```tsx
+const [favorite, setFavorite] = useState(false);
+
+return (
+  <ToggleButton
+    appearance="filled"
+    icon={<MaterialIcon icon="favorite" />}
+    alt="Favorite"
+    tooltip="Save to favorites"
+    value={favorite}
+    onChange={setFavorite}
+  />
+);
+```
+
 ### Props
 
-- `ElementCustomizableProps` are available: `element`.
+- [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
   <PropsTableRow prop="appearance" required="always">
@@ -113,8 +133,8 @@ A Button with just an icon that can be toggled on and off.
 
       A message shown in a tooltip when the user hovers over the Toggle Button.
 
-      - Always required, just in case the icon is not clear enough for the user
-        to infer its action.
+      - Always required, since the icon alone may not be clear enough for the user
+        to infer the action.
 
       </TableCell>
 
@@ -124,8 +144,8 @@ A Button with just an icon that can be toggled on and off.
     <TableCell>`boolean`</TableCell>
     <TableCell>
 
-      If the action the Toggle Button accomplishes is dangerous, like unmuting.
-      If it is, the Toggle Button turns red (defined as `error` in the palette).
+      Set to `true` if the action is destructive, such as deleting an item. When
+      `true`, the Toggle Button turns red (defined as `error` in the palette).
 
       - Optional.
 
@@ -140,7 +160,7 @@ A Button with just an icon that can be toggled on and off.
       Turns the Toggle Button gray and blocks any action associated with it.
       `onChange` will have no effect.
 
-      - [Learn when to disable something.](https://codium.one/index.php/en/blog/77-disabled-buttons-don-t-have-to-suck)
+      - [Learn how to make disabled elements less frustrating.](/docs/guides/disabling-elements)
       - Optional.
 
       </TableCell>
@@ -164,7 +184,8 @@ A Button with just an icon that can be toggled on and off.
     <TableCell>`(state: boolean) => void`</TableCell>
     <TableCell>
 
-      This function triggers when the user toggles the Toggle Button.
+      Called when the user toggles the Toggle Button. The state is passed in via
+      the function as a boolean.
 
       - Optional.
 
