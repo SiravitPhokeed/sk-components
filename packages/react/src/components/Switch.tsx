@@ -101,15 +101,16 @@ export const Switch: StyleableFC<SwitchProps> = ({
       <Element
         aria-disabled={disabled}
         aria-pressed={resolvedValue}
-        style={style}
+        type="button"
+        onClick={() => {
+          if (!disabled) resolvedOnChange(!resolvedValue);
+        }}
         className={cn(
           "skc-switch",
           resolvedValue && "skc-switch--selected",
           className,
         )}
-        onClick={() => {
-          if (!disabled) resolvedOnChange(!resolvedValue);
-        }}
+        style={style}
       >
         <div className="skc-switch__handle">
           {resolvedValue ? onIcon : offIcon}
