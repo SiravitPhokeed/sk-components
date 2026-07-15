@@ -23,7 +23,6 @@ Changes to the demo app are documented in
 - `name` prop on all form components (Form Group, Form Item, Checkbox, Radio,
     Switch, Select, Text Field, Chip Field) for native form submission with
     `<form>` and `FormData`
-- `id` prop on Form Item and Radio
 - `locale` support on Full-screen Dialog and Input Chip
 - RTL support
 - Component-specific additions:
@@ -72,6 +71,8 @@ Changes to the demo app are documented in
   - **FAB:** now a direct child of Root Layout instead of a Nav Bar prop
   - **Filter Chip:** `menu` now takes a Fragment of Menu Items instead of a Menu
     component
+  - **Radio:** `value` changed from `boolean` (checked state) to `string`
+    (submission value). `checked` introduced for controlled state.
   - **Select, Menu Item:** `value` type narrowed from `any` to `string`
   - **Snackbar** is now managed internally via `snackbar.push()` or
     `snackbar.promise()`
