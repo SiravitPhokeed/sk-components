@@ -29,14 +29,6 @@ export interface ChipFieldProps {
   children: ReactElement<typeof ChipSet>;
 
   /**
-   * The name of the Chip Field, used for form submission. Passed to the
-   * underlying `<input>` element.
-   *
-   * - Optional.
-   */
-  name?: string;
-
-  /**
    * The placeholder text (if no placeholder specified or when not focused and
    * no value) and the label text (when focused or has value).
    *
@@ -190,7 +182,6 @@ const STRINGS = {
  */
 export const ChipField: StyleableFC<ChipFieldProps> = ({
   children,
-  name,
   label,
   helperMsg,
   value,
@@ -359,7 +350,6 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
             aria-labelledby={`${id}-label`}
             aria-describedby={helperMsg ? `${id}-helper` : undefined}
             type="text"
-            name={name}
             disabled={disabled}
             value={value}
             // Defaulting to a space so the `:not(:placeholder-shown)` trick for
