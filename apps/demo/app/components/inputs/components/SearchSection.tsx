@@ -14,11 +14,7 @@ const SearchSection: FC = () => {
         <Header>Search</Header>
         <Search hotkey />
         <Text type="body-medium">
-          Hotkey-enabled: press{" "}
-          <kbd className="bg-surface-variant border-b-outline inline-block rounded border-b-2 px-1 select-none active:mb-0.5 active:translate-y-0.5 active:border-b-0">
-            /
-          </kbd>{" "}
-          to focus Search.
+          Hotkey-enabled: press <kbd className="kbd">/</kbd> to focus Search.
         </Text>
       </Section>
     </Columns>
