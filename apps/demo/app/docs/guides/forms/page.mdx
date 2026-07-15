@@ -55,10 +55,10 @@ that picture.
     </Select>
     <FormGroup name="contact-method" label="Preferred contact method">
       <FormItem label="Email">
-        <Radio />
+        <Radio value="email" />
       </FormItem>
       <FormItem label="Phone">
-        <Radio />
+        <Radio value="phone" />
       </FormItem>
     </FormGroup>
     <FormItem name="newsletter" label="Subscribe to newsletter">
@@ -80,7 +80,7 @@ There are two ways to handle form data:
 
 - **Uncontrolled:** Let the browser manage each field’s value. Read the values
   on submit with [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData).
-- **Controlled:** Keep each field&rsquo;s value in React state with `useState`,
+- **Controlled:** Keep each field’s value in React state with `useState`,
   updating it on every keystroke.
 
 > **When to use which:** Uncontrolled forms are simpler and perform better for
@@ -89,8 +89,8 @@ There are two ways to handle form data:
 
 ### Uncontrolled forms
 
-The uncontrolled approach uses the browser&rsquo;s native form handling. Each
-field gets a [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#name)
+The uncontrolled approach uses the browser’s native form handling. Each field
+gets a [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#name)
 attribute so the browser can identify it when the form is submitted.
 
 1. **Wrap your fields in a `<form>` element.**
@@ -130,11 +130,11 @@ return (
     </Select>
 
     <FormGroup name="contact-method" label="Preferred contact method">
-      <FormItem id="email" label="Email">
-        <Radio />
+      <FormItem label="Email">
+        <Radio value="email" />
       </FormItem>
-      <FormItem id="phone" label="Phone">
-        <Radio />
+      <FormItem label="Phone">
+        <Radio value="phone" />
       </FormItem>
     </FormGroup>
 
@@ -164,11 +164,8 @@ return (
 </Text>
 
 > [HTML radio buttons](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/radio)
-> must share the same `name` to work as a group. Each Radio has its own `id`
-> which identifies the selected option in the group.
->
-> In the example above, `formData.get("contact-method")` will return either
-> `"email"` or `"phone"`.
+> must share the same `name` to work as a group. Each Radio has its own
+> `value` — the string that identifies it in `FormData` when selected.
 
 <DisclosureCard
   summary={
@@ -192,11 +189,11 @@ Checkbox, Radio, or Switch.
 ```tsx
 // Each Radio inherits `name="contact-method"` from the Form Group.
 <FormGroup name="contact-method" label="Preferred contact method">
-  <FormItem id="email" label="Email">
-    <Radio />
+  <FormItem label="Email">
+    <Radio value="email" />
   </FormItem>
-  <FormItem id="phone" label="Phone">
-    <Radio />
+  <FormItem label="Phone">
+    <Radio value="phone" />
   </FormItem>
 </FormGroup>
 ```
@@ -271,15 +268,16 @@ including [validation attributes](https://developer.mozilla.org/en-US/docs/Web/H
 The controlled approach keeps field values in React state with `useState`,
 giving you access to values before the form is submitted.
 
-> **Radio in controlled mode:** Radio’s `value` prop expects a boolean (whether
-> that option is selected), and `onChange` fires with the new boolean value. To
-> implement a mutually exclusive group, manage the selected option in a single
-> state variable and compare it against each Radio:
+> **Radio in controlled mode:** Radio’s `value` is the submission string
+> and `checked` controls whether it’s selected. `onChange` fires with the
+> `value` of the selected Radio. To implement a mutually exclusive group, manage
+> the selected option in a single state variable:
 >
 > ```tsx
 > <Radio
->   value={contactMethod === "email"}
->   onChange={() => setContactMethod("email")}
+>   value="email"
+>   checked={contactMethod === "email"}
+>   onChange={setContactMethod}
 > />
 > ```
 
@@ -330,14 +328,16 @@ return (
     <FormGroup name="contact-method" label="Preferred contact method">
       <FormItem label="Email">
         <Radio
-          value={contactMethod === "email"}
-          onChange={() => setContactMethod("email")}
+          value="email"
+          checked={contactMethod === "email"}
+          onChange={setContactMethod}
         />
       </FormItem>
       <FormItem label="Phone">
         <Radio
-          value={contactMethod === "phone"}
-          onChange={() => setContactMethod("phone")}
+          value="phone"
+          checked={contactMethod === "phone"}
+          onChange={setContactMethod}
         />
       </FormItem>
     </FormGroup>

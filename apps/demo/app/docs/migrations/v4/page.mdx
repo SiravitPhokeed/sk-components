@@ -671,9 +671,6 @@ update your code.
 </SummaryTableSection>
 
 <SummaryTableSection name="Form Item">
-  <SummaryTableRow name="id" type="new">
-    `string`
-  </SummaryTableRow>
   <SummaryTableRow name="name" type="new">
     `string` — for form submission. Passed to controls via context.
   </SummaryTableRow>
@@ -897,8 +894,14 @@ update your code.
 </SummaryTableSection>
 
 <SummaryTableSection name="Radio">
-  <SummaryTableRow name="id" type="new">
-    `string`
+  <SummaryTableRow name="value" type="changed">
+    Changed from `boolean` (checked state) to `string` (submission value).
+  </SummaryTableRow>
+  <SummaryTableRow name="checked" type="new">
+    `boolean` — whether the Radio is selected (replaces the old `value`).
+  </SummaryTableRow>
+  <SummaryTableRow name="onChange" type="changed">
+    Now fires with the Radio’s `value` (`string`), not the checked state.
   </SummaryTableRow>
   <SummaryTableRow name="name" type="new">
     `string` — for form submission. Falls back to Form&nbsp;Item then Form&nbsp;Group.
