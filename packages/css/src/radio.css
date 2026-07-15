@@ -49,7 +49,7 @@
   height: var(--_marker-size);
 }
 
-.skc-radio--selected {
+.skc-radio:has(:checked) {
   --state-layer-color: var(--color-primary);
 
   .skc-radio__circle {

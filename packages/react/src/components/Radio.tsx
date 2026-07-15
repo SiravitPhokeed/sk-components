@@ -6,7 +6,6 @@ import { Interactive } from "@/components/Interactive";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/radio.css";
-import { useState } from "react";
 
 /**
  * Props for {@link Radio}.
@@ -72,10 +71,6 @@ export const Radio: StyleableFC<RadioProps> = ({
   className,
   style,
 }) => {
-  const [internalValue, setInternalValue] = useState(value ?? false);
-  const resolvedValue = value ?? internalValue;
-  const resolvedOnChange = onChange ?? setInternalValue;
-
   const formGroupContext = useFormgroupContext();
   const formItemContext = useFormItemContext();
   const formGroupName = formGroupContext?.name;
@@ -91,7 +86,6 @@ export const Radio: StyleableFC<RadioProps> = ({
         element={element}
         className={cn(
           "skc-radio",
-          resolvedValue && "skc-radio--selected",
           disabled && "skc-radio--disabled",
           className,
         )}
@@ -102,10 +96,9 @@ export const Radio: StyleableFC<RadioProps> = ({
           type="radio"
           id={id}
           name={resolvedName}
-          checked={resolvedValue}
+          checked={value}
           onChange={(event) => {
-            console.log(event.target.checked);
-            if (!disabled) resolvedOnChange(event.target.checked);
+            if (!disabled) onChange?.(event.target.checked);
           }}
           className="skc-radio__input"
         />
