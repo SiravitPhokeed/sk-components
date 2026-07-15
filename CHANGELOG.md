@@ -98,6 +98,11 @@ Changes to the demo app are documented in
   - **Table Cell:** `menu` and `onMenuToggle`
   - **Text Field:** `canClear`
 
+### Fixed
+
+- **Nav Drawer Item:** `label` prop type corrected from optional to required,
+  matching its JSDoc and runtime behavior (the label is always rendered).
+
 ## [3.3.2] - 2024-04-30
 
 ### Changed
