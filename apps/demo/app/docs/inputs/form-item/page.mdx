@@ -58,6 +58,31 @@ a label.
 
   </PropsTableRow>
 
+  <PropsTableRow prop="id" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The ID of the Form Item.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="name" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The name for the input, passed down to form controls like Checkbox, Radio,
+      and Switch via context. The child&rsquo;s own `name` prop takes precedence.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
   <PropsTableRow prop="label" required="always">
     <TableCell>`ReactNode`</TableCell>
     <TableCell>
@@ -75,6 +100,9 @@ a label.
 ### Version changes
 
 <VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+    `id` and `name` introduced for form submission.
+  </VersionsTableRow>
   <VersionsTableRow version="v3.1.0">Switch support added.</VersionsTableRow>
   <VersionsTableRow version="v3.0.0">Form Item introduced.</VersionsTableRow>
 </VersionsTable>

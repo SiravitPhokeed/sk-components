@@ -518,6 +518,9 @@ update your code.
   <SummaryTableRow name="autoFocus" type="new">
     `boolean` — Auto-focus on page load
   </SummaryTableRow>
+  <SummaryTableRow name="type" type="new">
+    `"submit" | "reset" | "button"` — HTML button type. Default `"button"`.
+  </SummaryTableRow>
   <SummaryTableRow name="command" type="new">
     Invoker Commands API support
   </SummaryTableRow>
@@ -545,12 +548,18 @@ update your code.
 </SummaryTableSection>
 
 <SummaryTableSection name="Checkbox">
+  <SummaryTableRow name="name" type="new">
+    `string` — for form submission
+  </SummaryTableRow>
   <SummaryTableRow name="inputAttr" type="removed">
     Raw `<input>` attribute passthrough removed
   </SummaryTableRow>
 </SummaryTableSection>
 
 <SummaryTableSection name="Chip Field">
+  <SummaryTableRow name="name" type="new">
+    `string` — for form submission
+  </SummaryTableRow>
   <SummaryTableRow name="onNewEntries" type="new">
     `(values: string[]) => any` — receives all values when pasting or pressing
     a separator key. Replaces `onNewEntry`.
@@ -647,6 +656,9 @@ update your code.
 </SummaryTableSection>
 
 <SummaryTableSection name="Form Group">
+  <SummaryTableRow name="name" type="new">
+    `string` — for form submission. Auto-generated if omitted.
+  </SummaryTableRow>
   <SummaryTableRow name="legendElement" type="new">
     `ElementType` — custom element for the legend
   </SummaryTableRow>
@@ -659,6 +671,12 @@ update your code.
 </SummaryTableSection>
 
 <SummaryTableSection name="Form Item">
+  <SummaryTableRow name="id" type="new">
+    `string`
+  </SummaryTableRow>
+  <SummaryTableRow name="name" type="new">
+    `string` — for form submission. Passed to controls via context.
+  </SummaryTableRow>
   <SummaryTableRow name="children" type="changed">
   Type narrowed to `ReactElement<typeof Checkbox | typeof Radio | typeof
       Switch>`
@@ -879,6 +897,12 @@ update your code.
 </SummaryTableSection>
 
 <SummaryTableSection name="Radio">
+  <SummaryTableRow name="id" type="new">
+    `string`
+  </SummaryTableRow>
+  <SummaryTableRow name="name" type="new">
+    `string` — for form submission. Falls back to Form&nbsp;Item then Form&nbsp;Group.
+  </SummaryTableRow>
   <SummaryTableRow name="inputAttr" type="removed">
     Raw `<input>` attribute passthrough removed
   </SummaryTableRow>
@@ -908,6 +932,9 @@ update your code.
 </SummaryTableSection>
 
 <SummaryTableSection name="Select">
+  <SummaryTableRow name="name" type="new">
+    `string` — for form submission
+  </SummaryTableRow>
   <SummaryTableRow name="value" type="changed">
     Type narrowed: `any` → `string` (generic `Value extends string`)
   </SummaryTableRow>
@@ -965,6 +992,9 @@ update your code.
 </SummaryTableSection>
 
 <SummaryTableSection name="Switch">
+  <SummaryTableRow name="name" type="new">
+    `string` — for form submission
+  </SummaryTableRow>
   <SummaryTableRow name="buttonAttr" type="removed">
     Raw `<button>` attribute passthrough removed
   </SummaryTableRow>
@@ -1022,6 +1052,9 @@ update your code.
 </SummaryTableSection>
 
 <SummaryTableSection name="Text Field">
+  <SummaryTableRow name="name" type="new">
+    `string` — for form submission
+  </SummaryTableRow>
   <SummaryTableRow name="type" type="new">
     Native input types: `"color"`, `"date"`, `"datetime-local"`, `"email"`,
     `"file"`, `"month"`, `"number"`, `"password"`, `"search"`, `"tel"`,

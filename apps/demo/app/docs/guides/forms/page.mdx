@@ -1,0 +1,220 @@
+import VersionsTable from "@/app/docs/components/VersionsTable";
+import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
+
+export const metadata = {
+  title: "Forms",
+};
+
+## Forms
+
+Learn how to build forms with SKCom that collect and submit user input.
+
+If you&rsquo;re new to HTML forms, the
+[MDN guide to web forms](https://developer.mozilla.org/en-US/docs/Learn_web_developer/Extensions/Forms)
+is a great place to start. This guide focuses on how SKCom components fit into
+that picture.
+
+### Getting started
+
+There are two ways to handle form data:
+
+- **Uncontrolled (recommended):** Let the browser manage each field&rsquo;s
+  value. Read the values on submit with
+  [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData).
+- **Controlled:** Keep each field&rsquo;s value in React state with `useState`,
+  updating it on every keystroke.
+
+> **When to use which:** Uncontrolled forms are simpler and perform better for
+> most use cases. Controlled forms are useful when you need to validate, format,
+> or react to input while the user types.
+
+### Uncontrolled forms
+
+The uncontrolled approach uses the browser&rsquo;s native form handling. Each
+field gets a [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name)
+attribute so the browser can identify it when the form is submitted.
+
+**1. Wrap your fields in a `<form>` element.**
+
+Use the `element` prop on Columns, or a plain `<form>` element.
+
+**2. Give each field a `name` prop.**
+
+All SKCom form components accept `name`. For Checkbox, Radio, and Switch inside a
+Form Item, `name` can be set on the Form Item and is shared across children.
+
+**3. Handle `onSubmit` on the `<form>`.**
+
+Call `preventDefault()` to stop the page reload, then read values with
+`FormData`.
+
+```tsx
+const [submitted, setSubmitted] = useState();
+
+return (
+  <form
+    onSubmit={(e) => {
+      e.preventDefault();
+      const data = new FormData(e.currentTarget);
+      const obj = {};
+      data.forEach((value, key) => {
+        obj[key] = value;
+      });
+      setSubmitted(obj);
+    }}
+  >
+    <Columns columns={3} className="gap-y-8 pb-8">
+      <TextField
+        name="full-name"
+        appearance="outlined"
+        label="Full name"
+        required
+      />
+
+      <Select name="school-type" appearance="outlined" label="School type">
+        <MenuItem value="public">Public</MenuItem>
+        <MenuItem value="private">Private</MenuItem>
+        <MenuItem value="international">International</MenuItem>
+      </Select>
+
+      <FormGroup name="contact-method" label="Preferred contact method">
+        <FormItem label="Email">
+          <Radio />
+        </FormItem>
+        <FormItem label="Phone">
+          <Radio />
+        </FormItem>
+      </FormGroup>
+
+      <FormItem name="newsletter" label="Subscribe to newsletter">
+        <Switch />
+      </FormItem>
+
+      <FormItem name="terms" label="I agree to the terms">
+        <Checkbox />
+      </FormItem>
+
+      <Actions>
+        <Button appearance="outlined" type="reset">Reset</Button>
+        <Button appearance="filled" type="submit">Submit</Button>
+      </Actions>
+    </Columns>
+  </form>
+);
+```
+
+#### Name resolution
+
+When a field is inside a Form Item or Form Group, its `name` is resolved with
+the following priority:
+
+1. The field&rsquo;s own `name` prop
+2. The parent Form Item&rsquo;s `name` prop
+3. The parent Form Group&rsquo;s `name` prop
+
+This means you can set `name` once on a Form Group and have it apply to every
+Radio inside it, or set `name` once on a Form Item and have it apply to its
+Checkbox, Radio, or Switch.
+
+```tsx
+// Each Radio inherits `name="contact-method"` from the Form Group.
+<FormGroup name="contact-method" label="Preferred contact method">
+  <FormItem label="Email">
+    <Radio />
+  </FormItem>
+  <FormItem label="Phone">
+    <Radio />
+  </FormItem>
+</FormGroup>
+```
+
+#### Hidden inputs
+
+Checkbox, Switch, and Select use custom elements for their appearance — they
+don&rsquo;t render native `<input>` or `<select>` elements. To participate in
+form submission, each of these components renders a hidden
+`<input type="hidden">` internally. Checkbox and Switch submit `"on"` when
+selected; Select submits the value of the selected option.
+
+### Controlled forms
+
+The controlled approach keeps field values in React state with `useState`,
+giving you access to values before the form is submitted.
+
+```tsx
+const [fullName, setFullName] = useState("");
+const [schoolType, setSchoolType] = useState("");
+const [subscribe, setSubscribe] = useState(false);
+const [agreed, setAgreed] = useState(false);
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  console.log({ fullName, schoolType, subscribe, agreed });
+};
+
+return (
+  <form onSubmit={handleSubmit}>
+    <Columns columns={3} className="gap-y-8 pb-8">
+      <TextField
+        appearance="outlined"
+        label="Full name"
+        value={fullName}
+        onChange={setFullName}
+        required
+      />
+
+      <Select
+        appearance="outlined"
+        label="School type"
+        value={schoolType}
+        onChange={setSchoolType}
+      >
+        <MenuItem value="public">Public</MenuItem>
+        <MenuItem value="private">Private</MenuItem>
+        <MenuItem value="international">International</MenuItem>
+      </Select>
+
+      <FormItem label="Subscribe to newsletter">
+        <Switch value={subscribe} onChange={setSubscribe} />
+      </FormItem>
+
+      <FormItem label="I agree to the terms">
+        <Checkbox value={agreed} onChange={setAgreed} />
+      </FormItem>
+
+      <Actions>
+        <Button appearance="filled" type="submit">Submit</Button>
+      </Actions>
+    </Columns>
+  </form>
+);
+```
+
+> Controlled fields can still have a `name` prop if you want them to
+> participate in both approaches — for example, controlled fields that also
+> submit via `FormData`.
+
+### Form components at a glance
+
+| Component | Uncontrolled | Controlled | Native element |
+|---|---|---|---|
+| [Text Field](/docs/inputs/text-field) | `name` | `value` + `onChange` | `<input>` / `<textarea>` |
+| [Chip Field](/docs/inputs/chip-field) | `name` | `value` + `onChange` | `<input>` |
+| [Select](/docs/inputs/select) | `name` | `value` + `onChange` | Hidden `<input>` |
+| [Checkbox](/docs/inputs/checkbox) | `name` | `value` + `onChange` | Hidden `<input>` |
+| [Radio](/docs/inputs/radio) | `name` | `value` + `onChange` | `<input type="radio">` |
+| [Switch](/docs/inputs/switch) | `name` | `value` + `onChange` | Hidden `<input>` |
+| [Form Group](/docs/inputs/form-group) | `name`&thinsp;¹ | &mdash; | `<fieldset>` |
+| [Form Item](/docs/inputs/form-item) | `name`&thinsp;¹ | &mdash; | `<label>` |
+
+> ¹ Form Group and Form Item pass their `name` to child form controls via
+> context — they don&rsquo;t submit values directly.
+
+### Version changes
+
+<VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+    `name` prop introduced on all form components. `id` introduced on Form
+    Item and Radio. `type` introduced on Button for submit/reset/button.
+  </VersionsTableRow>
+</VersionsTable>

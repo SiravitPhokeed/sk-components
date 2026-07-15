@@ -49,6 +49,19 @@ return (
 - [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
+  <PropsTableRow prop="name" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The name of the Switch, used for form submission. If not provided, falls
+      back to the parent Form Item&rsquo;s `name`.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
   <PropsTableRow prop="value" required="never">
     <TableCell>`boolean`</TableCell>
     <TableCell>
@@ -118,6 +131,9 @@ return (
 ### Version changes
 
 <VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+    `name` introduced for form submission.
+  </VersionsTableRow>
   <VersionsTableRow version="v3.1.0">Form Item support added.</VersionsTableRow>
   <VersionsTableRow version="v3.0.0">Switch introduced.</VersionsTableRow>
 </VersionsTable>

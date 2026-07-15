@@ -283,13 +283,32 @@ in Button.
       </TableCell>
 
   </PropsTableRow>
+
+  <PropsTableRow prop="type" required="never">
+    <TableCell>
+      ```
+      "submit"
+      | "reset"
+      | "button"
+      ```
+    </TableCell>
+    <TableCell>
+      
+      The type of the Button, similar to `type` on `<button>`.
+
+      - Must be `submit`, `reset`, or `button`.
+      - Optional. Defaults to `button`.
+
+      </TableCell>
+
+  </PropsTableRow>
 </PropsTable>
 
 ### Version changes
 
 <VersionsTable>
   <VersionsTableRow version="v4.0.0">
-    Invoker Commands API support added. `autoFocus` introduced.
+    `type` introduced. Invoker Commands API support added. `autoFocus` introduced.
   </VersionsTableRow>
   <VersionsTableRow version="v3.1.0">
     Interactive replaced ad-hoc interaction handling.

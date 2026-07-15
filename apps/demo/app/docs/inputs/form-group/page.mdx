@@ -67,6 +67,19 @@ A group of related Form Items, like options in a radio group.
 
   </PropsTableRow>
 
+  <PropsTableRow prop="name" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The name for the form group, passed down to form controls like Radio via
+      context. If not provided, a random name is generated.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
   <PropsTableRow prop="label" required="always">
     <TableCell>`ReactNode`</TableCell>
     <TableCell>
@@ -96,6 +109,9 @@ A group of related Form Items, like options in a radio group.
 ### Version changes
 
 <VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+    `name` introduced for form submission.
+  </VersionsTableRow>
   <VersionsTableRow version="v4.0.0">
     `legendElement` introduced. Prop injection replaced with React Context.
   </VersionsTableRow>

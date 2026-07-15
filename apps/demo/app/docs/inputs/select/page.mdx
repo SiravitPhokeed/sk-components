@@ -94,6 +94,18 @@ return (
 
   </PropsTableRow>
 
+  <PropsTableRow prop="name" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The name of the Select, used for form submission.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
   <PropsTableRow prop="appearance" required="always">
     <TableCell>
       ```
@@ -210,6 +222,9 @@ return (
 ### Version changes
 
 <VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+    `name` introduced for form submission.
+  </VersionsTableRow>
   <VersionsTableRow version="v4.0.0">
     `value` type narrowed from `any` to `string`. Prop injection replaced with
     React Context.

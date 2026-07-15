@@ -11,6 +11,8 @@ Versions track the root library releases.
 
 - **Documentation site** at `/docs` with component reference, guides, and
   migration guides rendered from MDX
+- **Text Field demo** uses the new `name` prop for uncontrolled form submission
+  with `<form>` and `FormData`
 
 ### Changed
 

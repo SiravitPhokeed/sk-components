@@ -64,6 +64,32 @@ return (
 - [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
+  <PropsTableRow prop="id" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The ID of the Radio, passed to the underlying `<input>` element.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="name" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The name of the Radio, used to group Radios together for form submission.
+      If not provided, falls back to the parent Form Item&rsquo;s `name`, then
+      the parent Form Group&rsquo;s `name`.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
   <PropsTableRow prop="value" required="never">
     <TableCell>`boolean`</TableCell>
     <TableCell>
@@ -106,6 +132,9 @@ return (
 ### Version changes
 
 <VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+    `id` and `name` introduced for form submission.
+  </VersionsTableRow>
   <VersionsTableRow version="v3.0.0">
     React implementation introduced.
   </VersionsTableRow>

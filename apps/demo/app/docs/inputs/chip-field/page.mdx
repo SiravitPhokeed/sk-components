@@ -120,6 +120,19 @@ to limit the number of Input Chips that can be added.
 
   </PropsTableRow>
 
+  <PropsTableRow prop="name" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The name of the Chip Field, used for form submission. Passed to the
+      underlying `<input>` element.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
   <PropsTableRow prop="label" required="always">
     <TableCell>`ReactNode`</TableCell>
     <TableCell>
@@ -296,7 +309,9 @@ to limit the number of Input Chips that can be added.
 ### Version changes
 
 <VersionsTable>
-  <VersionsTableRow version="v4.0.0">`required` introduced.</VersionsTableRow>
+  <VersionsTableRow version="v4.0.0">
+    `name` introduced for form submission. `required` introduced.
+  </VersionsTableRow>
   <VersionsTableRow version="v3.2.1">
     Helper text support added.
   </VersionsTableRow>
