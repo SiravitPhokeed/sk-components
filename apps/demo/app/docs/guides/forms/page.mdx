@@ -1,5 +1,23 @@
+import DisclosureCard from "@/app/docs/components/DisclosureCard";
 import VersionsTable from "@/app/docs/components/VersionsTable";
 import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
+import {
+  Actions,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  Checkbox,
+  FormGroup,
+  FormItem,
+  MaterialIcon,
+  MenuItem,
+  Radio,
+  Select,
+  Switch,
+  Text,
+  TextField,
+} from "@suankularb-components/react";
 
 export const metadata = {
   title: "Forms",
@@ -7,20 +25,61 @@ export const metadata = {
 
 ## Forms
 
-Learn how to build forms with SKCom that collect and submit user input.
+Learn how to build forms with SK Components that collect and submit user input.
 
-If you&rsquo;re new to HTML forms, the
-[MDN guide to web forms](https://developer.mozilla.org/en-US/docs/Learn_web_developer/Extensions/Forms)
-is a great place to start. This guide focuses on how SKCom components fit into
+If you’re new to HTML forms, the
+[MDN guide to web forms](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms)
+is a great place to start. This guide focuses on how SKCom’s components fit into
 that picture.
+
+> **Good to know:** All relevant SKCom components are under the <span className="whitespace-nowrap"><MaterialIcon icon="input" size={20} directional className="text-on-surface-variant -mb-1 inline-block" /> Inputs</span> category.
+
+<Card appearance="outlined" className="mx-auto my-6 max-w-80">
+  <CardHeader title="Example form" />
+  <CardContent element="form" className="flex flex-col gap-3">
+    <TextField
+      name="full-name"
+      appearance="outlined"
+      label="Full name"
+      required
+    />
+    <Select
+      name="school-type"
+      appearance="outlined"
+      label="School type"
+      className="mt-3"
+    >
+      <MenuItem children="Public" value="public" />
+      <MenuItem children="Private" value="private" />
+      <MenuItem children="International" value="international" />
+    </Select>
+    <FormGroup name="contact-method" label="Preferred contact method">
+      <FormItem label="Email">
+        <Radio />
+      </FormItem>
+      <FormItem label="Phone">
+        <Radio />
+      </FormItem>
+    </FormGroup>
+    <FormItem name="newsletter" label="Subscribe to newsletter">
+      <Switch />
+    </FormItem>
+    <FormItem name="terms" label="I agree to the terms">
+      <Checkbox />
+    </FormItem>
+    <Actions>
+      <Button children="Reset" appearance="outlined" type="reset" />
+      <Button children="Submit" appearance="filled" />
+    </Actions>
+  </CardContent>
+</Card>
 
 ### Getting started
 
 There are two ways to handle form data:
 
-- **Uncontrolled (recommended):** Let the browser manage each field&rsquo;s
-  value. Read the values on submit with
-  [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData).
+- **Uncontrolled:** Let the browser manage each field’s value. Read the values
+  on submit with [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData).
 - **Controlled:** Keep each field&rsquo;s value in React state with `useState`,
   updating it on every keystroke.
 
@@ -31,86 +90,100 @@ There are two ways to handle form data:
 ### Uncontrolled forms
 
 The uncontrolled approach uses the browser&rsquo;s native form handling. Each
-field gets a [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name)
+field gets a [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#name)
 attribute so the browser can identify it when the form is submitted.
 
-**1. Wrap your fields in a `<form>` element.**
-
-Use the `element` prop on Columns, or a plain `<form>` element.
-
-**2. Give each field a `name` prop.**
-
-All SKCom form components accept `name`. For Checkbox, Radio, and Switch inside a
-Form Item, `name` can be set on the Form Item and is shared across children.
-
-**3. Handle `onSubmit` on the `<form>`.**
-
-Call `preventDefault()` to stop the page reload, then read values with
-`FormData`.
+1. **Wrap your fields in a `<form>` element.**
+2. **Give each field a `name` prop.** All SKCom form components accept `name`.
+   For Checkbox, Radio, and Switch inside a Form Item, `name` can be set on the
+   Form Item and is shared across children.
+3. **Handle `onSubmit` on the `<form>`.** Call `preventDefault()` to stop the
+   page reload, then read values with `FormData`.
+4. **Access or send the data.** You can read values with [`FormData.get()`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/get)
+   or send them to a server with [`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/fetch).
 
 ```tsx
-const [submitted, setSubmitted] = useState();
+const handleSubmit: SubmitEventHandler<HTMLFormElement> = async (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.currentTarget);
+  const response = await fetch("/api/register", {
+    method: "POST",
+    body: formData,
+  });
+  if (!response.ok) snackbar.push("Failed to submit form");
+  else snackbar.push("Form submitted successfully");
+};
 
 return (
-  <form
-    onSubmit={(e) => {
-      e.preventDefault();
-      const data = new FormData(e.currentTarget);
-      const obj = {};
-      data.forEach((value, key) => {
-        obj[key] = value;
-      });
-      setSubmitted(obj);
-    }}
-  >
-    <Columns columns={3} className="gap-y-8 pb-8">
-      <TextField
-        name="full-name"
-        appearance="outlined"
-        label="Full name"
-        required
-      />
+  <form onSubmit={handleSubmit}>
+    <TextField
+      name="full-name"
+      appearance="outlined"
+      label="Full name"
+      required
+    />
 
-      <Select name="school-type" appearance="outlined" label="School type">
-        <MenuItem value="public">Public</MenuItem>
-        <MenuItem value="private">Private</MenuItem>
-        <MenuItem value="international">International</MenuItem>
-      </Select>
+    <Select name="school-type" appearance="outlined" label="School type">
+      <MenuItem value="public">Public</MenuItem>
+      <MenuItem value="private">Private</MenuItem>
+      <MenuItem value="international">International</MenuItem>
+    </Select>
 
-      <FormGroup name="contact-method" label="Preferred contact method">
-        <FormItem label="Email">
-          <Radio />
-        </FormItem>
-        <FormItem label="Phone">
-          <Radio />
-        </FormItem>
-      </FormGroup>
-
-      <FormItem name="newsletter" label="Subscribe to newsletter">
-        <Switch />
+    <FormGroup name="contact-method" label="Preferred contact method">
+      <FormItem id="email" label="Email">
+        <Radio />
       </FormItem>
-
-      <FormItem name="terms" label="I agree to the terms">
-        <Checkbox />
+      <FormItem id="phone" label="Phone">
+        <Radio />
       </FormItem>
+    </FormGroup>
 
-      <Actions>
-        <Button appearance="outlined" type="reset">Reset</Button>
-        <Button appearance="filled" type="submit">Submit</Button>
-      </Actions>
-    </Columns>
+    <FormItem name="newsletter" label="Subscribe to newsletter">
+      <Switch />
+    </FormItem>
+
+    <FormItem name="terms" label="I agree to the terms">
+      <Checkbox />
+    </FormItem>
+
+    <Actions>
+      <Button appearance="outlined" type="reset">
+        Reset
+      </Button>
+      <Button appearance="filled" type="submit">
+        Submit
+      </Button>
+    </Actions>
   </form>
 );
 ```
 
-#### Name resolution
+<Text type="body-medium" className="text-on-surface-variant *:-mt-1">
+  You can read more about `snackbar.push()` at
+  [Snackbar](/docs/overlays/snackbar).
+</Text>
+
+> [HTML radio buttons](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/radio)
+> must share the same `name` to work as a group. Each Radio have its own `id`
+> which identifies the selected option in the group.
+>
+> In the example above, `formData.get("contact-method")` will return either
+> `"email"` or `"phone"`.
+
+<DisclosureCard
+  summary={
+    <>
+      How <code>name</code> is resolved in Form Item and Form Group
+    </>
+  }
+>
 
 When a field is inside a Form Item or Form Group, its `name` is resolved with
 the following priority:
 
-1. The field&rsquo;s own `name` prop
-2. The parent Form Item&rsquo;s `name` prop
-3. The parent Form Group&rsquo;s `name` prop
+1. The field’s own `name` prop
+2. The parent Form Item’s `name` prop
+3. The parent Form Group’s `name` prop
 
 This means you can set `name` once on a Form Group and have it apply to every
 Radio inside it, or set `name` once on a Form Item and have it apply to its
@@ -119,22 +192,49 @@ Checkbox, Radio, or Switch.
 ```tsx
 // Each Radio inherits `name="contact-method"` from the Form Group.
 <FormGroup name="contact-method" label="Preferred contact method">
-  <FormItem label="Email">
+  <FormItem id="email" label="Email">
     <Radio />
   </FormItem>
-  <FormItem label="Phone">
+  <FormItem id="phone" label="Phone">
     <Radio />
   </FormItem>
 </FormGroup>
 ```
 
-#### Hidden inputs
+</DisclosureCard>
 
-Checkbox, Switch, and Select use custom elements for their appearance — they
-don&rsquo;t render native `<input>` or `<select>` elements. To participate in
-form submission, each of these components renders a hidden
-`<input type="hidden">` internally. Checkbox and Switch submit `"on"` when
-selected; Select submits the value of the selected option.
+#### Form validation
+
+Simple [client-side validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#client-side_validation)
+can be done with the `required` and `inputAttr` props. For more complex
+validation, [controlled forms](#controlled-forms) may be a better fit.
+
+**Add `required` to make a field mandatory.** Browsers will prevent submission
+if a required field is empty, and the field will be highlighted with a red
+outline.
+
+```tsx
+<TextField name="full-name" appearance="outlined" label="Full name" required />
+```
+
+**`inputAttr` lets you pass any native HTML attributes to the underlying input,
+including [validation attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Constraint_validation#validation-related_attributes).** For example:
+
+- `pattern` lets you specify a [regular expression](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern)
+  that the input must match.
+- `min` and `max` let you specify the minimum and maximum values for number
+  inputs.
+- `minLength` and `maxLength` let you specify the minimum and maximum number of
+  characters for text inputs.
+
+```tsx
+<TextField
+  name="age"
+  appearance="outlined"
+  label="Age"
+  inputAttr={{ type: "number", min: 0, max: 120 }}
+/>
+```
 
 ### Controlled forms
 
@@ -143,78 +243,87 @@ giving you access to values before the form is submitted.
 
 ```tsx
 const [fullName, setFullName] = useState("");
-const [schoolType, setSchoolType] = useState("");
+const [schoolType, setSchoolType] = useState("public");
 const [subscribe, setSubscribe] = useState(false);
 const [agreed, setAgreed] = useState(false);
 
-const handleSubmit = (e) => {
+const handleSubmit: SubmitEventHandler<HTMLFormElement> = async (e) => {
   e.preventDefault();
-  console.log({ fullName, schoolType, subscribe, agreed });
+  const response = await fetch("/api/register", {
+    method: "POST",
+    body: JSON.stringify({ fullName, schoolType, subscribe, agreed }),
+  });
+  if (!response.ok) snackbar.push("Failed to submit form");
+  else snackbar.push("Form submitted successfully");
 };
 
 return (
   <form onSubmit={handleSubmit}>
-    <Columns columns={3} className="gap-y-8 pb-8">
-      <TextField
-        appearance="outlined"
-        label="Full name"
-        value={fullName}
-        onChange={setFullName}
-        required
-      />
+    <TextField
+      appearance="outlined"
+      label="Full name"
+      value={fullName}
+      onChange={setFullName}
+      required
+    />
 
-      <Select
-        appearance="outlined"
-        label="School type"
-        value={schoolType}
-        onChange={setSchoolType}
-      >
-        <MenuItem value="public">Public</MenuItem>
-        <MenuItem value="private">Private</MenuItem>
-        <MenuItem value="international">International</MenuItem>
-      </Select>
+    <Select
+      appearance="outlined"
+      label="School type"
+      value={schoolType}
+      onChange={setSchoolType}
+    >
+      <MenuItem value="public">Public</MenuItem>
+      <MenuItem value="private">Private</MenuItem>
+      <MenuItem value="international">International</MenuItem>
+    </Select>
 
-      <FormItem label="Subscribe to newsletter">
-        <Switch value={subscribe} onChange={setSubscribe} />
+    <FormGroup label="Preferred contact method">
+      <FormItem label="Email">
+        <Radio
+          value={contactMethod === "email"}
+          onChange={() => setContactMethod("email")}
+        />
       </FormItem>
-
-      <FormItem label="I agree to the terms">
-        <Checkbox value={agreed} onChange={setAgreed} />
+      <FormItem label="Phone">
+        <Radio
+          value={contactMethod === "phone"}
+          onChange={() => setContactMethod("phone")}
+        />
       </FormItem>
+    </FormGroup>
 
-      <Actions>
-        <Button appearance="filled" type="submit">Submit</Button>
-      </Actions>
-    </Columns>
+    <FormItem label="Subscribe to newsletter">
+      <Switch value={subscribe} onChange={setSubscribe} />
+    </FormItem>
+
+    <FormItem label="I agree to the terms">
+      <Checkbox value={agreed} onChange={setAgreed} />
+    </FormItem>
+
+    <Actions>
+      <Button appearance="filled" type="submit">
+        Submit
+      </Button>
+    </Actions>
   </form>
 );
 ```
+
+<Text type="body-medium" className="text-on-surface-variant *:-mt-1">
+  You can read more about `snackbar.push()` at
+  [Snackbar](/docs/overlays/snackbar).
+</Text>
 
 > Controlled fields can still have a `name` prop if you want them to
 > participate in both approaches — for example, controlled fields that also
 > submit via `FormData`.
 
-### Form components at a glance
-
-| Component | Uncontrolled | Controlled | Native element |
-|---|---|---|---|
-| [Text Field](/docs/inputs/text-field) | `name` | `value` + `onChange` | `<input>` / `<textarea>` |
-| [Chip Field](/docs/inputs/chip-field) | `name` | `value` + `onChange` | `<input>` |
-| [Select](/docs/inputs/select) | `name` | `value` + `onChange` | Hidden `<input>` |
-| [Checkbox](/docs/inputs/checkbox) | `name` | `value` + `onChange` | Hidden `<input>` |
-| [Radio](/docs/inputs/radio) | `name` | `value` + `onChange` | `<input type="radio">` |
-| [Switch](/docs/inputs/switch) | `name` | `value` + `onChange` | Hidden `<input>` |
-| [Form Group](/docs/inputs/form-group) | `name`&thinsp;¹ | &mdash; | `<fieldset>` |
-| [Form Item](/docs/inputs/form-item) | `name`&thinsp;¹ | &mdash; | `<label>` |
-
-> ¹ Form Group and Form Item pass their `name` to child form controls via
-> context — they don&rsquo;t submit values directly.
-
 ### Version changes
 
 <VersionsTable>
   <VersionsTableRow version="v4.0.0">
-    `name` prop introduced on all form components. `id` introduced on Form
-    Item and Radio. `type` introduced on Button for submit/reset/button.
+    `name` prop introduced on all form components. `id` introduced on Form Item
+    and Radio. `type` introduced on Button for submit/reset/button.
   </VersionsTableRow>
 </VersionsTable>
