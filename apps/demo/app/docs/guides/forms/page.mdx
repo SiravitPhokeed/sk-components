@@ -203,6 +203,36 @@ Checkbox, Radio, or Switch.
 
 </DisclosureCard>
 
+#### With the `action` prop
+
+As an alternative to `onSubmit`, React&nbsp;19 supports passing a function directly
+to the `<form>` [`action`](https://react.dev/reference/react-dom/components/form#handle-form-submission-with-a-function)
+prop. The submission runs in a
+[Transition](https://react.dev/reference/react/useTransition), giving you access
+to [`useFormStatus`](https://react.dev/reference/react-dom/hooks/useFormStatus),
+[`useActionState`](https://react.dev/reference/react/useActionState), and
+[`useOptimistic`](https://react.dev/reference/react/useOptimistic). All fields
+stay uncontrolled — you still use `name` and `FormData`.
+
+```tsx
+<form
+  action={async (formData) => {
+    const response = await fetch("/api/register", {
+      method: "POST",
+      body: formData,
+    });
+    if (!response.ok) snackbar.push("Failed to submit form");
+    else snackbar.push("Form submitted successfully");
+  }}
+>
+  {/* Same uncontrolled fields as the onSubmit example */}
+</form>
+```
+
+In Next.js App Router, `action` can also be a
+[Server Function](https://react.dev/reference/rsc/server-functions)
+(`"use server"`), allowing the form to submit before JavaScript loads.
+
 #### Validation in uncontrolled forms
 
 Simple [client-side validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#client-side_validation)
