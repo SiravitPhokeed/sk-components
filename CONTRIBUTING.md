@@ -109,12 +109,24 @@ pnpm demo:start
 - Use the present tense (“add feature” not “added feature”).
 - Don’t use backticks.
 
-### Pull requests and changelogs
+### Changelogs
 
-- For pull requests and `CHANGELOG.md` entries, follow [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
+- For `CHANGELOG.md` entries, follow [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
   guidelines.
 - SKCom Styles and ReSKCom use the changelog at the root.
 - The demo app uses its own changelog in `apps/demo/CHANGELOG.md`.
+
+### Pull requests
+
+- Use version branches as the base branch for your pull request.
+- The pull request title should start with the version number and use “Title Case.” Keep it short.
+  - e.g. `[4.0.1] Button`.
+- If the pull request is not a feature, use the full name of a commit type.
+  - e.g. `[4.0.1] Documentation: Button Usage`.
+- The pull request body should folow Keep a Changelog guidelines.
+- When a version is ready to be released, create a pull request to merge the version branch into
+  `main`.
+  - e.g. `Release 4.0.1`.
 
 ### ReSKCom guidelines
 
