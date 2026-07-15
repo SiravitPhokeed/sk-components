@@ -294,7 +294,13 @@ const handleSubmit: SubmitEventHandler<HTMLFormElement> = async (e) => {
   e.preventDefault();
   const response = await fetch("/api/register", {
     method: "POST",
-    body: JSON.stringify({ fullName, schoolType, contactMethod, subscribe, agreed }),
+    body: JSON.stringify({
+      fullName,
+      schoolType,
+      contactMethod,
+      subscribe,
+      agreed,
+    }),
   });
   if (!response.ok) snackbar.push("Failed to submit form");
   else snackbar.push("Form submitted successfully");
