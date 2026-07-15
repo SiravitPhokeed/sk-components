@@ -12,6 +12,14 @@ import { useId, useState } from "react";
  */
 export interface TextFieldProps<Value extends string | File = string> {
   /**
+   * The name of the Text Field, used for form submission. Passed to the
+   * underlying `<input>` or `<textarea>` element.
+   *
+   * - Optional.
+   */
+  name?: string;
+
+  /**
    * How the Text Field looks. An outlined Text Field has a lower emphasis than
    * filled, so it is great for a form with many fields.
    *
@@ -227,6 +235,7 @@ const STRINGS = {
  * @param inputAttr Attributes for the underlying `<input>` element used as the field.
  */
 export const TextField = <Value extends string | File = string>({
+  name,
   appearance,
   label,
   type = "text",
@@ -295,6 +304,7 @@ export const TextField = <Value extends string | File = string>({
           aria-describedby={helperMsg ? `${id}-helper` : undefined}
           aria-invalid={error || undefined}
           type={type}
+          name={name}
           disabled={disabled}
           required={required}
           value={value}

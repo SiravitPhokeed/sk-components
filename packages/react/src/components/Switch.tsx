@@ -1,5 +1,6 @@
 "use client";
 
+import { useFormItemContext } from "@/components/FormItem";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/switch.css";
@@ -11,6 +12,14 @@ import { useState } from "react";
  * Props for {@link Switch}.
  */
 export interface SwitchProps extends ElementCustomizableProps {
+  /**
+   * The name of the Switch, used for form submission. If not provided, falls
+   * back to the parent Form Item’s `name`.
+   *
+   * - Optional.
+   */
+  name?: string;
+
   /**
    * The state of the Switch. This is useful if you want a controlled input.
    *
@@ -63,6 +72,7 @@ export interface SwitchProps extends ElementCustomizableProps {
  * @param disabled Turns the Switch gray and blocks any action associated with it.
  */
 export const Switch: StyleableFC<SwitchProps> = ({
+  name,
   value,
   onChange,
   offIcon,
@@ -76,23 +86,35 @@ export const Switch: StyleableFC<SwitchProps> = ({
   const resolvedValue = value ?? internalValue;
   const resolvedOnChange = onChange ?? setInternalValue;
 
+  const formItemContext = useFormItemContext();
+  const formItemName = formItemContext?.name;
+
+  // Resolution: own name > Form Item
+  const resolvedName = name ?? formItemName;
+
   return (
-    <Element
-      aria-disabled={disabled}
-      aria-pressed={resolvedValue}
-      style={style}
-      className={cn(
-        "skc-switch",
-        resolvedValue && "skc-switch--selected",
-        className,
+    <>
+      {/* Hidden input for form submission */}
+      {resolvedName && resolvedValue && (
+        <input type="hidden" name={resolvedName} value="on" />
       )}
-      onClick={() => {
-        if (!disabled) resolvedOnChange(!resolvedValue);
-      }}
-    >
-      <div className="skc-switch__handle">
-        {resolvedValue ? onIcon : offIcon}
-      </div>
-    </Element>
+      <Element
+        aria-disabled={disabled}
+        aria-pressed={resolvedValue}
+        style={style}
+        className={cn(
+          "skc-switch",
+          resolvedValue && "skc-switch--selected",
+          className,
+        )}
+        onClick={() => {
+          if (!disabled) resolvedOnChange(!resolvedValue);
+        }}
+      >
+        <div className="skc-switch__handle">
+          {resolvedValue ? onIcon : offIcon}
+        </div>
+      </Element>
+    </>
   );
 };

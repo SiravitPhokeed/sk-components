@@ -1,6 +1,7 @@
 "use client";
 
 import { useFormgroupContext } from "@/components/FormGroup";
+import { useFormItemContext } from "@/components/FormItem";
 import { Interactive } from "@/components/Interactive";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
@@ -11,6 +12,22 @@ import { useState } from "react";
  * Props for {@link Radio}.
  */
 export interface RadioProps extends ElementCustomizableProps {
+  /**
+   * The ID of the Radio, passed to the underlying `<input>` element.
+   *
+   * - Optional.
+   */
+  id?: string;
+
+  /**
+   * The name of the Radio, used to group Radios together for form submission.
+   * If not provided, falls back to the parent Form Item’s `name`, then the
+   * parent Form Group’s `name`.
+   *
+   * - Optional.
+   */
+  name?: string;
+
   /**
    * The state of the Radio. This is useful if you want a controlled input.
    *
@@ -42,8 +59,12 @@ export interface RadioProps extends ElementCustomizableProps {
  * @param value The state of the Radio. This is useful if you want a controlled input.
  * @param onChange Called when the user toggles the Radio. The state is passed in via the function as a boolean.
  * @param disabled Turns the Radio gray and blocks any action associated with it.
+ * @param name The name of the Radio, used to group Radios together for form submission.
+ * @param id The ID of the Radio, passed to the underlying `<input>` element.
  */
 export const Radio: StyleableFC<RadioProps> = ({
+  id,
+  name,
   value,
   onChange,
   disabled,
@@ -56,7 +77,12 @@ export const Radio: StyleableFC<RadioProps> = ({
   const resolvedOnChange = onChange ?? setInternalValue;
 
   const formGroupContext = useFormgroupContext();
-  const name = formGroupContext?.name;
+  const formItemContext = useFormItemContext();
+  const formGroupName = formGroupContext?.name;
+  const formItemName = formItemContext?.name;
+
+  // Resolution: own name > Form Item > Form Group
+  const resolvedName = name ?? formItemName ?? formGroupName;
 
   return (
     <>
@@ -74,7 +100,8 @@ export const Radio: StyleableFC<RadioProps> = ({
         <input
           aria-disabled={disabled}
           type="radio"
-          name={name}
+          id={id}
+          name={resolvedName}
           checked={resolvedValue}
           onChange={(event) => {
             console.log(event.target.checked);
