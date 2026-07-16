@@ -52,7 +52,7 @@ const components: MDXComponents = {
       appearance="filled"
       element={(props) => <pre {...props} dir="ltr" />}
       className={cn(
-        "my-4 block overflow-x-auto text-base [&_code]:bg-transparent",
+        "my-4 block overflow-x-auto text-base scheme-dark [&_code]:bg-transparent",
         className,
       )}
       {...props}
