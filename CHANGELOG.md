@@ -20,10 +20,13 @@ Changes to the demo app are documented in
   Positioning
 - **Side Sheet** component for modal side panels
 - `snackbar.push()` and `snackbar.promise()` imperative APIs for Snackbar
+- `name` prop on all form components (Form Group, Form Item, Checkbox, Radio,
+    Switch, Select, Text Field) for native form submission with `<form>` and
+    `FormData`
 - `locale` support on Full-screen Dialog and Input Chip
 - RTL support
 - Component-specific additions:
-  - **Button:** `autoFocus`
+  - **Button:** `autoFocus`, `type`
   - **Card Header**: `truncate`
   - **Chip Field:** `required`
   - **Data Table Body, Data Table Head:** `align` for text alignment
@@ -31,7 +34,7 @@ Changes to the demo app are documented in
   - **Dialog, Full-screen Dialog, Menu:** uncontrolled mode via Invoker Commands
     API (`id`)
   - **Filter Chip:** `href` for navigation
-  - **Form Group:** `legendElement` for custom legend elements
+  - **Form Group:** `legendElement`, `name` for custom legend elements
   - **Input Chip:** `tooltip`, and `deleteCommand`/`deleteCommandfor` for
     Invoker Commands on the delete button
   - **List Item:** `containerElement`
@@ -68,6 +71,8 @@ Changes to the demo app are documented in
   - **FAB:** now a direct child of Root Layout instead of a Nav Bar prop
   - **Filter Chip:** `menu` now takes a Fragment of Menu Items instead of a Menu
     component
+  - **Radio:** `value` changed from `boolean` (checked state) to `string`
+    (submission value). `checked` introduced for controlled state.
   - **Select, Menu Item:** `value` type narrowed from `any` to `string`
   - **Snackbar** is now managed internally via `snackbar.push()` or
     `snackbar.promise()`

@@ -119,6 +119,14 @@ export interface ButtonProps extends ActionableProps, ElementCustomizableProps {
    * - Optional.
    */
   locale?: "en-US" | "th";
+
+  /**
+   * The type of the Button, similar to `type` on `<button>`.
+   *
+   * - Must be `submit`, `reset`, or `button`.
+   * - Optional. Defaults to `button`.
+   */
+  type?: "submit" | "reset" | "button";
 }
 
 const STRINGS = {
@@ -145,6 +153,7 @@ const STRINGS = {
  * @param loading Disable the Button and add a Progress spinner in front of the text to signify loading status.
  * @param disabled Turns the Button gray and blocks any action associated with it.
  * @param locale Allows for translation of the accessibility labels.
+ * @param type The type of the Button, similar to `type` on `<button>`.
  */
 export const Button: StyleableFC<ButtonProps> = ({
   children,
@@ -158,6 +167,7 @@ export const Button: StyleableFC<ButtonProps> = ({
   loading,
   disabled,
   locale = "en-US",
+  type = "button",
   command,
   commandfor,
   onClick,
@@ -185,6 +195,7 @@ export const Button: StyleableFC<ButtonProps> = ({
       commandfor={commandfor ?? (command ? dialogID : undefined)}
       shadowEffect={["filled", "tonal"].includes(appearance)}
       element={element}
+      type={element === "button" ? type : undefined}
       className={cn(
         "skc-button",
         `skc-button--${appearance}`,

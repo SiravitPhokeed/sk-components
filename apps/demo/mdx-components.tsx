@@ -42,7 +42,7 @@ const components: MDXComponents = {
     <Card
       appearance="filled"
       element="blockquote"
-      className="font-display [&_code]:bg-surface-bright [&_strong]:text-on-surface my-4 px-4 *:*:first:mt-3 *:*:last:mb-3"
+      className="font-display [&_code]:bg-surface-bright [&_strong]:text-on-surface my-4 px-4 *:*:first:mt-3 *:*:last:mb-3 [&_pre]:-mx-4 [&_pre]:rounded-none"
     >
       <Text type="title-medium" {...props} />
     </Card>
@@ -52,7 +52,7 @@ const components: MDXComponents = {
       appearance="filled"
       element={(props) => <pre {...props} dir="ltr" />}
       className={cn(
-        "my-4 block overflow-x-auto text-base [&_code]:bg-transparent",
+        "my-4 block overflow-x-auto text-base scheme-dark [&_code]:bg-transparent",
         className,
       )}
       {...props}

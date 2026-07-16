@@ -1,5 +1,6 @@
 "use client";
 
+import { useFormItemContext } from "@/components/FormItem";
 import { Interactive } from "@/components/Interactive";
 import { MaterialIcon } from "@/components/MaterialIcon";
 import cn from "@/lib/helpers/cn";
@@ -11,6 +12,14 @@ import { useState } from "react";
  * Props for {@link Checkbox}.
  */
 export interface CheckboxProps extends ElementCustomizableProps {
+  /**
+   * The name of the Checkbox, used for form submission. If not provided, falls
+   * back to the parent Form Item’s `name`.
+   *
+   * - Optional.
+   */
+  name?: string;
+
   /**
    * The state of the Checkbox. This is useful if you want a controlled input.
    *
@@ -55,6 +64,7 @@ export interface CheckboxProps extends ElementCustomizableProps {
  * @param tristate Allows the Checkbox to have 3 states: off, on, and indeterminate.
  */
 export const Checkbox: StyleableFC<CheckboxProps> = ({
+  name,
   value,
   onChange,
   tristate,
@@ -69,34 +79,46 @@ export const Checkbox: StyleableFC<CheckboxProps> = ({
   const resolvedValue = value ?? internalValue;
   const resolvedOnChange = onChange ?? setInternalValue;
 
+  const formItemContext = useFormItemContext();
+  const formItemName = formItemContext?.name;
+
+  // Resolution: own name > Form Item
+  const resolvedName = name ?? formItemName;
+
   return (
-    <Interactive
-      role="checkbox"
-      aria-checked={resolvedValue === null ? "mixed" : resolvedValue}
-      aria-disabled={disabled}
-      onClick={() => {
-        if (!disabled) resolvedOnChange(!resolvedValue);
-      }}
-      element={element}
-      className={cn(
-        "skc-checkbox",
-        resolvedValue === true && "skc-checkbox--selected",
-        resolvedValue === null && tristate && "skc-checkbox--indeterminate",
-        disabled && "skc-checkbox--disabled",
-        className,
+    <>
+      {/* Hidden input for form submission */}
+      {resolvedName && resolvedValue === true && (
+        <input type="hidden" name={resolvedName} value="on" />
       )}
-      style={style}
-    >
-      <div className="skc-checkbox__box">
-        <div className="skc-checkbox__icon">
-          {resolvedValue === true ? (
-            <MaterialIcon icon="check_small" />
-          ) : (
-            resolvedValue === null &&
-            tristate && <MaterialIcon icon="check_indeterminate_small" />
-          )}
+      <Interactive
+        role="checkbox"
+        aria-checked={resolvedValue === null ? "mixed" : resolvedValue}
+        aria-disabled={disabled}
+        onClick={() => {
+          if (!disabled) resolvedOnChange(!resolvedValue);
+        }}
+        element={element}
+        className={cn(
+          "skc-checkbox",
+          resolvedValue === true && "skc-checkbox--selected",
+          resolvedValue === null && tristate && "skc-checkbox--indeterminate",
+          disabled && "skc-checkbox--disabled",
+          className,
+        )}
+        style={style}
+      >
+        <div className="skc-checkbox__box">
+          <div className="skc-checkbox__icon">
+            {resolvedValue === true ? (
+              <MaterialIcon icon="check_small" />
+            ) : (
+              resolvedValue === null &&
+              tristate && <MaterialIcon icon="check_indeterminate_small" />
+            )}
+          </div>
         </div>
-      </div>
-    </Interactive>
+      </Interactive>
+    </>
   );
 };

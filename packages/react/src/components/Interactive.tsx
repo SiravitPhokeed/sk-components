@@ -150,6 +150,7 @@ export const Interactive: StyleableFC<
   return (
     <Element
       tabIndex={0}
+      {...(Element === "button" && { type: "button" })}
       onTouchStart={(event: React.TouchEvent) => {
         setTouched(true);
         const touch = event.touches[0];
@@ -183,7 +184,7 @@ export const Interactive: StyleableFC<
         className,
       )}
       style={style}
-      {...({ onClick, href, command, commandfor, ...props } as object)}
+      {...({ onClick, href, command, commandfor, ...props })}
     >
       <span
         aria-hidden

@@ -63,7 +63,7 @@ Here is how you can use Chip Field in your React application, using `useState`
 to manage the state of the Input Chips.
 
 ```tsx
-const ColorChipField = () => {
+const ColorsChipField = () => {
   const [colors, setColors] = useState<string[]>([]);
 
   const addColors = (newColors: string[]) => {
@@ -77,29 +77,58 @@ const ColorChipField = () => {
   };
 
   return (
-    <ChipField
-      label="Colors"
-      onNewEntries={addColors}
-      onDeleteLast={removeLastColor}
-    >
-      <ChipSet>
-        {colors.map((color) => (
-          <InputChip key={color} onDelete={() => removeColor(color)}>
-            {color}
-          </InputChip>
-        ))}
-      </ChipSet>
-    </ChipField>
+    <>
+      <ChipField
+        label="Colors"
+        onNewEntries={addColors}
+        onDeleteLast={removeLastColor}
+      >
+        <ChipSet>
+          {colors.map((color) => (
+            <InputChip key={color} onDelete={() => removeColor(color)}>
+              {color}
+            </InputChip>
+          ))}
+        </ChipSet>
+      </ChipField>
+      {colors.map((color) => (
+        <input key={color} name="colors" type="hidden" value={color} />
+      ))}
+    </>
   );
 };
 ```
 
-This gives you the freedom to implement your own logic for how Input Chips are
-added and removed.
+- This gives you the freedom to implement your own logic for how Input Chips are
+  added and removed.
+- For example, you may want to fetch a list of colors from an API and only allow
+  the user to add colors that are in that list, or you may want to limit the
+  number of Input Chips that can be added.
 
-For example, you may want to fetch a list of colors from an
-API and only allow the user to add colors that are in that list, or you may want
-to limit the number of Input Chips that can be added.
+**Chip Field doesn’t participate in [form](/docs/guides/forms) submission,** but
+you can render a
+[`<input type="hidden">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/hidden)
+per value, then read them with
+[`FormData.getAll()`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/getAll).
+
+```tsx
+{colors.map((color) => (
+  <input key={color} name="colors" type="hidden" value={color} />
+))}
+```
+
+```tsx
+<form
+  onSubmit={(e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    console.log(formData.getAll("colors")); // ["Pink", "Blue"]
+  }}
+>
+  {/* Chip Field + hidden inputs */}
+  <Button appearance="filled" type="submit">Submit</Button>
+</form>
+```
 
 ### Props
 

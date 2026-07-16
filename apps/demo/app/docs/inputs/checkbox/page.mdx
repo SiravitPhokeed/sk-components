@@ -55,6 +55,19 @@ Use Checkbox with [Form Item](/docs/inputs/form-item) to provide a label, and
 - [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
+  <PropsTableRow prop="name" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The name of the Checkbox, used for form submission. If not provided, falls
+      back to the parent Form Item’s `name`.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
   <PropsTableRow prop="value" required="never">
     <TableCell>`boolean | null`</TableCell>
     <TableCell>
@@ -111,7 +124,9 @@ Use Checkbox with [Form Item](/docs/inputs/form-item) to provide a label, and
 ### Version changes
 
 <VersionsTable>
-  <VersionsTableRow version="v4.0.0">`inputAttr` removed.</VersionsTableRow>
+  <VersionsTableRow version="v4.0.0">
+    `name` introduced for form submission. `inputAttr` removed.
+  </VersionsTableRow>
   <VersionsTableRow version="v3.0.0">
     React implementation introduced.
   </VersionsTableRow>

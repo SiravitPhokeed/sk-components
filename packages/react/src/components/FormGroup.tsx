@@ -30,6 +30,14 @@ export interface FormGroupProps extends ElementCustomizableProps {
   children?: ReactNode;
 
   /**
+   * The name for the form group, passed down to form controls like Radio via
+   * context. If not provided, a random name is generated.
+   *
+   * - Optional.
+   */
+  name?: string;
+
+  /**
    * The legend for the entire group.
    *
    * - Must be a React Node, e.g., a string or an element.
@@ -54,6 +62,7 @@ export interface FormGroupProps extends ElementCustomizableProps {
  */
 export const FormGroup: StyleableFC<FormGroupProps> = ({
   children,
+  name,
   label,
   legendElement = "legend",
   element: Element = "fieldset",
@@ -68,7 +77,9 @@ export const FormGroup: StyleableFC<FormGroupProps> = ({
     >
       {label}
     </Text>
-    <FormGroupContext.Provider value={{ name: `form-group-${useId()}` }}>
+    <FormGroupContext.Provider
+      value={{ name: name ?? `form-group-${useId()}` }}
+    >
       {children}
     </FormGroupContext.Provider>
   </Element>

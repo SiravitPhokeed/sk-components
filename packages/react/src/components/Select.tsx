@@ -40,6 +40,13 @@ export interface SelectProps<
   children?: ReactNode;
 
   /**
+   * The name of the Select, used for form submission.
+   *
+   * - Optional.
+   */
+  name?: string;
+
+  /**
    * How the Select looks. An outlined Select has a lower emphasis than filled,
    * so it is great for a form with many fields.
    *
@@ -130,9 +137,11 @@ const STRINGS = {
  * @param error Tells Select that it contains an invalid value and activates the error state.
  * @param value The value of the selected option. This is useful if you want a controlled input.
  * @param onChange Called when the user chooses an option. The value is passed in via the function.
+ * @param name The name of the Select, used for form submission.
  */
 export const Select = <Value extends string = string>({
   children,
+  name,
   appearance,
   label,
   leading,
@@ -199,6 +208,10 @@ export const Select = <Value extends string = string>({
 
   return (
     <>
+      {/* Hidden input for form submission */}
+      {name && resolvedValue && (
+        <input type="hidden" name={name} value={resolvedValue} />
+      )}
       <div
         className={cn(
           "skc-select",

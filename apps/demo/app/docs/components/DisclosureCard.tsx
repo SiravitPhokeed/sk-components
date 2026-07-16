@@ -28,7 +28,9 @@ const DisclosureCard: FC<{
         className="text-on-surface-variant shrink-0 group-open:rotate-90 group-open:rtl:-rotate-90"
       />
     </Interactive>
-    <section className="px-4 pt-1 pb-3">{children}</section>
+    <section className="px-4 pb-3 [&_pre]:-mx-4 [&_pre]:rounded-none">
+      {children}
+    </section>
   </Card>
 );
 

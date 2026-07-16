@@ -1,0 +1,429 @@
+import DisclosureCard from "@/app/docs/components/DisclosureCard";
+import VersionsTable from "@/app/docs/components/VersionsTable";
+import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
+import {
+  Actions,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  Checkbox,
+  FormGroup,
+  FormItem,
+  MaterialIcon,
+  MenuItem,
+  Radio,
+  Select,
+  Switch,
+  Text,
+  TextField,
+} from "@suankularb-components/react";
+
+export const metadata = {
+  title: "Forms",
+};
+
+## Forms
+
+Learn how to build forms with SK Components that collect and submit user input.
+
+If you’re new to HTML forms, the
+[MDN guide to web forms](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms)
+is a great place to start. This guide focuses on how SKCom’s components fit into
+that picture.
+
+> **Good to know:** All relevant SKCom components are under the <span className="whitespace-nowrap"><MaterialIcon icon="input" size={20} directional className="text-on-surface-variant -mb-1 inline-block" /> Inputs</span> category.
+
+<Card appearance="outlined" className="mx-auto my-6 max-w-80">
+  <CardHeader title="Example form" />
+  <CardContent element="form" className="flex flex-col gap-3">
+    <TextField
+      name="full-name"
+      appearance="outlined"
+      label="Full name"
+      required
+    />
+    <Select
+      name="school-type"
+      appearance="outlined"
+      label="School type"
+      className="mt-3"
+    >
+      <MenuItem children="Public" value="public" />
+      <MenuItem children="Private" value="private" />
+      <MenuItem children="International" value="international" />
+    </Select>
+    <FormGroup name="contact-method" label="Preferred contact method">
+      <FormItem label="Email">
+        <Radio value="email" />
+      </FormItem>
+      <FormItem label="Phone">
+        <Radio value="phone" />
+      </FormItem>
+    </FormGroup>
+    <FormItem name="newsletter" label="Subscribe to newsletter">
+      <Switch />
+    </FormItem>
+    <FormItem name="terms" label="I agree to the terms">
+      <Checkbox />
+    </FormItem>
+    <Actions>
+      <Button children="Reset" appearance="outlined" type="reset" />
+      <Button children="Submit" appearance="filled" />
+    </Actions>
+  </CardContent>
+</Card>
+
+### Getting started
+
+There are two ways to handle form data:
+
+- **Uncontrolled:** Let the browser manage each field’s value. Read the values
+  on submit with [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData).
+- **Controlled:** Keep each field’s value in React state with `useState`,
+  updating it on every keystroke.
+
+> **When to use which:** Uncontrolled forms are simpler and perform better for
+> most use cases. Controlled forms are useful when you need to validate, format,
+> or react to input while the user types.
+
+### Uncontrolled forms
+
+The uncontrolled approach uses the browser’s native form handling. Each field
+gets a [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#name)
+attribute so the browser can identify it when the form is submitted.
+
+1. **Wrap your fields in a `<form>` element.**
+2. **Give each field a `name` prop.** SKCom form components accept `name`.
+   For Checkbox, Radio, and Switch inside a Form Item, `name` can be set on the
+   Form Item and is shared across children.
+3. **Handle `onSubmit` on the `<form>`.** Call `preventDefault()` to stop the
+   page reload, then read values with `FormData`.
+4. **Access or send the data.** You can read values with [`FormData.get()`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/get)
+   or send them to a server with [`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/fetch).
+
+```tsx
+const handleSubmit: SubmitEventHandler<HTMLFormElement> = async (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.currentTarget);
+  const response = await fetch("/api/register", {
+    method: "POST",
+    body: formData,
+  });
+  if (!response.ok) snackbar.push("Failed to submit form");
+  else snackbar.push("Form submitted successfully");
+};
+
+return (
+  <form onSubmit={handleSubmit}>
+    <TextField
+      name="full-name"
+      appearance="outlined"
+      label="Full name"
+      required
+    />
+
+    <Select name="school-type" appearance="outlined" label="School type">
+      <MenuItem value="public">Public</MenuItem>
+      <MenuItem value="private">Private</MenuItem>
+      <MenuItem value="international">International</MenuItem>
+    </Select>
+
+    <FormGroup name="contact-method" label="Preferred contact method">
+      <FormItem label="Email">
+        <Radio value="email" />
+      </FormItem>
+      <FormItem label="Phone">
+        <Radio value="phone" />
+      </FormItem>
+    </FormGroup>
+
+    <FormItem name="newsletter" label="Subscribe to newsletter">
+      <Switch />
+    </FormItem>
+
+    <FormItem name="terms" label="I agree to the terms">
+      <Checkbox />
+    </FormItem>
+
+    <Actions>
+      <Button appearance="outlined" type="reset">
+        Reset
+      </Button>
+      <Button appearance="filled" type="submit">
+        Submit
+      </Button>
+    </Actions>
+  </form>
+);
+```
+
+<Text type="body-medium" className="text-on-surface-variant *:-mt-1">
+  You can read more about `snackbar.push()` at
+  [Snackbar](/docs/overlays/snackbar).
+</Text>
+
+> [HTML radio buttons](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/radio)
+> must share the same `name` to work as a group. Each Radio has its own
+> `value` — the string that identifies it in `FormData` when selected.
+
+<DisclosureCard
+  summary={
+    <>
+      How <code>name</code> is resolved in Form Item and Form Group
+    </>
+  }
+>
+
+When a field is inside a Form Item or Form Group, its `name` is resolved with
+the following priority:
+
+1. The field’s own `name` prop
+2. The parent Form Item’s `name` prop
+3. The parent Form Group’s `name` prop
+
+This means you can set `name` once on a Form Group and have it apply to every
+Radio inside it, or set `name` once on a Form Item and have it apply to its
+Checkbox, Radio, or Switch.
+
+```tsx
+// Each Radio inherits `name="contact-method"` from the Form Group.
+<FormGroup name="contact-method" label="Preferred contact method">
+  <FormItem label="Email">
+    <Radio value="email" />
+  </FormItem>
+  <FormItem label="Phone">
+    <Radio value="phone" />
+  </FormItem>
+</FormGroup>
+```
+
+</DisclosureCard>
+
+<DisclosureCard
+  summary={
+    <>
+      Components that support <code>name</code> prop
+    </>
+  }
+>
+
+- [Checkbox](/docs/inputs/checkbox)
+- [Form Group](/docs/inputs/form-group)
+- [Form Item](/docs/inputs/form-item)
+- [Radio](/docs/inputs/radio)
+- [Select](/docs/inputs/select)
+- [Switch](/docs/inputs/switch)
+- [Text Field](/docs/inputs/text-field)
+
+---
+
+Chip Field is intentionally excluded. Its chip values live in parent state via
+callbacks, so a `name` prop can’t capture them. Use `<input type="hidden">` per
+value with [`FormData.getAll()`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/getAll)
+instead. See [Chip Field](/docs/inputs/chip-field) for an example.
+
+</DisclosureCard>
+
+#### With the `action` prop
+
+As an alternative to `onSubmit`, React&nbsp;19 supports passing a function directly
+to the `<form>` [`action`](https://react.dev/reference/react-dom/components/form#handle-form-submission-with-a-function)
+prop. The submission runs in a
+[Transition](https://react.dev/reference/react/useTransition), giving you access
+to [`useFormStatus`](https://react.dev/reference/react-dom/hooks/useFormStatus),
+[`useActionState`](https://react.dev/reference/react/useActionState), and
+[`useOptimistic`](https://react.dev/reference/react/useOptimistic). All fields
+stay uncontrolled — you still use `name` and `FormData`.
+
+```tsx
+<form
+  action={async (formData) => {
+    const response = await fetch("/api/register", {
+      method: "POST",
+      body: formData,
+    });
+    if (!response.ok) snackbar.push("Failed to submit form");
+    else snackbar.push("Form submitted successfully");
+  }}
+>
+  {/* Same uncontrolled fields as the onSubmit example */}
+</form>
+```
+
+In Next.js App Router, `action` can also be a
+[Server Function](https://react.dev/reference/rsc/server-functions)
+(`"use server"`), allowing the form to submit before JavaScript loads.
+
+#### Validation in uncontrolled forms
+
+Simple [client-side validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#client-side_validation)
+can be done with the `required` and `inputAttr` props. For more complex
+validation, [controlled forms](#controlled-forms) may be a better fit.
+
+**Add `required` to make a field mandatory.** Browsers will prevent submission
+if a required field is empty, and the field will be highlighted with a red
+outline.
+
+```tsx
+<TextField name="full-name" appearance="outlined" label="Full name" required />
+```
+
+**`inputAttr` lets you pass any native HTML attributes to the underlying input,
+including [validation attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Constraint_validation#validation-related_attributes).** For example:
+
+- `pattern` lets you specify a [regular expression](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern)
+  that the input must match.
+- `min` and `max` let you specify the minimum and maximum values for number
+  inputs.
+- `minLength` and `maxLength` let you specify the minimum and maximum number of
+  characters for text inputs.
+
+```tsx
+<TextField
+  name="age"
+  appearance="outlined"
+  label="Age"
+  inputAttr={{ type: "number", min: 0, max: 120 }}
+/>
+```
+
+### Controlled forms
+
+The controlled approach keeps field values in React state with `useState`,
+giving you access to values before the form is submitted.
+
+> **Radio in controlled mode:** Radio’s `value` is the submission string
+> and `checked` controls whether it’s selected. `onChange` fires with the
+> `value` of the selected Radio. To implement a mutually exclusive group, manage
+> the selected option in a single state variable:
+>
+> ```tsx
+> <Radio
+>   value="email"
+>   checked={contactMethod === "email"}
+>   onChange={setContactMethod}
+> />
+> ```
+
+```tsx
+const [fullName, setFullName] = useState("");
+const [schoolType, setSchoolType] = useState("public");
+const [contactMethod, setContactMethod] = useState("");
+const [subscribe, setSubscribe] = useState(false);
+const [agreed, setAgreed] = useState(false);
+
+const handleSubmit: SubmitEventHandler<HTMLFormElement> = async (e) => {
+  e.preventDefault();
+  const response = await fetch("/api/register", {
+    method: "POST",
+    body: JSON.stringify({
+      fullName,
+      schoolType,
+      contactMethod,
+      subscribe,
+      agreed,
+    }),
+  });
+  if (!response.ok) snackbar.push("Failed to submit form");
+  else snackbar.push("Form submitted successfully");
+};
+
+return (
+  <form onSubmit={handleSubmit}>
+    <TextField
+      appearance="outlined"
+      label="Full name"
+      value={fullName}
+      onChange={setFullName}
+      required
+    />
+
+    <Select
+      appearance="outlined"
+      label="School type"
+      value={schoolType}
+      onChange={setSchoolType}
+    >
+      <MenuItem value="public">Public</MenuItem>
+      <MenuItem value="private">Private</MenuItem>
+      <MenuItem value="international">International</MenuItem>
+    </Select>
+
+    <FormGroup name="contact-method" label="Preferred contact method">
+      <FormItem label="Email">
+        <Radio
+          value="email"
+          checked={contactMethod === "email"}
+          onChange={setContactMethod}
+        />
+      </FormItem>
+      <FormItem label="Phone">
+        <Radio
+          value="phone"
+          checked={contactMethod === "phone"}
+          onChange={setContactMethod}
+        />
+      </FormItem>
+    </FormGroup>
+
+    <FormItem label="Subscribe to newsletter">
+      <Switch value={subscribe} onChange={setSubscribe} />
+    </FormItem>
+
+    <FormItem label="I agree to the terms">
+      <Checkbox value={agreed} onChange={setAgreed} />
+    </FormItem>
+
+    <Actions>
+      <Button appearance="filled" type="submit">
+        Submit
+      </Button>
+    </Actions>
+  </form>
+);
+```
+
+<Text type="body-medium" className="text-on-surface-variant *:-mt-1">
+  You can read more about `snackbar.push()` at
+  [Snackbar](/docs/overlays/snackbar).
+</Text>
+
+> Controlled fields can still have a `name` prop if you want them to
+> participate in both approaches — for example, controlled fields that also
+> submit via `FormData`.
+
+#### Validation in controlled forms
+
+Unlike uncontrolled forms where you lean on [HTML constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Constraint_validation#validation-related_attributes),
+controlled forms let you validate in the `onChange` handler or derive error
+states from current values.
+
+```tsx
+const [email, setEmail] = useState("");
+const emailError =
+  email.length > 0 && !email.includes("@") ? "Invalid email" : null;
+
+return (
+  <TextField
+    appearance="outlined"
+    label="Email"
+    error={emailError !== null}
+    value={email}
+    onChange={setEmail}
+    helperMsg={emailError}
+  />
+);
+```
+
+This approach also works for cross-field validation (e.g., comparing two
+passwords) or async checks that aren’t possible with HTML attributes.
+
+### Version changes
+
+<VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+    `name` prop introduced on all form components. `id` introduced on Form Item
+    and Radio. `type` introduced on Button for submit/reset/button.
+  </VersionsTableRow>
+</VersionsTable>

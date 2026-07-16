@@ -21,21 +21,23 @@ const RadioSection: FC = () => {
         <FormGroup label="ATK result">
           <FormItem label="Negative">
             <Radio
-              value={atkResult === "negative"}
-              onChange={() => setATKResult("negative")}
+              value="negative"
+              checked={atkResult === "negative"}
+              onChange={setATKResult}
             />
           </FormItem>
           <FormItem label="Positive">
             <Radio
-              value={atkResult === "positive"}
-              onChange={() => setATKResult("positive")}
+              value="positive"
+              checked={atkResult === "positive"}
+              onChange={setATKResult}
             />
           </FormItem>
         </FormGroup>
       </Columns>
       <div className="flex flex-row flex-wrap gap-4">
-        <Radio value={false} disabled />
-        <Radio value={true} disabled />
+        <Radio disabled />
+        <Radio checked disabled />
       </div>
     </Section>
   );

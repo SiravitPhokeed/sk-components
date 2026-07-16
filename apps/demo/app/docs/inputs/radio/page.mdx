@@ -24,7 +24,7 @@ Radio always appears in a group.
   component={Radio}
   initialProps={{}}
   adjustableProps={{
-    value: "boolean",
+    checked: "boolean",
     disabled: "boolean",
   }}
 />
@@ -38,21 +38,55 @@ Radio always appears in a group.
 Radio always appears in a group. Use [Form Group](/docs/inputs/form-group) to
 group related Radios and [Form Item](/docs/inputs/form-item) to label each one.
 
+#### Uncontrolled Radio
+
+Set `name` on the Form Group and give each Radio a `value`. The browser handles
+making sure only one Radio is selected at a time. Read the selected value with
+[`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) on
+submit.
+
+```tsx
+<form
+  onSubmit={(e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    console.log(formData.get("atk-result")); // "negative" or "positive"
+  }}
+>
+  <FormGroup name="atk-result" label="ATK result">
+    <FormItem label="Negative">
+      <Radio value="negative" />
+    </FormItem>
+    <FormItem label="Positive">
+      <Radio value="positive" />
+    </FormItem>
+  </FormGroup>
+  <Button type="submit">Submit</Button>
+</form>
+```
+
+#### Controlled Radio
+
+Manage the selected value with `useState`. Use `checked` to indicate which Radio
+is selected and `onChange` to update the state.
+
 ```tsx
 const [atkResult, setATKResult] = useState<"negative" | "positive">();
 
 return (
-  <FormGroup label="ATK result">
+  <FormGroup name="atk-result" label="ATK result">
     <FormItem label="Negative">
       <Radio
-        value={atkResult === "negative"}
-        onChange={() => setATKResult("negative")}
+        value="negative"
+        checked={atkResult === "negative"}
+        onChange={setATKResult}
       />
     </FormItem>
     <FormItem label="Positive">
       <Radio
-        value={atkResult === "positive"}
-        onChange={() => setATKResult("positive")}
+        value="positive"
+        checked={atkResult === "positive"}
+        onChange={setATKResult}
       />
     </FormItem>
   </FormGroup>
@@ -64,11 +98,39 @@ return (
 - [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
+  <PropsTableRow prop="name" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The name of the Radio, used to group Radios together for form submission.
+      If not provided, falls back to the parent Form Item’s `name`, then
+      the parent Form Group’s `name`.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
   <PropsTableRow prop="value" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The value submitted when this Radio is selected, similar to `value` on
+      `<input type="radio">`. Defaults to `on`.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="checked" required="never">
     <TableCell>`boolean`</TableCell>
     <TableCell>
 
-      The state of the Radio. This is useful if you want a controlled input.
+      Whether the Radio is selected. This is useful if you want a controlled
+      input.
 
       - Optional.
 
@@ -77,11 +139,11 @@ return (
   </PropsTableRow>
 
   <PropsTableRow prop="onChange" required="never">
-    <TableCell>`(value: boolean) => any`</TableCell>
+    <TableCell>`(value: string) => any`</TableCell>
     <TableCell>
 
-      Called when the user toggles the Radio. The state is passed in via the
-      function as a boolean.
+      Called when the user selects the Radio. The value is passed in via the
+      function.
 
       - Optional.
 
@@ -106,6 +168,11 @@ return (
 ### Version changes
 
 <VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+    `value` changed from `boolean` (checked state) to `string` (submission
+    value). `checked` introduced for controlled state. `name` introduced for
+    form submission.
+  </VersionsTableRow>
   <VersionsTableRow version="v3.0.0">
     React implementation introduced.
   </VersionsTableRow>

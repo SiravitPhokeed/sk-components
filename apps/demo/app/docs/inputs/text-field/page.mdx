@@ -92,6 +92,19 @@ return (
   `style`.
 
 <PropsTable>
+  <PropsTableRow prop="name" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The name of the Text Field, used for form submission. Passed to the
+      underlying `<input>` or `<textarea>` element.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
   <PropsTableRow prop="appearance" required="always">
     <TableCell>
       ```
@@ -337,8 +350,8 @@ return (
 
 <VersionsTable>
   <VersionsTableRow version="v4.0.0">
-    `type` introduced for native HTML input types. `inputAttr.type` replaced.
-    `canClear` removed.
+    `name` introduced for form submission. `type` introduced for native HTML
+    input types. `inputAttr.type` replaced. `canClear` removed.
   </VersionsTableRow>
   <VersionsTableRow version="v3.0.2">
     Generic type parameter introduced.

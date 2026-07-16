@@ -42,16 +42,19 @@ you can take advantage of.
 >    longer a wrapper, and you no longer manage the state of
 >    [Navigation Drawer](/docs/layout/nav-drawer) or [Snackbar](/docs/overlays/snackbar).
 >    Try the new `snackbar.push()` and `snackbar.promise()` methods.
-> 3. **Declarative modals and popovers** — Replace `useState` with the
+> 3. **`<form>` submission support** — All form elements now support the `name`
+>    prop for [native form](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms)
+>    submission. [Radio](/docs/inputs/radio)’s `value` now works like in HTML.
+> 4. **Declarative modals and popovers** — Replace `useState` with the
 >    [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API)
 >    for [Menu](/docs/overlays/menu), [Dialog](/docs/overlays/dialog), and
 >    [Full-screen Dialog](/docs/overlays/fullscreen-dialog). The new
 >    [Anchor](/docs/overlays/anchor) component simplifies Menu positioning.
-> 4. **FAB in Root Layout** — [FAB](/docs/inputs/fab) moves from a Navigation Bar prop
+> 5. **FAB in Root Layout** — [FAB](/docs/inputs/fab) moves from a Navigation Bar prop
 >    to a direct child of [Root Layout](/docs/layout/root-layout).
-> 5. **`alt` and `*Attr` removed** — `alt` is removed in favor of auto-generated
+> 6. **`alt` and `*Attr` removed** — `alt` is removed in favor of auto-generated
 >    IDs, and `*Attr` pass-through props have been removed from most components.
-> 6. **Motion support removed** — You can still use
+> 7. **Motion support removed** — You can still use
 >    [Motion](https://motion.dev/docs/react) in your app, but you may need to
 >    reimplement some features.
 >
@@ -60,7 +63,7 @@ you can take advantage of.
 
 #### App Router support
 
-> You can skip this section if you are using the Pages Router.
+> You can skip this section if you aren’t using Next.js.
 
 **Client Components are now marked** with the `"use client"` directive, which
 allows SKCom to be used in Next.js projects that use the App Router.
@@ -85,6 +88,8 @@ const ExampleCard = () => (
   <Card title="Example Card" href="/example" element={Link} />
 );
 ```
+
+More on the [Next.js App Router guide](/docs/guides/nextjs-app).
 
 #### Setup changes
 
@@ -130,6 +135,12 @@ Commands API with the `id` of `nav-drawer`.
 </Button>
 ```
 
+<DisclosureCard summary="Further reading for Next.js users">
+  Check the [Next.js App Router guide](/docs/guides/nextjs-app) or the [Next.js
+  Pages Router guide](/docs/guides/nextjs-pages) for more information on how to
+  set up your Next.js project with SKCom v4.
+</DisclosureCard>
+
 ---
 
 **You no longer manage the state of [Snackbar](/docs/overlays/snackbar).** Use
@@ -174,6 +185,60 @@ configuration file.
 ```
 
 </DisclosureCard>
+
+#### `<form>` submission support
+
+**[Radio](/docs/inputs/radio)’s `value` now works like in HTML.**
+
+- Previously, `value` was a boolean that indicated whether the Radio was
+  selected.
+- `checked` now takes that role, and `value` is now a string that is submitted
+  with the form.
+- `onChange` now passes the new value of the Radio instead of a boolean.
+
+```tsx
+// OLD: `value` was a boolean
+<Radio value={atkResult === "negative"} onChange={() => setATKResult("negative")} />
+
+// NEW: `value` is a string, `checked` indicates selection
+<Radio
+  value="negative"
+  checked={atkResult === "negative"}
+  onChange={setATKResult}
+/>
+```
+
+---
+
+**All form elements now support the `name` prop.** This allows you to use
+`<form>` submission natively, without having to manage the state of form
+elements with `useState`. The `value` of form elements will be submitted as
+part of the `FormData`.
+
+[Button](/docs/inputs/button) also gained the `type` prop.
+
+```tsx
+<form
+  onSubmit={(e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    console.log(formData.get("atk-result")); // "negative" or "positive"
+  }}
+>
+  <FormGroup name="atk-result" label="ATK result">
+    <FormItem label="Negative">
+      <Radio value="negative" />
+    </FormItem>
+    <FormItem label="Positive">
+      <Radio value="positive" />
+    </FormItem>
+  </FormGroup>
+  <Button appearance="filled" type="submit">Submit</Button>
+</form>
+```
+
+This is called an “uncontrolled” form; the `useState` approach is called a
+“controlled” form and is still available. Learn more in the [forms guide](/docs/guides/forms).
 
 #### Declarative modals and popovers
 
@@ -518,6 +583,9 @@ update your code.
   <SummaryTableRow name="autoFocus" type="new">
     `boolean` — Auto-focus on page load
   </SummaryTableRow>
+  <SummaryTableRow name="type" type="new">
+    `"submit" | "reset" | "button"` — HTML button type. Default `"button"`.
+  </SummaryTableRow>
   <SummaryTableRow name="command" type="new">
     Invoker Commands API support
   </SummaryTableRow>
@@ -545,6 +613,9 @@ update your code.
 </SummaryTableSection>
 
 <SummaryTableSection name="Checkbox">
+  <SummaryTableRow name="name" type="new">
+    `string` — for form submission
+  </SummaryTableRow>
   <SummaryTableRow name="inputAttr" type="removed">
     Raw `<input>` attribute passthrough removed
   </SummaryTableRow>
@@ -647,6 +718,9 @@ update your code.
 </SummaryTableSection>
 
 <SummaryTableSection name="Form Group">
+  <SummaryTableRow name="name" type="new">
+    `string` — for form submission. Auto-generated if omitted.
+  </SummaryTableRow>
   <SummaryTableRow name="legendElement" type="new">
     `ElementType` — custom element for the legend
   </SummaryTableRow>
@@ -659,6 +733,9 @@ update your code.
 </SummaryTableSection>
 
 <SummaryTableSection name="Form Item">
+  <SummaryTableRow name="name" type="new">
+    `string` — for form submission. Passed to controls via context.
+  </SummaryTableRow>
   <SummaryTableRow name="children" type="changed">
   Type narrowed to `ReactElement<typeof Checkbox | typeof Radio | typeof
       Switch>`
@@ -879,6 +956,18 @@ update your code.
 </SummaryTableSection>
 
 <SummaryTableSection name="Radio">
+  <SummaryTableRow name="value" type="changed">
+    Changed from `boolean` (checked state) to `string` (submission value).
+  </SummaryTableRow>
+  <SummaryTableRow name="checked" type="new">
+    `boolean` — whether the Radio is selected (replaces the old `value`).
+  </SummaryTableRow>
+  <SummaryTableRow name="onChange" type="changed">
+    Now fires with the Radio’s `value` (`string`), not the checked state.
+  </SummaryTableRow>
+  <SummaryTableRow name="name" type="new">
+    `string` — for form submission. Falls back to Form&nbsp;Item then Form&nbsp;Group.
+  </SummaryTableRow>
   <SummaryTableRow name="inputAttr" type="removed">
     Raw `<input>` attribute passthrough removed
   </SummaryTableRow>
@@ -908,6 +997,9 @@ update your code.
 </SummaryTableSection>
 
 <SummaryTableSection name="Select">
+  <SummaryTableRow name="name" type="new">
+    `string` — for form submission
+  </SummaryTableRow>
   <SummaryTableRow name="value" type="changed">
     Type narrowed: `any` → `string` (generic `Value extends string`)
   </SummaryTableRow>
@@ -965,6 +1057,9 @@ update your code.
 </SummaryTableSection>
 
 <SummaryTableSection name="Switch">
+  <SummaryTableRow name="name" type="new">
+    `string` — for form submission
+  </SummaryTableRow>
   <SummaryTableRow name="buttonAttr" type="removed">
     Raw `<button>` attribute passthrough removed
   </SummaryTableRow>
@@ -1022,6 +1117,9 @@ update your code.
 </SummaryTableSection>
 
 <SummaryTableSection name="Text Field">
+  <SummaryTableRow name="name" type="new">
+    `string` — for form submission
+  </SummaryTableRow>
   <SummaryTableRow name="type" type="new">
     Native input types: `"color"`, `"date"`, `"datetime-local"`, `"email"`,
     `"file"`, `"month"`, `"number"`, `"password"`, `"search"`, `"tel"`,
