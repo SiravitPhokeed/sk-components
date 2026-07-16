@@ -1,6 +1,7 @@
 import "@/app/globals.css";
 import NavBar from "@/components/NavBar";
 import NavDrawer from "@/components/NavDrawer";
+import { BASE_URL } from "@/lib/constants";
 import cn from "@/lib/helpers/cn";
 import {
   RootLayout as SKCRootLayout,
@@ -47,6 +48,7 @@ const iconFont = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
   title: {
     default: "SK Components",
     template: "%s - SK Components",

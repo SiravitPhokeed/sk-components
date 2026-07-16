@@ -9,6 +9,8 @@ Versions track the root library releases.
 
 ### Added
 
+- **Sitemap and robots.txt** generated at build time — the sitemap lists every
+  page discovered in `app/`, and robots.txt points crawlers to it
 - **Documentation site** at `/docs` with component reference, guides, and
   migration guides rendered from MDX
 - **Text Field demo** uses the new `name` prop for uncontrolled form submission
