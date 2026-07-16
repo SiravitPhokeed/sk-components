@@ -14,9 +14,16 @@ const DocsNav: StyleableFC = ({ className, style }) => (
       <CardHeader title="@suankularb-components/react" subtitle="v4.0.0" />
     </Card>
 
-    <DocsNavSection icon={<MaterialIcon icon="info" />} title="Guides" open>
+    <DocsNavSection
+      icon={<MaterialIcon icon="menu_book" />}
+      title="Guides"
+      open
+    >
       <DocsNavLink href="/docs/guides/getting-started">
         Getting started
+      </DocsNavLink>
+      <DocsNavLink href="/docs/guides/browser-support">
+        Browser support
       </DocsNavLink>
       <DocsNavLink href="/docs/guides/shared-props">Shared props</DocsNavLink>
       <DocsNavLink href="/docs/guides/forms">Forms</DocsNavLink>
@@ -72,8 +79,12 @@ const DocsNav: StyleableFC = ({ className, style }) => (
       <DocsNavLink href="/docs/layout/section">Section</DocsNavLink>
       <DocsNavLink href="/docs/layout/columns">Columns</DocsNavLink>
       <DocsNavLink href="/docs/layout/nav-bar">Navigation Bar</DocsNavLink>
-      <DocsNavLink href="/docs/layout/nav-bar-item">Navigation Bar Item</DocsNavLink>
-      <DocsNavLink href="/docs/layout/nav-drawer">Navigation Drawer</DocsNavLink>
+      <DocsNavLink href="/docs/layout/nav-bar-item">
+        Navigation Bar Item
+      </DocsNavLink>
+      <DocsNavLink href="/docs/layout/nav-drawer">
+        Navigation Drawer
+      </DocsNavLink>
       <DocsNavLink href="/docs/layout/nav-drawer-section">
         Navigation Drawer Section
       </DocsNavLink>

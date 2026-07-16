@@ -1,3 +1,5 @@
+import BrowsersGrid from "@/app/docs/components/BrowsersGrid";
+import BrowsersGridItem from "@/app/docs/components/BrowsersGridItem";
 import DisclosureCard from "@/app/docs/components/DisclosureCard";
 import IconFontDialog from "@/app/docs/components/IconFontDialog";
 import { Button, MaterialIcon } from "@suankularb-components/react";
@@ -140,6 +142,15 @@ const App = () => (
 ```
 
 ### Compatibility
+
+<BrowsersGrid note="Safari 26.2 requires iPhone 11 or later, or iPhone SE (2nd generation) or later.">
+  <BrowsersGridItem browser="chrome" version="135" releaseDate="2025-04-01" />
+  <BrowsersGridItem browser="edge" version="135" releaseDate="2025-04-04" />
+  <BrowsersGridItem browser="firefox" version="147" releaseDate="2026-01-13" />
+  <BrowsersGridItem browser="safari" version="26.2" releaseDate="2025-12-12" />
+</BrowsersGrid>
+
+Learn more in the [browser support guide](/docs/guides/browser-support).
 
 <DisclosureCard summary="Is M3 Expressive supported?">
 
