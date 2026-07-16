@@ -18,6 +18,9 @@ const DocsNav: StyleableFC = ({ className, style }) => (
       <DocsNavLink href="/docs/guides/getting-started">
         Getting started
       </DocsNavLink>
+      <DocsNavLink href="/docs/guides/browser-support">
+        Browser support
+      </DocsNavLink>
       <DocsNavLink href="/docs/guides/shared-props">Shared props</DocsNavLink>
       <DocsNavLink href="/docs/guides/forms">Forms</DocsNavLink>
       <DocsNavLink href="/docs/guides/modals">Modals and popovers</DocsNavLink>

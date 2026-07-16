@@ -1,0 +1,46 @@
+import BrowsersGrid from "@/app/docs/components/BrowsersGrid";
+import BrowsersGridItem from "@/app/docs/components/BrowsersGridItem";
+
+export const metadata = {
+  title: "Browser support",
+};
+
+## Browser support
+
+SK Components supports modern evergreen browsers. Internet Explorer is not
+supported.
+
+### Full support
+
+**All features work as documented.**
+
+<BrowsersGrid>
+  <BrowsersGridItem browser="chrome" version="135+" releaseDate="2025-04-01" />
+  <BrowsersGridItem browser="firefox" version="147+" releaseDate="2026-01-13" />
+  <BrowsersGridItem browser="safari" version="26.2+" releaseDate="2025-12-12" />
+  <BrowsersGridItem browser="edge" version="135+" releaseDate="2025-04-04" />
+</BrowsersGrid>
+
+### Partial support
+
+**CSS Anchor Positioning and Invoker Commands are unavailable in these browsers.**
+
+<BrowsersGrid>
+  <BrowsersGridItem browser="chrome" version="114+" releaseDate="2023-05-30" />
+  <BrowsersGridItem browser="firefox" version="125+" releaseDate="2024-04-16" />
+  <BrowsersGridItem browser="safari" version="17+" releaseDate="2023-09-18" />
+  <BrowsersGridItem browser="edge" version="114+" releaseDate="2023-06-02" />
+</BrowsersGrid>
+
+If you must support these older browsers, note the following:
+
+- [Anchor](/docs/overlays/anchor) is _not supported_ in these browsers. All
+  modals and popovers appear in the center of the viewport, and cannot be
+  anchored to a trigger element.
+- `command` and `commandfor` props are _not supported_ in these browsers. **You
+  must use controlled modals and popovers** with the `open` and `onClose` props.
+- Learn more about [controlled modals and popovers](/docs/guides/modals#controlled-mode).
+
+> **No polyfills required.** The CSS package is pre-compiled with Lightning CSS,
+> which handles `light-dark()` and CSS nesting at build time. You do not need to
+> add polyfills or configure your bundler for SK Components.
