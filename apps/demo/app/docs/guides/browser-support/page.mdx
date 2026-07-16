@@ -1,6 +1,7 @@
 import BrowsersGrid from "@/app/docs/components/BrowsersGrid";
 import BrowsersGridItem from "@/app/docs/components/BrowsersGridItem";
-import { Header, MaterialIcon } from "@suankularb-components/react";
+import DisclosureCard from "@/app/docs/components/DisclosureCard";
+import { Header, MaterialIcon, Text } from "@suankularb-components/react";
 
 export const metadata = {
   title: "Browser support",
@@ -9,11 +10,75 @@ export const metadata = {
 ## Browser support
 
 SK Components is tested against the browsers listed below. Pick the tier that
-matches the browser versions you need to support.
+matches the browser versions you need to support. No polyfills or bundler
+configuration is required — modern CSS features are pre-compiled at build time.
 
-> **No polyfills required.** The CSS package is pre-compiled with Lightning CSS,
-> which handles `light-dark()` and CSS nesting at build time. You do not need to
-> add polyfills or configure your bundler for SK Components.
+<DisclosureCard summary="Case study: real-world traffic to MySK">
+
+To help you decide which tier to support, we analyzed the traffic to a
+real-world SK Components site, MySK. The results are as follows:
+
+export const MYSK_TRAFFIC = { full: 87.4, partial: 98.5, none: 1.5 };
+
+<figure
+  aria-label="Chart showing the percentage of MySK traffic that met different browser support tiers. See below for details."
+  className="bg-surface-container -mx-4 my-3 px-4 pt-6 pb-3"
+>
+  <div className="relative flex h-2 gap-1 *:min-w-2 *:rounded-full">
+    <div
+      className="bg-primary absolute inset-0"
+      style={{ width: `${MYSK_TRAFFIC.full}%` }}
+    />
+    <div className="bg-surface-bright border-outline-variant h-full grow border" />
+    <div
+      className="bg-error h-full"
+      style={{ width: `${MYSK_TRAFFIC.none}%` }}
+    />
+  </div>
+  <div className="flex items-center gap-1">
+    <MaterialIcon icon="check_circle" size={20} className="text-primary" />
+    <Text type="title-small" className="text-on-surface-variant grow">
+      {MYSK_TRAFFIC.full}% full support
+    </Text>
+    <Text
+      type="title-small"
+      className="text-on-surface-variant text-end max-md:hidden"
+    >
+      {MYSK_TRAFFIC.partial}% partial support
+    </Text>
+    <MaterialIcon
+      icon="do_not_disturb_on"
+      size={20}
+      className="text-outline -rotate-45"
+    />
+    <MaterialIcon icon="cancel" size={20} className="text-error" />
+  </div>
+</figure>
+
+- **{MYSK_TRAFFIC.full}% of traffic met the <MaterialIcon icon="check_circle" size={20} className="text-primary inline-block -mb-1" />
+  full support tier,** held back mainly by older iOS versions (no CSS Anchor
+  Positioning or Invoker Commands) and Samsung Internet (no Invoker Commands).
+
+- **{MYSK_TRAFFIC.partial}% of traffic met the <MaterialIcon icon="do_not_disturb_on" size={20} className="text-outline inline-block -mb-1 -rotate-45" />
+  partial support tier.** Since every student must be able to access MySK, it
+  should support this tier. Consider if your site has similar requirements.
+
+- **{MYSK_TRAFFIC.none}% of traffic <MaterialIcon icon="cancel" size={20} className="text-error inline-block -mb-1" />
+  did not meet any tier.** Popovers are not available to these users. It should be
+  noted that these users are on browsers that most sites no longer support, and
+  they already encounter broken sites across the web.
+
+See below for details on each tier.
+
+<Text
+  type="body-medium"
+  element="footer"
+  className="text-on-surface-variant border-t-outline-variant mt-4 border-t"
+>
+  Traffic recorded in July 2026 over 30 days.
+</Text>
+
+</DisclosureCard>
 
 <Header
   children="Full support"
@@ -25,7 +90,11 @@ matches the browser versions you need to support.
 
 All features work as documented.
 
-<BrowsersGrid note="Safari 26.2 requires iPhone 11 or later, or iPhone SE (2nd generation) or later.">
+<BrowsersGrid
+  coverage={78.7}
+  browsersList="chrome >= 135, ChromeAndroid >= 135, firefox >= 147, FirefoxAndroid >= 147, Safari >= 26.2, iOS >= 26.2, edge >= 135"
+  note="Safari 26.2 requires iPhone 11 or later, or iPhone SE (2nd generation) or later."
+>
   <BrowsersGridItem browser="chrome" version="135" releaseDate="2025-04-01" />
   <BrowsersGridItem browser="edge" version="135" releaseDate="2025-04-04" />
   <BrowsersGridItem browser="firefox" version="147" releaseDate="2026-01-13" />
@@ -36,26 +105,32 @@ All features work as documented.
   children="Partial support"
   id="partial-support"
   level={3}
-  icon={<MaterialIcon icon="error" className="text-tertiary" />}
+  icon={
+    <MaterialIcon
+      icon="do_not_disturb_on"
+      className="text-outline -rotate-45"
+    />
+  }
   className="mt-6 mb-3"
 />
 
-CSS Anchor Positioning and Invoker Commands are unavailable in these browsers,
-but all other features still work as documented.
+CSS Anchor Positioning and Invoker Commands are unavailable in these browsers.
+SK Components is still usable, but some features may not work as expected.
 
 <BrowsersGrid
+  coverage={82.7}
+  browsersList="chrome >= 117, ChromeAndroid >= 117, firefox >= 129, FirefoxAndroid >= 129, safari >= 17.5, iOS >= 17.5, edge >= 117"
   note={
     <>
-      Safari 17 requires iPhone{" "}
-      <span className="[font-variant:small-caps]">Xr/Xs</span> or later, or
-      iPhone SE (2nd generation) or later.
+      Safari 17.5 requires iPhone <span aria-label="XR/XS">Xʀ/Xꜱ</span> or
+      later, or iPhone SE (2nd generation) or later.
     </>
   }
 >
-  <BrowsersGridItem browser="chrome" version="114" releaseDate="2023-05-30" />
-  <BrowsersGridItem browser="edge" version="114" releaseDate="2023-06-02" />
-  <BrowsersGridItem browser="firefox" version="125" releaseDate="2024-04-16" />
-  <BrowsersGridItem browser="safari" version="17" releaseDate="2023-09-18" />
+  <BrowsersGridItem browser="chrome" version="117" releaseDate="2023-09-12" />
+  <BrowsersGridItem browser="edge" version="117" releaseDate="2023-09-15" />
+  <BrowsersGridItem browser="firefox" version="129" releaseDate="2024-08-06" />
+  <BrowsersGridItem browser="safari" version="17.5" releaseDate="2024-05-13" />
 </BrowsersGrid>
 
 If you must support these older browsers, note the following:
@@ -80,3 +155,13 @@ Critical features are unavailable in prior versions of Chrome, Firefox, Safari,
 and Edge. SK Components may not work as expected.
 
 Internet Explorer is not supported.
+
+<Text
+  type="body-medium"
+  element="footer"
+  className="text-on-surface-variant border-t-outline-variant mt-8 border-t"
+>
+  Audience coverage for Thailand as of July 2026, based on
+  [Browserslist](https://browsersl.ist). Dotted line indicates Browserslist’s
+  recommended `defaults` configuration.
+</Text>
