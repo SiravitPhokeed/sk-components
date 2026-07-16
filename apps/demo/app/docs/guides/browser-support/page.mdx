@@ -40,7 +40,10 @@ export const MYSK_TRAFFIC = { full: 87.4, partial: 98.5, none: 1.5 };
     <Text type="title-small" className="text-on-surface-variant grow">
       {MYSK_TRAFFIC.full}% full support
     </Text>
-    <Text type="title-small" className="text-on-surface-variant text-end">
+    <Text
+      type="title-small"
+      className="text-on-surface-variant text-end max-md:hidden"
+    >
       {MYSK_TRAFFIC.partial}% partial support
     </Text>
     <MaterialIcon
