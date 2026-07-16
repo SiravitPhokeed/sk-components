@@ -152,12 +152,27 @@ default to the nearest Menu’s `id`.
       </TableCell>
 
   </PropsTableRow>
+
+  <PropsTableRow prop="containerElement" required="never">
+    <TableCell>`ElementType`</TableCell>
+    <TableCell>
+
+      The element to use as the container of the Menu Item.
+
+      - Defaults to `<li>`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
 </PropsTable>
 
 ### Version changes
 
 <VersionsTable>
-  <VersionsTableRow version="v4.0.0">`dangerous` introduced.</VersionsTableRow>
+  <VersionsTableRow version="v4.0.0">
+    `containerElement` and `dangerous` introduced.
+  </VersionsTableRow>
   <VersionsTableRow version="v3.3.0">
     Selected state color introduced.
   </VersionsTableRow>

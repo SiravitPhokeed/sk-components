@@ -11,7 +11,7 @@ import type {
   StyleableFC,
 } from "@/lib/types";
 import "@suankularb-components/css/menu-item.css";
-import type { ReactElement, ReactNode } from "react";
+import type { ElementType, ReactElement, ReactNode } from "react";
 
 /**
  * Props for {@link MenuItem Menu Item}.
@@ -75,6 +75,14 @@ export interface MenuItemProps
    * - Optional.
    */
   value?: string;
+
+  /**
+   * The element to use as the container of the Menu Item.
+   *
+   * - Defaults to `<li>`.
+   * - Optional.
+   */
+  containerElement?: ElementType;
 }
 
 /**
@@ -87,6 +95,7 @@ export interface MenuItemProps
  * @param dangerous If the action the Menu Item accomplishes is dangerous, like deleting your account.
  * @param disabled Turns the Menu Item text gray and blocks any action associated with it.
  * @param value The value of a Select item, similar to `value` on `<option>`.
+ * @param containerElement The element to use as the container of the Menu Item.
  */
 export const MenuItem: StyleableFC<MenuItemProps> = ({
   children,
@@ -96,11 +105,12 @@ export const MenuItem: StyleableFC<MenuItemProps> = ({
   dangerous,
   disabled,
   value,
+  containerElement: ContainerElement = "li",
   command,
   commandfor,
   onClick,
   href,
-  element: Element = "li",
+  element = href ? "a" : "button",
   style,
   className,
 }) => {
@@ -153,7 +163,7 @@ export const MenuItem: StyleableFC<MenuItemProps> = ({
   }
 
   return (
-    <Element style={style}>
+    <ContainerElement>
       <Interactive
         role="menuitem"
         aria-selected={selected}
@@ -163,7 +173,7 @@ export const MenuItem: StyleableFC<MenuItemProps> = ({
         onClick={resolvedOnClick}
         command={resolvedCommand}
         commandfor={resolvedCommandFor}
-        element={href ? "a" : "button"}
+        element={element}
         className={cn(
           "skc-menu-item",
           (selected === undefined && value
@@ -172,6 +182,7 @@ export const MenuItem: StyleableFC<MenuItemProps> = ({
           dangerous && "skc-menu-item--dangerous",
           className,
         )}
+        style={style}
       >
         {icon && <div className="skc-menu-item__icon">{icon}</div>}
         <Text type="body-large" className="skc-menu-item__label">
@@ -183,6 +194,6 @@ export const MenuItem: StyleableFC<MenuItemProps> = ({
           </Text>
         )}
       </Interactive>
-    </Element>
+    </ContainerElement>
   );
 };
