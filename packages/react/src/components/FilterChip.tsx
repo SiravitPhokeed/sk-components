@@ -85,13 +85,6 @@ export interface FilterChipProps
    * - Optional.
    */
   onClick?: (state: boolean) => any;
-
-  /**
-   * The URL of the page this Filter Chip leads to, similar to `href` on `<a>`.
-   *
-   * - Optional.
-   */
-  href?: string;
 }
 
 /**
@@ -106,7 +99,6 @@ export interface FilterChipProps
  * @param selected If the Filter Chip is selected.
  * @param disabled Turns the Filter Chip gray and blocks any action associated with it.
  * @param onClick Called when the user toggles the Filter Chip on or off. The state is passed in via the function as a boolean.
- * @param href The URL of the page this Filter Chip leads to, similar to `href` on `<a>`.
  */
 export const FilterChip: StyleableFC<FilterChipProps> = ({
   children,
@@ -119,7 +111,6 @@ export const FilterChip: StyleableFC<FilterChipProps> = ({
   command,
   commandfor,
   onClick,
-  href,
   element = "button",
   style,
   className,
@@ -142,7 +133,6 @@ export const FilterChip: StyleableFC<FilterChipProps> = ({
         command={resolvedCommand}
         commandfor={resolvedCommandFor}
         onClick={onClick ? () => onClick(!selected) : undefined}
-        href={href}
         element={element}
         className={cn("skc-filter-chip", className)}
         style={{ anchorName, ...style }}
