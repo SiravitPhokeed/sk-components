@@ -2,8 +2,10 @@ import BrowsersGridButton from "@/app/docs/components/BrowsersGridButton";
 import { Text } from "@suankularb-components/react";
 import type { FC, ReactNode } from "react";
 
+/** Browserslist `defaults` coverage for Thailand as of July 2026. */
 const DEFAULTS_COVERAGE = 91.9;
-const toFixed = (coverage: number) =>
+const DEFAULTS_COVERAGE_FIXED = "91.9";
+const formatCoverage = (coverage: number) =>
   coverage.toLocaleString("en-US", { maximumFractionDigits: 1 });
 
 const BrowsersGrid: FC<{
@@ -11,7 +13,9 @@ const BrowsersGrid: FC<{
   coverage?: number;
   browsersList?: string;
   note?: ReactNode;
-}> = ({ children, coverage, browsersList, note }) => (
+}> = ({ children, coverage, browsersList, note }) => {
+  const coverageFixed = coverage !== undefined ? formatCoverage(coverage) : null;
+  return (
   <section className="my-4 space-y-2">
     <div className="divide-outline-variant border-outline-variant bg-surface divide-y overflow-hidden rounded-lg border-2">
       <ul
@@ -23,20 +27,21 @@ const BrowsersGrid: FC<{
       {coverage !== undefined && (
         <div className="bg-surface-container-low relative flex items-start justify-between">
           <div
+            aria-hidden
             className="border-e-outline-variant absolute inset-0 border-e-2 border-dotted"
-            style={{ width: `${toFixed(DEFAULTS_COVERAGE)}%` }}
+            style={{ width: `${DEFAULTS_COVERAGE_FIXED}%` }}
           />
           <div
             aria-hidden
             className="bg-surface-container-high ease-emphasized border-e-outline-variant absolute inset-0 origin-left scale-x-100 border-e transition-transform delay-200 duration-1000 rtl:origin-right starting:scale-x-0"
-            style={{ width: `${toFixed(coverage)}%` }}
+            style={{ width: `${coverageFixed}%` }}
           />
           <Text
             type="title-small"
             element="p"
             className="relative z-10 my-2.5 ms-3"
           >
-            {toFixed(coverage)}% audience coverage
+            {coverageFixed}% audience coverage
           </Text>
           {browsersList && <BrowsersGridButton browsersList={browsersList} />}
         </div>
@@ -48,6 +53,7 @@ const BrowsersGrid: FC<{
       </Text>
     )}
   </section>
-);
+  );
+};
 
 export default BrowsersGrid;
