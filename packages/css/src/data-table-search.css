@@ -26,7 +26,9 @@
 }
 
 @media (any-hover: hover) {
-  .skc-data-table-search:has(.skc-data-table-search__input:hover)::before {
+  .skc-data-table-search:has(
+      .skc-data-table-search__input:hover:not(:focus)
+    )::before {
     opacity: 0.08;
   }
 }
