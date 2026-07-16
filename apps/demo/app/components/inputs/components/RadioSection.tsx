@@ -18,7 +18,7 @@ const RadioSection: FC = () => {
     <Section>
       <Header>Radio</Header>
       <Columns columns={3}>
-        <FormGroup name="atk-result" label="ATK result">
+        <FormGroup label="ATK result">
           <FormItem label="Negative">
             <Radio
               value="negative"
@@ -36,8 +36,8 @@ const RadioSection: FC = () => {
         </FormGroup>
       </Columns>
       <div className="flex flex-row flex-wrap gap-4">
-        <Radio value="disabled-a" disabled />
-        <Radio value="disabled-b" checked disabled />
+        <Radio disabled />
+        <Radio checked disabled />
       </div>
     </Section>
   );
