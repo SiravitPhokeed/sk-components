@@ -6,22 +6,24 @@ import { Text } from "@suankularb-components/react";
 import Image, { type ImageProps } from "next/image";
 import type { FC } from "react";
 
-const BROWSERS_MAP = new Map([
-  ["chrome", { name: "Chrome", icon: ChromeLogo }],
-  ["edge", { name: "Edge", icon: EdgeLogo }],
-  ["firefox", { name: "Firefox", icon: FirefoxLogo }],
-  ["safari", { name: "Safari", icon: SafariLogo }],
-]);
+const BROWSERS_MAP = new Map<string, { name: string; icon: ImageProps["src"] }>(
+  [
+    ["chrome", { name: "Chrome", icon: ChromeLogo }],
+    ["edge", { name: "Edge", icon: EdgeLogo }],
+    ["firefox", { name: "Firefox", icon: FirefoxLogo }],
+    ["safari", { name: "Safari", icon: SafariLogo }],
+  ],
+);
 
-const BrowsersGrid: FC<{
+const BrowsersGridItem: FC<{
   browser: "chrome" | "edge" | "firefox" | "safari";
   version: string;
   releaseDate: `${number}-${number}-${number}`;
 }> = ({ browser, version, releaseDate }) => {
-  const { name, icon } = (BROWSERS_MAP.get(browser) ?? {
+  const { name, icon } = BROWSERS_MAP.get(browser) ?? {
     name: "Unknown",
-    icon: null,
-  }) as { name: string; icon: ImageProps["src"] | null };
+    icon: null as ImageProps["src"] | null,
+  };
 
   const releaseDateShort = new Date(releaseDate).toLocaleDateString("en-US", {
     month: "long",
@@ -49,4 +51,4 @@ const BrowsersGrid: FC<{
   );
 };
 
-export default BrowsersGrid;
+export default BrowsersGridItem;
