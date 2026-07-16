@@ -85,10 +85,10 @@
     "prepublishOnly": "pnpm build"
   },
   "browserslist": [
-    "chrome >= 114",
-    "firefox >= 125",
-    "safari >= 17",
-    "edge >= 114"
+    "chrome >= 117",
+    "firefox >= 129",
+    "safari >= 17.5",
+    "edge >= 117"
   ],
   "devDependencies": {
     "browserslist": "^4.28.6",
