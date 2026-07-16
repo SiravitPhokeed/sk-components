@@ -33,7 +33,6 @@ Changes to the demo app are documented in
   - **Data Table Head:** `colSpans` for column spanning
   - **Dialog, Full-screen Dialog, Menu:** uncontrolled mode via Invoker Commands
     API (`id`)
-  - **Filter Chip:** `href` for navigation
   - **Form Group:** `legendElement`, `name` for custom legend elements
   - **Input Chip:** `tooltip`, and `deleteCommand`/`deleteCommandfor` for
     Invoker Commands on the delete button
