@@ -21,8 +21,8 @@ Changes to the demo app are documented in
 - **Side Sheet** component for modal side panels
 - `snackbar.push()` and `snackbar.promise()` imperative APIs for Snackbar
 - `name` prop on all form components (Form Group, Form Item, Checkbox, Radio,
-    Switch, Select, Text Field) for native form submission with `<form>` and
-    `FormData`
+  Switch, Select, Text Field) for native form submission with `<form>` and
+  `FormData`
 - `locale` support on Full-screen Dialog and Input Chip
 - RTL support
 - Component-specific additions:

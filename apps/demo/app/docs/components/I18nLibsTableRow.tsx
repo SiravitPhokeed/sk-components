@@ -26,7 +26,7 @@ const I18nLibsTableRow: FC<{
     </TableCell>
     <TableCell align="left">
       {imports.length > 1 ? (
-        <ul role="list" className="list-inside marker:text-outline list-disc">
+        <ul role="list" className="marker:text-outline list-inside list-disc">
           {imports.map((imp) => (
             <li key={imp}>
               <code>{imp}</code>

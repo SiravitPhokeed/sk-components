@@ -184,7 +184,7 @@ export const Interactive: StyleableFC<
         className,
       )}
       style={style}
-      {...({ onClick, href, command, commandfor, ...props })}
+      {...{ onClick, href, command, commandfor, ...props }}
     >
       <span
         aria-hidden

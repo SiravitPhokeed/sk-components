@@ -112,9 +112,9 @@ per value, then read them with
 [`FormData.getAll()`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/getAll).
 
 ```tsx
-{colors.map((color) => (
+colors.map((color) => (
   <input key={color} name="colors" type="hidden" value={color} />
-))}
+));
 ```
 
 ```tsx
@@ -126,7 +126,9 @@ per value, then read them with
   }}
 >
   {/* Chip Field + hidden inputs */}
-  <Button appearance="filled" type="submit">Submit</Button>
+  <Button appearance="filled" type="submit">
+    Submit
+  </Button>
 </form>
 ```
 
