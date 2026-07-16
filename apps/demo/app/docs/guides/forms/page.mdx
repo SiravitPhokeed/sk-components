@@ -94,7 +94,7 @@ gets a [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elem
 attribute so the browser can identify it when the form is submitted.
 
 1. **Wrap your fields in a `<form>` element.**
-2. **Give each field a `name` prop.** All SKCom form components accept `name`.
+2. **Give each field a `name` prop.** SKCom form components accept `name`.
    For Checkbox, Radio, and Switch inside a Form Item, `name` can be set on the
    Form Item and is shared across children.
 3. **Handle `onSubmit` on the `<form>`.** Call `preventDefault()` to stop the
@@ -197,6 +197,31 @@ Checkbox, Radio, or Switch.
   </FormItem>
 </FormGroup>
 ```
+
+</DisclosureCard>
+
+<DisclosureCard
+  summary={
+    <>
+      Components that support <code>name</code> prop
+    </>
+  }
+>
+
+- [Checkbox](/docs/inputs/checkbox)
+- [Form Group](/docs/inputs/form-group)
+- [Form Item](/docs/inputs/form-item)
+- [Radio](/docs/inputs/radio)
+- [Select](/docs/inputs/select)
+- [Switch](/docs/inputs/switch)
+- [Text Field](/docs/inputs/text-field)
+
+---
+
+Chip Field is intentionally excluded. Its chip values live in parent state via
+callbacks, so a `name` prop can’t capture them. Use `<input type="hidden">` per
+value with [`FormData.getAll()`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/getAll)
+instead. See [Chip Field](/docs/inputs/chip-field) for an example.
 
 </DisclosureCard>
 
