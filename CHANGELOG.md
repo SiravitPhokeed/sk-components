@@ -40,7 +40,7 @@ Changes to the demo app are documented in
   - **List Item:** `containerElement`
   - **Material Icon:** `alt` for accessibility labels, and `directional` to
     auto-flip icons in RTL
-  - **Menu Item:** `dangerous` for destructive actions
+  - **Menu Item:** `containerElement`, and `dangerous` for destructive actions
   - **Search:** `hotkey` for keyboard shortcut to focus the field
   - **Split Layout:** `prefer` for the pane to show on mobile
   - **Table Cell:** `colSpan` and `rowSpan`
