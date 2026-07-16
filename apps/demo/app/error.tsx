@@ -18,14 +18,11 @@ export default function Error({
   const [retrying, setRetrying] = useState(false);
   const isClientError = !error.digest;
   const splitDigest = error.digest
-    ? // XXXX XXX XXX
-      error.digest.length === 10
-      ? [
-          error.digest.slice(0, 4),
-          error.digest.slice(4, 7),
-          error.digest.slice(7),
-        ].join(" ")
-      : error.digest
+    ? // XXXX XXX XXX …
+      [
+        error.digest.slice(0, 4),
+        ...(error.digest.slice(4).match(/.{1,3}/g) || []),
+      ].join(" ")
     : null;
 
   return (
