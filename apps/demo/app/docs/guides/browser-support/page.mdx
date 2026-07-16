@@ -25,7 +25,7 @@ matches the browser versions you need to support.
 
 All features work as documented.
 
-<BrowsersGrid>
+<BrowsersGrid note="Safari 26.2 requires iPhone 11 or later, or iPhone SE (2nd generation) or later.">
   <BrowsersGridItem browser="chrome" version="135" releaseDate="2025-04-01" />
   <BrowsersGridItem browser="edge" version="135" releaseDate="2025-04-04" />
   <BrowsersGridItem browser="firefox" version="147" releaseDate="2026-01-13" />
@@ -43,7 +43,15 @@ All features work as documented.
 CSS Anchor Positioning and Invoker Commands are unavailable in these browsers,
 but all other features still work as documented.
 
-<BrowsersGrid>
+<BrowsersGrid
+  note={
+    <>
+      Safari 17 requires iPhone{" "}
+      <span className="[font-variant:small-caps]">Xr/Xs</span> or later, or
+      iPhone SE (2nd generation) or later.
+    </>
+  }
+>
   <BrowsersGridItem browser="chrome" version="114" releaseDate="2023-05-30" />
   <BrowsersGridItem browser="edge" version="114" releaseDate="2023-06-02" />
   <BrowsersGridItem browser="firefox" version="125" releaseDate="2024-04-16" />
