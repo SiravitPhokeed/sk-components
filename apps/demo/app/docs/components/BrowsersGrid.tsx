@@ -1,7 +1,7 @@
 import { Text } from "@suankularb-components/react";
 import type { FC, ReactNode } from "react";
 
-const BrowsersGrid: FC<{ children: ReactNode; note: ReactNode }> = ({
+const BrowsersGrid: FC<{ children: ReactNode; note?: ReactNode }> = ({
   children,
   note,
 }) => (
