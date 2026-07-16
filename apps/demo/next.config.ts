@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
-  pageExtensions: ["md", "mdx", "tsx"],
+  pageExtensions: ["md", "mdx", "ts", "tsx"],
   turbopack: {
     rules: {
       "*.md": {
