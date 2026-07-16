@@ -14,7 +14,11 @@ const DocsNav: StyleableFC = ({ className, style }) => (
       <CardHeader title="@suankularb-components/react" subtitle="v4.0.0" />
     </Card>
 
-    <DocsNavSection icon={<MaterialIcon icon="info" />} title="Guides" open>
+    <DocsNavSection
+      icon={<MaterialIcon icon="menu_book" />}
+      title="Guides"
+      open
+    >
       <DocsNavLink href="/docs/guides/getting-started">
         Getting started
       </DocsNavLink>
