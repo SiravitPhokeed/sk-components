@@ -1,5 +1,6 @@
 import BrowsersGrid from "@/app/docs/components/BrowsersGrid";
 import BrowsersGridItem from "@/app/docs/components/BrowsersGridItem";
+import { Header, MaterialIcon } from "@suankularb-components/react";
 
 export const metadata = {
   title: "Browser support",
@@ -7,29 +8,46 @@ export const metadata = {
 
 ## Browser support
 
-SK Components supports modern evergreen browsers. Internet Explorer is not
-supported.
+SK Components is tested against the browsers listed below. Pick the tier that
+matches the browser versions you need to support.
 
-### Full support
+> **No polyfills required.** The CSS package is pre-compiled with Lightning CSS,
+> which handles `light-dark()` and CSS nesting at build time. You do not need to
+> add polyfills or configure your bundler for SK Components.
 
-**All features work as documented.**
+<Header
+  children="Full support"
+  id="full-support"
+  level={3}
+  icon={<MaterialIcon icon="check_circle" className="text-primary" />}
+  className="mt-6 mb-3"
+/>
+
+All features work as documented.
 
 <BrowsersGrid>
-  <BrowsersGridItem browser="chrome" version="135+" releaseDate="2025-04-01" />
-  <BrowsersGridItem browser="firefox" version="147+" releaseDate="2026-01-13" />
-  <BrowsersGridItem browser="safari" version="26.2+" releaseDate="2025-12-12" />
-  <BrowsersGridItem browser="edge" version="135+" releaseDate="2025-04-04" />
+  <BrowsersGridItem browser="chrome" version="135" releaseDate="2025-04-01" />
+  <BrowsersGridItem browser="firefox" version="147" releaseDate="2026-01-13" />
+  <BrowsersGridItem browser="safari" version="26.2" releaseDate="2025-12-12" />
+  <BrowsersGridItem browser="edge" version="135" releaseDate="2025-04-04" />
 </BrowsersGrid>
 
-### Partial support
+<Header
+  children="Partial support"
+  id="partial-support"
+  level={3}
+  icon={<MaterialIcon icon="error" className="text-tertiary" />}
+  className="mt-6 mb-3"
+/>
 
-**CSS Anchor Positioning and Invoker Commands are unavailable in these browsers.**
+CSS Anchor Positioning and Invoker Commands are unavailable in these browsers,
+but all other features still work as documented.
 
 <BrowsersGrid>
-  <BrowsersGridItem browser="chrome" version="114+" releaseDate="2023-05-30" />
-  <BrowsersGridItem browser="firefox" version="125+" releaseDate="2024-04-16" />
-  <BrowsersGridItem browser="safari" version="17+" releaseDate="2023-09-18" />
-  <BrowsersGridItem browser="edge" version="114+" releaseDate="2023-06-02" />
+  <BrowsersGridItem browser="chrome" version="114" releaseDate="2023-05-30" />
+  <BrowsersGridItem browser="firefox" version="125" releaseDate="2024-04-16" />
+  <BrowsersGridItem browser="safari" version="17" releaseDate="2023-09-18" />
+  <BrowsersGridItem browser="edge" version="114" releaseDate="2023-06-02" />
 </BrowsersGrid>
 
 If you must support these older browsers, note the following:
@@ -39,8 +57,18 @@ If you must support these older browsers, note the following:
   anchored to a trigger element.
 - `command` and `commandfor` props are _not supported_ in these browsers. **You
   must use controlled modals and popovers** with the `open` and `onClose` props.
-- Learn more about [controlled modals and popovers](/docs/guides/modals#controlled-mode).
 
-> **No polyfills required.** The CSS package is pre-compiled with Lightning CSS,
-> which handles `light-dark()` and CSS nesting at build time. You do not need to
-> add polyfills or configure your bundler for SK Components.
+Learn more about [controlled modals and popovers](/docs/guides/modals#controlled-mode).
+
+<Header
+  children="No support"
+  id="no-support"
+  level={3}
+  icon={<MaterialIcon icon="cancel" className="text-error" />}
+  className="mt-6 mb-3"
+/>
+
+Critical features are unavailable in prior versions of Chrome, Firefox, Safari,
+and Edge. SK Components may not work as expected.
+
+Internet Explorer is not supported.
