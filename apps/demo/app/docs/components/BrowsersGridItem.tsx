@@ -3,7 +3,8 @@ import EdgeLogo from "@/public/images/browsers/edge.svg";
 import FirefoxLogo from "@/public/images/browsers/firefox.svg";
 import SafariLogo from "@/public/images/browsers/safari.svg";
 import { Text } from "@suankularb-components/react";
-import Image, { type ImageProps } from "next/image";
+import type { ImageProps } from "next/image";
+import Image from "next/image";
 import type { FC } from "react";
 
 const BROWSERS_MAP = new Map<string, { name: string; icon: ImageProps["src"] }>(
