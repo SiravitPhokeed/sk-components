@@ -3,6 +3,7 @@ dist/
 .next/
 *.tsbuildinfo
 
+.claude/worktrees/
 .wiki/
 
 .DS_Store
