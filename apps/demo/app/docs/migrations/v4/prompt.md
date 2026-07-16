@@ -692,7 +692,7 @@ These are new capabilities you may want to use:
 - **MaterialIcon**: `alt` (accessibility label), `directional` (flips icon horizontally in RTL)
 - **SplitLayout**: `prefer`
 - **Interactive, Button**: `command`, `commandfor`
-- **MenuItem**: `dangerous`
+- **MenuItem**: `containerElement`, `dangerous`
 - **Text**: `id` (HTML id attribute)
 
 ---
