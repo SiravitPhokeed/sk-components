@@ -5,11 +5,13 @@ import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/dialog.css";
 import type { CSSProperties, ReactNode } from "react";
-import { createContext, useContext, useEffect, useId, useRef } from "react";
+import { createContext, useContext, useEffect, useId, useRef, useState } from "react";
 
 const DialogContext = createContext<{
   dialogID: string;
   onClose: (() => void) | undefined;
+  hasTitle: boolean;
+  setHasTitle: (hasTitle: boolean) => void;
 } | null>(null);
 
 /**
@@ -69,6 +71,14 @@ export interface DialogProps extends ElementCustomizableProps {
    * - Optional.
    */
   width?: CSSProperties["width"];
+
+  /**
+   * A description of the Dialog for screen readers, similar to `alt` on
+   * `<img>`.
+   *
+   * - Required if the Dialog does not have a Dialog Header with a title.
+   */
+  alt?: string;
 }
 
 /**
@@ -80,6 +90,7 @@ export interface DialogProps extends ElementCustomizableProps {
  * @param open If the Dialog is open and shown.
  * @param onClose The function triggered when the backdrop is clicked or Escape is pressed.
  * @param width The width of the Dialog.
+ * @param alt A description of the Dialog for screen readers, similar to `alt` on `<img>`.
  */
 export const Dialog: StyleableFC<DialogProps> = ({
   children,
@@ -87,6 +98,7 @@ export const Dialog: StyleableFC<DialogProps> = ({
   open,
   onClose,
   width,
+  alt,
   element: Element = "dialog",
   style,
   className,
@@ -94,6 +106,7 @@ export const Dialog: StyleableFC<DialogProps> = ({
   const generatedId = useId();
   const dialogID = requestedId ?? `dialog-${generatedId}`;
 
+  const [hasTitle, setHasTitle] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const { close, dialogProps } = useAnimatedDialog(dialogRef, {
@@ -112,13 +125,14 @@ export const Dialog: StyleableFC<DialogProps> = ({
   }, [open, close]);
 
   return (
-    <DialogContext.Provider value={{ dialogID, onClose }}>
+    <DialogContext.Provider value={{ dialogID, onClose, hasTitle, setHasTitle }}>
       <Element
         id={dialogID}
         ref={dialogRef}
         role="alertdialog"
         aria-modal="true"
-        aria-labelledby={`${dialogID}-title`}
+        aria-label={alt}
+        aria-labelledby={hasTitle ? `${dialogID}-title` : undefined}
         aria-describedby={`${dialogID}-desc`}
         {...dialogProps}
         className={cn("skc-dialog", className)}

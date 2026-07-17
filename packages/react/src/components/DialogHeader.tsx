@@ -5,6 +5,7 @@ import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/dialog-header.css";
+import { useEffect } from "react";
 import type { ReactElement, ReactNode } from "react";
 
 /**
@@ -58,6 +59,10 @@ export const DialogHeader: StyleableFC<DialogHeaderProps> = ({
 }) => {
   const dialogContext = useDialogContext();
   const dialogID = dialogContext?.dialogID;
+
+  useEffect(() => {
+    dialogContext?.setHasTitle(Boolean(title));
+  }, [title, dialogContext]);
 
   return (
     <Element className={cn("skc-dialog-header", className)} style={style}>
