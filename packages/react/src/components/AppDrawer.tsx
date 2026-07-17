@@ -7,7 +7,7 @@ import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/app-drawer.css";
 import type { ReactNode } from "react";
-import { useId, useRef } from "react";
+import { useRef } from "react";
 
 /**
  * Props for {@link AppDrawer App Drawer}.
@@ -43,6 +43,8 @@ const STRINGS = {
   },
 };
 
+const APP_DRAWER_HEADER_ID = "app-drawer-header";
+
 const EXITING_CLASS = "skc-app-drawer__modal--exiting";
 const EXIT_ANIMATION_NAME = "skc-app-drawer-exit";
 
@@ -63,7 +65,6 @@ export const AppDrawer: StyleableFC<AppDrawerProps> = ({
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const drawerRef = useRef<HTMLDialogElement>(null);
-  const headerID = `app-drawer-header-${useId()}`;
 
   const { dialogProps } = useAnimatedDialog(drawerRef, {
     exitingClass: EXITING_CLASS,
@@ -95,11 +96,11 @@ export const AppDrawer: StyleableFC<AppDrawerProps> = ({
       </Button>
       <dialog
         ref={drawerRef}
-        aria-labelledby={headerID}
+        aria-labelledby={APP_DRAWER_HEADER_ID}
         {...dialogProps}
         className="skc-app-drawer__modal"
       >
-        <h2 id={headerID} className="skc-app-drawer__header">
+        <h2 id={APP_DRAWER_HEADER_ID} className="skc-app-drawer__header">
           {STRINGS[locale].header}
         </h2>
         {children}
