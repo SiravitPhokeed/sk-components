@@ -1,6 +1,7 @@
 import type { Button } from "@/components/Button";
 import type { SnackbarProps } from "@/components/Snackbar";
 import { Snackbar } from "@/components/Snackbar";
+import "@suankularb-components/css/sr-only.css";
 import type { ReactElement, ReactNode } from "react";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
@@ -12,6 +13,26 @@ let activeDismiss: (() => void) | null = null;
 
 /** Counter for generating unique Snackbar IDs. */
 let nextId = 0;
+
+// ── Screen reader announcer ───────────────────────────────────────────
+// A single visually-hidden `role="status"` element lives in the DOM
+// permanently. Each push() writes the Snackbar label text into it so
+// assistive technology announces the message. The element is created on
+// the first call to snackbarPush and reused thereafter.
+
+let announcerEl: HTMLDivElement | null = null;
+
+function ensureAnnouncer(): HTMLDivElement {
+  if (!announcerEl || !document.body.contains(announcerEl)) {
+    announcerEl = document.createElement("div");
+    announcerEl.className = "skc-sr-only";
+    announcerEl.setAttribute("role", "status");
+    announcerEl.setAttribute("aria-live", "polite");
+    announcerEl.setAttribute("aria-atomic", "true");
+    document.body.appendChild(announcerEl);
+  }
+  return announcerEl;
+}
 
 /** Options for {@link snackbarPush}. */
 export type PushSnackbarOptions = Pick<
@@ -90,6 +111,18 @@ export default function snackbarPush(
       }
     };
     snackbarEl.addEventListener("toggle", handleToggle);
+
+    // Announce the Snackbar message to screen readers. We defer by one
+    // additional rAF frame so the popover has appeared (showPopover runs in
+    // useEffect after paint; the first rAF fires before the next paint, so
+    // the second rAF guarantees the popover is open).
+    requestAnimationFrame(() => {
+      if (dismissed) return;
+      const label = snackbarEl.querySelector(".skc-snackbar__label");
+      if (label?.textContent) {
+        ensureAnnouncer().textContent = label.textContent.trim();
+      }
+    });
   });
 
   const dismiss = () => {
