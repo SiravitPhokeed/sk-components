@@ -42,6 +42,16 @@ export interface MenuProps extends ElementCustomizableProps {
   id?: string;
 
   /**
+   * A descriptive name for the Menu, read by screen readers when focus moves
+   * into the Menu.
+   *
+   * - Set this when the Menu’s purpose isn’t clear from its trigger, or when
+   *   multiple Menus exist in the same context.
+   * - Optional.
+   */
+  label?: string;
+
+  /**
    * The anchor name (dashed-ident) for CSS Anchor Positioning.
    *
    * - When inside an `<Anchor>`, this is auto-resolved from context — no
@@ -86,6 +96,7 @@ export interface MenuProps extends ElementCustomizableProps {
  *
  * @param children Menu Items and other content inside the Menu.
  * @param id The ID of the popover element, for Invoker Commands API support.
+ * @param label A descriptive name for the Menu, read by screen readers when focus moves into the Menu.
  * @param anchor The anchor name (dashed-ident) for CSS Anchor Positioning.
  * @param open If the Menu is open and shown.
  * @param density A lower number means a more dense interface. In this case, less height.
@@ -94,6 +105,7 @@ export interface MenuProps extends ElementCustomizableProps {
 export const Menu: StyleableFC<MenuProps> = ({
   children,
   id: requestedId,
+  label,
   anchor,
   open,
   density,
@@ -127,6 +139,44 @@ export const Menu: StyleableFC<MenuProps> = ({
     else if (!open && popover.matches(":popover-open")) close();
   }, [open, close]);
 
+  /** Gets the focusable (non-disabled) Menu Items inside the Menu. */
+  const getItems = () =>
+    Array.from(
+      ref.current?.querySelectorAll<HTMLElement>(
+        '.skc-menu-item:not([aria-disabled="true"])',
+      ) ?? [],
+    );
+
+  // Manage focus per the ARIA menu pattern: focus moves onto the first Menu
+  // Item when the Menu opens and returns to the trigger when it closes.
+  const returnFocusRef = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    const popover = ref.current;
+    if (!popover) return;
+
+    const handleToggle = (event: Event) => {
+      if ((event as ToggleEvent).newState === "open") {
+        // Remember the trigger to return focus to on close.
+        const active = document.activeElement;
+        returnFocusRef.current =
+          active instanceof HTMLElement && !popover.contains(active)
+            ? active
+            : null;
+        getItems()[0]?.focus();
+      } else {
+        // Only return focus if it was lost when the Menu closed, not if the
+        // user has moved it elsewhere (e.g. by clicking another control).
+        const active = document.activeElement;
+        if (!active || active === document.body || popover.contains(active))
+          returnFocusRef.current?.focus();
+        returnFocusRef.current = null;
+      }
+    };
+
+    popover.addEventListener("toggle", handleToggle);
+    return () => popover.removeEventListener("toggle", handleToggle);
+  }, []);
+
   return (
     <MenuContext.Provider value={{ menuID, close }}>
       <Element
@@ -134,6 +184,36 @@ export const Menu: StyleableFC<MenuProps> = ({
         ref={ref}
         popover="manual"
         role="menu"
+        aria-label={label}
+        onKeyDown={(event: React.KeyboardEvent) => {
+          // Tab is not part of the menu pattern — close the Menu and let
+          // focus move on from it.
+          if (event.key === "Tab") {
+            close();
+            return;
+          }
+
+          if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key))
+            return;
+          const items = getItems();
+          if (!items.length) return;
+          event.preventDefault();
+
+          // Move focus between Menu Items, wrapping around at both ends.
+          const index = items.indexOf(document.activeElement as HTMLElement);
+          (event.key === "ArrowDown"
+            ? items[(index + 1) % items.length]
+            : event.key === "ArrowUp"
+              ? items[
+                  index < 0
+                    ? items.length - 1
+                    : (index - 1 + items.length) % items.length
+                ]
+              : event.key === "Home"
+                ? items[0]
+                : items[items.length - 1]
+          )?.focus();
+        }}
         {...popoverProps}
         className={cn(
           "skc-menu",
