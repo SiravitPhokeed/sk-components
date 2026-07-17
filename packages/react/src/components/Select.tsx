@@ -264,7 +264,10 @@ export const Select = <Value extends string = string>({
 
         <Interactive
           ref={triggerRef}
-          aria-labelledby={id}
+          // The label and the displayed value together name the trigger, so
+          // screen readers announce the current selection without opening the
+          // Menu.
+          aria-labelledby={`${id} ${id}-value`}
           aria-haspopup="menu"
           aria-expanded={menuOpen}
           aria-controls={children ? menuId : undefined}
@@ -277,7 +280,11 @@ export const Select = <Value extends string = string>({
           element={element}
           className="skc-select__box"
         >
-          <Text type="body-large" className="skc-select__value">
+          <Text
+            id={`${id}-value`}
+            type="body-large"
+            className="skc-select__value"
+          >
             {displayedValue}
           </Text>
 
