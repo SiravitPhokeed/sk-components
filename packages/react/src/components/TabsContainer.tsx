@@ -7,7 +7,6 @@ import { createContext, useContext, useId, useRef } from "react";
 import type { ReactNode, RefObject } from "react";
 
 const TabsContainerContext = createContext<{
-  id: string;
   appearance: TabsContainerProps["appearance"];
   indicatorRef: RefObject<HTMLDivElement | null>;
 } | null>(null);
@@ -53,7 +52,7 @@ export const TabsContainer: StyleableFC<TabsContainerProps> = ({
   const indicatorRef = useRef<HTMLDivElement>(null);
 
   return (
-    <TabsContainerContext.Provider value={{ id, appearance, indicatorRef }}>
+    <TabsContainerContext.Provider value={{ appearance, indicatorRef }}>
       <Element
         key={[id, appearance].join("-")}
         style={style}

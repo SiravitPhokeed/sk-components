@@ -80,7 +80,7 @@ export const Tab: StyleableFC<TabProps> = ({
   ...rest
 }) => {
   const context = useTabsContainerContext();
-  const { id, appearance, indicatorRef } = context ?? {};
+  const { appearance, indicatorRef } = context ?? {};
 
   const tabRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
