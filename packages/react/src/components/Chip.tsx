@@ -119,7 +119,9 @@ export const Chip: StyleableFC<ChipProps> = ({
       {...(isFunctional && { onClick, href })}
       {...(isInteractive && { element, command, commandfor })}
       aria-disabled={!isFunctional}
-      aria-pressed={selected}
+      // aria-pressed is only valid on button-like roles; a non-interactive
+      // Chip renders a plain div where the attribute would be ignored.
+      aria-pressed={isInteractive ? selected : undefined}
       title={tooltip}
       className={cn(
         "skc-chip",
