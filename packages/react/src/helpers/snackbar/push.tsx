@@ -120,10 +120,16 @@ export default function snackbarPush(
       if (dismissed) return;
       const label = snackbarEl.querySelector(".skc-snackbar__label");
       if (label?.textContent) {
+        // Compose the text to announce: the message, optionally followed
+        // by the action so screen reader users know it exists.
+        let text = label.textContent.trim();
+        const actionBtn = snackbarEl.querySelector<HTMLElement>(
+          ".skc-snackbar__action .skc-button__label",
+        );
+        if (actionBtn?.textContent) text += ". " + actionBtn.textContent.trim();
         // Clear before writing so pushing the same message twice still
         // mutates the live region — identical textContent would not
         // re-announce.
-        const text = label.textContent.trim();
         const announcer = ensureAnnouncer();
         announcer.textContent = "";
         requestAnimationFrame(() => {
