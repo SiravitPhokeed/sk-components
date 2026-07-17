@@ -50,9 +50,14 @@
   &:focus-visible {
     outline: none;
   }
+}
 
+/* Hover and focus border colors share specificity so that focus, declared
+   later, always wins when both apply. Disabled re-adds its focus color
+   below. */
+.skc-select:not(.skc-select--disabled) .skc-select__box {
   @media (any-hover: hover) {
-    .skc-select:not(.skc-select--disabled) &:hover {
+    &:hover {
       --_border-color: var(--color-on-surface);
     }
   }
@@ -164,6 +169,11 @@
 
 .skc-select--disabled {
   --_border-color: color-mix(in srgb, var(--color-outline) 12%, transparent);
+
+  .skc-select__box:focus,
+  .skc-select__box:focus-visible {
+    --_border-color: var(--color-primary);
+  }
 
   .skc-select__label,
   .skc-select__value,
