@@ -92,7 +92,7 @@ export const Radio = <Value extends string = string>({
       style={style}
     >
       <input
-        aria-disabled={disabled}
+        disabled={disabled}
         type="radio"
         name={resolvedName}
         value={value}
