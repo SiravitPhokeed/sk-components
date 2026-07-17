@@ -3,6 +3,8 @@
 import { useAnchorContext } from "@/components/Anchor";
 import { useAnimatedPopover } from "@/hooks/useAnimatedPopover";
 import cn from "@/lib/helpers/cn";
+import useArrowKeyFocus from "@/lib/hooks/useArrowKeyFocus";
+import usePopoverFocus from "@/lib/hooks/usePopoverFocus";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/menu.css";
 import type { CSSProperties, ReactNode } from "react";
@@ -148,34 +150,10 @@ export const Menu: StyleableFC<MenuProps> = ({
     );
 
   // Manage focus per the ARIA menu pattern: focus moves onto the first Menu
-  // Item when the Menu opens and returns to the trigger when it closes.
-  const returnFocusRef = useRef<HTMLElement | null>(null);
-  useEffect(() => {
-    const popover = ref.current;
-    if (!popover) return;
-
-    const handleToggle = (event: Event) => {
-      if ((event as ToggleEvent).newState === "open") {
-        // Remember the trigger to return focus to on close.
-        const active = document.activeElement;
-        returnFocusRef.current =
-          active instanceof HTMLElement && !popover.contains(active)
-            ? active
-            : null;
-        getItems()[0]?.focus();
-      } else {
-        // Only return focus if it was lost when the Menu closed, not if the
-        // user has moved it elsewhere (e.g. by clicking another control).
-        const active = document.activeElement;
-        if (!active || active === document.body || popover.contains(active))
-          returnFocusRef.current?.focus();
-        returnFocusRef.current = null;
-      }
-    };
-
-    popover.addEventListener("toggle", handleToggle);
-    return () => popover.removeEventListener("toggle", handleToggle);
-  }, []);
+  // Item when the Menu opens and returns to the trigger when it closes, and
+  // arrow keys move focus between Menu Items.
+  usePopoverFocus(ref, () => getItems()[0]);
+  const handleArrowKeyFocus = useArrowKeyFocus(getItems);
 
   return (
     <MenuContext.Provider value={{ menuID, close }}>
@@ -188,31 +166,8 @@ export const Menu: StyleableFC<MenuProps> = ({
         onKeyDown={(event: React.KeyboardEvent) => {
           // Tab is not part of the menu pattern — close the Menu and let
           // focus move on from it.
-          if (event.key === "Tab") {
-            close();
-            return;
-          }
-
-          if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key))
-            return;
-          const items = getItems();
-          if (!items.length) return;
-          event.preventDefault();
-
-          // Move focus between Menu Items, wrapping around at both ends.
-          const index = items.indexOf(document.activeElement as HTMLElement);
-          (event.key === "ArrowDown"
-            ? items[(index + 1) % items.length]
-            : event.key === "ArrowUp"
-              ? items[
-                  index < 0
-                    ? items.length - 1
-                    : (index - 1 + items.length) % items.length
-                ]
-              : event.key === "Home"
-                ? items[0]
-                : items[items.length - 1]
-          )?.focus();
+          if (event.key === "Tab") close();
+          else handleArrowKeyFocus(event);
         }}
         {...popoverProps}
         className={cn(
