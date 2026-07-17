@@ -7,7 +7,7 @@ import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/app-drawer.css";
 import type { ReactNode } from "react";
-import { useRef } from "react";
+import { useId, useRef } from "react";
 
 /**
  * Props for {@link AppDrawer App Drawer}.
@@ -63,6 +63,7 @@ export const AppDrawer: StyleableFC<AppDrawerProps> = ({
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const drawerRef = useRef<HTMLDialogElement>(null);
+  const headerID = `app-drawer-header-${useId()}`;
 
   const { dialogProps } = useAnimatedDialog(drawerRef, {
     exitingClass: EXITING_CLASS,
@@ -94,10 +95,11 @@ export const AppDrawer: StyleableFC<AppDrawerProps> = ({
       </Button>
       <dialog
         ref={drawerRef}
+        aria-labelledby={headerID}
         {...dialogProps}
         className="skc-app-drawer__modal"
       >
-        <h2 className="skc-app-drawer__header">{STRINGS[locale].header}</h2>
+        <h2 id={headerID} className="skc-app-drawer__header">{STRINGS[locale].header}</h2>
         {children}
       </dialog>
     </div>
