@@ -99,8 +99,9 @@ export const Switch: StyleableFC<SwitchProps> = ({
         <input type="hidden" name={resolvedName} value="on" />
       )}
       <Element
+        role="switch"
         aria-disabled={disabled}
-        aria-pressed={resolvedValue}
+        aria-checked={resolvedValue}
         type="button"
         onClick={() => {
           if (!disabled) resolvedOnChange(!resolvedValue);
