@@ -88,13 +88,9 @@ export interface DataTableCellProps extends ElementCustomizableProps {
 
 const STRINGS = {
   "en-US": {
-    asc: "Sorted ascending",
-    desc: "Sorted descending",
     tooltip: "Click to toggle sort",
   },
   th: {
-    asc: "เรียงจากน้อยไปมาก",
-    desc: "เรียงจากมากไปน้อย",
     tooltip: "คลิกเพื่อเรียง",
   },
 };
@@ -169,11 +165,11 @@ export const DataTableCell: StyleableFC<DataTableCellProps> = ({
         })}
         className="skc-data-table-cell__content"
       >
-        {/* Sort indicator */}
+        {/* Sort indicator. Decorative: the sort state lives in aria-sort on
+            the th, so a label here would be announced twice. */}
         {sortable && (
           <MaterialIcon
             icon="arrow_downward"
-            alt={sortDirection ? STRINGS[locale][sortDirection] : undefined}
             size={20}
             className={cn(
               "skc-data-table-cell__arrow",
