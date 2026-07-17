@@ -119,6 +119,7 @@ export const Chip: StyleableFC<ChipProps> = ({
       {...(isFunctional && { onClick, href })}
       {...(isInteractive && { element, command, commandfor })}
       aria-disabled={!isFunctional}
+      aria-pressed={selected}
       title={tooltip}
       className={cn(
         "skc-chip",
