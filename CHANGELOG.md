@@ -31,6 +31,7 @@ Changes to the demo app are documented in
   - **Chip Field:** `required`
   - **Data Table Body, Data Table Head:** `align` for text alignment
   - **Data Table Head:** `colSpans` for column spanning
+  - **Dialog:** `alt` for an accessible name when Dialog Header has no title
   - **Dialog, Full-screen Dialog, Menu:** uncontrolled mode via Invoker Commands
     API (`id`)
   - **Form Group:** `legendElement`, `name` for custom legend elements
@@ -117,12 +118,30 @@ Changes to the demo app are documented in
 
 ### Fixed
 
+- **App Drawer:** the dialog now announces its name, labelled by its header
+- **Button:** `aria-disabled` is now set while `loading`, and `selected` is
+  exposed via `aria-pressed`
+- **Chip:** the selected state is now exposed via `aria-pressed` (affects
+  Filter Chip and Input Chip)
+- **Data Table:** column headers now carry `scope` and expose `aria-sort` when
+  sorted
 - **Filter Chip:** the dropdown Menu now inherits the Chip’s label as its
   accessible name
+- **Full-screen Dialog:** the content is now linked to the dialog via
+  `aria-describedby`
 - **Menu Item:** the container element no longer exposes an invalid `listitem`
   role inside Menus
 - **Nav Drawer Item:** `label` prop type corrected from optional to required,
   matching its JSDoc and runtime behavior (the label is always rendered).
+- **Progress:** now hidden from assistive technologies when not visible, with
+  explicit `aria-valuemin` and `aria-valuemax`
+- **Radio:** disabled Radios can no longer be selected with arrow keys (native
+  `disabled` attribute)
+- **Snackbar:** removed the redundant `aria-live` (implied by `role="status"`)
+- **Switch:** now uses the switch role and announces its state as on/off
+  instead of pressed
+- **Tab:** `alt` now sets `aria-label` instead of leaking as an invalid HTML
+  attribute
 
 ## [3.3.2] - 2024-04-30
 
