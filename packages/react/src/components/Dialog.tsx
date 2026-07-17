@@ -54,6 +54,14 @@ export interface DialogProps extends ElementCustomizableProps {
   id?: string;
 
   /**
+   * A description of the Dialog for screen readers, similar to `alt` on
+   * `<img>`.
+   *
+   * - Required if the Dialog does not have a Dialog Header with a title.
+   */
+  alt?: string;
+
+  /**
    * If the Dialog is open and shown.
    *
    * - When provided, the Dialog is controlled: the consumer must
@@ -79,34 +87,26 @@ export interface DialogProps extends ElementCustomizableProps {
    * - Optional.
    */
   width?: CSSProperties["width"];
-
-  /**
-   * A description of the Dialog for screen readers, similar to `alt` on
-   * `<img>`.
-   *
-   * - Required if the Dialog does not have a Dialog Header with a title.
-   */
-  alt?: string;
 }
 
 /**
  * A Dialog interrupts the user to make an immediately significant decision
  * or enter important information.
  *
- * @param id The ID of the `<dialog>` element, for Invoker Commands API support.
  * @param children Parts of a Dialog.
+ * @param id The ID of the `<dialog>` element, for Invoker Commands API support.
+ * @param alt A description of the Dialog for screen readers, similar to `alt` on `<img>`.
  * @param open If the Dialog is open and shown.
  * @param onClose The function triggered when the backdrop is clicked or Escape is pressed.
  * @param width The width of the Dialog.
- * @param alt A description of the Dialog for screen readers, similar to `alt` on `<img>`.
  */
 export const Dialog: StyleableFC<DialogProps> = ({
   children,
   id: requestedId,
+  alt,
   open,
   onClose,
   width,
-  alt,
   element: Element = "dialog",
   style,
   className,
