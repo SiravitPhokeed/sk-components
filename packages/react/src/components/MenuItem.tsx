@@ -172,7 +172,10 @@ export const MenuItem: StyleableFC<MenuItemProps> = ({
     selected === undefined && value ? value === selectContext?.value : selected;
 
   return (
-    <ContainerElement>
+    // Inside a Menu, the container’s implicit listitem role is invalid —
+    // role="menu" only permits menu item, group, and separator children — so
+    // it is hidden from assistive technologies.
+    <ContainerElement role={menuContext ? "none" : undefined}>
       <Interactive
         role={isSelectable ? "menuitemradio" : "menuitem"}
         aria-checked={isSelectable ? Boolean(isSelected) : undefined}
