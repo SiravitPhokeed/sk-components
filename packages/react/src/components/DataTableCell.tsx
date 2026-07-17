@@ -36,7 +36,7 @@ export interface DataTableCellProps extends ElementCustomizableProps {
    *
    * - Must be `col`, `row`, `colgroup`, or `rowgroup`.
    * - Only effective when {@link header `header`} is `true`.
-   * - Optional.
+   * - Optional. Defaults to `col` for header cells.
    */
   scope?: "col" | "row" | "colgroup" | "rowgroup";
 
@@ -117,7 +117,9 @@ const STRINGS = {
 export const DataTableCell: StyleableFC<DataTableCellProps> = ({
   children,
   header,
-  scope,
+  // Data Table Head only renders column headers, so `col` is always the
+  // right scope there; Data Table Cell is private, so nothing else sets it.
+  scope = header ? "col" : undefined,
   align = "center",
   sortable,
   sortDirection,
