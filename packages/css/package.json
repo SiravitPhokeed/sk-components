@@ -63,6 +63,7 @@
     "./section.css": "./dist/section.css",
     "./segmented-button.css": "./dist/segmented-button.css",
     "./select.css": "./dist/select.css",
+    "./sr-only.css": "./dist/sr-only.css",
     "./split-layout.css": "./dist/split-layout.css",
     "./snackbar.css": "./dist/snackbar.css",
     "./suggestion-chip.css": "./dist/suggestion-chip.css",
