@@ -5,6 +5,7 @@ import { MaterialIcon } from "@/components/MaterialIcon";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/data-table-pagination.css";
+import "@suankularb-components/css/sr-only.css";
 import { useEffect, useState } from "react";
 
 /**
@@ -126,11 +127,14 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
       style={style}
       className={cn("skc-data-table-pagination", className)}
     >
-      <span
-        aria-label={STRINGS[locale].alt(formattedNumbers)}
-        className="skc-data-table-pagination__label"
-      >
-        {STRINGS[locale].label(formattedNumbers)}
+      <span className="skc-data-table-pagination__label">
+        {/* aria-label is not supported on a generic span — VoiceOver read it
+            as a group name AND read the visible text. A visually-hidden
+            phrase plus hidden visible text announces once. */}
+        <span className="skc-sr-only">
+          {STRINGS[locale].alt(formattedNumbers)}
+        </span>
+        <span aria-hidden>{STRINGS[locale].label(formattedNumbers)}</span>
       </span>
       <div className="skc-data-table-pagination__controls">
         {/* Skip to first */}
