@@ -100,6 +100,19 @@ spec.
 
   </PropsTableRow>
 
+  <PropsTableRow prop="alt" required="conditional">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A description of the Dialog for screen readers, similar to `alt` on
+      `<img>`.
+
+      - Required if the Dialog does not have a Dialog Header with a title.
+
+      </TableCell>
+
+  </PropsTableRow>
+
   <PropsTableRow prop="open" required="never">
     <TableCell>`boolean`</TableCell>
     <TableCell>
@@ -137,19 +150,6 @@ spec.
       into a Dialog, or when you have many overlapping Dialogs.
 
       - Optional.
-
-      </TableCell>
-
-  </PropsTableRow>
-
-  <PropsTableRow prop="alt" required="conditional">
-    <TableCell>`string`</TableCell>
-    <TableCell>
-
-      A description of the Dialog for screen readers, similar to `alt` on
-      `<img>`.
-
-      - Required if the Dialog does not have a Dialog Header with a title.
 
       </TableCell>
 

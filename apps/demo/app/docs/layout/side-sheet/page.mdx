@@ -71,6 +71,20 @@ A trigger button can open the Side Sheet via the Invoker Commands API.
 
   </PropsTableRow>
 
+  <PropsTableRow prop="alt" required="conditional">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A description of the Side Sheet for screen readers, similar to `alt` on
+      `<img>`.
+
+      - Required if the Side Sheet’s purpose isn’t clear from its trigger, or if
+        multiple Side Sheets exist in the same context.
+
+      </TableCell>
+
+  </PropsTableRow>
+
   <PropsTableRow prop="attach" required="never">
     <TableCell>`"left" | "right"`</TableCell>
     <TableCell>
@@ -81,20 +95,6 @@ A trigger button can open the Side Sheet via the Invoker Commands API.
         default.
       - `"left"` attaches to the left edge in LTR, right in RTL.
       - Optional.
-
-      </TableCell>
-
-  </PropsTableRow>
-
-  <PropsTableRow prop="alt" required="conditional">
-    <TableCell>`string`</TableCell>
-    <TableCell>
-
-      A description of the Side Sheet for screen readers, similar to `alt` on
-      `<img>`.
-
-      - Required if the Side Sheet’s purpose isn’t clear from its trigger, or if
-        multiple Side Sheets exist in the same context.
 
       </TableCell>
 
