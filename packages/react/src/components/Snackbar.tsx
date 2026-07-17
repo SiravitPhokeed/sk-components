@@ -7,7 +7,7 @@ import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/snackbar.css";
 import type { ReactElement, ReactNode } from "react";
-import { useEffect, useId, useRef } from "react";
+import { useCallback, useEffect, useId, useRef } from "react";
 
 const EXITING_CLASS = "skc-snackbar--exiting";
 const EXIT_ANIMATION_NAME = "skc-snackbar-exit";
@@ -59,6 +59,8 @@ export interface SnackbarProps {
    * Time in milliseconds until the Snackbar exits automatically.
    *
    * - Incompatible with `persistent`.
+   * - The timer pauses while the user hovers or focuses the Snackbar
+   *   (WCAG 2.2.1). It restarts fresh when the pointer or focus leaves.
    * - Defaults to 6000 (6 seconds).
    * - Optional.
    *
@@ -81,7 +83,7 @@ export interface SnackbarProps {
  * @param action A Snackbar can contain 1 action. Pressing this action closes the Snackbar.
  * @param stacked Put the message (`children`) above the action (`action`).
  * @param persistent Prevent the Snackbar from auto-dismissing after a certain duration.
- * @param autoDismissDurationMs Time in milliseconds until the Snackbar exits automatically.
+ * @param autoDismissDurationMs Time in milliseconds until the Snackbar exits automatically. The timer pauses while the user hovers or focuses the Snackbar (WCAG 2.2.1). It restarts fresh when the pointer or focus leaves.
  */
 export const Snackbar: StyleableFC<SnackbarProps> = ({
   children,
@@ -109,24 +111,78 @@ export const Snackbar: StyleableFC<SnackbarProps> = ({
   }, []);
 
   // Auto-dismiss after the configured duration (unless persistent).
+  // Per WCAG 2.2.1, the timer pauses while the user hovers or focuses the
+  // Snackbar and restarts fresh when the pointer/focus leaves.
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isHoveringOrFocused = useRef(false);
+
+  const clearTimer = useCallback(() => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+  }, []);
+
+  const startTimer = useCallback(() => {
+    if (persistent) return;
+    const el = ref.current;
+    if (!el) return;
+    clearTimer();
+    timerRef.current = setTimeout(() => {
+      el.classList.add(EXITING_CLASS);
+    }, autoDismissDurationMs);
+  }, [persistent, autoDismissDurationMs, clearTimer]);
+
   useEffect(() => {
     if (persistent) return;
     const el = ref.current;
     if (!el) return;
 
-    const timer = setTimeout(() => {
-      el.classList.add(EXITING_CLASS);
-    }, autoDismissDurationMs);
+    const handleMouseEnter = () => {
+      isHoveringOrFocused.current = true;
+      clearTimer();
+    };
 
-    return () => clearTimeout(timer);
-  }, [persistent, autoDismissDurationMs]);
+    const handleMouseLeave = () => {
+      isHoveringOrFocused.current = false;
+      // Only restart if focus has also left the Snackbar.
+      if (!el.contains(document.activeElement)) startTimer();
+    };
+
+    const handleFocusIn = () => {
+      isHoveringOrFocused.current = true;
+      clearTimer();
+    };
+
+    const handleFocusOut = (e: FocusEvent) => {
+      // Only restart if the newly-focused element is outside the Snackbar.
+      if (!el.contains(e.relatedTarget as Node | null)) {
+        isHoveringOrFocused.current = false;
+        startTimer();
+      }
+    };
+
+    startTimer();
+
+    el.addEventListener("mouseenter", handleMouseEnter);
+    el.addEventListener("mouseleave", handleMouseLeave);
+    el.addEventListener("focusin", handleFocusIn);
+    el.addEventListener("focusout", handleFocusOut);
+
+    return () => {
+      clearTimer();
+      el.removeEventListener("mouseenter", handleMouseEnter);
+      el.removeEventListener("mouseleave", handleMouseLeave);
+      el.removeEventListener("focusin", handleFocusIn);
+      el.removeEventListener("focusout", handleFocusOut);
+    };
+  }, [persistent, autoDismissDurationMs, startTimer, clearTimer]);
 
   return (
     <div
       id={snackbarID}
       ref={ref}
       popover="manual"
-      role="status"
       {...popoverProps}
       className={cn(
         "skc-snackbar",
