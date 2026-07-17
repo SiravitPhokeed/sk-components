@@ -1,10 +1,11 @@
 "use client";
 
 import cn from "@/lib/helpers/cn";
+import useArrowKeyFocus from "@/lib/hooks/useArrowKeyFocus";
+import useIsomorphicLayoutEffect from "@/lib/hooks/useIsomorphicLayoutEffect";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/tabs-container.css";
-import useArrowKeyFocus from "@/lib/hooks/useArrowKeyFocus";
-import { createContext, useContext, useEffect, useId, useRef } from "react";
+import { createContext, useContext, useId, useRef } from "react";
 import type { ReactNode, RefObject } from "react";
 
 const TabsContainerContext = createContext<{
@@ -53,7 +54,7 @@ export const TabsContainer: StyleableFC<TabsContainerProps> = ({
   const indicatorRef = useRef<HTMLDivElement>(null);
   const tablistRef = useRef<HTMLDivElement>(null);
 
-  /** Gets the non-disabled Tab elements inside this Tabs Container. */
+  /** Gets the Tab elements inside this Tabs Container. */
   const getItems = () =>
     Array.from(
       tablistRef.current?.querySelectorAll<HTMLElement>('[role="tab"]') ?? [],
@@ -62,10 +63,11 @@ export const TabsContainer: StyleableFC<TabsContainerProps> = ({
   const handleTabKeyDown = useArrowKeyFocus(getItems, "horizontal");
 
   // Keep exactly one Tab in the tab order: the selected Tab, or the first
-  // Tab when none is selected, per the ARIA tabs pattern. Runs after every
-  // render so the DOM is repaired even after React skips unchanged tabIndex
-  // attributes.
-  useEffect(() => {
+  // Tab when none is selected, per the ARIA tabs pattern. Tabs render
+  // without a tabIndex of their own, so this is the sole authority over tab
+  // order; the layout effect runs before paint, leaving no window where the
+  // tablist is unreachable.
+  useIsomorphicLayoutEffect(() => {
     const tablist = tablistRef.current;
     if (!tablist) return;
     const tabs = Array.from(

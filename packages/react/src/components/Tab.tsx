@@ -140,7 +140,6 @@ export const Tab: StyleableFC<TabProps> = ({
       aria-controls={controls}
       aria-label={alt}
       title={tooltip}
-      tabIndex={selected ? undefined : -1}
       className={cn("skc-tab", selected && "skc-tab--selected", className)}
       {...rest}
     >
