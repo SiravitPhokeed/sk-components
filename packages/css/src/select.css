@@ -14,7 +14,7 @@
 
   position: relative;
 
-  &:focus-within {
+  &:has(.skc-select__box:focus-visible) {
     --_border-width: 3px;
   }
 }
@@ -29,7 +29,7 @@
   color: var(--color-on-surface-variant);
   font-family: var(--font-display);
 
-  .skc-select:focus-within & {
+  .skc-select:has(.skc-select__box:focus-visible) & {
     color: var(--color-primary);
   }
 }
@@ -62,7 +62,6 @@
     }
   }
 
-  &:focus,
   &:focus-visible {
     --_border-color: var(--color-primary);
     animation: none;
@@ -170,7 +169,6 @@
 .skc-select--disabled {
   --_border-color: color-mix(in srgb, var(--color-outline) 12%, transparent);
 
-  .skc-select__box:focus,
   .skc-select__box:focus-visible {
     --_border-color: var(--color-primary);
   }
