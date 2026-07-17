@@ -13,7 +13,7 @@ import type {
 } from "@/lib/types";
 import "@suankularb-components/css/filter-chip.css";
 import type { Fragment, ReactElement, ReactNode } from "react";
-import { useId } from "react";
+import { useEffect, useId, useState } from "react";
 
 /**
  * Props for {@link FilterChip Filter Chip}.
@@ -46,7 +46,9 @@ export interface FilterChipProps
 
   /**
    * Turns the Filter Chip into a dropdown, displaying a Menu underneath the
-   * chip.
+   * chip. The chip trigger gets `aria-haspopup="menu"` and `aria-expanded` set
+   * automatically, and `aria-pressed` is suppressed to avoid conflicting with
+   * the popup semantics.
    *
    * - Must be a Fragment containing Menu Items.
    * - Optional.
@@ -94,7 +96,7 @@ export interface FilterChipProps
  * @param children The text displayed inside the chip.
  * @param icon An icon can appear before all content in a Filter Chip.
  * @param tooltip A message shown in a tooltip when the user hovers over the Filter Chip.
- * @param menu Turns the Filter Chip into a dropdown, displaying a Menu underneath the chip.
+ * @param menu Turns the Filter Chip into a dropdown, displaying a Menu underneath the chip. The chip trigger gets `aria-haspopup="menu"` and `aria-expanded` set automatically, and `aria-pressed` is suppressed to avoid conflicting with the popup semantics.
  * @param elevated Use elevation instead of an outline to signify the Filter Chip’s boundary.
  * @param selected If the Filter Chip is selected.
  * @param disabled Turns the Filter Chip gray and blocks any action associated with it.
@@ -122,10 +124,26 @@ export const FilterChip: StyleableFC<FilterChipProps> = ({
   const resolvedCommand = command ?? (menu ? "show-popover" : undefined);
   const resolvedCommandFor = commandfor ?? (menu ? menuId : undefined);
 
+  const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    const menuElement = document.getElementById(menuId);
+    const handleToggle = (event: Event) =>
+      setMenuOpen((event as ToggleEvent).newState === "open");
+    menuElement?.addEventListener("toggle", handleToggle);
+    return () => menuElement?.removeEventListener("toggle", handleToggle);
+  }, []);
+
   return (
     <>
       <Chip
         id={id}
+        {...(menu
+          ? {
+              "aria-haspopup": "menu" as const,
+              "aria-expanded": menuOpen,
+              "aria-pressed": undefined,
+            }
+          : {})}
         tooltip={tooltip}
         elevated={elevated}
         selected={selected}
