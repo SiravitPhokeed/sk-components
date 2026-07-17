@@ -158,7 +158,6 @@ export const FullscreenDialog: StyleableFC<FullscreenDialogProps> = ({
       ref={dialogRef}
       role="alertdialog"
       aria-labelledby={`${dialogID}-title`}
-      aria-describedby={`${dialogID}-content`}
       {...dialogProps}
       className={cn("skc-fullscreen-dialog", className)}
       style={{ ...style, width }}
@@ -180,12 +179,7 @@ export const FullscreenDialog: StyleableFC<FullscreenDialogProps> = ({
         </div>
 
         {/* Content */}
-        <div
-          id={`${dialogID}-content`}
-          className="skc-fullscreen-dialog__content"
-        >
-          {children}
-        </div>
+        <div className="skc-fullscreen-dialog__content">{children}</div>
       </FullscreenDialogContext.Provider>
     </dialog>
   );
