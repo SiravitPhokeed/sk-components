@@ -120,7 +120,15 @@ export default function snackbarPush(
       if (dismissed) return;
       const label = snackbarEl.querySelector(".skc-snackbar__label");
       if (label?.textContent) {
-        ensureAnnouncer().textContent = label.textContent.trim();
+        // Clear before writing so pushing the same message twice still
+        // mutates the live region — identical textContent would not
+        // re-announce.
+        const text = label.textContent.trim();
+        const announcer = ensureAnnouncer();
+        announcer.textContent = "";
+        requestAnimationFrame(() => {
+          announcer.textContent = text;
+        });
       }
     });
   });

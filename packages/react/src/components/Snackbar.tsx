@@ -107,14 +107,16 @@ export const Snackbar: StyleableFC<SnackbarProps> = ({
 
   // Auto-show on mount. Using useEffect guarantees the DOM is committed.
   useEffect(() => {
-    ref.current?.showPopover();
+    const popover = ref.current;
+    // The guard keeps the effect idempotent — StrictMode invokes it twice,
+    // and showPopover() throws on an already-open popover.
+    if (popover && !popover.matches(":popover-open")) popover.showPopover();
   }, []);
 
   // Auto-dismiss after the configured duration (unless persistent).
   // Per WCAG 2.2.1, the timer pauses while the user hovers or focuses the
   // Snackbar and restarts fresh when the pointer/focus leaves.
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const isHoveringOrFocused = useRef(false);
 
   const clearTimer = useCallback(() => {
     if (timerRef.current) {
@@ -139,25 +141,21 @@ export const Snackbar: StyleableFC<SnackbarProps> = ({
     if (!el) return;
 
     const handleMouseEnter = () => {
-      isHoveringOrFocused.current = true;
       clearTimer();
     };
 
     const handleMouseLeave = () => {
-      isHoveringOrFocused.current = false;
       // Only restart if focus has also left the Snackbar.
       if (!el.contains(document.activeElement)) startTimer();
     };
 
     const handleFocusIn = () => {
-      isHoveringOrFocused.current = true;
       clearTimer();
     };
 
     const handleFocusOut = (e: FocusEvent) => {
       // Only restart if the newly-focused element is outside the Snackbar.
       if (!el.contains(e.relatedTarget as Node | null)) {
-        isHoveringOrFocused.current = false;
         startTimer();
       }
     };
