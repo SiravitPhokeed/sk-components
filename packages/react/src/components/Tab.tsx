@@ -58,6 +58,13 @@ export interface TabProps extends ActionableProps, ElementCustomizableProps {
    * - Optional.
    */
   selected?: boolean;
+
+  /**
+   * The `id` of the tab panel this Tab controls, applied as `aria-controls`.
+   *
+   * - Optional.
+   */
+  controls?: string;
 }
 
 /**
@@ -69,6 +76,7 @@ export interface TabProps extends ActionableProps, ElementCustomizableProps {
  * @param alt A description of the Tab for screen readers, similar to `alt` on `<img>`.
  * @param tooltip A message shown in a tooltip when the user hovers over the Tab.
  * @param selected Highlights the Tab. If the user is currently on this page, the Tab should be highlighted.
+ * @param controls The `id` of the tab panel this Tab controls, applied as `aria-controls`.
  */
 export const Tab: StyleableFC<TabProps> = ({
   icon,
@@ -76,6 +84,7 @@ export const Tab: StyleableFC<TabProps> = ({
   alt,
   tooltip,
   selected,
+  controls,
   className,
   ...rest
 }) => {
@@ -128,8 +137,10 @@ export const Tab: StyleableFC<TabProps> = ({
       role="tab"
       ref={tabRef}
       aria-selected={selected}
+      aria-controls={controls}
       aria-label={alt}
       title={tooltip}
+      tabIndex={selected ? undefined : -1}
       className={cn("skc-tab", selected && "skc-tab--selected", className)}
       {...rest}
     >

@@ -3,7 +3,8 @@
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/tabs-container.css";
-import { createContext, useContext, useId, useRef } from "react";
+import useArrowKeyFocus from "@/lib/hooks/useArrowKeyFocus";
+import { createContext, useContext, useEffect, useId, useRef } from "react";
 import type { ReactNode, RefObject } from "react";
 
 const TabsContainerContext = createContext<{
@@ -50,6 +51,32 @@ export const TabsContainer: StyleableFC<TabsContainerProps> = ({
 }) => {
   const id = `tabs-container-${useId()}`;
   const indicatorRef = useRef<HTMLDivElement>(null);
+  const tablistRef = useRef<HTMLDivElement>(null);
+
+  /** Gets the non-disabled Tab elements inside this Tabs Container. */
+  const getItems = () =>
+    Array.from(
+      tablistRef.current?.querySelectorAll<HTMLElement>('[role="tab"]') ?? [],
+    );
+
+  const handleTabKeyDown = useArrowKeyFocus(getItems, "horizontal");
+
+  // Ensure at least one Tab is in the tab order when none is selected, per
+  // the ARIA tabs pattern.
+  useEffect(() => {
+    const tablist = tablistRef.current;
+    if (!tablist) return;
+    const tabs = Array.from(
+      tablist.querySelectorAll<HTMLElement>('[role="tab"]'),
+    );
+    const hasSelected = tabs.some(
+      (tab) => tab.getAttribute("aria-selected") === "true",
+    );
+    if (!hasSelected) {
+      tabs.forEach((tab) => (tab.tabIndex = -1));
+      if (tabs.length > 0) tabs[0].removeAttribute("tabIndex");
+    }
+  });
 
   return (
     <TabsContainerContext.Provider value={{ appearance, indicatorRef }}>
@@ -62,7 +89,9 @@ export const TabsContainer: StyleableFC<TabsContainerProps> = ({
         )}
       >
         <div
+          ref={tablistRef}
           role="tablist"
+          onKeyDown={handleTabKeyDown}
           style={style}
           className={cn("skc-tabs-container__content", className)}
         >
