@@ -39,6 +39,7 @@ menu.
   adjustableProps={{
     appearance: ["outlined", "filled"],
     error: "boolean",
+    disabled: "boolean",
   }}
 />
 
@@ -192,6 +193,33 @@ return (
 
   </PropsTableRow>
 
+  <PropsTableRow prop="disabled" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Turns the Select gray and prevents the Menu from opening.
+
+      - Learn how to make disabled elements less frustrating.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="required" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Tells assistive technologies that an option must be selected, via
+      `aria-required`.
+
+      - Purely semantic; does not enforce validation by itself.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
   <PropsTableRow prop="value" required="never">
     <TableCell>`string`</TableCell>
     <TableCell>
@@ -224,7 +252,9 @@ return (
 <VersionsTable>
   <VersionsTableRow version="v4.0.0">
     `name` introduced for form submission. `value` type narrowed from `any` to
-    `string`. Prop injection replaced with React Context.
+    `string`. Prop injection replaced with React Context. `disabled` and
+    `required` introduced. The trigger now exposes its state to assistive
+    technologies.
   </VersionsTableRow>
   <VersionsTableRow version="v3.0.0">
     Select introduced, replacing Dropdown.

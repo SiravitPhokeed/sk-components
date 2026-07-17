@@ -81,6 +81,21 @@ different `commandfor` is specified. Clicking outside the Menu or pressing Escap
 
   </PropsTableRow>
 
+  <PropsTableRow prop="label" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A descriptive name for the Menu, read by screen readers when focus moves
+      into the Menu.
+
+      - Set this when the Menu’s purpose isn’t clear from its trigger, or when
+        multiple Menus exist in the same context.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
   <PropsTableRow prop="anchor" required="never">
     <TableCell>`string`</TableCell>
     <TableCell>
@@ -145,7 +160,9 @@ different `commandfor` is specified. Clicking outside the Menu or pressing Escap
 <VersionsTable>
   <VersionsTableRow version="v4.0.0">
     Invoker Commands API support added. Uncontrolled mode via `id` introduced.
-    Animations revised.
+    Animations revised. `label` introduced. Focus now moves into the Menu on
+    open and returns to the trigger on close, and arrow keys navigate between
+    Menu Items.
   </VersionsTableRow>
   <VersionsTableRow version="v3.3.0">
     Improved open/close animations.
