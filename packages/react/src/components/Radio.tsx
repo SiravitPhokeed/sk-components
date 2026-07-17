@@ -92,10 +92,10 @@ export const Radio = <Value extends string = string>({
       style={style}
     >
       <input
-        disabled={disabled}
         type="radio"
         name={resolvedName}
         value={value}
+        disabled={disabled}
         checked={checked}
         onChange={(event) => {
           if (!disabled && event.target.checked) onChange?.(value);
