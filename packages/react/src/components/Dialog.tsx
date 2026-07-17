@@ -5,11 +5,21 @@ import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/dialog.css";
 import type { CSSProperties, ReactNode } from "react";
-import { createContext, useContext, useEffect, useId, useRef } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 const DialogContext = createContext<{
   dialogID: string;
   onClose: (() => void) | undefined;
+  hasTitle: boolean;
+  setHasTitle: (hasTitle: boolean) => void;
 } | null>(null);
 
 /**
@@ -44,6 +54,14 @@ export interface DialogProps extends ElementCustomizableProps {
   id?: string;
 
   /**
+   * A description of the Dialog for screen readers, similar to `alt` on
+   * `<img>`.
+   *
+   * - Required if the Dialog does not have a Dialog Header with a title.
+   */
+  alt?: string;
+
+  /**
    * If the Dialog is open and shown.
    *
    * - When provided, the Dialog is controlled: the consumer must
@@ -75,8 +93,9 @@ export interface DialogProps extends ElementCustomizableProps {
  * A Dialog interrupts the user to make an immediately significant decision
  * or enter important information.
  *
- * @param id The ID of the `<dialog>` element, for Invoker Commands API support.
  * @param children Parts of a Dialog.
+ * @param id The ID of the `<dialog>` element, for Invoker Commands API support.
+ * @param alt A description of the Dialog for screen readers, similar to `alt` on `<img>`.
  * @param open If the Dialog is open and shown.
  * @param onClose The function triggered when the backdrop is clicked or Escape is pressed.
  * @param width The width of the Dialog.
@@ -84,6 +103,7 @@ export interface DialogProps extends ElementCustomizableProps {
 export const Dialog: StyleableFC<DialogProps> = ({
   children,
   id: requestedId,
+  alt,
   open,
   onClose,
   width,
@@ -94,7 +114,15 @@ export const Dialog: StyleableFC<DialogProps> = ({
   const generatedId = useId();
   const dialogID = requestedId ?? `dialog-${generatedId}`;
 
+  const [hasTitle, setHasTitle] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
+
+  // A stable context identity keeps Dialog Header’s layout effect from
+  // re-running on every Dialog render.
+  const dialogContextValue = useMemo(
+    () => ({ dialogID, onClose, hasTitle, setHasTitle }),
+    [dialogID, onClose, hasTitle],
+  );
 
   const { close, dialogProps } = useAnimatedDialog(dialogRef, {
     exitingClass: EXITING_CLASS,
@@ -112,13 +140,14 @@ export const Dialog: StyleableFC<DialogProps> = ({
   }, [open, close]);
 
   return (
-    <DialogContext.Provider value={{ dialogID, onClose }}>
+    <DialogContext.Provider value={dialogContextValue}>
       <Element
         id={dialogID}
         ref={dialogRef}
         role="alertdialog"
         aria-modal="true"
-        aria-labelledby={`${dialogID}-title`}
+        aria-label={alt}
+        aria-labelledby={hasTitle ? `${dialogID}-title` : undefined}
         aria-describedby={`${dialogID}-desc`}
         {...dialogProps}
         className={cn("skc-dialog", className)}

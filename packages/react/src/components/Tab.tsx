@@ -73,13 +73,14 @@ export interface TabProps extends ActionableProps, ElementCustomizableProps {
 export const Tab: StyleableFC<TabProps> = ({
   icon,
   label,
+  alt,
   tooltip,
   selected,
   className,
   ...rest
 }) => {
   const context = useTabsContainerContext();
-  const { id, appearance, indicatorRef } = context ?? {};
+  const { appearance, indicatorRef } = context ?? {};
 
   const tabRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -127,6 +128,7 @@ export const Tab: StyleableFC<TabProps> = ({
       role="tab"
       ref={tabRef}
       aria-selected={selected}
+      aria-label={alt}
       title={tooltip}
       className={cn("skc-tab", selected && "skc-tab--selected", className)}
       {...rest}

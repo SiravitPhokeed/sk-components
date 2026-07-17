@@ -100,6 +100,19 @@ spec.
 
   </PropsTableRow>
 
+  <PropsTableRow prop="alt" required="conditional">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A description of the Dialog for screen readers, similar to `alt` on
+      `<img>`.
+
+      - Required if the Dialog does not have a Dialog Header with a title.
+
+      </TableCell>
+
+  </PropsTableRow>
+
   <PropsTableRow prop="open" required="never">
     <TableCell>`boolean`</TableCell>
     <TableCell>
@@ -148,7 +161,7 @@ spec.
 <VersionsTable>
   <VersionsTableRow version="v4.0.0">
     Invoker Commands API support added. Uncontrolled mode via `id` introduced.
-    Animations revised.
+    Animations revised. `alt` introduced.
   </VersionsTableRow>
   <VersionsTableRow version="v3.3.0">
     Improved modal open/close animations.

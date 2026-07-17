@@ -64,7 +64,9 @@ export const Progress: StyleableFC<ProgressProps> = ({
       role="progressbar"
       aria-label={alt}
       aria-valuenow={value}
-      aria-hidden={visible === false}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-hidden={!visible}
       className={cn(
         "skc-progress",
         `skc-progress--${appearance}`,

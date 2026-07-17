@@ -43,6 +43,8 @@ const STRINGS = {
   },
 };
 
+const APP_DRAWER_HEADER_ID = "app-drawer-header";
+
 const EXITING_CLASS = "skc-app-drawer__modal--exiting";
 const EXIT_ANIMATION_NAME = "skc-app-drawer-exit";
 
@@ -94,10 +96,13 @@ export const AppDrawer: StyleableFC<AppDrawerProps> = ({
       </Button>
       <dialog
         ref={drawerRef}
+        aria-labelledby={APP_DRAWER_HEADER_ID}
         {...dialogProps}
         className="skc-app-drawer__modal"
       >
-        <h2 className="skc-app-drawer__header">{STRINGS[locale].header}</h2>
+        <h2 id={APP_DRAWER_HEADER_ID} className="skc-app-drawer__header">
+          {STRINGS[locale].header}
+        </h2>
         {children}
       </dialog>
     </div>

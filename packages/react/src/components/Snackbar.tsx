@@ -127,7 +127,6 @@ export const Snackbar: StyleableFC<SnackbarProps> = ({
       ref={ref}
       popover="manual"
       role="status"
-      aria-live="polite"
       {...popoverProps}
       className={cn(
         "skc-snackbar",

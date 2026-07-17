@@ -31,6 +31,16 @@ export interface DataTableCellProps extends ElementCustomizableProps {
   header?: boolean;
 
   /**
+   * The scope of the cell, which defines the cells that the header cell relates
+   * to.
+   *
+   * - Must be `col`, `row`, `colgroup`, or `rowgroup`.
+   * - Only effective when {@link header `header`} is `true`.
+   * - Optional. Defaults to `col` for header cells.
+   */
+  scope?: "col" | "row" | "colgroup" | "rowgroup";
+
+  /**
    * How the content should be positioned. It can be aligned to the left, the
    * center (default), or the right.
    *
@@ -95,6 +105,7 @@ const STRINGS = {
  *
  * @param children The content of the cell.
  * @param header If the cell is a header cell.
+ * @param scope The scope of the cell, which defines the cells that the header cell relates to.
  * @param align How the content should be positioned.
  * @param sortable If the cell is sortable.
  * @param sortDirection The current sort direction of this column.
@@ -106,6 +117,9 @@ const STRINGS = {
 export const DataTableCell: StyleableFC<DataTableCellProps> = ({
   children,
   header,
+  // Data Table Head only renders column headers, so `col` is always the
+  // right scope there; Data Table Cell is private, so nothing else sets it.
+  scope = header ? "col" : undefined,
   align = "center",
   sortable,
   sortDirection,
@@ -120,6 +134,7 @@ export const DataTableCell: StyleableFC<DataTableCellProps> = ({
     return (
       <TableCell
         align={align}
+        scope={scope}
         element={Element}
         style={style}
         className={className}
@@ -135,6 +150,10 @@ export const DataTableCell: StyleableFC<DataTableCellProps> = ({
   return (
     <Element
       style={style}
+      {...(sortDirection && {
+        "aria-sort": sortDirection === "asc" ? "ascending" : "descending",
+      })}
+      {...(header && { scope })}
       className={cn(
         "skc-data-table-cell",
         "skc-data-table-cell--header",
