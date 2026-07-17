@@ -117,6 +117,10 @@ Changes to the demo app are documented in
 
 ### Fixed
 
+- **Filter Chip:** the dropdown Menu now inherits the Chip’s label as its
+  accessible name
+- **Menu Item:** the container element no longer exposes an invalid `listitem`
+  role inside Menus
 - **Nav Drawer Item:** `label` prop type corrected from optional to required,
   matching its JSDoc and runtime behavior (the label is always rendered).
 
