@@ -61,21 +61,26 @@ export const TabsContainer: StyleableFC<TabsContainerProps> = ({
 
   const handleTabKeyDown = useArrowKeyFocus(getItems, "horizontal");
 
-  // Ensure at least one Tab is in the tab order when none is selected, per
-  // the ARIA tabs pattern.
+  // Keep exactly one Tab in the tab order: the selected Tab, or the first
+  // Tab when none is selected, per the ARIA tabs pattern. Runs after every
+  // render so the DOM is repaired even after React skips unchanged tabIndex
+  // attributes.
   useEffect(() => {
     const tablist = tablistRef.current;
     if (!tablist) return;
     const tabs = Array.from(
       tablist.querySelectorAll<HTMLElement>('[role="tab"]'),
     );
+    if (!tabs.length) return;
     const hasSelected = tabs.some(
       (tab) => tab.getAttribute("aria-selected") === "true",
     );
-    if (!hasSelected) {
-      tabs.forEach((tab) => (tab.tabIndex = -1));
-      if (tabs.length > 0) tabs[0].removeAttribute("tabIndex");
-    }
+    tabs.forEach((tab, index) => {
+      const isTabStop = hasSelected
+        ? tab.getAttribute("aria-selected") === "true"
+        : index === 0;
+      tab.tabIndex = isTabStop ? 0 : -1;
+    });
   });
 
   return (
