@@ -52,7 +52,7 @@
   }
 
   @media (any-hover: hover) {
-    &:hover {
+    .skc-select:not(.skc-select--disabled) &:hover {
       --_border-color: var(--color-on-surface);
     }
   }
@@ -159,6 +159,18 @@
     .skc-select__label {
       color: var(--color-error);
     }
+  }
+}
+
+.skc-select--disabled {
+  --_border-color: color-mix(in srgb, var(--color-outline) 12%, transparent);
+
+  .skc-select__label,
+  .skc-select__value,
+  .skc-select__icon,
+  .skc-select__leading {
+    opacity: 0.38;
+    color: var(--color-on-surface);
   }
 }
 
