@@ -118,7 +118,7 @@ Changes to the demo app are documented in
 
 ### Fixed
 
-- **App Drawer:** the dialog now announces its name, labelled by its header
+- **App Drawer:** the dialog now announces its name, labeled by its header
 - **Button:** `aria-disabled` is now set while `loading`, and `selected` is
   exposed via `aria-pressed`
 - **Chip:** the selected state is now exposed via `aria-pressed` (affects
@@ -127,8 +127,6 @@ Changes to the demo app are documented in
   sorted
 - **Filter Chip:** the dropdown Menu now inherits the Chip’s label as its
   accessible name
-- **Full-screen Dialog:** the content is now linked to the dialog via
-  `aria-describedby`
 - **Menu Item:** the container element no longer exposes an invalid `listitem`
   role inside Menus
 - **Nav Drawer Item:** `label` prop type corrected from optional to required,
