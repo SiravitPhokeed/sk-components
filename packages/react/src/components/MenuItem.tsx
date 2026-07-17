@@ -162,12 +162,27 @@ export const MenuItem: StyleableFC<MenuItemProps> = ({
     resolvedOnClick = undefined;
   }
 
+  // Whether this Menu Item participates in selection (an option in a Select,
+  // or `selected` explicitly set). Selectable items are `menuitemradio`s and
+  // expose their state via `aria-checked`; `aria-selected` is not valid on
+  // menu item roles.
+  const isSelectable =
+    selected !== undefined || Boolean(selectContext && value);
+  const isSelected =
+    selected === undefined && value ? value === selectContext?.value : selected;
+
   return (
-    <ContainerElement>
+    // Inside a Menu, the container’s implicit listitem role is invalid —
+    // role="menu" only permits menu item, group, and separator children — so
+    // it is hidden from assistive technologies.
+    <ContainerElement role={menuContext ? "none" : undefined}>
       <Interactive
-        role="menuitem"
-        aria-selected={selected}
+        role={isSelectable ? "menuitemradio" : "menuitem"}
+        aria-checked={isSelectable ? Boolean(isSelected) : undefined}
         aria-disabled={disabled}
+        // Inside a Menu, focus is managed by the Menu (moved in on open, then
+        // with arrow keys), so Menu Items stay out of the tab order.
+        tabIndex={menuContext ? -1 : undefined}
         data-value={value}
         href={href}
         onClick={resolvedOnClick}
@@ -176,9 +191,7 @@ export const MenuItem: StyleableFC<MenuItemProps> = ({
         element={element}
         className={cn(
           "skc-menu-item",
-          (selected === undefined && value
-            ? value === selectContext?.value
-            : selected) && "skc-menu-item--selected",
+          isSelected && "skc-menu-item--selected",
           dangerous && "skc-menu-item--dangerous",
           className,
         )}

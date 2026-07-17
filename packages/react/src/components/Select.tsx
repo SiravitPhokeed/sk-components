@@ -98,6 +98,23 @@ export interface SelectProps<
   error?: boolean;
 
   /**
+   * Turns the Select gray and prevents the Menu from opening.
+   *
+   * - Learn how to make disabled elements less frustrating.
+   * - Optional.
+   */
+  disabled?: boolean;
+
+  /**
+   * Tells assistive technologies that an option must be selected, via
+   * `aria-required`.
+   *
+   * - Purely semantic; does not enforce validation by itself.
+   * - Optional.
+   */
+  required?: boolean;
+
+  /**
    * The value of the selected option. This is useful if you want a controlled
    * input.
    *
@@ -135,6 +152,8 @@ const STRINGS = {
  * @param helperMsg A short description of the Select, or an error message during an error state.
  * @param locale Allows for translation of the message shown when there are no options.
  * @param error Tells Select that it contains an invalid value and activates the error state.
+ * @param disabled Turns the Select gray and prevents the Menu from opening.
+ * @param required Tells assistive technologies that an option must be selected, via aria-required.
  * @param value The value of the selected option. This is useful if you want a controlled input.
  * @param onChange Called when the user chooses an option. The value is passed in via the function.
  * @param name The name of the Select, used for form submission.
@@ -148,6 +167,8 @@ export const Select = <Value extends string = string>({
   helperMsg,
   locale = "en-US",
   error,
+  disabled,
+  required,
   value,
   onChange,
   element = "button",
@@ -164,10 +185,18 @@ export const Select = <Value extends string = string>({
 
   const triggerRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLUListElement>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const menu = document.getElementById(menuId) as HTMLUListElement;
     menuRef.current = menu;
     updateDisplayedValue(resolvedValue);
+
+    // Track the Menu’s popover state to expose it on the trigger via
+    // `aria-expanded`.
+    const handleToggle = (event: Event) =>
+      setMenuOpen((event as ToggleEvent).newState === "open");
+    menu?.addEventListener("toggle", handleToggle);
+    return () => menu?.removeEventListener("toggle", handleToggle);
   }, []);
 
   const [displayedValue, setDisplayedValue] = useState<ReactNode>(null);
@@ -217,6 +246,7 @@ export const Select = <Value extends string = string>({
           "skc-select",
           `skc-select--${appearance}`,
           error && "skc-select--error",
+          disabled && "skc-select--disabled",
           className,
         )}
         style={{ anchorName, ...style }}
@@ -235,7 +265,15 @@ export const Select = <Value extends string = string>({
         <Interactive
           ref={triggerRef}
           aria-labelledby={id}
-          {...(children && { command: "show-popover", commandfor: menuId })}
+          aria-haspopup="menu"
+          aria-expanded={menuOpen}
+          aria-controls={children ? menuId : undefined}
+          aria-disabled={disabled || undefined}
+          aria-required={required || undefined}
+          aria-invalid={error || undefined}
+          aria-describedby={helperMsg ? `${id}-helper` : undefined}
+          {...(children &&
+            !disabled && { command: "show-popover", commandfor: menuId })}
           element={element}
           className="skc-select__box"
         >
@@ -246,12 +284,16 @@ export const Select = <Value extends string = string>({
           <MaterialIcon icon="arrow_drop_down" className="skc-select__icon" />
         </Interactive>
 
-        <Text type="body-small" className="skc-select__helper-msg">
+        <Text
+          id={`${id}-helper`}
+          type="body-small"
+          className="skc-select__helper-msg"
+        >
           {helperMsg}
         </Text>
       </div>
 
-      <Menu id={menuId} anchor={anchorName} density={-2}>
+      <Menu id={menuId} alt={label} anchor={anchorName} density={-2}>
         <SelectContext.Provider
           value={{
             value: resolvedValue,

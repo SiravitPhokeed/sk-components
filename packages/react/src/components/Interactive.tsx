@@ -73,6 +73,7 @@ export const Interactive: StyleableFC<
   commandfor,
   onClick,
   href,
+  onKeyDown,
   element: Element = href
     ? "a"
     : onClick || command || commandfor
@@ -85,6 +86,18 @@ export const Interactive: StyleableFC<
   const rippleContainerRef = useRef<HTMLSpanElement>(null);
   const [touched, setTouched] = useState(false);
   const isLink = href !== undefined || Element === "a";
+
+  const isActionable =
+    onClick !== undefined ||
+    href !== undefined ||
+    command !== undefined ||
+    commandfor !== undefined;
+
+  // Native interactive elements (and custom components, which are assumed to
+  // render one) handle focus and keyboard activation themselves; generic
+  // elements like `<div>` need `role`, `tabIndex`, and key handling added.
+  const isNativelyInteractive =
+    typeof Element !== "string" || ["button", "a"].includes(Element);
 
   /**
    * Get the position of the ripple relative to the ripple container.
@@ -149,7 +162,10 @@ export const Interactive: StyleableFC<
 
   return (
     <Element
-      tabIndex={0}
+      // Native elements are focusable and announce their own role; generic
+      // elements made actionable need both filled in.
+      {...(!isNativelyInteractive &&
+        isActionable && { role: "button", tabIndex: 0 })}
       {...(Element === "button" && { type: "button" })}
       onTouchStart={(event: React.TouchEvent) => {
         setTouched(true);
@@ -168,10 +184,23 @@ export const Interactive: StyleableFC<
       onMouseUp={endRipple}
       onMouseLeave={endRipple}
       onKeyDown={(event: React.KeyboardEvent) => {
-        // Disallow ripple effect on spacebar for links, since it scrolls the
-        // page instead of activating the link.
+        // The `button | a` union makes the consumer handler demand an
+        // intersection event type; the runtime event is always correct for
+        // whichever element was rendered.
+        (onKeyDown as React.KeyboardEventHandler | undefined)?.(event);
+        // Disallow activation and ripple effect on spacebar for links, since
+        // it scrolls the page instead of activating the link.
         const allowedKeys = [`Enter`, ...(!isLink ? [` `] : [])];
-        if (!allowedKeys.includes(event.key) || touched) return;
+        if (!allowedKeys.includes(event.key) || event.defaultPrevented) return;
+
+        // Native elements fire `click` on Enter/Space themselves; generic
+        // elements need activation synthesized for keyboard support.
+        if (!isNativelyInteractive && isActionable) {
+          event.preventDefault(); // Prevent spacebar from scrolling the page.
+          onClick?.();
+        }
+
+        if (touched) return;
         if (!rippleContainerRef?.current) return;
         const rect = rippleContainerRef.current.getBoundingClientRect();
         startRipple(rect.width / 2, rect.height / 2);

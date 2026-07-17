@@ -39,8 +39,11 @@ Changes to the demo app are documented in
   - **List Item:** `containerElement`
   - **Material Icon:** `alt` for accessibility labels, and `directional` to
     auto-flip icons in RTL
+  - **Menu:** `alt` for an accessible name
   - **Menu Item:** `containerElement`, and `dangerous` for destructive actions
   - **Search:** `hotkey` for keyboard shortcut to focus the field
+  - **Select:** `disabled`, and `required` to mark a required field for
+    assistive technologies
   - **Split Layout:** `prefer` for the pane to show on mobile
   - **Table Cell:** `colSpan` and `rowSpan`
   - **Text:** `id`
@@ -70,8 +73,18 @@ Changes to the demo app are documented in
   - **FAB:** now a direct child of Root Layout instead of a Nav Bar prop
   - **Filter Chip:** `menu` now takes a Fragment of Menu Items instead of a Menu
     component
+  - **Interactive:** generic elements (like `div`) with a click action are now
+    keyboard operable with a `button` role, and elements without an action are
+    no longer focusable
+  - **Menu:** focus now moves into the Menu on open and returns to the trigger
+    on close, and arrow keys navigate between Menu Items
+  - **Menu Item:** selectable items now use the `menuitemradio` role with
+    `aria-checked` instead of the invalid `aria-selected`
   - **Radio:** `value` changed from `boolean` (checked state) to `string`
     (submission value). `checked` introduced for controlled state.
+  - **Select:** the trigger now exposes its state to assistive technologies
+    (`aria-expanded`, `aria-invalid`, `aria-required`, and the helper message
+    via `aria-describedby`)
   - **Select, Menu Item:** `value` type narrowed from `any` to `string`
   - **Snackbar** is now managed internally via `snackbar.push()` or
     `snackbar.promise()`
@@ -104,6 +117,10 @@ Changes to the demo app are documented in
 
 ### Fixed
 
+- **Filter Chip:** the dropdown Menu now inherits the Chip’s label as its
+  accessible name
+- **Menu Item:** the container element no longer exposes an invalid `listitem`
+  role inside Menus
 - **Nav Drawer Item:** `label` prop type corrected from optional to required,
   matching its JSDoc and runtime behavior (the label is always rendered).
 

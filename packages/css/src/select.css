@@ -14,7 +14,7 @@
 
   position: relative;
 
-  &:focus-within {
+  &:has(.skc-select__box:focus-visible) {
     --_border-width: 3px;
   }
 }
@@ -29,7 +29,7 @@
   color: var(--color-on-surface-variant);
   font-family: var(--font-display);
 
-  .skc-select:focus-within & {
+  .skc-select:has(.skc-select__box:focus-visible) & {
     color: var(--color-primary);
   }
 }
@@ -50,14 +50,18 @@
   &:focus-visible {
     outline: none;
   }
+}
 
+/* Hover and focus border colors share specificity so that focus, declared
+   later, always wins when both apply. Disabled re-adds its focus color
+   below. */
+.skc-select:not(.skc-select--disabled) .skc-select__box {
   @media (any-hover: hover) {
     &:hover {
       --_border-color: var(--color-on-surface);
     }
   }
 
-  &:focus,
   &:focus-visible {
     --_border-color: var(--color-primary);
     animation: none;
@@ -159,6 +163,22 @@
     .skc-select__label {
       color: var(--color-error);
     }
+  }
+}
+
+.skc-select--disabled {
+  --_border-color: color-mix(in srgb, var(--color-outline) 12%, transparent);
+
+  .skc-select__box:focus-visible {
+    --_border-color: var(--color-primary);
+  }
+
+  .skc-select__label,
+  .skc-select__value,
+  .skc-select__icon,
+  .skc-select__leading {
+    opacity: 0.38;
+    color: var(--color-on-surface);
   }
 }
 

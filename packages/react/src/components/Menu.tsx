@@ -3,6 +3,8 @@
 import { useAnchorContext } from "@/components/Anchor";
 import { useAnimatedPopover } from "@/hooks/useAnimatedPopover";
 import cn from "@/lib/helpers/cn";
+import useArrowKeyFocus from "@/lib/hooks/useArrowKeyFocus";
+import usePopoverFocus from "@/lib/hooks/usePopoverFocus";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/menu.css";
 import type { CSSProperties, ReactNode } from "react";
@@ -40,6 +42,15 @@ export interface MenuProps extends ElementCustomizableProps {
    * - Optional. Defaults to an auto-generated ID.
    */
   id?: string;
+
+  /**
+   * A description of the Menu for screen readers, similar to `alt` on
+   * `<img>`.
+   *
+   * - Required if the Menu’s purpose isn’t clear from its trigger, or if
+   *   multiple Menus exist in the same context.
+   */
+  alt?: string;
 
   /**
    * The anchor name (dashed-ident) for CSS Anchor Positioning.
@@ -86,6 +97,7 @@ export interface MenuProps extends ElementCustomizableProps {
  *
  * @param children Menu Items and other content inside the Menu.
  * @param id The ID of the popover element, for Invoker Commands API support.
+ * @param alt A description of the Menu for screen readers, similar to `alt` on `<img>`.
  * @param anchor The anchor name (dashed-ident) for CSS Anchor Positioning.
  * @param open If the Menu is open and shown.
  * @param density A lower number means a more dense interface. In this case, less height.
@@ -94,6 +106,7 @@ export interface MenuProps extends ElementCustomizableProps {
 export const Menu: StyleableFC<MenuProps> = ({
   children,
   id: requestedId,
+  alt,
   anchor,
   open,
   density,
@@ -127,6 +140,20 @@ export const Menu: StyleableFC<MenuProps> = ({
     else if (!open && popover.matches(":popover-open")) close();
   }, [open, close]);
 
+  /** Gets the focusable (non-disabled) Menu Items inside the Menu. */
+  const getItems = () =>
+    Array.from(
+      ref.current?.querySelectorAll<HTMLElement>(
+        '.skc-menu-item:not([aria-disabled="true"])',
+      ) ?? [],
+    );
+
+  // Manage focus per the ARIA menu pattern: focus moves onto the first Menu
+  // Item when the Menu opens and returns to the trigger when it closes, and
+  // arrow keys move focus between Menu Items.
+  usePopoverFocus(ref, () => getItems()[0]);
+  const handleArrowKeyFocus = useArrowKeyFocus(getItems);
+
   return (
     <MenuContext.Provider value={{ menuID, close }}>
       <Element
@@ -134,6 +161,13 @@ export const Menu: StyleableFC<MenuProps> = ({
         ref={ref}
         popover="manual"
         role="menu"
+        aria-label={alt}
+        onKeyDown={(event: React.KeyboardEvent) => {
+          // Tab is not part of the menu pattern — close the Menu and let
+          // focus move on from it.
+          if (event.key === "Tab") close();
+          else handleArrowKeyFocus(event);
+        }}
         {...popoverProps}
         className={cn(
           "skc-menu",

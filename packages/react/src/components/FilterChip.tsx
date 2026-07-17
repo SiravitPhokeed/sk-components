@@ -154,7 +154,14 @@ export const FilterChip: StyleableFC<FilterChipProps> = ({
       </Chip>
 
       {menu && (
-        <Menu id={menuId} anchor={anchorName} density={-2}>
+        <Menu
+          id={menuId}
+          // The Chip’s label doubles as the Menu’s description for screen
+          // readers, so multiple Filter Chip Menus are distinguishable.
+          alt={typeof children === "string" ? children : undefined}
+          anchor={anchorName}
+          density={-2}
+        >
           {menu}
         </Menu>
       )}
