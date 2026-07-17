@@ -46,9 +46,9 @@ export interface ChipProps
   tooltip?: string;
 
   /**
-   * Use elevation instead of an outline to signify the Chip's boundary.
+   * Use elevation instead of an outline to signify the Chip’s boundary.
    *
-   * - **Important**: do not use this prop if you don't have to. Only elevate
+   * - **Important**: do not use this prop if you don’t have to. Only elevate
    *   a Chip when its placement requires visual protection, such as on top of
    *   an image.
    * - Optional.
