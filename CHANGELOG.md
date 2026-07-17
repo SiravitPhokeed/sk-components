@@ -39,7 +39,7 @@ Changes to the demo app are documented in
   - **List Item:** `containerElement`
   - **Material Icon:** `alt` for accessibility labels, and `directional` to
     auto-flip icons in RTL
-  - **Menu:** `label` for an accessible name
+  - **Menu:** `alt` for an accessible name
   - **Menu Item:** `containerElement`, and `dangerous` for destructive actions
   - **Search:** `hotkey` for keyboard shortcut to focus the field
   - **Select:** `disabled`, and `required` to mark a required field for

@@ -44,14 +44,13 @@ export interface MenuProps extends ElementCustomizableProps {
   id?: string;
 
   /**
-   * A descriptive name for the Menu, read by screen readers when focus moves
-   * into the Menu.
+   * A description of the Menu for screen readers, similar to `alt` on
+   * `<img>`.
    *
-   * - Set this when the Menu’s purpose isn’t clear from its trigger, or when
+   * - Required if the Menu’s purpose isn’t clear from its trigger, or if
    *   multiple Menus exist in the same context.
-   * - Optional.
    */
-  label?: string;
+  alt?: string;
 
   /**
    * The anchor name (dashed-ident) for CSS Anchor Positioning.
@@ -98,7 +97,7 @@ export interface MenuProps extends ElementCustomizableProps {
  *
  * @param children Menu Items and other content inside the Menu.
  * @param id The ID of the popover element, for Invoker Commands API support.
- * @param label A descriptive name for the Menu, read by screen readers when focus moves into the Menu.
+ * @param alt A description of the Menu for screen readers, similar to `alt` on `<img>`.
  * @param anchor The anchor name (dashed-ident) for CSS Anchor Positioning.
  * @param open If the Menu is open and shown.
  * @param density A lower number means a more dense interface. In this case, less height.
@@ -107,7 +106,7 @@ export interface MenuProps extends ElementCustomizableProps {
 export const Menu: StyleableFC<MenuProps> = ({
   children,
   id: requestedId,
-  label,
+  alt,
   anchor,
   open,
   density,
@@ -162,7 +161,7 @@ export const Menu: StyleableFC<MenuProps> = ({
         ref={ref}
         popover="manual"
         role="menu"
-        aria-label={label}
+        aria-label={alt}
         onKeyDown={(event: React.KeyboardEvent) => {
           // Tab is not part of the menu pattern — close the Menu and let
           // focus move on from it.
