@@ -135,6 +135,9 @@ export const DataTableCell: StyleableFC<DataTableCellProps> = ({
   return (
     <Element
       style={style}
+      {...(sortDirection && {
+        "aria-sort": sortDirection === "asc" ? "ascending" : "descending",
+      })}
       className={cn(
         "skc-data-table-cell",
         "skc-data-table-cell--header",
