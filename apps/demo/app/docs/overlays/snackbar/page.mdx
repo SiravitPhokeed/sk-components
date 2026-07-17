@@ -141,6 +141,8 @@ await snackbar.promise("Deleting items…", () =>
       Time in milliseconds until the Snackbar exits automatically.
 
       - Incompatible with `persistent`.
+      - The timer pauses while the user hovers or focuses the Snackbar
+        (WCAG 2.2.1). It restarts fresh when the pointer or focus leaves.
       - Defaults to 6000 (6 seconds).
       - Optional.
 
@@ -155,6 +157,8 @@ await snackbar.promise("Deleting items…", () =>
   <VersionsTableRow version="v4.0.0">
     `snackbar.push()` and `snackbar.promise()` introduced. Managed internally
     via imperative APIs. Redundant `aria-live` removed. Animations revised.
+    Message announced to screen readers via a persistent live region. Timer
+    pauses on hover or focus (WCAG 2.2.1).
   </VersionsTableRow>
   <VersionsTableRow version="v3.0.0">
     Rewritten as controlled component with `open` and `onClose`. `text` renamed
