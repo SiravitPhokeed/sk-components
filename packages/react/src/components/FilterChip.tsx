@@ -125,13 +125,15 @@ export const FilterChip: StyleableFC<FilterChipProps> = ({
   const resolvedCommandFor = commandfor ?? (menu ? menuId : undefined);
 
   const [menuOpen, setMenuOpen] = useState(false);
+  // Re-attach when the Menu appears or disappears, so a Menu added after
+  // mount is still tracked.
   useEffect(() => {
     const menuElement = document.getElementById(menuId);
     const handleToggle = (event: Event) =>
       setMenuOpen((event as ToggleEvent).newState === "open");
     menuElement?.addEventListener("toggle", handleToggle);
     return () => menuElement?.removeEventListener("toggle", handleToggle);
-  }, []);
+  }, [menu !== undefined]);
 
   return (
     <>
