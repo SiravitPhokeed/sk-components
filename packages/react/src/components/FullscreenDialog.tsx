@@ -180,7 +180,12 @@ export const FullscreenDialog: StyleableFC<FullscreenDialogProps> = ({
         </div>
 
         {/* Content */}
-        <div id={`${dialogID}-content`} className="skc-fullscreen-dialog__content">{children}</div>
+        <div
+          id={`${dialogID}-content`}
+          className="skc-fullscreen-dialog__content"
+        >
+          {children}
+        </div>
       </FullscreenDialogContext.Provider>
     </dialog>
   );

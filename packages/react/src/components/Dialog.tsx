@@ -5,7 +5,14 @@ import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/dialog.css";
 import type { CSSProperties, ReactNode } from "react";
-import { createContext, useContext, useEffect, useId, useRef, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+} from "react";
 
 const DialogContext = createContext<{
   dialogID: string;
@@ -125,7 +132,9 @@ export const Dialog: StyleableFC<DialogProps> = ({
   }, [open, close]);
 
   return (
-    <DialogContext.Provider value={{ dialogID, onClose, hasTitle, setHasTitle }}>
+    <DialogContext.Provider
+      value={{ dialogID, onClose, hasTitle, setHasTitle }}
+    >
       <Element
         id={dialogID}
         ref={dialogRef}

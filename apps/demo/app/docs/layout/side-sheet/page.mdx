@@ -85,10 +85,26 @@ A trigger button can open the Side Sheet via the Invoker Commands API.
       </TableCell>
 
   </PropsTableRow>
+
+  <PropsTableRow prop="alt" required="conditional">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A description of the Side Sheet for screen readers, similar to `alt` on
+      `<img>`.
+
+      - Required if the Side Sheet's purpose isn't clear from its trigger, or if
+        multiple Side Sheets exist in the same context.
+
+      </TableCell>
+
+  </PropsTableRow>
 </PropsTable>
 
 ### Version changes
 
 <VersionsTable>
-  <VersionsTableRow version="v4.0.0">Side Sheet introduced.</VersionsTableRow>
+  <VersionsTableRow version="v4.0.0">
+    Side Sheet introduced. `alt` and `aria-modal` added.
+  </VersionsTableRow>
 </VersionsTable>
