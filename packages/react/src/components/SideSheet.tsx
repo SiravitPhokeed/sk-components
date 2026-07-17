@@ -32,7 +32,7 @@ export interface SideSheetProps {
    * A description of the Side Sheet for screen readers, similar to `alt` on
    * `<img>`.
    *
-   * - Required if the Side Sheet's purpose isn't clear from its trigger, or if
+   * - Required if the Side Sheet’s purpose isn’t clear from its trigger, or if
    *   multiple Side Sheets exist in the same context.
    */
   alt?: string;
