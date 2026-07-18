@@ -25,14 +25,14 @@ Changes to the demo app are documented in
   `FormData`
 - `locale` support on Full-screen Dialog and Input Chip
 - RTL support
+- `alt` prop on Avatar, Checkbox, Data Table Content, Data Table Search,
+  Navigation Bar, Navigation Bar Item, Search, Switch, and Table for
+  accessible names when used without a visible label
 - Keyboard navigation and focus management for complex widgets: arrow-key
   navigation in Menu and Tabs Container, automatic focus on Menu and Dialog
   open with return to trigger on close, and Snackbar timer that pauses on
   hover or focus (WCAG 2.2.1)
 - Component-specific additions:
-  - `alt` prop on Avatar, Checkbox, Data Table Content, Data Table Search,
-    Navigation Bar, Navigation Bar Item, Search, Switch, and Table for
-    accessible names when used without a visible label
   - **Button:** `autoFocus`, `type`
   - **Card Header**: `truncate`
   - **Chip:** native HTML attributes are now forwarded to the underlying
@@ -40,7 +40,7 @@ Changes to the demo app are documented in
   - **Chip Field:** `required`
   - **Data Table Body, Data Table Head:** `align` for text alignment
   - **Data Table Head:** `colSpans` for column spanning
-  - **DataTableFilters:** `role="group"` and `alt` for the filter Chip Set
+  - **Data Table Filters:** `role="group"` and `alt` for the filter Chip Set
   - **Dialog:** `alt` for an accessible name when Dialog Header has no title
   - **Dialog, Full-screen Dialog, Menu:** uncontrolled mode via Invoker Commands
     API (`id`)

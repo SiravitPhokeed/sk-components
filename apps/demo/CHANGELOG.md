@@ -13,6 +13,8 @@ Versions track the root library releases.
   page discovered in `app/`, and robots.txt points crawlers to it
 - **Documentation site** at `/docs` with component reference, guides, and
   migration guides rendered from MDX
+- **Standalone Switch labels** — the theming and RTL Switches in the Features
+  section now use the new `alt` prop for accessible names
 - **Text Field demo** uses the new `name` prop for uncontrolled form submission
   with `<form>` and `FormData`
 
