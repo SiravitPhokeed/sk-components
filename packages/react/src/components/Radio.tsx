@@ -72,7 +72,7 @@ export const Radio = <Value extends string = string>({
   checked,
   onChange,
   disabled,
-  element = "label",
+  element,
   className,
   style,
 }: StyleableProps & RadioProps<Value>): ReactNode => {
@@ -84,10 +84,14 @@ export const Radio = <Value extends string = string>({
   // Resolution: own name > Form Item > Form Group
   const resolvedName = name ?? formItemName ?? formGroupName;
 
+  // Avoid nested <label> when inside FormItem (which is already a <label>).
+  const resolvedElement =
+    element ?? (formItemContext ? "div" : "label");
+
   return (
     <Interactive
       tabIndex={undefined}
-      element={element}
+      element={resolvedElement}
       className={cn("skc-radio", disabled && "skc-radio--disabled", className)}
       style={style}
     >
