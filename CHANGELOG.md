@@ -37,7 +37,7 @@ Changes to the demo app are documented in
   - **Card Header**: `level` for heading levels, `truncate`
   - **Chip:** native HTML attributes are now forwarded to the underlying
     element
-  - **Chip Field:** `required`
+  - **Chip Field:** `chipStatus`, `required`
   - **Data Table Body, Data Table Head:** `align` for text alignment
   - **Data Table Head:** `colSpans` for column spanning
   - **Data Table Filters:** `role="group"` and `alt` for the filter Chip Set
@@ -165,8 +165,10 @@ Changes to the demo app are documented in
 - **Tab:** `alt` now sets `aria-label` instead of leaking as an invalid HTML
   attribute
 - **Chip Field:** `aria-required` communicates the requirement to assistive
-  technologies, and the "Backspace again to delete" warning is announced via a
-  live region
+  technologies, the "Backspace again to delete" warning is announced via a
+  live region, and the input now announces how many chips are currently
+  added when it receives focus. The Progress loading bar also now properly
+  announces itself to VoiceOver.
 - **Data Table Pagination:** page changes are announced to screen readers via a
   live region
 

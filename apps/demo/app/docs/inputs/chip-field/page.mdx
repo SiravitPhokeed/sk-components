@@ -322,12 +322,27 @@ colors.map((color) => (
       </TableCell>
 
   </PropsTableRow>
+  <PropsTableRow prop="chipStatus" required="never">
+    <TableCell>`ReactNode | false`</TableCell>
+    <TableCell>
+
+      Describes the current state of the Chip Set for screen readers — for
+      example, &#x201C;5 chips added.&#x201D; This is linked to the input via
+      `aria-describedby` so it is announced when the input receives focus.
+
+      - Auto-computed from the Chip Set&#x2019;s child count when omitted.
+      - Set to `false` to suppress the chip status entirely.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
 </PropsTable>
 
 ### Version changes
 
 <VersionsTable>
-  <VersionsTableRow version="v4.0.0">`required` introduced.</VersionsTableRow>
+  <VersionsTableRow version="v4.0.0">`chipStatus` and `required` introduced.</VersionsTableRow>
   <VersionsTableRow version="v3.2.1">
     Helper text support added.
   </VersionsTableRow>
