@@ -105,12 +105,14 @@
   }
 }
 
-/* Desktop: all FABs render as standard with no label */
+/* Desktop: FAB labels are visually hidden but remain accessible to
+   screen readers. */
 @media (width >= 38rem) {
   .skc-fab {
     transform-origin: center;
   }
 
+  /* Screen reader–only: keeps the label accessible while visually hidden */
   .skc-fab__label {
     position: absolute;
     margin: -1px;
