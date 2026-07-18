@@ -100,6 +100,8 @@ await snackbar.promise("Deleting items…", () =>
     <TableCell>
 
       A Snackbar can contain 1 action. Pressing this action closes the Snackbar.
+      When provided, focus automatically moves to the action button when the
+      Snackbar opens, and returns to the previous element when it closes.
 
       - Must contain 1 Button with text appearance.
       - Optional.
@@ -141,8 +143,10 @@ await snackbar.promise("Deleting items…", () =>
       Time in milliseconds until the Snackbar exits automatically.
 
       - Incompatible with `persistent`.
-      - The timer pauses while the user hovers or focuses the Snackbar
-        (WCAG 2.2.1). It restarts fresh when the pointer or focus leaves.
+      - The timer pauses while the user hovers over the Snackbar (WCAG 2.2.1),
+        then restarts fresh when the pointer leaves.
+      - If an `action` is provided, focus moves to the action button when the
+        Snackbar opens, and returns to the previous element when it closes.
       - Defaults to 6000 (6 seconds).
       - Optional.
 

@@ -59,8 +59,10 @@ export interface SnackbarProps {
    * Time in milliseconds until the Snackbar exits automatically.
    *
    * - Incompatible with `persistent`.
-   * - The timer pauses while the user hovers or focuses the Snackbar
-   *   (WCAG 2.2.1). It restarts fresh when the pointer or focus leaves.
+   * - The timer pauses while the user hovers over the Snackbar (WCAG 2.2.1),
+   *   then restarts fresh when the pointer leaves.
+   * - If an `action` is provided, focus moves to the action button when the
+   *   Snackbar opens, and returns to the previous element when it closes.
    * - Defaults to 6000 (6 seconds).
    * - Optional.
    *
@@ -113,9 +115,36 @@ export const Snackbar: StyleableFC<SnackbarProps> = ({
     if (popover && !popover.matches(":popover-open")) popover.showPopover();
   }, []);
 
+  // Focus the action button when the Snackbar opens, then restore previous
+  // focus on close.
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    if (!action) return;
+    const el = ref.current;
+    if (!el) return;
+
+    const handleToggle = (event: Event) => {
+      const toggleEvent = event as ToggleEvent;
+      if (toggleEvent.newState === "open") {
+        previousFocusRef.current = document.activeElement as HTMLElement | null;
+        const actionBtn = el.querySelector<HTMLElement>(
+          ".skc-snackbar__action .skc-button, .skc-snackbar__action button",
+        );
+        requestAnimationFrame(() => actionBtn?.focus());
+      }
+      if (toggleEvent.newState === "closed") {
+        previousFocusRef.current?.focus();
+        previousFocusRef.current = null;
+      }
+    };
+
+    el.addEventListener("toggle", handleToggle);
+    return () => el.removeEventListener("toggle", handleToggle);
+  }, [action]);
+
   // Auto-dismiss after the configured duration (unless persistent).
-  // Per WCAG 2.2.1, the timer pauses while the user hovers or focuses the
-  // Snackbar and restarts fresh when the pointer/focus leaves.
+  // Per WCAG 2.2.1, the timer pauses while the user hovers over the
+  // Snackbar and restarts fresh when the pointer leaves.
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const clearTimer = useCallback(() => {
@@ -142,13 +171,7 @@ export const Snackbar: StyleableFC<SnackbarProps> = ({
   }, [persistent, autoDismissDurationMs, startTimer, clearTimer]);
 
   const handleMouseEnter = () => clearTimer();
-  const handleMouseLeave = () => {
-    if (!ref.current?.contains(document.activeElement)) startTimer();
-  };
-  const handleFocusIn = () => clearTimer();
-  const handleFocusOut = (e: React.FocusEvent) => {
-    if (!ref.current?.contains(e.relatedTarget as Node | null)) startTimer();
-  };
+  const handleMouseLeave = () => startTimer();
 
   return (
     <div
@@ -157,8 +180,6 @@ export const Snackbar: StyleableFC<SnackbarProps> = ({
       popover="manual"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onFocus={handleFocusIn}
-      onBlur={handleFocusOut}
       {...popoverProps}
       className={cn(
         "skc-snackbar",
