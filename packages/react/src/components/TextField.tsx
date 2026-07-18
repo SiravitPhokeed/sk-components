@@ -308,10 +308,11 @@ export const TextField = <Value extends string | File = string>({
           disabled={disabled}
           required={required}
           value={value}
-          // Defaulting to a space so the `:not(:placeholder-shown)` trick for
-          // detecting input value works even if the user doesn't provide a
-          // placeholder.
-          placeholder={PLACEHOLDER_BY_TYPE.get(type) ?? " "}
+          // A non-empty placeholder so the `:not(:placeholder-shown)` trick
+          // for detecting input value works even without a consumer-provided
+          // placeholder. U+200B (zero-width space) is invisible to screen
+          // readers.
+          placeholder={PLACEHOLDER_BY_TYPE.get(type) ?? "\u200B"}
           pattern={PATTERN_BY_TYPE.get(type)}
           onChange={(e) => {
             if (type === "file") {
