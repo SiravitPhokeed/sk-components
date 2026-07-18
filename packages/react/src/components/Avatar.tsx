@@ -21,31 +21,54 @@ export interface AvatarProps extends ElementCustomizableProps {
    * - Optional.
    */
   children?: ReactNode;
+
+  /**
+   * A description of the Avatar for screen readers, similar to `alt` on
+   * `<img>`.
+   *
+   * - Set this when the Avatar conveys meaningful information (e.g., the
+   *   user’s name). When omitted, the Avatar is treated as decorative and
+   *   hidden from assistive technologies, unless `children` is a string
+   *   (initials), which is used as the accessible name.
+   * - Optional.
+   */
+  alt?: string;
 }
 
 /**
  * An avatar represents the user, whether by their initials or their picture.
  *
  * @param children A user’s initials or their profile image.
+ * @param alt A description of the Avatar for screen readers, similar to `alt` on `<img>`.
  */
 export const Avatar: StyleableFC<AvatarProps> = ({
   children,
+  alt,
   element: Element = "div",
   style,
   className,
-}) => (
-  <Element className={cn("skc-avatar", className)} style={style}>
-    {typeof children === "string" ? (
-      // User initials
-      <Text type="title-medium" className="skc-avatar__initials">
-        {children}
-      </Text>
-    ) : children ? (
-      // User profile picture
-      children
-    ) : (
-      // Placeholder avatar
-      <AvatarPlaceholder />
-    )}
-  </Element>
-);
+}) => {
+  const isDecorative = !alt && typeof children !== "string";
+
+  return (
+    <Element
+      aria-label={alt}
+      aria-hidden={isDecorative || undefined}
+      className={cn("skc-avatar", className)}
+      style={style}
+    >
+      {typeof children === "string" ? (
+        // User initials
+        <Text type="title-medium" className="skc-avatar__initials">
+          {children}
+        </Text>
+      ) : children ? (
+        // User profile picture
+        children
+      ) : (
+        // Placeholder avatar
+        <AvatarPlaceholder />
+      )}
+    </Element>
+  );
+};

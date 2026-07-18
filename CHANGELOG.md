@@ -30,6 +30,9 @@ Changes to the demo app are documented in
   open with return to trigger on close, and Snackbar timer that pauses on
   hover or focus (WCAG 2.2.1)
 - Component-specific additions:
+  - `alt` prop on Avatar, Checkbox, Data Table Content, Data Table Search,
+    Navigation Bar, Navigation Bar Item, Search, Switch, and Table for
+    accessible names when used without a visible label
   - **Button:** `autoFocus`, `type`
   - **Card Header**: `truncate`
   - **Chip:** native HTML attributes are now forwarded to the underlying
@@ -37,6 +40,7 @@ Changes to the demo app are documented in
   - **Chip Field:** `required`
   - **Data Table Body, Data Table Head:** `align` for text alignment
   - **Data Table Head:** `colSpans` for column spanning
+  - **DataTableFilters:** `role="group"` and `alt` for the filter Chip Set
   - **Dialog:** `alt` for an accessible name when Dialog Header has no title
   - **Dialog, Full-screen Dialog, Menu:** uncontrolled mode via Invoker Commands
     API (`id`)
@@ -93,6 +97,9 @@ Changes to the demo app are documented in
   - **Select:** the trigger now exposes its state to assistive technologies
     (`aria-expanded`, `aria-invalid`, `aria-required`, and the helper message
     via `aria-describedby`)
+  - **Text Field:** disabled fields now stay focusable and discoverable via
+    `readOnly` + `aria-disabled` instead of native `disabled`, except for file
+    and color types where `readOnly` has no effect per the HTML spec
   - **Select, Menu Item:** `value` type narrowed from `any` to `string`
   - **Snackbar** is now managed internally via `snackbar.push()` or
     `snackbar.promise()`

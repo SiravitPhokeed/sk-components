@@ -13,6 +13,16 @@ import { useState } from "react";
  */
 export interface CheckboxProps extends ElementCustomizableProps {
   /**
+   * A description of the Checkbox for screen readers, similar to `alt` on
+   * `<img>`.
+   *
+   * - Set this when using a Checkbox without Form Item, so the Checkbox still
+   *   has an accessible name for assistive technologies.
+   * - Optional if inside a Form Item.
+   */
+  alt?: string;
+
+  /**
    * The name of the Checkbox, used for form submission. If not provided, falls
    * back to the parent Form Item’s `name`.
    *
@@ -58,12 +68,14 @@ export interface CheckboxProps extends ElementCustomizableProps {
  * typically handles acknowledgments or agreements — like accepting terms and
  * conditions.
  *
+ * @param alt A description of the Checkbox for screen readers, similar to `alt` on `<img>`.
  * @param value The state of the Checkbox. This is useful if you want a controlled input.
  * @param onChange Called when the user toggles the Checkbox.
  * @param disabled Turns the Checkbox gray and blocks any action associated with it.
  * @param tristate Allows the Checkbox to have 3 states: off, on, and indeterminate.
  */
 export const Checkbox: StyleableFC<CheckboxProps> = ({
+  alt,
   name,
   value,
   onChange,
@@ -95,6 +107,7 @@ export const Checkbox: StyleableFC<CheckboxProps> = ({
         role="checkbox"
         aria-checked={resolvedValue === null ? "mixed" : resolvedValue}
         aria-disabled={disabled}
+        aria-label={alt}
         onClick={() => {
           if (!disabled) resolvedOnChange(!resolvedValue);
         }}

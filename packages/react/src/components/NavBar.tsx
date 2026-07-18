@@ -12,6 +12,14 @@ import type { ReactNode } from "react";
  */
 export interface NavBarProps extends ElementCustomizableProps {
   /**
+   * A description of the Navigation Bar for screen readers, similar to `alt`
+   * on `<img>`. Applied as `aria-label` on the `<nav>` element.
+   *
+   * - Optional.
+   */
+  alt?: string;
+
+  /**
    * A Navigation Bar contains Navigation Bar Items, each leading to a
    * different top-level page. These pages should only be navigated to from
    * the Navigation Bar and the Navigation Drawer.
@@ -59,12 +67,14 @@ const STRINGS = {
  * A Navigation Bar provides persistent access to all top-level pages. On larger
  * screens, it transforms into a Navigation Rail.
  *
+ * @param alt A description of the Navigation Bar for screen readers, similar to `alt` on `<img>`.
  * @param children A Navigation Bar contains Navigation Bar Items, each leading to a different top-level page.
  * @param end More Navigation Items can be placed on the bottom of the Navigation Rail on larger screens.
  * @param locale Allows for translation of the accessibility labels.
  * @param onNavToggle The function called when the user clicks on the navigation Button.
  */
 export const NavBar: StyleableFC<NavBarProps> = ({
+  alt,
   children,
   end,
   locale = "en-US",
@@ -73,7 +83,11 @@ export const NavBar: StyleableFC<NavBarProps> = ({
   style,
   className,
 }) => (
-  <Element className={cn("skc-nav-bar", className)} style={style}>
+  <Element
+    aria-label={alt}
+    className={cn("skc-nav-bar", className)}
+    style={style}
+  >
     <div className="skc-nav-bar__content">
       <Button
         appearance="text"

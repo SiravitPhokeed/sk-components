@@ -15,6 +15,14 @@ export interface DataTableFiltersProps extends ElementCustomizableProps {
    * - Always required.
    */
   children: ReactNode;
+
+  /**
+   * A description of the filters group for screen readers, applied as
+   * `aria-label` on a `role="group"` container.
+   *
+   * - Optional.
+   */
+  alt?: string;
 }
 
 /**
@@ -22,15 +30,22 @@ export interface DataTableFiltersProps extends ElementCustomizableProps {
  * of filters.
  *
  * @param children A set of Filter Chips responsible for filtering the Data Table.
+ * @param alt A description of the filters group for screen readers.
  */
 export const DataTableFilters: StyleableFC<DataTableFiltersProps> = ({
   children,
+  alt,
   element: Element = "div",
   style,
   className,
 }) => {
   return (
-    <Element style={style} className={cn("skc-data-table-filters", className)}>
+    <Element
+      role="group"
+      aria-label={alt}
+      style={style}
+      className={cn("skc-data-table-filters", className)}
+    >
       <MaterialIcon icon="filter_list" />
 
       {/* Chip Set */}

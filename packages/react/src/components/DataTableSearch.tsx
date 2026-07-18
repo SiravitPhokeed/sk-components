@@ -10,6 +10,14 @@ import type { ComponentProps } from "react";
  */
 export interface DataTableSearchProps extends ElementCustomizableProps {
   /**
+   * A description of the search field for screen readers, similar to `alt` on
+   * `<img>`.
+   *
+   * - Optional. Defaults to a localized "Search" string.
+   */
+  alt?: string;
+
+  /**
    * The value inside the search field. This is useful if you want a
    * controlled input.
    *
@@ -66,6 +74,7 @@ const STRINGS = {
 /**
  * Allows the user to filter the Data Table's content using a text query.
  *
+ * @param alt A description of the search field for screen readers, similar to `alt` on `<img>`.
  * @param value The value inside the search field. This is useful if you want a controlled input.
  * @param locale Allows for translation of the default placeholder message.
  * @param onChange Called when the user makes changes to the field value. The value is passed in via the function.
@@ -73,6 +82,7 @@ const STRINGS = {
  * @param inputAttr Attributes for the underlying `<input>` element used as the field.
  */
 export const DataTableSearch: StyleableFC<DataTableSearchProps> = ({
+  alt,
   value,
   locale = "en-US",
   onChange,
@@ -94,7 +104,7 @@ export const DataTableSearch: StyleableFC<DataTableSearchProps> = ({
       {/* Search field */}
       <input
         type="search"
-        aria-label={STRINGS[locale].alt}
+        aria-label={alt ?? STRINGS[locale].alt}
         className="skc-data-table-search__input"
         value={value}
         onChange={(event) => onChange?.(event.target.value)}

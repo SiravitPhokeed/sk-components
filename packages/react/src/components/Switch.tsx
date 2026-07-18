@@ -13,6 +13,16 @@ import { useState } from "react";
  */
 export interface SwitchProps extends ElementCustomizableProps {
   /**
+   * A description of the Switch for screen readers, similar to `alt` on
+   * `<img>`.
+   *
+   * - Set this when using a Switch without Form Item, so the Switch still has
+   *   an accessible name for assistive technologies.
+   * - Optional if inside a Form Item.
+   */
+  alt?: string;
+
+  /**
    * The name of the Switch, used for form submission. If not provided, falls
    * back to the parent Form Item’s `name`.
    *
@@ -65,6 +75,7 @@ export interface SwitchProps extends ElementCustomizableProps {
  * A Switch toggles something on and off. It is usually in a Form Item. Unlike
  * Checkbox and Radio, a Switch is independent.
  *
+ * @param alt A description of the Switch for screen readers, similar to `alt` on `<img>`.
  * @param value The state of the Switch. This is useful if you want a controlled input.
  * @param onChange Called when the user toggles the Switch. The state is passed in via the function as a boolean.
  * @param offIcon An icon inside the thumb when the Switch is off.
@@ -72,6 +83,7 @@ export interface SwitchProps extends ElementCustomizableProps {
  * @param disabled Turns the Switch gray and blocks any action associated with it.
  */
 export const Switch: StyleableFC<SwitchProps> = ({
+  alt,
   name,
   value,
   onChange,
@@ -102,6 +114,7 @@ export const Switch: StyleableFC<SwitchProps> = ({
         role="switch"
         aria-disabled={disabled}
         aria-checked={resolvedValue}
+        aria-label={alt}
         type="button"
         onClick={() => {
           if (!disabled) resolvedOnChange(!resolvedValue);

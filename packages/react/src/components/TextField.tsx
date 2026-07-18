@@ -116,6 +116,8 @@ export interface TextFieldProps<Value extends string | File = string> {
 
   /**
    * Turns the Text Field gray and blocks user input. `onChange` will not fire.
+   * The field remains focusable so keyboard and screen reader users can
+   * discover it.
    *
    * - {@link https://sk-components-demo.mysk.school/docs/guides/disabling-elements Learn how to make disabled elements less frustrating.}
    * - Optional.
@@ -268,7 +270,12 @@ export const TextField = <Value extends string | File = string>({
   const isLabelStatic =
     !typeConfig?.animatable || Boolean(inputAttr?.placeholder);
 
+  // `readOnly` does not apply to file or color inputs per the HTML spec;
+  // for these types, fall back to native `disabled`.
+  const needsNativeDisabled = type === "file" || type === "color";
+
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    if (disabled) return;
     if (type === "file") {
       const file = (e.target as HTMLInputElement).files?.[0] as Value;
       if (file) {
@@ -332,9 +339,19 @@ export const TextField = <Value extends string | File = string>({
           aria-labelledby={`${id}-label`}
           aria-describedby={helperMsg ? `${id}-helper` : undefined}
           aria-invalid={error || undefined}
-          name={name}
-          disabled={disabled}
-          required={required}
+          aria-disabled={disabled || undefined}
+          // Suppress name to prevent the disabled value from being submitted
+          // with the form (native disabled elements are excluded automatically).
+          name={
+            disabled && !needsNativeDisabled ? undefined : name
+          }
+          // Only use native disabled for types where readOnly has no effect
+          // (file, color per the HTML spec); all other types use readOnly to
+          // stay focusable.
+          {...(disabled && needsNativeDisabled
+            ? { disabled: true }
+            : { readOnly: disabled || undefined })}
+          required={disabled ? undefined : required}
           value={value}
           // Format hints for types that lack a native browser UI.
           placeholder={typeConfig?.placeholder}

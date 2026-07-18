@@ -50,11 +50,33 @@ Use Checkbox with [Form Item](/docs/inputs/form-item) to provide a label, and
 </FormGroup>
 ```
 
+When using a Checkbox without Form Item, provide an `alt` so assistive
+technologies can identify it.
+
+```tsx
+<Checkbox alt="I agree to the terms and conditions" />
+```
+
 ### Props
 
 - [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
+  <PropsTableRow prop="alt" required="conditional">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A description of the Checkbox for screen readers, similar to `alt` on
+      `<img>`.
+
+      - Set this when using a Checkbox without Form Item, so the Checkbox still
+        has an accessible name for assistive technologies.
+      - Optional if inside a Form Item.
+
+      </TableCell>
+
+  </PropsTableRow>
+
   <PropsTableRow prop="name" required="never">
     <TableCell>`string`</TableCell>
     <TableCell>
@@ -125,7 +147,8 @@ Use Checkbox with [Form Item](/docs/inputs/form-item) to provide a label, and
 
 <VersionsTable>
   <VersionsTableRow version="v4.0.0">
-    `name` introduced for form submission. `inputAttr` removed.
+    `alt` introduced for standalone use. `name` introduced for form submission.
+    `inputAttr` removed.
   </VersionsTableRow>
   <VersionsTableRow version="v3.0.0">
     React implementation introduced.

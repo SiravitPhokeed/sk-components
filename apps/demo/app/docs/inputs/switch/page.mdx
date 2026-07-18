@@ -44,11 +44,33 @@ return (
 );
 ```
 
+When using a Switch without Form Item, provide an `alt` so assistive
+technologies can identify it.
+
+```tsx
+<Switch alt="Dark mode" />
+```
+
 ### Props
 
 - [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
+  <PropsTableRow prop="alt" required="conditional">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A description of the Switch for screen readers, similar to `alt` on
+      `<img>`.
+
+      - Set this when using a Switch without Form Item, so the Switch still has
+        an accessible name for assistive technologies.
+      - Optional if inside a Form Item.
+
+      </TableCell>
+
+  </PropsTableRow>
+
   <PropsTableRow prop="name" required="never">
     <TableCell>`string`</TableCell>
     <TableCell>
@@ -132,7 +154,8 @@ return (
 
 <VersionsTable>
   <VersionsTableRow version="v4.0.0">
-    `name` introduced for form submission. Now uses the switch role.
+    `alt` introduced for standalone use. `name` introduced for form submission.
+    Now uses the switch role.
   </VersionsTableRow>
   <VersionsTableRow version="v3.1.0">Form Item support added.</VersionsTableRow>
   <VersionsTableRow version="v3.0.0">Switch introduced.</VersionsTableRow>
