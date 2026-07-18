@@ -7,7 +7,7 @@ import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/snackbar.css";
 import type { ReactElement, ReactNode } from "react";
-import { useCallback, useEffect, useId, useRef } from "react";
+import { useEffect, useId, useRef } from "react";
 
 const EXITING_CLASS = "skc-snackbar--exiting";
 const EXIT_ANIMATION_NAME = "skc-snackbar-exit";
@@ -145,14 +145,14 @@ export const Snackbar: StyleableFC<SnackbarProps> = ({
   // Snackbar and restarts fresh when the pointer leaves.
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const clearTimer = useCallback(() => {
+  const clearTimer = () => {
     if (timerRef.current) {
       clearTimeout(timerRef.current);
       timerRef.current = null;
     }
-  }, []);
+  };
 
-  const startTimer = useCallback(() => {
+  const startTimer = () => {
     if (persistent) return;
     const el = ref.current;
     if (!el) return;
@@ -160,7 +160,7 @@ export const Snackbar: StyleableFC<SnackbarProps> = ({
     timerRef.current = setTimeout(() => {
       el.classList.add(EXITING_CLASS);
     }, autoDismissDurationMs);
-  }, [persistent, autoDismissDurationMs, clearTimer]);
+  };
 
   useEffect(() => {
     if (persistent) return;
