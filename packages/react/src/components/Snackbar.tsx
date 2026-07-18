@@ -61,8 +61,6 @@ export interface SnackbarProps {
    * - Incompatible with `persistent`.
    * - The timer pauses while the user hovers over the Snackbar (WCAG 2.2.1),
    *   then restarts fresh when the pointer leaves.
-   * - If an `action` is provided, focus moves to the action button when the
-   *   Snackbar opens, and returns to the previous element when it closes.
    * - Defaults to 6000 (6 seconds).
    * - Optional.
    *
