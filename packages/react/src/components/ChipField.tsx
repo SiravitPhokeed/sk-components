@@ -349,6 +349,7 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
             id={`${id}-input`}
             aria-labelledby={`${id}-label`}
             aria-describedby={helperMsg ? `${id}-helper` : undefined}
+            aria-required={required || undefined}
             type="text"
             disabled={disabled}
             value={value}
@@ -369,13 +370,15 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
 
       {/* Helper/error message */}
       {(helperMsg || lastChipSelected) && (
-        <Text
-          id={`${id}-helper`}
-          type="body-small"
-          className="skc-chip-field__helper-msg"
-        >
+        <span role="status">
+          <Text
+            id={`${id}-helper`}
+            type="body-small"
+            className="skc-chip-field__helper-msg"
+          >
           {lastChipSelected ? STRINGS[locale].deleteLast : helperMsg}
         </Text>
+        </span>
       )}
 
       {/* Loading progress bar */}
