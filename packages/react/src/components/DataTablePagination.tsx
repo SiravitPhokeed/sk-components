@@ -5,7 +5,6 @@ import { MaterialIcon } from "@/components/MaterialIcon";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/data-table-pagination.css";
-import "@suankularb-components/css/sr-only.css";
 import { useEffect, useState } from "react";
 
 /**

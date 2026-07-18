@@ -1,7 +1,6 @@
 import type { Button } from "@/components/Button";
 import type { SnackbarProps } from "@/components/Snackbar";
 import { Snackbar } from "@/components/Snackbar";
-import "@suankularb-components/css/sr-only.css";
 import type { ReactElement, ReactNode } from "react";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
