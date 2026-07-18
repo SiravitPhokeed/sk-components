@@ -8,14 +8,21 @@ import type {
   StyleableFC,
 } from "@/lib/types";
 import "@suankularb-components/css/chip.css";
-import type { ElementType, ReactNode } from "react";
+import type { ComponentProps, ElementType, ReactNode } from "react";
 
 /**
  * Props shared by all chip types.
  *
  * @private
  */
-export interface ChipProps extends ActionableProps, ElementCustomizableProps {
+export interface ChipProps
+  extends
+    ActionableProps,
+    ElementCustomizableProps,
+    Omit<
+      ComponentProps<"button">,
+      keyof (ActionableProps & ElementCustomizableProps) | "ref"
+    > {
   /**
    * A unique identifier for the Chip.
    *
@@ -39,11 +46,10 @@ export interface ChipProps extends ActionableProps, ElementCustomizableProps {
   tooltip?: string;
 
   /**
-   * Use elevation instead of an outline to signify the Chip's boundary.
+   * Use elevation instead of an outline to signify the Chip’s boundary.
    *
-   * - **Important**: do not use this prop if you don't have to. Only elevate
-   *   a Chip when its placement requires visual protection, such as on top of
-   *   an image.
+   * - **Use sparingly.** Only elevate a Chip when its placement requires visual
+   *   protection, such as on top of an image.
    * - Optional.
    */
   elevated?: boolean;
@@ -105,6 +111,7 @@ export const Chip: StyleableFC<ChipProps> = ({
   element = onClick || href || command ? "button" : "div",
   style,
   className,
+  ...rest
 }) => {
   const isFunctional = !(disabled || loading);
   const isInteractive =
@@ -131,6 +138,7 @@ export const Chip: StyleableFC<ChipProps> = ({
         className,
       )}
       style={style}
+      {...rest}
     >
       {children}
     </Element>

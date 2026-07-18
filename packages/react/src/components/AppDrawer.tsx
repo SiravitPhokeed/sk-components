@@ -100,7 +100,7 @@ export const AppDrawer: StyleableFC<AppDrawerProps> = ({
         {...dialogProps}
         className="skc-app-drawer__modal"
       >
-        <h2 id={APP_DRAWER_HEADER_ID} className="skc-app-drawer__header">
+        <h2 id={APP_DRAWER_HEADER_ID} className="skc-sr-only">
           {STRINGS[locale].header}
         </h2>
         {children}

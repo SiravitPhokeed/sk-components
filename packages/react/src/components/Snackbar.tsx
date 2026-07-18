@@ -59,6 +59,8 @@ export interface SnackbarProps {
    * Time in milliseconds until the Snackbar exits automatically.
    *
    * - Incompatible with `persistent`.
+   * - The timer pauses while the user hovers over the Snackbar (WCAG 2.2.1),
+   *   then restarts fresh when the pointer leaves.
    * - Defaults to 6000 (6 seconds).
    * - Optional.
    *
@@ -105,28 +107,77 @@ export const Snackbar: StyleableFC<SnackbarProps> = ({
 
   // Auto-show on mount. Using useEffect guarantees the DOM is committed.
   useEffect(() => {
-    ref.current?.showPopover();
+    const popover = ref.current;
+    // The guard keeps the effect idempotent — StrictMode invokes it twice,
+    // and showPopover() throws on an already-open popover.
+    if (popover && !popover.matches(":popover-open")) popover.showPopover();
   }, []);
 
-  // Auto-dismiss after the configured duration (unless persistent).
+  // Focus the action button when the Snackbar opens, then restore previous
+  // focus on close.
+  const previousFocusRef = useRef<HTMLElement | null>(null);
   useEffect(() => {
-    if (persistent) return;
+    if (!action) return;
     const el = ref.current;
     if (!el) return;
 
-    const timer = setTimeout(() => {
+    const handleToggle = (event: Event) => {
+      const toggleEvent = event as ToggleEvent;
+      if (toggleEvent.newState === "open") {
+        previousFocusRef.current = document.activeElement as HTMLElement | null;
+        const actionBtn = el.querySelector<HTMLElement>(
+          ".skc-snackbar__action .skc-button, .skc-snackbar__action button",
+        );
+        requestAnimationFrame(() => actionBtn?.focus());
+      }
+      if (toggleEvent.newState === "closed") {
+        previousFocusRef.current?.focus();
+        previousFocusRef.current = null;
+      }
+    };
+
+    el.addEventListener("toggle", handleToggle);
+    return () => el.removeEventListener("toggle", handleToggle);
+  }, [action]);
+
+  // Auto-dismiss after the configured duration (unless persistent).
+  // Per WCAG 2.2.1, the timer pauses while the user hovers over the
+  // Snackbar and restarts fresh when the pointer leaves.
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const clearTimer = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+  };
+
+  const startTimer = () => {
+    if (persistent) return;
+    const el = ref.current;
+    if (!el) return;
+    clearTimer();
+    timerRef.current = setTimeout(() => {
       el.classList.add(EXITING_CLASS);
     }, autoDismissDurationMs);
+  };
 
-    return () => clearTimeout(timer);
-  }, [persistent, autoDismissDurationMs]);
+  useEffect(() => {
+    if (persistent) return;
+    startTimer();
+    return () => clearTimer();
+  }, [persistent, autoDismissDurationMs, startTimer, clearTimer]);
+
+  const handleMouseEnter = () => clearTimer();
+  const handleMouseLeave = () => startTimer();
 
   return (
     <div
       id={snackbarID}
       ref={ref}
       popover="manual"
-      role="status"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       {...popoverProps}
       className={cn(
         "skc-snackbar",

@@ -1,6 +1,8 @@
 "use client";
 
 import cn from "@/lib/helpers/cn";
+import useArrowKeyFocus from "@/lib/hooks/useArrowKeyFocus";
+import useIsomorphicLayoutEffect from "@/lib/hooks/useIsomorphicLayoutEffect";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/tabs-container.css";
 import { createContext, useContext, useId, useRef } from "react";
@@ -50,6 +52,38 @@ export const TabsContainer: StyleableFC<TabsContainerProps> = ({
 }) => {
   const id = `tabs-container-${useId()}`;
   const indicatorRef = useRef<HTMLDivElement>(null);
+  const tablistRef = useRef<HTMLDivElement>(null);
+
+  /** Gets the Tab elements inside this Tabs Container. */
+  const getItems = () =>
+    Array.from(
+      tablistRef.current?.querySelectorAll<HTMLElement>('[role="tab"]') ?? [],
+    );
+
+  const handleTabKeyDown = useArrowKeyFocus(getItems, "horizontal");
+
+  // Keep exactly one Tab in the tab order: the selected Tab, or the first
+  // Tab when none is selected, per the ARIA tabs pattern. Tabs render
+  // without a tabIndex of their own, so this is the sole authority over tab
+  // order; the layout effect runs before paint, leaving no window where the
+  // tablist is unreachable.
+  useIsomorphicLayoutEffect(() => {
+    const tablist = tablistRef.current;
+    if (!tablist) return;
+    const tabs = Array.from(
+      tablist.querySelectorAll<HTMLElement>('[role="tab"]'),
+    );
+    if (!tabs.length) return;
+    const hasSelected = tabs.some(
+      (tab) => tab.getAttribute("aria-selected") === "true",
+    );
+    tabs.forEach((tab, index) => {
+      const isTabStop = hasSelected
+        ? tab.getAttribute("aria-selected") === "true"
+        : index === 0;
+      tab.tabIndex = isTabStop ? 0 : -1;
+    });
+  });
 
   return (
     <TabsContainerContext.Provider value={{ appearance, indicatorRef }}>
@@ -62,7 +96,9 @@ export const TabsContainer: StyleableFC<TabsContainerProps> = ({
         )}
       >
         <div
+          ref={tablistRef}
           role="tablist"
+          onKeyDown={handleTabKeyDown}
           style={style}
           className={cn("skc-tabs-container__content", className)}
         >

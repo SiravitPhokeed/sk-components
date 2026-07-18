@@ -25,9 +25,15 @@ Changes to the demo app are documented in
   `FormData`
 - `locale` support on Full-screen Dialog and Input Chip
 - RTL support
+- Keyboard navigation and focus management for complex widgets: arrow-key
+  navigation in Menu and Tabs Container, automatic focus on Menu and Dialog
+  open with return to trigger on close, and Snackbar timer that pauses on
+  hover or focus (WCAG 2.2.1)
 - Component-specific additions:
   - **Button:** `autoFocus`, `type`
   - **Card Header**: `truncate`
+  - **Chip:** native HTML attributes are now forwarded to the underlying
+    element
   - **Chip Field:** `required`
   - **Data Table Body, Data Table Head:** `align` for text alignment
   - **Data Table Head:** `colSpans` for column spanning
@@ -46,6 +52,7 @@ Changes to the demo app are documented in
   - **Select:** `disabled`, and `required` to mark a required field for
     assistive technologies
   - **Split Layout:** `prefer` for the pane to show on mobile
+  - **Tab:** `controls` for `aria-controls`
   - **Table Cell:** `colSpan` and `rowSpan`
   - **Text:** `id`
   - **Text Field:** `type` for native HTML input types
@@ -89,7 +96,11 @@ Changes to the demo app are documented in
   - **Select, Menu Item:** `value` type narrowed from `any` to `string`
   - **Snackbar** is now managed internally via `snackbar.push()` or
     `snackbar.promise()`
+  - **Snackbar:** the auto-dismiss timer pauses while the Snackbar is hovered
+    or focused
   - **Split Layout:** `showRightOnMobile` replaced by `prefer`
+  - **Tabs Container:** arrow keys move focus between Tabs, with a single tab
+    stop per the ARIA tabs pattern
   - **Text:** `button`, `caption`, and `overline` types removed
   - **Text Field:** `inputAttr.type` replaced by direct `type` prop
   - **Theme Provider** is no longer a wrapper; include `<ThemeProvider />`
@@ -126,7 +137,8 @@ Changes to the demo app are documented in
 - **Data Table:** column headers now carry `scope` and expose `aria-sort` when
   sorted
 - **Filter Chip:** the dropdown Menu now inherits the Chip’s label as its
-  accessible name
+  accessible name, and the chip trigger signals the Menu via `aria-haspopup`
+  and `aria-expanded`
 - **Menu Item:** the container element no longer exposes an invalid `listitem`
   role inside Menus
 - **Nav Drawer Item:** `label` prop type corrected from optional to required,
@@ -135,7 +147,10 @@ Changes to the demo app are documented in
   explicit `aria-valuemin` and `aria-valuemax`
 - **Radio:** disabled Radios can no longer be selected with arrow keys (native
   `disabled` attribute)
-- **Snackbar:** removed the redundant `aria-live` (implied by `role="status"`)
+- **Select:** the trigger now announces the selected value without opening the
+  Menu
+- **Snackbar:** messages are now announced to screen readers via a persistent
+  live region
 - **Switch:** now uses the switch role and announces its state as on/off
   instead of pressed
 - **Tab:** `alt` now sets `aria-label` instead of leaking as an invalid HTML

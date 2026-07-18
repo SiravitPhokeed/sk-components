@@ -71,6 +71,20 @@ hierarchy. For example, an Overview, Students, and Teachers page of a class.
 
   </PropsTableRow>
 
+  <PropsTableRow prop="controls" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The `id` of the tab panel this Tab controls, applied as `aria-controls`. Each
+      Tab should point to its own panel — not the container — because each Tab
+      controls a different panel, even though only one is visible at a time.
+
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
   <PropsTableRow prop="tooltip" required="never">
     <TableCell>`string`</TableCell>
     <TableCell>
@@ -101,7 +115,8 @@ hierarchy. For example, an Overview, Students, and Teachers page of a class.
 
 <VersionsTable>
   <VersionsTableRow version="v4.0.0">
-    Invoker Commands API support added.
+    Invoker Commands API support added. Keyboard navigation added. `controls`
+    prop added.
   </VersionsTableRow>
   <VersionsTableRow version="v3.0.0">Tab introduced.</VersionsTableRow>
 </VersionsTable>

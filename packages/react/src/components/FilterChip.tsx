@@ -13,7 +13,7 @@ import type {
 } from "@/lib/types";
 import "@suankularb-components/css/filter-chip.css";
 import type { Fragment, ReactElement, ReactNode } from "react";
-import { useId } from "react";
+import { useEffect, useId, useState } from "react";
 
 /**
  * Props for {@link FilterChip Filter Chip}.
@@ -46,7 +46,9 @@ export interface FilterChipProps
 
   /**
    * Turns the Filter Chip into a dropdown, displaying a Menu underneath the
-   * chip.
+   * chip. The chip trigger gets `aria-haspopup="menu"` and `aria-expanded` set
+   * automatically, and `aria-pressed` is suppressed to avoid conflicting with
+   * the popup semantics.
    *
    * - Must be a Fragment containing Menu Items.
    * - Optional.
@@ -122,10 +124,26 @@ export const FilterChip: StyleableFC<FilterChipProps> = ({
   const resolvedCommand = command ?? (menu ? "show-popover" : undefined);
   const resolvedCommandFor = commandfor ?? (menu ? menuId : undefined);
 
+  const [menuOpen, setMenuOpen] = useState(false);
+  // Re-attach when the Menu appears or disappears, so a Menu added after
+  // mount is still tracked.
+  useEffect(() => {
+    const menuElement = document.getElementById(menuId);
+    const handleToggle = (event: Event) =>
+      setMenuOpen((event as ToggleEvent).newState === "open");
+    menuElement?.addEventListener("toggle", handleToggle);
+    return () => menuElement?.removeEventListener("toggle", handleToggle);
+  }, [menu !== undefined]);
+
   return (
     <>
       <Chip
         id={id}
+        {...(menu && {
+          "aria-haspopup": "menu" as const,
+          "aria-expanded": menuOpen,
+          "aria-pressed": undefined,
+        })}
         tooltip={tooltip}
         elevated={elevated}
         selected={selected}

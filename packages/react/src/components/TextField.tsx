@@ -4,7 +4,7 @@ import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { StyleableProps } from "@/lib/types";
 import "@suankularb-components/css/text-field.css";
-import type { ComponentProps, ReactNode } from "react";
+import type { ChangeEventHandler, ComponentProps, ReactNode } from "react";
 import { useId, useState } from "react";
 
 /**
@@ -166,44 +166,47 @@ export interface TextFieldProps<Value extends string | File = string> {
 }
 
 /**
- * `<input>` types that does not contain inline browser UI and can be animated
- * or obscured.
+ * Input types without built-in browser UI, whose label can animate between
+ * placeholder and floating positions. Types with native pickers (color, date
+ * etc.) and the file type are excluded. Consumers can still request a static
+ * label by providing a placeholder via `inputAttr`.
  */
-const ANIMATABLE_INPUT_TYPES = [
-  "text",
-  "number",
-  "search",
-  "url",
-  "tel",
-  "email",
-  "password",
-];
-
-/**
- * Placeholders show when the browser doesn’t have a native UI for the input
- * type.
- */
-const PLACEHOLDER_BY_TYPE = new Map([
-  ["color", "#000000"],
-  ["date", "YYYY-MM-DD"],
-  ["datetime-local", "YYYY-MM-DDThh:mm"],
-  ["month", "YYYY-MM"],
-  ["time", "hh:mm"],
-  ["week", "YYYY-Www"],
-]);
-
-/**
- * Help users enter valid values when the browser doesn’t have a native UI for
- * the input type.
- */
-const PATTERN_BY_TYPE = new Map([
-  ["color", "^#[0-9a-fA-F]{6}$"],
-  ["date", "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"],
-  ["datetime-local", "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}$"],
-  ["month", "^[0-9]{4}-[0-9]{2}$"],
-  ["time", "^[0-9]{2}:[0-9]{2}$"],
-  ["week", "^[0-9]{4}-W[0-9]{2}$"],
-]);
+const INPUT_TYPE_CONFIG: Record<
+  string,
+  { animatable?: true; placeholder?: string; pattern?: string }
+> = {
+  text: { animatable: true },
+  number: { animatable: true },
+  search: { animatable: true },
+  url: { animatable: true },
+  tel: { animatable: true },
+  email: { animatable: true },
+  password: { animatable: true },
+  color: {
+    placeholder: "#000000",
+    pattern: "^#[0-9a-fA-F]{6}$",
+  },
+  date: {
+    placeholder: "YYYY-MM-DD",
+    pattern: "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+  },
+  "datetime-local": {
+    placeholder: "YYYY-MM-DDThh:mm",
+    pattern: "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}$",
+  },
+  month: {
+    placeholder: "YYYY-MM",
+    pattern: "^[0-9]{4}-[0-9]{2}$",
+  },
+  time: {
+    placeholder: "hh:mm",
+    pattern: "^[0-9]{2}:[0-9]{2}$",
+  },
+  week: {
+    placeholder: "YYYY-Www",
+    pattern: "^[0-9]{4}-W[0-9]{2}$",
+  },
+};
 
 const STRINGS = {
   "en-US": {
@@ -215,8 +218,7 @@ const STRINGS = {
 };
 
 /**
- * A field where users enter text — from short passwords to long-form
- * answers.
+ * A field where users enter text — from short passwords to long-form  answers.
  *
  * @param appearance How the Text Field looks. An outlined Text Field has a lower emphasis than filled, so it is great for a form with many fields.
  * @param label The placeholder text (when not focused and no value) and the label text (when focused or has value).
@@ -260,6 +262,32 @@ export const TextField = <Value extends string | File = string>({
   ) as "input";
 
   const [hasFile, setHasFile] = useState(false);
+  const [hasValue, setHasValue] = useState(Boolean(value));
+
+  const typeConfig = INPUT_TYPE_CONFIG[type];
+  const isLabelStatic =
+    !typeConfig?.animatable || Boolean(inputAttr?.placeholder);
+
+  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    if (type === "file") {
+      const file = (e.target as HTMLInputElement).files?.[0] as Value;
+      if (file) {
+        setHasFile(true);
+        setHasValue(true);
+        onChange?.(file);
+      } else {
+        setHasFile(false);
+        setHasValue(false);
+      }
+      return;
+    }
+    const newValue = e.target.value as Value;
+    setHasValue(Boolean(newValue));
+    onChange?.(newValue);
+
+    if (behavior === "multi-line" && !CSS.supports("field-sizing", "content"))
+      e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
+  };
 
   return (
     <Text
@@ -272,6 +300,7 @@ export const TextField = <Value extends string | File = string>({
         behavior !== "single-line" && `skc-text-field--${behavior}`,
         disabled && "skc-text-field--disabled",
         error && "skc-text-field--error",
+        hasValue && "skc-text-field--has-value",
         className,
       )}
       style={style}
@@ -303,41 +332,21 @@ export const TextField = <Value extends string | File = string>({
           aria-labelledby={`${id}-label`}
           aria-describedby={helperMsg ? `${id}-helper` : undefined}
           aria-invalid={error || undefined}
-          type={type}
           name={name}
           disabled={disabled}
           required={required}
           value={value}
-          // Defaulting to a space so the `:not(:placeholder-shown)` trick for
-          // detecting input value works even if the user doesn't provide a
-          // placeholder.
-          placeholder={PLACEHOLDER_BY_TYPE.get(type) ?? " "}
-          pattern={PATTERN_BY_TYPE.get(type)}
-          onChange={(e) => {
-            if (type === "file") {
-              const file = (e.target as HTMLInputElement).files?.[0] as Value;
-              if (file) {
-                setHasFile(true);
-                onChange?.(file);
-              } else setHasFile(false);
-              return;
-            }
-            onChange?.(e.target.value as Value);
-
-            if (behavior !== "multi-line") return;
-            if (CSS.supports("field-sizing", "content")) return;
-            // For browsers that don't support `field-sizing: content`, we have
-            // to manually resize the `<textarea>`.
-            e.currentTarget.style.height = "0";
-            e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
-          }}
+          // Format hints for types that lack a native browser UI.
+          placeholder={typeConfig?.placeholder}
+          pattern={typeConfig?.pattern}
+          onChange={handleChange}
           className={cn(
             "skc-text-field__input",
-            (!ANIMATABLE_INPUT_TYPES.includes(type) ||
-              inputAttr?.placeholder) &&
-              "skc-text-field__input--static",
+            isLabelStatic && "skc-text-field__input--static",
             hasFile && "skc-text-field__input--has-file",
           )}
+          // Textareas don’t have a type attribute.
+          {...(Element === "input" && { type })}
           {...inputAttr}
         />
         {type === "file" && !hasFile && (

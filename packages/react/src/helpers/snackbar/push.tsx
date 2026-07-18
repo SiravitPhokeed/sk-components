@@ -13,6 +13,25 @@ let activeDismiss: (() => void) | null = null;
 /** Counter for generating unique Snackbar IDs. */
 let nextId = 0;
 
+// ── Screen reader announcer ───────────────────────────────────────────
+// A single visually-hidden `role="status"` element lives in the DOM
+// permanently. Each push() writes the Snackbar label text into it so
+// assistive technology announces the message. The element is created on
+// the first call to snackbarPush and reused thereafter.
+
+let announcerEl: HTMLDivElement | null = null;
+
+function ensureAnnouncer(): HTMLDivElement {
+  if (announcerEl && document.body.contains(announcerEl)) return announcerEl;
+  announcerEl = document.createElement("div");
+  announcerEl.className = "skc-sr-only";
+  announcerEl.setAttribute("role", "status");
+  announcerEl.setAttribute("aria-live", "polite");
+  announcerEl.setAttribute("aria-atomic", "true");
+  document.body.appendChild(announcerEl);
+  return announcerEl;
+}
+
 /** Options for {@link snackbarPush}. */
 export type PushSnackbarOptions = Pick<
   SnackbarProps,
@@ -90,6 +109,25 @@ export default function snackbarPush(
       }
     };
     snackbarEl.addEventListener("toggle", handleToggle);
+
+    // Announce the Snackbar message to screen readers. We defer by one
+    // additional rAF frame so the popover has appeared (showPopover runs in
+    // useEffect after paint; the first rAF fires before the next paint, so
+    // the second rAF guarantees the popover is open).
+    requestAnimationFrame(() => {
+      if (dismissed) return;
+      const label = snackbarEl.querySelector(".skc-snackbar__label");
+      if (label?.textContent) {
+        // Clear before writing so pushing the same message twice still
+        // mutates the live region — identical textContent would not
+        // re-announce.
+        const announcer = ensureAnnouncer();
+        announcer.textContent = "";
+        requestAnimationFrame(() => {
+          announcer.textContent = label.textContent!.trim();
+        });
+      }
+    });
   });
 
   const dismiss = () => {
