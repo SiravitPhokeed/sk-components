@@ -65,8 +65,15 @@ page of a class.
 
 ### Usage
 
-You can use `useState` to manage the selected Tab and render the corresponding
-page.
+**Control the selected Tab with a state variable** and render the corresponding
+page. `useState` is a good way to manage the selected Tab. Keyboard navigation with <kbd children="←" className="kbd" />, <kbd children="→" className="kbd" />,
+and <kbd children="␣" className="kbd" /> is handled automatically by Tabs
+Container.
+
+**Set the `controls` prop of each Tab** to point to the `id` of the panel it
+reveals. The `id` should be unique to each panel. This establishes an
+[`aria-controls`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-controls)
+relationship.
 
 ```tsx
 const [selectedTab, setSelectedTab] = useState("overview");
@@ -77,27 +84,30 @@ return (
       <Tab
         icon={<MaterialIcon icon="info" />}
         label="Overview"
+        controls="panel-overview"
         selected={selectedTab === "overview"}
         onClick={() => setSelectedTab("overview")}
       />
       <Tab
         icon={<MaterialIcon icon="groups" />}
         label="Students"
+        controls="panel-students"
         selected={selectedTab === "students"}
         onClick={() => setSelectedTab("students")}
       />
       <Tab
         icon={<MaterialIcon icon="group" />}
         label="Teachers"
+        controls="panel-teachers"
         selected={selectedTab === "teachers"}
         onClick={() => setSelectedTab("teachers")}
       />
     </TabsContainer>
 
     {new Map([
-      ["overview", <OverviewPage />],
-      ["students", <StudentsPage />],
-      ["teachers", <TeachersPage />],
+      ["overview", <div id="panel-overview" role="tabpanel" />],
+      ["students", <div id="panel-students" role="tabpanel" />],
+      ["teachers", <div id="panel-teachers" role="tabpanel" />],
     ]).get(selectedTab)}
   </ContentLayout>
 );

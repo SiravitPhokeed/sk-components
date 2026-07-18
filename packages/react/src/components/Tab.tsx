@@ -45,6 +45,15 @@ export interface TabProps extends ActionableProps, ElementCustomizableProps {
   alt?: string;
 
   /**
+   * The `id` of the tab panel this Tab controls, applied as `aria-controls`. Each
+   * Tab should point to its own panel — not the container — because each Tab
+   * controls a different panel, even though only one is visible at a time.
+   *
+   * - Optional.
+   */
+  controls?: string;
+
+  /**
    * A message shown in a tooltip when the user hovers over the Tab.
    *
    * - Optional.
@@ -58,13 +67,6 @@ export interface TabProps extends ActionableProps, ElementCustomizableProps {
    * - Optional.
    */
   selected?: boolean;
-
-  /**
-   * The `id` of the tab panel this Tab controls, applied as `aria-controls`.
-   *
-   * - Optional.
-   */
-  controls?: string;
 }
 
 /**
@@ -74,17 +76,17 @@ export interface TabProps extends ActionableProps, ElementCustomizableProps {
  * @param icon An icon appears before or above the label. Icons help users identify pages more quickly.
  * @param label An additional text label next to or underneath the icon.
  * @param alt A description of the Tab for screen readers, similar to `alt` on `<img>`.
+ * @param controls The `id` of the tab panel this Tab controls, applied as `aria-controls`.
  * @param tooltip A message shown in a tooltip when the user hovers over the Tab.
  * @param selected Highlights the Tab. If the user is currently on this page, the Tab should be highlighted.
- * @param controls The `id` of the tab panel this Tab controls, applied as `aria-controls`.
  */
 export const Tab: StyleableFC<TabProps> = ({
   icon,
   label,
   alt,
+  controls,
   tooltip,
   selected,
-  controls,
   className,
   ...rest
 }) => {
