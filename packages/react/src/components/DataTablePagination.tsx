@@ -121,6 +121,8 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
 
   useEffect(() => onChange?.(page, range.start - 1, range.end - 1), [page]);
 
+  const announcement = STRINGS[locale].alt(formattedNumbers);
+
   return (
     <Element
       style={style}
@@ -134,6 +136,10 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
           {STRINGS[locale].alt(formattedNumbers)}
         </span>
         <span aria-hidden>{STRINGS[locale].label(formattedNumbers)}</span>
+      </span>
+      {/* Remount on page change so the live region re-announces. */}
+      <span role="status" className="skc-sr-only" key={page}>
+        {announcement}
       </span>
       <div className="skc-data-table-pagination__controls">
         {/* Skip to first */}
