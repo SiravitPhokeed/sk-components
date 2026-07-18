@@ -5,7 +5,7 @@ import { MaterialIcon } from "@/components/MaterialIcon";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/data-table-pagination.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * Props for {@link DataTablePagination Data Table Pagination}.
@@ -121,7 +121,18 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
 
   useEffect(() => onChange?.(page, range.start - 1, range.end - 1), [page]);
 
+  // Imperatively write to a persistent live region so VO picks up page
+  // changes — the clear-then-set pattern mirrors the Snackbar announcer.
+  const statusRef = useRef<HTMLSpanElement>(null);
   const announcement = STRINGS[locale].alt(formattedNumbers);
+  useEffect(() => {
+    const el = statusRef.current;
+    if (!el) return;
+    el.textContent = "";
+    requestAnimationFrame(() => {
+      el.textContent = announcement;
+    });
+  }, [announcement]);
 
   return (
     <Element
@@ -137,10 +148,9 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
         </span>
         <span aria-hidden>{STRINGS[locale].label(formattedNumbers)}</span>
       </span>
-      {/* Remount on page change so the live region re-announces. */}
-      <span role="status" className="skc-sr-only" key={page}>
-        {announcement}
-      </span>
+      {/* Persistent live region — content is written imperatively so VO
+          picks up changes even when the text is replaced in-place. */}
+      <span ref={statusRef} role="status" className="skc-sr-only" />
       <div className="skc-data-table-pagination__controls">
         {/* Skip to first */}
         <Button
