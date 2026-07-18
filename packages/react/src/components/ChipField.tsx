@@ -1,6 +1,6 @@
 "use client";
 
-import type { ChipSet } from "@/components/ChipSet";
+import type { ChipSet, ChipSetProps } from "@/components/ChipSet";
 import type { InputChip } from "@/components/InputChip";
 import { Progress } from "@/components/Progress";
 import { Text } from "@/components/Text";
@@ -14,7 +14,7 @@ import type {
   ReactElement,
   ReactNode,
 } from "react";
-import { useId, useRef, useState } from "react";
+import { Children, useId, useRef, useState } from "react";
 
 /**
  * Props for {@link ChipField Chip Field}.
@@ -135,28 +135,63 @@ export interface ChipFieldProps {
    * - Optional.
    */
   inputAttr?: ComponentProps<"input">;
+
+  /**
+   * Describes the current state of the Chip Set for screen readers — for
+   * example, “5 chips added.” This is linked to the input via
+   * `aria-describedby` so it is announced when the input receives focus.
+   *
+   * - Auto-computed from the Chip Set’s child count when omitted.
+   * - Set to `false` to suppress the chip status entirely.
+   * - Optional.
+   */
+  chipStatus?: ReactNode | false;
 }
 
 const DEFAULT_SEPARATORS = [" ", ",", ";", "Enter"];
 const DELETE_KEY = "Backspace";
+
+/**
+ * A keyboard key with a screen-reader–friendly name for symbols that screen
+ * readers mispronounce or skip (like ⌫ and →).
+ */
+const Kbd = ({
+  symbol,
+  label,
+}: {
+  symbol: string;
+  label: string;
+}) => (
+  <kbd>
+    <span className="skc-sr-only">{label}</span>
+    <span aria-hidden>{symbol}</span>
+  </kbd>
+);
+
+const BackspaceKey = () => <Kbd symbol="⌫" label="backspace" />;
+const RightArrowKey = () => <Kbd symbol="→" label="right arrow" />;
 
 const STRINGS = {
   "en-US": {
     loading: "Checking your input…",
     deleteLast: (
       <>
-        <kbd>⌫ backspace</kbd> again to delete this item, <kbd>→</kbd> to cancel
+        <BackspaceKey /> again to delete this item, <RightArrowKey /> to cancel
       </>
     ),
+    chipStatus: (count: number) =>
+      `${count} chip${count === 1 ? "" : "s"} added`,
   },
   th: {
     loading: "กำลังตรวจสอบข้อมูลของคุณ…",
     deleteLast: (
       <>
-        กด <kbd>⌫ backspace</kbd> อีกครั้งเพื่อลบรายการนี้ • กด <kbd>→</kbd>{" "}
+        กด <BackspaceKey /> อีกครั้งเพื่อลบรายการนี้ • กด <RightArrowKey />{" "}
         เพื่อยกเลิก
       </>
     ),
+    chipStatus: (count: number) =>
+      `เพิ่มแล้ว ${count} รายการ`,
   },
 };
 
@@ -179,6 +214,7 @@ const STRINGS = {
  * @param disabled The field cannot be edited.
  * @param locale Allows for translation of the accessibility labels.
  * @param inputAttr Attributes for the underlying `<input>` element used as the field.
+ * @param chipStatus Describes the current state of the Chip Set for screen readers.
  */
 export const ChipField: StyleableFC<ChipFieldProps> = ({
   children,
@@ -196,6 +232,7 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
   disabled,
   locale = "en-US",
   inputAttr,
+  chipStatus,
   className,
   style,
 }) => {
@@ -205,6 +242,18 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
 
   // Track if the last chip is selected (via backspace on empty input).
   const [lastChipSelected, setLastChipSelected] = useState(false);
+
+  // Auto-compute chip count from the Chip Set’s children, unless the consumer
+  // overrides via chipStatus. Uses React.Children so it works during render.
+  const chipCount = Children.count(
+    (children.props as unknown as ChipSetProps).children,
+  );
+  const resolvedChipStatus =
+    chipStatus !== undefined
+      ? chipStatus
+      : chipCount > 0
+        ? STRINGS[locale].chipStatus(chipCount)
+        : false;
 
   /**
    * Strip any single-char separator from the end of a value — the browser
@@ -348,7 +397,10 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
             ref={inputRef}
             id={`${id}-input`}
             aria-labelledby={`${id}-label`}
-            aria-describedby={helperMsg ? `${id}-helper` : undefined}
+            aria-describedby={sift([
+              helperMsg ? `${id}-helper` : undefined,
+              resolvedChipStatus ? `${id}-chip-status` : undefined,
+            ]).join(" ") || undefined}
             aria-required={required || undefined}
             type="text"
             disabled={disabled}
@@ -381,13 +433,22 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
         </span>
       )}
 
-      {/* Loading progress bar */}
-      <Progress
-        appearance="linear"
-        alt={STRINGS[locale].loading}
-        value={typeof loading === "number" ? loading : undefined}
-        visible={Boolean(loading)}
-      />
+      {/* Chip status (auto-computed or consumer-provided) */}
+      {resolvedChipStatus && (
+        <span id={`${id}-chip-status`} className="skc-sr-only">
+          {resolvedChipStatus}
+        </span>
+      )}
+
+      {/* Loading progress bar — rendered only when loading so VO discovers it. */}
+      {loading && (
+        <Progress
+          appearance="linear"
+          alt={STRINGS[locale].loading}
+          value={typeof loading === "number" ? loading : undefined}
+          visible
+        />
+      )}
     </Text>
   );
 };
