@@ -140,15 +140,13 @@
     font-family: var(--font-display);
   }
 
-  &:has(
-    /* If the input is focused,
-       or if the input has text in it (placeholder is not shown),
-       or if animation is disabled through other means */
-      :is(
-        .skc-text-field__input:focus,
-        .skc-text-field__input:not(:placeholder-shown),.skc-text-field__input--static
-      )
-    ) {
+  /* Float the label when the input is focused, holds a value (via
+     the --has-value React-state class), or the field type cannot
+     animate (--static). */
+  &:is(
+    :has(:is(.skc-text-field__input:focus, .skc-text-field__input--static)),
+    &.skc-text-field--has-value
+  ) {
     /* Clip away part of the border to make space for the label */
     .skc-text-field__clip {
       transform: scaleX(1);
@@ -197,14 +195,12 @@
     display: none;
   }
 
-  &:has(
-    /* See above for explanation */
-    :is(
-      .skc-text-field__input:focus,
-      .skc-text-field__input:not(:placeholder-shown),
-      .skc-text-field__input--static
+  /* See above for explanation */
+  &:is(
+      :has(:is(.skc-text-field__input:focus, .skc-text-field__input--static)),
+      &.skc-text-field--has-value
     )
-  ) .skc-text-field__label {
+    .skc-text-field__label {
     transform: translateX(0) translateY(-0.75rem) scale(0.75);
   }
 
@@ -225,7 +221,7 @@
     /* Move the input and the trailing text element down when the input is
       focused or has text in it */
     &:focus-within,
-    &:has(.skc-text-field__input:not(:placeholder-shown)) {
+    .skc-text-field--has-value & {
       > :not(:has(.skc-material-icon)) {
         transform: translateY(0.5rem);
       }
@@ -242,7 +238,7 @@
      box */
   &.skc-text-field--textarea textarea.skc-text-field__input {
     &:focus,
-    &:not(:placeholder-shown) {
+    .skc-text-field--has-value & {
       transform: translateY(0);
       padding-top: 1.5rem;
       padding-bottom: 0.5rem;
