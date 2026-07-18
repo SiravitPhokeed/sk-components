@@ -46,7 +46,7 @@ export interface CardHeaderProps extends ElementCustomizableProps {
    * The heading level for the title, which affects the document outline.
    *
    * - Must be `2`, `3`, `4`, `5`, or `6`.
-   * - Optional. Defaults to `2`.
+   * - Optional. Defaults to `3`.
    */
   level?: 2 | 3 | 4 | 5 | 6;
 
@@ -74,7 +74,7 @@ export const CardHeader: StyleableFC<CardHeaderProps> = ({
   icon,
   title,
   subtitle,
-  level = 2,
+  level = 3,
   truncate,
   element: Element = "div",
   style,
