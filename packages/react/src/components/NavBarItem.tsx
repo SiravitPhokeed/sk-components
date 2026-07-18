@@ -28,6 +28,15 @@ export interface NavBarItemProps
   icon: ReactNode;
 
   /**
+   * A description of the Navigation Bar Item for screen readers, similar to
+   * `alt` on `<img>`.
+   *
+   * - Required if `label` is not defined, because an icon has no significance
+   *   for screen readers.
+   */
+  alt?: string;
+
+  /**
    * An additional text label underneath the icon. This is useful if the icon
    * isn't sufficiently representative of the page.
    *
@@ -66,6 +75,7 @@ export interface NavBarItemProps
  * One of the destinations in a Navigation Bar.
  *
  * @param icon Icons help users identify pages more quickly, which is crucial for frequent destinations like those from the Navigation Bar.
+ * @param alt A description of the Navigation Bar Item for screen readers, similar to `alt` on `<img>`.
  * @param label An additional text label underneath the icon.
  * @param tooltip A message shown in a tooltip when the user hovers over the Navigation Bar Item.
  * @param selected Highlights the Navigation Bar Item. If the user is currently on this page, the Navigation Bar Item should be highlighted.
@@ -73,6 +83,7 @@ export interface NavBarItemProps
  */
 export const NavBarItem: StyleableFC<NavBarItemProps> = ({
   icon,
+  alt,
   label,
   tooltip,
   selected,
@@ -91,7 +102,8 @@ export const NavBarItem: StyleableFC<NavBarItemProps> = ({
     <Element
       href={href}
       aria-current={selected ? "page" : undefined}
-      aria-labelledby={labelID}
+      aria-label={!label ? alt : undefined}
+      aria-labelledby={label ? labelID : undefined}
       title={tooltip}
       onClick={onClick}
       command={command}

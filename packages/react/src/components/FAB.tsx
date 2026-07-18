@@ -89,7 +89,7 @@ export const FAB: StyleableFC<FABProps> = ({
 }) => {
   return (
     <Interactive
-      aria-label={alt}
+      aria-label={alt ?? tooltip}
       title={tooltip ?? children?.toString()}
       onClick={onClick}
       href={href}

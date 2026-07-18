@@ -74,6 +74,7 @@ const FeaturesSection: FC = () => {
             title="Dark mode"
           />
           <Switch
+            alt="Dark mode"
             value={isDarkMode}
             onChange={handleSchemeChange}
             className="absolute inset-e-4 top-2"
@@ -97,6 +98,7 @@ const FeaturesSection: FC = () => {
             title="RTL support"
           />
           <Switch
+            alt="RTL support"
             value={isRtl}
             onChange={handleDirectionChange}
             className="absolute inset-e-4 top-2"

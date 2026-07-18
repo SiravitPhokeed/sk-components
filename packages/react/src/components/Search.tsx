@@ -13,6 +13,14 @@ import { useEffect, useRef, type ComponentProps } from "react";
  */
 export interface SearchProps extends ElementCustomizableProps {
   /**
+   * A description of the Search field for screen readers, similar to `alt` on
+   * `<img>`.
+   *
+   * - Optional. Defaults to a localized "Search" string.
+   */
+  alt?: string;
+
+  /**
    * The value inside the field. This is useful if you want a controlled input.
    *
    * - Optional.
@@ -89,6 +97,7 @@ const STRINGS = {
 /**
  * Search allows the user to quickly find something using a query.
  *
+ * @param alt A description of the Search field for screen readers, similar to `alt` on `<img>`.
  * @param value The value inside the field. This is useful if you want a controlled input.
  * @param hotkey Enables the user to focus on the field by pressing `/`, or any other key you specify.
  * @param locale Allows for translation of the default placeholder message.
@@ -99,6 +108,7 @@ const STRINGS = {
  * @param inputAttr Attributes for the underlying `<input>` element.
  */
 export const Search: StyleableFC<SearchProps> = ({
+  alt,
   value,
   hotkey,
   locale = "en-US",
@@ -155,6 +165,7 @@ export const Search: StyleableFC<SearchProps> = ({
       <input
         ref={ref}
         role="searchbox"
+        aria-label={alt ?? STRINGS[locale].action}
         aria-disabled={disabled}
         value={value}
         readOnly={disabled}

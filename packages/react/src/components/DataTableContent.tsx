@@ -8,6 +8,14 @@ import type { ReactNode } from "react";
  */
 export interface DataTableContentProps extends ElementCustomizableProps {
   /**
+   * A description of the Data Table for screen readers, similar to `alt` on
+   * `<img>`. Applied as `aria-label` on the `<table>` element.
+   *
+   * - Optional.
+   */
+  alt?: string;
+
+  /**
    * A Data Table Content's content depends on whether you decide to use TanStack
    * Table or not.
    *
@@ -32,11 +40,13 @@ export interface DataTableContentProps extends ElementCustomizableProps {
 /**
  * The main part of a Data Table.
  *
+ * @param alt A description of the Data Table for screen readers, similar to `alt` on `<img>`.
  * @param children A Data Table Content's content depends on whether you decide to
  *   use TanStack Table or not.
  * @param contentWidth The minimum width of the content.
  */
 export const DataTableContent: StyleableFC<DataTableContentProps> = ({
+  alt,
   children,
   contentWidth,
   element: Element = "div",
@@ -45,6 +55,7 @@ export const DataTableContent: StyleableFC<DataTableContentProps> = ({
 }) => (
   <Element className="skc-data-table-content" style={style}>
     <table
+      aria-label={alt}
       className={cn("skc-data-table-content__content", className)}
       style={{ ...style, minWidth: contentWidth }}
     >
