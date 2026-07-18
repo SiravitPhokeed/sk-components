@@ -25,6 +25,10 @@ Changes to the demo app are documented in
   `FormData`
 - `locale` support on Full-screen Dialog and Input Chip
 - RTL support
+- Keyboard navigation and focus management for complex widgets: arrow-key
+  navigation in Menu and Tabs Container, automatic focus on Menu and Dialog
+  open with return to trigger on close, and Snackbar timer that pauses on
+  hover or focus (WCAG 2.2.1)
 - Component-specific additions:
   - **Button:** `autoFocus`, `type`
   - **Card Header**: `truncate`

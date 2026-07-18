@@ -345,7 +345,7 @@ export const TextField = <Value extends string | File = string>({
             isLabelStatic && "skc-text-field__input--static",
             hasFile && "skc-text-field__input--has-file",
           )}
-          // Textareas don't have a type attribute.
+          // Textareas don’t have a type attribute.
           {...(Element === "input" && { type })}
           {...inputAttr}
         />

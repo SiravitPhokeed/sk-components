@@ -96,7 +96,7 @@ export interface FilterChipProps
  * @param children The text displayed inside the chip.
  * @param icon An icon can appear before all content in a Filter Chip.
  * @param tooltip A message shown in a tooltip when the user hovers over the Filter Chip.
- * @param menu Turns the Filter Chip into a dropdown, displaying a Menu underneath the chip. The chip trigger gets `aria-haspopup="menu"` and `aria-expanded` set automatically, and `aria-pressed` is suppressed to avoid conflicting with the popup semantics.
+ * @param menu Turns the Filter Chip into a dropdown, displaying a Menu underneath the chip.
  * @param elevated Use elevation instead of an outline to signify the Filter Chip’s boundary.
  * @param selected If the Filter Chip is selected.
  * @param disabled Turns the Filter Chip gray and blocks any action associated with it.
@@ -139,13 +139,11 @@ export const FilterChip: StyleableFC<FilterChipProps> = ({
     <>
       <Chip
         id={id}
-        {...(menu
-          ? {
-              "aria-haspopup": "menu" as const,
-              "aria-expanded": menuOpen,
-              "aria-pressed": undefined,
-            }
-          : {})}
+        {...(menu && {
+          "aria-haspopup": "menu" as const,
+          "aria-expanded": menuOpen,
+          "aria-pressed": undefined,
+        })}
         tooltip={tooltip}
         elevated={elevated}
         selected={selected}

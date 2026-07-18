@@ -256,7 +256,6 @@ export const Select = <Value extends string = string>({
         <Text
           id={id}
           type="body-small"
-          element="span"
           className="skc-select__label"
         >
           <span>{label}</span>

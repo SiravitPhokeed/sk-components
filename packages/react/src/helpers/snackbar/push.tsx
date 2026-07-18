@@ -22,14 +22,13 @@ let nextId = 0;
 let announcerEl: HTMLDivElement | null = null;
 
 function ensureAnnouncer(): HTMLDivElement {
-  if (!announcerEl || !document.body.contains(announcerEl)) {
-    announcerEl = document.createElement("div");
-    announcerEl.className = "skc-sr-only";
-    announcerEl.setAttribute("role", "status");
-    announcerEl.setAttribute("aria-live", "polite");
-    announcerEl.setAttribute("aria-atomic", "true");
-    document.body.appendChild(announcerEl);
-  }
+  if (announcerEl && document.body.contains(announcerEl)) return announcerEl;
+  announcerEl = document.createElement("div");
+  announcerEl.className = "skc-sr-only";
+  announcerEl.setAttribute("role", "status");
+  announcerEl.setAttribute("aria-live", "polite");
+  announcerEl.setAttribute("aria-atomic", "true");
+  document.body.appendChild(announcerEl);
   return announcerEl;
 }
 
@@ -119,20 +118,13 @@ export default function snackbarPush(
       if (dismissed) return;
       const label = snackbarEl.querySelector(".skc-snackbar__label");
       if (label?.textContent) {
-        // Compose the text to announce: the message, optionally followed
-        // by the action so screen reader users know it exists.
-        let text = label.textContent.trim();
-        const actionBtn = snackbarEl.querySelector<HTMLElement>(
-          ".skc-snackbar__action .skc-button__label",
-        );
-        if (actionBtn?.textContent) text += ". " + actionBtn.textContent.trim();
         // Clear before writing so pushing the same message twice still
         // mutates the live region — identical textContent would not
         // re-announce.
         const announcer = ensureAnnouncer();
         announcer.textContent = "";
         requestAnimationFrame(() => {
-          announcer.textContent = text;
+          announcer.textContent = label.textContent!.trim();
         });
       }
     });

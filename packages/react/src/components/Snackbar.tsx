@@ -83,7 +83,7 @@ export interface SnackbarProps {
  * @param action A Snackbar can contain 1 action. Pressing this action closes the Snackbar.
  * @param stacked Put the message (`children`) above the action (`action`).
  * @param persistent Prevent the Snackbar from auto-dismissing after a certain duration.
- * @param autoDismissDurationMs Time in milliseconds until the Snackbar exits automatically. The timer pauses while the user hovers or focuses the Snackbar (WCAG 2.2.1). It restarts fresh when the pointer or focus leaves.
+ * @param autoDismissDurationMs Time in milliseconds until the Snackbar exits automatically.
  */
 export const Snackbar: StyleableFC<SnackbarProps> = ({
   children,
@@ -137,50 +137,28 @@ export const Snackbar: StyleableFC<SnackbarProps> = ({
 
   useEffect(() => {
     if (persistent) return;
-    const el = ref.current;
-    if (!el) return;
-
-    const handleMouseEnter = () => {
-      clearTimer();
-    };
-
-    const handleMouseLeave = () => {
-      // Only restart if focus has also left the Snackbar.
-      if (!el.contains(document.activeElement)) startTimer();
-    };
-
-    const handleFocusIn = () => {
-      clearTimer();
-    };
-
-    const handleFocusOut = (e: FocusEvent) => {
-      // Only restart if the newly-focused element is outside the Snackbar.
-      if (!el.contains(e.relatedTarget as Node | null)) {
-        startTimer();
-      }
-    };
-
     startTimer();
-
-    el.addEventListener("mouseenter", handleMouseEnter);
-    el.addEventListener("mouseleave", handleMouseLeave);
-    el.addEventListener("focusin", handleFocusIn);
-    el.addEventListener("focusout", handleFocusOut);
-
-    return () => {
-      clearTimer();
-      el.removeEventListener("mouseenter", handleMouseEnter);
-      el.removeEventListener("mouseleave", handleMouseLeave);
-      el.removeEventListener("focusin", handleFocusIn);
-      el.removeEventListener("focusout", handleFocusOut);
-    };
+    return () => clearTimer();
   }, [persistent, autoDismissDurationMs, startTimer, clearTimer]);
+
+  const handleMouseEnter = () => clearTimer();
+  const handleMouseLeave = () => {
+    if (!ref.current?.contains(document.activeElement)) startTimer();
+  };
+  const handleFocusIn = () => clearTimer();
+  const handleFocusOut = (e: React.FocusEvent) => {
+    if (!ref.current?.contains(e.relatedTarget as Node | null)) startTimer();
+  };
 
   return (
     <div
       id={snackbarID}
       ref={ref}
       popover="manual"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onFocus={handleFocusIn}
+      onBlur={handleFocusOut}
       {...popoverProps}
       className={cn(
         "skc-snackbar",
