@@ -43,6 +43,14 @@ export interface CardHeaderProps extends ElementCustomizableProps {
   subtitle?: ReactNode;
 
   /**
+   * The heading level for the title, which affects the document outline.
+   *
+   * - Must be `2`, `3`, `4`, `5`, or `6`.
+   * - Optional. Defaults to `2`.
+   */
+  level?: 2 | 3 | 4 | 5 | 6;
+
+  /**
    * Limits the title and subtitle to a single line, truncating the text with an
    * ellipsis if it overflows.
    *
@@ -58,6 +66,7 @@ export interface CardHeaderProps extends ElementCustomizableProps {
  * @param icon An icon can appear before all content in a Card Header. In a page with many cards, icons can quickly orient users.
  * @param title The most predominant text inside a Card.
  * @param subtitle A short text complementing the title text.
+ * @param level The heading level for the title, which affects the document outline.
  * @param truncate Limits the title and subtitle to a single line, truncating the text with an ellipsis if it overflows.
  */
 export const CardHeader: StyleableFC<CardHeaderProps> = ({
@@ -65,6 +74,7 @@ export const CardHeader: StyleableFC<CardHeaderProps> = ({
   icon,
   title,
   subtitle,
+  level = 2,
   truncate,
   element: Element = "div",
   style,
@@ -84,7 +94,7 @@ export const CardHeader: StyleableFC<CardHeaderProps> = ({
         <Text
           type="title-medium"
           className="skc-card-header__title"
-          element="h2"
+          element={`h${level}`}
         >
           {title}
         </Text>
