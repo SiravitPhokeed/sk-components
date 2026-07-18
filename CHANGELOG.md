@@ -34,7 +34,7 @@ Changes to the demo app are documented in
   hover or focus (WCAG 2.2.1)
 - Component-specific additions:
   - **Button:** `autoFocus`, `type`
-  - **Card Header**: `truncate`
+  - **Card Header**: `level` for heading levels, `truncate`
   - **Chip:** native HTML attributes are now forwarded to the underlying
     element
   - **Chip Field:** `required`
@@ -44,7 +44,7 @@ Changes to the demo app are documented in
   - **Dialog:** `alt` for an accessible name when Dialog Header has no title
   - **Dialog, Full-screen Dialog, Menu:** uncontrolled mode via Invoker Commands
     API (`id`)
-  - **Form Group:** `legendElement`, `name` for custom legend elements
+  - **Form Group:** `name` for form submission
   - **Input Chip:** `tooltip`, and `deleteCommand`/`deleteCommandfor` for
     Invoker Commands on the delete button
   - **List Item:** `containerElement`
@@ -110,6 +110,8 @@ Changes to the demo app are documented in
     stop per the ARIA tabs pattern
   - **Text:** `button`, `caption`, and `overline` types removed
   - **Text Field:** `inputAttr.type` replaced by direct `type` prop
+  - **Radio:** defaults to `div` instead of `label` when inside a Form Item to
+    avoid nested `<label>` elements
   - **Theme Provider** is no longer a wrapper; include `<ThemeProvider />`
     anywhere in the component tree
 
@@ -162,6 +164,11 @@ Changes to the demo app are documented in
   instead of pressed
 - **Tab:** `alt` now sets `aria-label` instead of leaking as an invalid HTML
   attribute
+- **Chip Field:** `aria-required` communicates the requirement to assistive
+  technologies, and the "Backspace again to delete" warning is announced via a
+  live region
+- **Data Table Pagination:** page changes are announced to screen readers via a
+  live region
 
 ## [3.3.2] - 2024-04-30
 

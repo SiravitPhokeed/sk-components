@@ -96,6 +96,19 @@ The header of a Card. Sometimes all a Card needs is a Card Header.
 
   </PropsTableRow>
 
+  <PropsTableRow prop="level" required="never">
+    <TableCell>`2 | 3 | 4 | 5 | 6`</TableCell>
+    <TableCell>
+
+      The heading level for the title, which affects the document outline.
+
+      - Must be `2`, `3`, `4`, `5`, or `6`.
+      - Optional. Defaults to `2`.
+
+      </TableCell>
+
+  </PropsTableRow>
+
   <PropsTableRow prop="truncate" required="never">
     <TableCell>`boolean`</TableCell>
     <TableCell>
@@ -113,5 +126,8 @@ The header of a Card. Sometimes all a Card needs is a Card Header.
 ### Version changes
 
 <VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+    `level` and `truncate` introduced.
+  </VersionsTableRow>
   <VersionsTableRow version="v3.0.0">Card Header introduced.</VersionsTableRow>
 </VersionsTable>
