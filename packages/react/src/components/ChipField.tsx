@@ -10,11 +10,12 @@ import "@suankularb-components/css/chip-field.css";
 import { sift } from "radash";
 import type {
   ComponentProps,
+  FC,
   KeyboardEvent,
   ReactElement,
   ReactNode,
 } from "react";
-import { Children, useId, useRef, useState } from "react";
+import { Children, useEffect, useId, useRef, useState } from "react";
 
 /**
  * Props for {@link ChipField Chip Field}.
@@ -155,20 +156,14 @@ const DELETE_KEY = "Backspace";
  * A keyboard key with a screen-reader–friendly name for symbols that screen
  * readers mispronounce or skip (like ⌫ and →).
  */
-const Kbd = ({
-  symbol,
-  label,
-}: {
-  symbol: string;
-  label: string;
-}) => (
+const Kbd: FC<{ symbol: string; label: string }> = ({ symbol, label }) => (
   <kbd>
     <span className="skc-sr-only">{label}</span>
     <span aria-hidden>{symbol}</span>
   </kbd>
 );
 
-const BackspaceKey = () => <Kbd symbol="⌫" label="backspace" />;
+const BackspaceKey = () => <Kbd symbol="⌫ backspace" label="backspace" />;
 const RightArrowKey = () => <Kbd symbol="→" label="right arrow" />;
 
 const STRINGS = {
@@ -180,7 +175,7 @@ const STRINGS = {
       </>
     ),
     chipStatus: (count: number) =>
-      `${count} chip${count === 1 ? "" : "s"} added`,
+      `${count} item${count === 1 ? "" : "s"} already added`,
   },
   th: {
     loading: "กำลังตรวจสอบข้อมูลของคุณ…",
@@ -190,8 +185,7 @@ const STRINGS = {
         เพื่อยกเลิก
       </>
     ),
-    chipStatus: (count: number) =>
-      `เพิ่มแล้ว ${count} รายการ`,
+    chipStatus: (count: number) => `เพิ่มแล้ว ${count} รายการ`,
   },
 };
 
@@ -254,6 +248,23 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
       : chipCount > 0
         ? STRINGS[locale].chipStatus(chipCount)
         : false;
+
+  // Imperative live region for chip count changes — uses the same clear-then-
+  // set pattern as Snackbar so VO announces each change but not the initial
+  // mount.
+  const chipStatusRef = useRef<HTMLSpanElement>(null);
+  const prevChipCount = useRef(chipCount);
+  useEffect(() => {
+    if (prevChipCount.current === chipCount) return;
+    prevChipCount.current = chipCount;
+    const el = chipStatusRef.current;
+    if (!el) return;
+    const text = STRINGS[locale].chipStatus(chipCount);
+    el.textContent = "";
+    requestAnimationFrame(() => {
+      el.textContent = text;
+    });
+  }, [chipCount]);
 
   /**
    * Strip any single-char separator from the end of a value — the browser
@@ -397,10 +408,12 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
             ref={inputRef}
             id={`${id}-input`}
             aria-labelledby={`${id}-label`}
-            aria-describedby={sift([
-              helperMsg ? `${id}-helper` : undefined,
-              resolvedChipStatus ? `${id}-chip-status` : undefined,
-            ]).join(" ") || undefined}
+            aria-describedby={
+              sift([
+                helperMsg ? `${id}-helper` : undefined,
+                resolvedChipStatus ? `${id}-chip-status` : undefined,
+              ]).join(" ") || undefined
+            }
             aria-required={required || undefined}
             type="text"
             disabled={disabled}
@@ -420,25 +433,39 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
         </div>
       </div>
 
-      {/* Helper/error message */}
-      {(helperMsg || lastChipSelected) && (
+      {/* Helper message */}
+      {helperMsg && (
+        <Text
+          id={`${id}-helper`}
+          type="body-small"
+          className="skc-chip-field__helper-msg"
+        >
+          {helperMsg}
+        </Text>
+      )}
+
+      {/* Delete warning — live region, not linked via aria-describedby so VO
+          doesn't re-read the helper message when the warning dismisses. */}
+      {lastChipSelected && (
         <span role="status">
           <Text
-            id={`${id}-helper`}
             type="body-small"
             className="skc-chip-field__helper-msg"
           >
-          {lastChipSelected ? STRINGS[locale].deleteLast : helperMsg}
-        </Text>
+            {STRINGS[locale].deleteLast}
+          </Text>
         </span>
       )}
 
-      {/* Chip status (auto-computed or consumer-provided) */}
+      {/* Chip status for aria-describedby (read on input focus). */}
       {resolvedChipStatus && (
         <span id={`${id}-chip-status`} className="skc-sr-only">
           {resolvedChipStatus}
         </span>
       )}
+
+      {/* Chip count live region (announced on change, not on mount). */}
+      <span ref={chipStatusRef} role="status" className="skc-sr-only" />
 
       {/* Loading progress bar — rendered only when loading so VO discovers it. */}
       {loading && (
