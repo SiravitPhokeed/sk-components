@@ -34,9 +34,9 @@ export interface ProgressProps extends ElementCustomizableProps {
   value?: number;
 
   /**
-   * If this Progress is visible.
+   * Whether this Progress is rendered. Set to `false` to unmount it.
    *
-   * - Optional.
+   * - Optional. Defaults to rendered.
    */
   visible?: boolean;
 }
@@ -59,6 +59,7 @@ export const Progress: StyleableFC<ProgressProps> = ({
   style,
   className,
 }) => {
+  if (visible === false) return null;
   return (
     <Element
       role="progressbar"
@@ -66,11 +67,9 @@ export const Progress: StyleableFC<ProgressProps> = ({
       aria-valuenow={value}
       aria-valuemin={0}
       aria-valuemax={100}
-      aria-hidden={!visible}
       className={cn(
         "skc-progress",
         `skc-progress--${appearance}`,
-        visible && "skc-progress--visible",
         value === undefined && "skc-progress--indeterminate",
         className,
       )}
