@@ -3,6 +3,7 @@
 import { Interactive } from "@/components/Interactive";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
+import { invokerCommands } from "@/lib/helpers/invokerCommands";
 import type {
   ActionableProps,
   ElementCustomizableProps,
@@ -88,7 +89,8 @@ export const NavDrawerItem: StyleableFC<NavDrawerItemProps> = ({
         commandfor={commandfor}
         onClick={() => {
           const navDrawer = document.getElementById("nav-drawer");
-          if (navDrawer) (navDrawer as HTMLDialogElement).requestClose?.();
+          if (navDrawer)
+            invokerCommands.requestClose(navDrawer as HTMLDialogElement);
           onClick?.();
         }}
         href={href}

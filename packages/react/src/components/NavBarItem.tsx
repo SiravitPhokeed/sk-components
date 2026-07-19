@@ -3,6 +3,7 @@
 import { Interactive } from "@/components/Interactive";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
+import { invokerCommands } from "@/lib/helpers/invokerCommands";
 import type {
   ActionableProps,
   ElementCustomizableProps,
@@ -105,7 +106,22 @@ export const NavBarItem: StyleableFC<NavBarItemProps> = ({
       aria-label={!label ? alt : undefined}
       aria-labelledby={label ? labelID : undefined}
       title={tooltip}
-      onClick={onClick}
+      // `command`/`commandfor` land on the raw element here (not on
+      // Interactive), so imitate the command for browsers without the Invoker
+      // Commands API, same as Interactive does.
+      onClick={
+        onClick || (command && commandfor)
+          ? (event: React.MouseEvent) => {
+              onClick?.();
+              if (!(command && commandfor) || event.defaultPrevented) return;
+              invokerCommands.synthesize(
+                command,
+                commandfor,
+                event.currentTarget.getRootNode() as Document | ShadowRoot,
+              );
+            }
+          : undefined
+      }
       command={command}
       commandfor={commandfor}
       className={cn(
