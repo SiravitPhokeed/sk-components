@@ -112,7 +112,9 @@ export const NavBarItem: StyleableFC<NavBarItemProps> = ({
       onClick={
         onClick || (command && commandfor)
           ? (event: React.MouseEvent) => {
-              onClick?.();
+              (onClick as ((event?: React.MouseEvent) => any) | undefined)?.(
+                event,
+              );
               if (!(command && commandfor) || event.defaultPrevented) return;
               invokerCommands.synthesize(
                 command,

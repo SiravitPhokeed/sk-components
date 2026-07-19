@@ -15,5 +15,6 @@ export default function requestCloseDialog(dialog: HTMLDialogElement) {
   }
   if (!dialog.open) return;
   const cancel = new Event("cancel", { cancelable: true });
-  if (dialog.dispatchEvent(cancel)) dialog.close();
+  if (dialog.dispatchEvent(cancel) && typeof dialog.close === "function")
+    dialog.close();
 }
