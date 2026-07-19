@@ -433,12 +433,16 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
         </div>
       </div>
 
-      {/* Helper message */}
+      {/* Helper message — visually hidden when the delete warning is shown
+          so they don't overlap, but kept in the DOM for aria-describedby. */}
       {helperMsg && (
         <Text
           id={`${id}-helper`}
           type="body-small"
-          className="skc-chip-field__helper-msg"
+          className={cn(
+            "skc-chip-field__helper-msg",
+            lastChipSelected && "skc-sr-only",
+          )}
         >
           {helperMsg}
         </Text>
