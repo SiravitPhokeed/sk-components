@@ -85,8 +85,8 @@ much of that something has been done.
     <TableCell>
 
       <div className="flex flex-row gap-2 mb-4">
-        <Progress appearance="circular" alt="Determinate" value={60} visible />
-        <Progress appearance="circular" alt="Indeterminate" visible />
+        <Progress appearance="circular" alt="Determinate" value={60} />
+        <Progress appearance="circular" alt="Indeterminate" />
       </div>
 
       The progress percentage of an activity (a value from 0 to 100).
@@ -102,9 +102,9 @@ much of that something has been done.
     <TableCell>`boolean`</TableCell>
     <TableCell>
 
-      If this Progress is visible.
+      Whether this Progress is rendered. Set to `false` to unmount it entirely.
 
-      - Optional.
+      - Optional. Defaults to rendered.
 
       </TableCell>
 
@@ -115,8 +115,7 @@ much of that something has been done.
 
 <VersionsTable>
   <VersionsTableRow version="v4.0.0">
-    Hidden from assistive technologies when not visible. `aria-valuemin` and
-    `aria-valuemax` added.
+    `aria-valuemin` and `aria-valuemax` added.
   </VersionsTableRow>
   <VersionsTableRow version="v3.3.0">
     Redesigned to match updated Material Design specifications.

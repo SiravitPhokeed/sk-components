@@ -446,7 +446,6 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
           appearance="linear"
           alt={STRINGS[locale].loading}
           value={typeof loading === "number" ? loading : undefined}
-          visible
         />
       )}
     </Text>

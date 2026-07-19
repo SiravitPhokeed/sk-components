@@ -152,8 +152,7 @@ Changes to the demo app are documented in
   role inside Menus
 - **Nav Drawer Item:** `label` prop type corrected from optional to required,
   matching its JSDoc and runtime behavior (the label is always rendered).
-- **Progress:** now hidden from assistive technologies when not visible, with
-  explicit `aria-valuemin` and `aria-valuemax`
+- **Progress:** `aria-valuemin` and `aria-valuemax` added.
 - **Radio:** disabled Radios can no longer be selected with arrow keys (native
   `disabled` attribute)
 - **Select:** the trigger now announces the selected value without opening the
