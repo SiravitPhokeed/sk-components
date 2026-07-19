@@ -165,9 +165,8 @@ Changes to the demo app are documented in
   attribute
 - **Chip Field:** `aria-required` communicates the requirement to assistive
   technologies, the "Backspace again to delete" warning is announced via a
-  live region, and the input now announces how many chips are currently
-  added when it receives focus. The Progress loading bar also now properly
-  announces itself to VoiceOver.
+  live region, and adding or deleting chips is confirmed with a chip-count
+  announcement.
 - **Data Table Pagination:** page changes are announced to screen readers via a
   live region
 
