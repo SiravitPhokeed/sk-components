@@ -20,7 +20,8 @@ const BrowsersGridItem: FC<{
   browser: "chrome" | "edge" | "firefox" | "safari";
   version: string;
   releaseDate: `${number}-${number}-${number}`;
-}> = ({ browser, version, releaseDate }) => {
+  imagePriority?: boolean;
+}> = ({ browser, version, releaseDate, imagePriority }) => {
   const { name, icon } = BROWSERS_MAP.get(browser) ?? {
     name: "Unknown",
     icon: null as ImageProps["src"] | null,
@@ -40,7 +41,15 @@ const BrowsersGridItem: FC<{
       className="flex flex-col p-3"
     >
       <span className="flex items-center gap-1.5">
-        {icon && <Image src={icon} alt="" width={16} height={16} />}
+        {icon && (
+          <Image
+            src={icon}
+            alt=""
+            width={16}
+            height={16}
+            priority={imagePriority}
+          />
+        )}
         <Text type="title-medium">{name} </Text>
         {/* Space after to make Reader mode readable */}
       </span>
