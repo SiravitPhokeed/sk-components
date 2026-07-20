@@ -11,7 +11,7 @@ export const metadata = {
 
 SK Components is tested against the browsers listed below. Pick the tier that
 matches the browser versions you need to support. No polyfills or bundler
-configuration is required — modern CSS features are pre-compiled at build time.
+configuration is required.
 
 <DisclosureCard summary="Case study: real-world traffic to MySK">
 
@@ -134,8 +134,10 @@ All features work as documented.
   className="mt-6 mb-3"
 />
 
-CSS Anchor Positioning and Invoker Commands are unavailable in these browsers.
-SK Components is still usable, but some features may not work as expected.
+These browsers don’t support
+[CSS Anchor Positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning),
+which SK Components uses to place modals and popovers next to their trigger
+elements.
 
 <BrowsersGrid
   coverage={82.7}
@@ -153,15 +155,48 @@ SK Components is still usable, but some features may not work as expected.
   <BrowsersGridItem browser="safari" version="17.5" releaseDate="2024-05-13" />
 </BrowsersGrid>
 
-If you must support these older browsers, note the following:
+If you must support these older browsers, here is what to expect:
 
-- [Anchor](/docs/overlays/anchor) is _not supported_ in these browsers. All
-  modals and popovers appear in the center of the viewport, and cannot be
-  anchored to a trigger element.
-- `command` and `commandfor` props are _not supported_ in these browsers. **You
-  must use controlled modals and popovers** with the `open` and `onClose` props.
+- **[Menu](/docs/overlays/menu), [Select](/docs/inputs/select), and
+  [Filter Chip](/docs/inputs/filter-chip) menus** appear as bottom sheets
+  centered at the bottom of the viewport, rather than floating next to their
+  trigger.
+- **[Table Row](/docs/data/table-row) actions** appear as an always-visible
+  inline column instead of a hover-revealed toolbar above the row.
+- **Custom commands** (`command="--*"`) only work on browsers with native
+  [Invoker Commands](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API)
+  support. The six built-in commands work on all supported browsers.
 
-Learn more about [controlled modals and popovers](/docs/guides/modals#controlled-mode).
+Everything else, including uncontrolled modals and popovers, works the same
+across all supported browsers. See the [modals and popovers guide](/docs/guides/modals)
+for more details.
+
+<DisclosureCard summary="Why are there different support tiers?">
+
+SK Components uses **three modern web platform features** to power popovers and
+modals.
+
+- [CSS Anchor Positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning)
+  tethers popovers and menus to their trigger elements. This is only available
+  on the <MaterialIcon icon="check_circle" size={20} className="text-primary inline-block -mb-1" />
+  full support tier. On the <MaterialIcon icon="do_not_disturb_on" size={20} className="text-outline inline-block -mb-1 -rotate-45" />
+  **partial support tier, popovers appear as bottom sheets** instead.
+- The [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API)
+  places popover content in the top layer above all other page content.
+  **Popovers do not appear on browsers with <MaterialIcon icon="cancel" size={20} className="text-error inline-block -mb-1" />
+  no support,** where this API is unavailable.
+- The [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API)
+  lets buttons open and close popovers and modals declaratively. On
+  the <MaterialIcon icon="do_not_disturb_on" size={20} className="text-outline inline-block -mb-1 -rotate-45" />
+  **partial support tier,** where this API is unavailable, **SK Components
+  provides a JavaScript fallback** so `command` and `commandfor` still work.
+  Only custom commands require the native API.
+
+The <MaterialIcon icon="check_circle" size={20} className="text-primary inline-block -mb-1" />
+full support tier requires all three features. The <MaterialIcon icon="do_not_disturb_on" size={20} className="text-outline inline-block -mb-1 -rotate-45" />
+partial support tier requires only the Popover API.
+
+</DisclosureCard>
 
 <Header
   children="No support"

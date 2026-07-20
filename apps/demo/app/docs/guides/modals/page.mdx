@@ -39,14 +39,14 @@ recommended approach.
 
 ```tsx
 // Uncontrolled mode (Invoker Commands API)
-<Button appearance="filled" command="open-modal" commandfor="discard-dialog">
+<Button appearance="filled" command="show-modal" commandfor="discard-dialog">
   Discard
 </Button>
 <Dialog id="discard-dialog">
   <DialogHeader>Discard changes?</DialogHeader>
   <Actions>
-    <Button appearance="text" command="close-modal">Cancel</Button>
-    <Button appearance="text" command="close-modal">Discard</Button>
+    <Button appearance="text" command="request-close">Cancel</Button>
+    <Button appearance="text" command="request-close">Discard</Button>
   </Actions>
 </Dialog>
 ```
