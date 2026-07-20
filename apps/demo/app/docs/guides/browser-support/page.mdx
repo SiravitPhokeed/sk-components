@@ -1,7 +1,8 @@
 import BrowsersGrid from "@/app/docs/components/BrowsersGrid";
 import BrowsersGridItem from "@/app/docs/components/BrowsersGridItem";
 import DisclosureCard from "@/app/docs/components/DisclosureCard";
-import { Header, MaterialIcon, Text } from "@suankularb-components/react";
+import SupportTierIcon from "@/app/docs/components/SupportTierIcon";
+import { Header, Text } from "@suankularb-components/react";
 
 export const metadata = {
   title: "Browser support",
@@ -36,7 +37,7 @@ export const MYSK_TRAFFIC = { full: 87.4, partial: 98.5, none: 1.5 };
     />
   </div>
   <div className="flex items-center gap-1">
-    <MaterialIcon icon="check_circle" size={20} className="text-primary" />
+    <SupportTierIcon tier="full" size={20} />
     <Text type="title-small" className="text-on-surface-variant grow">
       {MYSK_TRAFFIC.full}% full support
     </Text>
@@ -46,24 +47,20 @@ export const MYSK_TRAFFIC = { full: 87.4, partial: 98.5, none: 1.5 };
     >
       {MYSK_TRAFFIC.partial}% partial support
     </Text>
-    <MaterialIcon
-      icon="do_not_disturb_on"
-      size={20}
-      className="text-outline -rotate-45"
-    />
-    <MaterialIcon icon="cancel" size={20} className="text-error" />
+    <SupportTierIcon tier="partial" size={20} />
+    <SupportTierIcon tier="none" size={20} />
   </div>
 </figure>
 
-- **{MYSK_TRAFFIC.full}% of traffic met the <MaterialIcon icon="check_circle" size={20} className="text-primary inline-block -mb-1" />
+- **{MYSK_TRAFFIC.full}% of traffic met the <SupportTierIcon tier="full" inline />
   full support tier,** held back mainly by older iOS versions (no CSS Anchor
   Positioning or Invoker Commands) and Samsung Internet (no Invoker Commands).
 
-- **{MYSK_TRAFFIC.partial}% of traffic met the <MaterialIcon icon="do_not_disturb_on" size={20} className="text-outline inline-block -mb-1 -rotate-45" />
+- **{MYSK_TRAFFIC.partial}% of traffic met the <SupportTierIcon tier="partial" inline />
   partial support tier.** Since every student must be able to access MySK, it
   should support this tier. Consider if your site has similar requirements.
 
-- **{MYSK_TRAFFIC.none}% of traffic <MaterialIcon icon="cancel" size={20} className="text-error inline-block -mb-1" />
+- **{MYSK_TRAFFIC.none}% of traffic <SupportTierIcon tier="none" inline />
   did not meet any tier.** Popovers are not available to these users. It should be
   noted that these users are on browsers that most sites no longer support, and
   they already encounter broken sites across the web.
@@ -84,7 +81,7 @@ See below for details on each tier.
   children="Full support"
   id="full-support"
   level={3}
-  icon={<MaterialIcon icon="check_circle" className="text-primary" />}
+  icon={<SupportTierIcon tier="full" />}
   className="mt-6 mb-3"
 />
 
@@ -125,12 +122,7 @@ All features work as documented.
   children="Partial support"
   id="partial-support"
   level={3}
-  icon={
-    <MaterialIcon
-      icon="do_not_disturb_on"
-      className="text-outline -rotate-45"
-    />
-  }
+  icon={<SupportTierIcon tier="partial" />}
   className="mt-6 mb-3"
 />
 
@@ -178,22 +170,22 @@ modals.
 
 - [CSS Anchor Positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning)
   tethers popovers and menus to their trigger elements. This is only available
-  on the <MaterialIcon icon="check_circle" size={20} className="text-primary inline-block -mb-1" />
-  full support tier. On the <MaterialIcon icon="do_not_disturb_on" size={20} className="text-outline inline-block -mb-1 -rotate-45" />
-  **partial support tier, popovers appear as bottom sheets** instead.
+  on the <SupportTierIcon tier="full" inline /> full support tier. On
+  the <SupportTierIcon tier="partial" inline /> **partial support tier, popovers
+  appear as bottom sheets** instead.
 - The [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API)
   places popover content in the top layer above all other page content.
-  **Popovers do not appear on browsers with <MaterialIcon icon="cancel" size={20} className="text-error inline-block -mb-1" />
+  **Popovers do not appear on browsers with <SupportTierIcon tier="none" inline />
   no support,** where this API is unavailable.
 - The [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API)
   lets buttons open and close popovers and modals declaratively. On
-  the <MaterialIcon icon="do_not_disturb_on" size={20} className="text-outline inline-block -mb-1 -rotate-45" />
-  **partial support tier,** where this API is unavailable, **SK Components
-  provides a JavaScript fallback** so `command` and `commandfor` still work.
-  Only custom commands require the native API.
+  the <SupportTierIcon tier="partial" inline /> **partial support tier,** where
+  this API is unavailable, **SK Components provides a JavaScript fallback** so
+  `command` and `commandfor` still work. Only custom commands require the native
+  API.
 
-The <MaterialIcon icon="check_circle" size={20} className="text-primary inline-block -mb-1" />
-full support tier requires all three features. The <MaterialIcon icon="do_not_disturb_on" size={20} className="text-outline inline-block -mb-1 -rotate-45" />
+The <SupportTierIcon tier="full" inline />
+full support tier requires all three features. The <SupportTierIcon tier="partial" inline />
 partial support tier requires only the Popover API.
 
 </DisclosureCard>
@@ -202,7 +194,7 @@ partial support tier requires only the Popover API.
   children="No support"
   id="no-support"
   level={3}
-  icon={<MaterialIcon icon="cancel" className="text-error" />}
+  icon={<SupportTierIcon tier="none" />}
   className="mt-6 mb-3"
 />
 

@@ -2,6 +2,7 @@ import DemoCard from "@/app/docs/components/DemoCard";
 import LinksChipSet from "@/app/docs/components/LinksChipSet";
 import PropsTable from "@/app/docs/components/PropsTable";
 import PropsTableRow from "@/app/docs/components/PropsTableRow";
+import SupportTierIcon from "@/app/docs/components/SupportTierIcon";
 import VersionsTable from "@/app/docs/components/VersionsTable";
 import VersionsTableRow from "@/app/docs/components/VersionsTableRow";
 import {
@@ -22,10 +23,10 @@ export const metadata = {
 Associates a trigger element (e.g. a Button) with a positioned element (e.g.
 a Menu) using CSS Anchor Positioning.
 
-> On the <MaterialIcon icon="do_not_disturb_on" size={20} className="inline-block -mb-1 -rotate-45" />
-> partial support tier, positioned elements appear as bottom sheets instead of
-> floating next to their trigger. Read the [browser support guide](/docs/guides/browser-support)
-> for more details.
+> On the <SupportTierIcon tier="partial" inline /> partial support tier,
+> positioned elements appear as bottom sheets instead of floating next to their
+> trigger. Read the [browser support guide](/docs/guides/browser-support) for
+> more details.
 
 <LinksChipSet source="/Anchor.tsx" />
 
