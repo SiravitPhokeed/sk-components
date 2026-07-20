@@ -132,6 +132,13 @@ colors.map((color) => (
 </form>
 ```
 
+> **Known issue:** Snackbars triggered inside Chip Field event handlers do not
+> announce to VoiceOver. Chip Field uses an internal live region for chip-count
+> and delete-warning announcements, which can conflict with Snackbar’s own
+> announcer.
+>
+> > Hello
+
 ### Props
 
 - [`StyleableProps`](/docs/guides/shared-props) available: `className` and

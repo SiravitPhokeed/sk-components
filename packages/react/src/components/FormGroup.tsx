@@ -4,7 +4,7 @@ import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/form-group.css";
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { createContext, useContext, useId } from "react";
 
 const FormGroupContext = createContext<{
@@ -44,13 +44,6 @@ export interface FormGroupProps extends ElementCustomizableProps {
    * - Always required.
    */
   label: ReactNode;
-
-  /**
-   * The HTML element to render for the `<legend>`. Defaults to `"label"`.
-   *
-   * - Optional.
-   */
-  legendElement?: ElementType;
 }
 
 /**
@@ -58,29 +51,34 @@ export interface FormGroupProps extends ElementCustomizableProps {
  *
  * @param children Form Items within this group, be it a set of options to choose from or related settings in a preferences page.
  * @param label The legend for the entire group.
- * @param legendElement The HTML element to render for the `<legend>`.
+ * @param name The name for the form group, passed down to form controls like Radio via context.
  */
 export const FormGroup: StyleableFC<FormGroupProps> = ({
   children,
   name,
   label,
-  legendElement = "legend",
   element: Element = "fieldset",
   style,
   className,
-}) => (
-  <Element style={style} className={cn("skc-form-group", className)}>
-    <Text
-      type="title-small"
-      element={legendElement}
-      className="skc-form-group__label"
-    >
-      {label}
-    </Text>
-    <FormGroupContext.Provider
-      value={{ name: name ?? `form-group-${useId()}` }}
-    >
-      {children}
-    </FormGroupContext.Provider>
-  </Element>
-);
+}) => {
+  // <legend> is only valid inside <fieldset>; only <legend> provides the
+  // accessible name for a <fieldset>.
+  const labelElement = Element === "fieldset" ? "legend" : "span";
+
+  return (
+    <Element style={style} className={cn("skc-form-group", className)}>
+      <Text
+        type="title-small"
+        element={labelElement}
+        className="skc-form-group__label"
+      >
+        {label}
+      </Text>
+      <FormGroupContext.Provider
+        value={{ name: name ?? `form-group-${useId()}` }}
+      >
+        {children}
+      </FormGroupContext.Provider>
+    </Element>
+  );
+};

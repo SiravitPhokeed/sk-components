@@ -1,6 +1,6 @@
 "use client";
 
-import type { ChipSet } from "@/components/ChipSet";
+import type { ChipSet, ChipSetProps } from "@/components/ChipSet";
 import type { InputChip } from "@/components/InputChip";
 import { Progress } from "@/components/Progress";
 import { Text } from "@/components/Text";
@@ -14,7 +14,7 @@ import type {
   ReactElement,
   ReactNode,
 } from "react";
-import { useId, useRef, useState } from "react";
+import { Children, useEffect, useId, useRef, useState } from "react";
 
 /**
  * Props for {@link ChipField Chip Field}.
@@ -140,23 +140,38 @@ export interface ChipFieldProps {
 const DEFAULT_SEPARATORS = [" ", ",", ";", "Enter"];
 const DELETE_KEY = "Backspace";
 
+const BackspaceKey = () => <kbd>⌫ backspace</kbd>;
+const RightArrowKey = () => <kbd>→</kbd>;
+
 const STRINGS = {
   "en-US": {
     loading: "Checking your input…",
-    deleteLast: (
-      <>
-        <kbd>⌫ backspace</kbd> again to delete this item, <kbd>→</kbd> to cancel
-      </>
-    ),
+    deleteLast: {
+      render: (
+        <>
+          Press <BackspaceKey /> again to delete this item, <RightArrowKey /> to
+          cancel
+        </>
+      ),
+      alt: "Last item selected. Press backspace again to delete this item, or right arrow to cancel.",
+    },
+    chipStatus: (count: number) =>
+      `${count} item${count === 1 ? "" : "s"} currently in field, ` +
+      "Shift-Tab to focus on them, start typing now to add another item",
   },
   th: {
     loading: "กำลังตรวจสอบข้อมูลของคุณ…",
-    deleteLast: (
-      <>
-        กด <kbd>⌫ backspace</kbd> อีกครั้งเพื่อลบรายการนี้ • กด <kbd>→</kbd>{" "}
-        เพื่อยกเลิก
-      </>
-    ),
+    deleteLast: {
+      render: (
+        <>
+          กด <BackspaceKey /> อีกครั้งเพื่อลบรายการนี้ • กด <RightArrowKey />{" "}
+          เพื่อยกเลิก
+        </>
+      ),
+      alt: "รายการสุดท้ายถูกเลือกแล้ว กด backspace อีกครั้งเพื่อลบรายการนี้ หรือกดลูกศรขวาเพื่อยกเลิก",
+    },
+    chipStatus: (count: number) =>
+      `เพิ่มแล้ว ${count} รายการในช่องนี้ กด Shift-Tab เพื่อโฟกัสที่รายการเหล่านั้น เริ่มพิมพ์ตอนนี้เพื่อเพิ่มรายการใหม่`,
   },
 };
 
@@ -202,9 +217,43 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
   const id = `chip-field-${useId()}`;
   const inputRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const announcerRef = useRef<HTMLSpanElement>(null);
 
   // Track if the last chip is selected (via backspace on empty input).
   const [lastChipSelected, setLastChipSelected] = useState(false);
+
+  // ––– Screen reader announcements ––––––––––––––––––––––––––––––––––––––––––—
+  // Chip Field is complex and dynamic, so we need to announce changes to the
+  // user. We use a live region to announce changes to the chip count, loading
+  // state, and last-chip selection.
+
+  const announce = (message: string) => {
+    const el = announcerRef.current;
+    if (!el) return;
+    el.textContent = "";
+    requestAnimationFrame(() => (el.textContent = message));
+  };
+
+  // Auto-compute chip count from the Chip Set’s children. Uses `React.Children`
+  // so it works during render.
+  const chipCount = Children.count(
+    (children.props as unknown as ChipSetProps).children,
+  );
+  const resolvedChipStatus =
+    chipCount > 0 ? STRINGS[locale].chipStatus(chipCount) : false;
+  const prevChipCount = useRef(chipCount);
+  useEffect(() => {
+    if (prevChipCount.current === chipCount) return;
+    prevChipCount.current = chipCount;
+    if (resolvedChipStatus) announce(resolvedChipStatus);
+  }, [chipCount]);
+
+  // Announce loading state.
+  useEffect(() => {
+    if (loading) announce(STRINGS[locale].loading);
+  }, [loading]);
+
+  // ––– Input handling –––––––––––––––––––––––––––––––––––––––––––––––––––—————
 
   /**
    * Strip any single-char separator from the end of a value — the browser
@@ -285,7 +334,9 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
       } else {
         // Check if there are chips in the Chip Set
         const chipSet = contentRef.current?.querySelector(".skc-chip-set");
-        if (chipSet && chipSet.children.length > 0) setLastChipSelected(true);
+        if (!chipSet || chipSet.children.length < 1) return;
+        setLastChipSelected(true);
+        announce(STRINGS[locale].deleteLast.alt);
       }
       return;
     }
@@ -304,6 +355,8 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
       }
     }
   };
+
+  // ––– Render –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––—————
 
   return (
     <Text
@@ -348,7 +401,10 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
             ref={inputRef}
             id={`${id}-input`}
             aria-labelledby={`${id}-label`}
-            aria-describedby={helperMsg ? `${id}-helper` : undefined}
+            aria-describedby={
+              helperMsg || lastChipSelected ? `${id}-helper` : undefined
+            }
+            aria-required={required || undefined}
             type="text"
             disabled={disabled}
             value={value}
@@ -374,17 +430,24 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
           type="body-small"
           className="skc-chip-field__helper-msg"
         >
-          {lastChipSelected ? STRINGS[locale].deleteLast : helperMsg}
+          {lastChipSelected ? STRINGS[locale].deleteLast.render : helperMsg}
+          {resolvedChipStatus && (
+            <span className="skc-sr-only">, {resolvedChipStatus}</span>
+          )}
         </Text>
       )}
 
+      {/* Announcer live region */}
+      <span ref={announcerRef} role="status" className="skc-sr-only" />
+
       {/* Loading progress bar */}
-      <Progress
-        appearance="linear"
-        alt={STRINGS[locale].loading}
-        value={typeof loading === "number" ? loading : undefined}
-        visible={Boolean(loading)}
-      />
+      {loading && (
+        <Progress
+          appearance="linear"
+          alt={STRINGS[locale].loading}
+          value={typeof loading === "number" ? loading : undefined}
+        />
+      )}
     </Text>
   );
 };

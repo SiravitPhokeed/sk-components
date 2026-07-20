@@ -181,7 +181,11 @@ export const InputChip: StyleableFC<InputChipProps> = ({
         <Button
           appearance="text"
           className="skc-chip__trailing-button"
-          alt={STRINGS[locale].remove}
+          alt={
+            typeof children === "string"
+              ? `${STRINGS[locale].remove}: ${children}`
+              : STRINGS[locale].remove
+          }
           icon={<MaterialIcon icon="close" />}
           onClick={onDelete}
           command={deleteCommand}

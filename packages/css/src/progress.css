@@ -17,9 +17,13 @@
     display: flex;
     position: relative;
     gap: 0.25rem;
-    transform: scaleY(0);
+    transform: scaleY(1);
     transition: transform var(--duration-short-4) var(--ease-standard);
     height: 0.25rem;
+
+    @starting-style {
+      transform: scaleY(0);
+    }
 
     /* Already flipped by parent */
     [dir="rtl"] & {
@@ -49,10 +53,6 @@
     aspect-ratio: 1;
   }
 }
-.skc-progress--visible.skc-progress--linear .skc-progress__track {
-  transform: scaleY(1);
-}
-
 @media (prefers-contrast: more) {
   .skc-progress--linear .skc-progress__remainder {
     box-sizing: border-box;
@@ -104,7 +104,11 @@
         stroke-dashoffset var(--duration-short-2) var(--ease-standard);
       stroke-dasharray: 200;
       stroke-linecap: round;
-      stroke-width: 0;
+      stroke-width: 4px;
+
+      @starting-style {
+        stroke-width: 0;
+      }
     }
   }
 
@@ -116,10 +120,6 @@
     stroke: var(--_remainder-color);
   }
 }
-.skc-progress--visible.skc-progress--circular .skc-progress__track > * {
-  stroke-width: 4px;
-}
-
 @media (prefers-contrast: more) {
   .skc-progress--circular .skc-progress__remainder {
     display: none;

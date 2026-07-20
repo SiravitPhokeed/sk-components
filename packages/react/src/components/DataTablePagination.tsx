@@ -5,7 +5,7 @@ import { MaterialIcon } from "@/components/MaterialIcon";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/data-table-pagination.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * Props for {@link DataTablePagination Data Table Pagination}.
@@ -98,6 +98,8 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
   style,
   className,
 }) => {
+  // ––– State –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
   const [page, setPage] = useState<number>(1);
   const [maxPage, setMaxPage] = useState<number>(
     Math.ceil(totalRows / rowsPerPage),
@@ -119,7 +121,26 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
     total: totalRows.toLocaleString(locale),
   };
 
-  useEffect(() => onChange?.(page, range.start - 1, range.end - 1), [page]);
+  // ––– Announcer ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––—
+
+  const announcerRef = useRef<HTMLSpanElement>(null);
+  const announce = (message: string) => {
+    const el = announcerRef.current;
+    if (!el) return;
+    el.textContent = "";
+    requestAnimationFrame(() => (el.textContent = message));
+  };
+
+  // ——— Handlers ——————————————————————————————————————————————————————————————
+
+  const changePage = (newPage: number) => {
+    if (newPage < 1 || newPage > maxPage) return;
+    setPage(newPage);
+    onChange?.(newPage, range.start - 1, range.end - 1);
+    announce(STRINGS[locale].alt(formattedNumbers));
+  };
+
+  // ——— Render ————————————————————————————————————————————————————————————————
 
   return (
     <Element
@@ -135,6 +156,10 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
         </span>
         <span aria-hidden>{STRINGS[locale].label(formattedNumbers)}</span>
       </span>
+
+      {/* Announcer live region */}
+      <span ref={announcerRef} role="status" className="skc-sr-only" />
+
       <div className="skc-data-table-pagination__controls">
         {/* Skip to first */}
         <Button
@@ -142,7 +167,7 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
           icon={<MaterialIcon icon="first_page" />}
           alt={STRINGS[locale].action.first}
           disabled={page === 1}
-          onClick={() => setPage(1)}
+          onClick={() => changePage(1)}
         />
         {/* Previous */}
         <Button
@@ -150,7 +175,7 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
           icon={<MaterialIcon icon="chevron_left" />}
           alt={STRINGS[locale].action.previous}
           disabled={page === 1}
-          onClick={() => setPage(page - 1)}
+          onClick={() => changePage(page - 1)}
         />
         {/* Next */}
         <Button
@@ -158,7 +183,7 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
           icon={<MaterialIcon icon="chevron_right" />}
           alt={STRINGS[locale].action.next}
           disabled={page === maxPage}
-          onClick={() => setPage(page + 1)}
+          onClick={() => changePage(page + 1)}
         />
         {/* Skip to last */}
         <Button
@@ -166,7 +191,7 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
           icon={<MaterialIcon icon="last_page" />}
           alt={STRINGS[locale].action.last}
           disabled={page === maxPage}
-          onClick={() => setPage(maxPage)}
+          onClick={() => changePage(maxPage)}
         />
       </div>
     </Element>
