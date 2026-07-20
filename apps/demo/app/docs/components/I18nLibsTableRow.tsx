@@ -16,6 +16,7 @@ const I18nLibsTableRow: FC<{
     <TableCell header scope="row" align="left">
       <a href={href} target="_blank" className="link">
         {library}
+        <span className="sr-only"> (opens in new tab)</span>
         <MaterialIcon
           icon="arrow_outward"
           size={20}

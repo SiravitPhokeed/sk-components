@@ -22,12 +22,15 @@ const components: MDXComponents = {
       >
         {children}
         {isExternal && (
-          <MaterialIcon
-            icon="arrow_outward"
-            size={20}
-            directional
-            className="-mt-1 inline-block"
-          />
+          <>
+            <span className="sr-only"> (opens in new tab)</span>
+            <MaterialIcon
+              icon="arrow_outward"
+              size={20}
+              directional
+              className="-mt-1 inline-block"
+            />
+          </>
         )}
       </Element>
     );

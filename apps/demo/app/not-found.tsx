@@ -22,6 +22,7 @@ const NotFound: FC = () => (
           className="link"
         >
           Report broken link
+          <span className="sr-only"> (opens in new tab)</span>
         </a>
       </Text>
     </div>

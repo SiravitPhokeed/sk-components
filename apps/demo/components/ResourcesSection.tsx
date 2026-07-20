@@ -34,6 +34,7 @@ const ResourcesSection: FC = () => (
           className="link"
         >
           this repository
+          <span className="sr-only"> (opens in new tab)</span>
         </a>
         .
       </Text>

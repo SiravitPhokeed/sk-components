@@ -28,6 +28,7 @@ const ExamplesPage: FC = () => (
               className="link"
             >
               mysk.school/search/students
+              <span className="sr-only"> (opens in new tab)</span>
             </a>
             .
           </p>
