@@ -147,14 +147,13 @@ const STRINGS = {
   "en-US": {
     loading: "Checking your input…",
     deleteLast: {
-      sighted: (
+      render: (
         <>
           Press <BackspaceKey /> again to delete this item, <RightArrowKey /> to
           cancel
         </>
       ),
-      unsighted:
-        "Last item selected. Press backspace again to delete this item, or right arrow to cancel.",
+      alt: "Last item selected. Press backspace again to delete this item, or right arrow to cancel.",
     },
     chipStatus: (count: number) =>
       `${count} item${count === 1 ? "" : "s"} currently in field, ` +
@@ -163,14 +162,13 @@ const STRINGS = {
   th: {
     loading: "กำลังตรวจสอบข้อมูลของคุณ…",
     deleteLast: {
-      sighted: (
+      render: (
         <>
           กด <BackspaceKey /> อีกครั้งเพื่อลบรายการนี้ • กด <RightArrowKey />{" "}
           เพื่อยกเลิก
         </>
       ),
-      unsighted:
-        "รายการสุดท้ายถูกเลือก กด backspace อีกครั้งเพื่อลบรายการนี้ หรือกดลูกศรขวาเพื่อยกเลิก",
+      alt: "รายการสุดท้ายถูกเลือกแล้ว กด backspace อีกครั้งเพื่อลบรายการนี้ หรือกดลูกศรขวาเพื่อยกเลิก",
     },
     chipStatus: (count: number) =>
       `เพิ่มแล้ว ${count} รายการในช่องนี้ กด Shift-Tab เพื่อโฟกัสที่รายการเหล่านั้น เริ่มพิมพ์ตอนนี้เพื่อเพิ่มรายการใหม่`,
@@ -338,7 +336,7 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
         const chipSet = contentRef.current?.querySelector(".skc-chip-set");
         if (!chipSet || chipSet.children.length < 1) return;
         setLastChipSelected(true);
-        announce(STRINGS[locale].deleteLast.unsighted);
+        announce(STRINGS[locale].deleteLast.alt);
       }
       return;
     }
@@ -432,7 +430,7 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
           type="body-small"
           className="skc-chip-field__helper-msg"
         >
-          {lastChipSelected ? STRINGS[locale].deleteLast.sighted : helperMsg}
+          {lastChipSelected ? STRINGS[locale].deleteLast.render : helperMsg}
           {resolvedChipStatus && (
             <span className="skc-sr-only">, {resolvedChipStatus}</span>
           )}

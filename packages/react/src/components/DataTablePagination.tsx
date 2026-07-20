@@ -98,6 +98,8 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
   style,
   className,
 }) => {
+  // ––– State –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
   const [page, setPage] = useState<number>(1);
   const [maxPage, setMaxPage] = useState<number>(
     Math.ceil(totalRows / rowsPerPage),
@@ -119,20 +121,26 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
     total: totalRows.toLocaleString(locale),
   };
 
-  useEffect(() => onChange?.(page, range.start - 1, range.end - 1), [page]);
+  // ––– Announcer ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––—
 
-  // Imperatively write to a persistent live region so VO picks up page
-  // changes — the clear-then-set pattern mirrors the Snackbar announcer.
-  const statusRef = useRef<HTMLSpanElement>(null);
-  const announcement = STRINGS[locale].alt(formattedNumbers);
-  useEffect(() => {
-    const el = statusRef.current;
+  const announcerRef = useRef<HTMLSpanElement>(null);
+  const announce = (message: string) => {
+    const el = announcerRef.current;
     if (!el) return;
     el.textContent = "";
-    requestAnimationFrame(() => {
-      el.textContent = announcement;
-    });
-  }, [announcement]);
+    requestAnimationFrame(() => (el.textContent = message));
+  };
+
+  // ——— Handlers ——————————————————————————————————————————————————————————————
+
+  const changePage = (newPage: number) => {
+    if (newPage < 1 || newPage > maxPage) return;
+    setPage(newPage);
+    onChange?.(newPage, range.start - 1, range.end - 1);
+    announce(STRINGS[locale].alt(formattedNumbers));
+  };
+
+  // ——— Render ————————————————————————————————————————————————————————————————
 
   return (
     <Element
@@ -148,9 +156,10 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
         </span>
         <span aria-hidden>{STRINGS[locale].label(formattedNumbers)}</span>
       </span>
-      {/* Persistent live region — content is written imperatively so VO
-          picks up changes even when the text is replaced in-place. */}
-      <span ref={statusRef} role="status" className="skc-sr-only" />
+
+      {/* Announcer live region */}
+      <span ref={announcerRef} role="status" className="skc-sr-only" />
+
       <div className="skc-data-table-pagination__controls">
         {/* Skip to first */}
         <Button
@@ -158,7 +167,7 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
           icon={<MaterialIcon icon="first_page" />}
           alt={STRINGS[locale].action.first}
           disabled={page === 1}
-          onClick={() => setPage(1)}
+          onClick={() => changePage(1)}
         />
         {/* Previous */}
         <Button
@@ -166,7 +175,7 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
           icon={<MaterialIcon icon="chevron_left" />}
           alt={STRINGS[locale].action.previous}
           disabled={page === 1}
-          onClick={() => setPage(page - 1)}
+          onClick={() => changePage(page - 1)}
         />
         {/* Next */}
         <Button
@@ -174,7 +183,7 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
           icon={<MaterialIcon icon="chevron_right" />}
           alt={STRINGS[locale].action.next}
           disabled={page === maxPage}
-          onClick={() => setPage(page + 1)}
+          onClick={() => changePage(page + 1)}
         />
         {/* Skip to last */}
         <Button
@@ -182,7 +191,7 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
           icon={<MaterialIcon icon="last_page" />}
           alt={STRINGS[locale].action.last}
           disabled={page === maxPage}
-          onClick={() => setPage(maxPage)}
+          onClick={() => changePage(maxPage)}
         />
       </div>
     </Element>
