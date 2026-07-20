@@ -1,7 +1,7 @@
 "use client";
 
 import cn from "@/lib/helpers/cn";
-import { invokerCommands } from "@/lib/helpers/invokerCommands";
+import invoker from "@/lib/helpers/invoker";
 import type {
   ActionableProps,
   ElementCustomizableProps,
@@ -115,7 +115,7 @@ export const Interactive: StyleableFC<
     // whichever element was rendered.
     (onClick as ((event?: React.MouseEvent) => any) | undefined)?.(event);
     if (!(command && commandfor) || event?.defaultPrevented) return;
-    invokerCommands.synthesize(
+    invoker.synthesize(
       command,
       commandfor,
       // The ripple container is always rendered inside the element, so its

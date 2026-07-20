@@ -1,6 +1,6 @@
-import requestCloseDialog from "@/lib/helpers/invokerCommands/requestClose";
-import supportsInvokerCommands from "@/lib/helpers/invokerCommands/supported";
-import synthesizeCommand from "@/lib/helpers/invokerCommands/synthesize";
+import invokerClose from "@/lib/helpers/invoker/close";
+import invokerSupported from "@/lib/helpers/invoker/supported";
+import invokerSynthesize from "@/lib/helpers/invoker/synthesize";
 
 /**
  * Fallback for the HTML Invoker Commands API on browsers without support (the
@@ -9,8 +9,10 @@ import synthesizeCommand from "@/lib/helpers/invokerCommands/synthesize";
  * Commands polyfill (https://github.com/keithamus/invokers-polyfill). Custom
  * (`--*`) commands cannot be imitated and are ignored.
  */
-export const invokerCommands = {
-  supported: supportsInvokerCommands,
-  synthesize: synthesizeCommand,
-  requestClose: requestCloseDialog,
+export const invoker = {
+  close: invokerClose,
+  supported: invokerSupported,
+  synthesize: invokerSynthesize,
 };
+
+export default invoker;

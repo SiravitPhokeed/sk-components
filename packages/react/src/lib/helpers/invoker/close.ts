@@ -8,7 +8,7 @@
  *
  * @param dialog The `<dialog>` element to request to close.
  */
-export default function requestCloseDialog(dialog: HTMLDialogElement) {
+export default function invokerClose(dialog: HTMLDialogElement) {
   if (typeof dialog.requestClose === "function") {
     dialog.requestClose();
     return;

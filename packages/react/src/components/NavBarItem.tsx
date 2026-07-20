@@ -3,7 +3,7 @@
 import { Interactive } from "@/components/Interactive";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import { invokerCommands } from "@/lib/helpers/invokerCommands";
+import invoker from "@/lib/helpers/invoker";
 import type {
   ActionableProps,
   ElementCustomizableProps,
@@ -116,7 +116,7 @@ export const NavBarItem: StyleableFC<NavBarItemProps> = ({
                 event,
               );
               if (!(command && commandfor) || event.defaultPrevented) return;
-              invokerCommands.synthesize(
+              invoker.synthesize(
                 command,
                 commandfor,
                 event.currentTarget.getRootNode() as Document | ShadowRoot,
