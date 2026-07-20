@@ -1,7 +1,8 @@
 import BrowsersGrid from "@/app/docs/components/BrowsersGrid";
 import BrowsersGridItem from "@/app/docs/components/BrowsersGridItem";
 import DisclosureCard from "@/app/docs/components/DisclosureCard";
-import { Header, MaterialIcon, Text } from "@suankularb-components/react";
+import SupportTierIcon from "@/app/docs/components/SupportTierIcon";
+import { Header, Text } from "@suankularb-components/react";
 
 export const metadata = {
   title: "Browser support",
@@ -11,7 +12,7 @@ export const metadata = {
 
 SK Components is tested against the browsers listed below. Pick the tier that
 matches the browser versions you need to support. No polyfills or bundler
-configuration is required — modern CSS features are pre-compiled at build time.
+configuration is required.
 
 <DisclosureCard summary="Case study: real-world traffic to MySK">
 
@@ -22,48 +23,54 @@ export const MYSK_TRAFFIC = { full: 87.4, partial: 98.5, none: 1.5 };
 
 <figure
   aria-label="Chart showing the percentage of MySK traffic that met different browser support tiers. See below for details."
-  className="bg-surface-container -mx-4 my-3 px-4 pt-6 pb-3"
+  className="bg-surface-container -mx-4 my-3 px-4 py-10"
 >
   <div className="relative flex h-2 gap-1 *:min-w-2 *:rounded-full">
+
+    {/* Full - primary bar */}
     <div
-      className="bg-primary absolute inset-0"
+      className="bg-primary absolute inset-0 z-10"
       style={{ width: `${MYSK_TRAFFIC.full}%` }}
-    />
-    <div className="bg-surface-bright border-outline-variant h-full grow border" />
+    >
+      <span className="absolute inset-e-0 bottom-2 flex items-center gap-1">
+        <Text type="title-small" className="text-on-surface-variant grow">
+          {MYSK_TRAFFIC.full}% full support
+        </Text>
+        <SupportTierIcon tier="full" size={20} />
+      </span>
+    </div>
+
+    {/* Partial - surface-bright bar, appears as primary bar container */}
+    <div className="bg-surface-bright border-outline-variant relative h-full grow border">
+      <span className="absolute top-2 inset-e-0 flex items-center gap-1">
+        <Text
+          type="title-small"
+          className="text-on-surface-variant text-end max-md:hidden"
+        >
+          {MYSK_TRAFFIC.partial}% partial support
+        </Text>
+        <SupportTierIcon tier="partial" size={20} />
+      </span>
+    </div>
+
+    {/* None - error bar */}
     <div
       className="bg-error h-full"
       style={{ width: `${MYSK_TRAFFIC.none}%` }}
     />
-  </div>
-  <div className="flex items-center gap-1">
-    <MaterialIcon icon="check_circle" size={20} className="text-primary" />
-    <Text type="title-small" className="text-on-surface-variant grow">
-      {MYSK_TRAFFIC.full}% full support
-    </Text>
-    <Text
-      type="title-small"
-      className="text-on-surface-variant text-end max-md:hidden"
-    >
-      {MYSK_TRAFFIC.partial}% partial support
-    </Text>
-    <MaterialIcon
-      icon="do_not_disturb_on"
-      size={20}
-      className="text-outline -rotate-45"
-    />
-    <MaterialIcon icon="cancel" size={20} className="text-error" />
+
   </div>
 </figure>
 
-- **{MYSK_TRAFFIC.full}% of traffic met the <MaterialIcon icon="check_circle" size={20} className="text-primary inline-block -mb-1" />
+- **{MYSK_TRAFFIC.full}% of traffic met the <SupportTierIcon tier="full" inline />
   full support tier,** held back mainly by older iOS versions (no CSS Anchor
   Positioning or Invoker Commands) and Samsung Internet (no Invoker Commands).
 
-- **{MYSK_TRAFFIC.partial}% of traffic met the <MaterialIcon icon="do_not_disturb_on" size={20} className="text-outline inline-block -mb-1 -rotate-45" />
+- **{MYSK_TRAFFIC.partial}% of traffic met the <SupportTierIcon tier="partial" inline />
   partial support tier.** Since every student must be able to access MySK, it
   should support this tier. Consider if your site has similar requirements.
 
-- **{MYSK_TRAFFIC.none}% of traffic <MaterialIcon icon="cancel" size={20} className="text-error inline-block -mb-1" />
+- **{MYSK_TRAFFIC.none}% of traffic <SupportTierIcon tier="none" inline />
   did not meet any tier.** Popovers are not available to these users. It should be
   noted that these users are on browsers that most sites no longer support, and
   they already encounter broken sites across the web.
@@ -84,7 +91,7 @@ See below for details on each tier.
   children="Full support"
   id="full-support"
   level={3}
-  icon={<MaterialIcon icon="check_circle" className="text-primary" />}
+  icon={<SupportTierIcon tier="full" />}
   className="mt-6 mb-3"
 />
 
@@ -125,17 +132,14 @@ All features work as documented.
   children="Partial support"
   id="partial-support"
   level={3}
-  icon={
-    <MaterialIcon
-      icon="do_not_disturb_on"
-      className="text-outline -rotate-45"
-    />
-  }
+  icon={<SupportTierIcon tier="partial" />}
   className="mt-6 mb-3"
 />
 
-CSS Anchor Positioning and Invoker Commands are unavailable in these browsers.
-SK Components is still usable, but some features may not work as expected.
+These browsers don’t support
+[CSS Anchor Positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning),
+which SK Components uses to place modals and popovers next to their trigger
+elements.
 
 <BrowsersGrid
   coverage={82.7}
@@ -153,21 +157,54 @@ SK Components is still usable, but some features may not work as expected.
   <BrowsersGridItem browser="safari" version="17.5" releaseDate="2024-05-13" />
 </BrowsersGrid>
 
-If you must support these older browsers, note the following:
+If you must support these older browsers, here is what to expect:
 
-- [Anchor](/docs/overlays/anchor) is _not supported_ in these browsers. All
-  modals and popovers appear in the center of the viewport, and cannot be
-  anchored to a trigger element.
-- `command` and `commandfor` props are _not supported_ in these browsers. **You
-  must use controlled modals and popovers** with the `open` and `onClose` props.
+- **[Menu](/docs/overlays/menu), [Select](/docs/inputs/select), and
+  [Filter Chip](/docs/inputs/filter-chip) menus** appear as bottom sheets
+  centered at the bottom of the viewport, rather than floating next to their
+  trigger.
+- **[Table Row](/docs/data/table-row) actions** appear as an always-visible
+  inline column instead of a hover-revealed toolbar above the row.
+- **Custom commands** (`command="--*"`) only work on browsers with native
+  [Invoker Commands](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API)
+  support. The six built-in commands work on all supported browsers.
 
-Learn more about [controlled modals and popovers](/docs/guides/modals#controlled-mode).
+Everything else, including uncontrolled modals and popovers, works the same
+across all supported browsers. See the [modals and popovers guide](/docs/guides/modals)
+for more details.
+
+<DisclosureCard summary="Why are there different support tiers?">
+
+SK Components uses **three modern web platform features** to power popovers and
+modals.
+
+- [CSS Anchor Positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning)
+  tethers popovers and menus to their trigger elements. This is only available
+  on the <SupportTierIcon tier="full" inline /> full support tier. On
+  the <SupportTierIcon tier="partial" inline /> **partial support tier, popovers
+  appear as bottom sheets** instead.
+- The [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API)
+  places popover content in the top layer above all other page content.
+  **Popovers do not appear on browsers with <SupportTierIcon tier="none" inline />
+  no support,** where this API is unavailable.
+- The [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API)
+  lets buttons open and close popovers and modals declaratively. On
+  the <SupportTierIcon tier="partial" inline /> **partial support tier,** where
+  this API is unavailable, **SK Components provides a JavaScript fallback** so
+  `command` and `commandfor` still work. Only custom commands require the native
+  API.
+
+The <SupportTierIcon tier="full" inline />
+full support tier requires all three features. The <SupportTierIcon tier="partial" inline />
+partial support tier requires only the Popover API.
+
+</DisclosureCard>
 
 <Header
   children="No support"
   id="no-support"
   level={3}
-  icon={<MaterialIcon icon="cancel" className="text-error" />}
+  icon={<SupportTierIcon tier="none" />}
   className="mt-6 mb-3"
 />
 

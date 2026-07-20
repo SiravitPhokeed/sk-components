@@ -2,7 +2,17 @@ import BrowsersGrid from "@/app/docs/components/BrowsersGrid";
 import BrowsersGridItem from "@/app/docs/components/BrowsersGridItem";
 import DisclosureCard from "@/app/docs/components/DisclosureCard";
 import IconFontDialog from "@/app/docs/components/IconFontDialog";
-import { Button, MaterialIcon } from "@suankularb-components/react";
+import MaterialGraphic from "@/public/images/graphics/material.svg";
+import SuankularbGraphic from "@/public/images/graphics/suankularb.svg";
+import UpgradeGraphic from "@/public/images/graphics/upgrade.svg";
+import {
+  Button,
+  Card,
+  CardHeader,
+  MaterialIcon,
+  Text,
+} from "@suankularb-components/react";
+import Image from "next/image";
 
 export const metadata = {
   title: "Getting started",
@@ -10,17 +20,27 @@ export const metadata = {
 
 ## Getting started
 
-SK Components (“SKCom”) is a component library built on
-[Material Design 3](https://m3.material.io/). It provides components that
-follow Material Design principles, so you can ship faster with components
-that already handle styling, accessibility, and behavior.
+<div className="grid grid-cols-3 md:grid-cols-4 *:[p]:col-span-3 *:my-2 *:[img]:min-w-20 *:[img]:rounded-lg gap-x-4">
 
-SKCom was originally created for
-[Suankularb Wittayalai School](https://www.sk.ac.th/)’s family of
-applications, including its flagship application [MySK](https://mysk.school/),
-and continues to serve Suankularb students and staff today.
+<Image src={MaterialGraphic} alt="" priority />
+**SK Components (“SKCom”) is a component library built on [Material Design
+3](https://m3.material.io/).** It provides components that follow Material
+Design principles, so you can ship faster with components that already handle
+styling, accessibility, and behavior.
 
-> Already using v3? [Learn how to upgrade to v4](/docs/migrations/v4).
+<Image src={SuankularbGraphic} alt="" priority />
+**SKCom was originally created for [Suankularb Wittayalai
+School](https://www.sk.ac.th/)**’s family of applications, including its
+flagship application [MySK](https://mysk.school/), and continues to serve
+Suankularb students and staff today.
+
+<Image src={UpgradeGraphic} alt="" priority />
+
+**Already using v3? [Learn how to upgrade to v4](/docs/migrations/v4).** Take
+advantage of removed manual state management, improved accessibility, Next.js
+App Router support, and more.
+
+</div>
 
 > **Before you build:** Material Design 3 has an excellent
 > [style guide](https://m3.material.io/foundations/content-design/style-guide/ux-writing-best-practices)
@@ -30,7 +50,7 @@ and continues to serve Suankularb students and staff today.
 > Dialog when a separate page would be better — creates confusing experiences.
 >
 > Most SKCom component pages link to the relevant Material Design page at the
-> top, so you can check the official guidance before you start.
+> top, so you can **check the official guidance before you start.**
 
 There are currently two official SKCom libraries:
 

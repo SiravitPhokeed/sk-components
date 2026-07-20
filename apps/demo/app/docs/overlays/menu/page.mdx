@@ -36,13 +36,13 @@ A trigger button can open a Menu via the Invoker Commands API.
 </Anchor>
 ```
 
-Menu Items inside the Menu can close it via `command="request-close"`, unless a
+Menu Items inside the Menu can close it via `command=”hide-popover”`, unless a
 different `commandfor` is specified. Clicking outside the Menu or pressing Escape also closes it (known as
 “light dismiss”).
 
 ```tsx
 // Inside Menu
-<MenuItem command="request-close">Email</MenuItem>
+<MenuItem command=”hide-popover”>Email</MenuItem>
 ```
 
 ### Props
@@ -110,6 +110,10 @@ different `commandfor` is specified. Clicking outside the Menu or pressing Escap
       </TableCell>
 
   </PropsTableRow>
+
+> On [partial-support browsers](/docs/guides/browser-support#partial-support),
+> Menu appears as a bottom sheet centered at the bottom of the viewport instead
+> of anchored to the trigger.
 
   <PropsTableRow prop="open" required="never">
     <TableCell>`boolean`</TableCell>
