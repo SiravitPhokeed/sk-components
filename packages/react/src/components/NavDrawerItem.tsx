@@ -3,6 +3,7 @@
 import { Interactive } from "@/components/Interactive";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
+import { invoker } from "@/lib/helpers/invoker";
 import type {
   ActionableProps,
   ElementCustomizableProps,
@@ -10,6 +11,7 @@ import type {
 } from "@/lib/types";
 import "@suankularb-components/css/nav-drawer-item.css";
 import type { ReactElement, ReactNode } from "react";
+import { useRef } from "react";
 
 /**
  * Props for {@link NavDrawerItem Navigation Drawer Item}.
@@ -79,14 +81,32 @@ export const NavDrawerItem: StyleableFC<NavDrawerItemProps> = ({
   style,
   className,
 }) => {
+  // Invoker Commands are ignored on `<a>` elements. Imperatively close the
+  // Navigation Drawer (or synthesize the consumer-provided command) when the
+  // user clicks on a Navigation Drawer Item.
+  const containerRef = useRef<HTMLLIElement>(null);
+  const handleClick = () => {
+    onClick?.();
+    const container = containerRef.current;
+    if (command && commandfor) {
+      const root = container?.getRootNode() as Document | ShadowRoot;
+      invoker.synthesize(command, commandfor, root);
+      return;
+    }
+    const navDrawer = container?.closest(
+      "#nav-drawer",
+    ) as HTMLDialogElement | null;
+    navDrawer?.requestClose?.();
+  };
+
   return (
-    <li>
+    <li ref={containerRef}>
       <Interactive
         aria-current={selected ? "page" : undefined}
         title={tooltip}
-        command={command ?? "request-close"}
-        commandfor={commandfor ?? "nav-drawer"}
-        onClick={onClick}
+        command={command}
+        commandfor={commandfor}
+        onClick={handleClick}
         href={href}
         element={element}
         className={cn(
