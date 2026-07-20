@@ -183,7 +183,7 @@ export const InputChip: StyleableFC<InputChipProps> = ({
           className="skc-chip__trailing-button"
           alt={
             typeof children === "string"
-              ? `${STRINGS[locale].remove} ${children}`
+              ? `${STRINGS[locale].remove}: ${children}`
               : STRINGS[locale].remove
           }
           icon={<MaterialIcon icon="close" />}
