@@ -451,7 +451,7 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
       {/* Delete warning — live region, not linked via aria-describedby so VO
           doesn't re-read the helper message when the warning dismisses. */}
       {lastChipSelected && (
-        <span role="status">
+        <span role="status" aria-label="Delete warning">
           <Text
             type="body-small"
             className="skc-chip-field__helper-msg"
@@ -469,7 +469,12 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
       )}
 
       {/* Chip count live region (announced on change, not on mount). */}
-      <span ref={chipStatusRef} role="status" className="skc-sr-only" />
+      <span
+        ref={chipStatusRef}
+        role="status"
+        aria-label="Chip count"
+        className="skc-sr-only"
+      />
 
       {/* Loading progress bar — rendered only when loading so VO discovers it. */}
       {loading && (
