@@ -54,12 +54,10 @@ export const SkipLink: StyleableFC<SkipLinkProps> = ({
   }, []);
 
   return (
-    <a
-      href="#content"
-      className={cn("skc-skip-link", className)}
-      style={style}
-    >
-      <Text type="label-large">{STRINGS[locale].label}</Text>
+    <a href="#content" className={cn("skc-skip-link", className)} style={style}>
+      <Text type="label-large" className="skc-skip-link__label">
+        {STRINGS[locale].label}
+      </Text>
     </a>
   );
 };

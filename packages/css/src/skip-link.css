@@ -5,23 +5,28 @@
  */
 
 .skc-skip-link {
+  --_inset: 1rem;
+
   position: fixed;
-  top: 0.5rem;
+  top: var(--_inset);
   align-items: center;
-  z-index: 1000;
-  inset-inline-start: 0.5rem;
+  z-index: 90;
+  inset-inline-start: var(--_inset);
   border: none;
   border-radius: var(--radius-full);
   background-color: var(--color-primary);
   padding: 0.625rem 1.5rem;
   color: var(--color-on-primary);
-  font-family: var(--font-body);
   text-decoration: none;
 
   /* Visually hidden until focused */
   clip: rect(0, 0, 0, 0);
   overflow: hidden;
   white-space: nowrap;
+}
+
+.skc-skip-link__label {
+  font-family: var(--font-display);
 }
 
 .skc-skip-link:focus-visible {
