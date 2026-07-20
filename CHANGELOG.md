@@ -27,7 +27,8 @@ Changes to the demo app are documented in
 - RTL support
 - `alt` prop on Avatar, Checkbox, Data Table Content, Data Table Search,
   Navigation Bar, Navigation Bar Item, Search, Switch, and Table for
-  accessible names when used without a visible label
+  accessible names when used without a visible label. Navigation Bar and
+  Navigation Drawer now default to a localized "Main" label.
 - Keyboard navigation and focus management for complex widgets: arrow-key
   navigation in Menu and Tabs Container, automatic focus on Menu and Dialog
   open with return to trigger on close, and Snackbar timer that pauses on

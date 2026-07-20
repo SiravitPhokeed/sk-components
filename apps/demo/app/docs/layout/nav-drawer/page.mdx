@@ -44,6 +44,19 @@ A navigation drawer that slides in from the left.
   `style`.
 
 <PropsTable>
+  <PropsTableRow prop="alt" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A description of the Navigation Drawer for screen readers, similar to
+      `alt` on `<img>`. Applied as `aria-label` on the `<nav>` element.
+
+      - Optional. Defaults to a localized &ldquo;Main&rdquo; string.
+
+      </TableCell>
+
+  </PropsTableRow>
+
   <PropsTableRow prop="children" required="always">
     <TableCell>`ReactNode`</TableCell>
     <TableCell>
@@ -82,7 +95,8 @@ A navigation drawer that slides in from the left.
 
 <VersionsTable>
   <VersionsTableRow version="v4.0.0">
-    Modal behavior delegated to Side Sheet.
+    `alt` introduced, defaulting to a localized &ldquo;Main.&rdquo; Modal behavior
+    delegated to Side Sheet.
   </VersionsTableRow>
   <VersionsTableRow version="v3.0.0">
     Navigation Drawer introduced.

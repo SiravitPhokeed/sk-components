@@ -65,6 +65,19 @@ it transforms into a Navigation Rail.
 - [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
+  <PropsTableRow prop="alt" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A description of the Navigation Bar for screen readers, similar to `alt`
+      on `<img>`. Applied as `aria-label` on the `<nav>` element.
+
+      - Optional. Defaults to a localized &ldquo;Main&rdquo; string.
+
+      </TableCell>
+
+  </PropsTableRow>
+
   <PropsTableRow prop="children" required="always">
     <TableCell>`ReactNode`</TableCell>
     <TableCell>
@@ -131,7 +144,8 @@ it transforms into a Navigation Rail.
 
 <VersionsTable>
   <VersionsTableRow version="v4.0.0">
-    `brand` and `fab` removed. Navigation Bar made fully transparent on desktop.
+    `alt` introduced, defaulting to a localized &ldquo;Main.&rdquo; `brand` and
+    `fab` removed. Navigation Bar made fully transparent on desktop.
   </VersionsTableRow>
   <VersionsTableRow version="v3.2.0">
     Navigation Bar made translucent on desktop.
