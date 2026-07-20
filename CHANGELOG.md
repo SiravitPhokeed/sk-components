@@ -61,6 +61,11 @@ Changes to the demo app are documented in
   - **Table Cell:** `colSpan` and `rowSpan`
   - **Text:** `id`
   - **Text Field:** `type` for native HTML input types
+- **Skip Link** for skipping to the main content of a page, visually hidden
+  until focused. Rendered automatically by Root Layout; use
+  `skipToContent={false}` to opt out.
+- `locale` and `skipToContent` props on Root Layout for controlling the Skip
+  Link
 
 ### Changed
 
@@ -83,6 +88,8 @@ Changes to the demo app are documented in
   optional — using these props is now called “controlled mode,” while omitting
   them is called “uncontrolled mode” (Invoker Commands API)
 - Component-specific changes:
+  - **Content Layout:** now renders with `id="content"` and `tabIndex={-1}` to
+    support the Skip Link
   - **FAB:** now a direct child of Root Layout instead of a Nav Bar prop
   - **Filter Chip:** `menu` now takes a Fragment of Menu Items instead of a Menu
     component
