@@ -3,7 +3,6 @@
 import { Interactive } from "@/components/Interactive";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
-import invoker from "@/lib/helpers/invoker";
 import type {
   ActionableProps,
   ElementCustomizableProps,
@@ -85,13 +84,9 @@ export const NavDrawerItem: StyleableFC<NavDrawerItemProps> = ({
       <Interactive
         aria-current={selected ? "page" : undefined}
         title={tooltip}
-        command={command}
-        commandfor={commandfor}
-        onClick={() => {
-          const navDrawer = document.getElementById("nav-drawer");
-          if (navDrawer) invoker.close(navDrawer as HTMLDialogElement);
-          onClick?.();
-        }}
+        command={command ?? "request-close"}
+        commandfor={commandfor ?? "nav-drawer"}
+        onClick={onClick}
         href={href}
         element={element}
         className={cn(

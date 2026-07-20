@@ -214,6 +214,7 @@ export const Interactive: StyleableFC<
         // intersection event type; the runtime event is always correct for
         // whichever element was rendered.
         (onKeyDown as React.KeyboardEventHandler | undefined)?.(event);
+
         // Disallow activation and ripple effect on spacebar for links, since
         // it scrolls the page instead of activating the link.
         const allowedKeys = [`Enter`, ...(!isLink ? [` `] : [])];

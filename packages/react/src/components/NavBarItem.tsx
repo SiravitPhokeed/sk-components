@@ -109,21 +109,13 @@ export const NavBarItem: StyleableFC<NavBarItemProps> = ({
       // `command`/`commandfor` land on the raw element here (not on
       // Interactive), so imitate the command for browsers without the Invoker
       // Commands API, same as Interactive does.
-      onClick={
-        onClick || (command && commandfor)
-          ? (event: React.MouseEvent) => {
-              (onClick as ((event?: React.MouseEvent) => any) | undefined)?.(
-                event,
-              );
-              if (!(command && commandfor) || event.defaultPrevented) return;
-              invoker.synthesize(
-                command,
-                commandfor,
-                event.currentTarget.getRootNode() as Document | ShadowRoot,
-              );
-            }
-          : undefined
-      }
+      onClick={(event: React.MouseEvent) => {
+        onClick?.();
+        if (!(command && commandfor)) return;
+        const root = event.currentTarget.getRootNode() as Document | ShadowRoot;
+        if (!root) return;
+        invoker.synthesize(command, commandfor, root);
+      }}
       command={command}
       commandfor={commandfor}
       className={cn(
