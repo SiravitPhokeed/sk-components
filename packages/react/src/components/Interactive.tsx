@@ -1,6 +1,7 @@
 "use client";
 
 import cn from "@/lib/helpers/cn";
+import invoker from "@/lib/helpers/invoker";
 import type {
   ActionableProps,
   ElementCustomizableProps,
@@ -100,6 +101,31 @@ export const Interactive: StyleableFC<
     typeof Element !== "string" || ["button", "a"].includes(Element);
 
   /**
+   * Call the consumer’s `onClick`, then imitate the `command` on browsers
+   * without the Invoker Commands API. Browsers with support perform the
+   * command themselves as the trigger’s default action, and the imitation
+   * no-ops.
+   *
+   * @param event The mouse event, if any. Keyboard activation on generic
+   *   elements calls this with no event.
+   */
+  function handleClick(event?: React.MouseEvent) {
+    // The `button | a` union makes the consumer handler demand an
+    // intersection event type; the runtime event is always correct for
+    // whichever element was rendered.
+    (onClick as ((event?: React.MouseEvent) => any) | undefined)?.(event);
+    if (!(command && commandfor) || event?.defaultPrevented) return;
+    invoker.synthesize(
+      command,
+      commandfor,
+      // The ripple container is always rendered inside the element, so its
+      // root node is correct when keyboard activation provides no event.
+      ((event?.currentTarget ?? rippleContainerRef.current)?.getRootNode() ??
+        document) as Document | ShadowRoot,
+    );
+  }
+
+  /**
    * Get the position of the ripple relative to the ripple container.
    *
    * @param clientX The x-coordinate of the mouse/touch event.
@@ -188,6 +214,7 @@ export const Interactive: StyleableFC<
         // intersection event type; the runtime event is always correct for
         // whichever element was rendered.
         (onKeyDown as React.KeyboardEventHandler | undefined)?.(event);
+
         // Disallow activation and ripple effect on spacebar for links, since
         // it scrolls the page instead of activating the link.
         const allowedKeys = [`Enter`, ...(!isLink ? [` `] : [])];
@@ -197,7 +224,7 @@ export const Interactive: StyleableFC<
         // elements need activation synthesized for keyboard support.
         if (!isNativelyInteractive && isActionable) {
           event.preventDefault(); // Prevent spacebar from scrolling the page.
-          onClick?.();
+          handleClick();
         }
 
         if (touched) return;
@@ -213,7 +240,13 @@ export const Interactive: StyleableFC<
         className,
       )}
       style={style}
-      {...{ onClick, href, command, commandfor, ...props }}
+      {...{
+        onClick: onClick || (command && commandfor) ? handleClick : undefined,
+        href,
+        command,
+        commandfor,
+        ...props,
+      }}
     >
       <span
         aria-hidden

@@ -84,13 +84,9 @@ export const NavDrawerItem: StyleableFC<NavDrawerItemProps> = ({
       <Interactive
         aria-current={selected ? "page" : undefined}
         title={tooltip}
-        command={command}
-        commandfor={commandfor}
-        onClick={() => {
-          const navDrawer = document.getElementById("nav-drawer");
-          if (navDrawer) (navDrawer as HTMLDialogElement).requestClose?.();
-          onClick?.();
-        }}
+        command={command ?? "request-close"}
+        commandfor={commandfor ?? "nav-drawer"}
+        onClick={onClick}
         href={href}
         element={element}
         className={cn(
