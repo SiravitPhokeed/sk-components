@@ -136,10 +136,6 @@ Changes to the demo app are documented in
 
 ### Fixed
 
-- `command` and `commandfor` props now fall back to a JavaScript implementation
-  on browsers without the Invoker Commands API, restoring uncontrolled mode on
-  the partial support tier (fixes Navigation Drawer, Select, Filter Chip menus,
-  and the Full-screen Dialog close button on those browsers)
 - **App Drawer:** the dialog now announces its name, labeled by its header
 - **Button:** `aria-disabled` is now set while `loading`, and `selected` is
   exposed via `aria-pressed`
@@ -154,8 +150,6 @@ Changes to the demo app are documented in
   role inside Menus
 - **Nav Drawer Item:** `label` prop type corrected from optional to required,
   matching its JSDoc and runtime behavior (the label is always rendered).
-- **Nav Drawer Item:** closing the Navigation Drawer on navigation now works
-  on browsers without `dialog.requestClose()`
 - **Progress:** now hidden from assistive technologies when not visible, with
   explicit `aria-valuemin` and `aria-valuemax`
 - **Radio:** disabled Radios can no longer be selected with arrow keys (native
