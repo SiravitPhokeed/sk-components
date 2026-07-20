@@ -55,6 +55,7 @@
     "./nav-drawer-item.css": "./dist/nav-drawer-item.css",
     "./nav-drawer-section.css": "./dist/nav-drawer-section.css",
     "./side-sheet.css": "./dist/side-sheet.css",
+    "./skip-link.css": "./dist/skip-link.css",
     "./page-header.css": "./dist/page-header.css",
     "./progress.css": "./dist/progress.css",
     "./radio.css": "./dist/radio.css",

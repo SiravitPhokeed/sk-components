@@ -31,7 +31,12 @@ export const ContentLayout: StyleableFC<ContentLayoutProps> = ({
   className,
 }) => {
   return (
-    <Element className={cn("skc-content-layout", className)} style={style}>
+    <Element
+      id="content"
+      tabIndex={-1}
+      className={cn("skc-content-layout", className)}
+      style={style}
+    >
       <div className="skc-content-layout__content">{children}</div>
     </Element>
   );

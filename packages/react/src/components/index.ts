@@ -63,6 +63,7 @@ export {
   type NavDrawerSectionProps,
 } from "./NavDrawerSection";
 export { SideSheet, type SideSheetProps } from "./SideSheet";
+export { SkipLink, type SkipLinkProps } from "./SkipLink";
 export { PageHeader, type PageHeaderProps } from "./PageHeader";
 export { Progress, type ProgressProps } from "./Progress";
 export { Radio, type RadioProps } from "./Radio";
