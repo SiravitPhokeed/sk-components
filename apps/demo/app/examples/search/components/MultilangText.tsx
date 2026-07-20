@@ -17,7 +17,7 @@ const MultilangText: StyleableFC<{
         >
           {lang === "en-US" ? "EN" : "TH"}
         </div>
-        <p>{text[lang as keyof typeof text]}</p>
+        <p lang={lang === "th" ? "th" : undefined}>{text[lang as keyof typeof text]}</p>
       </Fragment>
     ))}
   </div>

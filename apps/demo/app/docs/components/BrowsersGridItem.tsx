@@ -40,7 +40,7 @@ const BrowsersGridItem: FC<{
       aria-label={`${name} ${version} and up, released on ${releaseDateFull}`}
       className="flex flex-col p-3"
     >
-      <span className="flex items-center gap-1.5">
+      <span aria-hidden className="flex items-center gap-1.5">
         {icon && (
           <Image
             src={icon}
@@ -53,8 +53,8 @@ const BrowsersGridItem: FC<{
         <Text type="title-medium">{name} </Text>
         {/* Space after to make Reader mode readable */}
       </span>
-      <Text type="title-large">{version}+ </Text>
-      <Text type="body-medium" className="text-on-surface-variant mt-1">
+      <Text aria-hidden type="title-large">{version}+ </Text>
+      <Text aria-hidden type="body-medium" className="text-on-surface-variant mt-1">
         <time title={releaseDateFull}>{releaseDateShort}</time>
       </Text>
     </li>
