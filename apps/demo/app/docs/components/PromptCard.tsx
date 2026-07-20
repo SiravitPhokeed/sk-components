@@ -40,8 +40,13 @@ const PromptCard: FC<{
       <CardHeader
         icon={<MaterialIcon icon="robot_2" className="text-secondary" />}
         title={title}
+        level={2}
       />
-      <Text type="body-medium" className="p-4 pt-0 md:text-balance">
+      <Text
+        type="title-medium"
+        element="div"
+        className="p-4 pt-0 md:text-balance"
+      >
         {children}
         <Actions className="mt-4 sm:grid sm:justify-stretch md:flex md:justify-end">
           <Button
