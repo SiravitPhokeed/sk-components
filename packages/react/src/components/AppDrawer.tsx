@@ -44,6 +44,7 @@ const STRINGS = {
 };
 
 const APP_DRAWER_HEADER_ID = "app-drawer-header";
+const APP_DRAWER_MODAL_ID = "app-drawer-modal";
 
 const EXITING_CLASS = "skc-app-drawer__modal--exiting";
 const EXIT_ANIMATION_NAME = "skc-app-drawer-exit";
@@ -82,14 +83,14 @@ export const AppDrawer: StyleableFC<AppDrawerProps> = ({
         appearance="text"
         icon={<MaterialIcon icon="apps" />}
         command="show-modal"
-        commandfor={drawerID}
+        commandfor={APP_DRAWER_MODAL_ID}
         onClick={onOpen}
         className="skc-app-drawer__toggle"
       >
         {STRINGS[locale].toggle}
       </Button>
       <dialog
-        id={drawerID}
+        id={APP_DRAWER_MODAL_ID}
         ref={drawerRef}
         aria-labelledby={APP_DRAWER_HEADER_ID}
         {...dialogProps}
