@@ -18,22 +18,24 @@ const DocsLayout: FC<{ children: ReactNode }> = ({ children }) => {
       </SideSheet>
       <SplitLayout ratio="list-detail" prefer="right">
         <DocsNav />
-        <Text
-          type="body-large"
-          element="article"
-          className="pt-0 pb-18 sm:pb-6"
-        >
-          <FAB
-            color="primary"
-            icon={<MaterialIcon icon="menu_book" />}
-            command="show-modal"
-            commandfor="docs-nav"
-            className="sm:hidden"
+        <main id="content" tabIndex={-1}>
+          <Text
+            type="body-large"
+            element="article"
+            className="pt-0 pb-18 sm:pb-6"
           >
-            Docs menu
-          </FAB>
-          {children}
-        </Text>
+            <FAB
+              color="primary"
+              icon={<MaterialIcon icon="menu_book" />}
+              command="show-modal"
+              commandfor="docs-nav"
+              className="sm:hidden"
+            >
+              Docs menu
+            </FAB>
+            {children}
+          </Text>
+        </main>
       </SplitLayout>
     </>
   );
