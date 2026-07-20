@@ -1,12 +1,7 @@
 /**
- * Close a `<dialog>` like `command="request-close"` would: fire a cancelable
- * `cancel` event, then close the dialog unless the event was prevented.
- *
- * Uses the native `HTMLDialogElement.requestClose()` where available. The
- * fallback mirrors it closely enough for SKCom dialogs — `useAnimatedDialog`
- * intercepts `cancel` to play the exit animation before closing.
- *
- * @param dialog The `<dialog>` element to request to close.
+ * Close a `<dialog>` like `command="request-close"` would. The fallback
+ * dispatches `cancel` — `useAnimatedDialog` intercepts it to play the exit
+ * animation before `dialog.close()`.
  */
 export default function invokerClose(dialog: HTMLDialogElement) {
   if (typeof dialog.requestClose === "function") {
