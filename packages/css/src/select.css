@@ -101,12 +101,14 @@
   color: var(--color-on-surface-variant);
 }
 
-.skc-select + .skc-menu {
-  position-area: initial;
-  top: anchor(bottom);
-  margin-top: 0;
-  inset-inline: anchor(left) anchor(right);
-  width: auto;
+@supports (position-area: initial) {
+  .skc-select + .skc-menu {
+    position-area: initial;
+    top: anchor(bottom);
+    margin-top: 0;
+    inset-inline: anchor(left) anchor(right);
+    width: auto;
+  }
 }
 
 .skc-select--outlined {
