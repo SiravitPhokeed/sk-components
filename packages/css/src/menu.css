@@ -93,6 +93,24 @@
   }
 }
 
+/* ── Anchor Positioning fallback ─────────────────────────────────────────── */
+
+@supports not (position-area: block-end span-inline-end) {
+  .skc-menu:popover-open {
+    position: fixed;
+    transform-origin: bottom;
+    translate: -50% 0;
+    inset-block: auto 0;
+    inset-inline: 50% 0;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    padding-block: 1rem;
+    width: 100dvw;
+    max-width: 32rem;
+  }
+}
+
+/* ── Reduced motion ──────────────────────────────────────────────────────── */
+
 @media (prefers-reduced-motion: reduce) {
   .skc-menu {
     transform: none;
