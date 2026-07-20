@@ -35,7 +35,7 @@ export interface NavDrawerProps {
 
 const STRINGS = {
   "en-US": {
-    alt: "Main",
+    alt: "Primary",
   },
   th: {
     alt: "หลัก",
