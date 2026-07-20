@@ -439,10 +439,10 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
         </Text>
       )}
 
-      {/* Chip count live region (announced on change, not on mount). */}
+      {/* Announcer live region */}
       <span ref={announcerRef} role="status" className="skc-sr-only" />
 
-      {/* Loading progress bar — rendered only when loading so VO discovers it. */}
+      {/* Loading progress bar */}
       {loading && (
         <Progress
           appearance="linear"
