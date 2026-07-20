@@ -448,18 +448,26 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
         </Text>
       )}
 
-      {/* Delete warning — live region, not linked via aria-describedby so VO
-          doesn't re-read the helper message when the warning dismisses. */}
+      {/* Delete warning visual — shown in place of the helper message. */}
       {lastChipSelected && (
-        <span role="status" aria-label="Delete warning">
-          <Text
-            type="body-small"
-            className="skc-chip-field__helper-msg"
-          >
-            {STRINGS[locale].deleteLast}
-          </Text>
-        </span>
+        <Text
+          type="body-small"
+          className="skc-chip-field__helper-msg"
+        >
+          {STRINGS[locale].deleteLast}
+        </Text>
       )}
+
+      {/* Delete warning live region — always in the DOM (primed) so VO
+          reliably picks up the content change. Not linked via aria-describedby
+          so the helper message isn't re-read when the warning dismisses. */}
+      <span
+        role="status"
+        aria-label="Delete warning"
+        className="skc-sr-only"
+      >
+        {lastChipSelected ? STRINGS[locale].deleteLast : null}
+      </span>
 
       {/* Chip status for aria-describedby (read on input focus). */}
       {resolvedChipStatus && (
