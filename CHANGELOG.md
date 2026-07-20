@@ -100,6 +100,7 @@ Changes to the demo app are documented in
   - **Text Field:** disabled fields now stay focusable and discoverable via
     `readOnly` + `aria-disabled` instead of native `disabled`, except for file
     and color types where `readOnly` has no effect per the HTML spec
+  - **Progress:** `visible` now defaults to rendered (was `false` in v3)
   - **Select, Menu Item:** `value` type narrowed from `any` to `string`
   - **Snackbar** is now managed internally via `snackbar.push()` or
     `snackbar.promise()`

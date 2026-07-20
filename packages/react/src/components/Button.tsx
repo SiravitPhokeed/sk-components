@@ -208,13 +208,12 @@ export const Button: StyleableFC<ButtonProps> = ({
       )}
       style={style}
     >
-      {loadingBool && (
-        <Progress
-          appearance="circular"
-          alt={STRINGS[locale].loading}
-          value={typeof loading === "number" ? loading : undefined}
-        />
-      )}
+      <Progress
+        appearance="circular"
+        alt={STRINGS[locale].loading}
+        value={typeof loading === "number" ? loading : undefined}
+        visible={loadingBool}
+      />
       {selected ? <MaterialIcon icon="done" /> : icon}
       {children && (
         <Text type="label-large" className="skc-button__label">
