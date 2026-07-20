@@ -23,32 +23,42 @@ export const MYSK_TRAFFIC = { full: 87.4, partial: 98.5, none: 1.5 };
 
 <figure
   aria-label="Chart showing the percentage of MySK traffic that met different browser support tiers. See below for details."
-  className="bg-surface-container -mx-4 my-3 px-4 pt-6 pb-3"
+  className="bg-surface-container -mx-4 my-3 px-4 py-10"
 >
   <div className="relative flex h-2 gap-1 *:min-w-2 *:rounded-full">
+
+    {/* Full - primary bar */}
     <div
-      className="bg-primary absolute inset-0"
+      className="bg-primary absolute inset-0 z-10"
       style={{ width: `${MYSK_TRAFFIC.full}%` }}
-    />
-    <div className="bg-surface-bright border-outline-variant h-full grow border" />
+    >
+      <span className="absolute inset-e-0 bottom-2 flex items-center gap-1">
+        <Text type="title-small" className="text-on-surface-variant grow">
+          {MYSK_TRAFFIC.full}% full support
+        </Text>
+        <SupportTierIcon tier="full" size={20} />
+      </span>
+    </div>
+
+    {/* Partial - surface-bright bar, appears as primary bar container */}
+    <div className="bg-surface-bright border-outline-variant relative h-full grow border">
+      <span className="absolute top-2 inset-e-0 flex items-center gap-1">
+        <Text
+          type="title-small"
+          className="text-on-surface-variant text-end max-md:hidden"
+        >
+          {MYSK_TRAFFIC.partial}% partial support
+        </Text>
+        <SupportTierIcon tier="partial" size={20} />
+      </span>
+    </div>
+
+    {/* None - error bar */}
     <div
       className="bg-error h-full"
       style={{ width: `${MYSK_TRAFFIC.none}%` }}
     />
-  </div>
-  <div className="flex items-center gap-1">
-    <SupportTierIcon tier="full" size={20} />
-    <Text type="title-small" className="text-on-surface-variant grow">
-      {MYSK_TRAFFIC.full}% full support
-    </Text>
-    <Text
-      type="title-small"
-      className="text-on-surface-variant text-end max-md:hidden"
-    >
-      {MYSK_TRAFFIC.partial}% partial support
-    </Text>
-    <SupportTierIcon tier="partial" size={20} />
-    <SupportTierIcon tier="none" size={20} />
+
   </div>
 </figure>
 
