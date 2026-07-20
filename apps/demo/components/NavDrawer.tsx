@@ -17,17 +17,22 @@ const NavDrawer: FC = () => {
   const navigatedFromDrawer = useRef(false);
 
   useEffect(() => {
-    if (navigatedFromDrawer.current) {
+    const dialog = document.getElementById("nav-drawer");
+    if (!dialog) return;
+
+    const handleClose = () => {
+      if (!navigatedFromDrawer.current) return;
       navigatedFromDrawer.current = false;
-      // Defer past the dialog’s focus-return so the route-change
-      // announcement isn’t stomped.
+      // The dialog’s native focus-return runs synchronously before the
+      // `close` event fires, so moving focus here lands after it.
       requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          document.getElementById("content")?.focus();
-        });
+        document.getElementById("content")?.focus();
       });
-    }
-  }, [pathname]);
+    };
+
+    dialog.addEventListener("close", handleClose);
+    return () => dialog.removeEventListener("close", handleClose);
+  }, []);
 
   return (
     <SKCNavDrawer>
