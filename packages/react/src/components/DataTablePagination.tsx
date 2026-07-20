@@ -150,12 +150,7 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
       </span>
       {/* Persistent live region — content is written imperatively so VO
           picks up changes even when the text is replaced in-place. */}
-      <span
-        ref={statusRef}
-        role="status"
-        aria-label="Page info"
-        className="skc-sr-only"
-      />
+      <span ref={statusRef} role="status" className="skc-sr-only" />
       <div className="skc-data-table-pagination__controls">
         {/* Skip to first */}
         <Button

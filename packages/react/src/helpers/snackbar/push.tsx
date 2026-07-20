@@ -26,7 +26,6 @@ function ensureAnnouncer(): HTMLDivElement {
   announcerEl = document.createElement("div");
   announcerEl.className = "skc-sr-only";
   announcerEl.setAttribute("role", "status");
-  announcerEl.setAttribute("aria-label", "Notification");
   announcerEl.setAttribute("aria-live", "polite");
   announcerEl.setAttribute("aria-atomic", "true");
   document.body.appendChild(announcerEl);

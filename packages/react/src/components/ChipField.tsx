@@ -10,7 +10,6 @@ import "@suankularb-components/css/chip-field.css";
 import { sift } from "radash";
 import type {
   ComponentProps,
-  FC,
   KeyboardEvent,
   ReactElement,
   ReactNode,
@@ -136,56 +135,45 @@ export interface ChipFieldProps {
    * - Optional.
    */
   inputAttr?: ComponentProps<"input">;
-
-  /**
-   * Describes the current state of the Chip Set for screen readers — for
-   * example, “5 chips added.” This is linked to the input via
-   * `aria-describedby` so it is announced when the input receives focus.
-   *
-   * - Auto-computed from the Chip Set’s child count when omitted.
-   * - Set to `false` to suppress the chip status entirely.
-   * - Optional.
-   */
-  chipStatus?: ReactNode | false;
 }
 
 const DEFAULT_SEPARATORS = [" ", ",", ";", "Enter"];
 const DELETE_KEY = "Backspace";
 
-/**
- * A keyboard key with a screen-reader–friendly name for symbols that screen
- * readers mispronounce or skip (like ⌫ and →).
- */
-const Kbd: FC<{ symbol: string; label: string }> = ({ symbol, label }) => (
-  <kbd>
-    <span className="skc-sr-only">{label}</span>
-    <span aria-hidden>{symbol}</span>
-  </kbd>
-);
-
-const BackspaceKey = () => <Kbd symbol="⌫ backspace" label="backspace" />;
-const RightArrowKey = () => <Kbd symbol="→" label="right arrow" />;
+const BackspaceKey = () => <kbd>⌫ backspace</kbd>;
+const RightArrowKey = () => <kbd>→</kbd>;
 
 const STRINGS = {
   "en-US": {
     loading: "Checking your input…",
-    deleteLast: (
-      <>
-        <BackspaceKey /> again to delete this item, <RightArrowKey /> to cancel
-      </>
-    ),
+    deleteLast: {
+      sighted: (
+        <>
+          Press <BackspaceKey /> again to delete this item, <RightArrowKey /> to
+          cancel
+        </>
+      ),
+      unsighted:
+        "Last item selected. Press backspace again to delete this item, or right arrow to cancel.",
+    },
     chipStatus: (count: number) =>
-      `${count} item${count === 1 ? "" : "s"} already added`,
+      `${count} item${count === 1 ? "" : "s"} currently in field, ` +
+      "Shift-Tab to focus on them, start typing now to add another item",
   },
   th: {
     loading: "กำลังตรวจสอบข้อมูลของคุณ…",
-    deleteLast: (
-      <>
-        กด <BackspaceKey /> อีกครั้งเพื่อลบรายการนี้ • กด <RightArrowKey />{" "}
-        เพื่อยกเลิก
-      </>
-    ),
-    chipStatus: (count: number) => `เพิ่มแล้ว ${count} รายการ`,
+    deleteLast: {
+      sighted: (
+        <>
+          กด <BackspaceKey /> อีกครั้งเพื่อลบรายการนี้ • กด <RightArrowKey />{" "}
+          เพื่อยกเลิก
+        </>
+      ),
+      unsighted:
+        "รายการสุดท้ายถูกเลือก กด backspace อีกครั้งเพื่อลบรายการนี้ หรือกดลูกศรขวาเพื่อยกเลิก",
+    },
+    chipStatus: (count: number) =>
+      `เพิ่มแล้ว ${count} รายการในช่องนี้ กด Shift-Tab เพื่อโฟกัสที่รายการเหล่านั้น เริ่มพิมพ์ตอนนี้เพื่อเพิ่มรายการใหม่`,
   },
 };
 
@@ -208,7 +196,6 @@ const STRINGS = {
  * @param disabled The field cannot be edited.
  * @param locale Allows for translation of the accessibility labels.
  * @param inputAttr Attributes for the underlying `<input>` element used as the field.
- * @param chipStatus Describes the current state of the Chip Set for screen readers.
  */
 export const ChipField: StyleableFC<ChipFieldProps> = ({
   children,
@@ -226,45 +213,49 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
   disabled,
   locale = "en-US",
   inputAttr,
-  chipStatus,
   className,
   style,
 }) => {
   const id = `chip-field-${useId()}`;
   const inputRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const announcerRef = useRef<HTMLSpanElement>(null);
 
   // Track if the last chip is selected (via backspace on empty input).
   const [lastChipSelected, setLastChipSelected] = useState(false);
 
-  // Auto-compute chip count from the Chip Set’s children, unless the consumer
-  // overrides via chipStatus. Uses React.Children so it works during render.
+  // ––– Screen reader announcements ––––––––––––––––––––––––––––––––––––––––––—
+  // Chip Field is complex and dynamic, so we need to announce changes to the
+  // user. We use a live region to announce changes to the chip count, loading
+  // state, and last-chip selection.
+
+  const announce = (message: string) => {
+    const el = announcerRef.current;
+    if (!el) return;
+    el.textContent = "";
+    requestAnimationFrame(() => (el.textContent = message));
+  };
+
+  // Auto-compute chip count from the Chip Set’s children. Uses `React.Children`
+  // so it works during render.
   const chipCount = Children.count(
     (children.props as unknown as ChipSetProps).children,
   );
   const resolvedChipStatus =
-    chipStatus !== undefined
-      ? chipStatus
-      : chipCount > 0
-        ? STRINGS[locale].chipStatus(chipCount)
-        : false;
-
-  // Imperative live region for chip count changes — uses the same clear-then-
-  // set pattern as Snackbar so VO announces each change but not the initial
-  // mount.
-  const chipStatusRef = useRef<HTMLSpanElement>(null);
+    chipCount > 0 ? STRINGS[locale].chipStatus(chipCount) : false;
   const prevChipCount = useRef(chipCount);
   useEffect(() => {
     if (prevChipCount.current === chipCount) return;
     prevChipCount.current = chipCount;
-    const el = chipStatusRef.current;
-    if (!el) return;
-    const text = STRINGS[locale].chipStatus(chipCount);
-    el.textContent = "";
-    requestAnimationFrame(() => {
-      el.textContent = text;
-    });
+    if (resolvedChipStatus) announce(resolvedChipStatus);
   }, [chipCount]);
+
+  // Announce loading state.
+  useEffect(() => {
+    if (loading) announce(STRINGS[locale].loading);
+  }, [loading]);
+
+  // ––– Input handling –––––––––––––––––––––––––––––––––––––––––––––––––––—————
 
   /**
    * Strip any single-char separator from the end of a value — the browser
@@ -345,7 +336,9 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
       } else {
         // Check if there are chips in the Chip Set
         const chipSet = contentRef.current?.querySelector(".skc-chip-set");
-        if (chipSet && chipSet.children.length > 0) setLastChipSelected(true);
+        if (!chipSet || chipSet.children.length < 1) return;
+        setLastChipSelected(true);
+        announce(STRINGS[locale].deleteLast.unsighted);
       }
       return;
     }
@@ -364,6 +357,8 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
       }
     }
   };
+
+  // ––– Render –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––—————
 
   return (
     <Text
@@ -409,10 +404,7 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
             id={`${id}-input`}
             aria-labelledby={`${id}-label`}
             aria-describedby={
-              sift([
-                helperMsg ? `${id}-helper` : undefined,
-                resolvedChipStatus ? `${id}-chip-status` : undefined,
-              ]).join(" ") || undefined
+              helperMsg || lastChipSelected ? `${id}-helper` : undefined
             }
             aria-required={required || undefined}
             type="text"
@@ -433,56 +425,22 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
         </div>
       </div>
 
-      {/* Helper message — visually hidden when the delete warning is shown
-          so they don't overlap, but kept in the DOM for aria-describedby. */}
-      {helperMsg && (
+      {/* Helper/error message */}
+      {(helperMsg || lastChipSelected) && (
         <Text
           id={`${id}-helper`}
           type="body-small"
-          className={cn(
-            "skc-chip-field__helper-msg",
-            lastChipSelected && "skc-sr-only",
-          )}
-        >
-          {helperMsg}
-        </Text>
-      )}
-
-      {/* Delete warning visual — shown in place of the helper message. */}
-      {lastChipSelected && (
-        <Text
-          type="body-small"
           className="skc-chip-field__helper-msg"
         >
-          {STRINGS[locale].deleteLast}
+          {lastChipSelected ? STRINGS[locale].deleteLast.sighted : helperMsg}
+          {resolvedChipStatus && (
+            <span className="skc-sr-only">, {resolvedChipStatus}</span>
+          )}
         </Text>
-      )}
-
-      {/* Delete warning live region — always in the DOM (primed) so VO
-          reliably picks up the content change. Not linked via aria-describedby
-          so the helper message isn't re-read when the warning dismisses. */}
-      <span
-        role="status"
-        aria-label="Delete warning"
-        className="skc-sr-only"
-      >
-        {lastChipSelected ? STRINGS[locale].deleteLast : null}
-      </span>
-
-      {/* Chip status for aria-describedby (read on input focus). */}
-      {resolvedChipStatus && (
-        <span id={`${id}-chip-status`} className="skc-sr-only">
-          {resolvedChipStatus}
-        </span>
       )}
 
       {/* Chip count live region (announced on change, not on mount). */}
-      <span
-        ref={chipStatusRef}
-        role="status"
-        aria-label="Chip count"
-        className="skc-sr-only"
-      />
+      <span ref={announcerRef} role="status" className="skc-sr-only" />
 
       {/* Loading progress bar — rendered only when loading so VO discovers it. */}
       {loading && (
