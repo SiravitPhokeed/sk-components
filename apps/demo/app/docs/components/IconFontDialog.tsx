@@ -106,7 +106,6 @@ const IconFontDialog: FC = () => {
               target="_blank"
             >
               Google Fonts
-              <span className="sr-only"> (opens in new tab)</span>
               <MaterialIcon
                 icon="arrow_outward"
                 size={20}

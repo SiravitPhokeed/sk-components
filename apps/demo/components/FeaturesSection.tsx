@@ -63,7 +63,6 @@ const FeaturesSection: FC = () => {
                 className="link"
               >
                 <code className="code">_theme.css</code>
-                <span className="sr-only"> (opens in new tab)</span>
               </a>{" "}
               file and importing it into your project.
             </p>

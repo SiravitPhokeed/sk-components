@@ -49,3 +49,9 @@
     }
   }
 }
+
+@layer base {
+  [target="_blank"] {
+    @apply after:sr-only after:content-['(opens_in_new_tab)'];
+  }
+}

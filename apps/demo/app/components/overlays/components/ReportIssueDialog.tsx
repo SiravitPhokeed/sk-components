@@ -52,7 +52,6 @@ const ReportIssueDialog: FC = () => {
               className="link"
             >
               GitHub repository
-              <span className="sr-only"> (opens in new tab)</span>
             </a>
             . Thank you!
           </Text>
