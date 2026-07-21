@@ -1,4 +1,4 @@
-import "@/app/globals.css";
+import "@/app/styles/globals.css";
 import NavBar from "@/components/NavBar";
 import NavDrawer from "@/components/NavDrawer";
 import { BASE_URL } from "@/lib/constants";
