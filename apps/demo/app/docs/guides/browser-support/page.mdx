@@ -21,10 +21,12 @@ real-world SK Components site, MySK. The results are as follows:
 
 export const MYSK_TRAFFIC = { full: 87.4, partial: 98.5, none: 1.5 };
 
-<figure
-  aria-label="Chart showing the percentage of MySK traffic that met different browser support tiers. See below for details."
-  className="bg-surface-container -mx-4 my-3 px-4 py-10"
->
+<figure className="bg-surface-container -mx-4 my-3 px-4 py-10">
+  <span className="sr-only">
+    Chart showing the percentage of MySK traffic that met the full, partial, and
+    no support tiers. See below for details.
+  </span>
+
   <div aria-hidden className="relative flex h-2 gap-1 *:min-w-2 *:rounded-full">
 
     {/* Full - primary bar */}
@@ -146,8 +148,9 @@ elements.
   browsersList="chrome >= 117, ChromeAndroid >= 117, firefox >= 129, FirefoxAndroid >= 129, safari >= 17.5, iOS >= 17.5, edge >= 117"
   note={
     <>
-      Safari 17.5 requires iPhone <span aria-label="XR/XS">Xʀ/Xꜱ</span> or
-      later, or iPhone SE (2nd generation) or later.
+      Safari 17.5 requires iPhone <span className="sr-only">XR or XS</span>
+      <span aria-hidden>Xʀ/Xꜱ</span> or later, or iPhone SE (2nd generation) or
+      later.
     </>
   }
 >
