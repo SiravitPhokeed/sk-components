@@ -13,7 +13,7 @@ const DisclosureCard: FC<{
   <Card
     element="details"
     appearance="outlined"
-    className="group focus-within:animate-focus my-4 overflow-hidden"
+    className="group has-focus-visible:animate-focus my-4 overflow-hidden"
   >
     <Interactive
       element="summary"
