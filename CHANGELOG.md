@@ -19,6 +19,9 @@ Changes to the demo app are documented in
 - **Anchor** component for declarative popover positioning with CSS Anchor
   Positioning
 - **Side Sheet** component for modal side panels
+- **Skip Link** for skipping to the main content of a page, visually hidden
+  until focused. Rendered automatically by Root Layout; use
+  `skipToContent={false}` to opt out.
 - `snackbar.push()` and `snackbar.promise()` imperative APIs for Snackbar
 - `name` prop on all form components (Form Group, Form Item, Checkbox, Radio,
   Switch, Select, Text Field) for native form submission with `<form>` and
@@ -28,7 +31,7 @@ Changes to the demo app are documented in
 - `alt` prop on Avatar, Checkbox, Data Table Content, Data Table Search,
   Navigation Bar, Navigation Bar Item, Search, Switch, and Table for
   accessible names when used without a visible label. Navigation Bar now
-  defaults to a localized "Main" label, Navigation Drawer to "Primary."
+  defaults to a localized "Primary" label.
 - Keyboard navigation and focus management for complex widgets: arrow-key
   navigation in Menu and Tabs Container, automatic focus on Menu and Dialog
   open with return to trigger on close, and Snackbar timer that pauses on
@@ -53,6 +56,8 @@ Changes to the demo app are documented in
     auto-flip icons in RTL
   - **Menu:** `alt` for an accessible name
   - **Menu Item:** `containerElement`, and `dangerous` for destructive actions
+  - **Root Layout:** `locale` and `skipToContent` props for controlling the Skip
+    Link
   - **Search:** `hotkey` for keyboard shortcut to focus the field
   - **Select:** `disabled`, and `required` to mark a required field for
     assistive technologies
@@ -83,6 +88,8 @@ Changes to the demo app are documented in
   optional — using these props is now called “controlled mode,” while omitting
   them is called “uncontrolled mode” (Invoker Commands API)
 - Component-specific changes:
+  - **Content Layout:** now renders with `id="content"` and `tabIndex={-1}` to
+    support the Skip Link
   - **FAB:** now a direct child of Root Layout instead of a Nav Bar prop
   - **Filter Chip:** `menu` now takes a Fragment of Menu Items instead of a Menu
     component

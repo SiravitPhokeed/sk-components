@@ -1,0 +1,36 @@
+/**
+ * **Skip Link**
+ * A link that skips to the main content of a page, visually hidden until
+ * focused.
+ */
+
+.skc-skip-link {
+  --_inset: 1rem;
+
+  position: fixed;
+  top: var(--_inset);
+  align-items: center;
+  z-index: 90;
+  inset-inline-start: var(--_inset);
+  border: none;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  padding: 0.625rem 1.5rem;
+  color: var(--color-on-primary);
+  text-decoration: none;
+
+  /* Visually hidden until focused */
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.skc-skip-link__label {
+  font-family: var(--font-display);
+}
+
+.skc-skip-link:focus-visible {
+  clip: auto;
+  overflow: visible;
+  white-space: normal;
+}

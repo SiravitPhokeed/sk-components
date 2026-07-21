@@ -18,7 +18,7 @@ const SearchStudentsPage: FC = () => (
     <PageHeader parentURL="/examples">Search students</PageHeader>
     <SplitLayout ratio="list-detail">
       <div>
-        <Search />
+        <Search alt="Search students" />
         <div className="-mx-4 sm:mx-0 sm:-mr-3 md:grow md:overflow-auto">
           <ul className="flex flex-col gap-1 pt-4 pb-6 sm:pr-3">
             <StudentCard name="Chatchai Charoen" classroom="604" selected />

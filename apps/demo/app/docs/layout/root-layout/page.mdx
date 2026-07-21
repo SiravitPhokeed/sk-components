@@ -56,6 +56,32 @@ Root Layout handles component positioning and responsiveness.
       </TableCell>
 
   </PropsTableRow>
+
+  <PropsTableRow prop="locale" required="never">
+    <TableCell>`"en-US" | "th"`</TableCell>
+    <TableCell>
+
+      Allows for translation of the Skip Link accessibility label.
+
+      - Must be `en-US` or `th`.
+      - Optional.
+
+      </TableCell>
+
+  </PropsTableRow>
+
+  <PropsTableRow prop="skipToContent" required="never">
+    <TableCell>`boolean`</TableCell>
+    <TableCell>
+
+      Whether to render a Skip Link as the first child. The Skip Link allows
+      keyboard users to jump directly to the main content.
+
+      - Optional. Defaults to `true`.
+
+      </TableCell>
+
+  </PropsTableRow>
 </PropsTable>
 
 ### Further reading
@@ -69,7 +95,9 @@ Root Layout handles component positioning and responsiveness.
 
 <VersionsTable>
   <VersionsTableRow version="v4.0.0">
-    FAB is now a direct child of Root Layout instead of a Navigation Bar prop.
+    FAB is now a direct child of Root Layout instead of a Navigation Bar
+    prop. Skip Link now rendered by default; use `skipToContent={false}` to
+    opt out.
   </VersionsTableRow>
   <VersionsTableRow version="v3.0.0">Root Layout introduced.</VersionsTableRow>
 </VersionsTable>

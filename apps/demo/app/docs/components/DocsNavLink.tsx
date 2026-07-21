@@ -26,28 +26,32 @@ const DocsNavLink: StyleableFC<{
   }, [selected]);
 
   return (
-    <Interactive
-      ref={ref}
-      aria-current={selected ? "page" : undefined}
-      onClick={() => {
-        // next/link does not accept Invoker Commands so we have to manually
-        // close Docs Nav.
-        const docsNav = document.getElementById("docs-nav");
-        if (docsNav) (docsNav as HTMLDialogElement).requestClose?.();
-      }}
-      href={href}
-      element={Link}
-      className={cn(
-        "w-full scroll-my-12 rounded-full px-3 py-1.5 text-start transition-colors",
-        selected
-          ? "bg-secondary-container text-on-secondary-container state-layer-on-secondary-container"
-          : "state-layer-on-surface-variant text-on-surface-variant",
-        className,
-      )}
-      style={style}
-    >
-      <Text type="title-small">{children}</Text>
-    </Interactive>
+    <li>
+      <Interactive
+        ref={ref}
+        aria-current={selected ? "page" : undefined}
+        onClick={() => {
+          // Invoker Commands are ignored on `<a>` elements.
+          // Imperatively close the Side Sheet instead.
+          const docsNav = document.getElementById(
+            "docs-nav",
+          ) as HTMLDialogElement | null;
+          docsNav?.requestClose?.();
+        }}
+        href={href}
+        element={Link}
+        className={cn(
+          "w-full scroll-my-12 rounded-full px-3 py-1.5 text-start transition-colors",
+          selected
+            ? "bg-secondary-container text-on-secondary-container state-layer-on-secondary-container"
+            : "state-layer-on-surface-variant text-on-surface-variant",
+          className,
+        )}
+        style={style}
+      >
+        <Text type="title-small">{children}</Text>
+      </Interactive>
+    </li>
   );
 };
 

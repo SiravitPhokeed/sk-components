@@ -38,25 +38,17 @@ A navigation drawer that slides in from the left.
 </NavDrawer>
 ```
 
+> **Accessibility note:** When Navigation Drawer is open, screen readers may not
+> announce client-side route changes because the `<dialog>` element makes live
+> regions outside it inert. This is a known inconsistency across browsers and
+> assistive technologies ([w3c/aria#1854](https://github.com/w3c/aria/issues/1854)).
+
 ### Props
 
 - [`StyleableProps`](/docs/guides/shared-props) available: `className` and
   `style`.
 
 <PropsTable>
-  <PropsTableRow prop="alt" required="never">
-    <TableCell>`string`</TableCell>
-    <TableCell>
-
-      A description of the Navigation Drawer for screen readers, similar to
-      `alt` on `<img>`. Applied as `aria-label` on the `<nav>` element.
-
-      - Optional. Defaults to a localized “Primary” string.
-
-      </TableCell>
-
-  </PropsTableRow>
-
   <PropsTableRow prop="children" required="always">
     <TableCell>`ReactNode`</TableCell>
     <TableCell>
@@ -65,19 +57,6 @@ A navigation drawer that slides in from the left.
       destinations.
 
       - Always required.
-
-      </TableCell>
-
-  </PropsTableRow>
-
-  <PropsTableRow prop="locale" required="never">
-    <TableCell>`"en-US" | "th"`</TableCell>
-    <TableCell>
-
-      Allows for translation of the accessibility labels.
-
-      - Must be `en-US` or `th`.
-      - Optional.
 
       </TableCell>
 
@@ -95,8 +74,7 @@ A navigation drawer that slides in from the left.
 
 <VersionsTable>
   <VersionsTableRow version="v4.0.0">
-    `alt` introduced, defaulting to a localized “Primary.” Modal behavior
-    delegated to Side Sheet.
+    Modal behavior delegated to Side Sheet.
   </VersionsTableRow>
   <VersionsTableRow version="v3.0.0">
     Navigation Drawer introduced.

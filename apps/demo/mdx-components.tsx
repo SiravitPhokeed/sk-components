@@ -1,3 +1,4 @@
+import CodeBlock from "@/app/docs/components/CodeBlock";
 import cn from "@/lib/helpers/cn";
 import {
   Card,
@@ -39,30 +40,15 @@ const components: MDXComponents = {
     ]),
   ),
   blockquote: (props) => (
-    <Card
-      appearance="filled"
-      element="blockquote"
-      className="font-display [&_code]:bg-surface-bright [&_strong]:text-on-surface my-4 px-4 *:*:first:mt-3 *:*:last:mb-3 **:[blockquote,pre]:-mx-4 **:[blockquote,pre]:rounded-none"
-    >
+    <Card appearance="filled" element="blockquote" className="blockquote">
       <Text type="title-medium" {...props} />
     </Card>
-  ),
-  pre: ({ className, ...props }) => (
-    <Card
-      appearance="filled"
-      element={(props) => <pre {...props} dir="ltr" />}
-      className={cn(
-        "my-4 block overflow-x-auto text-base scheme-dark [&_code]:bg-transparent",
-        className,
-      )}
-      {...props}
-    />
   ),
   code: ({ "data-language": language, className, ...props }) => (
     <code
       className={cn(
         language
-          ? "w-fit p-4"
+          ? "py-3.5"
           : "bg-surface-variant rounded-xs px-1.5 text-[0.9em]",
         // Explicitly state font features for Firefox.
         "font-features-['ss01','ss02','ss03','ss04','ss05'] leading-normal tracking-normal",
@@ -72,17 +58,10 @@ const components: MDXComponents = {
     />
   ),
   hr: () => <Divider className="my-3" />,
-  ul: (props) => (
-    <ul className="marker:text-outline list-disc ps-6" {...props} />
-  ),
-  ol: (props) => (
-    <ol
-      className="marker:text-on-surface-variant marker:font-display list-decimal ps-6"
-      {...props}
-    />
-  ),
-  li: (props) => <li className="mb-1" {...props} />,
+  ul: (props) => <ul className="ul" {...props} />,
+  ol: (props) => <ol className="ol" {...props} />,
   p: (props) => <p className="my-2" {...props} />,
+  figure: (props) => <CodeBlock {...props} />,
 };
 
 export function useMDXComponents(): MDXComponents {

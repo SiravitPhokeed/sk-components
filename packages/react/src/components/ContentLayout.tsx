@@ -15,6 +15,14 @@ export interface ContentLayoutProps extends ElementCustomizableProps {
    * - Always required.
    */
   children: ReactNode;
+
+  /**
+   * The ID of the element, used as the target for the Skip Link.
+   *
+   * - Must be unique on the page.
+   * - Optional. Defaults to `"content"`.
+   */
+  id?: string;
 }
 
 /**
@@ -23,15 +31,22 @@ export interface ContentLayoutProps extends ElementCustomizableProps {
  * styling.
  *
  * @param children The main content of a page is grouped into Sections inside of a Content Layout.
+ * @param id The ID of the element, used as the target for the Skip Link.
  */
 export const ContentLayout: StyleableFC<ContentLayoutProps> = ({
   children,
+  id = "content",
   element: Element = "main",
   style,
   className,
 }) => {
   return (
-    <Element className={cn("skc-content-layout", className)} style={style}>
+    <Element
+      id={id}
+      tabIndex={-1}
+      className={cn("skc-content-layout", className)}
+      style={style}
+    >
       <div className="skc-content-layout__content">{children}</div>
     </Element>
   );

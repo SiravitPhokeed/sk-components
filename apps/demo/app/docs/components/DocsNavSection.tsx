@@ -15,7 +15,7 @@ const DocsNavSection: StyleableFC<{
       className="state-layer-on-surface flex items-center gap-2 rounded-full px-2 py-1.5 marker:hidden"
     >
       <span className="text-on-surface-variant">{icon}</span>
-      <Text type="title-medium" className="grow">
+      <Text type="title-medium" element="h3" className="grow">
         {title}
       </Text>
       <MaterialIcon
@@ -24,9 +24,13 @@ const DocsNavSection: StyleableFC<{
         className="text-on-surface-variant group-open:rotate-90 group-open:rtl:-rotate-90"
       />
     </Interactive>
-    <div className="border-s-outline-variant ms-4 mt-1 border-s ps-2">
+    <ul
+      aria-label={title}
+      role="list"
+      className="border-s-outline-variant ms-4 mt-1 border-s ps-2"
+    >
       {children}
-    </div>
+    </ul>
   </details>
 );
 

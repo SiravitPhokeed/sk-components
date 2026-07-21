@@ -33,6 +33,19 @@ styling.
 - [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
+  <PropsTableRow prop="id" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The ID of the element, used as the target for the Skip Link.
+
+      - Must be unique on the page.
+      - Optional. Defaults to `"content"`.
+
+      </TableCell>
+
+  </PropsTableRow>
+
   <PropsTableRow prop="children" required="always">
     <TableCell>`ReactNode`</TableCell>
     <TableCell>
@@ -58,6 +71,10 @@ styling.
 ### Version changes
 
 <VersionsTable>
+  <VersionsTableRow version="v4.0.0">
+    Now renders with `id="content"` and `tabIndex={-1}` to support the Skip
+    Link.
+  </VersionsTableRow>
   <VersionsTableRow version="v3.0.0">
     Renamed from Regular Layout to Content Layout. Scroll handling moved to Root
     Layout.

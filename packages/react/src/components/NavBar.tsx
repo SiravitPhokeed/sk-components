@@ -56,7 +56,7 @@ export interface NavBarProps extends ElementCustomizableProps {
 
 const STRINGS = {
   "en-US": {
-    alt: "Main",
+    alt: "Primary",
     nav: "Open navigation",
   },
   th: {

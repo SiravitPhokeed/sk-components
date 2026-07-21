@@ -23,6 +23,7 @@ const BrowsersGrid: FC<{
     <section className="my-4 space-y-2">
       <div className="divide-outline-variant border-outline-variant bg-surface divide-y overflow-hidden rounded-lg border-2">
         <ul
+          aria-label="Supported browsers"
           role="list"
           className="*:border-outline-variant grid grid-cols-2 max-sm:*:odd:border-e max-sm:*:nth-last-[n+3]:border-b sm:grid-cols-1 sm:max-md:divide-y md:grid-cols-4 md:divide-x"
         >

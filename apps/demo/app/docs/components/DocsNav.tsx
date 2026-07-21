@@ -10,6 +10,8 @@ const DocsNav: StyleableFC = ({ className, style }) => (
     className={cn("space-y-2", className)}
     style={style}
   >
+    <h2 className="sr-only">Documentation navigation</h2>
+
     <Card appearance="outlined">
       <CardHeader title="@suankularb-components/react" subtitle="v4.0.0" />
     </Card>

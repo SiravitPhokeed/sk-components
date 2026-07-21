@@ -143,6 +143,12 @@ const IconFontDialog: FC = () => {
           entrySeparators={[",", ";", "Enter"]}
           helperMsg="Comma-separated list"
           placeholder="Enter icon name"
+          inputAttr={{
+            autoComplete: "off",
+            autoCorrect: "off",
+            autoCapitalize: "off",
+            spellCheck: "false",
+          }}
         >
           <ChipSet>
             {iconNames.map((name) => (

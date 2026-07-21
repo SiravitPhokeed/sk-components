@@ -36,27 +36,27 @@ const BrowsersGridItem: FC<{
   });
 
   return (
-    <li
-      aria-label={`${name} ${version} and up, released on ${releaseDateFull}`}
-      className="flex flex-col p-3"
-    >
-      <span className="flex items-center gap-1.5">
-        {icon && (
-          <Image
-            src={icon}
-            alt=""
-            width={16}
-            height={16}
-            priority={imagePriority}
-          />
-        )}
-        <Text type="title-medium">{name} </Text>
-        {/* Space after to make Reader mode readable */}
-      </span>
-      <Text type="title-large">{version}+ </Text>
-      <Text type="body-medium" className="text-on-surface-variant mt-1">
-        <time title={releaseDateFull}>{releaseDateShort}</time>
-      </Text>
+    <li>
+      <span className="sr-only">{`${name} ${version} and up, released on ${releaseDateFull}`}</span>
+      <div aria-hidden className="flex flex-col p-3">
+        <span className="flex items-center gap-1.5">
+          {icon && (
+            <Image
+              src={icon}
+              alt=""
+              width={16}
+              height={16}
+              priority={imagePriority}
+            />
+          )}
+          {/* Space after to make Reader mode readable */}
+          <Text type="title-medium">{name} </Text>
+        </span>
+        <Text type="title-large">{version}+ </Text>
+        <Text type="body-medium" className="text-on-surface-variant mt-1">
+          <time title={releaseDateFull}>{releaseDateShort}</time>
+        </Text>
+      </div>
     </li>
   );
 };

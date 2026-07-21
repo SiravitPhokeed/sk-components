@@ -64,7 +64,7 @@ const CardSection: FC = () => (
                 commandfor="menu-atipol"
                 className="[--_button-foreground-color:var(--color-on-surface-variant)]"
               />
-              <Menu id="menu-atipol">
+              <Menu id="menu-atipol" alt="Actions for Wasapol Rassameechot">
                 <MenuItem command="hide-popover">View profile</MenuItem>
                 <Divider />
                 <MenuItem dangerous command="hide-popover">
