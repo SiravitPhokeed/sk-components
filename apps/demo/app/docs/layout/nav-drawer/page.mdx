@@ -38,6 +38,12 @@ A navigation drawer that slides in from the left.
 </NavDrawer>
 ```
 
+> When Navigation Drawer is open, screen readers may not announce
+> client-side route changes because the `<dialog>` element makes live
+> regions outside it inert. This is a known inconsistency across
+> browsers and assistive technologies
+> ([w3c/aria#1854](https://github.com/w3c/aria/issues/1854)).
+
 ### Props
 
 - [`StyleableProps`](/docs/guides/shared-props) available: `className` and

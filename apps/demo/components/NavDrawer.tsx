@@ -10,29 +10,9 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { FC } from "react";
-import { useEffect, useRef } from "react";
 
 const NavDrawer: FC = () => {
   const pathname = usePathname();
-  const navigatedFromDrawer = useRef(false);
-
-  useEffect(() => {
-    const dialog = document.getElementById("nav-drawer");
-    if (!dialog) return;
-
-    const handleClose = () => {
-      if (!navigatedFromDrawer.current) return;
-      navigatedFromDrawer.current = false;
-      // The dialog’s native focus-return runs synchronously before the
-      // `close` event fires, so moving focus here lands after it.
-      requestAnimationFrame(() => {
-        document.getElementById("content")?.focus();
-      });
-    };
-
-    dialog.addEventListener("close", handleClose);
-    return () => dialog.removeEventListener("close", handleClose);
-  }, []);
 
   return (
     <SKCNavDrawer>
@@ -51,9 +31,6 @@ const NavDrawer: FC = () => {
           selected={pathname === "/"}
           href="/"
           element={Link}
-          onClick={() => {
-            navigatedFromDrawer.current = true;
-          }}
         />
         <NavDrawerItem
           icon={<MaterialIcon icon="widgets" />}
@@ -61,9 +38,6 @@ const NavDrawer: FC = () => {
           selected={pathname === "/components"}
           href="/components"
           element={Link}
-          onClick={() => {
-            navigatedFromDrawer.current = true;
-          }}
         />
         <NavDrawerItem
           icon={<MaterialIcon icon="capture" />}
@@ -71,9 +45,6 @@ const NavDrawer: FC = () => {
           selected={pathname.startsWith("/examples")}
           href="/examples"
           element={Link}
-          onClick={() => {
-            navigatedFromDrawer.current = true;
-          }}
         />
         <NavDrawerItem
           icon={<MaterialIcon icon="description" />}
@@ -81,9 +52,6 @@ const NavDrawer: FC = () => {
           selected={pathname.startsWith("/docs")}
           href="/docs"
           element={Link}
-          onClick={() => {
-            navigatedFromDrawer.current = true;
-          }}
         />
       </NavDrawerSection>
 
@@ -95,9 +63,6 @@ const NavDrawer: FC = () => {
           selected={pathname === "/components/layout"}
           href="/components/layout"
           element={Link}
-          onClick={() => {
-            navigatedFromDrawer.current = true;
-          }}
         />
         <NavDrawerItem
           icon={<MaterialIcon icon="input" directional />}
@@ -105,9 +70,6 @@ const NavDrawer: FC = () => {
           selected={pathname === "/components/inputs"}
           href="/components/inputs"
           element={Link}
-          onClick={() => {
-            navigatedFromDrawer.current = true;
-          }}
         />
         <NavDrawerItem
           icon={<MaterialIcon icon="table_chart" />}
@@ -115,9 +77,6 @@ const NavDrawer: FC = () => {
           selected={pathname === "/components/data"}
           href="/components/data"
           element={Link}
-          onClick={() => {
-            navigatedFromDrawer.current = true;
-          }}
         />
         <NavDrawerItem
           icon={<MaterialIcon icon="picture_in_picture_center" />}
@@ -125,9 +84,6 @@ const NavDrawer: FC = () => {
           selected={pathname === "/components/overlays"}
           href="/components/overlays"
           element={Link}
-          onClick={() => {
-            navigatedFromDrawer.current = true;
-          }}
         />
       </NavDrawerSection>
 
