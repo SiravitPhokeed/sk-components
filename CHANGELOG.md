@@ -28,7 +28,7 @@ Changes to the demo app are documented in
 - `alt` prop on Avatar, Checkbox, Data Table Content, Data Table Search,
   Navigation Bar, Navigation Bar Item, Search, Switch, and Table for
   accessible names when used without a visible label. Navigation Bar now
-  defaults to a localized "Main" label, Navigation Drawer to "Primary."
+  defaults to a localized "Primary" label.
 - Keyboard navigation and focus management for complex widgets: arrow-key
   navigation in Menu and Tabs Container, automatic focus on Menu and Dialog
   open with return to trigger on close, and Snackbar timer that pauses on
