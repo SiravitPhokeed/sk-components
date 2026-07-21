@@ -1,3 +1,4 @@
+import CodeBlock from "@/app/docs/components/CodeBlock";
 import cn from "@/lib/helpers/cn";
 import {
   Card,
@@ -60,6 +61,7 @@ const components: MDXComponents = {
   ul: (props) => <ul className="ul" {...props} />,
   ol: (props) => <ol className="ol" {...props} />,
   p: (props) => <p className="my-2" {...props} />,
+  figure: (props) => <CodeBlock {...props} />,
 };
 
 export function useMDXComponents(): MDXComponents {

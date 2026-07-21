@@ -21,4 +21,28 @@
   .ol {
     @apply marker:text-on-surface-variant marker:font-display my-1 list-decimal space-y-1 ps-6;
   }
+
+  .shiki {
+    @apply bg-surface-container relative my-4 block rounded-md;
+
+    pre {
+      @apply overflow-x-auto rounded-md text-base scheme-dark;
+    }
+
+    [data-rehype-pretty-code-title] {
+      @apply font-display text-on-surface-variant px-4 py-3 text-lg leading-6 font-medium tracking-[0.1px];
+    }
+
+    [data-line] {
+      @apply ps-4 pe-12;
+    }
+
+    /* Colors extracted from GitHub */
+    [data-highlighted-line] {
+      @apply border-l-4 border-l-[#58a6ff4d] bg-[#388bfd26] ps-3;
+    }
+    [data-highlighted-chars] {
+      @apply -mx-1 rounded-xs bg-[#388bfd66] px-1 font-bold;
+    }
+  }
 }
