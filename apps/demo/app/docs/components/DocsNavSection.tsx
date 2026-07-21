@@ -15,7 +15,7 @@ const DocsNavSection: StyleableFC<{
       className="state-layer-on-surface flex items-center gap-2 rounded-full px-2 py-1.5 marker:hidden"
     >
       <span className="text-on-surface-variant">{icon}</span>
-      <Text type="title-medium" element="h2" className="grow">
+      <Text type="title-medium" element="h3" className="grow">
         {title}
       </Text>
       <MaterialIcon
