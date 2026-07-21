@@ -23,11 +23,11 @@ const components: MDXComponents = {
         {children}
         {isExternal && (
           <>
-            <span className="sr-only"> (opens in new tab)</span>
             <MaterialIcon
               icon="arrow_outward"
               size={20}
               directional
+              alt="(opens in a new tab)"
               className="-mt-1 inline-block"
             />
           </>
