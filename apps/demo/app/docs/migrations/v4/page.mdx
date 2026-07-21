@@ -371,17 +371,6 @@ Commands API.
 </RootLayout>
 ```
 
-#### Skip Link
-
-**[Root Layout](/docs/layout/root-layout) now renders a Skip Link by default.**
-The Skip Link allows keyboard users to jump directly to the main content.
-
-- Content Layout now renders with `id="content"` and `tabIndex={-1}` to
-  support this.
-- If your `<main>` element does not use Content Layout, add `id="content"`
-  and `tabIndex={-1}` to it.
-- Use `skipToContent={false}` on Root Layout to opt out.
-
 #### `alt` and `*Attr` props removed
 
 **Remove `alt`.** Previously, `alt` was required if the children of a component
