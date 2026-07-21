@@ -2,6 +2,11 @@
 @import "tailwindcss";
 @import "./theme.css";
 
+@theme inline {
+  --animate-focus: skc-focus var(--duration-long-4) var(--ease-standard)
+    forwards;
+}
+
 @utility state-layer-* {
   --state-layer-color: --value(--color-*);
 }

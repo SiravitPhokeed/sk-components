@@ -13,11 +13,11 @@ const DisclosureCard: FC<{
   <Card
     element="details"
     appearance="outlined"
-    className="group my-4 overflow-hidden"
+    className="group focus-within:animate-focus my-4 overflow-hidden"
   >
     <Interactive
       element="summary"
-      className="state-layer-on-surface flex items-center gap-1 px-4 py-3"
+      className="state-layer-on-surface flex items-center gap-1 px-4 py-3 focus-visible:animate-none"
     >
       <Text type="title-medium" className="text-balance">
         {summary}
