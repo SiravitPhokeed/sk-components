@@ -1,10 +1,7 @@
-"use client";
-
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/skip-link.css";
-import { useEffect } from "react";
 
 /**
  * Props for {@link SkipLink Skip Link}.
@@ -42,22 +39,10 @@ export const SkipLink: StyleableFC<SkipLinkProps> = ({
   locale = "en-US",
   className,
   style,
-}) => {
-  useEffect(() => {
-    if (!document.getElementById("content")) {
-      console.warn(
-        "Skip Link: no element with id `content` was found on the page. " +
-          "Add id='content' to your <main> element, or use Content Layout " +
-          "which adds it automatically.",
-      );
-    }
-  }, []);
-
-  return (
-    <a href="#content" className={cn("skc-skip-link", className)} style={style}>
-      <Text type="label-large" className="skc-skip-link__label">
-        {STRINGS[locale].label}
-      </Text>
-    </a>
-  );
-};
+}) => (
+  <a href="#content" className={cn("skc-skip-link", className)} style={style}>
+    <Text type="label-large" className="skc-skip-link__label">
+      {STRINGS[locale].label}
+    </Text>
+  </a>
+);
