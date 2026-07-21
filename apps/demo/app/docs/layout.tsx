@@ -29,12 +29,8 @@ const DocsLayout: FC<{ children: ReactNode }> = ({ children }) => {
       </div>
       <SplitLayout ratio="list-detail" prefer="right">
         <DocsNav />
-        <main id="content" tabIndex={-1}>
-          <Text
-            type="body-large"
-            element="article"
-            className="pt-0 pb-18 sm:pb-6"
-          >
+        <main id="content" tabIndex={-1} className="pt-0 pb-18 sm:pb-6">
+          <Text type="body-large" element="article">
             {children}
           </Text>
         </main>
