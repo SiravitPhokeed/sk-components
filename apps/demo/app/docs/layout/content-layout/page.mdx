@@ -33,6 +33,19 @@ styling.
 - [`ElementCustomizableProps`](/docs/guides/shared-props) available: `element`.
 
 <PropsTable>
+  <PropsTableRow prop="id" required="never">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      The ID of the element, used as the target for the Skip Link.
+
+      - Must be unique on the page.
+      - Optional. Defaults to `"content"`.
+
+      </TableCell>
+
+  </PropsTableRow>
+
   <PropsTableRow prop="children" required="always">
     <TableCell>`ReactNode`</TableCell>
     <TableCell>
