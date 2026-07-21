@@ -53,7 +53,9 @@ export const NavDrawerSection: StyleableFC<NavDrawerSectionProps> = ({
       >
         {header}
       </Text>
-      <ul role="list">{children}</ul>
+      <ul aria-labelledby={id} role="list">
+        {children}
+      </ul>
     </Element>
   );
 };
