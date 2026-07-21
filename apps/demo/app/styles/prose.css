@@ -1,4 +1,12 @@
 @layer components {
+  .link {
+    @apply text-primary hover:decoration-primary/20 dark:hover:decoration-primary/30 font-bold underline decoration-1 underline-offset-4 hover:decoration-8 hover:-underline-offset-2 hover:[text-decoration-skip-ink:none] active:opacity-50;
+  }
+
+  .blockquote {
+    @apply bg-surface-variant [&_code]:bg-surface-bright [&_strong]:text-on-surface my-4 rounded-md px-4 *:*:first:mt-3 *:*:last:mb-3 **:[blockquote,pre]:-mx-4 **:[blockquote,pre]:rounded-none;
+  }
+
   .code {
     @apply bg-surface-variant rounded-xs px-1.5 font-features-['ss01','ss02','ss03','ss04','ss05'] text-[0.9em] tracking-normal;
   }
@@ -7,7 +15,10 @@
     @apply border-outline-variant text-on-surface-variant font-body -my-0.5 inline-block rounded-xs border px-1.5 py-0.5 shadow-[0_2px_0_var(--color-outline-variant)] active:translate-y-0.5 active:shadow-none;
   }
 
-  .link {
-    @apply text-primary hover:decoration-primary/20 dark:hover:decoration-primary/30 font-bold underline decoration-1 underline-offset-4 hover:decoration-8 hover:-underline-offset-2 hover:[text-decoration-skip-ink:none] active:opacity-50;
+  .ul {
+    @apply marker:text-outline my-1 list-disc space-y-1 ps-6;
+  }
+  .ol {
+    @apply marker:text-on-surface-variant marker:font-display my-1 list-decimal space-y-1 ps-6;
   }
 }
