@@ -19,6 +19,9 @@ Changes to the demo app are documented in
 - **Anchor** component for declarative popover positioning with CSS Anchor
   Positioning
 - **Side Sheet** component for modal side panels
+- **Skip Link** for skipping to the main content of a page, visually hidden
+  until focused. Rendered automatically by Root Layout; use
+  `skipToContent={false}` to opt out.
 - `snackbar.push()` and `snackbar.promise()` imperative APIs for Snackbar
 - `name` prop on all form components (Form Group, Form Item, Checkbox, Radio,
   Switch, Select, Text Field) for native form submission with `<form>` and
@@ -53,6 +56,8 @@ Changes to the demo app are documented in
     auto-flip icons in RTL
   - **Menu:** `alt` for an accessible name
   - **Menu Item:** `containerElement`, and `dangerous` for destructive actions
+  - **Root Layout:** `locale` and `skipToContent` props for controlling the Skip
+    Link
   - **Search:** `hotkey` for keyboard shortcut to focus the field
   - **Select:** `disabled`, and `required` to mark a required field for
     assistive technologies
@@ -61,11 +66,6 @@ Changes to the demo app are documented in
   - **Table Cell:** `colSpan` and `rowSpan`
   - **Text:** `id`
   - **Text Field:** `type` for native HTML input types
-- **Skip Link** for skipping to the main content of a page, visually hidden
-  until focused. Rendered automatically by Root Layout; use
-  `skipToContent={false}` to opt out.
-- `locale` and `skipToContent` props on Root Layout for controlling the Skip
-  Link
 
 ### Changed
 
