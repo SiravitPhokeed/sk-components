@@ -12,5 +12,6 @@ import { useId } from "react";
 export default function useAnchorName(name?: `--${string}`): `--${string}` {
   // `useId()` returns a string with colons, which is not valid for
   // dashed-ident.
-  return name ?? `--anchor-${useId().replace(/:/g, "")}`;
+  const generatedId = useId().replace(/:/g, "");
+  return name ?? `--anchor-${generatedId}`;
 }
