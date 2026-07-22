@@ -117,6 +117,8 @@ export const MenuItem: StyleableFC<MenuItemProps> = ({
   const selectContext = useSelectContext();
   const menuContext = useMenuContext();
 
+  // ––– Command resolution –––––––––––––––––––––––––––––––––––––––––––––––––––—
+
   // Auto-resolve commandfor from parent Menu context, and use animated
   // close for hide-popover (instead of calling hidePopover() directly,
   // which would skip the exit animation).
@@ -162,30 +164,42 @@ export const MenuItem: StyleableFC<MenuItemProps> = ({
     resolvedOnClick = undefined;
   }
 
-  // Inside a Select, this item is a listbox option.
-  const isInSelect = Boolean(selectContext && value);
+  // ––– ARIA role resolution ––––––––––––––––––––––––––––––––––––––––––––––––––
 
-  // Outside a Select, the `selected` prop makes this a selectable menu item
-  // (`menuitemradio` with `aria-checked`).
-  const isSelectable = selected !== undefined && !isInSelect;
+  // Menu Items are `role="menuitem"` by default.
+  let role = "menuitem";
+  let isSelected = selected;
 
-  const isSelected =
-    selected === undefined && value ? value === selectContext?.value : selected;
+  // In a Select, Menu Items are `role="option"` and `aria-selected` is used.
+  if (selectContext && value !== undefined) {
+    role = "option";
+    isSelected = value === selectContext?.value;
+  }
+  // In a Menu with selectable items, Menu Items are `role="menuitemradio"` and
+  // `aria-checked` is used.
+  else if (selected !== undefined) {
+    role = "menuitemradio";
+    isSelected = selected ?? false;
+  }
+
+  // ––– Render –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––—
 
   return (
     // Inside a listbox or Menu, the container’s implicit listitem role is
-    // invalid — both roles only permit item, group, and separator
-    // children — so it is hidden from assistive technologies.
+    // invalid — both roles only permit item, group, and separator children — so
+    // it is hidden from assistive technologies.
     <ContainerElement role={menuContext ? "none" : undefined}>
       <Interactive
-        role={isInSelect ? "option" : isSelectable ? "menuitemradio" : "menuitem"}
-        aria-selected={isInSelect ? Boolean(isSelected) : undefined}
-        aria-checked={isSelectable ? Boolean(isSelected) : undefined}
+        role={role}
+        {...new Map([
+          ["option", { "aria-selected": isSelected }],
+          ["menuitemradio", { "aria-checked": isSelected }],
+        ]).get(role)}
+        data-value={value}
         aria-disabled={disabled}
         // Inside a Menu, focus is managed by the Menu (moved in on open, then
         // with arrow keys), so Menu Items stay out of the tab order.
         tabIndex={menuContext ? -1 : undefined}
-        data-value={value}
         href={href}
         onClick={resolvedOnClick}
         command={resolvedCommand}
