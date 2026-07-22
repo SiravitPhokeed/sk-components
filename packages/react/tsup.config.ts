@@ -32,8 +32,8 @@ export default defineConfig({
       name: "externalize-cross-component-imports",
       setup(build) {
         // Keep imports of other components as external (relative) imports
-        // instead of inlining them. This preserves "use client" boundaries
-        // so that a Server Component can safely import a Client Component.
+        // instead of inlining them. This preserves "use client" boundaries so
+        // that a Server Component can safely import a Client Component.
         build.onResolve(
           { filter: /^@\/components\// },
           ({ path, importer }) => {
@@ -52,19 +52,16 @@ export default defineConfig({
           },
         );
 
-        // Contexts are shared modules — keep them external so all
-        // consumers reference the same context object. dist/contexts/
-        // is a sibling of dist/components/ and dist/helpers/ etc.
-        build.onResolve(
-          { filter: /^@\/contexts\// },
-          ({ path }) => {
-            const contextName = path.replace(/^@\/contexts\//, "");
-            return {
-              path: `../contexts/${contextName}.js`,
-              external: true,
-            };
-          },
-        );
+        // Contexts are shared modules — keep them external so all consumers
+        // reference the same context object. dist/contexts/ is a sibling of
+        // dist/components/ and dist/helpers/ etc.
+        build.onResolve({ filter: /^@\/contexts\// }, ({ path }) => {
+          const contextName = path.replace(/^@\/contexts\//, "");
+          return {
+            path: `../contexts/${contextName}.js`,
+            external: true,
+          };
+        });
       },
     },
   ],
