@@ -241,11 +241,7 @@ export const Select = <Value extends string = string>({
       >
         {leading && <div className="skc-select__leading">{leading}</div>}
 
-        <Text
-          id={id}
-          type="body-small"
-          className="skc-select__label"
-        >
+        <Text id={id} type="body-small" className="skc-select__label">
           <span>{label}</span>
         </Text>
 
