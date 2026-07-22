@@ -163,8 +163,9 @@ export const Select = <Value extends string = string>({
   className,
 }: StyleableProps & SelectProps<Value>): ReactNode => {
   const id = `select-${useId()}`;
-  const anchorName = useAnchorName();
   const menuId = `menu-${useId()}`;
+  const helperId = `${id}-helper`;
+  const anchorName = useAnchorName();
 
   const [internalValue, setInternalValue] = useState<string | null>(null);
   const resolvedValue = value ?? internalValue;
@@ -257,7 +258,7 @@ export const Select = <Value extends string = string>({
           aria-disabled={disabled || undefined}
           aria-required={required || undefined}
           aria-invalid={error || undefined}
-          aria-describedby={helperMsg ? `${id}-helper` : undefined}
+          aria-describedby={helperMsg ? helperId : undefined}
           {...(children &&
             !disabled && { command: "show-popover", commandfor: menuId })}
           element={element}
@@ -271,7 +272,7 @@ export const Select = <Value extends string = string>({
         </Interactive>
 
         <Text
-          id={`${id}-helper`}
+          id={helperId}
           type="body-small"
           className="skc-select__helper-msg"
         >
