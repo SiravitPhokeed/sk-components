@@ -10,7 +10,6 @@ import {
   useContext,
   useEffect,
   useId,
-  useMemo,
   useRef,
   useState,
 } from "react";
@@ -117,12 +116,7 @@ export const Dialog: StyleableFC<DialogProps> = ({
   const [hasTitle, setHasTitle] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  // A stable context identity keeps Dialog Header’s layout effect from
-  // re-running on every Dialog render.
-  const dialogContextValue = useMemo(
-    () => ({ dialogID, onClose, hasTitle, setHasTitle }),
-    [dialogID, onClose, hasTitle],
-  );
+  const dialogContextValue = { dialogID, onClose, hasTitle, setHasTitle };
 
   const { close, dialogProps } = useAnimatedDialog(dialogRef, {
     exitingClass: EXITING_CLASS,

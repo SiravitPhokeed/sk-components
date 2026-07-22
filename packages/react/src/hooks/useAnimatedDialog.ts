@@ -1,7 +1,7 @@
 "use client";
 
 import type { DialogHTMLAttributes, RefObject } from "react";
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 
 /**
  * Options for {@link useAnimatedDialog}.
@@ -83,9 +83,9 @@ export function useAnimatedDialog(
 
   // ── Imperative close ───────────────────────────────────────────────
 
-  const close = useCallback(() => {
+  const close = () => {
     dialogRef.current?.classList.add(exitingClass);
-  }, [dialogRef, exitingClass]);
+  };
 
   // ── ESC key → cancel event (spec-mandated) ─────────────────────────
   // React has no onCancel synthetic event, so we use addEventListener.
