@@ -103,3 +103,9 @@
     }
   }
 }
+
+@media (forced-colors: active) {
+  .skc-card {
+    border: 1px solid currentColor;
+  }
+}

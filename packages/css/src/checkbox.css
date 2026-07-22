@@ -57,3 +57,22 @@
     color: var(--color-surface);
   }
 }
+
+@media (forced-colors: active) {
+  :is(.skc-checkbox--selected, .skc-checkbox--indeterminate)
+    .skc-checkbox__box {
+    border-color: Highlight;
+    background-color: Highlight;
+
+    .skc-checkbox__icon {
+      color: HighlightText;
+      forced-color-adjust: none;
+    }
+  }
+
+  .skc-checkbox[aria-disabled="true"] {
+    .skc-checkbox__box {
+      border-color: GrayText;
+    }
+  }
+}

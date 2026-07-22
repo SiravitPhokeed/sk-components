@@ -49,3 +49,9 @@
     transition-delay: var(--duration-long-4);
   }
 }
+
+@media (forced-colors: active) {
+  .skc-nav-drawer-item--selected {
+    background-color: Highlight;
+  }
+}

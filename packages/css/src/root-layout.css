@@ -105,7 +105,12 @@ body {
     > .skc-page-header {
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 30;
+      pointer-events: none;
+
+      > * {
+        pointer-events: auto;
+      }
     }
   }
 }
@@ -153,6 +158,10 @@ body {
     --_focus-ring-color: var(--color-primary);
     outline: 0 solid var(--_focus-ring-color);
     outline-offset: 2px;
+
+    @media (forced-colors: active) {
+      outline-color: ActiveText;
+    }
   }
   &:focus-visible {
     animation: skc-focus var(--duration-long-4) var(--ease-standard) forwards;

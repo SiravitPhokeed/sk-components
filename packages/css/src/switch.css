@@ -177,3 +177,38 @@
     }
   }
 }
+
+@media (forced-colors: active) {
+  .skc-switch:not([aria-disabled="true"]) {
+    &,
+    &:hover,
+    &:focus-visible,
+    &:active {
+      transition: none;
+      border-color: ButtonText;
+
+      > .skc-switch__handle {
+        transition-property: inset, width, height;
+        background-color: ButtonText;
+      }
+
+      &.skc-switch--selected {
+        border-color: Highlight;
+        background-color: Highlight;
+
+        > .skc-switch__handle {
+          background-color: HighlightText;
+        }
+      }
+    }
+  }
+
+  .skc-switch[aria-disabled="true"] {
+    border-color: GrayText;
+
+    > .skc-switch__handle {
+      opacity: 1;
+      background-color: GrayText;
+    }
+  }
+}

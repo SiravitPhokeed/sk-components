@@ -85,3 +85,10 @@
     display: none;
   }
 }
+
+@media (forced-colors: active) {
+  .skc-interactive::before,
+  .skc-interactive__ripple {
+    background-color: CanvasText;
+  }
+}

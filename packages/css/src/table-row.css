@@ -66,6 +66,10 @@
       box-shadow: none;
       border-radius: var(--radius-full);
       background-color: var(--color-surface-variant);
+
+      @media (forced-colors: active) {
+        border: 1px solid ButtonText;
+      }
     }
 
     .skc-button > .skc-material-icon {

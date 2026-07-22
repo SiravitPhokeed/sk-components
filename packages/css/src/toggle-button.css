@@ -160,3 +160,17 @@
     color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
   }
 }
+
+@media (forced-colors: active) {
+  .skc-toggle-button--filled,
+  .skc-toggle-button--tonal,
+  .skc-toggle-button--outlined,
+  .skc-toggle-button--standard {
+    border: 1px solid ButtonText;
+
+    &.skc-toggle-button--selected {
+      margin: -3px;
+      border: 4px solid Highlight;
+    }
+  }
+}
