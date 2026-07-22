@@ -2,7 +2,7 @@
 
 import { Interactive } from "@/components/Interactive";
 import { useMenuContext } from "@/components/Menu";
-import { useSelectContext } from "@/components/Select";
+import { useSelectContext } from "@/contexts/SelectContext";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type {
@@ -117,6 +117,8 @@ export const MenuItem: StyleableFC<MenuItemProps> = ({
   const selectContext = useSelectContext();
   const menuContext = useMenuContext();
 
+  // ––– Command resolution –––––––––––––––––––––––––––––––––––––––––––––––––––—
+
   // Auto-resolve commandfor from parent Menu context, and use animated
   // close for hide-popover (instead of calling hidePopover() directly,
   // which would skip the exit animation).
@@ -162,28 +164,42 @@ export const MenuItem: StyleableFC<MenuItemProps> = ({
     resolvedOnClick = undefined;
   }
 
-  // Whether this Menu Item participates in selection (an option in a Select,
-  // or `selected` explicitly set). Selectable items are `menuitemradio`s and
-  // expose their state via `aria-checked`; `aria-selected` is not valid on
-  // menu item roles.
-  const isSelectable =
-    selected !== undefined || Boolean(selectContext && value);
-  const isSelected =
-    selected === undefined && value ? value === selectContext?.value : selected;
+  // ––– ARIA role resolution ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+  // Menu Items are `role="menuitem"` by default.
+  let role = "menuitem";
+  let isSelected = selected;
+
+  // In a Select, Menu Items are `role="option"` and `aria-selected` is used.
+  if (selectContext && value !== undefined) {
+    role = "option";
+    isSelected = value === selectContext?.value;
+  }
+  // In a Menu with selectable items, Menu Items are `role="menuitemradio"` and
+  // `aria-checked` is used.
+  else if (selected !== undefined) {
+    role = "menuitemradio";
+    isSelected = selected ?? false;
+  }
+
+  // ––– Render –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––—
 
   return (
-    // Inside a Menu, the container’s implicit listitem role is invalid —
-    // role="menu" only permits menu item, group, and separator children — so
+    // Inside a listbox or Menu, the container’s implicit listitem role is
+    // invalid — both roles only permit item, group, and separator children — so
     // it is hidden from assistive technologies.
     <ContainerElement role={menuContext ? "none" : undefined}>
       <Interactive
-        role={isSelectable ? "menuitemradio" : "menuitem"}
-        aria-checked={isSelectable ? Boolean(isSelected) : undefined}
+        role={role}
+        {...new Map([
+          ["option", { "aria-selected": isSelected }],
+          ["menuitemradio", { "aria-checked": isSelected }],
+        ]).get(role)}
+        data-value={value}
         aria-disabled={disabled}
         // Inside a Menu, focus is managed by the Menu (moved in on open, then
         // with arrow keys), so Menu Items stay out of the tab order.
         tabIndex={menuContext ? -1 : undefined}
-        data-value={value}
         href={href}
         onClick={resolvedOnClick}
         command={resolvedCommand}

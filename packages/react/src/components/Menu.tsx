@@ -75,6 +75,15 @@ export interface MenuProps extends ElementCustomizableProps {
   open?: boolean;
 
   /**
+   * Renders the Menu as a listbox instead of a menu.
+   *
+   * - This is useful for building custom
+   *   {@link https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-select-only/ select-only comboboxes}.
+   * - Optional.
+   */
+  listbox?: boolean;
+
+  /**
    * A lower number means a more dense interface. In this case, less height.
    *
    * - Must be an integer: 0, -2, or -4.
@@ -100,6 +109,7 @@ export interface MenuProps extends ElementCustomizableProps {
  * @param alt A description of the Menu for screen readers, similar to `alt` on `<img>`.
  * @param anchor The anchor name (dashed-ident) for CSS Anchor Positioning.
  * @param open If the Menu is open and shown.
+ * @param listbox Renders the Menu as a listbox instead of a menu.
  * @param density A lower number means a more dense interface. In this case, less height.
  * @param onClose The function triggered when the backdrop is clicked or Escape is pressed.
  */
@@ -109,6 +119,7 @@ export const Menu: StyleableFC<MenuProps> = ({
   alt,
   anchor,
   open,
+  listbox,
   density,
   onClose,
   element: Element = "ul",
@@ -160,7 +171,7 @@ export const Menu: StyleableFC<MenuProps> = ({
         id={menuID}
         ref={ref}
         popover="manual"
-        role="menu"
+        role={listbox ? "listbox" : "menu"}
         aria-label={alt}
         onKeyDown={(event: React.KeyboardEvent) => {
           // Tab is not part of the menu pattern — close the Menu and let

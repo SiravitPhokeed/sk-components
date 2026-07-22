@@ -9,21 +9,8 @@ import useAnchorName from "@/lib/hooks/useAnchorName";
 import type { ElementCustomizableProps, StyleableProps } from "@/lib/types";
 import "@suankularb-components/css/select.css";
 import type { ReactNode } from "react";
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useId,
-  useRef,
-  useState,
-} from "react";
-
-const SelectContext = createContext<{
-  value: string | null;
-  onChange: (value: string) => void;
-} | null>(null);
-
-export const useSelectContext = () => useContext(SelectContext);
+import { useEffect, useId, useRef, useState } from "react";
+import { SelectContext, useSelectContext } from "@/contexts/SelectContext";
 
 /**
  * Props for {@link Select}.
@@ -176,8 +163,9 @@ export const Select = <Value extends string = string>({
   className,
 }: StyleableProps & SelectProps<Value>): ReactNode => {
   const id = `select-${useId()}`;
-  const anchorName = useAnchorName();
   const menuId = `menu-${useId()}`;
+  const helperId = `${id}-helper`;
+  const anchorName = useAnchorName();
 
   const [internalValue, setInternalValue] = useState<string | null>(null);
   const resolvedValue = value ?? internalValue;
@@ -253,24 +241,20 @@ export const Select = <Value extends string = string>({
       >
         {leading && <div className="skc-select__leading">{leading}</div>}
 
-        <Text
-          id={id}
-          type="body-small"
-          className="skc-select__label"
-        >
+        <Text id={id} type="body-small" className="skc-select__label">
           <span>{label}</span>
         </Text>
 
         <Interactive
           ref={triggerRef}
           aria-label={[label, displayedValue].join(", ")}
-          aria-haspopup="menu"
+          aria-haspopup="listbox"
           aria-expanded={menuOpen}
           aria-controls={children ? menuId : undefined}
           aria-disabled={disabled || undefined}
           aria-required={required || undefined}
           aria-invalid={error || undefined}
-          aria-describedby={helperMsg ? `${id}-helper` : undefined}
+          aria-describedby={helperMsg ? helperId : undefined}
           {...(children &&
             !disabled && { command: "show-popover", commandfor: menuId })}
           element={element}
@@ -284,7 +268,7 @@ export const Select = <Value extends string = string>({
         </Interactive>
 
         <Text
-          id={`${id}-helper`}
+          id={helperId}
           type="body-small"
           className="skc-select__helper-msg"
         >
@@ -292,7 +276,7 @@ export const Select = <Value extends string = string>({
         </Text>
       </div>
 
-      <Menu id={menuId} alt={label} anchor={anchorName} density={-2}>
+      <Menu id={menuId} listbox alt={label} anchor={anchorName} density={-2}>
         <SelectContext.Provider
           value={{
             value: resolvedValue,
