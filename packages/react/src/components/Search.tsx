@@ -123,22 +123,25 @@ export const Search: StyleableFC<SearchProps> = ({
 }) => {
   const ref = useRef<HTMLInputElement>(null);
 
-  const handleHotkey = (event: KeyboardEvent) => {
-    // Prevent false positives when the user is typing in a field or textarea.
-    if (
-      event.target instanceof HTMLInputElement ||
-      event.target instanceof HTMLTextAreaElement
-    )
-      return;
-    // Listen for the hotkey and focus the input field when pressed.
-    const listenedHotkey = hotkey === true ? "/" : hotkey;
-    if (event.key === listenedHotkey && ref.current) {
-      event.preventDefault();
-      ref.current.focus();
-    }
-  };
   useEffect(() => {
-    if (hotkey) document.addEventListener("keyup", handleHotkey);
+    if (!hotkey) return;
+
+    const handleHotkey = (event: KeyboardEvent) => {
+      // Prevent false positives when the user is typing in a field or textarea.
+      if (
+        event.target instanceof HTMLInputElement ||
+        event.target instanceof HTMLTextAreaElement
+      )
+        return;
+      // Listen for the hotkey and focus the input field when pressed.
+      const listenedHotkey = hotkey === true ? "/" : hotkey;
+      if (event.key === listenedHotkey && ref.current) {
+        event.preventDefault();
+        ref.current.focus();
+      }
+    };
+
+    document.addEventListener("keyup", handleHotkey);
     return () => document.removeEventListener("keyup", handleHotkey);
   }, [hotkey]);
 

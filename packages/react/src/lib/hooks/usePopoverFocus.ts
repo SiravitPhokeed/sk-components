@@ -20,6 +20,8 @@ export default function usePopoverFocus(
 ) {
   const returnFocusRef = useRef<HTMLElement | null>(null);
 
+  // Mount-only setup. `popoverRef` is a stable ref object; `getInitialFocus` is
+  // expected to be memoized by the caller (or handled by React Compiler).
   useEffect(() => {
     const popover = popoverRef.current;
     if (!popover) return;
@@ -46,5 +48,6 @@ export default function usePopoverFocus(
 
     popover.addEventListener("toggle", handleToggle);
     return () => popover.removeEventListener("toggle", handleToggle);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 }

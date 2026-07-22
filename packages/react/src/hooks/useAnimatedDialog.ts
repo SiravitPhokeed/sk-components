@@ -102,6 +102,8 @@ export function useAnimatedDialog(
 
     dialog.addEventListener("cancel", handleCancel);
     return () => dialog.removeEventListener("cancel", handleCancel);
+    // dialogRef is a stable ref object — adding it to deps is a no-op.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [close, onClose]);
 
   // ── animationend handler ───────────────────────────────────────────

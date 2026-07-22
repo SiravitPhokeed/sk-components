@@ -145,6 +145,8 @@ export const Snackbar: StyleableFC<SnackbarProps> = ({
   // Snackbar and restarts fresh when the pointer leaves.
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Memoized by React Compiler — stable across renders.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const clearTimer = () => {
     if (timerRef.current) {
       clearTimeout(timerRef.current);
@@ -152,6 +154,8 @@ export const Snackbar: StyleableFC<SnackbarProps> = ({
     }
   };
 
+  // Memoized by React Compiler — stable across renders.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const startTimer = () => {
     if (persistent) return;
     const el = ref.current;
