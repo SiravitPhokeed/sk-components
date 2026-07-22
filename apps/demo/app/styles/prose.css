@@ -23,7 +23,7 @@
   }
 
   .shiki {
-    @apply bg-surface-container relative my-4 block rounded-md;
+    @apply bg-surface-container relative my-4 block rounded-md forced-colors:border forced-colors:border-[CanvasText];
 
     pre {
       @apply overflow-x-auto rounded-md text-base scheme-dark;
