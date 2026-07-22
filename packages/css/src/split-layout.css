@@ -22,7 +22,7 @@
 @media (width >= 38rem) {
   .skc-split-layout::before {
     position: fixed;
-    z-index: 10;
+    z-index: 20;
     inset: 0;
     background-image: linear-gradient(
       to bottom,
@@ -32,6 +32,10 @@
     height: 5rem;
     pointer-events: none;
     content: "";
+
+    @media (forced-colors: active) {
+      background-color: Canvas;
+    }
   }
 
   .skc-split-layout__content {

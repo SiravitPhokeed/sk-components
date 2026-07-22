@@ -137,3 +137,9 @@
     animation: var(--_duration) var(--_ease) forwards skc-fade-out;
   }
 }
+
+@media (forced-colors: active) {
+  .skc-menu {
+    border: 1px solid CanvasText;
+  }
+}

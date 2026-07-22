@@ -30,6 +30,10 @@
     background-color: var(--color-surface-container);
     width: 100dvw;
     overflow: auto hidden;
+
+    @media (forced-colors: active) {
+      border-top: 1px solid CanvasText;
+    }
   }
 
   .skc-nav-bar__nav-toggle,

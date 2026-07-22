@@ -11,7 +11,7 @@ import {
   Switch,
   Text,
 } from "@suankularb-components/react";
-import { aria } from "@suankularb-components/react/helpers";
+import { aria, snackbar } from "@suankularb-components/react/helpers";
 import type { FC } from "react";
 import { useEffect, useState } from "react";
 
@@ -32,6 +32,10 @@ const FeaturesSection: FC = () => {
     setIsRtl(isInitialRtl);
   }, []);
   const handleSchemeChange = (isDark: boolean) => {
+    if (window.matchMedia("(forced-colors: active)").matches) {
+      snackbar.push("Cannot change color scheme when forced colors is enabled");
+      return;
+    }
     setIsDarkMode(isDark);
     document.documentElement.classList.remove("scheme-light", "scheme-dark");
     document.documentElement.classList.add(

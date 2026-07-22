@@ -86,7 +86,7 @@ export const Checkbox: StyleableFC<CheckboxProps> = ({
   style,
 }) => {
   const [internalValue, setInternalValue] = useState<boolean | null>(
-    value ?? false,
+    value !== undefined ? value : false,
   );
   const resolvedValue = value ?? internalValue;
   const resolvedOnChange = onChange ?? setInternalValue;

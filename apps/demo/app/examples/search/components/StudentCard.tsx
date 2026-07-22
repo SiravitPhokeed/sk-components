@@ -13,9 +13,9 @@ const StudentCard: StyleableFC<{
       direction="row"
       stateLayerEffect
       className={cn(
-        "w-full rounded-none border-transparent bg-transparent sm:rounded-full!",
+        "w-full rounded-none border-transparent bg-transparent sm:rounded-full forced-colors:border-0",
         selected &&
-          "sm:border-outline-variant sm:bg-primary-container sm:text-on-primary-container!",
+          "sm:border-outline-variant sm:bg-primary-container sm:text-on-primary-container sm:forced-colors:bg-[Highlight]",
         className,
       )}
       style={style}

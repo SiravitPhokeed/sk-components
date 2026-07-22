@@ -180,3 +180,14 @@
     animation: skc-fade-in 1s ease-in-out alternate infinite;
   }
 }
+
+@media (forced-colors: active) {
+  .skc-progress {
+    &.skc-progress--linear .skc-progress__indicator {
+      background-color: ButtonText;
+    }
+    &.skc-progress--circular .skc-progress__indicator {
+      stroke: ButtonText;
+    }
+  }
+}

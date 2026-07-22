@@ -75,6 +75,11 @@
       }
     }
   }
+
+  @media (forced-colors: active) {
+    border-radius: 0;
+    border-inline-start: 1px solid CanvasText;
+  }
 }
 
 /* ── Backdrop entry animation (Safari can't @starting-style ::backdrop) ──── */
@@ -171,5 +176,11 @@
   [dir="rtl"] &,
   &[dir="rtl"] {
     transform-origin: right;
+  }
+
+  @media (forced-colors: active) {
+    border-radius: 0;
+    border-inline: none;
+    border-inline-end: 1px solid CanvasText;
   }
 }

@@ -41,9 +41,9 @@ const DocsNavLink: StyleableFC<{
         href={href}
         element={Link}
         className={cn(
-          "w-full scroll-my-12 rounded-full px-3 py-1.5 text-start transition-colors",
+          "w-full scroll-my-12 rounded-full px-3 py-1.5 text-start transition-colors forced-colors:transition-none",
           selected
-            ? "bg-secondary-container text-on-secondary-container state-layer-on-secondary-container"
+            ? "bg-secondary-container text-on-secondary-container state-layer-on-secondary-container forced-colors:bg-[Highlight]"
             : "state-layer-on-surface-variant text-on-surface-variant",
           className,
         )}

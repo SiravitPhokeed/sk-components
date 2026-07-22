@@ -155,3 +155,9 @@
     transform: none;
   }
 }
+
+@media (forced-colors: active) {
+  .skc-nav-bar-item--selected .skc-nav-bar-item__pill {
+    background-color: Highlight;
+  }
+}

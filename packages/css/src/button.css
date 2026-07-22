@@ -180,3 +180,32 @@
     --state-layer-color: var(--color-error);
   }
 }
+
+@media (forced-colors: active) {
+  .skc-button {
+    border: 0 solid ButtonText;
+  }
+  .skc-button--outlined {
+    border-width: 1px;
+  }
+  .skc-button--filled,
+  .skc-button--tonal {
+    margin: -3px;
+    border-width: 4px;
+  }
+  .skc-button--disabled {
+    border-color: GrayText;
+    .skc-button__label,
+    .skc-material-icon {
+      color: GrayText;
+    }
+  }
+  .skc-button.skc-button--selected {
+    background-color: Highlight;
+
+    .skc-material-icon {
+      color: HighlightText;
+      forced-color-adjust: none;
+    }
+  }
+}

@@ -25,17 +25,18 @@
     height: 100%;
     object-fit: cover;
   }
+
+  @media (prefers-contrast: more) {
+    background-color: var(--color-surface-container);
+  }
+  @media (forced-colors: active) {
+    border: 1px solid CanvasText;
+  }
 }
 
 @media (width >= 38rem) {
   .skc-fullscreen-dialog .skc-avatar:has(img) {
     background-color: var(--color-surface);
-  }
-}
-
-@media (prefers-contrast: more) {
-  .skc-avatar {
-    color: var(--color-on-primary-container);
   }
 }
 

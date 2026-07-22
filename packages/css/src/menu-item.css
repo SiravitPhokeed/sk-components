@@ -50,3 +50,16 @@
 .skc-menu-item[aria-disabled="true"] {
   opacity: 0.38;
 }
+
+@media (forced-colors: active) {
+  .skc-menu-item--selected {
+    background-color: Highlight;
+  }
+  .skc-menu-item__metadata {
+    color: GrayText;
+  }
+  .skc-menu-item[aria-disabled="true"] {
+    opacity: 1;
+    color: GrayText;
+  }
+}

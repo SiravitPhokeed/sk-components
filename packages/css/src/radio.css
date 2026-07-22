@@ -89,3 +89,9 @@
     opacity: 1;
   }
 }
+
+@media (forced-colors: active) {
+  .skc-radio__marker {
+    background-color: Highlight;
+  }
+}
