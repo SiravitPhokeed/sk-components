@@ -33,9 +33,22 @@
   }
 }
 
-.skc-data-table-search:has(.skc-data-table-search__input:focus) {
-  margin-bottom: -1px;
-  border-bottom: 2px solid var(--color-primary);
+.skc-data-table-search::after {
+  position: absolute;
+  inset: 0;
+  top: auto;
+  opacity: 0;
+  transition: opacity var(--duration-short-4) var(--ease-standard);
+  background-color: var(--color-primary);
+  height: 2px;
+  content: "";
+
+  @media (forced-colors: active) {
+    background-color: CanvasText;
+  }
+}
+.skc-data-table-search:has(.skc-data-table-search__input:focus)::after {
+  opacity: 1;
 }
 
 .skc-data-table-search > .skc-material-icon {

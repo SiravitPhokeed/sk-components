@@ -141,3 +141,25 @@
 .skc-chip:has(.skc-chip__trailing-button:last-child) > .skc-material-icon {
   display: none;
 }
+
+@media (forced-colors: active) {
+  .skc-chip,
+  .skc-chip--elevated {
+    border: 1px solid CanvasText;
+  }
+
+  .skc-chip--selected,
+  .skc-chip-field--last-chip-selected .skc-chip-set > .skc-chip:last-child {
+    border-color: Highlight;
+    background-color: Highlight;
+  }
+
+  .skc-chip[aria-disabled="true"] {
+    &,
+    .skc-chip__icon {
+      opacity: 1;
+      border-color: GrayText;
+      color: GrayText;
+    }
+  }
+}

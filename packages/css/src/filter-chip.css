@@ -18,3 +18,13 @@
     transform: rotate(180deg);
   }
 }
+
+@media (forced-colors: active) {
+  .skc-chip--selected,
+  .skc-chip-field--last-chip-selected .skc-chip-set > .skc-chip:last-child {
+    .skc-filter-chip__arrow {
+      color: HighlightText;
+      forced-color-adjust: none;
+    }
+  }
+}
