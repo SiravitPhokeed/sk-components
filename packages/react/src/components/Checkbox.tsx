@@ -77,7 +77,7 @@ export interface CheckboxProps extends ElementCustomizableProps {
 export const Checkbox: StyleableFC<CheckboxProps> = ({
   alt,
   name,
-  value,
+  value = false,
   onChange,
   tristate,
   disabled,
@@ -85,9 +85,7 @@ export const Checkbox: StyleableFC<CheckboxProps> = ({
   className,
   style,
 }) => {
-  const [internalValue, setInternalValue] = useState<boolean | null>(
-    value ?? false,
-  );
+  const [internalValue, setInternalValue] = useState<boolean | null>(value);
   const resolvedValue = value ?? internalValue;
   const resolvedOnChange = onChange ?? setInternalValue;
 
