@@ -16,8 +16,8 @@
   padding: 0.5rem;
 
   .skc-material-icon {
-    transition: var(--_duration) var(--_ease);
-    transition-property: font-weight, font-variation-settings, color;
+    transition: color var(--_duration) var(--_ease);
+    transition-property: color;
     color: var(--state-layer-color);
     font-variation-settings: "FILL" 0;
   }
@@ -30,14 +30,20 @@
   }
 }
 
-.skc-toggle-button:not([aria-disabled="true"]) {
-  @media (any-hover: hover) {
-    &:hover > .skc-material-icon {
-      font-weight: 600;
-    }
+@media (prefers-reduced-motion: no-preference) {
+  .skc-toggle-button .skc-material-icon {
+    transition-property: color, font-weight, font-variation-settings;
   }
-  &:active > .skc-material-icon {
-    font-weight: 300;
+
+  .skc-toggle-button:not([aria-disabled="true"]) {
+    @media (any-hover: hover) {
+      &:hover > .skc-material-icon {
+        font-weight: 600;
+      }
+    }
+    &:active > .skc-material-icon {
+      font-weight: 300;
+    }
   }
 }
 

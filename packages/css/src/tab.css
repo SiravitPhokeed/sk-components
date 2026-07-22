@@ -24,6 +24,10 @@
   transition: var(--_duration) var(--_ease);
   font-variation-settings: "FILL" 0;
 
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
   @media (any-hover: hover) {
     .skc-tab:hover & {
       font-weight: var(--font-weight-medium);

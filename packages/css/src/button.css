@@ -54,14 +54,16 @@
     font-size: 1.5rem;
   }
 
-  &:not([aria-disabled="true"]) {
-    @media (any-hover: hover) {
-      &:hover > .skc-material-icon {
-        font-weight: 600;
+  @media (prefers-reduced-motion: no-preference) {
+    &:not([aria-disabled="true"]) {
+      @media (any-hover: hover) {
+        &:hover > .skc-material-icon {
+          font-weight: 600;
+        }
       }
-    }
-    &:active > .skc-material-icon {
-      font-weight: 300;
+      &:active > .skc-material-icon {
+        font-weight: 300;
+      }
     }
   }
 }

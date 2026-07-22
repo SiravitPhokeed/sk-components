@@ -125,3 +125,16 @@
     white-space: nowrap;
   }
 }
+
+/* Reduced motion: neutralize the scale-in entry animation, leaving
+   only the opacity fade. */
+@media (prefers-reduced-motion: reduce) {
+  .skc-fab {
+    transform: none;
+    transition-property: opacity;
+
+    @starting-style {
+      transform: none;
+    }
+  }
+}

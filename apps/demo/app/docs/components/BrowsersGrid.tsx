@@ -38,7 +38,7 @@ const BrowsersGrid: FC<{
             />
             <div
               aria-hidden
-              className="bg-surface-container-high ease-emphasized border-e-outline-variant absolute inset-0 origin-left scale-x-100 border-e transition-transform delay-200 duration-1000 rtl:origin-right starting:scale-x-0"
+              className="bg-surface-container-high ease-emphasized border-e-outline-variant absolute inset-0 origin-left scale-x-100 border-e transition-transform delay-200 duration-1000 rtl:origin-right motion-safe:starting:scale-x-0"
               style={{ width: `${coverageFixed}%` }}
             />
             <Text

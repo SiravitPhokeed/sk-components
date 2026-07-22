@@ -45,7 +45,6 @@
 .skc-data-table-search__input {
   flex-grow: 1;
   appearance: textfield;
-  outline-offset: -2px;
   border: 0;
   background-color: transparent;
   padding-block: 1rem;

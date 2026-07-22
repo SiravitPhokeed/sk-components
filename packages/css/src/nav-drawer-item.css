@@ -40,3 +40,12 @@
     font-weight: var(--font-weight-bold);
   }
 }
+
+/* Prevent Navigation Drawer Item from flashing when Navigation Drawer is
+   closing */
+@media (prefers-reduced-motion: reduce) {
+  .skc-nav-drawer-item {
+    transition: background-color 0ms;
+    transition-delay: var(--duration-long-4);
+  }
+}
