@@ -1,6 +1,7 @@
 import type { Button } from "@/components/Button";
 import type { SnackbarProps } from "@/components/Snackbar";
 import { Snackbar } from "@/components/Snackbar";
+import { aria } from "@/helpers/aria";
 import type { ReactElement, ReactNode } from "react";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
@@ -12,25 +13,6 @@ let activeDismiss: (() => void) | null = null;
 
 /** Counter for generating unique Snackbar IDs. */
 let nextId = 0;
-
-// ── Screen reader announcer ───────────────────────────────────────────
-// A single visually-hidden `role="status"` element lives in the DOM
-// permanently. Each push() writes the Snackbar label text into it so
-// assistive technology announces the message. The element is created on
-// the first call to snackbarPush and reused thereafter.
-
-let announcerEl: HTMLDivElement | null = null;
-
-function ensureAnnouncer(): HTMLDivElement {
-  if (announcerEl && document.body.contains(announcerEl)) return announcerEl;
-  announcerEl = document.createElement("div");
-  announcerEl.className = "skc-sr-only";
-  announcerEl.setAttribute("role", "status");
-  announcerEl.setAttribute("aria-live", "polite");
-  announcerEl.setAttribute("aria-atomic", "true");
-  document.body.appendChild(announcerEl);
-  return announcerEl;
-}
 
 /** Options for {@link snackbarPush}. */
 export type PushSnackbarOptions = Pick<
@@ -117,16 +99,7 @@ export default function snackbarPush(
     requestAnimationFrame(() => {
       if (dismissed) return;
       const label = snackbarEl.querySelector(".skc-snackbar__label");
-      if (label?.textContent) {
-        // Clear before writing so pushing the same message twice still
-        // mutates the live region — identical textContent would not
-        // re-announce.
-        const announcer = ensureAnnouncer();
-        announcer.textContent = "";
-        requestAnimationFrame(() => {
-          announcer.textContent = label.textContent!.trim();
-        });
-      }
+      if (label?.textContent) aria.notify(label.textContent.trim());
     });
   });
 

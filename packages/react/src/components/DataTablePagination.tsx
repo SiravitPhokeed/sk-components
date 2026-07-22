@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/Button";
 import { MaterialIcon } from "@/components/MaterialIcon";
+import { aria } from "@/helpers/aria";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/data-table-pagination.css";
@@ -100,6 +101,8 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
 }) => {
   // ––– State –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
+  const announcerRef = useRef<HTMLSpanElement>(null);
+
   const [page, setPage] = useState<number>(1);
   const [maxPage, setMaxPage] = useState<number>(
     Math.ceil(totalRows / rowsPerPage),
@@ -121,23 +124,15 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
     total: totalRows.toLocaleString(locale),
   };
 
-  // ––– Announcer ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––—
-
-  const announcerRef = useRef<HTMLSpanElement>(null);
-  const announce = (message: string) => {
-    const el = announcerRef.current;
-    if (!el) return;
-    el.textContent = "";
-    requestAnimationFrame(() => (el.textContent = message));
-  };
-
   // ——— Handlers ——————————————————————————————————————————————————————————————
 
   const changePage = (newPage: number) => {
     if (newPage < 1 || newPage > maxPage) return;
     setPage(newPage);
     onChange?.(newPage, range.start - 1, range.end - 1);
-    announce(STRINGS[locale].alt(formattedNumbers));
+    aria.notify(STRINGS[locale].alt(formattedNumbers), {
+      root: announcerRef.current,
+    });
   };
 
   // ——— Render ————————————————————————————————————————————————————————————————
@@ -157,7 +152,7 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
         <span aria-hidden>{STRINGS[locale].label(formattedNumbers)}</span>
       </span>
 
-      {/* Announcer live region */}
+      {/* Announcer live region — kept local so it works inside Dialogs */}
       <span ref={announcerRef} role="status" className="skc-sr-only" />
 
       <div className="skc-data-table-pagination__controls">
