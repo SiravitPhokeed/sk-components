@@ -18,7 +18,7 @@ import { readFile } from "node:fs/promises";
 const reactCompiler = {
   name: "react-compiler",
   setup(build) {
-    build.onLoad({ filter: /\.tsx$/ }, async (args) => {
+    build.onLoad({ filter: /\.tsx?$/ }, async (args) => {
       if (args.path.includes("node_modules")) return;
 
       const source = await readFile(args.path, "utf8");
