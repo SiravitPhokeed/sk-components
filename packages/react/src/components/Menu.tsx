@@ -75,6 +75,14 @@ export interface MenuProps extends ElementCustomizableProps {
   open?: boolean;
 
   /**
+   * Renders the Menu as a listbox instead of a menu. This affects the ARIA
+   * role.
+   *
+   * - Optional.
+   */
+  listbox?: boolean;
+
+  /**
    * A lower number means a more dense interface. In this case, less height.
    *
    * - Must be an integer: 0, -2, or -4.
@@ -109,6 +117,7 @@ export const Menu: StyleableFC<MenuProps> = ({
   alt,
   anchor,
   open,
+  listbox,
   density,
   onClose,
   element: Element = "ul",
@@ -160,7 +169,7 @@ export const Menu: StyleableFC<MenuProps> = ({
         id={menuID}
         ref={ref}
         popover="manual"
-        role="menu"
+        role={listbox ? "listbox" : "menu"}
         aria-label={alt}
         onKeyDown={(event: React.KeyboardEvent) => {
           // Tab is not part of the menu pattern — close the Menu and let

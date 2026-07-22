@@ -2,7 +2,7 @@
 
 import { Interactive } from "@/components/Interactive";
 import { useMenuContext } from "@/components/Menu";
-import { useSelectContext } from "@/components/Select";
+import { useSelectContext } from "@/contexts/SelectContext";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type {
@@ -162,22 +162,24 @@ export const MenuItem: StyleableFC<MenuItemProps> = ({
     resolvedOnClick = undefined;
   }
 
-  // Whether this Menu Item participates in selection (an option in a Select,
-  // or `selected` explicitly set). Selectable items are `menuitemradio`s and
-  // expose their state via `aria-checked`; `aria-selected` is not valid on
-  // menu item roles.
-  const isSelectable =
-    selected !== undefined || Boolean(selectContext && value);
+  // Inside a Select, this item is a listbox option.
+  const isInSelect = Boolean(selectContext && value);
+
+  // Outside a Select, the `selected` prop makes this a selectable menu item
+  // (`menuitemradio` with `aria-checked`).
+  const isSelectable = selected !== undefined && !isInSelect;
+
   const isSelected =
     selected === undefined && value ? value === selectContext?.value : selected;
 
   return (
-    // Inside a Menu, the container’s implicit listitem role is invalid —
-    // role="menu" only permits menu item, group, and separator children — so
-    // it is hidden from assistive technologies.
+    // Inside a listbox or Menu, the container’s implicit listitem role is
+    // invalid — both roles only permit item, group, and separator
+    // children — so it is hidden from assistive technologies.
     <ContainerElement role={menuContext ? "none" : undefined}>
       <Interactive
-        role={isSelectable ? "menuitemradio" : "menuitem"}
+        role={isInSelect ? "option" : isSelectable ? "menuitemradio" : "menuitem"}
+        aria-selected={isInSelect ? Boolean(isSelected) : undefined}
         aria-checked={isSelectable ? Boolean(isSelected) : undefined}
         aria-disabled={disabled}
         // Inside a Menu, focus is managed by the Menu (moved in on open, then

@@ -5,8 +5,17 @@ const components = readdirSync("src/components")
   .filter((file) => file.endsWith(".tsx") && file !== "index.ts")
   .map((file) => `src/components/${file}`);
 
+const contexts = readdirSync("src/contexts")
+  .filter((file) => file.endsWith(".tsx"))
+  .map((file) => `src/contexts/${file}`);
+
 export default defineConfig({
-  entry: [...components, "src/helpers/index.ts", "src/hooks/index.ts"],
+  entry: [
+    ...components,
+    ...contexts,
+    "src/helpers/index.ts",
+    "src/hooks/index.ts",
+  ],
   format: ["esm"],
   dts: true,
   clean: true,
@@ -29,8 +38,6 @@ export default defineConfig({
           { filter: /^@\/components\// },
           ({ path, importer }) => {
             const componentName = path.replace(/^@\/components\//, "");
-            // Compute relative path from the importer's output directory
-            // to dist/components/ where all built components live.
             let relativePrefix = "./";
             if (
               importer.includes("/helpers/") ||
@@ -40,6 +47,20 @@ export default defineConfig({
             }
             return {
               path: `${relativePrefix}${componentName}.js`,
+              external: true,
+            };
+          },
+        );
+
+        // Contexts are shared modules — keep them external so all
+        // consumers reference the same context object. dist/contexts/
+        // is a sibling of dist/components/ and dist/helpers/ etc.
+        build.onResolve(
+          { filter: /^@\/contexts\// },
+          ({ path }) => {
+            const contextName = path.replace(/^@\/contexts\//, "");
+            return {
+              path: `../contexts/${contextName}.js`,
               external: true,
             };
           },

@@ -9,21 +9,8 @@ import useAnchorName from "@/lib/hooks/useAnchorName";
 import type { ElementCustomizableProps, StyleableProps } from "@/lib/types";
 import "@suankularb-components/css/select.css";
 import type { ReactNode } from "react";
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useId,
-  useRef,
-  useState,
-} from "react";
-
-const SelectContext = createContext<{
-  value: string | null;
-  onChange: (value: string) => void;
-} | null>(null);
-
-export const useSelectContext = () => useContext(SelectContext);
+import { useEffect, useId, useRef, useState } from "react";
+import { SelectContext, useSelectContext } from "@/contexts/SelectContext";
 
 /**
  * Props for {@link Select}.
@@ -264,7 +251,7 @@ export const Select = <Value extends string = string>({
         <Interactive
           ref={triggerRef}
           aria-label={[label, displayedValue].join(", ")}
-          aria-haspopup="menu"
+          aria-haspopup="listbox"
           aria-expanded={menuOpen}
           aria-controls={children ? menuId : undefined}
           aria-disabled={disabled || undefined}
@@ -292,7 +279,7 @@ export const Select = <Value extends string = string>({
         </Text>
       </div>
 
-      <Menu id={menuId} alt={label} anchor={anchorName} density={-2}>
+      <Menu id={menuId} listbox alt={label} anchor={anchorName} density={-2}>
         <SelectContext.Provider
           value={{
             value: resolvedValue,
