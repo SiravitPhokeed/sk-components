@@ -218,6 +218,7 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
   const id = `chip-field-${useId()}`;
   const inputRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const announcerRef = useRef<HTMLSpanElement>(null);
 
   // Track if the last chip is selected (via backspace on empty input).
   const [lastChipSelected, setLastChipSelected] = useState(false);
@@ -225,6 +226,9 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
   // ––– Screen reader announcements ––––––––––––––––––––––––––––––––––––––––––—
   // Chip Field is complex and dynamic, so we announce chip count, loading
   // state, and last-chip selection to assistive technology.
+
+  const notify = (message: string) =>
+    aria.notify(message, { root: announcerRef.current });
 
   // Auto-compute chip count from the Chip Set’s children. Uses `React.Children`
   // so it works during render.
@@ -237,12 +241,12 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
   useEffect(() => {
     if (prevChipCount.current === chipCount) return;
     prevChipCount.current = chipCount;
-    if (resolvedChipStatus) aria.notify(resolvedChipStatus);
+    if (resolvedChipStatus) notify(resolvedChipStatus);
   }, [chipCount]);
 
   // Announce loading state.
   useEffect(() => {
-    if (loading) aria.notify(STRINGS[locale].loading);
+    if (loading) notify(STRINGS[locale].loading);
   }, [loading]);
 
   // ––– Input handling –––––––––––––––––––––––––––––––––––––––––––––––––––—————
@@ -328,7 +332,7 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
         const chipSet = contentRef.current?.querySelector(".skc-chip-set");
         if (!chipSet || chipSet.children.length < 1) return;
         setLastChipSelected(true);
-        aria.notify(STRINGS[locale].deleteLast.alt);
+        notify(STRINGS[locale].deleteLast.alt);
       }
       return;
     }
@@ -430,6 +434,9 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
       <span id={`${id}-status`} hidden>
         , {resolvedChipStatus}
       </span>
+
+      {/* Announcer live region — kept local so it works inside Dialogs */}
+      <span ref={announcerRef} role="status" className="skc-sr-only" />
 
       {/* Loading progress bar */}
       {loading && (
