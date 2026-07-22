@@ -4,6 +4,7 @@ import type { ChipSet, ChipSetProps } from "@/components/ChipSet";
 import type { InputChip } from "@/components/InputChip";
 import { Progress } from "@/components/Progress";
 import { Text } from "@/components/Text";
+import { aria } from "@/helpers/aria";
 import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/chip-field.css";
@@ -217,22 +218,13 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
   const id = `chip-field-${useId()}`;
   const inputRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const announcerRef = useRef<HTMLSpanElement>(null);
 
   // Track if the last chip is selected (via backspace on empty input).
   const [lastChipSelected, setLastChipSelected] = useState(false);
 
   // ––– Screen reader announcements ––––––––––––––––––––––––––––––––––––––––––—
-  // Chip Field is complex and dynamic, so we need to announce changes to the
-  // user. We use a live region to announce changes to the chip count, loading
-  // state, and last-chip selection.
-
-  const announce = (message: string) => {
-    const el = announcerRef.current;
-    if (!el) return;
-    el.textContent = "";
-    requestAnimationFrame(() => (el.textContent = message));
-  };
+  // Chip Field is complex and dynamic, so we announce chip count, loading
+  // state, and last-chip selection to assistive technology.
 
   // Auto-compute chip count from the Chip Set’s children. Uses `React.Children`
   // so it works during render.
@@ -240,17 +232,17 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
     (children.props as unknown as ChipSetProps).children,
   );
   const resolvedChipStatus =
-    chipCount > 0 ? STRINGS[locale].chipStatus(chipCount) : false;
+    chipCount > 0 ? STRINGS[locale].chipStatus(chipCount) : null;
   const prevChipCount = useRef(chipCount);
   useEffect(() => {
     if (prevChipCount.current === chipCount) return;
     prevChipCount.current = chipCount;
-    if (resolvedChipStatus) announce(resolvedChipStatus);
+    if (resolvedChipStatus) aria.notify(resolvedChipStatus);
   }, [chipCount]);
 
   // Announce loading state.
   useEffect(() => {
-    if (loading) announce(STRINGS[locale].loading);
+    if (loading) aria.notify(STRINGS[locale].loading);
   }, [loading]);
 
   // ––– Input handling –––––––––––––––––––––––––––––––––––––––––––––––––––—————
@@ -336,7 +328,7 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
         const chipSet = contentRef.current?.querySelector(".skc-chip-set");
         if (!chipSet || chipSet.children.length < 1) return;
         setLastChipSelected(true);
-        announce(STRINGS[locale].deleteLast.alt);
+        aria.notify(STRINGS[locale].deleteLast.alt);
       }
       return;
     }
@@ -402,7 +394,9 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
             id={`${id}-input`}
             aria-labelledby={`${id}-label`}
             aria-describedby={
-              helperMsg || lastChipSelected ? `${id}-helper` : undefined
+              helperMsg || lastChipSelected
+                ? `${id}-helper ${id}-status`
+                : undefined
             }
             aria-required={required || undefined}
             type="text"
@@ -431,14 +425,11 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
           className="skc-chip-field__helper-msg"
         >
           {lastChipSelected ? STRINGS[locale].deleteLast.render : helperMsg}
-          {resolvedChipStatus && (
-            <span className="skc-sr-only">, {resolvedChipStatus}</span>
-          )}
         </Text>
       )}
-
-      {/* Announcer live region */}
-      <span ref={announcerRef} role="status" className="skc-sr-only" />
+      <span id={`${id}-status`} hidden>
+        , {resolvedChipStatus}
+      </span>
 
       {/* Loading progress bar */}
       {loading && (

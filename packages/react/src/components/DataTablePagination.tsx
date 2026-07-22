@@ -2,10 +2,11 @@
 
 import { Button } from "@/components/Button";
 import { MaterialIcon } from "@/components/MaterialIcon";
+import { aria } from "@/helpers/aria";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/data-table-pagination.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 /**
  * Props for {@link DataTablePagination Data Table Pagination}.
@@ -121,23 +122,13 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
     total: totalRows.toLocaleString(locale),
   };
 
-  // ––– Announcer ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––—
-
-  const announcerRef = useRef<HTMLSpanElement>(null);
-  const announce = (message: string) => {
-    const el = announcerRef.current;
-    if (!el) return;
-    el.textContent = "";
-    requestAnimationFrame(() => (el.textContent = message));
-  };
-
   // ——— Handlers ——————————————————————————————————————————————————————————————
 
   const changePage = (newPage: number) => {
     if (newPage < 1 || newPage > maxPage) return;
     setPage(newPage);
     onChange?.(newPage, range.start - 1, range.end - 1);
-    announce(STRINGS[locale].alt(formattedNumbers));
+    aria.notify(STRINGS[locale].alt(formattedNumbers));
   };
 
   // ——— Render ————————————————————————————————————————————————————————————————
@@ -156,9 +147,6 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
         </span>
         <span aria-hidden>{STRINGS[locale].label(formattedNumbers)}</span>
       </span>
-
-      {/* Announcer live region */}
-      <span ref={announcerRef} role="status" className="skc-sr-only" />
 
       <div className="skc-data-table-pagination__controls">
         {/* Skip to first */}

@@ -64,6 +64,8 @@ export const RootLayout: StyleableFC<RootLayoutProps> = ({
 }) => (
   <Element className={cn("skc-root-layout", className)} style={style}>
     {skipToContent && <SkipLink locale={locale} />}
+    {/* Central live-region announcer for aria.notify. */}
+    <span id="skc-aria-announcer" role="status" className="skc-sr-only" />
     {children}
   </Element>
 );

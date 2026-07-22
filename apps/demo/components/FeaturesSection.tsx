@@ -11,6 +11,7 @@ import {
   Switch,
   Text,
 } from "@suankularb-components/react";
+import { aria } from "@suankularb-components/react/helpers";
 import type { FC } from "react";
 import { useEffect, useState } from "react";
 
@@ -36,12 +37,14 @@ const FeaturesSection: FC = () => {
     document.documentElement.classList.add(
       isDark ? "scheme-dark" : "scheme-light",
     );
+    aria.notify(isDark ? "Dark mode enabled" : "Light mode enabled");
   };
   const handleDirectionChange = (isRtl: boolean) => {
     setIsRtl(isRtl);
     setTimeout(() => {
       document.documentElement.dir = isRtl ? "rtl" : "ltr";
     }, 300); // Flip after animation
+    aria.notify(isRtl ? "Right-to-left enabled" : "Left-to-right enabled");
   };
 
   return (
