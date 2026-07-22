@@ -45,18 +45,21 @@
   padding: 0.25rem 1rem;
 
   .skc-material-icon {
-    transition-property: color, font-weight, font-variation-settings;
-    transition: var(--_duration) var(--_ease);
     font-size: 1.5rem;
     font-variation-settings: "FILL" 0;
 
-    @media (any-hover: hover) {
-      .skc-nav-bar-item:hover & {
-        font-weight: 500;
+    @media (prefers-reduced-motion: no-preference) {
+      transition-property: color, font-weight, font-variation-settings;
+      transition: var(--_duration) var(--_ease);
+
+      @media (any-hover: hover) {
+        .skc-nav-bar-item:hover & {
+          font-weight: 500;
+        }
       }
-    }
-    .skc-nav-bar-item:active & {
-      font-weight: 300;
+      .skc-nav-bar-item:active & {
+        font-weight: 300;
+      }
     }
   }
 

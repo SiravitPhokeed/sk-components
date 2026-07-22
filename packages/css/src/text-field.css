@@ -356,3 +356,12 @@
      color to be overridden by the background-color property. */
   transition: background-color 0s ease-in-out 5000s;
 }
+
+/* ─── Reduced motion ─────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.skc-text-field--outlined, .skc-text-field--filled)
+    :is(.skc-text-field__label, .skc-text-field__box, .skc-text-field__clip) {
+    transition: none;
+  }
+}

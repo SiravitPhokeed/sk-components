@@ -130,21 +130,29 @@
   .skc-side-sheet {
     transform: none;
     transition-property: opacity;
-  }
 
-  .skc-side-sheet[open] {
-    transform: none;
-  }
-
-  @starting-style {
-    .skc-side-sheet[open] {
+    &[open] {
       transform: none;
-      opacity: 0;
+      > * {
+        transform: none;
+      }
+
+      @starting-style {
+        transform: none;
+        opacity: 0;
+        > * {
+          transform: none;
+          opacity: 1;
+        }
+      }
     }
   }
 
   .skc-side-sheet.skc-side-sheet--exiting {
     animation: skc-fade-out var(--_duration) var(--_ease) forwards;
+    > * {
+      opacity: 1;
+    }
   }
 }
 
