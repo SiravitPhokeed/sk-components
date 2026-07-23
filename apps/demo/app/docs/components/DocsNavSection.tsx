@@ -27,7 +27,7 @@ const DocsNavSection: StyleableFC<{
     <ul
       aria-label={title}
       role="list"
-      className="border-s-outline-variant ms-4 mt-1 border-s ps-2"
+      className="before:bg-outline-variant relative ms-4 ps-2 pt-1 before:absolute before:inset-s-0 before:top-1 before:bottom-0 before:w-px forced-colors:before:bg-[CanvasText]"
     >
       {children}
     </ul>
