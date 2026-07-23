@@ -6,6 +6,7 @@ import type { FC, ReactNode } from "react";
  * Browserslist `defaults` coverage for Thailand as of July 2026.
  * @see {@link https://browsersl.ist/#q=defaults&region=TH `defaults` on Browserslist}
  */
+const DEFAULTS_COVERAGE = 91.9;
 const DEFAULTS_COVERAGE_FIXED = "91.9";
 const formatCoverage = (coverage: number) =>
   coverage.toLocaleString("en-US", { maximumFractionDigits: 1 });
@@ -16,8 +17,16 @@ const BrowsersGrid: FC<{
   browsersList?: string;
   note?: ReactNode;
 }> = ({ children, coverage, browsersList, note }) => {
-  const coverageFixed =
-    coverage !== undefined ? formatCoverage(coverage) : null;
+  let coverageFixed: string | null = null;
+  let coverageDiff: number | null = null;
+  let coverageDiffFixed: string | null = null;
+  let isCoverageLowerThanDefaults = false;
+  if (coverage !== undefined) {
+    coverageFixed = formatCoverage(coverage);
+    coverageDiff = Math.abs(DEFAULTS_COVERAGE - coverage);
+    coverageDiffFixed = formatCoverage(coverageDiff);
+    isCoverageLowerThanDefaults = coverage < DEFAULTS_COVERAGE;
+  }
 
   return (
     <section className="my-4 space-y-2">
@@ -47,6 +56,11 @@ const BrowsersGrid: FC<{
               className="relative z-10 my-2.5 ms-3"
             >
               {coverageFixed}% audience coverage
+              <span className="sr-only">
+                , which is {coverageDiffFixed} points{" "}
+                {isCoverageLowerThanDefaults ? "lower" : "higher"} than
+                Browserslist’s recommended coverage
+              </span>
             </Text>
             {browsersList && <BrowsersGridButton browsersList={browsersList} />}
           </div>
