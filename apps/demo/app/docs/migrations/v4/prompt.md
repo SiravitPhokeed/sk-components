@@ -62,6 +62,7 @@ If the project uses React 17, upgrade to React 18 before proceeding.
 ## Phase 1 — Remove deleted props (safe, mechanical)
 
 These props were removed entirely. Delete them wherever they appear.
+If a grep returns nothing, move on — the project isn't using that prop.
 
 ### 1.1 Remove `alt` prop
 
@@ -189,7 +190,7 @@ grep -rn "editable\|onEditExit" --include="*.tsx"
 - Search: `children` (suggestion dropdown removed)
 - PageHeader: `title`, `brand`, `homeURL`, `icon`
 - Tab: `containerID`
-- ChipField: `onNewEntry` (replaced by `onNewEntries`, which accepts `string[]`)
+- ChipField: `onNewEntry` (replaced by `onNewEntries`, which accepts `string[]`; only remove from `<ChipField>` — the name is generic)
 - Select, MaterialIcon: `element`
 
 **Find:**
@@ -289,7 +290,11 @@ Delete the entire Snackbar context/provider/hook file once all usages are migrat
 **Affected:** Select, MenuItem
 
 **Action:** If you were passing non-string values (numbers, objects) to `value`,
-convert them to strings. Update `onChange` handlers accordingly.
+convert them to strings. Update `onChange` handlers to cast back as needed.
+
+> The `onChange` callback type itself also changed — see step 2.7 for Select
+> specifically. Handle the value conversion here; the callback annotation comes
+> later.
 
 **Before:**
 
@@ -451,11 +456,28 @@ Tailwind config, update them.
 
 ### 3.1 Detect CSS variable usage
 
+Search your project for references to the old CSS variable names. Run each
+command; if all return nothing, skip this phase.
+
+**Non-color variables** (these are unambiguous — no false positives):
+
 ```
-grep -rn "var(--font-\|var(--rounded-\|var(--motion-\|var(--easing-\|var(--primary\|var(--on-primary\|var(--secondary\|var(--on-secondary\|var(--tertiary\|var(--on-tertiary\|var(--error\|var(--on-error\|var(--background\|var(--on-background\|var(--surface\|var(--on-surface" --include="*.css" --include="*.scss" --include="*.tsx" --include="*.ts" --include="*.js"
+grep -rn "var(--font-[a-z]" --include="*.css" --include="*.scss" --include="*.tsx" --include="*.ts"
+grep -rn "var(--rounded-" --include="*.css" --include="*.scss" --include="*.tsx" --include="*.ts"
+grep -rn "var(--motion-" --include="*.css" --include="*.scss" --include="*.tsx" --include="*.ts"
+grep -rn "var(--easing-" --include="*.css" --include="*.scss" --include="*.tsx" --include="*.ts"
 ```
 
-Also check Tailwind config files for references to the old names:
+**Color variables — the old unprefixed names.**
+These patterns may also match the new `--color-*` names (e.g. `--primary`
+appears inside `--color-primary`). After running, review each match and
+only replace references using the old unprefixed form:
+
+```
+grep -rn "var(--primary\b\|var(--on-primary\b\|var(--secondary\b\|var(--on-secondary\b\|var(--tertiary\b\|var(--on-tertiary\b\|var(--error\b\|var(--on-error\b\|var(--background\b\|var(--on-background\b\|var(--surface\b\|var(--on-surface\b\|var(--outline\b\|var(--inverse" --include="*.css" --include="*.scss" --include="*.tsx" --include="*.ts"
+```
+
+Also check Tailwind config files:
 
 ```
 grep -rn "font-\|rounded-\|motion-\|easing-\|--primary\|--on-primary" tailwind.config.* 2>/dev/null
@@ -500,7 +522,7 @@ https://sk-components-demo.mysk.school/docs/guides/theming
 
 ---
 
-## Phase 4 — Behavioral changes (Invoker Commands API)
+## Phase 4 — Behavioral and API changes
 
 ### 4.1 ThemeProvider is no longer a wrapper
 
@@ -585,6 +607,13 @@ const [open, setOpen] = useState(false);
 ### 4.5 Interactive component changes
 
 **Removed:** `attr` prop, no longer generic (`Interactive<HTMLAnchorElement>`)
+
+**Find:**
+
+```
+grep -rn "\<Interactive<" --include="*.tsx"
+grep -rn " attr=" --include="*.tsx"
+```
 
 **Before:**
 
@@ -736,33 +765,44 @@ This also works for lists — wrap each item in a motion element with a unique
 
 ## Phase 6 — New props (optional additions)
 
-These are new capabilities you may want to use:
+These are new capabilities you may want to use.
 
+**Invoker Commands:**
 - **All actionable components** (Button, Card, MenuItem, ListItem, FAB, Tab,
   NavBarItem, InputChip, AppDrawerItem, AssistChip, NavDrawerItem,
-  SuggestionChip) gained `command` and `commandfor` for Invoker Commands
-- **Button**: `autoFocus`, `type` (`"submit" | "reset" | "button"`, defaults to `"button"`)
-- **InputChip**: `tooltip`, `deleteCommand`, `deleteCommandfor`, `locale`
-- **Snackbar**: `persistent`, `autoDismissDurationMs`
+  SuggestionChip, Interactive): `command`, `commandfor`
+- **Dialog, FullscreenDialog, Menu, Snackbar, SideSheet**: `id` (auto-generated if omitted)
+- **Menu**: `anchor` (CSS anchor name, auto-resolved from `<Anchor>` context)
+
+**Form submission:**
+- **Checkbox, FormGroup, FormItem, Radio, Select, Switch, TextField**: `name`
+- **Button**: `type` (`"submit" | "reset" | "button"`, defaults to `"button"`)
+- **Radio**: `checked` (replaces the old boolean `value` for toggle state)
 - **TextField**: `type` (now supports `"color"`, `"date"`, `"datetime-local"`, `"email"`, `"file"`, `"month"`, `"number"`, `"password"`, `"search"`, `"tel"`, `"text"`, `"time"`, `"url"`, `"week"`)
-- **Search**: `hotkey` (keyboard shortcut to focus)
-- **Dialog, FullscreenDialog, Menu, Snackbar, SideSheet**: `id` for Invoker Commands (auto-generated if omitted)
+
+**Chips:**
+- **InputChip**: `tooltip`, `deleteCommand`, `deleteCommandfor`, `locale`
+- **ChipField**: `required`, `onNewEntries` (receives all values when pasting or pressing a separator key; replaces singular `onNewEntry`)
+
+**Overlays:**
+- **Snackbar**: `persistent`, `autoDismissDurationMs`
 - **FullscreenDialog**: `locale` (`"en-US"` | `"th"`)
 - **SideSheet**: `attach` (`"left"` | `"right"`, defaults to `"right"`)
-- **Menu**: `anchor` (CSS anchor name, auto-resolved from `<Anchor>` context)
+
+**Data Table:**
 - **DataTableBody, DataTableHead**: `align`
 - **DataTableHead**: `colSpans`
 - **TableCell**: `colSpan`, `rowSpan`
-- **ChipField**: `required`, `onNewEntries` (receives all values when pasting or pressing a separator key; replaces singular `onNewEntry`)
-- **ContentLayout**: `id`
-- **Checkbox, FormGroup, FormItem, Radio, Select, Switch, TextField**: `name` for form submission
-- **Radio**: `checked` (replaces the old boolean `value` for toggle state)
-- **ListItem**: `containerElement`
+
+**Other:**
+- **Button**: `autoFocus`
+- **Search**: `hotkey` (keyboard shortcut to focus)
 - **MaterialIcon**: `alt` (accessibility label), `directional` (flips icon horizontally in RTL)
-- **SplitLayout**: `prefer`
-- **Interactive, Button**: `command`, `commandfor`
+- **ListItem**: `containerElement`
 - **MenuItem**: `containerElement`, `dangerous`
 - **Text**: `id` (HTML id attribute)
+- **SplitLayout**: `prefer`
+- **ContentLayout**: `id`
 
 ---
 
@@ -828,6 +868,8 @@ These let you use Tailwind utility classes with SKCom design tokens (e.g.,
 `bg-primary`, `text-on-surface`). Ask the user if they want these applied —
 they involve adding a large `@theme inline` block and a `@utility` directive,
 which are project-specific decisions.
+
+Run the build after completing this phase.
 
 ---
 
@@ -897,10 +939,13 @@ files and update imports to pull from `@suankularb-components/react` directly.
 grep -rn "use client" --include="*.tsx" | grep -v node_modules | grep -v ".next"
 ```
 
-**Action:** If a file only re-exports SKCom components (e.g.
-`export { Button } from "@suankularb-components/react"`), delete the file and
-update all imports that referenced it to import from
-`@suankularb-components/react` directly.
+**Filter:** From the results, look for files that import from and re-export
+`@suankularb-components/react` (e.g. `export { Button } from
+"@suankularb-components/react"`). Only act on these wrapper files — leave
+legitimate Client Components alone.
+
+**Action:** Delete the wrapper file and update all imports that referenced it
+to import from `@suankularb-components/react` directly.
 
 ### 8.4 Use `element` for Next.js Link
 
@@ -922,6 +967,8 @@ for Thai, plus the Material Symbols icon font.
 
 See the full setup at:
 https://sk-components-demo.mysk.school/docs/integrations/nextjs-app
+
+Run the build after completing this phase.
 
 ---
 
