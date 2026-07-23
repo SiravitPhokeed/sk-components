@@ -26,7 +26,11 @@
     @apply bg-surface-container relative my-4 block rounded-md forced-colors:border forced-colors:border-[CanvasText];
 
     pre {
-      @apply overflow-x-auto rounded-md text-base scheme-dark;
+      @apply rounded-md text-base scheme-dark;
+    }
+
+    code {
+      @apply overflow-x-auto py-3.5 text-base leading-normal tracking-normal;
     }
 
     [data-rehype-pretty-code-title] {

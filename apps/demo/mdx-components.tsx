@@ -45,17 +45,7 @@ const components: MDXComponents = {
     </Card>
   ),
   code: ({ "data-language": language, className, ...props }) => (
-    <code
-      className={cn(
-        language
-          ? "py-3.5"
-          : "bg-surface-variant rounded-xs px-1.5 text-[0.9em]",
-        // Explicitly state font features for Firefox.
-        "font-features-['ss01','ss02','ss03','ss04','ss05'] leading-normal tracking-normal",
-        className,
-      )}
-      {...props}
-    />
+    <code className={cn(!language && "code", className)} {...props} />
   ),
   hr: () => <Divider className="my-3" />,
   ul: (props) => <ul className="ul" {...props} />,
