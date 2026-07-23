@@ -189,12 +189,13 @@ grep -rn "editable\|onEditExit" --include="*.tsx"
 - Search: `children` (suggestion dropdown removed)
 - PageHeader: `title`, `brand`, `homeURL`, `icon`
 - Tab: `containerID`
+- ChipField: `onNewEntry` (replaced by `onNewEntries`, which accepts `string[]`)
 - Select, MaterialIcon: `element`
 
 **Find:**
 
 ```
-grep -rn "canClear\| brand=\| fab=\| badge=\|onMenuToggle\|stateOnScroll\| onOpen=\|containerID\| element=" --include="*.tsx"
+grep -rn "canClear\| brand=\| fab=\| badge=\|onMenuToggle\|stateOnScroll\| onOpen=\|containerID\|onNewEntry\| element=" --include="*.tsx"
 # Also search for these individually (too common to grep broadly):
 #   PageHeader: title, homeURL, icon
 #   Search: children (look for <Search> with children prop)
