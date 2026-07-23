@@ -41,6 +41,7 @@
   --radius-full: var(--radius-full);
 
   --ease-*: initial;
+  --default-transition-timing-function: var(--ease-standard);
   --ease-standard: var(--ease-standard);
   --ease-standard-accelerate: var(--ease-standard-accelerate);
   --ease-standard-decelerate: var(--ease-standard-decelerate);
