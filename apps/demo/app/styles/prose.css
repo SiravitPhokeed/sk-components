@@ -4,7 +4,7 @@
   }
 
   .blockquote {
-    @apply bg-surface-variant [&_code]:bg-surface-bright [&_strong]:text-on-surface my-4 rounded-md px-4 *:*:first:mt-3 *:*:last:mb-3 **:[blockquote,pre]:-mx-4 **:[blockquote,pre]:rounded-none;
+    @apply bg-surface-variant **:[.code]:bg-surface-bright **:[strong]:text-on-surface my-4 rounded-md px-4 *:*:first:mt-3 *:*:last:mb-3 **:[blockquote,figure]:-mx-4 **:[blockquote,firugre]:rounded-none **:[figure>pre]:rounded-none;
   }
 
   .code {
