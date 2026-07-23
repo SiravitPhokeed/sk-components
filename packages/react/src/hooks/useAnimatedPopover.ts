@@ -142,7 +142,7 @@ export function useAnimatedPopover(
       document.removeEventListener("click", handleClick);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [exitingClass, exitAnimationName, popoverRef, wrapperRef]);
+  }, [exitingClass, exitAnimationName, onClose, popoverRef, wrapperRef]);
 
   // ── animationend handler ───────────────────────────────────────────
   // Spread onto the popover element via popoverProps.onAnimationEnd.

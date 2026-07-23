@@ -125,13 +125,17 @@ export const Tab: StyleableFC<TabProps> = ({
     indicator.style.width = `${width}px`;
   };
 
+  // animateIndicator reads refs and state — it changes every render.
+  // Adding it to deps would re-attach the resize listener on every render.
   useEffect(() => {
     const throttledAnimate = throttle({ interval: 100 }, animateIndicator);
     window.addEventListener("resize", throttledAnimate);
     return () => window.removeEventListener("resize", throttledAnimate);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     animateIndicator();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selected, label]); // Width of primary indicator depends on label width.
 
   return (

@@ -80,7 +80,7 @@ function generateBarrels() {
   writeFileSync(resolve(DIST_DIR, "index.d.ts"), dtsLines.join("\n") + "\n");
 
   console.log(
-    `Generated barrel: dist/index.js + dist/index.d.ts (${jsLines.length} components)`,
+    `[generate-barrels]: dist/index.js + dist/index.d.ts (${jsLines.length} components)`,
   );
 }
 

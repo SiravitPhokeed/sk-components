@@ -173,19 +173,6 @@ export const Select = <Value extends string = string>({
 
   const triggerRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLUListElement>(null);
-  const [menuOpen, setMenuOpen] = useState(false);
-  useEffect(() => {
-    const menu = document.getElementById(menuId) as HTMLUListElement;
-    menuRef.current = menu;
-    updateDisplayedValue(resolvedValue);
-
-    // Track the Menu’s popover state to expose it on the trigger via
-    // `aria-expanded`.
-    const handleToggle = (event: Event) =>
-      setMenuOpen((event as ToggleEvent).newState === "open");
-    menu?.addEventListener("toggle", handleToggle);
-    return () => menu?.removeEventListener("toggle", handleToggle);
-  }, []);
 
   const [displayedValue, setDisplayedValue] = useState<ReactNode>(null);
 
@@ -222,6 +209,26 @@ export const Select = <Value extends string = string>({
       if (firstValue) resolvedOnChange(firstValue);
     } else setDisplayedValue(STRINGS[locale].noOptions);
   };
+
+  const [menuOpen, setMenuOpen] = useState(false);
+  // Mount-only: sync the menu element ref and displayed value, then listen
+  // for popover toggle events.
+  useEffect(() => {
+    const menu = document.getElementById(menuId) as HTMLUListElement;
+    menuRef.current = menu;
+    // Mount-only: sync the menu ref and displayed value on first attach.
+    updateDisplayedValue(resolvedValue);
+
+    // Track the Menu’s popover state to expose it on the trigger via
+    // `aria-expanded`.
+    const handleToggle = (event: Event) =>
+      setMenuOpen((event as ToggleEvent).newState === "open");
+    menu?.addEventListener("toggle", handleToggle);
+    return () => menu?.removeEventListener("toggle", handleToggle);
+    // Mount-only: `resolvedValue` and `updateDisplayedValue` are intentionally
+    // captured from the initial render for the first sync.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [menuId]);
 
   return (
     <>

@@ -64,6 +64,7 @@ export const FormGroup: StyleableFC<FormGroupProps> = ({
   // <legend> is only valid inside <fieldset>; only <legend> provides the
   // accessible name for a <fieldset>.
   const labelElement = Element === "fieldset" ? "legend" : "span";
+  const generatedName = `form-group-${useId()}`;
 
   return (
     <Element style={style} className={cn("skc-form-group", className)}>
@@ -74,9 +75,7 @@ export const FormGroup: StyleableFC<FormGroupProps> = ({
       >
         {label}
       </Text>
-      <FormGroupContext.Provider
-        value={{ name: name ?? `form-group-${useId()}` }}
-      >
+      <FormGroupContext.Provider value={{ name: name ?? generatedName }}>
         {children}
       </FormGroupContext.Provider>
     </Element>

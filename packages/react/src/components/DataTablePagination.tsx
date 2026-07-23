@@ -104,14 +104,16 @@ export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
   const announcerRef = useRef<HTMLSpanElement>(null);
 
   const [page, setPage] = useState<number>(1);
-  const [maxPage, setMaxPage] = useState<number>(
-    Math.ceil(totalRows / rowsPerPage),
-  );
+  const maxPage = Math.ceil(totalRows / rowsPerPage);
+
+  // Clamp page when the data shrinks (e.g., after filtering).
+  // Using an effect to sync derived state is the canonical pattern here;
+  // lifting page state to the parent would be overkill for this component.
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
-    const newMaxPage = Math.ceil(totalRows / rowsPerPage);
-    setMaxPage(newMaxPage);
-    if (newMaxPage < page) setPage(Math.max(newMaxPage, 1));
-  }, [totalRows, rowsPerPage]);
+    if (page > maxPage) setPage(Math.max(maxPage, 1));
+  }, [maxPage, page]);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   const range = {
     start: totalRows ? rowsPerPage * (page - 1) + 1 : 0,

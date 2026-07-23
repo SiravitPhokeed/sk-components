@@ -242,12 +242,12 @@ export const ChipField: StyleableFC<ChipFieldProps> = ({
     if (prevChipCount.current === chipCount) return;
     prevChipCount.current = chipCount;
     if (resolvedChipStatus) notify(resolvedChipStatus);
-  }, [chipCount]);
+  }, [chipCount, resolvedChipStatus]);
 
   // Announce loading state.
   useEffect(() => {
     if (loading) notify(STRINGS[locale].loading);
-  }, [loading]);
+  }, [loading, locale]);
 
   // ––– Input handling –––––––––––––––––––––––––––––––––––––––––––––––––––—————
 

@@ -145,6 +145,7 @@ For SKCom users, the demo app is also a playground to interact with the componen
 | `pnpm build:react` | Build the ReSKCom package.                                      |
 | `pnpm dev`         | Start the development server for all packages and the demo app. |
 | `pnpm format`      | Run Prettier to format all files.                               |
+| `pnpm lint`        | Run ESLint on all packages.                                     |
 | `pnpm prepare`     | Prepare Husky for Git hooks.                                    |
 | `pnpm demo:dev`    | Start the development server for the demo app.                  |
 | `pnpm demo:build`  | Build the demo app.                                             |
