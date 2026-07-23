@@ -13,7 +13,7 @@ const SummaryTableSection: FC<{
   children: ReactNode;
   name: string;
 }> = ({ children, name }) => (
-  <details className="group">
+  <details className="details group">
     <Interactive
       element="summary"
       className="state-layer-on-surface flex items-center gap-2 p-4 ps-6 marker:hidden"
@@ -23,7 +23,7 @@ const SummaryTableSection: FC<{
       </Text>
       <MaterialIcon
         icon="chevron_right"
-        className="text-on-surface-variant group-open:rotate-90"
+        className="text-on-surface-variant group-open:rotate-90 supports-interpolate-size:transition-transform group-open:rtl:-rotate-90"
       />
     </Interactive>
     <table className="-mb-px w-full">
