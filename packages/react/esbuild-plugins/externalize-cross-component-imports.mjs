@@ -15,7 +15,11 @@ const externalizeCrossComponentImports = {
     build.onResolve({ filter: /^@\/components\// }, ({ path, importer }) => {
       const componentName = path.replace(/^@\/components\//, "");
       let relativePrefix = "./";
-      if (importer.includes("/helpers/") || importer.includes("/hooks/")) {
+      if (
+        importer.includes("/helpers/") ||
+        importer.includes("/hooks/") ||
+        importer.includes("/contexts/")
+      ) {
         relativePrefix = "../components/";
       }
       return {

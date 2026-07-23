@@ -2,8 +2,8 @@ import { transformAsync } from "@babel/core";
 import { readFile } from "node:fs/promises";
 
 /**
- * Runs the React Compiler on `.tsx` source files during the esbuild load
- * phase. The compiler automatically memoizes components and hooks, replacing
+ * Runs the React Compiler on `.ts` and `.tsx` source files during the esbuild
+ * load phase. The compiler automatically memoizes components and hooks, replacing
  * the need for manual `useMemo`, `useCallback`, and `React.memo`.
  *
  * Uses Babel with only the parser plugins needed for TypeScript + JSX — no
@@ -38,6 +38,7 @@ const reactCompiler = {
           babelrc: false,
         });
 
+        if (!result?.code) return;
         return { contents: result.code, loader: "tsx" };
       } catch (e) {
         console.error(`[react-compiler] Skipped ${args.path}: ${e.message}`);
