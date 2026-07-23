@@ -44,7 +44,9 @@ you can take advantage of.
 >    Try the new `snackbar.push()` and `snackbar.promise()` methods.
 > 3. **`<form>` submission support** — All form elements now support the `name`
 >    prop for [native form](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms)
->    submission. [Radio](/docs/inputs/radio)’s `value` now works like in HTML.
+>    submission. [Radio](/docs/inputs/radio)’s `value` now works like in HTML,
+>    and [Chip Field](/docs/inputs/chip-field)’s `onNewEntry` is replaced by
+>    `onNewEntries`.
 > 4. **Declarative modals and popovers** — Replace `useState` with the
 >    [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API)
 >    for [Menu](/docs/overlays/menu), [Dialog](/docs/overlays/dialog), and
@@ -207,6 +209,12 @@ configuration file.
   onChange={setATKResult}
 />
 ```
+
+---
+
+**Replace `onNewEntry` with `onNewEntries` in [Chip Field](/docs/inputs/chip-field).**
+`onNewEntry` still functions, but is deprecated and will be removed in a future
+version.
 
 ---
 
