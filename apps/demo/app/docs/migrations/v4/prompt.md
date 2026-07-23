@@ -62,6 +62,7 @@ If the project uses React 17, upgrade to React 18 before proceeding.
 ## Phase 1 — Remove deleted props (safe, mechanical)
 
 These props were removed entirely. Delete them wherever they appear.
+If a grep returns nothing, move on — the project isn't using that prop.
 
 ### 1.1 Remove `alt` prop
 
@@ -142,7 +143,7 @@ grep -rn "layoutID\| layout=" --include="*.tsx"
 ```
 
 **Action:** Delete the prop from the SKCom component. If you need layout animations,
-wrap the component in a motion element instead — see Phase 4.3.
+wrap the component in a motion element instead — see Phase 5.3.
 
 ### 1.4 Remove InputChip edit mode props
 
@@ -189,12 +190,13 @@ grep -rn "editable\|onEditExit" --include="*.tsx"
 - Search: `children` (suggestion dropdown removed)
 - PageHeader: `title`, `brand`, `homeURL`, `icon`
 - Tab: `containerID`
+- ChipField: `onNewEntry` (replaced by `onNewEntries`, which accepts `string[]`; only remove from `<ChipField>` — the name is generic)
 - Select, MaterialIcon: `element`
 
 **Find:**
 
 ```
-grep -rn "canClear\| brand=\| fab=\| badge=\|onMenuToggle\|stateOnScroll\| onOpen=\|containerID\| element=" --include="*.tsx"
+grep -rn "canClear\| brand=\| fab=\| badge=\|onMenuToggle\|stateOnScroll\| onOpen=\|containerID\|onNewEntry\| element=" --include="*.tsx"
 # Also search for these individually (too common to grep broadly):
 #   PageHeader: title, homeURL, icon
 #   Search: children (look for <Search> with children prop)
@@ -288,7 +290,11 @@ Delete the entire Snackbar context/provider/hook file once all usages are migrat
 **Affected:** Select, MenuItem
 
 **Action:** If you were passing non-string values (numbers, objects) to `value`,
-convert them to strings. Update `onChange` handlers accordingly.
+convert them to strings. Update `onChange` handlers to cast back as needed.
+
+> The `onChange` callback type itself also changed — see step 2.7 for Select
+> specifically. Handle the value conversion here; the callback annotation comes
+> later.
 
 **Before:**
 
@@ -380,30 +386,7 @@ grep -rn "inputAttr.*type" --include="*.tsx"
 <TextField label="Email" type="email" />
 ```
 
-### 2.7 Migrate FormGroup `legendAttr` to `legendElement`
-
-In v3, `legendAttr` was used to pass attributes to the `<legend>` element.
-In v4, use `legendElement` to customize the legend's HTML element type.
-
-**Find:**
-
-```
-grep -rn "legendAttr" --include="*.tsx"
-```
-
-**Before:**
-
-```tsx
-<FormGroup legend="Contact" legendAttr={{ className: "sr-only" }}>
-```
-
-**After:**
-
-```tsx
-<FormGroup legend="Contact" legendElement={(props) => <legend {...props} className="sr-only" />}>
-```
-
-### 2.8 Select `onChange` type change
+### 2.7 Select `onChange` type change
 
 Select's `onChange` is now generic: `(value: Value) => any` where `Value extends string`.
 
@@ -419,6 +402,38 @@ Select's `onChange` is now generic: `(value: Value) => any` where `Value extends
 <Select value={value} onChange={(v: string) => setValue(v)}>
 ```
 
+### 2.8 Radio: `value`, `checked`, and `onChange` changes
+
+In v3, `value` was a boolean for the toggle state. In v4, `value` is a string
+(the submitted value, like `<input type="radio">`) and a new `checked` prop
+takes over the boolean toggle role. `onChange` now passes the string `value`
+instead of a boolean.
+
+**Find:**
+
+```
+grep -rn "\<Radio[^>]* value=" --include="*.tsx"
+```
+
+**Before:**
+
+```tsx
+<Radio value={selected} onChange={(v: boolean) => setSelected(v)} />
+```
+
+**After:**
+
+```tsx
+<Radio value="option-id" checked={selected} onChange={(v: string) => setSelected(v)} />
+```
+
+> **Note for native form submission:** v4 form controls (Checkbox, Radio,
+> Select, Switch, TextField) gained `name` props for native `<form>` submission
+> via `FormData`. If the project uses a form library or manual state, no changes
+> are needed — `name` is optional. If the project uses native `<form>`
+> submission, notify the user that they can adopt the `name` prop, but do NOT
+> auto-migrate — form wiring is too project-specific for mechanical changes.
+
 ### 2.9 Other type narrowings
 
 These components had their `children` or other props narrowed. Run the build
@@ -433,9 +448,83 @@ and fix any resulting type errors:
 
 ---
 
-## Phase 3 — Behavioral changes (Invoker Commands API)
+## Phase 3 — CSS variable renames
 
-### 3.1 ThemeProvider is no longer a wrapper
+SKCom's CSS variables were renamed in v4 to align with Tailwind CSS v4's theme
+variable conventions. If your project references these variables in custom CSS or
+Tailwind config, update them.
+
+### 3.1 Detect CSS variable usage
+
+Search your project for references to the old CSS variable names. Run each
+command; if all return nothing, skip this phase.
+
+**Non-color variables** (these are unambiguous — no false positives):
+
+```
+grep -rn "var(--font-[a-z]" --include="*.css" --include="*.scss" --include="*.tsx" --include="*.ts"
+grep -rn "var(--rounded-" --include="*.css" --include="*.scss" --include="*.tsx" --include="*.ts"
+grep -rn "var(--motion-" --include="*.css" --include="*.scss" --include="*.tsx" --include="*.ts"
+grep -rn "var(--easing-" --include="*.css" --include="*.scss" --include="*.tsx" --include="*.ts"
+```
+
+**Color variables — the old unprefixed names.**
+These patterns may also match the new `--color-*` names (e.g. `--primary`
+appears inside `--color-primary`). After running, review each match and
+only replace references using the old unprefixed form:
+
+```
+grep -rn "var(--primary\b\|var(--on-primary\b\|var(--secondary\b\|var(--on-secondary\b\|var(--tertiary\b\|var(--on-tertiary\b\|var(--error\b\|var(--on-error\b\|var(--background\b\|var(--on-background\b\|var(--surface\b\|var(--on-surface\b\|var(--outline\b\|var(--inverse" --include="*.css" --include="*.scss" --include="*.tsx" --include="*.ts"
+```
+
+Also check Tailwind config files:
+
+```
+grep -rn "font-\|rounded-\|motion-\|easing-\|--primary\|--on-primary" tailwind.config.* 2>/dev/null
+```
+
+### 3.2 Apply renames
+
+| v3 | v4 |
+| --- | --- |
+| `--font-*` (weight only) | `--font-weight-*` |
+| `--rounded-*` | `--radius-*` |
+| `--motion-*` | `--duration-*` |
+| `--easing-*` | `--ease-*` |
+| `--primary` | `--color-primary` |
+| `--on-primary` | `--color-on-primary` |
+| `--primary-container` | `--color-primary-container` |
+| `--on-primary-container` | `--color-on-primary-container` |
+| `--secondary` | `--color-secondary` |
+| `--on-secondary` | `--color-on-secondary` |
+| `--secondary-container` | `--color-secondary-container` |
+| `--on-secondary-container` | `--color-on-secondary-container` |
+| `--tertiary` | `--color-tertiary` |
+| `--on-tertiary` | `--color-on-tertiary` |
+| `--tertiary-container` | `--color-tertiary-container` |
+| `--on-tertiary-container` | `--color-on-tertiary-container` |
+| `--error` | `--color-error` |
+| `--on-error` | `--color-on-error` |
+| `--error-container` | `--color-error-container` |
+| `--on-error-container` | `--color-on-error-container` |
+| `--background` | `--color-background` |
+| `--on-background` | `--color-on-background` |
+| `--surface` | `--color-surface` |
+| `--on-surface` | `--color-on-surface` |
+| `--surface-variant` | `--color-surface-variant` |
+| `--on-surface-variant` | `--color-on-surface-variant` |
+| `--outline` | `--color-outline` |
+| `--outline-variant` | `--color-outline-variant` |
+| (plus all tonal-palette and fixed/surface-dim variants) |
+
+The full mapping is at:
+https://sk-components-demo.mysk.school/docs/guides/theming
+
+---
+
+## Phase 4 — Behavioral and API changes
+
+### 4.1 ThemeProvider is no longer a wrapper
 
 **Action:** Remove the `<ThemeProvider>` wrapper from around your app. Just include `<ThemeProvider />` once anywhere in the tree.
 
@@ -454,7 +543,7 @@ and fix any resulting type errors:
 <App />
 ```
 
-### 3.2 Convert Dialog and FullscreenDialog to uncontrolled mode
+### 4.2 Convert Dialog and FullscreenDialog to uncontrolled mode
 
 **Before:**
 
@@ -473,7 +562,7 @@ const [open, setOpen] = useState(false);
 
 **Controlled mode still works** if you need it — just keep `open`/`onClose`.
 
-### 3.3 Convert Menu to Anchor + uncontrolled mode
+### 4.3 Convert Menu to Anchor + uncontrolled mode
 
 **Before:**
 
@@ -498,7 +587,7 @@ const [open, setOpen] = useState(false);
 </Anchor>
 ```
 
-### 3.4 Move FAB from NavBar to RootLayout
+### 4.4 Move FAB from NavBar to RootLayout
 
 **Before:**
 
@@ -515,9 +604,16 @@ const [open, setOpen] = useState(false);
 </RootLayout>
 ```
 
-### 3.5 Interactive component changes
+### 4.5 Interactive component changes
 
 **Removed:** `attr` prop, no longer generic (`Interactive<HTMLAnchorElement>`)
+
+**Find:**
+
+```
+grep -rn "\<Interactive<" --include="*.tsx"
+grep -rn " attr=" --include="*.tsx"
+```
 
 **Before:**
 
@@ -533,11 +629,11 @@ const [open, setOpen] = useState(false);
 
 ---
 
-## Phase 4 — Framer Motion replacement
+## Phase 5 — Framer Motion replacement
 
 SKCom no longer wraps or re-exports framer-motion.
 
-### 4.1 `useRipple()` → Interactive
+### 5.1 `useRipple()` → Interactive
 
 **Before:**
 
@@ -570,7 +666,7 @@ const { rippleListeners, rippleControls, rippleStyle } = useRipple(buttonRef);
 <Interactive>Click me</Interactive>
 ```
 
-### 4.2 Removed exports
+### 5.2 Removed exports
 
 These SKCom exports are gone. If you need them, copy the code below:
 
@@ -632,7 +728,7 @@ export function transition(
 { sm: 600, md: 905, lg: 1440 }
 ```
 
-### 4.3 `layoutID` → wrap in `<motion.div>`
+### 5.3 `layoutID` → wrap in `<motion.div>`
 
 The `layoutID` prop was removed from Card and InputChip. To keep layout
 animations, lift the `layoutId` to a motion wrapper around the component.
@@ -667,42 +763,55 @@ This also works for lists — wrap each item in a motion element with a unique
 
 ---
 
-## Phase 5 — New props (optional additions)
+## Phase 6 — New props (optional additions)
 
-These are new capabilities you may want to use:
+These are new capabilities you may want to use.
 
+**Invoker Commands:**
 - **All actionable components** (Button, Card, MenuItem, ListItem, FAB, Tab,
   NavBarItem, InputChip, AppDrawerItem, AssistChip, NavDrawerItem,
-  SuggestionChip) gained `command` and `commandfor` for Invoker Commands
-- **Button**: `autoFocus`
-- **InputChip**: `tooltip`, `disabled`, `deleteCommand`, `deleteCommandfor`, `locale`, `elevated`, `dangerous`, `loading`
-- **Snackbar**: `persistent`, `autoDismissDurationMs`
+  SuggestionChip, Interactive): `command`, `commandfor`
+- **Dialog, FullscreenDialog, Menu, Snackbar, SideSheet**: `id` (auto-generated if omitted)
+- **Menu**: `anchor` (CSS anchor name, auto-resolved from `<Anchor>` context)
+
+**Form submission:**
+- **Checkbox, FormGroup, FormItem, Radio, Select, Switch, TextField**: `name`
+- **Button**: `type` (`"submit" | "reset" | "button"`, defaults to `"button"`)
+- **Radio**: `checked` (replaces the old boolean `value` for toggle state)
 - **TextField**: `type` (now supports `"color"`, `"date"`, `"datetime-local"`, `"email"`, `"file"`, `"month"`, `"number"`, `"password"`, `"search"`, `"tel"`, `"text"`, `"time"`, `"url"`, `"week"`)
-- **Search**: `hotkey` (keyboard shortcut to focus)
-- **Dialog, FullscreenDialog, Menu, Snackbar, SideSheet**: `id` for Invoker Commands (auto-generated if omitted)
+
+**Chips:**
+- **InputChip**: `tooltip`, `deleteCommand`, `deleteCommandfor`, `locale`
+- **ChipField**: `required`, `onNewEntries` (receives all values when pasting or pressing a separator key; replaces singular `onNewEntry`)
+
+**Overlays:**
+- **Snackbar**: `persistent`, `autoDismissDurationMs`
 - **FullscreenDialog**: `locale` (`"en-US"` | `"th"`)
 - **SideSheet**: `attach` (`"left"` | `"right"`, defaults to `"right"`)
-- **Menu**: `anchor` (CSS anchor name, auto-resolved from `<Anchor>` context)
+
+**Data Table:**
 - **DataTableBody, DataTableHead**: `align`
 - **DataTableHead**: `colSpans`
 - **TableCell**: `colSpan`, `rowSpan`
-- **FormGroup**: `legendElement`
-- **ChipField**: `required`
-- **ListItem**: `containerElement`
+
+**Other:**
+- **Button**: `autoFocus`
+- **Search**: `hotkey` (keyboard shortcut to focus)
 - **MaterialIcon**: `alt` (accessibility label), `directional` (flips icon horizontally in RTL)
-- **SplitLayout**: `prefer`
-- **Interactive, Button**: `command`, `commandfor`
+- **ListItem**: `containerElement`
 - **MenuItem**: `containerElement`, `dangerous`
 - **Text**: `id` (HTML id attribute)
+- **SplitLayout**: `prefer`
+- **ContentLayout**: `id`
 
 ---
 
-## Phase 6 — Tailwind CSS v4 compatibility (optional)
+## Phase 7 — Tailwind CSS v4 compatibility (optional)
 
 These steps are NOT required for SKCom to work. Run them only if the project uses
 Tailwind CSS v4.
 
-### 6.1 Detect Tailwind v4
+### 7.1 Detect Tailwind v4
 
 Check if the project uses Tailwind v4:
 
@@ -712,9 +821,23 @@ grep -r "@import.*tailwindcss" --include="*.css"
 ```
 
 If both return results, the project uses Tailwind v4. If it uses Tailwind v3
-(`tailwind.config.*` file), skip this phase — no changes needed.
+(`tailwind.config.*` file), skip step 7.3 (layers) but continue with step 7.2
+(variable renames) — Tailwind v3 config files also reference SKCom CSS variables.
 
-### 6.2 Add `skc` layer (apply automatically)
+### 7.2 Update CSS variable references in Tailwind config (v3 only)
+
+Phase 3 already covers `*.css` files (including Tailwind v4 `@theme` blocks).
+For Tailwind v3 projects, also search `tailwind.config.*` files for references
+to the old CSS variable names:
+
+```
+grep -rn "var(--font-\|var(--rounded-\|var(--motion-\|var(--easing-\|var(--" tailwind.config.* 2>/dev/null
+```
+
+Apply the same renames as Phase 3.2 — the variable names are identical whether
+they appear in custom CSS or a Tailwind config translation layer.
+
+### 7.3 Add `skc` layer (Tailwind v4 only)
 
 In the CSS file that contains `@import "tailwindcss"`, add an `@layer` directive
 before the import to place SKCom styles correctly in the cascade:
@@ -736,7 +859,7 @@ grep -rn '@import "tailwindcss"' --include="*.css"
 @import "tailwindcss";
 ```
 
-### 6.3 Theme variables and state layer (inform the user)
+### 7.4 Theme variables and state layer (inform the user)
 
 Two more setup steps are available at:
 https://sk-components-demo.mysk.school/docs/integrations/tailwindcss-v4
@@ -745,6 +868,107 @@ These let you use Tailwind utility classes with SKCom design tokens (e.g.,
 `bg-primary`, `text-on-surface`). Ask the user if they want these applied —
 they involve adding a large `@theme inline` block and a `@utility` directive,
 which are project-specific decisions.
+
+Run the build after completing this phase.
+
+---
+
+## Phase 8 — Next.js App Router (if applicable)
+
+These steps are only needed if the project uses Next.js with the App Router.
+
+### 8.1 Detect Next.js
+
+```
+grep -r "\"next\"" package.json
+```
+
+If this returns nothing, skip this phase.
+
+### 8.2 Set up Root Layout
+
+Create or update `app/layout.tsx` with `<ThemeProvider />` and `<RootLayout>`:
+
+```tsx
+// app/layout.tsx
+import {
+  RootLayout as SKCRootLayout,
+  ThemeProvider,
+} from "@suankularb-components/react";
+import type { ReactNode } from "react";
+
+const RootLayout = ({ children }: { children: ReactNode }) => (
+  <html lang="en">
+    <body>
+      <ThemeProvider />
+      <SKCRootLayout>{children}</SKCRootLayout>
+    </body>
+  </html>
+);
+
+export default RootLayout;
+```
+
+Import the Navigation Bar and Navigation Drawer into the layout:
+
+```tsx
+import NavBar from "@/components/NavBar";
+import NavDrawer from "@/components/NavDrawer";
+
+<SKCRootLayout>
+  <NavBar />
+  <NavDrawer />
+  {children}
+</SKCRootLayout>
+```
+
+### 8.3 Client Component awareness
+
+Some SKCom components are now Client Components (marked `"use client"`). If you
+pass a non-serializable prop (like `next/link`) to a SKCom component, mark the
+parent as a Client Component with `"use client"`.
+
+In v3, consumers had to re-export SKCom components from a `"use client"` wrapper
+file to use them in the App Router. In v4, this is no longer needed — the
+components that require it already carry the directive. Remove those wrapper
+files and update imports to pull from `@suankularb-components/react` directly.
+
+**Find:**
+
+```
+grep -rn "use client" --include="*.tsx" | grep -v node_modules | grep -v ".next"
+```
+
+**Filter:** From the results, look for files that import from and re-export
+`@suankularb-components/react` (e.g. `export { Button } from
+"@suankularb-components/react"`). Only act on these wrapper files — leave
+legitimate Client Components alone.
+
+**Action:** Delete the wrapper file and update all imports that referenced it
+to import from `@suankularb-components/react` directly.
+
+### 8.4 Use `element` for Next.js Link
+
+Many interactive components accept an `element` prop. Use it with `next/link`
+instead of wrapping:
+
+```tsx
+import Link from "next/link";
+
+<Button href="/about" element={Link}>About</Button>
+<NavBarItem icon={<MaterialIcon icon="home" />} label="Home" href="/" element={Link} />
+```
+
+### 8.5 Fonts (opportunistic)
+
+If the project doesn't use `next/font` yet, consider loading the required fonts.
+SKCom uses Inter and Space Grotesk for English, IBM Plex Sans Thai and Sarabun
+for Thai, plus the Material Symbols icon font.
+
+See the full setup at:
+https://sk-components-demo.mysk.school/docs/integrations/nextjs-app
+
+Run the build after completing this phase.
 
 ---
 
