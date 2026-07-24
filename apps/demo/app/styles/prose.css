@@ -37,7 +37,7 @@
     }
 
     [data-rehype-pretty-code-title] {
-      @apply font-display text-on-surface-variant px-4 py-2.5 text-base leading-5 font-medium tracking-[0.1px];
+      @apply font-display text-on-surface-variant px-4 py-2.5 text-base leading-5 font-medium tracking-[0.1px] forced-colors:border-b;
     }
 
     [data-line] {
@@ -49,7 +49,7 @@
       @apply border-l-4 border-l-[#58a6ff4d] bg-[#388bfd26] ps-3;
     }
     [data-highlighted-chars] {
-      @apply -mx-1 rounded-xs bg-[#388bfd66] px-1 font-bold;
+      @apply -mx-1 rounded-xs bg-[#388bfd66] px-1 font-bold forced-colors:*:text-[CanvasText]!;
     }
   }
 }
