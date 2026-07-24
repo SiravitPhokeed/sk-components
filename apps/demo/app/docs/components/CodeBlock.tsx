@@ -64,7 +64,7 @@ const CodeBlock: FC<ComponentProps<"figure">> = ({ className, ...props }) => {
         tooltip="Copy to clipboard"
         onClick={handleCopy}
         className={cn(
-          "absolute inset-e-1 top-1 transition-opacity *:[i]:bg-[#24292e]",
+          "absolute inset-e-1 transition-opacity",
           // Always show the icon on devices that don’t have hover as a primary
           // input method, which includes iPads.
           copyStatus === null
