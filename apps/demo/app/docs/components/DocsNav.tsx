@@ -1,18 +1,13 @@
 import DocsNavLink from "@/app/docs/components/DocsNavLink";
 import DocsNavSection from "@/app/docs/components/DocsNavSection";
-import cn from "@/lib/helpers/cn";
 import type { StyleableFC } from "@/lib/types";
 import { Card, CardHeader, MaterialIcon } from "@suankularb-components/react";
 
 const DocsNav: StyleableFC = ({ className, style }) => (
-  <nav
-    aria-label="Documentation"
-    className={cn("space-y-2", className)}
-    style={style}
-  >
+  <nav aria-label="Documentation" className={className} style={style}>
     <h2 className="sr-only">Documentation navigation</h2>
 
-    <Card appearance="outlined">
+    <Card appearance="outlined" className="mb-2">
       <CardHeader title="@suankularb-components/react" subtitle="v4.0.0" />
     </Card>
 
@@ -69,7 +64,7 @@ const DocsNav: StyleableFC = ({ className, style }) => (
     <DocsNavSection
       icon={<MaterialIcon icon="view_quilt" directional />}
       title="Layout & navigation"
-      className="mt-6"
+      className="mt-4"
     >
       <DocsNavLink href="/docs/layout/root-layout">Root Layout</DocsNavLink>
       <DocsNavLink href="/docs/layout/content-layout">
