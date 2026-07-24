@@ -9,9 +9,22 @@ import { snackbar } from "@suankularb-components/react/helpers";
 
 const FEEDBACK_DURATION_MS = 6000;
 const COPY_STATUS_ICONS = new Map([
-  [true, <MaterialIcon key="success" icon="check" className="text-primary" />],
-  [false, <MaterialIcon key="error" icon="error" className="text-error" />],
-  [null, <MaterialIcon key="copy" icon="content_copy" />],
+  [
+    true,
+    <MaterialIcon key="true" icon="check" className="state-layer-primary-80" />,
+  ],
+  [
+    false,
+    <MaterialIcon key="false" icon="error" className="state-layer-error-80" />,
+  ],
+  [
+    null,
+    <MaterialIcon
+      key="null"
+      icon="content_copy"
+      className="state-layer-neutral-variant-60"
+    />,
+  ],
 ]);
 
 const CodeBlock: FC<ComponentProps<"figure">> = ({ className, ...props }) => {
@@ -51,7 +64,7 @@ const CodeBlock: FC<ComponentProps<"figure">> = ({ className, ...props }) => {
         tooltip="Copy to clipboard"
         onClick={handleCopy}
         className={cn(
-          "text-outline state-layer-outline absolute inset-e-1 top-1 transition-opacity",
+          "absolute inset-e-1 top-1 transition-opacity *:[i]:bg-[#24292e]",
           // Always show the icon on devices that don’t have hover as a primary
           // input method, which includes iPads.
           copyStatus === null
