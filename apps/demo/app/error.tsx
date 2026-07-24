@@ -73,7 +73,7 @@ export default function Error({
           <Text
             type="title-small"
             element="summary"
-            className="relative z-10 cursor-default text-center marker:hidden"
+            className="relative z-10 cursor-default text-center text-balance marker:hidden"
           >
             <code className="text-[0.9em]">{error.name}</code>: {error.message}
           </Text>
