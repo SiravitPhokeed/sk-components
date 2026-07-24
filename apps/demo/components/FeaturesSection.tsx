@@ -94,8 +94,8 @@ const FeaturesSection: FC = () => {
               <code className="code">scheme-dark</code> classes.
             </p>
             <Text type="body-small" className="text-on-surface-variant">
-              High contrast mode is also supported through the{" "}
-              <code className="code">prefers-contrast</code> media query.
+              High contrast mode and forced colors mode are supported via media
+              queries.
             </Text>
           </CardContent>
         </Card>

@@ -15,15 +15,22 @@ const AboutSection: FC = () => (
 
     <Section className="col-span-2 sm:col-span-3 md:col-span-5">
       <Header>What is SKCom?</Header>
-      <Text type="body-medium" element="p">
-        <strong>SK Components (“SKCom”) is a design system</strong> consisting
-        of tokens and components created with the goal of a{" "}
+      <Text type="body-large" element="p">
         <strong>
-          consistent and harmonious experience across all Suankularb features
+          SK Components (“SKCom”) is a component library built on{" "}
+          <a href="https://m3.material.io/" target="_blank" className="link">
+            Material Design 3
+          </a>
+          .
         </strong>{" "}
-        and applications.
+        It provides components that follow Material Design principles, and was
+        originally created for{" "}
+        <a href="https://www.sk.ac.th/" target="_blank" className="link">
+          Suankularb Wittayalai School
+        </a>
+        &rsquo;s family of applications.
       </Text>
-      <Text type="body-medium" element="p">
+      <Text type="body-large" element="p">
         There are currently 2 official SKCom libraries:{" "}
         <strong>SK Component Styles</strong> (
         <code className="code">@suankularb-components/css</code>) and{" "}

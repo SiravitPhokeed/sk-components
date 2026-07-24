@@ -18,16 +18,18 @@ const ResourcesSection: FC = () => (
     <Section className="mb-2 sm:col-span-2 md:mb-0">
       <Header>Resources</Header>
       <Text type="body-medium" element="p">
-        <strong>
-          In addition to the demo website (which you’re on right now!), we also
-          have a{" "}
-          <Link href="/docs" className="link">
-            full API reference
-          </Link>{" "}
-          on all components in ReSKCom.
-        </strong>{" "}
-        You can interact with all the examples shown in the reference on this
-        demo, and the interactive code on the “demo” app in{" "}
+        Visit the{" "}
+        <Link href="/components" className="link">
+          Components page
+        </Link>{" "}
+        to see a display of all components in ReSKCom, and the{" "}
+        <Link href="/docs" className="link">
+          Documentation page
+        </Link>{" "}
+        to see guides and API references for all components.
+      </Text>
+      <Text type="body-small" element="p">
+        The code for this demo website is available on{" "}
         <a
           href="https://github.com/suankularb-wittayalai-school/sk-components"
           target="_blank"
@@ -49,8 +51,12 @@ const ResourcesSection: FC = () => (
     >
       <CardContent>
         <MaterialIcon icon="description" size={48} className="text-primary" />
-        <Text type="headline-small" element="h3" className="leading-none!">
-          API reference
+        <Text
+          type="headline-small"
+          element="h3"
+          className="leading-none text-balance"
+        >
+          Guides & API reference
         </Text>
       </CardContent>
     </Card>
@@ -63,7 +69,11 @@ const ResourcesSection: FC = () => (
     >
       <CardContent>
         <MaterialIcon icon="code" size={48} className="text-primary" />
-        <Text type="headline-small" element="h3" className="leading-none!">
+        <Text
+          type="headline-small"
+          element="h3"
+          className="leading-none text-balance"
+        >
           Demo repository
         </Text>
       </CardContent>
