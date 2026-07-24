@@ -26,10 +26,10 @@
   }
 
   .shiki {
-    @apply bg-surface-container relative my-4 block rounded-md forced-colors:border forced-colors:border-[CanvasText];
+    @apply bg-surface-container relative my-4 block rounded-md forced-colors:border forced-colors:border-[CanvasText] scheme-dark;
 
     pre {
-      @apply rounded-md text-base scheme-dark;
+      @apply rounded-md text-base;
     }
 
     code {
