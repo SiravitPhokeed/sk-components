@@ -114,7 +114,8 @@ const FeaturesSection: FC = () => {
             <p>
               Right-to-left (RTL) languages are also fully supported. Try the
               Switch above to see how the layout changes when the{" "}
-              <code>dir</code> attribute is set to <code>rtl</code>.
+              <code className="code">dir</code> attribute is set to{" "}
+              <code className="code">rtl</code>.
             </p>
           </CardContent>
         </Card>
