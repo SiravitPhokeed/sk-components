@@ -11,7 +11,10 @@ const DocsNavSection: StyleableFC<{
 }> = ({ children, icon, title, open, className, style }) => (
   <details
     open={open}
-    className={cn("details group -m-3 -mb-4 p-3", className)}
+    className={cn(
+      "details group -m-3 -mb-4 p-3 details-content:opacity-0 open:details-content:opacity-100 supports-interpolate-size:details-content:transition-[height,opacity,content-visibility]",
+      className,
+    )}
     style={style}
   >
     <Interactive
