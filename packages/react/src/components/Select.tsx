@@ -144,6 +144,7 @@ const STRINGS = {
  * @param value The value of the selected option. This is useful if you want a controlled input.
  * @param onChange Called when the user chooses an option. The value is passed in via the function.
  * @param name The name of the Select, used for form submission.
+ * @see https://sk-components-demo.mysk.school/docs/inputs/select
  */
 export const Select = <Value extends string = string>({
   children,

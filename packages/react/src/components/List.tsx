@@ -39,6 +39,7 @@ export interface ListProps extends ElementCustomizableProps {
  * @param children List contains List Items, each containing a List Item Content and other elements.
  * @param columns The number of columns in the list. Internally uses Columns for layout.
  * @param divided Puts a Divider between List Items.
+ * @see https://sk-components-demo.mysk.school/docs/data/list
  */
 export const List: StyleableFC<ListProps> = ({
   children,

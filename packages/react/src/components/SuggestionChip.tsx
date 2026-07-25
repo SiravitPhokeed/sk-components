@@ -71,6 +71,7 @@ export interface SuggestionChipProps
  * @param tooltip A message shown in a tooltip when the user hovers over the Suggestion Chip.
  * @param elevated Use elevation instead of an outline to signify the Suggestion Chip’s boundary.
  * @param disabled Turns the Suggestion Chip gray and blocks any action associated with it.
+ * @see https://sk-components-demo.mysk.school/docs/data/suggestion-chip
  */
 export const SuggestionChip: StyleableFC<SuggestionChipProps> = ({
   children,

@@ -74,6 +74,7 @@ const STRINGS = {
  * @param end More Navigation Items can be placed on the bottom of the Navigation Rail on larger screens.
  * @param locale Allows for translation of the accessibility labels.
  * @param onNavToggle The function called when the user clicks on the navigation Button.
+ * @see https://sk-components-demo.mysk.school/docs/layout/nav-bar
  */
 export const NavBar: StyleableFC<NavBarProps> = ({
   children,

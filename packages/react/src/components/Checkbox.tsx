@@ -73,6 +73,7 @@ export interface CheckboxProps extends ElementCustomizableProps {
  * @param onChange Called when the user toggles the Checkbox.
  * @param disabled Turns the Checkbox gray and blocks any action associated with it.
  * @param tristate Allows the Checkbox to have 3 states: off, on, and indeterminate.
+ * @see https://sk-components-demo.mysk.school/docs/inputs/checkbox
  */
 export const Checkbox: StyleableFC<CheckboxProps> = ({
   alt,

@@ -89,6 +89,7 @@ export interface ListItemProps
  * @param lines The number of lines contained by the List Item. The height is set from this prop.
  * @param stateLayerEffect A state layer is a visual overlay that responds to user interaction. For example, a Button’s state layer increases its opacity on hover, signaling it’s clickable.
  * @param containerElement The element to use as the container of the List Item.
+ * @see https://sk-components-demo.mysk.school/docs/data/list-item
  */
 export const ListItem: StyleableFC<ListItemProps> = ({
   children,

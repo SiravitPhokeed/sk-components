@@ -44,6 +44,7 @@ export interface DataTableContentProps extends ElementCustomizableProps {
  * @param children A Data Table Content's content depends on whether you decide to
  *   use TanStack Table or not.
  * @param contentWidth The minimum width of the content.
+ * @see https://sk-components-demo.mysk.school/docs/data/data-table-content
  */
 export const DataTableContent: StyleableFC<DataTableContentProps> = ({
   alt,

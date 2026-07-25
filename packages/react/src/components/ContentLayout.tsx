@@ -32,6 +32,7 @@ export interface ContentLayoutProps extends ElementCustomizableProps {
  *
  * @param children The main content of a page is grouped into Sections inside of a Content Layout.
  * @param id The ID of the element, used as the target for the Skip Link.
+ * @see https://sk-components-demo.mysk.school/docs/layout/content-layout
  */
 export const ContentLayout: StyleableFC<ContentLayoutProps> = ({
   children,

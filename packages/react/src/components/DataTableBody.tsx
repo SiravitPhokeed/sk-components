@@ -53,6 +53,7 @@ export interface DataTableBodyProps<
  * @param rowModel The return of `getRowModel`, one of the functions of the TanStack Table instance.
  * @param align How the content in each cell should be positioned. It can be aligned to the left (default), the center, or the right.
  * @param rowActions Actions related to a row, shown on hover.
+ * @see https://sk-components-demo.mysk.school/docs/data/data-table-body
  */
 export const DataTableBody = <RowShape extends {}>({
   rowModel,

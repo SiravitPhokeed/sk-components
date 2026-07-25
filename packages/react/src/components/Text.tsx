@@ -33,6 +33,7 @@ export interface TextProps extends ElementCustomizableProps {
  * @param id The unique identifier of the Text, similar to `id` on any HTML element.
  * @param children The text to apply the typographic styling to.
  * @param type The typographic style to apply.
+ * @see https://sk-components-demo.mysk.school/docs/data/text
  */
 export const Text: StyleableFC<TextProps> = ({
   children,

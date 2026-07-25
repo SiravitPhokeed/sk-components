@@ -79,6 +79,7 @@ export interface TabProps extends ActionableProps, ElementCustomizableProps {
  * @param controls The `id` of the tab panel this Tab controls, applied as `aria-controls`.
  * @param tooltip A message shown in a tooltip when the user hovers over the Tab.
  * @param selected Highlights the Tab. If the user is currently on this page, the Tab should be highlighted.
+ * @see https://sk-components-demo.mysk.school/docs/layout/tab
  */
 export const Tab: StyleableFC<TabProps> = ({
   icon,
