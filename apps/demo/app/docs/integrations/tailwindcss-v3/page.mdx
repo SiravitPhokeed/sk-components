@@ -18,7 +18,7 @@ integrate it with SK Components to use utility classes in your project.
 v3 does not support layers, so you need to use `!important` to override SK
 Components styles with Tailwind CSS utility classes.
 
-```tsx
+```tsx "!" {1}
 <Button appearance="filled" className="!bg-tertiary !text-on-tertiary">
   Tertiary button
 </Button>
@@ -36,7 +36,7 @@ It covers breakpoints, font weights, font families, font sizes, border radii,
 easing curves, box shadows, and colors (both the full tonal palette and semantic
 color roles).
 
-```ts
+```ts title="tailwind.config.ts"
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -273,7 +273,7 @@ can have those elements customized with a custom Tailwind CSS plugin.
 Import `plugin` from `tailwindcss/plugin` and add the following to your
 `tailwind.config.ts` file. This adds `state-layer-*` utility classes.
 
-```ts {2,6-13} /plugin/2,4 "tailwindcss/plugin"
+```ts {2,6-13}
 import type { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 
