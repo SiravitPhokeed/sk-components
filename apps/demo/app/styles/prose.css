@@ -11,7 +11,7 @@
   }
 
   .code {
-    @apply bg-surface-variant rounded-xs px-1.5 font-features-['ss01','ss02','ss03','ss04','ss05'] text-[0.9em] tracking-normal;
+    @apply bg-surface-variant rounded-xs px-1.5 font-mono text-[0.9em] tracking-normal;
   }
 
   .kbd {
@@ -33,7 +33,7 @@
     }
 
     code {
-      @apply overflow-x-auto py-3.5 text-base leading-normal tracking-normal;
+      @apply overflow-x-auto py-3.5 font-mono text-base leading-normal tracking-normal;
     }
 
     [data-rehype-pretty-code-title] {
