@@ -106,12 +106,6 @@ const IconFontDialog: FC = () => {
               target="_blank"
             >
               Google Fonts
-              <MaterialIcon
-                icon="arrow_outward"
-                size={20}
-                directional
-                className="-mt-1 inline-block"
-              />
             </Link>
             .
           </p>

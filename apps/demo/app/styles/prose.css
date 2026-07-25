@@ -1,10 +1,13 @@
 @layer components {
   .link {
-    @apply text-primary hover:decoration-primary/20 dark:hover:decoration-primary/30 font-bold underline decoration-1 underline-offset-4 hover:decoration-8 hover:-underline-offset-2 hover:[text-decoration-skip-ink:none] active:opacity-50;
+    @apply text-primary hover:decoration-primary/20 dark:hover:decoration-primary/30 font-bold underline decoration-1 underline-offset-4 hover:decoration-8 hover:-underline-offset-2 hover:[text-decoration-skip-ink:none] active:opacity-50 forced-colors:hover:no-underline;
+    &[target="_blank"]::after {
+      @apply not-sr-only relative -top-2 -my-1 inline-block size-5 bg-[currentColor] mask-[url('/images/icons/arrow_outward.svg')] text-[0px] forced-color-adjust-none forced-colors:bg-[CanvasText];
+    }
   }
 
   .blockquote {
-    @apply bg-surface-variant [&_code]:bg-surface-bright [&_strong]:text-on-surface my-4 rounded-md px-4 *:*:first:mt-3 *:*:last:mb-3 **:[blockquote,pre]:-mx-4 **:[blockquote,pre]:rounded-none;
+    @apply bg-surface-variant **:[.code]:bg-surface-bright **:[strong]:text-on-surface my-4 rounded-md px-4 *:*:first:mt-3 *:*:last:mb-3 **:[blockquote,figure]:-mx-4 **:[blockquote,firugre]:rounded-none **:[figure>pre]:rounded-none;
   }
 
   .code {
@@ -23,14 +26,18 @@
   }
 
   .shiki {
-    @apply bg-surface-container relative my-4 block rounded-md forced-colors:border forced-colors:border-[CanvasText];
+    @apply bg-surface-container relative my-4 block rounded-md scheme-dark not-has-data-rehype-pretty-code-title:*:first:top-1 forced-colors:border forced-colors:border-[CanvasText] not-has-data-rehype-pretty-code-title:*:first:*:[i]:bg-[#24292e];
 
     pre {
-      @apply overflow-x-auto rounded-md text-base scheme-dark;
+      @apply rounded-md text-base;
+    }
+
+    code {
+      @apply overflow-x-auto py-3.5 text-base leading-normal tracking-normal;
     }
 
     [data-rehype-pretty-code-title] {
-      @apply font-display text-on-surface-variant px-4 py-3 text-lg leading-6 font-medium tracking-[0.1px];
+      @apply font-display text-on-surface-variant px-4 py-2.5 text-base leading-5 font-medium tracking-[0.1px] forced-colors:border-b;
     }
 
     [data-line] {
@@ -42,7 +49,7 @@
       @apply border-l-4 border-l-[#58a6ff4d] bg-[#388bfd26] ps-3;
     }
     [data-highlighted-chars] {
-      @apply -mx-1 rounded-xs bg-[#388bfd66] px-1 font-bold;
+      @apply -mx-1 rounded-xs bg-[#388bfd66] px-1 font-bold forced-colors:*:text-[CanvasText]!;
     }
   }
 }

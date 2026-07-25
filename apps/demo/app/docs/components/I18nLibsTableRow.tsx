@@ -1,8 +1,4 @@
-import {
-  MaterialIcon,
-  TableCell,
-  TableRow,
-} from "@suankularb-components/react";
+import { TableCell, TableRow } from "@suankularb-components/react";
 import type { FC } from "react";
 
 const I18nLibsTableRow: FC<{
@@ -16,12 +12,6 @@ const I18nLibsTableRow: FC<{
     <TableCell header scope="row" align="left">
       <a href={href} target="_blank" className="link">
         {library}
-        <MaterialIcon
-          icon="arrow_outward"
-          size={20}
-          directional
-          className="-mt-1 inline-block"
-        />
       </a>
     </TableCell>
     <TableCell align="left">

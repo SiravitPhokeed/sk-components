@@ -51,7 +51,17 @@
 }
 
 @layer base {
+  html {
+    @apply supports-interpolate-size:[interpolate-size:allow-keywords];
+  }
+
   [target="_blank"] {
     @apply after:sr-only after:content-['(opens_in_new_tab)'];
+  }
+}
+
+@layer components {
+  .details {
+    @apply details-content:ease-emphasized overflow-hidden details-content:h-0 details-content:transition-[height,content-visibility] details-content:transition-discrete details-content:duration-400 not-supports-interpolate-size:details-content:transition-none open:details-content:h-auto;
   }
 }

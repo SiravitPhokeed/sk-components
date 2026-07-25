@@ -13,7 +13,9 @@ const DisclosureCard: FC<{
   <Card
     element="details"
     appearance="outlined"
-    className="group has-focus-visible:animate-focus my-4 overflow-hidden"
+    // Not using `group` to animate the icon to not intefere with Code Block’s
+    // `group`.
+    className="details has-focus-visible:animate-focus my-4 block open:*:first:*:last:rotate-90 rtl:open:*:first:*:last:-rotate-90"
   >
     <Interactive
       element="summary"
@@ -25,10 +27,10 @@ const DisclosureCard: FC<{
       <MaterialIcon
         icon="chevron_right"
         directional
-        className="text-on-surface-variant shrink-0 group-open:rotate-90 group-open:rtl:-rotate-90"
+        className="text-on-surface-variant shrink-0 supports-interpolate-size:transition-transform"
       />
     </Interactive>
-    <section className="px-4 pb-3 **:[blockquote,pre]:-mx-4 **:[blockquote,pre]:rounded-none">
+    <section className="px-4 pt-2 pb-3 *:first:mt-0 *:last:mb-0 **:[blockquote,figure]:-mx-4 **:[blockquote,figure,pre]:rounded-none">
       {children}
     </section>
   </Card>

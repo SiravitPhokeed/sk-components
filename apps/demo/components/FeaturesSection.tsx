@@ -94,8 +94,8 @@ const FeaturesSection: FC = () => {
               <code className="code">scheme-dark</code> classes.
             </p>
             <Text type="body-small" className="text-on-surface-variant">
-              High contrast mode is also supported through the{" "}
-              <code className="code">prefers-contrast</code> media query.
+              High contrast mode and forced colors mode are supported via media
+              queries.
             </Text>
           </CardContent>
         </Card>
@@ -114,7 +114,8 @@ const FeaturesSection: FC = () => {
             <p>
               Right-to-left (RTL) languages are also fully supported. Try the
               Switch above to see how the layout changes when the{" "}
-              <code>dir</code> attribute is set to <code>rtl</code>.
+              <code className="code">dir</code> attribute is set to{" "}
+              <code className="code">rtl</code>.
             </p>
           </CardContent>
         </Card>

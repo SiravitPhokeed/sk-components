@@ -26,7 +26,16 @@ const DocsNavLink: StyleableFC<{
   }, [selected]);
 
   return (
-    <li>
+    <li
+      className={cn(
+        "before:bg-secondary relative before:absolute before:inset-y-0 before:-inset-s-2 before:w-px before:transition-opacity forced-colors:before:w-0.5 forced-colors:before:bg-[Highlight]",
+        selected
+          ? "before:opacity-100"
+          : "before:opacity-0 hover:before:opacity-20",
+        className,
+      )}
+      style={style}
+    >
       <Interactive
         ref={ref}
         aria-current={selected ? "page" : undefined}

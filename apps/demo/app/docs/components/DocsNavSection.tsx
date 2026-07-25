@@ -9,7 +9,14 @@ const DocsNavSection: StyleableFC<{
   title: string;
   open?: boolean;
 }> = ({ children, icon, title, open, className, style }) => (
-  <details open={open} className={cn("group", className)} style={style}>
+  <details
+    open={open}
+    className={cn(
+      "details group -m-3 -mb-4 p-3 details-content:opacity-0 open:details-content:opacity-100 supports-interpolate-size:details-content:transition-[height,opacity,content-visibility]",
+      className,
+    )}
+    style={style}
+  >
     <Interactive
       element="summary"
       className="state-layer-on-surface flex items-center gap-2 rounded-full px-2 py-1.5 marker:hidden"
@@ -21,13 +28,13 @@ const DocsNavSection: StyleableFC<{
       <MaterialIcon
         icon="chevron_right"
         directional
-        className="text-on-surface-variant group-open:rotate-90 group-open:rtl:-rotate-90"
+        className="text-on-surface-variant group-open:rotate-90 supports-interpolate-size:transition-transform group-open:rtl:-rotate-90"
       />
     </Interactive>
     <ul
       aria-label={title}
       role="list"
-      className="border-s-outline-variant ms-4 mt-1 border-s ps-2"
+      className="before:bg-outline-variant relative ms-4 ps-2 pt-1 before:absolute before:inset-s-0 before:top-1 before:bottom-0 before:w-px forced-colors:before:bg-[CanvasText]"
     >
       {children}
     </ul>
