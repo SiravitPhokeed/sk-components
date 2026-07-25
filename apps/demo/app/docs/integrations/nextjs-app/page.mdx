@@ -31,8 +31,7 @@ Create a `layout.tsx` file in the `app` directory if you don’t have one alread
 Then, add [Theme Provider](/docs/layout/theme-provider) and wrap your app with
 [Root Layout](/docs/layout/root-layout) in the file.
 
-```tsx
-// app/layout.tsx
+```tsx title="app/layout.tsx"
 import {
   RootLayout as SKCRootLayout,
   ThemeProvider,
@@ -55,8 +54,7 @@ You can create `@/components/NavBar.tsx` and `@/components/NavDrawer.tsx` using
 SKCom’s Navigation Bar and Navigation Drawer components and populate them with
 your app’s navigation items.
 
-```tsx
-// components/NavBar.tsx
+```tsx title="components/NavBar.tsx"
 import { NavBar as SKCNavBar } from "@suankularb-components/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -82,8 +80,7 @@ const NavBar = () => {
 `@/components/NavDrawer.tsx` can be created in a similar way. Then, import these
 components into your `layout.tsx` file.
 
-```tsx
-// app/layout.tsx
+```tsx title="app/layout.tsx"
 import NavBar from "@/components/NavBar";
 import NavDrawer from "@/components/NavDrawer";
 import {
@@ -110,8 +107,7 @@ export default RootLayout;
 
 A **typical top-level page** might look something like this.
 
-```tsx
-// app/page.tsx
+```tsx title="app/page.tsx"
 import {
   ContentLayout,
   FAB,
@@ -141,7 +137,7 @@ load the fonts used in SKCom.
 Inter, Space Grotesk, Sarabun, and IBM Plex Sans Thai are available on Google
 Fonts. You can load them using `next/font/google` in your root layout file (e.g., `app/layout.tsx`).
 
-```ts
+```ts title="app/layout.tsx"
 import {
   Fira_Code,
   IBM_Plex_Sans_Thai,
@@ -164,7 +160,7 @@ const displayFontTH = Sarabun({
 
 Then, add the font class names to your Root Layout component.
 
-```tsx
+```tsx {2-7}
 <SKCRootLayout
   className={[
     bodyFontEN.className,
@@ -196,7 +192,7 @@ Save the downloaded font file as `material-symbols.woff2` in your project’s
 Take care to match the relative path to the font file with your project
 structure.
 
-```tsx
+```tsx title="app/layout.tsx"
 import localFont from "next/font/local";
 
 const iconFont = localFont({
@@ -210,7 +206,7 @@ const iconFont = localFont({
 
 Finally, add the font class name to your Root Layout component.
 
-```tsx
+```tsx {8-9}
 <SKCRootLayout
   className={[
     // Google Fonts
@@ -234,7 +230,7 @@ and thus **accept an `element` prop.** This allows you to use Next.js’s
 [`Link` component](https://nextjs.org/docs/app/api-reference/components/link)
 for navigation instead of the default `<a>` element.
 
-```tsx
+```tsx {1} "element={Link}"
 <Button href="/about" element={Link}>
   About
 </Button>

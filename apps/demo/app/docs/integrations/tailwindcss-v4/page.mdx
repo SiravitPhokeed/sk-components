@@ -19,7 +19,7 @@ All styles in SK Components are declared under the `@layer skc` directive. To
 use SK Components with Tailwind CSS v4, you need to add this line **before** the
 `@import` directive in your Tailwind CSS configuration file.
 
-```css
+```css title="globals.css" {1} "skc"
 @layer theme, base, skc, components, utilities;
 @import "tailwindcss";
 ```
@@ -27,7 +27,7 @@ use SK Components with Tailwind CSS v4, you need to add this line **before** the
 Using layers means that you can use utility classes to override SK Components
 styles without needing `!important`.
 
-```tsx
+```tsx {1} "bg-tertiary text-on-tertiary"
 <Button appearance="filled" className="bg-tertiary text-on-tertiary">
   Tertiary button
 </Button>
@@ -55,7 +55,7 @@ It covers breakpoints, font weights, font families, font sizes, border radii,
 easing curves, colors (both the full tonal palette and semantic color roles),
 and shadows.
 
-```css
+```css title="globals.css"
 @theme inline {
   --breakpoint-*: initial;
   --breakpoint-sm: 38rem;
@@ -285,13 +285,13 @@ can have those elements customized with Tailwind CSS utilities.
 lets you define custom utility classes in Tailwind v4. The snippet below
 registers a `state-layer-*` utility that accepts any Tailwind color token.
 
-```css
+```css title="globals.css"
 @utility state-layer-* {
   --state-layer-color: --value(--color-*);
 }
 ```
 
-```tsx
+```tsx {1} "state-layer-primary"
 <Interactive className="state-layer-primary">
   I have a primary state layer!
 </Interactive>

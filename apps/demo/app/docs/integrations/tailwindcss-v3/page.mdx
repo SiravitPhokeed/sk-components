@@ -273,7 +273,7 @@ can have those elements customized with a custom Tailwind CSS plugin.
 Import `plugin` from `tailwindcss/plugin` and add the following to your
 `tailwind.config.ts` file. This adds `state-layer-*` utility classes.
 
-```ts
+```ts {2,6-13} /plugin/2,4 "tailwindcss/plugin"
 import type { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 

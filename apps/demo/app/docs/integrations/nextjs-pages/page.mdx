@@ -33,8 +33,7 @@ your application, making it the right place for providers and shared layout.
 Then, add [Theme Provider](/docs/layout/theme-provider) and wrap your
 app with [Root Layout](/docs/layout/root-layout) in the file.
 
-```tsx
-// pages/_app.tsx
+```tsx title="pages/_app.tsx"
 import { RootLayout, ThemeProvider } from "@suankularb-components/react";
 import type { AppProps } from "next/app";
 
@@ -66,8 +65,7 @@ Start by creating `@/components/NavBar.tsx` and `@/components/NavDrawer.tsx`
 using SKCom’s Navigation Bar and Navigation Drawer components and populate them
 with your app’s navigation items.
 
-```tsx
-// components/NavBar.tsx
+```tsx title="components/NavBar.tsx"
 import {
   MaterialIcon,
   NavBarItem,
@@ -97,8 +95,7 @@ const NavBar = () => {
 `@/components/NavDrawer.tsx` can be created in a similar way. Then, import these
 components into your `Layout` component.
 
-```tsx
-// components/Layout.tsx
+```tsx title="components/Layout.tsx"
 import NavBar from "@/components/NavBar";
 import NavDrawer from "@/components/NavDrawer";
 import { RootLayout } from "@suankularb-components/react";
@@ -117,8 +114,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
 With all the pieces in place, your `_app.tsx` should now look like this.
 
-```tsx
-// pages/_app.tsx
+```tsx title="pages/_app.tsx"
 import Layout from "@/components/Layout";
 import { ThemeProvider } from "@suankularb-components/react";
 import type { AppProps } from "next/app";
@@ -139,9 +135,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
 A **typical top-level page** might look something like this.
 
-```tsx
-// pages/index.tsx
-
+```tsx title="pages/index.tsx"
 import type { NextPage } from "next";
 import {
   ContentLayout,
@@ -196,7 +190,7 @@ const displayFontTH = Sarabun({
 
 Then, add the font class names to your Root Layout component.
 
-```tsx
+```tsx {2-6}
 <RootLayout
   className={[
     bodyFontEN.className,
@@ -242,7 +236,7 @@ const iconFont = localFont({
 
 Finally, add the font class name to your Root Layout component.
 
-```tsx
+```tsx {8-9}
 <RootLayout
   className={[
     // Google Fonts
@@ -266,7 +260,7 @@ and thus **accept an `element` prop.** This allows you to use Next.js’s
 [`Link` component](https://nextjs.org/docs/pages/api-reference/components/link)
 for navigation instead of the default `<a>` element.
 
-```tsx
+```tsx {1} "element={Link}"
 <Button href="/about" element={Link}>
   About
 </Button>
