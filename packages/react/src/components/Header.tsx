@@ -56,6 +56,8 @@ const HEADER_TYPE_BY_LEVEL = {
  * @param children The text or heading content of the Header. This is typically a short string that identifies a section or page.
  * @param level The level of the Header. The number corresponds to an HTML header element, i.e., `3` corresponds to `<h3>`.
  * @param icon An icon can appear before the text (`children`) in a Header. In a page with many headers, icons can quickly orient users.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/layout/header Header documentation}
  */
 export const Header: StyleableFC<HeaderProps> = ({
   children,

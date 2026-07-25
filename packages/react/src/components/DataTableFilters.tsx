@@ -31,6 +31,8 @@ export interface DataTableFiltersProps extends ElementCustomizableProps {
  *
  * @param children A set of Filter Chips responsible for filtering the Data Table.
  * @param alt A description of the filters group for screen readers.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/data/data-table-filters Data Table Filters documentation}
  */
 export const DataTableFilters: StyleableFC<DataTableFiltersProps> = ({
   children,

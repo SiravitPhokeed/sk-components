@@ -101,6 +101,8 @@ const STRINGS = {
  * @param buttonElement Change the underlying element of the back Button from `<a>` to a custom element.
  * @param onBack The function triggered when the back Button is clicked.
  * @param onNavToggle The function called when the user clicks on the navigation Button.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/layout/page-header Page Header documentation}
  */
 export const PageHeader: StyleableFC<PageHeaderProps> = ({
   children,

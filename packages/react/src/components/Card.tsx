@@ -72,6 +72,8 @@ export interface CardProps extends ActionableProps, ElementCustomizableProps {
  * @param direction The flow of the Card’s content, like the CSS property `flex-direction`. The default is `column`.
  * @param stateLayerEffect A state layer is a visual overlay that responds to user interaction. For example, a Button’s state layer increases its opacity on hover, signaling it’s clickable.
  * @param shadowEffect Elevates Card on hover and focus to signify its interactivity.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/data/card Card documentation}
  */
 export const Card: StyleableFC<CardProps> = ({
   children,

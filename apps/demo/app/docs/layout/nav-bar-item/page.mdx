@@ -115,6 +115,20 @@ One of the destinations in a Navigation Bar.
       </TableCell>
 
   </PropsTableRow>
+  <PropsTableRow prop="alt" required="conditional">
+    <TableCell>`string`</TableCell>
+    <TableCell>
+
+      A description of the Navigation Bar Item for screen readers, similar
+      to `alt` on `<img>`.
+
+      - Required if `label` is not defined, because an icon alone has no
+        significance for screen readers.
+
+      </TableCell>
+
+  </PropsTableRow>
+
 </PropsTable>
 
 ### Version changes

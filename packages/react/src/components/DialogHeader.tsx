@@ -41,13 +41,15 @@ export interface DialogHeaderProps extends ElementCustomizableProps {
 }
 
 /**
- * The header section contains the title and supporting text of a Dialog. It
- * should clearly communicate the Dialog's purpose so the user can quickly make
- * a decision or enter information.
+ * The header section contains the title and supporting text of a Dialog.
+ * It should clearly communicate the Dialog's purpose so the user can
+ * quickly make a decision or enter information.
  *
  * @param icon The hero icon shown above the title text (`title`).
  * @param title The title text.
  * @param desc With a title (`title`), the supporting text complements the title text with more details.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/overlays/dialog-header Dialog Header documentation}
  */
 export const DialogHeader: StyleableFC<DialogHeaderProps> = ({
   icon,

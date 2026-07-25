@@ -33,9 +33,10 @@ export interface DialogProps extends ElementCustomizableProps {
   /**
    * Parts of a Dialog.
    *
-   * - Dialog Header and Actions are required components and must appear in the
-   *   said order.
-   * - If present, Dialog Content must appear between Dialog Header and Actions.
+   * - Dialog Header and Actions are required components and must appear in
+   *   the said order.
+   * - If present, Dialog Content must appear between Dialog Header and
+   *   Actions.
    */
   children: ReactNode;
 
@@ -98,6 +99,8 @@ export interface DialogProps extends ElementCustomizableProps {
  * @param open If the Dialog is open and shown.
  * @param onClose The function triggered when the backdrop is clicked or Escape is pressed.
  * @param width The width of the Dialog.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/overlays/dialog Dialog documentation}
  */
 export const Dialog: StyleableFC<DialogProps> = ({
   children,

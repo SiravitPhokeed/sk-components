@@ -49,6 +49,8 @@ export interface SplitLayoutProps extends ElementCustomizableProps {
  * @param children The content should have 2 sides; each element entered corresponds to a side.
  * @param ratio Choose between two presets or provide custom values. Uses the same 12-column grid as Columns, so the two values must add up to 12.
  * @param prefer The side to show on mobile.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/layout/split-layout Split Layout documentation}
  */
 export const SplitLayout: StyleableFC<SplitLayoutProps> = ({
   children,

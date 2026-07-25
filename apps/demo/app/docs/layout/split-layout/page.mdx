@@ -30,6 +30,25 @@ small column set aside for supporting content.
 </SplitLayout>
 ```
 
+### Usage
+
+A common use case is a list-detail page: a [Page Header](/docs/layout/page-header)
+above a Split Layout, with a [Search](/docs/inputs/search) field and a list on
+the left, and the selected item’s detail on the right.
+
+```tsx
+<PageHeader parentURL="/examples">Search students</PageHeader>
+<SplitLayout ratio="list-detail">
+  <div>
+    <Search alt="Search students" />
+    {/* List of items */}
+  </div>
+  <div>{/* Detail of the selected item */}</div>
+</SplitLayout>
+```
+
+See a complete example on the [Search students](/examples/search) page.
+
 ### Props
 
 - [`StyleableProps`](/docs/guides/shared-props) available: `className` and

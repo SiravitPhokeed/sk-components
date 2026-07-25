@@ -237,6 +237,8 @@ const STRINGS = {
  * @param locale Allows for translation of the “No files attached” text, which is put in place of the file name when no files have been attached yet.
  * @param onChange Called when the user makes changes to the field value. The value is passed in via the function.
  * @param inputAttr Attributes for the underlying `<input>` element used as the field.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/inputs/text-field Text Field documentation}
  */
 export const TextField = <Value extends string | File = string>({
   name,

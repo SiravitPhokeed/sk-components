@@ -65,6 +65,8 @@ export interface RadioProps<
  * @param checked Whether the Radio is selected. This is useful if you want a controlled input.
  * @param onChange Called when the user selects the Radio. The value is passed in via the function.
  * @param disabled Turns the Radio gray and blocks any action associated with it.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/inputs/radio Radio documentation}
  */
 export const Radio = <Value extends string = string>({
   name,

@@ -21,6 +21,8 @@ export interface NavDrawerProps {
  * A navigation drawer that slides in from the left.
  *
  * @param children Navigation Drawer Sections holding Navigation Drawer Items, the navigation destinations.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/layout/nav-drawer Navigation Drawer documentation}
  */
 export const NavDrawer: StyleableFC<NavDrawerProps> = ({
   children,

@@ -11,9 +11,10 @@ export const metadata = {
 
 ## Root Layout
 
-The container for everything in your application. Components like Nav
-Drawer, Navigation Bar, FAB, and Page Header each appear exactly once, and they
-work best as direct children of Root Layout.
+The container for everything in your application. Components like [Navigation
+Drawer](/docs/layout/nav-drawer), [Navigation Bar](/docs/layout/nav-bar),
+[FAB](/docs/inputs/fab), and [Page Header](/docs/layout/page-header) each
+appear exactly once, and they work best as direct children of Root Layout.
 
 Root Layout handles component positioning and responsiveness.
 
@@ -48,8 +49,8 @@ Root Layout handles component positioning and responsiveness.
         - Navigation Bar
         - FAB
         - Page Header
-        - Content Layout
-        - Split Layout
+        - [Content Layout](/docs/layout/content-layout)
+        - [Split Layout](/docs/layout/split-layout)
       - All other elements should go inside Content Layout or Split Layout.
       - Always required.
 
@@ -95,9 +96,8 @@ Root Layout handles component positioning and responsiveness.
 
 <VersionsTable>
   <VersionsTableRow version="v4.0.0">
-    FAB is now a direct child of Root Layout instead of a Navigation Bar
-    prop. Skip Link now rendered by default; use `skipToContent={false}` to
-    opt out.
+    FAB is now a direct child of Root Layout instead of a Navigation Bar prop.
+    Skip Link now rendered by default; use `skipToContent={false}` to opt out.
   </VersionsTableRow>
   <VersionsTableRow version="v3.0.0">Root Layout introduced.</VersionsTableRow>
 </VersionsTable>

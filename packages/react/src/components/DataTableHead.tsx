@@ -56,6 +56,8 @@ export interface DataTableHeadProps extends ElementCustomizableProps {
  * @param align How the content in each cell should be positioned.
  * @param colSpans The fractional width of each column, in the same order as the columns are defined.
  * @param locale Allows for translation of the accessibility labels.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/data/data-table-head Data Table Head documentation}
  */
 export const DataTableHead: StyleableFC<DataTableHeadProps> = ({
   headerGroups,

@@ -71,8 +71,8 @@ export interface SnackbarProps {
 
 /**
  * Snackbar briefly shows low priority information that does not require action,
- * as opposed to Dialog. It can inform the user about ongoing processes or an
- * event that has just been completed.
+ * as opposed to Dialog. It can inform the user about ongoing processes or
+ * an event that has just been completed.
  *
  * Users frequently leave Snackbars unread, so check if other components like
  * Dialog, `loading` in Button, or inline banners are more appropriate for your
@@ -84,6 +84,8 @@ export interface SnackbarProps {
  * @param stacked Put the message (`children`) above the action (`action`).
  * @param persistent Prevent the Snackbar from auto-dismissing after a certain duration.
  * @param autoDismissDurationMs Time in milliseconds until the Snackbar exits automatically.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/overlays/snackbar Snackbar documentation}
  */
 export const Snackbar: StyleableFC<SnackbarProps> = ({
   children,

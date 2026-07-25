@@ -12,12 +12,12 @@ export const metadata = {
 ## Snackbar
 
 Snackbar briefly shows low priority information that does not require action,
-as opposed to Dialog. It can inform the user about ongoing processes or an
-event that has just been completed.
+as opposed to [Dialog](/docs/overlays/dialog). It can inform the user about
+ongoing processes or an event that has just been completed.
 
 Users frequently leave Snackbars unread, so check if other components like
-Dialog, `loading` in Button, or inline banners are more appropriate for your
-use case.
+Dialog, `loading` in [Button](/docs/inputs/button), or inline banners are
+more appropriate for your use case.
 
 <LinksChipSet material="/components/snackbar/overview" source="/Snackbar.tsx" />
 
@@ -103,7 +103,7 @@ await snackbar.promise("Deleting items…", () =>
       When provided, focus automatically moves to the action button when the
       Snackbar opens, and returns to the previous element when it closes.
 
-      - Must contain 1 Button with text appearance.
+      - Must contain 1 [Button](/docs/inputs/button) with text appearance.
       - Optional.
 
       </TableCell>

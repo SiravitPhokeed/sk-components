@@ -79,8 +79,8 @@ export interface ButtonProps extends ActionableProps, ElementCustomizableProps {
    * true.
    *
    * - **Important:** this is intended to be used only when the Button is
-   *   inside a Segmented Button. This prop will still be functional otherwise,
-   *   but it is against Material guidelines.
+   *   inside a Segmented Button. This prop will still be functional
+   *   otherwise, but it is against Material guidelines.
    * - Required when inside a Segmented Button.
    */
   selected?: boolean;
@@ -154,6 +154,8 @@ const STRINGS = {
  * @param disabled Turns the Button gray and blocks any action associated with it.
  * @param locale Allows for translation of the accessibility labels.
  * @param type The type of the Button, similar to `type` on `<button>`.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/inputs/button Button documentation}
  */
 export const Button: StyleableFC<ButtonProps> = ({
   children,

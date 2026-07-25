@@ -10,6 +10,8 @@ export interface DividerProps extends ElementCustomizableProps {}
 /**
  * A Divider draws a thin line between items to separate them visually. Use
  * it when spacing alone or Cards aren’t enough to distinguish groups.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/layout/divider Divider documentation}
  */
 export const Divider: StyleableFC<DividerProps> = ({
   element: Element = "hr",

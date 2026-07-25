@@ -39,6 +39,8 @@ export interface ListItemContentProps extends ElementCustomizableProps {
  * @param overline Small text on top of the title text.
  * @param title The main text of the List Item Content.
  * @param desc A description supplementing the title text.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/data/list-item-content List Item Content documentation}
  */
 export const ListItemContent: StyleableFC<ListItemContentProps> = ({
   overline,

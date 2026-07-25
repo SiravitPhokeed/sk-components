@@ -66,6 +66,8 @@ export interface NavDrawerItemProps
  * @param metadata Some text aligned to the right of a Navigation Drawer Item.
  * @param tooltip A message shown in a tooltip when the user hovers over the Navigation Drawer Item.
  * @param selected Highlights the Navigation Drawer Item.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/layout/nav-drawer-item Navigation Drawer Item documentation}
  */
 export const NavDrawerItem: StyleableFC<NavDrawerItemProps> = ({
   icon,

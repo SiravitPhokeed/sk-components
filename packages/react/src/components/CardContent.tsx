@@ -20,6 +20,8 @@ export interface CardContentProps extends ElementCustomizableProps {
  * A section of content inside Card.
  *
  * @param children Card Content can contain anything, from supporting text to Actions.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/data/card-content Card Content documentation}
  */
 export const CardContent: StyleableFC<CardContentProps> = ({
   children,

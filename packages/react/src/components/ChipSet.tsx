@@ -31,6 +31,8 @@ export interface ChipSetProps extends ElementCustomizableProps {
  *
  * @param children Chips.
  * @param scrollable If the parent element is not wide enough for all Chips to be visible, the Chip Set can be scrolled horizontally.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/data/chip-set Chip Set documentation}
  */
 export const ChipSet: StyleableFC<ChipSetProps> = ({
   children,

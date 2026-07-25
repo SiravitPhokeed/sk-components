@@ -32,6 +32,8 @@ export interface TableRowProps extends ElementCustomizableProps {
  *
  * @param children Table Row has the same behavior as `<tr>`.
  * @param actions Actions related to a row, shown on hover.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/data/table-row Table Row documentation}
  */
 export const TableRow: StyleableFC<TableRowProps> = ({
   children,

@@ -40,7 +40,7 @@ or enter important information.
 ### Usage
 
 A trigger button can open the Dialog via the Invoker Commands API. Learn more in
-the [modals and popovers guide](/docs/guides/modals).
+the [modals and popovers guide](/docs/guides/modals-and-popovers).
 
 ```tsx
 <Button command="show-modal" commandfor="remove-friend-dialog">
@@ -75,9 +75,11 @@ spec.
 
       Parts of a Dialog.
 
-      - Dialog Header and Actions are required components and must appear in the
-        said order.
-      - If present, Dialog Content must appear between Dialog Header and Actions.
+      - [Dialog Header](/docs/overlays/dialog-header) and
+        [Actions](/docs/inputs/actions) are required components and
+        must appear in the said order.
+      - If present, [Dialog Content](/docs/overlays/dialog-content) must appear
+        between Dialog Header and Actions.
 
       </TableCell>
 

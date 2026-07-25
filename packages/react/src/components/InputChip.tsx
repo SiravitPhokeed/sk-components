@@ -122,6 +122,8 @@ const STRINGS = {
  *   `deleteCommandfor`.
  * @param deleteCommandfor The element the delete button sends the command specified in
  *   `deleteCommand` to.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/data/input-chip Input Chip documentation}
  */
 export const InputChip: StyleableFC<InputChipProps> = ({
   children,

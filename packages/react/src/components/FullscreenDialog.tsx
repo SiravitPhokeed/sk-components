@@ -119,6 +119,8 @@ const STRINGS = {
  * @param width Full-screen Dialog transforms into a basic Dialog on larger screens. The width of the Dialog can be set here.
  * @param locale Allows for translation of the accessibility labels.
  * @param onClose The function triggered when the backdrop is clicked or Escape is pressed.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/overlays/fullscreen-dialog Full-screen Dialog documentation}
  */
 export const FullscreenDialog: StyleableFC<FullscreenDialogProps> = ({
   children,

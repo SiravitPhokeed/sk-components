@@ -60,6 +60,8 @@ const EXIT_ANIMATION_NAME = "skc-side-sheet-exit";
  * @param id The ID of the `<dialog>` element, for Invoker Commands API support.
  * @param alt A description of the Side Sheet for screen readers, similar to `alt` on `<img>`.
  * @param attach The edge of the screen the Side Sheet attaches to.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/layout/side-sheet Side Sheet documentation}
  */
 export const SideSheet: StyleableFC<SideSheetProps> = ({
   children,

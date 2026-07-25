@@ -23,7 +23,7 @@ export interface DataTableSearchProps extends ElementCustomizableProps {
    *
    * - Optional.
    *
-   * @see {@link https://reactjs.org/docs/forms.html#controlled-components React documention on controlled input}
+   * @see {@link https://reactjs.org/docs/forms.html#controlled-components React documention on controlled input documentation}
    */
   value?: string;
 

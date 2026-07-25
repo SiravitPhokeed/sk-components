@@ -80,6 +80,8 @@ export interface MaterialIconProps extends ElementCustomizableProps {
  * @param grade `grade` also adjusts the icon’s thickness, but more subtly.
  * @param size How large/small the icon is.
  * @param directional If the icon should flip horizontally in right-to-left (RTL) languages.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/data/material-icon Material Icon documentation}
  */
 export const MaterialIcon: StyleableFC<MaterialIconProps> = ({
   icon,

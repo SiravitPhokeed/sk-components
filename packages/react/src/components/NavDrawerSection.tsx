@@ -33,6 +33,8 @@ export interface NavDrawerSectionProps extends ElementCustomizableProps {
  *
  * @param children Destinations grouped into this section.
  * @param header The header of the section.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/layout/nav-drawer-section Navigation Drawer Section documentation}
  */
 export const NavDrawerSection: StyleableFC<NavDrawerSectionProps> = ({
   children,

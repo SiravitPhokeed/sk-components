@@ -42,17 +42,20 @@ export interface RootLayoutProps extends ElementCustomizableProps {
 }
 
 /**
- * The container for everything in your application. Components like Nav
- * Drawer, Navigation Bar, FAB, and Page Header each appear exactly once, and they
- * work best as direct children of Root Layout.
+ * The container for everything in your application. Components like
+ * Navigation Drawer, Navigation Bar, FAB, and Page Header each appear
+ * exactly once, and they work best as direct children of Root Layout.
  *
  * Root Layout handles component positioning and responsiveness. It also
  * renders a Skip Link by default, allowing keyboard users to jump directly
  * to the main content.
  *
- * @param children Root Layout manages the placement of Navigation Drawer, Navigation Bar, and FAB.
+ * @param children Root Layout manages the placement of Navigation Drawer,
+ *   Navigation Bar, and FAB.
  * @param skipToContent Whether to render a Skip Link as the first child.
  * @param locale Allows for translation of the Skip Link accessibility label.
+ *
+ * @see {@link https://sk-components-demo.mysk.school/docs/layout/root-layout Root Layout documentation}
  */
 export const RootLayout: StyleableFC<RootLayoutProps> = ({
   children,
