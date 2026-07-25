@@ -10,6 +10,16 @@ const nextConfig: NextConfig = {
         as: "*.js",
       },
     },
+    // Next.js unconditionally includes polyfill-module.js (~14 KiB of ES2019+
+    // polyfills) regardless of browserslist. Every browser in our support tiers
+    // already has these APIs natively, so we replace it with an empty stub.
+    // Remove this alias when Next.js supports browserslist-aware polyfills.
+    resolveAlias: {
+      // Both paths are needed — Next.js uses the relative path internally
+      "../build/polyfills/polyfill-module": "./lib/modern-polyfill.js",
+      "next/dist/build/polyfills/polyfill-module":
+        "./lib/modern-polyfill.js",
+    },
   },
   async redirects() {
     return [
