@@ -23,15 +23,13 @@ pnpm add @suankularb-components/react@^3.3
 **`useAnimationConfig()` is now deprecated.** Use the `DURATION` and `EASING`
 constants instead.
 
-```tsx
-// OLD: `useAnimationConfig()`
+```tsx title="Before" {2-3} "useAnimationConfig"
 import { transition, useAnimationConfig } from "@suankularb-components/react";
 const { duration, easing } = useAnimationConfig();
 transition(duration.short4, easing.standard);
 ```
 
-```tsx
-// NEW: `DURATION` and `EASING` constants
+```tsx title="After" {2-3} "DURATION" "EASING"
 import { DURATION, EASING, transition } from "@suankularb-components/react";
 transition(DURATION.short4, EASING.standard);
 ```

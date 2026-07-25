@@ -181,7 +181,7 @@ Tailwind CSS v4 users can now override SKCom styles without using `!important`.
 Add this line **before** the `@import` directive in your Tailwind CSS
 configuration file.
 
-```css
+```css title="globals.css" {1}
 @layer theme, base, skc, components, utilities;
 @import "tailwindcss";
 ```
@@ -198,11 +198,11 @@ configuration file.
   with the form.
 - `onChange` now passes the new value of the Radio instead of a boolean.
 
-```tsx
-// OLD: `value` was a boolean
+```tsx title="Before" {1} "value"
 <Radio value={atkResult === "negative"} onChange={() => setATKResult("negative")} />
+```
 
-// NEW: `value` is a string, `checked` indicates selection
+```tsx title="After" {2-4} "value" "checked"
 <Radio
   value="negative"
   checked={atkResult === "negative"}
@@ -225,7 +225,7 @@ part of the `FormData`.
 
 [Button](/docs/inputs/button) also gained the `type` prop.
 
-```tsx
+```tsx {8,16} "name" "type"
 <form
   onSubmit={(e) => {
     e.preventDefault();
@@ -261,8 +261,7 @@ This is called an “uncontrolled” form; the `useState` approach is called a
 - This approach is still available (“controlled mode”), but you can now use the
   Invoker Commands API to open and close modals declaratively.
 
-```tsx
-// OLD: Controlled mode
+```tsx title="Before"
 const [open, setOpen] = useState(false);
 
 return (
@@ -275,8 +274,7 @@ return (
 );
 ```
 
-```tsx
-// NEW: Uncontrolled mode (Invoker Commands API)
+```tsx title="After"
 return (
   <>
     <Button command="show-modal" commandfor="example-dialog">
@@ -295,8 +293,7 @@ See the [modals and popovers](/docs/guides/modals-and-popovers) guide for more i
 the trigger and Menu in an Anchor component, and the Menu will automatically
 position itself relative to the trigger.
 
-```tsx
-// OLD: Controlled mode & without Anchor
+```tsx title="Before"
 const [open, setOpen] = useState(false);
 
 return (
@@ -310,8 +307,7 @@ return (
 );
 ```
 
-```tsx
-// NEW: Uncontrolled mode & with Anchor
+```tsx title="After" {2,10} "Anchor"
 return (
   <Anchor>
     <Button command="show-popover" commandfor="example-menu">
@@ -366,13 +362,11 @@ Commands API.
 - Now, FAB can be placed in the Root Layout, which makes it easier to use in any
   app structure.
 
-```tsx
-// OLD: FAB in Navigation Bar
+```tsx title="Before"
 <NavBar fab={<FAB icon={<MaterialIcon icon="add" />} />}>{/* ... */}</NavBar>
 ```
 
-```tsx
-// NEW: FAB in Root Layout
+```tsx title="After"
 <RootLayout>
   <NavBar>{/* ... */}</NavBar>
   <FAB icon={<MaterialIcon icon="add" />} />
@@ -391,16 +385,14 @@ automatically.
   to make the content itself more accessible instead.
 </Text>
 
-```tsx
-// OLD: `alt` prop required if content isn’t text
+```tsx title="Before"
 <PageHeader alt="About MyLearn+">
   <span>About</span>
   <img src="/logo.svg" />
 </PageHeader>
 ```
 
-```tsx
-// NEW: Remove `alt`
+```tsx title="After"
 <PageHeader>
   <span>About</span>
   <img src="/logo.svg" alt="MyLearn+" />
