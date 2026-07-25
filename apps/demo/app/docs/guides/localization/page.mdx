@@ -41,7 +41,7 @@ falls back to `en-US`.
   `locale` prop.
 </Text>
 
-```tsx
+```tsx {1-2}
 const locale = "th"; // Provided by your app’s localization logic
 return <AppDrawer locale={locale}>{/* ... */}</AppDrawer>;
 ```
@@ -109,7 +109,7 @@ const RootLayout: FC<{
 
 Use `useRouter` to access the locale from the router object.
 
-```tsx
+```tsx {2,6} "useRouter"
 import { NavBar } from "@suankularb-components/react";
 import { useRouter } from "next/router";
 import type { FC } from "react";
@@ -189,8 +189,7 @@ wrapping in a Client Component.
 
 Here is what the full pattern looks like with `next-intl`.
 
-```tsx
-// Pages Router / Client Components in App Router
+```tsx title="Pages Router / Client Components"
 import { NavBar } from "@suankularb-components/react";
 import { useLocale } from "next-intl";
 
@@ -200,8 +199,7 @@ const NavBarWithLocale = () => {
 };
 ```
 
-```tsx
-// Async Server Components in App Router
+```tsx title="App Router: Server Components"
 import { NavBar } from "@suankularb-components/react";
 import { getLocale } from "next-intl/server";
 

@@ -37,8 +37,7 @@ recommended approach.
    set the `commandfor` prop to the `id` of the modal or popover. This is how the
    trigger knows which modal to open.
 
-```tsx
-// Uncontrolled mode (Invoker Commands API)
+```tsx title="Uncontrolled mode" {1,7-8} /command/1,3-4 "commandfor"
 <Button appearance="filled" command="show-modal" commandfor="discard-dialog">
   Discard
 </Button>
@@ -112,8 +111,7 @@ Use the `command` prop to open and close modals and popovers.
 3. On a trigger element, set the `onClick` prop to a function that sets the open
    state to `true`.
 
-```tsx
-// Controlled mode
+```tsx title="Controlled mode" {1,8} "onClose"
 const [open, setOpen] = useState(false);
 
 return (

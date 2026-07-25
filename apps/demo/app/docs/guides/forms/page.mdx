@@ -265,7 +265,7 @@ validation, [controlled forms](#controlled-forms) may be a better fit.
 if a required field is empty, and the field will be highlighted with a red
 outline.
 
-```tsx
+```tsx {1}
 <TextField name="full-name" appearance="outlined" label="Full name" required />
 ```
 
@@ -279,7 +279,7 @@ including [validation attributes](https://developer.mozilla.org/en-US/docs/Web/H
 - `minLength` and `maxLength` let you specify the minimum and maximum number of
   characters for text inputs.
 
-```tsx
+```tsx {5} "inputAttr"
 <TextField
   name="age"
   appearance="outlined"
@@ -298,7 +298,7 @@ giving you access to values before the form is submitted.
 > `value` of the selected Radio. To implement a mutually exclusive group, manage
 > the selected option in a single state variable:
 >
-> ```tsx
+> ```tsx {2-4}
 > <Radio
 >   value="email"
 >   checked={contactMethod === "email"}
