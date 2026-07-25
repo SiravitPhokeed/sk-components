@@ -33,9 +33,10 @@ export interface DialogProps extends ElementCustomizableProps {
   /**
    * Parts of a Dialog.
    *
-   * - Dialog Header and Actions are required components and must appear in the
-   *   said order.
-   * - If present, Dialog Content must appear between Dialog Header and Actions.
+   * - {@link DialogHeader Dialog Header} and {@link Actions Actions} are
+   *   required components and must appear in the said order.
+   * - If present, {@link DialogContent Dialog Content} must appear between
+   *   Dialog Header and Actions.
    */
   children: ReactNode;
 

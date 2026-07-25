@@ -79,8 +79,8 @@ export interface ButtonProps extends ActionableProps, ElementCustomizableProps {
    * true.
    *
    * - **Important:** this is intended to be used only when the Button is
-   *   inside a Segmented Button. This prop will still be functional otherwise,
-   *   but it is against Material guidelines.
+   *   inside a {@link SegmentedButton Segmented Button}. This prop will still
+   *   be functional otherwise, but it is against Material guidelines.
    * - Required when inside a Segmented Button.
    */
   selected?: boolean;

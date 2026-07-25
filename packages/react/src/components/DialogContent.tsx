@@ -8,7 +8,8 @@ import type { ReactNode } from "react";
  */
 export interface DialogContentProps extends ElementCustomizableProps {
   /**
-   * A Dialog Content can include anything. A common use case is List.
+   * A Dialog Content can include anything. A common use case is
+   * {@link List List}.
    *
    * - Always required.
    */
@@ -25,7 +26,8 @@ export interface DialogContentProps extends ElementCustomizableProps {
 }
 
 /**
- * Additional content that supplements the Dialog Header. This is where the
+ * Additional content that supplements the
+ * {@link DialogHeader Dialog Header}. This is where the
  * user can see more details about a decision or enter information.
  *
  * @param children A Dialog Content can include anything. A common use case is List.

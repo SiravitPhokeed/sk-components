@@ -39,8 +39,8 @@ export interface SegmentedButtonProps extends ElementCustomizableProps {
 }
 
 /**
- * Segmented Button combines multiple related Buttons together. Each Button in
- * a Segmented Button can be toggled on and off.
+ * Segmented Button combines multiple related {@link Button Buttons}
+ * together. Each Button in a Segmented Button can be toggled on and off.
  *
  * @param children Between 2 and 5 Buttons.
  * @param alt A description of the Segmented Button for screen readers, similar to `alt` on `<img>`.

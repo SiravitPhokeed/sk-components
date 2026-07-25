@@ -17,9 +17,10 @@ export interface RootLayoutProps extends ElementCustomizableProps {
    *   - Navigation Bar
    *   - FAB
    *   - Page Header
-   *   - Content Layout
-   *   - Split Layout
-   * - All other elements should go inside Content Layout or Split Layout.
+   *   - {@link ContentLayout Content Layout}
+   *   - {@link SplitLayout Split Layout}
+   * - All other elements should go inside {@link ContentLayout Content Layout}
+   *   or {@link SplitLayout Split Layout}.
    * - Always required.
    */
   children: ReactNode;
@@ -42,15 +43,17 @@ export interface RootLayoutProps extends ElementCustomizableProps {
 }
 
 /**
- * The container for everything in your application. Components like Nav
- * Drawer, Navigation Bar, FAB, and Page Header each appear exactly once, and they
- * work best as direct children of Root Layout.
+ * The container for everything in your application. Components like
+ * {@link NavDrawer Navigation Drawer}, {@link NavBar Navigation Bar},
+ * {@link FAB FAB}, and {@link PageHeader Page Header} each appear exactly
+ * once, and they work best as direct children of Root Layout.
  *
  * Root Layout handles component positioning and responsiveness. It also
  * renders a Skip Link by default, allowing keyboard users to jump directly
  * to the main content.
  *
- * @param children Root Layout manages the placement of Navigation Drawer, Navigation Bar, and FAB.
+ * @param children Root Layout manages the placement of Navigation Drawer,
+ *   Navigation Bar, and FAB.
  * @param skipToContent Whether to render a Skip Link as the first child.
  * @param locale Allows for translation of the Skip Link accessibility label.
  */

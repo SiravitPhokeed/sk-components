@@ -34,7 +34,7 @@ export interface SnackbarProps {
   /**
    * A Snackbar can contain 1 action. Pressing this action closes the Snackbar.
    *
-   * - Must contain 1 Button with text appearance.
+   * - Must contain 1 {@link Button Button} with text appearance.
    * - Optional.
    */
   action?: ReactElement<typeof Button>;
@@ -71,7 +71,8 @@ export interface SnackbarProps {
 
 /**
  * Snackbar briefly shows low priority information that does not require action,
- * as opposed to Dialog. It can inform the user about ongoing processes or an
+ * as opposed to {@link Dialog Dialog}. It can inform the user about ongoing
+ * processes or an
  * event that has just been completed.
  *
  * Users frequently leave Snackbars unread, so check if other components like

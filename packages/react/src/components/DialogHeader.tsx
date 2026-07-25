@@ -41,7 +41,8 @@ export interface DialogHeaderProps extends ElementCustomizableProps {
 }
 
 /**
- * The header section contains the title and supporting text of a Dialog. It
+ * The header section contains the title and supporting text of a
+ * {@link Dialog Dialog}. It
  * should clearly communicate the Dialog's purpose so the user can quickly make
  * a decision or enter information.
  *

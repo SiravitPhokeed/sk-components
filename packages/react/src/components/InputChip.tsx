@@ -109,7 +109,8 @@ const STRINGS = {
  * A Chip displaying a piece of information entered by the user is an Input
  * Chip. This type of Chip can be added and deleted by the user.
  *
- * Input Chips appear in a Chip Set or Chip Field.
+ * Input Chips appear in a {@link ChipSet Chip Set} or
+ * {@link ChipField Chip Field}.
  *
  * @param children The text displayed inside the chip.
  * @param avatar An avatar is placed before all content in an Input Chip.

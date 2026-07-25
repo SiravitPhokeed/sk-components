@@ -78,9 +78,9 @@ export interface AssistChipProps
 }
 
 /**
- * Assist Chips are similar to Buttons in that they help users take action. The
- * difference is a Button is persistent (doesn't change) and an Assist Chip is
- * dynamic and contextual (changes according to the context).
+ * Assist Chips are similar to {@link Button Buttons} in that they help users
+ * take action. The difference is a Button is persistent (doesn't change) and
+ * an Assist Chip is dynamic and contextual (changes according to the context).
  *
  * Assist Chips appear in a Chip Set.
  *

@@ -67,7 +67,7 @@ export interface FullscreenDialogProps {
   /**
    * The submission Button.
    *
-   * - Should be a Button.
+   * - Should be a {@link Button Button}.
    * - Optional.
    */
   action?: ReactNode;
