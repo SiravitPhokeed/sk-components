@@ -54,6 +54,7 @@ export interface RootLayoutProps extends ElementCustomizableProps {
  *   Navigation Bar, and FAB.
  * @param skipToContent Whether to render a Skip Link as the first child.
  * @param locale Allows for translation of the Skip Link accessibility label.
+ *
  * @see https://sk-components-demo.mysk.school/docs/layout/root-layout
  */
 export const RootLayout: StyleableFC<RootLayoutProps> = ({

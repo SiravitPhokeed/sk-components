@@ -27,6 +27,7 @@ export interface DataTableProps extends ElementCustomizableProps {
  * integrates directly with TanStack Table.
  *
  * @param children There is a set of components especially designed to be used here: Data Table Search, Data Table Filters, Data Table Content, and Data Table Pagination.
+ *
  * @see https://sk-components-demo.mysk.school/docs/data/data-table
  */
 export const DataTable: StyleableFC<DataTableProps> = ({

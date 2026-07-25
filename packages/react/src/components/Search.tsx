@@ -106,6 +106,7 @@ const STRINGS = {
  * @param placeholder A faint text displayed inside the field guiding the user.
  * @param disabled Turns the Search gray and blocks any action associated with it.
  * @param inputAttr Attributes for the underlying `<input>` element.
+ *
  * @see https://sk-components-demo.mysk.school/docs/inputs/search
  */
 export const Search: StyleableFC<SearchProps> = ({

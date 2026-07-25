@@ -50,6 +50,7 @@ export interface TableProps extends ElementCustomizableProps {
  * @param children The content of the Table.
  * @param contentWidth The minimum width of the content.
  * @param height The maximum height of the Table.
+ *
  * @see https://sk-components-demo.mysk.school/docs/data/table
  */
 export const Table: StyleableFC<TableProps> = ({

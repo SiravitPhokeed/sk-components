@@ -94,6 +94,7 @@ export interface AssistChipProps
  * @param dangerous If the action the Assist Chip accomplishes is dangerous, like deleting your account.
  * @param loading Disable the Assist Chip to signify loading status.
  * @param disabled Turns the Assist Chip gray and blocks any action associated with it.
+ *
  * @see https://sk-components-demo.mysk.school/docs/data/assist-chip
  */
 export const AssistChip: StyleableFC<AssistChipProps> = ({

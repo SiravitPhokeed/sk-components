@@ -32,6 +32,7 @@ export interface DialogContentProps extends ElementCustomizableProps {
  *
  * @param children A Dialog Content can include anything. A common use case is List.
  * @param height The height of this component.
+ *
  * @see https://sk-components-demo.mysk.school/docs/overlays/dialog-content
  */
 export const DialogContent: StyleableFC<DialogContentProps> = ({

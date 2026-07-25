@@ -89,6 +89,7 @@ const STRINGS = {
  * @param totalRows The total number of rows of data, including both those currently shown and not shown on the Data Table.
  * @param locale Allows for translation of the page indicator and accessibility labels.
  * @param onChange Called when the user changes the page.
+ *
  * @see https://sk-components-demo.mysk.school/docs/data/data-table-pagination
  */
 export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({

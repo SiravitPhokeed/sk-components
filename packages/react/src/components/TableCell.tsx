@@ -65,6 +65,7 @@ export interface TableCellProps extends ElementCustomizableProps {
  * @param colSpan The number of columns the cell should span.
  * @param rowSpan The number of rows the cell should span.
  * @param align How the content should be positioned. It can be aligned to the left, the center (default), or the right.
+ *
  * @see https://sk-components-demo.mysk.school/docs/data/table-cell
  */
 export const TableCell: StyleableFC<TableCellProps> = ({

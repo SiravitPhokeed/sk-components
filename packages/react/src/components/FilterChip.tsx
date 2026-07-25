@@ -101,6 +101,7 @@ export interface FilterChipProps
  * @param selected If the Filter Chip is selected.
  * @param disabled Turns the Filter Chip gray and blocks any action associated with it.
  * @param onClick Called when the user toggles the Filter Chip on or off. The state is passed in via the function as a boolean.
+ *
  * @see https://sk-components-demo.mysk.school/docs/data/filter-chip
  */
 export const FilterChip: StyleableFC<FilterChipProps> = ({

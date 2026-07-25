@@ -32,6 +32,7 @@ export interface SectionProps extends ElementCustomizableProps {
  * Groups content under a single Header.
  *
  * @param children Section must have exactly 1 Header as the first direct descendant. After that, it can include anything.
+ *
  * @see https://sk-components-demo.mysk.school/docs/layout/section
  */
 export const Section: StyleableFC<SectionProps> = ({

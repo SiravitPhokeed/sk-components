@@ -46,6 +46,7 @@ export interface SegmentedButtonProps extends ElementCustomizableProps {
  * @param alt A description of the Segmented Button for screen readers, similar to `alt` on `<img>`.
  * @param density A lower number means a more dense interface. In this case, less height.
  * @param full Each Button will be equal in width.
+ *
  * @see https://sk-components-demo.mysk.school/docs/inputs/segmented-button
  */
 export const SegmentedButton: StyleableFC<SegmentedButtonProps> = ({

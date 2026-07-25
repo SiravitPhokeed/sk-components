@@ -20,6 +20,7 @@ export interface TableBodyProps extends ElementCustomizableProps {
  * The body area of a Table.
  *
  * @param children Table Body has the same behavior as `<tbody>`.
+ *
  * @see https://sk-components-demo.mysk.school/docs/data/table-body
  */
 export const TableBody: StyleableFC<TableBodyProps> = ({

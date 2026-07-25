@@ -81,6 +81,7 @@ export interface SwitchProps extends ElementCustomizableProps {
  * @param offIcon An icon inside the thumb when the Switch is off.
  * @param onIcon An icon inside the thumb when the Switch is on.
  * @param disabled Turns the Switch gray and blocks any action associated with it.
+ *
  * @see https://sk-components-demo.mysk.school/docs/inputs/switch
  */
 export const Switch: StyleableFC<SwitchProps> = ({

@@ -96,6 +96,7 @@ export interface MenuItemProps
  * @param disabled Turns the Menu Item text gray and blocks any action associated with it.
  * @param value The value of a Select item, similar to `value` on `<option>`.
  * @param containerElement The element to use as the container of the Menu Item.
+ *
  * @see https://sk-components-demo.mysk.school/docs/overlays/menu-item
  */
 export const MenuItem: StyleableFC<MenuItemProps> = ({

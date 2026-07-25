@@ -34,6 +34,7 @@ export interface AppDrawerItemProps
  *
  * @param logo The logo image of the app.
  * @param name The name of the app.
+ *
  * @see https://sk-components-demo.mysk.school/docs/layout/app-drawer-item
  */
 export const AppDrawerItem: StyleableFC<AppDrawerItemProps> = ({

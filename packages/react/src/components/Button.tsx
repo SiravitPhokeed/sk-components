@@ -154,6 +154,7 @@ const STRINGS = {
  * @param disabled Turns the Button gray and blocks any action associated with it.
  * @param locale Allows for translation of the accessibility labels.
  * @param type The type of the Button, similar to `type` on `<button>`.
+ *
  * @see https://sk-components-demo.mysk.school/docs/inputs/button
  */
 export const Button: StyleableFC<ButtonProps> = ({

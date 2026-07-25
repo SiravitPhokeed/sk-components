@@ -112,6 +112,7 @@ export interface MenuProps extends ElementCustomizableProps {
  * @param listbox Renders the Menu as a listbox instead of a menu.
  * @param density A lower number means a more dense interface. In this case, less height.
  * @param onClose The function triggered when the backdrop is clicked or Escape is pressed.
+ *
  * @see https://sk-components-demo.mysk.school/docs/overlays/menu
  */
 export const Menu: StyleableFC<MenuProps> = ({

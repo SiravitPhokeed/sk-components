@@ -30,6 +30,7 @@ export interface ActionsProps extends ElementCustomizableProps {
  *
  * @param children The Buttons inside Actions.
  * @param align How the Buttons should be positioned.
+ *
  * @see https://sk-components-demo.mysk.school/docs/inputs/actions
  */
 export const Actions: StyleableFC<ActionsProps> = ({
