@@ -92,7 +92,7 @@
     "edge >= 117"
   ],
   "devDependencies": {
-    "browserslist": "^4.28.6",
-    "lightningcss": "^1.32.0"
+    "browserslist": "^4.28.7",
+    "lightningcss": "^1.33.0"
   }
 }
