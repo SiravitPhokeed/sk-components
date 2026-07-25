@@ -1,6 +1,7 @@
 "use client";
 
 import { useDialogContext } from "@/components/Dialog";
+import type { Dialog } from "@/components/Dialog";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import useIsomorphicLayoutEffect from "@/lib/hooks/useIsomorphicLayoutEffect";

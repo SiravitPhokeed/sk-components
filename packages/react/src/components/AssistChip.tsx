@@ -1,5 +1,6 @@
 "use client";
 
+import type { Button } from "@/components/Button";
 import { Chip } from "@/components/Chip";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";

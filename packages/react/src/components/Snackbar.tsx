@@ -1,6 +1,7 @@
 "use client";
 
 import type { Button } from "@/components/Button";
+import type { Dialog } from "@/components/Dialog";
 import { Text } from "@/components/Text";
 import { useAnimatedPopover } from "@/hooks/useAnimatedPopover";
 import cn from "@/lib/helpers/cn";

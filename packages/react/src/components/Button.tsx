@@ -5,6 +5,7 @@ import { useFullscreenDialogContext } from "@/components/FullscreenDialog";
 import { Interactive } from "@/components/Interactive";
 import { MaterialIcon } from "@/components/MaterialIcon";
 import { Progress } from "@/components/Progress";
+import type { SegmentedButton } from "@/components/SegmentedButton";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import type {

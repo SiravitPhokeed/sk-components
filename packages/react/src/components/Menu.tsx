@@ -1,6 +1,8 @@
 "use client";
 
 import { useAnchorContext } from "@/components/Anchor";
+import type { Divider } from "@/components/Divider";
+import type { MenuItem } from "@/components/MenuItem";
 import { useAnimatedPopover } from "@/hooks/useAnimatedPopover";
 import cn from "@/lib/helpers/cn";
 import useArrowKeyFocus from "@/lib/hooks/useArrowKeyFocus";

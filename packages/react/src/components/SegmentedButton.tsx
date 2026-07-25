@@ -1,3 +1,4 @@
+import type { Button } from "@/components/Button";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/segmented-button.css";

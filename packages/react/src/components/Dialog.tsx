@@ -1,5 +1,8 @@
 "use client";
 
+import type { Actions } from "@/components/Actions";
+import type { DialogContent } from "@/components/DialogContent";
+import type { DialogHeader } from "@/components/DialogHeader";
 import { useAnimatedDialog } from "@/hooks/useAnimatedDialog";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";

@@ -2,6 +2,8 @@
 
 import { Button } from "@/components/Button";
 import { Chip } from "@/components/Chip";
+import type { ChipField } from "@/components/ChipField";
+import type { ChipSet } from "@/components/ChipSet";
 import { MaterialIcon } from "@/components/MaterialIcon";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";

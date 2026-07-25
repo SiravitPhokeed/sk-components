@@ -1,3 +1,5 @@
+import type { DialogHeader } from "@/components/DialogHeader";
+import type { List } from "@/components/List";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/dialog-content.css";
