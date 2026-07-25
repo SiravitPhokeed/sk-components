@@ -123,7 +123,8 @@ pnpm demo:start
   - e.g. `[4.0.1] Button`.
 - If the pull request is not a feature, use the full name of a commit type.
   - e.g. `[4.0.1] Documentation: Button Usage`.
-- The pull request body should folow Keep a Changelog guidelines.
+- The pull request body should follow Keep a Changelog guidelines.
+  - Unlike the codebase, PR bodies do not need to wrap at 80 characters.
 - When a version is ready to be released, create a pull request to merge the version branch into
   `main`.
   - e.g. `Release 4.0.1`.
