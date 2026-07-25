@@ -55,7 +55,7 @@ export interface FormItemProps extends ElementCustomizableProps {
  * @param label The label for the input.
  * @param name The name for the input, passed down to form controls via context.
  *
- * @see https://sk-components-demo.mysk.school/docs/inputs/form-item
+ * @see {@link https://sk-components-demo.mysk.school/docs/inputs/form-item Form Item documentation}
  */
 export const FormItem: StyleableFC<FormItemProps> = ({
   children,

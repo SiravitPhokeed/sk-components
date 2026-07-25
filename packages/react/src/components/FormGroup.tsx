@@ -53,7 +53,7 @@ export interface FormGroupProps extends ElementCustomizableProps {
  * @param label The legend for the entire group.
  * @param name The name for the form group, passed down to form controls like Radio via context.
  *
- * @see https://sk-components-demo.mysk.school/docs/inputs/form-group
+ * @see {@link https://sk-components-demo.mysk.school/docs/inputs/form-group Form Group documentation}
  */
 export const FormGroup: StyleableFC<FormGroupProps> = ({
   children,

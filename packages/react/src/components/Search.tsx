@@ -107,7 +107,7 @@ const STRINGS = {
  * @param disabled Turns the Search gray and blocks any action associated with it.
  * @param inputAttr Attributes for the underlying `<input>` element.
  *
- * @see https://sk-components-demo.mysk.school/docs/inputs/search
+ * @see {@link https://sk-components-demo.mysk.school/docs/inputs/search Search documentation}
  */
 export const Search: StyleableFC<SearchProps> = ({
   alt,

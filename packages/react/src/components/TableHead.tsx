@@ -32,7 +32,7 @@ export interface TableHeadProps extends ElementCustomizableProps {
  * @param children Table Head has the same behavior as `<thead>`.
  * @param fixed If the Table Head stays put on scroll.
  *
- * @see https://sk-components-demo.mysk.school/docs/data/table-head
+ * @see {@link https://sk-components-demo.mysk.school/docs/data/table-head Table Head documentation}
  */
 export const TableHead: StyleableFC<TableHeadProps> = ({
   children,

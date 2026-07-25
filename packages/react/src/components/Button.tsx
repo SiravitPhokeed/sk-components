@@ -155,7 +155,7 @@ const STRINGS = {
  * @param locale Allows for translation of the accessibility labels.
  * @param type The type of the Button, similar to `type` on `<button>`.
  *
- * @see https://sk-components-demo.mysk.school/docs/inputs/button
+ * @see {@link https://sk-components-demo.mysk.school/docs/inputs/button Button documentation}
  */
 export const Button: StyleableFC<ButtonProps> = ({
   children,

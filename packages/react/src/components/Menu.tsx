@@ -113,7 +113,7 @@ export interface MenuProps extends ElementCustomizableProps {
  * @param density A lower number means a more dense interface. In this case, less height.
  * @param onClose The function triggered when the backdrop is clicked or Escape is pressed.
  *
- * @see https://sk-components-demo.mysk.school/docs/overlays/menu
+ * @see {@link https://sk-components-demo.mysk.school/docs/overlays/menu Menu documentation}
  */
 export const Menu: StyleableFC<MenuProps> = ({
   children,

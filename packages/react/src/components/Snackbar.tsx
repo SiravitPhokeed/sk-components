@@ -85,7 +85,7 @@ export interface SnackbarProps {
  * @param persistent Prevent the Snackbar from auto-dismissing after a certain duration.
  * @param autoDismissDurationMs Time in milliseconds until the Snackbar exits automatically.
  *
- * @see https://sk-components-demo.mysk.school/docs/overlays/snackbar
+ * @see {@link https://sk-components-demo.mysk.school/docs/overlays/snackbar Snackbar documentation}
  */
 export const Snackbar: StyleableFC<SnackbarProps> = ({
   children,

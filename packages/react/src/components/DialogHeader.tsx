@@ -49,7 +49,7 @@ export interface DialogHeaderProps extends ElementCustomizableProps {
  * @param title The title text.
  * @param desc With a title (`title`), the supporting text complements the title text with more details.
  *
- * @see https://sk-components-demo.mysk.school/docs/overlays/dialog-header
+ * @see {@link https://sk-components-demo.mysk.school/docs/overlays/dialog-header Dialog Header documentation}
  */
 export const DialogHeader: StyleableFC<DialogHeaderProps> = ({
   icon,

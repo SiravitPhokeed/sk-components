@@ -102,7 +102,7 @@ const STRINGS = {
  * @param onBack The function triggered when the back Button is clicked.
  * @param onNavToggle The function called when the user clicks on the navigation Button.
  *
- * @see https://sk-components-demo.mysk.school/docs/layout/page-header
+ * @see {@link https://sk-components-demo.mysk.school/docs/layout/page-header Page Header documentation}
  */
 export const PageHeader: StyleableFC<PageHeaderProps> = ({
   children,

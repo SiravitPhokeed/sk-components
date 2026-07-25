@@ -73,7 +73,7 @@ export interface FABProps extends ActionableProps {
  * @param alt A description of the FAB for screen readers, similar to `alt` on `<img>`.
  * @param tooltip A message shown in a tooltip when the user hovers over the FAB.
  *
- * @see https://sk-components-demo.mysk.school/docs/inputs/fab
+ * @see {@link https://sk-components-demo.mysk.school/docs/inputs/fab Floating Action Button documentation}
  */
 export const FAB: StyleableFC<FABProps> = ({
   children,

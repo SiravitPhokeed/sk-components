@@ -41,7 +41,7 @@ export interface AvatarProps extends ElementCustomizableProps {
  * @param children A user’s initials or their profile image.
  * @param alt A description of the Avatar for screen readers, similar to `alt` on `<img>`.
  *
- * @see https://sk-components-demo.mysk.school/docs/data/avatar
+ * @see {@link https://sk-components-demo.mysk.school/docs/data/avatar Avatar documentation}
  */
 export const Avatar: StyleableFC<AvatarProps> = ({
   children,

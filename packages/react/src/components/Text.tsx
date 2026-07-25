@@ -34,7 +34,7 @@ export interface TextProps extends ElementCustomizableProps {
  * @param children The text to apply the typographic styling to.
  * @param type The typographic style to apply.
  *
- * @see https://sk-components-demo.mysk.school/docs/data/text
+ * @see {@link https://sk-components-demo.mysk.school/docs/data/text Text documentation}
  */
 export const Text: StyleableFC<TextProps> = ({
   children,

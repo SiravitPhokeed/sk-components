@@ -95,7 +95,7 @@ export interface AssistChipProps
  * @param loading Disable the Assist Chip to signify loading status.
  * @param disabled Turns the Assist Chip gray and blocks any action associated with it.
  *
- * @see https://sk-components-demo.mysk.school/docs/data/assist-chip
+ * @see {@link https://sk-components-demo.mysk.school/docs/data/assist-chip Assist Chip documentation}
  */
 export const AssistChip: StyleableFC<AssistChipProps> = ({
   children,

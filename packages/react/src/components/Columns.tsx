@@ -34,7 +34,7 @@ export interface ColumnsProps extends ElementCustomizableProps {
  * @param children The content to be divided.
  * @param columns Number of columns.
  *
- * @see https://sk-components-demo.mysk.school/docs/layout/columns
+ * @see {@link https://sk-components-demo.mysk.school/docs/layout/columns Columns documentation}
  */
 export const Columns: StyleableFC<ColumnsProps> = ({
   children,

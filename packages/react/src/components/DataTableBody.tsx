@@ -54,7 +54,7 @@ export interface DataTableBodyProps<
  * @param align How the content in each cell should be positioned. It can be aligned to the left (default), the center, or the right.
  * @param rowActions Actions related to a row, shown on hover.
  *
- * @see https://sk-components-demo.mysk.school/docs/data/data-table-body
+ * @see {@link https://sk-components-demo.mysk.school/docs/data/data-table-body Data Table Body documentation}
  */
 export const DataTableBody = <RowShape extends {}>({
   rowModel,

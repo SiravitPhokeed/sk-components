@@ -238,7 +238,7 @@ const STRINGS = {
  * @param onChange Called when the user makes changes to the field value. The value is passed in via the function.
  * @param inputAttr Attributes for the underlying `<input>` element used as the field.
  *
- * @see https://sk-components-demo.mysk.school/docs/inputs/text-field
+ * @see {@link https://sk-components-demo.mysk.school/docs/inputs/text-field Text Field documentation}
  */
 export const TextField = <Value extends string | File = string>({
   name,

@@ -145,7 +145,7 @@ const STRINGS = {
  * @param onChange Called when the user chooses an option. The value is passed in via the function.
  * @param name The name of the Select, used for form submission.
  *
- * @see https://sk-components-demo.mysk.school/docs/inputs/select
+ * @see {@link https://sk-components-demo.mysk.school/docs/inputs/select Select documentation}
  */
 export const Select = <Value extends string = string>({
   children,

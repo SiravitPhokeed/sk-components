@@ -72,7 +72,7 @@ export interface SuggestionChipProps
  * @param elevated Use elevation instead of an outline to signify the Suggestion Chip’s boundary.
  * @param disabled Turns the Suggestion Chip gray and blocks any action associated with it.
  *
- * @see https://sk-components-demo.mysk.school/docs/data/suggestion-chip
+ * @see {@link https://sk-components-demo.mysk.school/docs/data/suggestion-chip Suggestion Chip documentation}
  */
 export const SuggestionChip: StyleableFC<SuggestionChipProps> = ({
   children,

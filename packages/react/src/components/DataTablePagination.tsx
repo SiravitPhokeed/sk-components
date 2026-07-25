@@ -90,7 +90,7 @@ const STRINGS = {
  * @param locale Allows for translation of the page indicator and accessibility labels.
  * @param onChange Called when the user changes the page.
  *
- * @see https://sk-components-demo.mysk.school/docs/data/data-table-pagination
+ * @see {@link https://sk-components-demo.mysk.school/docs/data/data-table-pagination Data Table Pagination documentation}
  */
 export const DataTablePagination: StyleableFC<DataTablePaginationProps> = ({
   rowsPerPage,

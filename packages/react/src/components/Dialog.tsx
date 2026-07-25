@@ -100,7 +100,7 @@ export interface DialogProps extends ElementCustomizableProps {
  * @param onClose The function triggered when the backdrop is clicked or Escape is pressed.
  * @param width The width of the Dialog.
  *
- * @see https://sk-components-demo.mysk.school/docs/overlays/dialog
+ * @see {@link https://sk-components-demo.mysk.school/docs/overlays/dialog Dialog documentation}
  */
 export const Dialog: StyleableFC<DialogProps> = ({
   children,

@@ -81,7 +81,7 @@ export interface MaterialIconProps extends ElementCustomizableProps {
  * @param size How large/small the icon is.
  * @param directional If the icon should flip horizontally in right-to-left (RTL) languages.
  *
- * @see https://sk-components-demo.mysk.school/docs/data/material-icon
+ * @see {@link https://sk-components-demo.mysk.school/docs/data/material-icon Material Icon documentation}
  */
 export const MaterialIcon: StyleableFC<MaterialIconProps> = ({
   icon,

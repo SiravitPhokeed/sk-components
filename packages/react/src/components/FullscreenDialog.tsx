@@ -120,7 +120,7 @@ const STRINGS = {
  * @param locale Allows for translation of the accessibility labels.
  * @param onClose The function triggered when the backdrop is clicked or Escape is pressed.
  *
- * @see https://sk-components-demo.mysk.school/docs/overlays/fullscreen-dialog
+ * @see {@link https://sk-components-demo.mysk.school/docs/overlays/fullscreen-dialog Full-screen Dialog documentation}
  */
 export const FullscreenDialog: StyleableFC<FullscreenDialogProps> = ({
   children,

@@ -42,7 +42,7 @@ export interface AnchorProps extends ElementCustomizableProps {
  * @param children Elements to anchor together.
  * @param name The anchor name (dashed-ident) for CSS Anchor Positioning.
  *
- * @see https://sk-components-demo.mysk.school/docs/overlays/anchor
+ * @see {@link https://sk-components-demo.mysk.school/docs/overlays/anchor Anchor documentation}
  */
 export const Anchor: StyleableFC<AnchorProps> = ({
   children,

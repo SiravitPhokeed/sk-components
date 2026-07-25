@@ -196,7 +196,7 @@ const STRINGS = {
  * @param locale Allows for translation of the accessibility labels.
  * @param inputAttr Attributes for the underlying `<input>` element used as the field.
  *
- * @see https://sk-components-demo.mysk.school/docs/inputs/chip-field
+ * @see {@link https://sk-components-demo.mysk.school/docs/inputs/chip-field Chip Field documentation}
  */
 export const ChipField: StyleableFC<ChipFieldProps> = ({
   children,

@@ -75,7 +75,7 @@ const STRINGS = {
  * @param locale Allows for translation of the accessibility labels.
  * @param onNavToggle The function called when the user clicks on the navigation Button.
  *
- * @see https://sk-components-demo.mysk.school/docs/layout/nav-bar
+ * @see {@link https://sk-components-demo.mysk.school/docs/layout/nav-bar Navigation Bar documentation}
  */
 export const NavBar: StyleableFC<NavBarProps> = ({
   children,

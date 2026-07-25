@@ -80,7 +80,7 @@ export interface TabProps extends ActionableProps, ElementCustomizableProps {
  * @param tooltip A message shown in a tooltip when the user hovers over the Tab.
  * @param selected Highlights the Tab. If the user is currently on this page, the Tab should be highlighted.
  *
- * @see https://sk-components-demo.mysk.school/docs/layout/tab
+ * @see {@link https://sk-components-demo.mysk.school/docs/layout/tab Tab documentation}
  */
 export const Tab: StyleableFC<TabProps> = ({
   icon,

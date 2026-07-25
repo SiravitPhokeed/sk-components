@@ -31,7 +31,7 @@ export interface AppDrawerSegmentProps extends ElementCustomizableProps {
  * @param children The apps in this segment.
  * @param title The title of the group.
  *
- * @see https://sk-components-demo.mysk.school/docs/layout/app-drawer-segment
+ * @see {@link https://sk-components-demo.mysk.school/docs/layout/app-drawer-segment App Drawer Segment documentation}
  */
 export const AppDrawerSegment: StyleableFC<AppDrawerSegmentProps> = ({
   children,

@@ -50,7 +50,7 @@ export interface ProgressProps extends ElementCustomizableProps {
  * @param value The progress percentage of an activity (a value from 0 to 100).
  * @param visible If this Progress is visible.
  *
- * @see https://sk-components-demo.mysk.school/docs/overlays/progress
+ * @see {@link https://sk-components-demo.mysk.school/docs/overlays/progress Progress documentation}
  */
 export const Progress: StyleableFC<ProgressProps> = ({
   appearance,

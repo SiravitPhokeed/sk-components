@@ -69,7 +69,7 @@ export interface CardHeaderProps extends ElementCustomizableProps {
  * @param level The heading level for the title, which affects the document outline.
  * @param truncate Limits the title and subtitle to a single line, truncating the text with an ellipsis if it overflows.
  *
- * @see https://sk-components-demo.mysk.school/docs/data/card-header
+ * @see {@link https://sk-components-demo.mysk.school/docs/data/card-header Card Header documentation}
  */
 export const CardHeader: StyleableFC<CardHeaderProps> = ({
   avatar,

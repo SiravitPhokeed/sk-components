@@ -57,7 +57,7 @@ const EXIT_ANIMATION_NAME = "skc-app-drawer-exit";
  * @param locale Allows for translation of the accessibility labels.
  * @param onOpen Called when the toggle Button opens the drawer.
  *
- * @see https://sk-components-demo.mysk.school/docs/layout/app-drawer
+ * @see {@link https://sk-components-demo.mysk.school/docs/layout/app-drawer App Drawer documentation}
  */
 export const AppDrawer: StyleableFC<AppDrawerProps> = ({
   children,

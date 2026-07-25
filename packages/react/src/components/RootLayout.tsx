@@ -55,7 +55,7 @@ export interface RootLayoutProps extends ElementCustomizableProps {
  * @param skipToContent Whether to render a Skip Link as the first child.
  * @param locale Allows for translation of the Skip Link accessibility label.
  *
- * @see https://sk-components-demo.mysk.school/docs/layout/root-layout
+ * @see {@link https://sk-components-demo.mysk.school/docs/layout/root-layout Root Layout documentation}
  */
 export const RootLayout: StyleableFC<RootLayoutProps> = ({
   children,

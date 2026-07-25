@@ -82,7 +82,7 @@ export interface NavBarItemProps
  * @param selected Highlights the Navigation Bar Item. If the user is currently on this page, the Navigation Bar Item should be highlighted.
  * @param railOnly This Navigation Bar Item will only show on the Navigation Rail visible on larger screens and disappears on smaller screens.
  *
- * @see https://sk-components-demo.mysk.school/docs/layout/nav-bar-item
+ * @see {@link https://sk-components-demo.mysk.school/docs/layout/nav-bar-item Navigation Bar Item documentation}
  */
 export const NavBarItem: StyleableFC<NavBarItemProps> = ({
   icon,

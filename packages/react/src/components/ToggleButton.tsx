@@ -97,7 +97,7 @@ export interface ToggleButtonProps extends ElementCustomizableProps {
  * @param value Whether the Toggle Button is toggled on or off. This is useful if you want a controlled input.
  * @param onChange Called when the user toggles the Toggle Button. The state is passed in via the function as a boolean.
  *
- * @see https://sk-components-demo.mysk.school/docs/inputs/toggle-button
+ * @see {@link https://sk-components-demo.mysk.school/docs/inputs/toggle-button Toggle Button documentation}
  */
 export const ToggleButton: StyleableFC<ToggleButtonProps> = ({
   appearance,

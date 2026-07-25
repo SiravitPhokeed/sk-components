@@ -47,7 +47,7 @@ export interface SegmentedButtonProps extends ElementCustomizableProps {
  * @param density A lower number means a more dense interface. In this case, less height.
  * @param full Each Button will be equal in width.
  *
- * @see https://sk-components-demo.mysk.school/docs/inputs/segmented-button
+ * @see {@link https://sk-components-demo.mysk.school/docs/inputs/segmented-button Segmented Button documentation}
  */
 export const SegmentedButton: StyleableFC<SegmentedButtonProps> = ({
   children,

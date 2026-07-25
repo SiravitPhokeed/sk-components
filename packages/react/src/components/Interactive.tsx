@@ -60,7 +60,7 @@ export interface InteractiveProps
  * @param rippleEffect Show an ink ripple effect, a soft-edge translucent circle, radiating outward from the point of each click/tap to signify interactivity.
  * @param shadowEffect Elevates the content on hover and focus to signify its interactivity.
  *
- * @see https://sk-components-demo.mysk.school/docs/data/interactive
+ * @see {@link https://sk-components-demo.mysk.school/docs/data/interactive Interactive documentation}
  */
 export const Interactive: StyleableFC<
   InteractiveProps &

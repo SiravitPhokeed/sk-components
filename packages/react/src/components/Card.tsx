@@ -73,7 +73,7 @@ export interface CardProps extends ActionableProps, ElementCustomizableProps {
  * @param stateLayerEffect A state layer is a visual overlay that responds to user interaction. For example, a Button’s state layer increases its opacity on hover, signaling it’s clickable.
  * @param shadowEffect Elevates Card on hover and focus to signify its interactivity.
  *
- * @see https://sk-components-demo.mysk.school/docs/data/card
+ * @see {@link https://sk-components-demo.mysk.school/docs/data/card Card documentation}
  */
 export const Card: StyleableFC<CardProps> = ({
   children,

@@ -97,7 +97,7 @@ export interface MenuItemProps
  * @param value The value of a Select item, similar to `value` on `<option>`.
  * @param containerElement The element to use as the container of the Menu Item.
  *
- * @see https://sk-components-demo.mysk.school/docs/overlays/menu-item
+ * @see {@link https://sk-components-demo.mysk.school/docs/overlays/menu-item Menu Item documentation}
  */
 export const MenuItem: StyleableFC<MenuItemProps> = ({
   children,

@@ -32,7 +32,7 @@ export interface TableFootProps extends ElementCustomizableProps {
  * @param children Table Foot has the same behavior as `<tfoot>`.
  * @param fixed If the Table Foot stays put on scroll.
  *
- * @see https://sk-components-demo.mysk.school/docs/data/table-foot
+ * @see {@link https://sk-components-demo.mysk.school/docs/data/table-foot Table Foot documentation}
  */
 export const TableFoot: StyleableFC<TableFootProps> = ({
   children,
