@@ -1,6 +1,5 @@
 "use client";
 
-import type { Button } from "@/components/Button";
 import { Chip } from "@/components/Chip";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
@@ -79,9 +78,9 @@ export interface AssistChipProps
 }
 
 /**
- * Assist Chips are similar to {@link Button Buttons} in that they help users
- * take action. The difference is a Button is persistent (doesn't change) and
- * an Assist Chip is dynamic and contextual (changes according to the context).
+ * Assist Chips are similar to Buttons in that they help users take action.
+ * The difference is a Button is persistent (doesn't change) and an Assist
+ * Chip is dynamic and contextual (changes according to the context).
  *
  * Assist Chips appear in a Chip Set.
  *
@@ -95,6 +94,7 @@ export interface AssistChipProps
  * @param dangerous If the action the Assist Chip accomplishes is dangerous, like deleting your account.
  * @param loading Disable the Assist Chip to signify loading status.
  * @param disabled Turns the Assist Chip gray and blocks any action associated with it.
+ * @see https://sk-components-demo.mysk.school/docs/data/assist-chip
  */
 export const AssistChip: StyleableFC<AssistChipProps> = ({
   children,

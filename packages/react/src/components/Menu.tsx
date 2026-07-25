@@ -1,8 +1,6 @@
 "use client";
 
 import { useAnchorContext } from "@/components/Anchor";
-import type { Divider } from "@/components/Divider";
-import type { MenuItem } from "@/components/MenuItem";
 import { useAnimatedPopover } from "@/hooks/useAnimatedPopover";
 import cn from "@/lib/helpers/cn";
 import useArrowKeyFocus from "@/lib/hooks/useArrowKeyFocus";
@@ -29,8 +27,7 @@ export interface MenuProps extends ElementCustomizableProps {
   /**
    * Menu Items and other content inside the Menu.
    *
-   * - Should mostly contain {@link MenuItem Menu Items} and optionally
-   *   {@link Divider Dividers}.
+   * - Should mostly contain Menu Items and optionally Dividers.
    * - Always required.
    */
   children: ReactNode;
@@ -115,6 +112,7 @@ export interface MenuProps extends ElementCustomizableProps {
  * @param listbox Renders the Menu as a listbox instead of a menu.
  * @param density A lower number means a more dense interface. In this case, less height.
  * @param onClose The function triggered when the backdrop is clicked or Escape is pressed.
+ * @see https://sk-components-demo.mysk.school/docs/overlays/menu
  */
 export const Menu: StyleableFC<MenuProps> = ({
   children,

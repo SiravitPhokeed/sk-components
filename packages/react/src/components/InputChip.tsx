@@ -2,8 +2,6 @@
 
 import { Button } from "@/components/Button";
 import { Chip } from "@/components/Chip";
-import type { ChipField } from "@/components/ChipField";
-import type { ChipSet } from "@/components/ChipSet";
 import { MaterialIcon } from "@/components/MaterialIcon";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
@@ -111,8 +109,7 @@ const STRINGS = {
  * A Chip displaying a piece of information entered by the user is an Input
  * Chip. This type of Chip can be added and deleted by the user.
  *
- * Input Chips appear in a {@link ChipSet Chip Set} or
- * {@link ChipField Chip Field}.
+ * Input Chips appear in a Chip Set or Chip Field.
  *
  * @param children The text displayed inside the chip.
  * @param avatar An avatar is placed before all content in an Input Chip.
@@ -125,6 +122,7 @@ const STRINGS = {
  *   `deleteCommandfor`.
  * @param deleteCommandfor The element the delete button sends the command specified in
  *   `deleteCommand` to.
+ * @see https://sk-components-demo.mysk.school/docs/data/input-chip
  */
 export const InputChip: StyleableFC<InputChipProps> = ({
   children,

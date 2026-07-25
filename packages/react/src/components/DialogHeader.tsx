@@ -1,7 +1,6 @@
 "use client";
 
 import { useDialogContext } from "@/components/Dialog";
-import type { Dialog } from "@/components/Dialog";
 import { Text } from "@/components/Text";
 import cn from "@/lib/helpers/cn";
 import useIsomorphicLayoutEffect from "@/lib/hooks/useIsomorphicLayoutEffect";
@@ -42,14 +41,14 @@ export interface DialogHeaderProps extends ElementCustomizableProps {
 }
 
 /**
- * The header section contains the title and supporting text of a
- * {@link Dialog Dialog}. It
- * should clearly communicate the Dialog's purpose so the user can quickly make
- * a decision or enter information.
+ * The header section contains the title and supporting text of a Dialog.
+ * It should clearly communicate the Dialog's purpose so the user can
+ * quickly make a decision or enter information.
  *
  * @param icon The hero icon shown above the title text (`title`).
  * @param title The title text.
  * @param desc With a title (`title`), the supporting text complements the title text with more details.
+ * @see https://sk-components-demo.mysk.school/docs/overlays/dialog-header
  */
 export const DialogHeader: StyleableFC<DialogHeaderProps> = ({
   icon,

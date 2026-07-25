@@ -1,5 +1,3 @@
-import type { DialogHeader } from "@/components/DialogHeader";
-import type { List } from "@/components/List";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/dialog-content.css";
@@ -11,7 +9,7 @@ import type { ReactNode } from "react";
 export interface DialogContentProps extends ElementCustomizableProps {
   /**
    * A Dialog Content can include anything. A common use case is
-   * {@link List List}.
+   * List.
    *
    * - Always required.
    */
@@ -29,11 +27,12 @@ export interface DialogContentProps extends ElementCustomizableProps {
 
 /**
  * Additional content that supplements the
- * {@link DialogHeader Dialog Header}. This is where the
+ * Dialog Header. This is where the
  * user can see more details about a decision or enter information.
  *
  * @param children A Dialog Content can include anything. A common use case is List.
- * @param height The height of this component. If its content is taller than this value, Dialog Content scrolls.
+ * @param height The height of this component.
+ * @see https://sk-components-demo.mysk.school/docs/overlays/dialog-content
  */
 export const DialogContent: StyleableFC<DialogContentProps> = ({
   children,

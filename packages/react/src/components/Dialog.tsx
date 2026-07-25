@@ -1,8 +1,5 @@
 "use client";
 
-import type { Actions } from "@/components/Actions";
-import type { DialogContent } from "@/components/DialogContent";
-import type { DialogHeader } from "@/components/DialogHeader";
 import { useAnimatedDialog } from "@/hooks/useAnimatedDialog";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
@@ -36,10 +33,10 @@ export interface DialogProps extends ElementCustomizableProps {
   /**
    * Parts of a Dialog.
    *
-   * - {@link DialogHeader Dialog Header} and {@link Actions Actions} are
-   *   required components and must appear in the said order.
-   * - If present, {@link DialogContent Dialog Content} must appear between
-   *   Dialog Header and Actions.
+   * - Dialog Header and Actions are required components and must appear in
+   *   the said order.
+   * - If present, Dialog Content must appear between Dialog Header and
+   *   Actions.
    */
   children: ReactNode;
 
@@ -102,6 +99,7 @@ export interface DialogProps extends ElementCustomizableProps {
  * @param open If the Dialog is open and shown.
  * @param onClose The function triggered when the backdrop is clicked or Escape is pressed.
  * @param width The width of the Dialog.
+ * @see https://sk-components-demo.mysk.school/docs/overlays/dialog
  */
 export const Dialog: StyleableFC<DialogProps> = ({
   children,

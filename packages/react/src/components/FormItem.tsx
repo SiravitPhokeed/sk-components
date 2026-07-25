@@ -48,12 +48,13 @@ export interface FormItemProps extends ElementCustomizableProps {
 }
 
 /**
- * A wrapper for form control components like {@link Checkbox Checkbox},
- * {@link Radio Radio}, and {@link Switch Switch} with a label.
+ * A wrapper for form control components like Checkbox, Radio, and Switch with
+ * a label.
  *
  * @param children The input.
  * @param label The label for the input.
- * @param name The name for the input, passed down to form controls like Checkbox, Radio, and Switch via context.
+ * @param name The name for the input, passed down to form controls via context.
+ * @see https://sk-components-demo.mysk.school/docs/inputs/form-item
  */
 export const FormItem: StyleableFC<FormItemProps> = ({
   children,

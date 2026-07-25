@@ -1,10 +1,4 @@
-import type { ContentLayout } from "@/components/ContentLayout";
-import type { FAB } from "@/components/FAB";
-import type { NavBar } from "@/components/NavBar";
-import type { NavDrawer } from "@/components/NavDrawer";
-import type { PageHeader } from "@/components/PageHeader";
 import { SkipLink } from "@/components/SkipLink";
-import type { SplitLayout } from "@/components/SplitLayout";
 import cn from "@/lib/helpers/cn";
 import type { ElementCustomizableProps, StyleableFC } from "@/lib/types";
 import "@suankularb-components/css/root-layout.css";
@@ -23,10 +17,9 @@ export interface RootLayoutProps extends ElementCustomizableProps {
    *   - Navigation Bar
    *   - FAB
    *   - Page Header
-   *   - {@link ContentLayout Content Layout}
-   *   - {@link SplitLayout Split Layout}
-   * - All other elements should go inside {@link ContentLayout Content Layout}
-   *   or {@link SplitLayout Split Layout}.
+   *   - Content Layout
+   *   - Split Layout
+   * - All other elements should go inside Content Layout or Split Layout.
    * - Always required.
    */
   children: ReactNode;
@@ -50,9 +43,8 @@ export interface RootLayoutProps extends ElementCustomizableProps {
 
 /**
  * The container for everything in your application. Components like
- * {@link NavDrawer Navigation Drawer}, {@link NavBar Navigation Bar},
- * {@link FAB FAB}, and {@link PageHeader Page Header} each appear exactly
- * once, and they work best as direct children of Root Layout.
+ * Navigation Drawer, Navigation Bar, FAB, and Page Header each appear
+ * exactly once, and they work best as direct children of Root Layout.
  *
  * Root Layout handles component positioning and responsiveness. It also
  * renders a Skip Link by default, allowing keyboard users to jump directly
@@ -62,6 +54,7 @@ export interface RootLayoutProps extends ElementCustomizableProps {
  *   Navigation Bar, and FAB.
  * @param skipToContent Whether to render a Skip Link as the first child.
  * @param locale Allows for translation of the Skip Link accessibility label.
+ * @see https://sk-components-demo.mysk.school/docs/layout/root-layout
  */
 export const RootLayout: StyleableFC<RootLayoutProps> = ({
   children,
