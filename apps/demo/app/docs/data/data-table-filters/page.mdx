@@ -49,7 +49,7 @@ logic when the user selects a filter.
 **With TanStack Table**, you can hook up the Filter Chips to `columnFilters` to
 filter the table’s content.
 
-```tsx
+```tsx {4} /columnFilters/1
 const [filter, setFilter] = useState("all");
 const table = useReactTable({
   // ...

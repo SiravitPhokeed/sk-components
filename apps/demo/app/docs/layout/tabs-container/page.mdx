@@ -75,7 +75,7 @@ reveals. The `id` should be unique to each panel. This establishes an
 [`aria-controls`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-controls)
 relationship.
 
-```tsx
+```tsx {1,9,16,23} "useState" "controls"
 const [selectedTab, setSelectedTab] = useState("overview");
 
 return (

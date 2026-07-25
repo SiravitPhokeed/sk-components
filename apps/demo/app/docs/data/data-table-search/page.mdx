@@ -42,7 +42,7 @@ filtering logic when the user makes changes to the field.
 **With TanStack Table**, you can hook up the `onChange` function to
 `setGlobalFilter` to filter the table’s content.
 
-```tsx
+```tsx {1,6,13} /onChange/1 "setGlobalFilter"
 const [globalFilter, setGlobalFilter] = useState("");
 
 const table = useReactTable({
