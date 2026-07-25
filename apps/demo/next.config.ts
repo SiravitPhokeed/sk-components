@@ -16,9 +16,9 @@ const nextConfig: NextConfig = {
     // Remove this alias when Next.js supports browserslist-aware polyfills.
     resolveAlias: {
       // Both paths are needed — Next.js uses the relative path internally
-      "../build/polyfills/polyfill-module": "./src/lib/modern-polyfill.js",
+      "../build/polyfills/polyfill-module": "./lib/modern-polyfill.js",
       "next/dist/build/polyfills/polyfill-module":
-        "./src/lib/modern-polyfill.js",
+        "./lib/modern-polyfill.js",
     },
   },
   async redirects() {
