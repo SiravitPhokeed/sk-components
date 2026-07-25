@@ -38,7 +38,7 @@ you can take advantage of.
 
 > 1. **App Router support** — Client Components are now marked with
 >    `"use client"`.
-> 2. **Setup changes** — [Theme Provider](/docs/layouts/theme-provider) is no
+> 2. **Setup changes** — [Theme Provider](/docs/layout/theme-provider) is no
 >    longer a wrapper, and you no longer manage the state of
 >    [Navigation Drawer](/docs/layout/nav-drawer) or [Snackbar](/docs/overlays/snackbar).
 >    Try the new `snackbar.push()` and `snackbar.promise()` methods.
@@ -91,11 +91,11 @@ const ExampleCard = () => (
 );
 ```
 
-More on the [Next.js App Router guide](/docs/guides/nextjs-app).
+More on the [Next.js App Router guide](/docs/integrations/nextjs-app).
 
 #### Setup changes
 
-**[Theme Provider](/docs/layouts/theme-provider) is no longer a wrapper,** and can
+**[Theme Provider](/docs/layout/theme-provider) is no longer a wrapper,** and can
 be added anywhere in the component tree.
 
 ```tsx
@@ -138,8 +138,8 @@ Commands API with the `id` of `nav-drawer`.
 ```
 
 <DisclosureCard summary="Further reading for Next.js users">
-  Check the [Next.js App Router guide](/docs/guides/nextjs-app) or the [Next.js
-  Pages Router guide](/docs/guides/nextjs-pages) for more information on how to
+  Check the [Next.js App Router guide](/docs/integrations/nextjs-app) or the [Next.js
+  Pages Router guide](/docs/integrations/nextjs-pages) for more information on how to
   set up your Next.js project with SKCom v4.
 </DisclosureCard>
 
@@ -352,7 +352,7 @@ Learn more in the [modals and popovers guide](/docs/guides/modals).
 
 ---
 
-**New [Side Sheet](/docs/overlays/side-sheet) component** is a modal that slides
+**New [Side Sheet](/docs/layout/side-sheet) component** is a modal that slides
 in from the side of the screen. Like other modals, it works with the Invoker
 Commands API.
 
