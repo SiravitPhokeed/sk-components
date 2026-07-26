@@ -26,7 +26,7 @@
   }
 
   .shiki {
-    @apply bg-surface-container relative my-4 block rounded-md scheme-dark not-has-data-rehype-pretty-code-title:*:first:top-1 forced-colors:border forced-colors:border-[CanvasText] not-has-data-rehype-pretty-code-title:*:first:*:[i]:bg-[#24292e];
+    @apply bg-surface-variant dark:bg-surface-container contrast-more:border-outline relative my-4 block rounded-md not-has-data-rehype-pretty-code-title:*:first:top-1 contrast-more:border forced-colors:border forced-colors:border-[CanvasText];
 
     pre {
       @apply rounded-md text-base;
@@ -46,10 +46,18 @@
 
     /* Colors extracted from GitHub */
     [data-highlighted-line] {
-      @apply border-l-4 border-l-[#58a6ff4d] bg-[#388bfd26] ps-3;
+      @apply contrast-more:border-l-primary border-l-4 border-l-[#b6e3ff] bg-[#ddf4ff] ps-3 dark:border-l-[#58a6ff4d] dark:bg-[#388bfd26] forced-colors:*:text-[MarkText]! forced-colors:[&,>*]:bg-[Mark]!;
     }
     [data-highlighted-chars] {
-      @apply -mx-1 rounded-xs bg-[#388bfd66] px-1 font-bold forced-colors:*:text-[CanvasText]!;
+      @apply -mx-0.5 rounded-xs bg-[#b6e3ff] px-0.5 font-bold dark:bg-[#388bfd66] forced-colors:*:bg-[Canvas] forced-colors:*:text-[CanvasText]!;
+    }
+
+    /* Light/dark and contrast modes support */
+    pre[data-theme*=" "] {
+      @apply light:bg-surface-container-low light:contrast-more:bg-(--shiki-light-high-contrast-bg) dark:bg-(--shiki-dark-bg) dark:contrast-more:bg-(--shiki-dark-high-contrast-bg);
+    }
+    code[data-theme*=" "] span {
+      @apply light:text-(--shiki-light) light:contrast-more:text-(--shiki-light-high-contrast) dark:text-(--shiki-dark) dark:contrast-more:text-(--shiki-dark-high-contrast);
     }
   }
 }

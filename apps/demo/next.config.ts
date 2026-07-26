@@ -48,7 +48,19 @@ const nextConfig: NextConfig = {
 
 const withMDX = createMDX({
   options: {
-    rehypePlugins: [["rehype-pretty-code", { theme: "github-dark" }]],
+    rehypePlugins: [
+      [
+        "rehype-pretty-code",
+        {
+          theme: {
+            dark: "github-dark",
+            "dark-high-contrast": "github-dark-high-contrast",
+            light: "github-light",
+            "light-high-contrast": "github-light-high-contrast",
+          },
+        },
+      ],
+    ],
   },
 });
 

@@ -11,18 +11,18 @@ const FEEDBACK_DURATION_MS = 6000;
 const COPY_STATUS_ICONS = new Map([
   [
     true,
-    <MaterialIcon key="true" icon="check" className="state-layer-primary-80" />,
+    <MaterialIcon key="true" icon="check" className="state-layer-primary" />,
   ],
   [
     false,
-    <MaterialIcon key="false" icon="error" className="state-layer-error-80" />,
+    <MaterialIcon key="false" icon="error" className="state-layer-error" />,
   ],
   [
     null,
     <MaterialIcon
       key="null"
       icon="content_copy"
-      className="state-layer-neutral-variant-60"
+      className="state-layer-outline"
     />,
   ],
 ]);
