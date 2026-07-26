@@ -140,6 +140,27 @@ FAB must be a direct descendant of [Root Layout](/docs/layout/root-layout).
       </TableCell>
 
   </PropsTableRow>
+
+  <PropsTableRow prop="visible" required="never">
+    <TableCell>
+      ```
+      "corner"
+      | "rail"
+      | "always"
+      ```
+    </TableCell>
+    <TableCell>
+
+      Controls when the FAB should appear — only when floating in the corner on
+      mobile, only when docked in the Navigation Rail on desktop, or both.
+
+      - Must be `corner` (mobile only), `rail` (desktop only), or `always`
+        (both).
+      - Optional. Defaults to `always`.
+
+      </TableCell>
+
+  </PropsTableRow>
 </PropsTable>
 
 ### Version changes
