@@ -399,7 +399,7 @@ Select's `onChange` is now generic: `(value: Value) => any` where `Value extends
 **After:**
 
 ```tsx
-<Select value={value} onChange={(v: string) => setValue(v)}>
+<Select<Value> value={value} onChange={(v) => setValue(v)}>
 ```
 
 ### 2.8 Radio: `value`, `checked`, and `onChange` changes
@@ -424,7 +424,11 @@ grep -rn "\<Radio[^>]* value=" --include="*.tsx"
 **After:**
 
 ```tsx
-<Radio value="option-id" checked={selected} onChange={(v: string) => setSelected(v)} />
+<Radio
+  value="option-id"
+  checked={selected}
+  onChange={(v: string) => setSelected(v)}
+/>
 ```
 
 > **Note for native form submission:** v4 form controls (Checkbox, Radio,
@@ -768,6 +772,7 @@ This also works for lists — wrap each item in a motion element with a unique
 These are new capabilities you may want to use.
 
 **Invoker Commands:**
+
 - **All actionable components** (Button, Card, MenuItem, ListItem, FAB, Tab,
   NavBarItem, InputChip, AppDrawerItem, AssistChip, NavDrawerItem,
   SuggestionChip, Interactive): `command`, `commandfor`
@@ -775,26 +780,31 @@ These are new capabilities you may want to use.
 - **Menu**: `anchor` (CSS anchor name, auto-resolved from `<Anchor>` context)
 
 **Form submission:**
+
 - **Checkbox, FormGroup, FormItem, Radio, Select, Switch, TextField**: `name`
 - **Button**: `type` (`"submit" | "reset" | "button"`, defaults to `"button"`)
 - **Radio**: `checked` (replaces the old boolean `value` for toggle state)
 - **TextField**: `type` (now supports `"color"`, `"date"`, `"datetime-local"`, `"email"`, `"file"`, `"month"`, `"number"`, `"password"`, `"search"`, `"tel"`, `"text"`, `"time"`, `"url"`, `"week"`)
 
 **Chips:**
+
 - **InputChip**: `tooltip`, `deleteCommand`, `deleteCommandfor`, `locale`
 - **ChipField**: `required`, `onNewEntries` (receives all values when pasting or pressing a separator key; replaces singular `onNewEntry`)
 
 **Overlays:**
+
 - **Snackbar**: `persistent`, `autoDismissDurationMs`
 - **FullscreenDialog**: `locale` (`"en-US"` | `"th"`)
 - **SideSheet**: `attach` (`"left"` | `"right"`, defaults to `"right"`)
 
 **Data Table:**
+
 - **DataTableBody, DataTableHead**: `align`
 - **DataTableHead**: `colSpans`
 - **TableCell**: `colSpan`, `rowSpan`
 
 **Other:**
+
 - **Button**: `autoFocus`
 - **Search**: `hotkey` (keyboard shortcut to focus)
 - **MaterialIcon**: `alt` (accessibility label), `directional` (flips icon horizontally in RTL)
