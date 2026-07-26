@@ -13,7 +13,6 @@
         (e.g., `[4.0] Fix: Button Group Gap`)
   - [ ] Component names use Title Case (e.g., “Full-screen Dialog,” not
         “FullscreenDialog”)
-  - [ ] Headers use Sentence case (demo app documentation only)
   - [ ] Prop names are in codeblocks (e.g., `onClick`)
   - [ ] Uses American English
   - [ ] Uses smart quotes (e.g., `isn’t` not `isn't`)
