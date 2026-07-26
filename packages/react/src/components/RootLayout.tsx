@@ -35,7 +35,7 @@ export interface RootLayoutProps extends ElementCustomizableProps {
   /**
    * Allows for translation of the Skip Link accessibility label.
    *
-   * - Must be `en-US` or `th`.
+   * - Must be `"en-US"` or `"th"`.
    * - Optional.
    */
   locale?: "en-US" | "th";

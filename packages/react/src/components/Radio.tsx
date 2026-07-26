@@ -25,7 +25,7 @@ export interface RadioProps<
 
   /**
    * The value submitted when this Radio is selected, similar to `value` on
-   * `<input type="radio">`. Defaults to `on`.
+   * `<input type="radio">`. Defaults to `"on"`.
    *
    * - Optional.
    */

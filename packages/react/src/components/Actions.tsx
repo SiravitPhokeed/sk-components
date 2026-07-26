@@ -19,7 +19,7 @@ export interface ActionsProps extends ElementCustomizableProps {
    * How the Buttons should be positioned. It can be aligned to the left, the
    * center, the right (default), or fill the entire width.
    *
-   * - Must be `left`, `center`, `right`, `full`.
+   * - Must be `"left"`, `"center"`, `"right"`, `"full"`.
    * - Optional.
    */
   align?: "left" | "center" | "right" | "full";

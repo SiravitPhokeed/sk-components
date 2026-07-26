@@ -46,7 +46,7 @@ export interface ListItemProps
   /**
    * The vertical alignment of the List Item’s content.
    *
-   * - Must be `top`, `center`, or `bottom`.
+   * - Must be `"top"`, `"center"`, or `"bottom"`.
    * - Always required.
    */
   align: "top" | "center" | "bottom";

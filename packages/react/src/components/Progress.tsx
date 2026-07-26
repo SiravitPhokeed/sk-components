@@ -9,10 +9,10 @@ export interface ProgressProps extends ElementCustomizableProps {
   /**
    * Progress can be either a loading spinner or a linear loading bar.
    *
-   * - Must be `linear` or `circular`.
+   * - Must be `"linear"` or `"circular"`.
    * - Keep the appearance consistent for the same actions. For example, if
-   *   loading a post uses `linear` in one place, the same action should always
-   *   use `linear` elsewhere.
+   *   loading a post uses `"linear"` in one place, the same action should
+   *   always use `"linear"` elsewhere.
    * - Always required.
    */
   appearance: "linear" | "circular";

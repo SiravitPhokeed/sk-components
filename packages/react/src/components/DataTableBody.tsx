@@ -28,7 +28,7 @@ export interface DataTableBodyProps<
    * How the content in each cell should be positioned. It can be aligned to the
    * left (default), the center, or the right.
    *
-   * - Must be `left`, `center`, `right`.
+   * - Must be `"left"`, `"center"`, `"right"`.
    * - Optional.
    *
    */

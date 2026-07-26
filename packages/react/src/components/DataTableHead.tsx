@@ -24,7 +24,7 @@ export interface DataTableHeadProps extends ElementCustomizableProps {
    * How the content in each cell should be positioned. It can be aligned to the
    * left, the center (default), or the right.
    *
-   * - Must be `left`, `center`, `right`.
+   * - Must be `"left"`, `"center"`, `"right"`.
    * - Optional.
    */
   align?: "left" | "center" | "right";
@@ -43,7 +43,7 @@ export interface DataTableHeadProps extends ElementCustomizableProps {
   /**
    * Allows for translation of the accessibility labels.
    *
-   * - Must be `en-US` or `th`.
+   * - Must be `"en-US"` or `"th"`.
    * - Optional.
    */
   locale?: "en-US" | "th";
