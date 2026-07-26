@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: SK IT Solutions
+    url: mailto:itsolutions@sk.ac.th
+    about: Contact the student organization behind SK Components.
+  - name: Discussions
+    url: https://github.com/suankularb-wittayalai-school/sk-components/discussions
+    about: Ask questions, share ideas, and discuss with the community.

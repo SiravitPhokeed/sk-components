@@ -1,0 +1,51 @@
+name: Feature Request
+description: Propose a new feature or enhancement.
+title: "[feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to suggest a feature!
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      description: Which package or area does this affect?
+      options:
+        - css (SKCom Styles)
+        - react (ReSKCom)
+        - demo (Demo App)
+        - docs (Documentation)
+    validations:
+      required: true
+  - type: input
+    id: component
+    attributes:
+      label: Component
+      description: Which component is this about? (Leave blank if not applicable.)
+      placeholder: e.g. Button, Navigation Bar, Chip Field
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What problem would this feature solve? Is it related to a frustration or limitation?
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe what you’d like to see. Be as specific as possible.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Have you thought of any workarounds or alternative approaches?
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Any other details, screenshots, or links that might help.
