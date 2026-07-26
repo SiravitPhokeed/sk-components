@@ -140,6 +140,67 @@ return (
 `snackbar.push()` and `snackbar.promise()` instead of either mode. See the
 documentation for Snackbars for more information.
 
+### Nesting
+
+#### Popovers inside modals
+
+**Popovers can be used inside modals,** i.e. Menu and Snackbar can be used
+inside Dialog and Full-screen Dialog. They always appear on top of the modal.
+
+```tsx {9-10,12-15}
+<Dialog>
+  <DialogHeader>Elective subject</DialogHeader>
+  <Card direction="row">
+    <CardHeader title="Chinese" />
+    <Anchor>
+      <Button
+        icon={<MaterialIcon icon="more_vert" />}
+        tooltip="More options"
+        command="show-popover"
+        commandfor="elective-menu"
+      />
+      <Menu id="elective-menu">
+        <MenuItem>View details</MenuItem>
+        <MenuItem>Change subject</MenuItem>
+      </Menu>
+    </Anchor>
+  </Card>
+  <Actions>{/* ... */}</Actions>
+</Dialog>
+```
+
+#### Nesting modals
+
+**Multiple Dialogs and Full-screen Dialogs should never be open at the same
+time.** The only exception is when a Full-screen Dialog opens a Dialog as shown
+below. In this case, the Full-screen Dialog is still open when the Dialog opens.
+
+```tsx {5,13-19}
+<FullScreenDialog
+  id="edit-classroom-dialog"
+  title="Edit classroom"
+  actions={
+    <Button command="show-modal" commandfor="confirm-dialog">
+      Save
+    </Button>
+  }
+>
+  {/* ... */}
+</FullScreenDialog>
+
+<Dialog id="confirm-dialog">
+  <DialogHeader title="Confirm changes" />
+  <Actions>
+    <Button appearance="text" command="request-close">Cancel</Button>
+    <Button appearance="text" command="request-close">Confirm</Button>
+  </Actions>
+</Dialog>
+```
+
+Since Full-screen Dialogs are commonly used as forms, **a common pattern is to
+have a Full-screen Dialog open a confirmation Dialog** when the user taps “Save”
+or “Discard.”
+
 ### Version changes
 
 <VersionsTable>
