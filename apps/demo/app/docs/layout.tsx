@@ -12,24 +12,22 @@ import type { FC, ReactNode } from "react";
 const DocsLayout: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <>
+      <FAB
+        color="primary"
+        icon={<MaterialIcon icon="menu_book" />}
+        visible="corner"
+        command="show-modal"
+        commandfor="docs-nav"
+      >
+        Docs menu
+      </FAB>
       <PageHeader>Documentation</PageHeader>
       <SideSheet id="docs-nav" className="sm:hidden">
         <DocsNav />
       </SideSheet>
-      <div>
-        <FAB
-          color="primary"
-          icon={<MaterialIcon icon="menu_book" />}
-          command="show-modal"
-          commandfor="docs-nav"
-          className="sm:hidden"
-        >
-          Docs menu
-        </FAB>
-      </div>
       <SplitLayout ratio="list-detail" prefer="right">
         <DocsNav />
-        <main id="content" tabIndex={-1} className="pt-0 pb-18 sm:pb-6">
+        <main id="content" tabIndex={-1} className="pt-0 sm:pb-6">
           <Text type="body-large" element="article">
             {children}
           </Text>

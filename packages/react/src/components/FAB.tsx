@@ -61,6 +61,15 @@ export interface FABProps extends ActionableProps {
    * - Required if the FAB just includes `icon` and has no `alt`.
    */
   tooltip?: string;
+
+  /**
+   * Controls when the FAB should appear — only when floating in the corner on
+   * mobile, only when docked in the Navigation Rail on desktop, or both.
+   *
+   * - Must be `corner` (mobile only), `rail` (desktop only), or `always` (both).
+   * - Defaults to `always`.
+   */
+  visible?: "corner" | "rail" | "always";
 }
 
 /**
@@ -72,6 +81,7 @@ export interface FABProps extends ActionableProps {
  * @param icon The icon displayed inside the FAB or alongside the label.
  * @param alt A description of the FAB for screen readers, similar to `alt` on `<img>`.
  * @param tooltip A message shown in a tooltip when the user hovers over the FAB.
+ * @param visible Controls when the FAB should appear.
  *
  * @see {@link https://sk-components-demo.mysk.school/docs/inputs/fab Floating Action Button documentation}
  */
@@ -82,6 +92,7 @@ export const FAB: StyleableFC<FABProps> = ({
   icon,
   alt,
   tooltip,
+  visible = "always",
   command,
   commandfor,
   onClick,
@@ -101,6 +112,7 @@ export const FAB: StyleableFC<FABProps> = ({
       className={cn(
         "skc-fab",
         `skc-fab--${color}`,
+        `skc-fab--visible-${visible}`,
         children ? "skc-fab--extended" : `skc-fab--${size}`,
         className,
       )}

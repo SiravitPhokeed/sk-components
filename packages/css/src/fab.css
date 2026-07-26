@@ -126,6 +126,21 @@
   }
 }
 
+/* Visibility */
+.skc-fab--visible-corner {
+  /* Show only on mobile (bottom-right corner). */
+  @media (width >= 38rem) {
+    display: none;
+  }
+}
+
+.skc-fab--visible-rail {
+  /* Show only on desktop (Navigation Rail). */
+  @media (width < 38rem) {
+    display: none;
+  }
+}
+
 /* Reduced motion: neutralize the scale-in entry animation, leaving
    only the opacity fade. */
 @media (prefers-reduced-motion: reduce) {
