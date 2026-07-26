@@ -24,8 +24,8 @@ export interface TextFieldProps<Value extends string | File = string> {
    * filled, so it is great for a form with many fields.
    *
    * - Keep the appearance consistent across Text Fields. For example, use
-   *   `"outlined"` for form fields and `"filled"` for search bars, rather than mixing
-   *   both in the same context.
+   *   `"outlined"` for form fields and `"filled"` for search bars, rather than
+   *   mixing both in the same context.
    * - Must be `"outlined"` or `"filled"`.
    * - Always required.
    */
