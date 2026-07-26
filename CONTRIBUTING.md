@@ -7,7 +7,7 @@ Thank you for your interest in contributing to SK Components.
 > [issue tracker](https://github.com/suankularb-wittayalai-school/sk-components/issues).
 > Thank you!
 
-## Getting started
+## Getting Started
 
 This project is a [pnpm](https://pnpm.io/) monorepo.
 
@@ -73,13 +73,13 @@ pnpm demo:start
 > demo app. If you add or remove icons, run `pnpm demo:icons` to update the icon
 > file.
 
-## Style guidelines
+## Style Guidelines
 
 - Run Prettier before committing. Use `pnpm format`.
 - Use Title Case when referring to components in documentation and commit
   messages.
   - e.g. Full-screen Dialog, not FullscreenDialog or full-screen dialog.
-- Use Sentence case for headers.
+- Use Sentence case for headers in the demo app documentation.
 - Put prop names in codeblocks in documentation.
   - e.g. `onClick` instead of onClick.
 - Use American English in documentation and commit messages.
@@ -88,7 +88,7 @@ pnpm demo:start
   with `&ldquo;`, `&rdquo;`, etc.
   - e.g. `isn’t` instead of `isn't` (notice the apostrophe).
 
-### Git commit messages
+### Git Commit Messages
 
 - Follow the
   [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
@@ -116,7 +116,7 @@ pnpm demo:start
 - SKCom Styles and ReSKCom use the changelog at the root.
 - The demo app uses its own changelog in `apps/demo/CHANGELOG.md`.
 
-### Pull requests
+### Pull Requests
 
 - Use version branches as the base branch for your pull request.
 - The pull request title should start with the version number and use “Title Case.” Keep it short.
@@ -129,7 +129,7 @@ pnpm demo:start
   `main`.
   - e.g. `Release 4.0.1`.
 
-### ReSKCom guidelines
+### ReSKCom Guidelines
 
 - Use PascalCase for component names in code.
   - e.g. `Button`, not `button`.

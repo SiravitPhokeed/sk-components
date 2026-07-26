@@ -1,0 +1,70 @@
+name: Bug Report
+description: Something isn’t working right.
+title: "[bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill out the sections below.
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      description: Which package or area does this affect?
+      options:
+        - css (SKCom Styles)
+        - react (ReSKCom)
+        - demo (Demo app)
+        - docs (Documentation)
+    validations:
+      required: true
+  - type: input
+    id: component
+    attributes:
+      label: Component
+      description: Which component is affected? (Leave blank if not applicable.)
+      placeholder: e.g. Button, Navigation Bar, Chip Field
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear, concise description of the bug.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: |
+        1. Go to …
+        2. Click on …
+        3. See the error
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected vs. Actual Behavior
+      description: What did you expect to happen, and what actually happened?
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Which version of sk-components are you using?
+      placeholder: e.g. 4.0.0
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Drag and drop any relevant screenshots here.
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser, OS, React/pnpm version? (Optional.)
+      placeholder: e.g. Chrome 131, macOS 15, React 19, pnpm 9
