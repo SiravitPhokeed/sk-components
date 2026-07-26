@@ -811,6 +811,7 @@ These are new capabilities you may want to use.
 - **ListItem**: `containerElement`
 - **MenuItem**: `containerElement`, `dangerous`
 - **Text**: `id` (HTML id attribute)
+- **FAB**: `visible` (`"corner" | "rail" | "always"`) — controls when the FAB appears
 - **SplitLayout**: `prefer`
 - **ContentLayout**: `id`
 
