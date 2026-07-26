@@ -26,7 +26,7 @@
   }
 
   .shiki {
-    @apply bg-surface-variant dark:bg-surface-container contrast-more:border-outline relative my-4 block rounded-md not-has-data-rehype-pretty-code-title:*:first:top-1 contrast-more:border forced-colors:border forced-colors:border-[CanvasText];
+    @apply bg-surface-variant dark:bg-surface-container contrast-more:border-outline not-has-data-rehype-pretty-code-title:*:first:bg-surface-container relative my-4 block rounded-md not-has-data-rehype-pretty-code-title:*:first:top-1 contrast-more:border forced-colors:border forced-colors:border-[CanvasText];
 
     pre {
       @apply rounded-md text-base;
