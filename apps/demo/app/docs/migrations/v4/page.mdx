@@ -631,14 +631,14 @@ update your code.
     `(values: string[]) => any` — receives all values when pasting or pressing
     a separator key. Replaces `onNewEntry`.
   </SummaryTableRow>
-  <SummaryTableRow name="onNewEntry" type="removed">
-    Replaced by `onNewEntries`, which accepts `string[]`.
-  </SummaryTableRow>
   <SummaryTableRow name="required" type="new">
     `boolean` — marks the field as required
   </SummaryTableRow>
   <SummaryTableRow name="children" type="changed">
     Type narrowed: `ReactNode` → `ReactElement<typeof ChipSet>`
+  </SummaryTableRow>
+  <SummaryTableRow name="onNewEntry" type="removed">
+    Replaced by `onNewEntries`, which accepts `string[]`.
   </SummaryTableRow>
   <SummaryTableRow name="alt" type="removed">
     Removed (IDs use `useId()`)
@@ -719,6 +719,10 @@ update your code.
   </SummaryTableRow>
   <SummaryTableRow name="commandfor" type="new">
     Invoker Commands API support
+  </SummaryTableRow>
+  <SummaryTableRow name="visible" type="new">
+    `"corner" | "rail" | "always"` — controls when the FAB appears. Default
+    `"always"`.
   </SummaryTableRow>
   <SummaryTableRow name="stateOnScroll" type="removed">
     Scroll-based state toggling removed
@@ -973,17 +977,17 @@ update your code.
 </SummaryTableSection>
 
 <SummaryTableSection name="Radio">
-  <SummaryTableRow name="value" type="changed">
-    Changed from `boolean` (checked state) to `string` (submission value).
-  </SummaryTableRow>
   <SummaryTableRow name="checked" type="new">
     `boolean` — whether the Radio is selected (replaces the old `value`).
   </SummaryTableRow>
-  <SummaryTableRow name="onChange" type="changed">
-    Now fires with the Radio’s `value` (`string`), not the checked state.
-  </SummaryTableRow>
   <SummaryTableRow name="name" type="new">
     `string` — for form submission. Falls back to Form&nbsp;Item then Form&nbsp;Group.
+  </SummaryTableRow>
+  <SummaryTableRow name="value" type="changed">
+    Changed from `boolean` (checked state) to `string` (submission value).
+  </SummaryTableRow>
+  <SummaryTableRow name="onChange" type="changed">
+    Now fires with the Radio’s `value` (`string`), not the checked state.
   </SummaryTableRow>
   <SummaryTableRow name="inputAttr" type="removed">
     Raw `<input>` attribute passthrough removed

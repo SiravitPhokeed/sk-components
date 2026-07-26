@@ -45,6 +45,7 @@ Changes to the demo app are documented in
   - **Data Table Body, Data Table Head:** `align` for text alignment
   - **Data Table Head:** `colSpans` for column spanning
   - **Data Table Filters:** `role="group"` and `alt` for the filter Chip Set
+  - **FAB:** `visible` for showing on mobile, desktop, or both
   - **Dialog:** `alt` for an accessible name when Dialog Header has no title
   - **Dialog, Full-screen Dialog, Menu:** uncontrolled mode via Invoker Commands
     API (`id`)
