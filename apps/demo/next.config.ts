@@ -17,8 +17,7 @@ const nextConfig: NextConfig = {
     resolveAlias: {
       // Both paths are needed — Next.js uses the relative path internally
       "../build/polyfills/polyfill-module": "./lib/modern-polyfill.js",
-      "next/dist/build/polyfills/polyfill-module":
-        "./lib/modern-polyfill.js",
+      "next/dist/build/polyfills/polyfill-module": "./lib/modern-polyfill.js",
     },
   },
   async redirects() {
