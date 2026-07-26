@@ -87,8 +87,7 @@ export const Radio = <Value extends string = string>({
   const resolvedName = name ?? formItemName ?? formGroupName;
 
   // Avoid nested <label> when inside FormItem (which is already a <label>).
-  const resolvedElement =
-    element ?? (formItemContext ? "div" : "label");
+  const resolvedElement = element ?? (formItemContext ? "div" : "label");
 
   return (
     <Interactive

@@ -199,7 +199,10 @@ configuration file.
 - `onChange` now passes the new value of the Radio instead of a boolean.
 
 ```tsx title="Before" {1} "value"
-<Radio value={atkResult === "negative"} onChange={() => setATKResult("negative")} />
+<Radio
+  value={atkResult === "negative"}
+  onChange={() => setATKResult("negative")}
+/>
 ```
 
 ```tsx title="After" {2-4} "value" "checked"

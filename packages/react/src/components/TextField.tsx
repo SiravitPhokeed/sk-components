@@ -344,9 +344,7 @@ export const TextField = <Value extends string | File = string>({
           aria-disabled={disabled || undefined}
           // Suppress name to prevent the disabled value from being submitted
           // with the form (native disabled elements are excluded automatically).
-          name={
-            disabled && !needsNativeDisabled ? undefined : name
-          }
+          name={disabled && !needsNativeDisabled ? undefined : name}
           // Only use native disabled for types where readOnly has no effect
           // (file, color per the HTML spec); all other types use readOnly to
           // stay focusable.
