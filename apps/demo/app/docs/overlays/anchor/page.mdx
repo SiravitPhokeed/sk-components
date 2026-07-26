@@ -98,7 +98,7 @@ trigger and positioned elements are not adjacent in the DOM.
 - Give the positioned element an `anchor` prop with the same value as the Anchor’s
   `name` prop.
 
-```tsx
+```tsx {1,6}
 <Anchor name="--share-menu-anchor">
   <Button appearance="filled" command="show-popover" commandfor="share-menu">
     Share

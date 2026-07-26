@@ -17,8 +17,7 @@ const nextConfig: NextConfig = {
     resolveAlias: {
       // Both paths are needed — Next.js uses the relative path internally
       "../build/polyfills/polyfill-module": "./lib/modern-polyfill.js",
-      "next/dist/build/polyfills/polyfill-module":
-        "./lib/modern-polyfill.js",
+      "next/dist/build/polyfills/polyfill-module": "./lib/modern-polyfill.js",
     },
   },
   async redirects() {
@@ -48,7 +47,19 @@ const nextConfig: NextConfig = {
 
 const withMDX = createMDX({
   options: {
-    rehypePlugins: [["rehype-pretty-code", { theme: "github-dark" }]],
+    rehypePlugins: [
+      [
+        "rehype-pretty-code",
+        {
+          theme: {
+            dark: "github-dark",
+            "dark-high-contrast": "github-dark-high-contrast",
+            light: "github-light",
+            "light-high-contrast": "github-light-high-contrast",
+          },
+        },
+      ],
+    ],
   },
 });
 

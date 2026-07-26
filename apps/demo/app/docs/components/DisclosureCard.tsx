@@ -30,7 +30,7 @@ const DisclosureCard: FC<{
         className="text-on-surface-variant shrink-0 supports-interpolate-size:transition-transform"
       />
     </Interactive>
-    <section className="px-4 pt-2 pb-3 *:first:mt-0 *:last:mb-0 **:[blockquote,figure]:-mx-4 **:[blockquote,figure,pre]:rounded-none">
+    <section className="px-4 pt-2 pb-3 *:first:mt-0 *:last:mb-0 **:[blockquote,figure]:-mx-4 **:[blockquote,figure,pre]:rounded-none **:[figure]:border-x-0">
       {children}
     </section>
   </Card>

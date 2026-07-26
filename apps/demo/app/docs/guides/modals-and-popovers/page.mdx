@@ -37,8 +37,7 @@ recommended approach.
    set the `commandfor` prop to the `id` of the modal or popover. This is how the
    trigger knows which modal to open.
 
-```tsx
-// Uncontrolled mode (Invoker Commands API)
+```tsx title="Uncontrolled mode" {1,7-8} /command/1,3-4 "commandfor"
 <Button appearance="filled" command="show-modal" commandfor="discard-dialog">
   Discard
 </Button>
@@ -112,8 +111,7 @@ Use the `command` prop to open and close modals and popovers.
 3. On a trigger element, set the `onClick` prop to a function that sets the open
    state to `true`.
 
-```tsx
-// Controlled mode
+```tsx title="Controlled mode" {1,8} "onClose"
 const [open, setOpen] = useState(false);
 
 return (
@@ -141,6 +139,67 @@ return (
 [Snackbars](/docs/overlays/snackbar) are an exception — they use
 `snackbar.push()` and `snackbar.promise()` instead of either mode. See the
 documentation for Snackbars for more information.
+
+### Nesting
+
+#### Popovers inside modals
+
+**Popovers can be used inside modals,** i.e. Menu and Snackbar can be used
+inside Dialog and Full-screen Dialog. They always appear on top of the modal.
+
+```tsx {9-10,12-15}
+<Dialog>
+  <DialogHeader>Elective subject</DialogHeader>
+  <Card direction="row">
+    <CardHeader title="Chinese" />
+    <Anchor>
+      <Button
+        icon={<MaterialIcon icon="more_vert" />}
+        tooltip="More options"
+        command="show-popover"
+        commandfor="elective-menu"
+      />
+      <Menu id="elective-menu">
+        <MenuItem>View details</MenuItem>
+        <MenuItem>Change subject</MenuItem>
+      </Menu>
+    </Anchor>
+  </Card>
+  <Actions>{/* ... */}</Actions>
+</Dialog>
+```
+
+#### Nesting modals
+
+**Multiple Dialogs and Full-screen Dialogs should never be open at the same
+time.** The only exception is when a Full-screen Dialog opens a Dialog as shown
+below. In this case, the Full-screen Dialog is still open when the Dialog opens.
+
+```tsx {5,13-19}
+<FullScreenDialog
+  id="edit-classroom-dialog"
+  title="Edit classroom"
+  actions={
+    <Button command="show-modal" commandfor="confirm-dialog">
+      Save
+    </Button>
+  }
+>
+  {/* ... */}
+</FullScreenDialog>
+
+<Dialog id="confirm-dialog">
+  <DialogHeader title="Confirm changes" />
+  <Actions>
+    <Button appearance="text" command="request-close">Cancel</Button>
+    <Button appearance="text" command="request-close">Confirm</Button>
+  </Actions>
+</Dialog>
+```
+
+Since Full-screen Dialogs are commonly used as forms, **a common pattern is to
+have a Full-screen Dialog open a confirmation Dialog** when the user taps “Save”
+or “Discard.”
 
 ### Version changes
 

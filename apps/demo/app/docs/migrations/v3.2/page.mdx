@@ -23,13 +23,11 @@ pnpm add @suankularb-components/react@^3.2
 **[Text](/docs/data/text) component replaced the text utility classes.** Remove
 the text utility classes from your code and use the new Text component instead.
 
-```tsx
-// OLD: text utility classes
+```tsx title="Before"
 <p className="skc-body-medium">Some text</p>
 ```
 
-```tsx
-// NEW: Text component
+```tsx title="After"
 import { Text } from "@suankularb-components/react";
 
 <Text type="body-medium" element="p">

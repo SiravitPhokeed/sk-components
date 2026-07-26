@@ -13,8 +13,10 @@ import {
   ContentLayout,
   MaterialIcon,
   Section,
+  Text,
 } from "@suankularb-components/react";
 import type { Metadata } from "next";
+import Link from "next/link";
 import type { FC } from "react";
 
 export const metadata: Metadata = {
@@ -25,6 +27,17 @@ const ComponentsPage: FC = () => (
   <>
     <PageHeader>Components</PageHeader>
     <ContentLayout>
+      <Text
+        type="body-large"
+        className="-my-3 max-sm:mx-4 sm:text-balance md:w-3/4"
+      >
+        Interactive demos for every SK Components component. For guides and API
+        references, see the{" "}
+        <Link href="/docs" className="link">
+          Documentation page
+        </Link>
+        .
+      </Text>
       <Section>
         <Columns columns={2}>
           <PageCard

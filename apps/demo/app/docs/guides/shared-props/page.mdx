@@ -55,7 +55,7 @@ you need a different semantic element, or when integrating with framework
 link components like Next.js’s
 [`Link` component](https://nextjs.org/docs/app/api-reference/components/link).
 
-```tsx
+```tsx {3}
 import Link from "next/link";
 
 <Button appearance="filled" href="/dashboard" element={Link}>
@@ -88,7 +88,7 @@ receive interaction props. These include standard event handlers as well as
 [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API)
 props for declarative modals and popovers.
 
-```tsx
+```tsx {1}
 <Button command="show-modal" commandfor="settings-dialog">
   Open settings
 </Button>
