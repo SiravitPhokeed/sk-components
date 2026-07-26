@@ -22,7 +22,7 @@ export interface CardProps extends ActionableProps, ElementCustomizableProps {
   /**
    * The appearance of the Card.
    *
-   * - From most to least emphasis: `outlined`, `elevated`, `filled`.
+   * - From most to least emphasis: `"outlined"`, `"elevated"`, `"filled"`.
    * - Each appearance puts a different amount of emphasis on the subject.
    * - Always required.
    */
@@ -30,9 +30,9 @@ export interface CardProps extends ActionableProps, ElementCustomizableProps {
 
   /**
    * The flow of the Card’s content, like the CSS property `flex-direction`.
-   * The default is `column`.
+   * The default is `"column"`.
    *
-   * - Must be `row` or `column`.
+   * - Must be `"row"` or `"column"`.
    * - Optional.
    */
   direction?: "row" | "column";
@@ -69,7 +69,7 @@ export interface CardProps extends ActionableProps, ElementCustomizableProps {
  *
  * @param children Card must contain at least 1 element.
  * @param appearance The appearance of the Card.
- * @param direction The flow of the Card’s content, like the CSS property `flex-direction`. The default is `column`.
+ * @param direction The flow of the Card’s content, like the CSS property `flex-direction`. The default is `"column"`.
  * @param stateLayerEffect A state layer is a visual overlay that responds to user interaction. For example, a Button’s state layer increases its opacity on hover, signaling it’s clickable.
  * @param shadowEffect Elevates Card on hover and focus to signify its interactivity.
  *

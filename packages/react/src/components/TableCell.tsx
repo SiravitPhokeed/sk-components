@@ -26,7 +26,7 @@ export interface TableCellProps extends ElementCustomizableProps {
    * The scope of the cell, which defines the cells that the header cell relates
    * to.
    *
-   * - Must be `col`, `row`, `colgroup`, or `rowgroup`.
+   * - Must be `"col"`, `"row"`, `"colgroup"`, or `"rowgroup"`.
    * - Only effective when `header` is `true`.
    * - Optional.
    */
@@ -50,7 +50,7 @@ export interface TableCellProps extends ElementCustomizableProps {
    * How the content should be positioned. It can be aligned to the left, the
    * center (default), or the right.
    *
-   * - Must be `left`, `center`, `right`.
+   * - Must be `"left"`, `"center"`, `"right"`.
    * - Optional.
    */
   align?: "left" | "center" | "right";

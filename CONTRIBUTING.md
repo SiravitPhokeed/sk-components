@@ -82,6 +82,8 @@ pnpm demo:start
 - Use Sentence case for headers in the demo app documentation.
 - Put prop names in codeblocks in documentation.
   - e.g. `onClick` instead of onClick.
+- Wrap string values in inline code with double quotes.
+  - e.g. `"en-US"` instead of `en-US`.
 - Use American English in documentation and commit messages.
   - e.g. behavior, not behaviour.
 - Use smart quotes in documentation and commit messages. In JSX, escape them

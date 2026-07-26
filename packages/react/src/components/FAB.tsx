@@ -24,8 +24,8 @@ export interface FABProps extends ActionableProps {
   /**
    * The color of the FAB.
    *
-   * - Must be `surface`, `primary`, `secondary`, or `tertiary`. These colors
-   *   are defined in the palette.
+   * - Must be `"surface"`, `"primary"`, `"secondary"`, or `"tertiary"`.
+   *   These colors are defined in the palette.
    * - Always required.
    */
   color: "surface" | "primary" | "secondary" | "tertiary";
@@ -33,8 +33,8 @@ export interface FABProps extends ActionableProps {
   /**
    * How large/small the FAB is.
    *
-   * - Must be `small`, `standard`, or `large`.
-   * - Defaults to `standard`.
+   * - Must be `"small"`, `"standard"`, or `"large"`.
+   * - Defaults to `"standard"`.
    * - Incompatible with `children`.
    */
   size?: "small" | "standard" | "large";
@@ -66,8 +66,9 @@ export interface FABProps extends ActionableProps {
    * Controls when the FAB should appear — only when floating in the corner on
    * mobile, only when docked in the Navigation Rail on desktop, or both.
    *
-   * - Must be `corner` (mobile only), `rail` (desktop only), or `always` (both).
-   * - Defaults to `always`.
+   * - Must be `"corner"` (mobile only), `"rail"` (desktop only), or
+   *   `"always"` (both).
+   * - Defaults to `"always"`.
    */
   visible?: "corner" | "rail" | "always";
 }

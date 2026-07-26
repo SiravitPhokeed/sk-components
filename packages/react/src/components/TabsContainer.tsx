@@ -26,10 +26,10 @@ export interface TabsContainerProps extends ElementCustomizableProps {
 
   /**
    * Where the Tabs Container is placed affects its appearance. A Tabs Container
-   * responsible for the entire content pane (`primary`) has a different
-   * appearance as that for only a section (`secondary`).
+   * responsible for the entire content pane (`"primary"`) has a different
+   * appearance as that for only a section (`"secondary"`).
    *
-   * - Must be `primary` or `secondary`.
+   * - Must be `"primary"` or `"secondary"`.
    * - Always required.
    */
   appearance: "primary" | "secondary";
@@ -41,7 +41,7 @@ export interface TabsContainerProps extends ElementCustomizableProps {
  * page of a class.
  *
  * @param children Tabs to select from.
- * @param appearance Where the Tabs Container is placed affects its appearance. A Tabs Container responsible for the entire content pane (`primary`) has a different appearance as that for only a section (`secondary`).
+ * @param appearance Where the Tabs Container is placed affects its appearance. A Tabs Container responsible for the entire content pane (`"primary"`) has a different appearance as that for only a section (`"secondary"`).
  *
  * @see {@link https://sk-components-demo.mysk.school/docs/layout/tabs-container Tabs Container documentation}
  */

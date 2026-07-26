@@ -37,10 +37,10 @@ export interface SelectProps<
    * How the Select looks. An outlined Select has a lower emphasis than filled,
    * so it is great for a form with many fields.
    *
-   * - Keep the appearance consistent across Selects. For example, use `outlined`
-   *   for form fields and `filled` for toolbar controls, rather than mixing both
-   *   in the same context.
-   * - Must be `outlined` or `filled`.
+   * - Keep the appearance consistent across Selects. For example, use
+   *   `"outlined"` for form fields and `"filled"` for toolbar controls,
+   *   rather than mixing both in the same context.
+   * - Must be `"outlined"` or `"filled"`.
    * - Always required.
    */
   appearance: "outlined" | "filled";
@@ -71,7 +71,7 @@ export interface SelectProps<
   /**
    * Allows for translation of the message shown when there are no options.
    *
-   * - Must be `en-US` or `th`.
+   * - Must be `"en-US"` or `"th"`.
    * - Optional.
    */
   locale?: "en-US" | "th";

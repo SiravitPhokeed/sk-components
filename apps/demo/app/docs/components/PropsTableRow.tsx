@@ -7,7 +7,7 @@ const PropsTableRow: FC<{
   prop: string;
   required?: "always" | "conditional" | "never";
 }> = ({ children, prop, required = "never" }) => (
-  <TableRow className="*:last:*:block [&_pre]:rounded-sm [&_pre]:p-1.5">
+  <TableRow className="**:[pre]:bg-surface-variant *:last:*:block **:[pre]:rounded-xs **:[pre]:px-1.5 **:[pre]:*:[code]:px-0">
     <TableCell>
       <code
         className={cn(

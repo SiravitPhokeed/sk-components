@@ -39,7 +39,7 @@ export interface SearchProps extends ElementCustomizableProps {
   /**
    * Allows for translation of the default placeholder message.
    *
-   * - Must be `en-US` or `th`.
+   * - Must be `"en-US"` or `"th"`.
    * - Optional.
    */
   locale?: "en-US" | "th";

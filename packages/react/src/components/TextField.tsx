@@ -24,9 +24,9 @@ export interface TextFieldProps<Value extends string | File = string> {
    * filled, so it is great for a form with many fields.
    *
    * - Keep the appearance consistent across Text Fields. For example, use
-   *   `outlined` for form fields and `filled` for search bars, rather than mixing
-   *   both in the same context.
-   * - Must be `outlined` or `filled`.
+   *   `"outlined"` for form fields and `"filled"` for search bars, rather than
+   *   mixing both in the same context.
+   * - Must be `"outlined"` or `"filled"`.
    * - Always required.
    */
   appearance: "outlined" | "filled";
@@ -43,7 +43,7 @@ export interface TextFieldProps<Value extends string | File = string> {
    * The type of the input field. This is useful if you want a specialized input
    * field, like a date picker or a color picker.
    *
-   * - Optional. Defaults to `text`.
+   * - Optional. Defaults to `"text"`.
    */
   type?:
     | "color"
@@ -74,7 +74,7 @@ export interface TextFieldProps<Value extends string | File = string> {
   behavior?: "single-line" | "multi-line" | "textarea";
 
   /**
-   * The text alignment inside the input. Use `right` when the input value
+   * The text alignment inside the input. Use `"right"` when the input value
    * should sit next to trailing text — for example, a username field with a
    * `@domain` suffix so the value reads naturally with the suffix.
    *
@@ -146,7 +146,7 @@ export interface TextFieldProps<Value extends string | File = string> {
    * place of the file name when no files have been attached yet.
    *
    * - Only valid if `type` is `file`.
-   * - Must be `en-US` or `th`.
+   * - Must be `"en-US"` or `"th"`.
    * - Optional.
    */
   locale?: "en-US" | "th";
@@ -226,7 +226,7 @@ const STRINGS = {
  * @param label The placeholder text (when not focused and no value) and the label text (when focused or has value).
  * @param type The type of the input field.
  * @param behavior How the Text Field behaves if the field value exceeds the visual space.
- * @param align The text alignment inside the input. Use `right` when the input value should sit next to trailing text — for example, a username field with a `@domain` suffix so the value reads naturally with the suffix.
+ * @param align The text alignment inside the input. Use `"right"` when the input value should sit next to trailing text — for example, a username field with a `@domain` suffix so the value reads naturally with the suffix.
  * @param leading The leading text or icon, aligned to the left.
  * @param trailing The trailing text or icon, aligned to the right.
  * @param helperMsg A short description of the Text Field, or an error message during an error state.

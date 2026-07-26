@@ -34,8 +34,8 @@ export interface ButtonProps extends ActionableProps, ElementCustomizableProps {
    * button has higher priority than the password recovery Button. In this
    * case, the log in Button is “filled,” and the password recovery is “text.”
    *
-   * - Must be `filled`, `tonal`, `outlined`, or `text`, from highest to lowest
-   *   priority.
+   * - Must be `"filled"`, `"tonal"`, `"outlined"`, or `"text"`, from highest
+   *   to lowest priority.
    * - Always required.
    */
   appearance: "filled" | "tonal" | "outlined" | "text";
@@ -115,7 +115,7 @@ export interface ButtonProps extends ActionableProps, ElementCustomizableProps {
   /**
    * Allows for translation of the accessibility labels.
    *
-   * - Must be `en-US` or `th`.
+   * - Must be `"en-US"` or `"th"`.
    * - Optional.
    */
   locale?: "en-US" | "th";
@@ -123,8 +123,8 @@ export interface ButtonProps extends ActionableProps, ElementCustomizableProps {
   /**
    * The type of the Button, similar to `type` on `<button>`.
    *
-   * - Must be `submit`, `reset`, or `button`.
-   * - Optional. Defaults to `button`.
+   * - Must be `"submit"`, `"reset"`, or `"button"`.
+   * - Optional. Defaults to `"button"`.
    */
   type?: "submit" | "reset" | "button";
 }

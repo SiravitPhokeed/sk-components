@@ -20,8 +20,8 @@ export interface ToggleButtonProps extends ElementCustomizableProps {
    * button. In this case, the end call is “filled,” and the raise hand is
    * “outlined.”
    *
-   * - Must be `filled`, `tonal`, `outlined`, or `standard`, from highest to
-   *   lowest priority.
+   * - Must be `"filled"`, `"tonal"`, `"outlined"`, or `"standard"`, from
+   *   highest to lowest priority.
    * - Always required.
    */
   appearance: "filled" | "tonal" | "outlined" | "standard";
@@ -30,7 +30,8 @@ export interface ToggleButtonProps extends ElementCustomizableProps {
    * A Toggle Button's action is only communicated via its icon, so keep the
    * icon clear.
    *
-   * - You are encouraged to use {@link MaterialIcon Material Icon} as the value for `icon`.
+   * - You are encouraged to use {@link MaterialIcon Material Icon} as the value
+   *   for `icon`.
    * - Always required, as a Toggle Button cannot be empty.
    */
   icon: ReactElement;
@@ -46,8 +47,8 @@ export interface ToggleButtonProps extends ElementCustomizableProps {
   /**
    * A message shown in a tooltip when the user hovers over the Toggle Button.
    *
-   * - Always required, since the icon alone may not be clear enough for the user
-   *   to infer the action.
+   * - Always required, since the icon alone may not be clear enough for the
+   *   user to infer the action.
    */
   tooltip: string;
 

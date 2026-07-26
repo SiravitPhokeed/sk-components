@@ -34,9 +34,9 @@ export interface DataTableCellProps extends ElementCustomizableProps {
    * The scope of the cell, which defines the cells that the header cell relates
    * to.
    *
-   * - Must be `col`, `row`, `colgroup`, or `rowgroup`.
+   * - Must be `"col"`, `"row"`, `"colgroup"`, or `"rowgroup"`.
    * - Only effective when {@link header `header`} is `true`.
-   * - Optional. Defaults to `col` for header cells.
+   * - Optional. Defaults to `"col"` for header cells.
    */
   scope?: "col" | "row" | "colgroup" | "rowgroup";
 
@@ -44,7 +44,7 @@ export interface DataTableCellProps extends ElementCustomizableProps {
    * How the content should be positioned. It can be aligned to the left, the
    * center (default), or the right.
    *
-   * - Must be `left`, `center`, `right`.
+   * - Must be `"left"`, `"center"`, `"right"`.
    * - Optional.
    */
   align?: "left" | "center" | "right";
@@ -61,7 +61,7 @@ export interface DataTableCellProps extends ElementCustomizableProps {
    * The current sort direction of this column. When set, a sort indicator is
    * shown and the cell becomes sortable with a state layer and ripple effect.
    *
-   * - Must be `asc` or `desc`.
+   * - Must be `"asc"` or `"desc"`.
    * - Only effective when {@link header `header`} and
    *   {@link sortable `sortable`} are `true`.
    * - Optional.
@@ -80,7 +80,8 @@ export interface DataTableCellProps extends ElementCustomizableProps {
   /**
    * Allows for translation of the accessibility labels.
    *
-   * - Must be `en-US` or `th`, as SKCom currently only supports these two languages.
+   * - Must be `"en-US"` or `"th"`, as SKCom currently only supports these two
+   *   languages.
    * - Optional.
    */
   locale?: "en-US" | "th";
@@ -113,7 +114,7 @@ const STRINGS = {
 export const DataTableCell: StyleableFC<DataTableCellProps> = ({
   children,
   header,
-  // Data Table Head only renders column headers, so `col` is always the
+  // Data Table Head only renders column headers, so `"col"` is always the
   // right scope there; Data Table Cell is private, so nothing else sets it.
   scope = header ? "col" : undefined,
   align = "center",

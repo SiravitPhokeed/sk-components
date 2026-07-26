@@ -83,7 +83,7 @@ export interface FullscreenDialogProps {
   /**
    * Allows for translation of the accessibility labels.
    *
-   * - Must be `en-US` or `th`.
+   * - Must be `"en-US"` or `"th"`.
    *   languages.
    * - Optional.
    */

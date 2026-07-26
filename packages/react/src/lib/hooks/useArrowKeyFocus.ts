@@ -10,7 +10,7 @@
  *   widget-specific key handling.
  *
  * @param getItems Returns the focusable elements, in DOM order.
- * @param orientation The axis the list is laid out on. Defaults to `vertical`.
+ * @param orientation The axis of the list. Defaults to `"vertical"`.
  * @returns A keydown handler to attach to the list’s container.
  */
 export default function useArrowKeyFocus(
