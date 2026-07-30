@@ -5,6 +5,7 @@ dist/
 
 .claude/worktrees/
 .wiki/
+.idea/
 
 .DS_Store
 desktop.ini
